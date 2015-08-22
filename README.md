@@ -1,4 +1,4 @@
 # SMS-countdown
-An iOS app which is to show how many days you have before retire the military service
+阿替倒數中 - 與你同甘共苦的好幫手
 
-愛心 服務 責任 紀律
+[讓我們負責接下來的每一天。](http://eddiewen.me/sms_count/)
