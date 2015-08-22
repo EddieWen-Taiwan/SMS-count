@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="SMS_Widget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還有" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMX-SO-EvD">
+                                <rect key="frame" x="0.0" y="0.0" width="28" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXX-4S-gKl" userLabel="RemainedDayLabel">
+                                <rect key="frame" x="38" y="0.0" width="50" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vr0-kH-DmU">
+                                <rect key="frame" x="98" y="0.0" width="14" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚未完成設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN5-2A-Hqx">
+                                <rect key="frame" x="94" y="12" width="84" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.72575363005050497" green="0.72575363005050497" blue="0.72575363005050497" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" secondItem="rXX-4S-gKl" secondAttribute="height" id="3jh-C6-Ug6"/>
+                            <constraint firstAttribute="centerY" secondItem="uN5-2A-Hqx" secondAttribute="centerY" id="6Ko-p8-9py"/>
+                            <constraint firstAttribute="height" secondItem="Vr0-kH-DmU" secondAttribute="height" id="Nwz-fE-Pwy"/>
+                            <constraint firstItem="Vr0-kH-DmU" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="O4l-n7-c5d"/>
+                            <constraint firstAttribute="centerX" secondItem="uN5-2A-Hqx" secondAttribute="centerX" constant="24" id="a1b-VJ-ijn"/>
+                            <constraint firstItem="jMX-SO-EvD" firstAttribute="height" secondItem="S3S-Oj-5AN" secondAttribute="height" id="esz-Th-x93"/>
+                            <constraint firstItem="rXX-4S-gKl" firstAttribute="leading" secondItem="jMX-SO-EvD" secondAttribute="trailing" constant="10" id="hrh-J6-HHp"/>
+                            <constraint firstItem="Vr0-kH-DmU" firstAttribute="leading" secondItem="rXX-4S-gKl" secondAttribute="trailing" constant="10" id="tRb-bX-gcI"/>
+                            <constraint firstItem="jMX-SO-EvD" firstAttribute="top" secondItem="S3S-Oj-5AN" secondAttribute="top" id="txi-UX-1rM"/>
+                            <constraint firstItem="rXX-4S-gKl" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="urB-OH-ONK"/>
+                            <constraint firstItem="jMX-SO-EvD" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="vdT-dE-8xS"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="40"/>
+                    <connections>
+                        <outlet property="firstWord" destination="jMX-SO-EvD" id="Uy6-iA-0BU"/>
+                        <outlet property="remainedDaysLabel" destination="rXX-4S-gKl" id="Teg-Pm-qt1"/>
+                        <outlet property="secondWord" destination="Vr0-kH-DmU" id="Opu-ea-rab"/>
+                        <outlet property="warningLabel" destination="uN5-2A-Hqx" id="cUE-ct-zRt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="285"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
