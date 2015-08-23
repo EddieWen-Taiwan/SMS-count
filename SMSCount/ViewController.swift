@@ -16,7 +16,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
-    let animationInterval: Double = 0.01
 
     let countingClass = CountingDate()
 
@@ -34,13 +33,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 var remainedDays = countingClass.getRemainedDays()
 
                 // Timer Effect
+                let animationInterval: Double = 0.01
                 animationIndex = 0
                 animationArray.removeAll(keepCapacity: false)
-                for var i = 1; i <= Int(1/animationInterval); i++ {
+                for var i = 1; i <= 100; i++ {
                     animationArray.append( String( format: "%.f", Double(remainedDays*i)*animationInterval ) )
                 }
 
-                var timer = NSTimer.scheduledTimerWithTimeInterval( animationInterval, target: self, selector: Selector("daysAddingEffect:"), userInfo: nil, repeats: true )
+                var timer = NSTimer.scheduledTimerWithTimeInterval( animationInterval, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
         }
 
@@ -164,11 +164,41 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func daysAddingEffect( timer: NSTimer ) {
-        if animationIndex < Int(1/animationInterval) {
-            remainedDaysLabel.text = animationArray[ animationIndex ]
-            animationIndex++
-        } else {
-            timer.invalidate()
+        switch( timer.userInfo! as! String ) {
+            case "stage1":
+                if animationIndex < 50 {
+                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
+                    self.animationIndex++
+                    println( "stage1 if" )
+                } else {
+                    timer.invalidate()
+                    var timer2 = NSTimer.scheduledTimerWithTimeInterval( 0.05, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
+                    println( "stage1 else" )
+                }
+
+            case "stage2":
+                if animationIndex < 90 {
+                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
+                    self.animationIndex++
+                    println( "stage2 if" )
+                } else {
+                    timer.invalidate()
+                    var timer3 = NSTimer.scheduledTimerWithTimeInterval( 0.1, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
+                    println( "stage2 else" )
+                }
+            
+            case "stage3":
+                if animationIndex < 100 {
+                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
+                    self.animationIndex++
+                    println( "stage3 if" )
+                } else {
+                    timer.invalidate()
+                    println( "stage3 else" )
+                }
+
+            default:
+                break;
         }
     }
 
