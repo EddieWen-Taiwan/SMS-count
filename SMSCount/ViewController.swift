@@ -169,32 +169,26 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 if animationIndex < 50 {
                     self.remainedDaysLabel.text = animationArray[ animationIndex ]
                     self.animationIndex++
-                    println( "stage1 if" )
                 } else {
                     timer.invalidate()
                     var timer2 = NSTimer.scheduledTimerWithTimeInterval( 0.05, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
-                    println( "stage1 else" )
                 }
 
             case "stage2":
                 if animationIndex < 90 {
                     self.remainedDaysLabel.text = animationArray[ animationIndex ]
                     self.animationIndex++
-                    println( "stage2 if" )
                 } else {
                     timer.invalidate()
                     var timer3 = NSTimer.scheduledTimerWithTimeInterval( 0.1, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
-                    println( "stage2 else" )
                 }
             
             case "stage3":
                 if animationIndex < 100 {
                     self.remainedDaysLabel.text = animationArray[ animationIndex ]
                     self.animationIndex++
-                    println( "stage3 if" )
                 } else {
                     timer.invalidate()
-                    println( "stage3 else" )
                 }
 
             default:
