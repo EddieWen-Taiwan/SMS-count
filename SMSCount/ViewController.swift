@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var remainedDaysLabel: UILabel!
+    @IBOutlet var screenShotScale: UIView!
+    @IBOutlet var screenShotWrapper: UIView!
+
     var animationIndex: Int = 0
     var animationArray = [ "" ]
     let animationInterval: Double = 0.01
@@ -113,16 +116,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     }
 
-    @IBOutlet var screenShotScale: UIView!
     func getScreenShot() {
-screenShotScale.hidden = false
+
+        screenShotWrapper.hidden = false
+
         // Create the UIImage
         let mainWindowLayer = screenShotScale.layer
         UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
         mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
         let screenShot = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-screenShotScale.hidden = true
+
+        screenShotWrapper.hidden = true
+
         // Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
 

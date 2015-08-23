@@ -253,6 +253,7 @@
                     <connections>
                         <outlet property="remainedDaysLabel" destination="NyZ-Jo-ImC" id="8o8-ua-htI"/>
                         <outlet property="screenShotScale" destination="OJc-wj-ATG" id="YSt-LB-kak"/>
+                        <outlet property="screenShotWrapper" destination="uwL-yL-6BL" id="9cY-ww-Vwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
