@@ -112,17 +112,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.presentViewController( askAlertController, animated: true, completion: nil )
 
     }
-    
-    @IBOutlet var testImg: UIImageView!
+
+    @IBOutlet var screenShotScale: UIView!
     func getScreenShot() {
-testImg.hidden = false
+screenShotScale.hidden = false
         // Create the UIImage
-        let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
+        let mainWindowLayer = screenShotScale.layer
         UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
         mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
         let screenShot = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-testImg.hidden = true
+screenShotScale.hidden = true
         // Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
 
