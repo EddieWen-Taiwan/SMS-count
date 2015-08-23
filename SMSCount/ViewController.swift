@@ -121,6 +121,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         screenShotWrapper.hidden = false
 
         // Create the UIImage
+        // let mainwindowLayer = UIApplication.sharedApplication().keyWindow!.layer
         let mainWindowLayer = screenShotScale.layer
         UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
         mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
@@ -185,7 +186,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 println("Error : \(error).")
             }
 //            let servResponse = NSString( data: response, encoding: NSUTF8StringEncoding )!
-//            println( "Response : \(servResponse)." )
 
         }
         addUserTask.resume()
