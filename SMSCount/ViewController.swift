@@ -72,20 +72,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                                 println( "Fetched user: \(result)" )
                                 // To save user data
 
-                                var username: String = ""
-                                if result.valueForKey("name") != nil {
-                                    username = result.valueForKey("name") as! String
-                                }
-
-                                var usermail: String = ""
-                                if result.valueForKey("email") != nil {
-                                    usermail = result.valueForKey("email") as! String
-                                }
-
-                                var fb_id: String = ""
-                                if result.valueForKey("id") != nil {
-                                    fb_id = result.valueForKey("id") as! String
-                                }
+                                var username: String = result.valueForKey("name") == nil ? "" : result.valueForKey("name") as! String
+                                var usermail: String = result.valueForKey("email") == nil ? "" : result.valueForKey("email") as! String
+                                var fb_id: String = result.valueForKey("id") == nil ? "" : result.valueForKey("id") as! String
 
                                 if Reachability().isConnectedToNetwork() {
                                     self.saveUserData( username, mail: usermail, fbid: fb_id )
