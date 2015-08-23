@@ -113,15 +113,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     }
     
+    @IBOutlet var testImg: UIImageView!
     func getScreenShot() {
-
+testImg.hidden = false
         // Create the UIImage
         let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
-        UIGraphicsBeginImageContextWithOptions( mainWindowLayer.frame.size, true, UIScreen.mainScreen().scale )
+        UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
         mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
         let screenShot = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+testImg.hidden = true
         // Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
 
@@ -177,7 +178,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             if error != nil {
                 println("Error : \(error).")
             }
-
 //            let servResponse = NSString( data: response, encoding: NSUTF8StringEncoding )!
 //            println( "Response : \(servResponse)." )
 
