@@ -1316,7 +1316,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="200" height="200"/>
+        <image name="background" width="400" height="400"/>
         <image name="day-countdown" width="30" height="30"/>
         <image name="hourglass" width="30" height="30"/>
         <image name="setting" width="30" height="30"/>
