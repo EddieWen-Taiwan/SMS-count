@@ -42,6 +42,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
                 var timer = NSTimer.scheduledTimerWithTimeInterval( animationInterval, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
+        } else {
+            
         }
 
     }
