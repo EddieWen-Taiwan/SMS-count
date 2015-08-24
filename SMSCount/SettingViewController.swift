@@ -105,7 +105,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         showPickerView( serviceDaysPickerView )
 
         if userPreference.stringForKey("serviceDays") != nil {
-            var selectedRow = ( userPreference.stringForKey("serviceDays") == "1y" ) ? 0 : 1
+            var selectedRow = userPreference.stringForKey("serviceDays") == "1y" ? 0 : 1
             serviceDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
         }
 
@@ -216,7 +216,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == serviceDaysPickerElement {
-            var days: String = ( row == 0 ) ? "1y" : "1y15d"
+            var days: String = row == 0 ? "1y" : "1y15d"
             userPreference.setObject( days, forKey: "serviceDays" )
         } else if pickerView == discountDaysPickerElement {
             userPreference.setObject( row, forKey: "discountDays" )

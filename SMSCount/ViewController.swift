@@ -175,7 +175,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 }
 
             case "stage2":
-                if animationIndex < 90 {
+                if animationIndex < 85 {
                     self.remainedDaysLabel.text = animationArray[ animationIndex ]
                     self.animationIndex++
                 } else {
