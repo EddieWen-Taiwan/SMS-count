@@ -27,12 +27,9 @@ class CountingDate {
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: +28800)
         calendar!.timeZone = NSTimeZone(forSecondsFromGMT: +28800)
-//println( NSDate() )
-//        self.currentDate = calendar!.startOfDayForDate( NSDate() )
+
         var tempTimeString = dateFormatter.stringFromDate( NSDate() )
-//println(tempTimeString)
         self.currentDate = dateFormatter.dateFromString( tempTimeString )
-//println( "今天 是 \(currentDate)" )
 
         if self.isSettingAllDone() {
             self.updateDate()
@@ -56,18 +53,17 @@ class CountingDate {
     }
 
     func updateDate() {
-//println( "今天 是 \(currentDate)" )
-//println( "入伍日String is " + userPreference.stringForKey("enterDate")! )
+
         self.enterDate = dateFormatter.dateFromString( userPreference.stringForKey("enterDate")! )!
         // 入伍日 - enterDate
-//println( "入伍日 是 \(enterDate)" )
+
         let userServiceDays = userPreference.stringForKey("serviceDays")!
         dayComponent.year = 1
         dayComponent.day = userServiceDays == "1y" ? -1 : 14
 
         self.defaultRetireDate = calendar!.dateByAddingComponents( dayComponent, toDate: enterDate, options: nil)!
         // 預定退伍日 - defaultRetireDate
-//println( "預定退伍日 是 \(defaultRetireDate)" )
+
         var userDiscountDays: Int = 0
 
         if let discountDayString = userPreference.stringForKey("discountDays") {
@@ -79,7 +75,7 @@ class CountingDate {
         dayComponent.day = userDiscountDays*(-1)
         self.realRetireDate = calendar!.dateByAddingComponents( dayComponent, toDate: defaultRetireDate, options: nil)!
         // 折抵後退伍日 - realRetireDate
-//println( "折抵後退伍日 是 \(realRetireDate)" )
+
         let cal = NSCalendar.currentCalendar()
         let unit: NSCalendarUnit = .CalendarUnitDay
         self.remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: nil)
