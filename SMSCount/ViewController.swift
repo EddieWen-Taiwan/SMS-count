@@ -33,7 +33,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 var remainedDays = countingClass.getRemainedDays()
 
                 // Timer Effect
-                let animationInterval: Double = 0.01
+                let animationInterval: Double = 0.03
                 animationIndex = 0
                 animationArray.removeAll(keepCapacity: false)
                 for var i = 1; i <= 100; i++ {
@@ -174,7 +174,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     self.animationIndex++
                 } else {
                     timer.invalidate()
-                    var timer2 = NSTimer.scheduledTimerWithTimeInterval( 0.05, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
+                    var timer2 = NSTimer.scheduledTimerWithTimeInterval( 0.06, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
                 }
 
             case "stage2":
@@ -183,7 +183,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     self.animationIndex++
                 } else {
                     timer.invalidate()
-                    var timer3 = NSTimer.scheduledTimerWithTimeInterval( 0.1, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
+                    var timer3 = NSTimer.scheduledTimerWithTimeInterval( 0.09, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
                 }
             
             case "stage3":
