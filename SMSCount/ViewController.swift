@@ -44,6 +44,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
         } else {
             // switch to settingViewController ?
+            // tabBarController?.selectedIndex = 2
         }
 
     }
