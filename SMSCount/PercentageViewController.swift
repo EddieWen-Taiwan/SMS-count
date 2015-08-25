@@ -43,6 +43,7 @@ class PercentageViewController: UIViewController {
 
         } else {
             percentSymbol.hidden = true
+            // switch to settingViewController ?
         }
 
     }
