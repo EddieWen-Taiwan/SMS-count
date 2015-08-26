@@ -33,14 +33,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 var remainedDays = countingClass.getRemainedDays()
 
                 // Timer Effect
-                let animationInterval: Double = 0.03
                 animationIndex = 0
                 animationArray.removeAll(keepCapacity: false)
                 for var i = 1; i <= 100; i++ {
-                    animationArray.append( String( format: "%.f", Double(remainedDays*i)*animationInterval ) )
+                    animationArray.append( String( format: "%.f", Double(remainedDays*i)*0.01 ) )
                 }
 
-                var timer = NSTimer.scheduledTimerWithTimeInterval( animationInterval, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
+                var timer = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
         } else {
             // switch to settingViewController ?
