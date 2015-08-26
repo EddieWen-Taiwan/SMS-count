@@ -39,7 +39,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     animationArray.append( String( format: "%.f", Double(remainedDays*i)*0.01 ) )
                 }
 
-                var timer = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
+                var timer = NSTimer.scheduledTimerWithTimeInterval( 0.03, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
         } else {
             // switch to settingViewController ?
