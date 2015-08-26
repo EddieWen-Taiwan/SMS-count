@@ -16,21 +16,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
-    var nextScreenEdgeGesture: UIScreenEdgePanGestureRecognizer!
+    var rightSwipeGesture: UISwipeGestureRecognizer!
 
     let countingClass = CountingDate()
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        nextScreenEdgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: "goNextScreen:")
-        nextScreenEdgeGesture.edges = .Right
+        rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
+        rightSwipeGesture.direction = .Left
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.addGestureRecognizer(nextScreenEdgeGesture)
+        self.view.addGestureRecognizer(rightSwipeGesture)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -207,6 +207,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
 
+    func switchBetweenView(sender: UISwipeGestureRecognizer) {
+
+        if sender.direction == .Left {
+            tabBarController?.selectedIndex = 1
+        }
+
+    }
+
     func saveUserData( name: String, mail: String, fbid: String ) {
 
         let httpRequest = NSMutableURLRequest( URL: NSURL( string: "http://eddiewen.me/sms_count/addUserFromApp.php" )! )
@@ -220,19 +228,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             if error != nil {
                 println("Error : \(error).")
             }
-//            let servResponse = NSString( data: response, encoding: NSUTF8StringEncoding )!
+            //            let servResponse = NSString( data: response, encoding: NSUTF8StringEncoding )!
 
         }
         addUserTask.resume()
-
-    }
-
-    func goNextScreen(sender: UIScreenEdgePanGestureRecognizer) {
-
-        // [ "Began", "Changed", "Ended", "Cancelled" ]
-        if sender.state == .Ended {
-            tabBarController?.selectedIndex = 1;
-        }
 
     }
 
