@@ -16,21 +16,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
-    var rightSwipeGesture: UISwipeGestureRecognizer!
+    var leftSwipeGesture: UISwipeGestureRecognizer!
 
     let countingClass = CountingDate()
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
-        rightSwipeGesture.direction = .Left
+        leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
+        leftSwipeGesture.direction = .Left
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.addGestureRecognizer(rightSwipeGesture)
+        self.view.addGestureRecognizer(leftSwipeGesture)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -209,9 +209,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     func switchBetweenView(sender: UISwipeGestureRecognizer) {
 
-        if sender.direction == .Left {
-            tabBarController?.selectedIndex = 1
-        }
+        tabBarController?.selectedIndex = 1
 
     }
 

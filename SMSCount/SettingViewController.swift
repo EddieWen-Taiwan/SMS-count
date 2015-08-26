@@ -30,14 +30,17 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-
-    var screenHeight: CGFloat = 0.0
+    var screenHeight: CGFloat!
+    var rightSwipeGesture: UISwipeGestureRecognizer!
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         dateFormatter.dateFormat = "yyyy / MM / dd"
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: +28800)
+
+        rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
+        rightSwipeGesture.direction = .Right
     }
 
     override func viewDidLoad() {
@@ -53,6 +56,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
+
+        self.view.addGestureRecognizer(rightSwipeGesture)
 
         // make the shadow effect
         mainCard.layer.shadowOpacity = 0.15
@@ -199,6 +204,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         } else {
             userPreference.removeObjectForKey( "discountDays" )
         }
+    }
+
+    func switchBetweenView(sender: UISwipeGestureRecognizer) {
+
+        tabBarController?.selectedIndex = 1
+
     }
 
     // MARK: These are the functions for UIPickerView
