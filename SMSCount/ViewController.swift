@@ -16,12 +16,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
+    var nextScreenEdgeGesture: UIScreenEdgePanGestureRecognizer!
 
     let countingClass = CountingDate()
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        nextScreenEdgeGesture = UIScreenEdgePanGestureRecognizer(target: self, action: "goNextScreen:")
+        nextScreenEdgeGesture.edges = .Right
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.addGestureRecognizer(nextScreenEdgeGesture)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -215,6 +224,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         }
         addUserTask.resume()
+
+    }
+
+    func goNextScreen(sender: UIScreenEdgePanGestureRecognizer) {
+
+        // [ "Began", "Changed", "Ended", "Cancelled" ]
+        if sender.state == .Ended {
+            tabBarController?.selectedIndex = 1;
+        }
 
     }
 
