@@ -30,6 +30,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        println("IN branch-GESTURE")
         self.view.addGestureRecognizer(leftSwipeGesture)
     }
 
