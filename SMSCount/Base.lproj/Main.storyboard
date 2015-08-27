@@ -8,7 +8,7 @@
         <!--Day Countdown-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="countdown" title="Day Countdown" id="vXZ-lx-hvc" customClass="ViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController title="Day Countdown" id="vXZ-lx-hvc" customClass="ViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
