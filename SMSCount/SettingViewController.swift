@@ -31,16 +31,12 @@ class SettingViewController: BasicGestureViewController, UIPickerViewDataSource,
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     var screenHeight: CGFloat!
-//    var rightSwipeGesture: UISwipeGestureRecognizer!
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         dateFormatter.dateFormat = "yyyy / MM / dd"
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: +28800)
-
-//        rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
-//        rightSwipeGesture.direction = .Right
     }
 
     override func viewDidLoad() {
@@ -205,12 +201,6 @@ class SettingViewController: BasicGestureViewController, UIPickerViewDataSource,
             userPreference.removeObjectForKey( "discountDays" )
         }
     }
-
-//    func switchBetweenView(sender: UISwipeGestureRecognizer) {
-//
-//        tabBarController?.selectedIndex = 1
-//
-//    }
 
     // MARK: These are the functions for UIPickerView
     func numberOfComponentsInPickerView(pickerView : UIPickerView) -> Int {
