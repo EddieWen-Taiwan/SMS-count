@@ -32,7 +32,15 @@ class BasicGestureViewController: UIViewController {
 
     func switchBetweenView(sender: UISwipeGestureRecognizer) {
 
-        println(self.restorationIdentifier)
+        if sender.direction == .Left && tabBarController?.selectedIndex < 2 {
+
+            tabBarController?.selectedIndex += 1
+
+        } else if sender.direction == .Right && tabBarController?.selectedIndex > 0 {
+
+            tabBarController?.selectedIndex -= 1
+
+        }
 
     }
 
