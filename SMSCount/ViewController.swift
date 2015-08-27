@@ -16,22 +16,12 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
-//    var leftSwipeGesture: UISwipeGestureRecognizer!
 
     let countingClass = CountingDate()
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-//        leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
-//        leftSwipeGesture.direction = .Left
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        println("IN branch-GESTURE")
-//        self.view.addGestureRecognizer(leftSwipeGesture)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -208,12 +198,6 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
         }
     }
 
-//    func switchBetweenView(sender: UISwipeGestureRecognizer) {
-//
-//        tabBarController?.selectedIndex = 1
-//
-//    }
-
     func saveUserData( name: String, mail: String, fbid: String ) {
 
         let httpRequest = NSMutableURLRequest( URL: NSURL( string: "http://eddiewen.me/sms_count/addUserFromApp.php" )! )
@@ -227,7 +211,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
             if error != nil {
                 println("Error : \(error).")
             }
-            //            let servResponse = NSString( data: response, encoding: NSUTF8StringEncoding )!
+            // let servResponse = NSString( data: response, encoding: NSUTF8StringEncoding )!
 
         }
         addUserTask.resume()
