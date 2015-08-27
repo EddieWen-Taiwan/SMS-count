@@ -120,17 +120,17 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
     func getScreenShot() {
 
-        screenShotWrapper.hidden = false
+//        screenShotWrapper.hidden = false
 
         // Create the UIImage
-        // let mainwindowLayer = UIApplication.sharedApplication().keyWindow!.layer
-        let mainWindowLayer = screenShotScale.layer
+        let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
+//        let mainWindowLayer = screenShotScale.layer
         UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
         mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
         let screenShot = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        screenShotWrapper.hidden = true
+//        screenShotWrapper.hidden = true
 
         // Save it to the camera roll
         UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
