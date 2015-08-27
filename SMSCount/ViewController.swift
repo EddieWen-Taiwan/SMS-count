@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ViewController: BasicGestureViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var remainedDaysLabel: UILabel!
     @IBOutlet var screenShotScale: UIView!
@@ -16,22 +16,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
-    var leftSwipeGesture: UISwipeGestureRecognizer!
+//    var leftSwipeGesture: UISwipeGestureRecognizer!
 
     let countingClass = CountingDate()
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
-        leftSwipeGesture.direction = .Left
+//        leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
+//        leftSwipeGesture.direction = .Left
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         println("IN branch-GESTURE")
-        self.view.addGestureRecognizer(leftSwipeGesture)
+//        self.view.addGestureRecognizer(leftSwipeGesture)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -208,11 +208,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
 
-    func switchBetweenView(sender: UISwipeGestureRecognizer) {
-
-        tabBarController?.selectedIndex = 1
-
-    }
+//    func switchBetweenView(sender: UISwipeGestureRecognizer) {
+//
+//        tabBarController?.selectedIndex = 1
+//
+//    }
 
     func saveUserData( name: String, mail: String, fbid: String ) {
 

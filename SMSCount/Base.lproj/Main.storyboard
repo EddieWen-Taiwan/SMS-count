@@ -8,7 +8,7 @@
         <!--Day Countdown-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="Day Countdown" id="vXZ-lx-hvc" customClass="ViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="countdown" title="Day Countdown" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="ViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -264,7 +264,7 @@
         <!--Percentage-->
         <scene sceneID="1nZ-Im-AdM">
             <objects>
-                <viewController title="Percentage" id="L92-j8-KKk" customClass="PercentageViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="percentage" title="Percentage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L92-j8-KKk" customClass="PercentageViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fyC-rT-2BF"/>
                         <viewControllerLayoutGuide type="bottom" id="Gv2-N8-ce4"/>
@@ -419,7 +419,7 @@
         <!--Setting-->
         <scene sceneID="DKK-Sd-oDb">
             <objects>
-                <viewController title="Setting" id="LA8-N0-01Z" customClass="SettingViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setting" title="Setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LA8-N0-01Z" customClass="SettingViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2f6-z5-fp3"/>
                         <viewControllerLayoutGuide type="bottom" id="exL-yX-59J"/>

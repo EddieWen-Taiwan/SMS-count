@@ -32,8 +32,7 @@ class BasicGestureViewController: UIViewController {
 
     func switchBetweenView(sender: UISwipeGestureRecognizer) {
 
-        println(sender)
-        println(self.view)
+        println(self.restorationIdentifier)
 
     }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class SettingViewController: BasicGestureViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet var mainCard: UIView!
     @IBOutlet var screenMask: UIView!
@@ -31,7 +31,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     var screenHeight: CGFloat!
-    var rightSwipeGesture: UISwipeGestureRecognizer!
+//    var rightSwipeGesture: UISwipeGestureRecognizer!
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,8 +39,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         dateFormatter.dateFormat = "yyyy / MM / dd"
         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: +28800)
 
-        rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
-        rightSwipeGesture.direction = .Right
+//        rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: Selector("switchBetweenView:"))
+//        rightSwipeGesture.direction = .Right
     }
 
     override func viewDidLoad() {
@@ -57,7 +57,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
-        self.view.addGestureRecognizer(rightSwipeGesture)
+//        self.view.addGestureRecognizer(rightSwipeGesture)
 
         // make the shadow effect
         mainCard.layer.shadowOpacity = 0.15
@@ -206,11 +206,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
     }
 
-    func switchBetweenView(sender: UISwipeGestureRecognizer) {
-
-        tabBarController?.selectedIndex = 1
-
-    }
+//    func switchBetweenView(sender: UISwipeGestureRecognizer) {
+//
+//        tabBarController?.selectedIndex = 1
+//
+//    }
 
     // MARK: These are the functions for UIPickerView
     func numberOfComponentsInPickerView(pickerView : UIPickerView) -> Int {
