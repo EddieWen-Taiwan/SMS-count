@@ -251,7 +251,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
     func saveUserData( name: String, mail: String, fbid: String ) {
 
-        let httpRequest = NSMutableURLRequest( URL: NSURL( string: "http://eddiewen.me/sms_count/addUserFromApp.php" )! )
+        let httpRequest = NSMutableURLRequest( URL: NSURL( string: "http://smscount.lol/addUserFromApp.php" )! )
         let postString = "mail=\(mail)&name=\(name)&fbid=\(fbid)"
 
         httpRequest.HTTPMethod = "POST"
