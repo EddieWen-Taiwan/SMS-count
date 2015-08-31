@@ -48,7 +48,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
                         animationArray.append( String( remainedDays-(100-i) ) )
                     }
                 }
-println( animationArray )
+
                 stageIndexArray[0] = Int( Double(animationArray.count)*0.55 )
                 stageIndexArray[1] = Int( Double(animationArray.count)*0.75 )
                 stageIndexArray[2] = Int( Double(animationArray.count)*0.88 )
