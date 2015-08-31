@@ -41,16 +41,20 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
                         animationArray.append( String(i) )
                     }
                 } else {
-                    for var i = 1; i <= 100; i++ {
-                        animationArray.append( String( format: "%.f", Double(remainedDays*i)*0.01 ) )
+                    for var i = 1; i <= 97; i++ {
+                        animationArray.append( String( format: "%.f", Double( (remainedDays-3)*i )*0.01 ) )
+                    }
+                    for var i = 98; i <= 100; i++ {
+                        animationArray.append( String( remainedDays-(100-i) ) )
                     }
                 }
+println( animationArray )
                 stageIndexArray[0] = Int( Double(animationArray.count)*0.55 )
                 stageIndexArray[1] = Int( Double(animationArray.count)*0.75 )
                 stageIndexArray[2] = Int( Double(animationArray.count)*0.88 )
                 stageIndexArray[3] = Int( Double(animationArray.count)*0.94 )
                 stageIndexArray[4] = Int( Double(animationArray.count)*0.97 )
-                stageIndexArray[5] = Int( Double(animationArray.count)*0.99 )
+                stageIndexArray[5] = animationArray.count-1
 
                 var timer = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
@@ -179,11 +183,15 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
     }
 
     func daysAddingEffect( timer: NSTimer ) {
+
+        func updateLabel() {
+            self.remainedDaysLabel.text = animationArray[ animationIndex++ ]
+        }
+
         switch( timer.userInfo! as! String ) {
             case "stage1":
                 if animationIndex < stageIndexArray[0] {
-                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
-                    self.animationIndex++
+                    updateLabel()
                 } else {
                     timer.invalidate()
                     var timer2 = NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
@@ -191,8 +199,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
             case "stage2":
                 if animationIndex < stageIndexArray[1] {
-                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
-                    self.animationIndex++
+                    updateLabel()
                 } else {
                     timer.invalidate()
                     var timer3 = NSTimer.scheduledTimerWithTimeInterval( 0.04, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
@@ -200,8 +207,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
             
             case "stage3":
                 if animationIndex < stageIndexArray[2] {
-                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
-                    self.animationIndex++
+                    updateLabel()
                 } else {
                     timer.invalidate()
                     var timer4 = NSTimer.scheduledTimerWithTimeInterval( 0.08, target: self, selector: "daysAddingEffect:", userInfo: "stage4", repeats: true )
@@ -209,8 +215,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
             case "stage4":
                 if animationIndex < stageIndexArray[3] {
-                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
-                    self.animationIndex++
+                    updateLabel()
                 } else {
                     timer.invalidate()
                     var timer5 = NSTimer.scheduledTimerWithTimeInterval( 0.16, target: self, selector: "daysAddingEffect:", userInfo: "stage5", repeats: true )
@@ -218,8 +223,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
             case "stage5":
                 if animationIndex < stageIndexArray[4] {
-                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
-                    self.animationIndex++
+                    updateLabel()
                 } else {
                     timer.invalidate()
                     var timer6 = NSTimer.scheduledTimerWithTimeInterval( 0.32, target: self, selector: "daysAddingEffect:", userInfo: "stage6", repeats: true )
@@ -227,17 +231,15 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
             case "stage6":
                 if animationIndex < stageIndexArray[5] {
-                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
-                    self.animationIndex++
+                    updateLabel()
                 } else {
                     timer.invalidate()
                     var timer7 = NSTimer.scheduledTimerWithTimeInterval( 0.5, target: self, selector: "daysAddingEffect:", userInfo: "stage7", repeats: true )
             }
 
             case "stage7":
-                if animationIndex >= stageIndexArray[5] && animationIndex < animationArray.count {
-                    self.remainedDaysLabel.text = animationArray[ animationIndex ]
-                    self.animationIndex++
+                if animationIndex == stageIndexArray[5] {
+                    updateLabel()
                 } else {
                     timer.invalidate()
                 }
