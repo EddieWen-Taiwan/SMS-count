@@ -69,7 +69,25 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
         let askAlertController = UIAlertController( title: "分享", message: "將進行螢幕截圖並分享至您的 Facebook，要繼續進行嗎？", preferredStyle: .Alert )
         let yesAction = UIAlertAction( title: "好", style: .Default, handler: {(action) -> Void in
-                self.getScreenShot()
+
+            self.screenShotWrapper.hidden = false
+
+            // Create the UIImage
+            // let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
+            let mainWindowLayer = self.screenShotScale.layer
+            UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
+            mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
+            let screenShot = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+
+            self.screenShotWrapper.hidden = true
+
+            // Save it to the camera roll
+            UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
+
+            // Show images picker
+            self.showImagesPickerView()
+
         })
         let noAction = UIAlertAction( title: "取消", style: .Cancel, handler: nil )
 
@@ -77,28 +95,6 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
         askAlertController.addAction( noAction )
 
         self.presentViewController( askAlertController, animated: true, completion: nil )
-
-    }
-
-    func getScreenShot() {
-
-        screenShotWrapper.hidden = false
-
-        // Create the UIImage
-//        let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
-        let mainWindowLayer = screenShotScale.layer
-        UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
-        mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
-        let screenShot = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        screenShotWrapper.hidden = true
-
-        // Save it to the camera roll
-        UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
-
-        // Show images picker
-        self.showImagesPickerView()
 
     }
 
