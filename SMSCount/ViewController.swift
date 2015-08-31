@@ -69,62 +69,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
         let askAlertController = UIAlertController( title: "分享", message: "將進行螢幕截圖並分享至您的 Facebook，要繼續進行嗎？", preferredStyle: .Alert )
         let yesAction = UIAlertAction( title: "好", style: .Default, handler: {(action) -> Void in
-
-            if FBSDKAccessToken.currentAccessToken() == nil {
-
-                let fbLogin = FBSDKLoginManager()
-                fbLogin.logInWithReadPermissions( ["public_profile", "email"], handler: {( result: FBSDKLoginManagerLoginResult!, error: NSError! ) -> Void in
-
-                    var loginStatus = "success"
-
-                    if error != nil {
-                        loginStatus = "error"
-                    } else if result.isCancelled {
-                        loginStatus = "cancelled"
-                    }
-
-                    if loginStatus == "success" {
-
-                        let graphRequest: FBSDKGraphRequest = FBSDKGraphRequest( graphPath: "me", parameters: ["fields": "name, email"] )
-                        graphRequest.startWithCompletionHandler( {(connect, result, error) -> Void in
-
-                            if error != nil {
-                                println( "Error is \(error)" )
-                            } else {
-                                println( "Fetched user: \(result)" )
-                                // To save user data
-
-                                var username: String = result.valueForKey("name") == nil ? "" : result.valueForKey("name") as! String
-                                var usermail: String = result.valueForKey("email") == nil ? "" : result.valueForKey("email") as! String
-                                var fb_id: String = result.valueForKey("id") == nil ? "" : result.valueForKey("id") as! String
-
-                                if Reachability().isConnectedToNetwork() {
-                                    self.saveUserData( username, mail: usermail, fbid: fb_id )
-                                }
-                            }
-
-                        })
-
-                        self.getScreenShot()
-
-                    } else {
-
-                        var alertMessage = loginStatus == "error" ? "請稍候再次嘗試" : "您取消了分享"
-                        let wrongAlertController = UIAlertController( title: "分享", message: alertMessage, preferredStyle: .Alert )
-                        let cancelAction = UIAlertAction( title: "確定", style: .Default, handler: nil )
-                        wrongAlertController.addAction( cancelAction )
-
-                        self.presentViewController( wrongAlertController, animated: true, completion: nil )
-
-                    }
-
-                })
-
-            } else {
-                // Login already
                 self.getScreenShot()
-            }
-
         })
         let noAction = UIAlertAction( title: "取消", style: .Cancel, handler: nil )
 
@@ -247,26 +192,6 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
             default:
                 break;
         }
-    }
-
-    func saveUserData( name: String, mail: String, fbid: String ) {
-
-        let httpRequest = NSMutableURLRequest( URL: NSURL( string: "http://smscount.lol/addUserFromApp.php" )! )
-        let postString = "mail=\(mail)&name=\(name)&fbid=\(fbid)"
-
-        httpRequest.HTTPMethod = "POST"
-        httpRequest.HTTPBody = postString.dataUsingEncoding( NSUTF8StringEncoding, allowLossyConversion: true )
-
-        let addUserTask = NSURLSession.sharedSession().dataTaskWithRequest( httpRequest ) { ( response, data, error ) in
-
-            if error != nil {
-                println("Error : \(error).")
-            }
-            // let servResponse = NSString( data: response, encoding: NSUTF8StringEncoding )!
-
-        }
-        addUserTask.resume()
-
     }
 
     override func didReceiveMemoryWarning() {
