@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Csq-8F-bwh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -97,7 +98,7 @@
                                             </constraint>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="70"/>
-                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -185,12 +186,12 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kd-0l-gi2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kd-0l-gi2" userLabel="DetailView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="nEi-Bj-ugt">
-                                        <variation key="widthClass=compact" constant="201"/>
+                                        <variation key="widthClass=compact" constant="141"/>
                                     </constraint>
                                 </constraints>
                                 <variation key="default">
@@ -235,20 +236,20 @@
                                 <exclude reference="0kd-0l-gi2"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="FIi-zT-JCn"/>
-                                <exclude reference="TbF-xO-JgJ"/>
-                                <exclude reference="d8l-xC-fSo"/>
+                                <exclude reference="5dy-eg-JLc"/>
                                 <exclude reference="EhH-5p-M0Q"/>
                                 <exclude reference="rb5-wd-NGA"/>
                                 <exclude reference="vFm-g9-6Z0"/>
-                                <exclude reference="GTA-w4-XLv"/>
-                                <exclude reference="ITd-jN-iMd"/>
-                                <exclude reference="O8o-kr-NCZ"/>
                                 <exclude reference="3G0-uI-zPy"/>
                                 <exclude reference="SFd-7l-Iif"/>
                                 <exclude reference="XOe-9t-hdr"/>
                                 <exclude reference="ySn-0d-yf8"/>
-                                <exclude reference="5dy-eg-JLc"/>
+                                <exclude reference="FIi-zT-JCn"/>
+                                <exclude reference="TbF-xO-JgJ"/>
+                                <exclude reference="d8l-xC-fSo"/>
+                                <exclude reference="GTA-w4-XLv"/>
+                                <exclude reference="ITd-jN-iMd"/>
+                                <exclude reference="O8o-kr-NCZ"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -259,20 +260,20 @@
                                 <include reference="0kd-0l-gi2"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="FIi-zT-JCn"/>
-                                <include reference="TbF-xO-JgJ"/>
-                                <include reference="d8l-xC-fSo"/>
+                                <include reference="5dy-eg-JLc"/>
                                 <include reference="EhH-5p-M0Q"/>
                                 <include reference="rb5-wd-NGA"/>
                                 <include reference="vFm-g9-6Z0"/>
-                                <include reference="GTA-w4-XLv"/>
-                                <include reference="ITd-jN-iMd"/>
-                                <include reference="O8o-kr-NCZ"/>
                                 <exclude reference="3G0-uI-zPy"/>
                                 <include reference="SFd-7l-Iif"/>
                                 <include reference="XOe-9t-hdr"/>
                                 <exclude reference="ySn-0d-yf8"/>
-                                <include reference="5dy-eg-JLc"/>
+                                <include reference="FIi-zT-JCn"/>
+                                <include reference="TbF-xO-JgJ"/>
+                                <include reference="d8l-xC-fSo"/>
+                                <include reference="GTA-w4-XLv"/>
+                                <include reference="ITd-jN-iMd"/>
+                                <include reference="O8o-kr-NCZ"/>
                             </mask>
                         </variation>
                     </view>
@@ -336,7 +337,7 @@
                                     </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="52"/>
-                                <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
