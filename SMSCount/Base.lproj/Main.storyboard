@@ -251,13 +251,17 @@
                                             </constraint>
                                             <constraint firstAttribute="centerY" secondItem="9LB-lo-4rV" secondAttribute="centerY" id="VxC-kn-vvX"/>
                                             <constraint firstItem="u12-AE-kKe" firstAttribute="leading" secondItem="9LB-lo-4rV" secondAttribute="trailing" id="p85-lH-U7o">
-                                                <variation key="widthClass=compact" constant="20"/>
+                                                <variation key="widthClass=compact" constant="25"/>
                                             </constraint>
-                                            <constraint firstItem="9LB-lo-4rV" firstAttribute="leading" secondItem="8VY-D7-aW8" secondAttribute="leading" constant="30" id="pLc-UW-GLq"/>
+                                            <constraint firstItem="9LB-lo-4rV" firstAttribute="leading" secondItem="8VY-D7-aW8" secondAttribute="leading" constant="30" id="pLc-UW-GLq">
+                                                <variation key="widthClass=compact" constant="25"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerY" secondItem="kVr-2u-f4R" secondAttribute="centerY" constant="-20" id="v5z-w8-mcs">
                                                 <variation key="widthClass=compact" constant="-7"/>
                                             </constraint>
-                                            <constraint firstItem="kVr-2u-f4R" firstAttribute="leading" secondItem="9LB-lo-4rV" secondAttribute="trailing" constant="20" id="xg8-43-9Fr"/>
+                                            <constraint firstItem="kVr-2u-f4R" firstAttribute="leading" secondItem="9LB-lo-4rV" secondAttribute="trailing" constant="20" id="xg8-43-9Fr">
+                                                <variation key="widthClass=compact" constant="25"/>
+                                            </constraint>
                                             <constraint firstAttribute="height" constant="70" id="yj8-pF-n0y">
                                                 <variation key="widthClass=compact" constant="60"/>
                                             </constraint>
@@ -336,16 +340,22 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="lhv-de-pnU" firstAttribute="leading" secondItem="5yi-sn-cEz" secondAttribute="leading" constant="30" id="EVE-QI-8YB"/>
+                                            <constraint firstItem="lhv-de-pnU" firstAttribute="leading" secondItem="5yi-sn-cEz" secondAttribute="leading" constant="30" id="EVE-QI-8YB">
+                                                <variation key="widthClass=compact" constant="25"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerY" secondItem="1Dx-d1-HTP" secondAttribute="centerY" constant="10" id="EW6-Gv-k7r">
                                                 <variation key="widthClass=compact" constant="10"/>
                                             </constraint>
-                                            <constraint firstItem="1Dx-d1-HTP" firstAttribute="leading" secondItem="lhv-de-pnU" secondAttribute="trailing" constant="20" id="Ziu-dC-AGj"/>
+                                            <constraint firstItem="1Dx-d1-HTP" firstAttribute="leading" secondItem="lhv-de-pnU" secondAttribute="trailing" constant="20" id="Ziu-dC-AGj">
+                                                <variation key="widthClass=compact" constant="25"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerY" secondItem="lhv-de-pnU" secondAttribute="centerY" id="igF-nY-YBw"/>
                                             <constraint firstAttribute="height" constant="70" id="jfy-bq-gH3">
                                                 <variation key="widthClass=compact" constant="60"/>
                                             </constraint>
-                                            <constraint firstItem="dx0-W7-8Tm" firstAttribute="leading" secondItem="lhv-de-pnU" secondAttribute="trailing" constant="20" id="rKw-Kw-Onq"/>
+                                            <constraint firstItem="dx0-W7-8Tm" firstAttribute="leading" secondItem="lhv-de-pnU" secondAttribute="trailing" constant="20" id="rKw-Kw-Onq">
+                                                <variation key="widthClass=compact" constant="25"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerY" secondItem="dx0-W7-8Tm" secondAttribute="centerY" constant="-10" id="uZM-c0-RtX">
                                                 <variation key="widthClass=compact" constant="-7"/>
                                             </constraint>
