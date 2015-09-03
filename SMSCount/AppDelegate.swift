@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().setStatusBarStyle( UIStatusBarStyle.LightContent, animated: false )
         UINavigationBar.appearance().barTintColor = UIColor(red: 255/255, green: 206/255, blue: 68/255, alpha: 100/100)
 
-        let tabBarItem = UITabBarItem()
-
         return true
     }
 
