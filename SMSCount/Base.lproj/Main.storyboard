@@ -423,7 +423,7 @@
                                     <constraint firstItem="5yi-sn-cEz" firstAttribute="leading" secondItem="0kd-0l-gi2" secondAttribute="leading" id="dLP-Kz-joG"/>
                                     <constraint firstAttribute="trailing" secondItem="5yi-sn-cEz" secondAttribute="trailing" id="fHY-au-1fw"/>
                                     <constraint firstAttribute="bottom" secondItem="upF-C6-WYw" secondAttribute="bottom" constant="5" id="ggl-qi-En2">
-                                        <variation key="widthClass=compact" constant="10"/>
+                                        <variation key="widthClass=compact" constant="8"/>
                                     </constraint>
                                     <constraint firstAttribute="height" constant="300" id="nEi-Bj-ugt">
                                         <variation key="widthClass=compact" constant="111"/>
