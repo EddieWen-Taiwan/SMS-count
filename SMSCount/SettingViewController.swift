@@ -10,7 +10,6 @@ import UIKit
 
 class SettingViewController: BasicGestureViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    @IBOutlet var mainCard: UIView!
     @IBOutlet var screenMask: UIView!
 
     @IBOutlet var enterDateLabel: UILabel!
@@ -52,12 +51,6 @@ class SettingViewController: BasicGestureViewController, UIPickerViewDataSource,
 
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
-
-//        self.view.addGestureRecognizer(rightSwipeGesture)
-
-        // make the shadow effect
-        mainCard.layer.shadowOpacity = 0.15
-        mainCard.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
 
         if let userEnterDate = userPreference.stringForKey("enterDate") {
             enterDateLabel.text = userEnterDate
