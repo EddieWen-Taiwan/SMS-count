@@ -18,17 +18,21 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
     var animationIndex: Int = 0
     var animationArray = [ "" ]
     var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
+    var monthImage = "background_01"
 
     let countingClass = CountingDate()
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        let currentMonth = NSCalendar.currentCalendar().components( .CalendarUnitMonth, fromDate: NSDate() ).month
+        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
+        monthImage = "background_" + currentMonthStr
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        let currentMonth = NSCalendar.currentCalendar().components( .CalendarUnitMonth, fromDate: NSDate() ).month
-
-        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
-        let monthImage = "background_" + currentMonthStr
         self.backgroundImage.image = UIImage(named: monthImage)
     }
 
