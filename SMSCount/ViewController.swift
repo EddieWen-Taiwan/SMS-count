@@ -29,8 +29,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
 
         let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
         let monthImage = "background_" + currentMonthStr
-        println("Image is \(monthImage) !")
-        self.backgroundImage.image = UIImage(named: currentMonthStr)
+        self.backgroundImage.image = UIImage(named: monthImage)
     }
 
     override func viewDidAppear(animated: Bool) {
