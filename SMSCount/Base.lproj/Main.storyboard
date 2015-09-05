@@ -678,23 +678,6 @@
                                 <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDX-yj-aHc" userLabel="StatusBarBackground">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="1" green="0.75686274509803919" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="ZZc-lH-ph6"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ZZc-lH-ph6"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="ZZc-lH-ph6"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42o-T5-48Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <constraints>
@@ -725,6 +708,23 @@
                                     </mask>
                                 </variation>
                             </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDX-yj-aHc" userLabel="StatusBarBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="1" green="0.75686274509803919" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ZZc-lH-ph6"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZZc-lH-ph6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ZZc-lH-ph6"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -747,8 +747,8 @@
                             <mask key="subviews">
                                 <exclude reference="Z6b-as-Cqi"/>
                                 <exclude reference="6ea-8x-Vd3"/>
-                                <exclude reference="cDX-yj-aHc"/>
                                 <exclude reference="42o-T5-48Z"/>
+                                <exclude reference="cDX-yj-aHc"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Dzb-bF-H2U"/>
@@ -767,8 +767,8 @@
                             <mask key="subviews">
                                 <include reference="Z6b-as-Cqi"/>
                                 <include reference="6ea-8x-Vd3"/>
-                                <include reference="cDX-yj-aHc"/>
                                 <include reference="42o-T5-48Z"/>
+                                <include reference="cDX-yj-aHc"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Dzb-bF-H2U"/>
