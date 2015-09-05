@@ -13,7 +13,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
     @IBOutlet var backRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var screenShotScale: UIView!
-    @IBOutlet var screenShotWrapper: UIView!
+    @IBOutlet var backgroundImage: UIImageView!
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
@@ -24,6 +24,13 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        let currentMonth = NSCalendar.currentCalendar().components( .CalendarUnitMonth, fromDate: NSDate() ).month
+
+        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
+        let monthImage = "background_" + currentMonthStr
+        println("Image is \(monthImage) !")
+        self.backgroundImage.image = UIImage(named: currentMonthStr)
     }
 
     override func viewDidAppear(animated: Bool) {
