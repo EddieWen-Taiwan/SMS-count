@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: BasicGestureViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    @IBOutlet var remainedDaysLabel: UILabel!
+    @IBOutlet var backRemainedDaysLabel: UILabel!
+    @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var screenShotScale: UIView!
     @IBOutlet var screenShotWrapper: UIView!
 
@@ -30,8 +31,9 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
         if countingClass.isSettingAllDone() {
             // OK
             countingClass.updateDate()
-            if remainedDaysLabel.text != String( countingClass.getRemainedDays() ) {
+            if self.frontRemainedDaysLabel.text != String( countingClass.getRemainedDays() ) {
                 var remainedDays = countingClass.getRemainedDays()
+                self.backRemainedDaysLabel.text = String( remainedDays )
 
                 // Timer Effect
                 animationIndex = 0
@@ -70,8 +72,6 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
         let askAlertController = UIAlertController( title: "分享", message: "將進行螢幕截圖並分享至您的 Facebook，要繼續進行嗎？", preferredStyle: .Alert )
         let yesAction = UIAlertAction( title: "好", style: .Default, handler: {(action) -> Void in
 
-            self.screenShotWrapper.hidden = false
-
             // Create the UIImage
             // let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
             let mainWindowLayer = self.screenShotScale.layer
@@ -79,8 +79,6 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
             mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
             let screenShot = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-
-            self.screenShotWrapper.hidden = true
 
             // Save it to the camera roll
             UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
@@ -126,7 +124,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
     func daysAddingEffect( timer: NSTimer ) {
 
         func updateLabel() {
-            self.remainedDaysLabel.text = animationArray[ animationIndex++ ]
+            self.frontRemainedDaysLabel.text = animationArray[ animationIndex++ ]
         }
 
         switch( timer.userInfo! as! String ) {
