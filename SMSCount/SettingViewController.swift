@@ -35,7 +35,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         super.init(coder: aDecoder)
 
         dateFormatter.dateFormat = "yyyy / MM / dd"
-        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: +28800)
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
     }
 
     override func viewDidLoad() {
