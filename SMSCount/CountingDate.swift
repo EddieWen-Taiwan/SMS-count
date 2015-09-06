@@ -26,16 +26,16 @@ class CountingDate {
 
     init() {
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
-        self.dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: +28800)
-        calendar!.timeZone = NSTimeZone(forSecondsFromGMT: +28800)
-
+        self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        calendar!.timeZone = NSTimeZone.localTimeZone()
+//println( NSTimeZone.localTimeZone() )
         var tempTimeString = dateFormatter.stringFromDate( NSDate() )
         self.currentDate = dateFormatter.dateFromString( tempTimeString )
 
         if self.isSettingAllDone() {
             self.updateDate()
         }
-        self.dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+//        self.dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
     }
 
     func isSettingAllDone() -> Bool {
@@ -57,7 +57,7 @@ class CountingDate {
 
         self.enterDate = dateFormatter.dateFromString( userPreference.stringForKey("enterDate")! )!
         // 入伍日 - enterDate
-
+println(enterDate)
         let userServiceDays = userPreference.stringForKey("serviceDays")!
         dayComponent.year = 1
         dayComponent.day = userServiceDays == "1y" ? -1 : 14
@@ -81,13 +81,16 @@ class CountingDate {
         let unit: NSCalendarUnit = .CalendarUnitDay
         self.remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: nil)
         // 剩餘幾天 - remainedDays
-
         self.passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: nil)
         // 已過天數 - passedDays
         // widget 那邊似乎時區有問題，不過算了ㄏㄏ
         self.wholeServiceDays = cal.components( unit, fromDate: enterDate!, toDate: realRetireDate!, options: nil)
 
         self.weekendComponent = calendar!.components( .CalendarUnitWeekday, fromDate: realRetireDate! )
+    }
+
+    func getRetireDate() -> String {
+        return dateFormatter.stringFromDate( realRetireDate )
     }
 
     func getPassedDays() -> Int {
