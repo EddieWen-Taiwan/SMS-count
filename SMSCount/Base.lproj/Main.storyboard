@@ -211,7 +211,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-D7-aW8" userLabel="RetireDateLine">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="day-countdown" translatesAutoresizingMaskIntoConstraints="NO" id="9LB-lo-4rV">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retireDate" translatesAutoresizingMaskIntoConstraints="NO" id="9LB-lo-4rV">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="JQu-xC-3Ww">
@@ -1723,6 +1723,7 @@
         <image name="day-countdown" width="30" height="30"/>
         <image name="hourglass" width="30" height="30"/>
         <image name="passedDays" width="30" height="30"/>
+        <image name="retireDate" width="30" height="30"/>
         <image name="setting" width="30" height="30"/>
     </resources>
 </document>
