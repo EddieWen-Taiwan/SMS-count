@@ -28,14 +28,13 @@ class CountingDate {
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
         calendar!.timeZone = NSTimeZone.localTimeZone()
-//println( NSTimeZone.localTimeZone() )
+
         var tempTimeString = dateFormatter.stringFromDate( NSDate() )
         self.currentDate = dateFormatter.dateFromString( tempTimeString )
 
         if self.isSettingAllDone() {
             self.updateDate()
         }
-//        self.dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
     }
 
     func isSettingAllDone() -> Bool {
@@ -57,7 +56,7 @@ class CountingDate {
 
         self.enterDate = dateFormatter.dateFromString( userPreference.stringForKey("enterDate")! )!
         // 入伍日 - enterDate
-println(enterDate)
+
         let userServiceDays = userPreference.stringForKey("serviceDays")!
         dayComponent.year = 1
         dayComponent.day = userServiceDays == "1y" ? -1 : 14
@@ -90,7 +89,7 @@ println(enterDate)
     }
 
     func getRetireDate() -> String {
-        return dateFormatter.stringFromDate( realRetireDate )
+        return dateFormatter.stringFromDate( realRetireDate ) + switchWeekday( weekendComponent.weekday )
     }
 
     func getPassedDays() -> Int {
@@ -103,6 +102,27 @@ println(enterDate)
 
     func getCurrentProgress() -> Double {
         return Double( wholeServiceDays.day - self.fixWeekend( remainedDays.day ) ) / Double( wholeServiceDays.day )*100
+    }
+
+    func switchWeekday( var weekday: Int ) -> String {
+        switch( weekday ) {
+            case 1:
+                return " Sun."
+            case 2:
+                return " Mon."
+            case 3:
+                return " Tue."
+            case 4:
+                return " Wed."
+            case 5:
+                return " Thu."
+            case 6:
+                return " Fri."
+            case 7:
+                return " Sat."
+            default:
+                return " Sun."
+        }
     }
 
     func fixWeekend( var originalDays: Int ) -> Int {
