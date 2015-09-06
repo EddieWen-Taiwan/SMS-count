@@ -13,7 +13,9 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
     @IBOutlet var backRemainedDaysLabel: UILabel!
     @IBOutlet var screenShotScale: UIView!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
+    @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
+
     @IBOutlet var passedDaysLabel: UILabel!
 
     var animationIndex: Int = 0
@@ -46,7 +48,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
                 var remainedDays = countingClass.getRemainedDays()
                 self.backRemainedDaysLabel.text = String( remainedDays )
 
-                println( "退伍日 是 => \(countingClass.getRetireDate())" )
+                self.retireDateLabel.text = countingClass.getRetireDate()
 
                 self.passedDaysLabel.text = String( countingClass.getPassedDays() )
 
