@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: BasicGestureViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var backRemainedDaysLabel: UILabel!
     @IBOutlet var screenShotScale: UIView!

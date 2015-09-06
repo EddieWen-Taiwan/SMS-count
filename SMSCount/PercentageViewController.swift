@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PercentageViewController: BasicGestureViewController {
+class PercentageViewController: UIViewController {
 
     @IBOutlet var percentageLabel: UILabel!
     @IBOutlet var percentSymbol: UILabel!

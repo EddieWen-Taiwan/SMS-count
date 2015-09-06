@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: BasicGestureViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet var screenMask: UIView!
 
