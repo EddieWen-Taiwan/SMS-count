@@ -35,7 +35,6 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
-        self.passedDaysLabel.text = String( countingClass.getPassedDays() )
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -46,6 +45,10 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
             if self.frontRemainedDaysLabel.text != String( countingClass.getRemainedDays() ) {
                 var remainedDays = countingClass.getRemainedDays()
                 self.backRemainedDaysLabel.text = String( remainedDays )
+
+                println( "退伍日 是 => \(countingClass.getRetireDate())" )
+
+                self.passedDaysLabel.text = String( countingClass.getPassedDays() )
 
                 // Timer Effect
                 animationIndex = 0
