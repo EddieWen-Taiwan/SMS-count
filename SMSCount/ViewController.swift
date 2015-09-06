@@ -11,9 +11,10 @@ import UIKit
 class ViewController: BasicGestureViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var backRemainedDaysLabel: UILabel!
-    @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var screenShotScale: UIView!
+    @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
+    @IBOutlet var passedDaysLabel: UILabel!
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
@@ -34,6 +35,7 @@ class ViewController: BasicGestureViewController, UINavigationControllerDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
+        self.passedDaysLabel.text = String( countingClass.getPassedDays() )
     }
 
     override func viewDidAppear(animated: Bool) {

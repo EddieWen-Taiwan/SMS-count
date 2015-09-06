@@ -21,6 +21,7 @@ class CountingDate {
     var defaultRetireDate: NSDate!
     var realRetireDate: NSDate!
     var remainedDays: NSDateComponents!
+    var passedDays: NSDateComponents!
     var wholeServiceDays: NSDateComponents!
 
     init() {
@@ -80,9 +81,17 @@ class CountingDate {
         let unit: NSCalendarUnit = .CalendarUnitDay
         self.remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: nil)
         // 剩餘幾天 - remainedDays
+
+        self.passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: nil)
+        // 已過天數 - passedDays
+        // widget 那邊似乎時區有問題，不過算了ㄏㄏ
         self.wholeServiceDays = cal.components( unit, fromDate: enterDate!, toDate: realRetireDate!, options: nil)
 
         self.weekendComponent = calendar!.components( .CalendarUnitWeekday, fromDate: realRetireDate! )
+    }
+
+    func getPassedDays() -> Int {
+        return self.passedDays.day
     }
 
     func getRemainedDays() -> Int {
