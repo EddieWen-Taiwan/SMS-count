@@ -450,10 +450,41 @@
                             </view>
                             <view alpha="0.69999999999999973" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddf-HG-K3c" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader_spinner-1" translatesAutoresizingMaskIntoConstraints="NO" id="nSs-n1-Jqy">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="Vnz-8e-adD">
+                                                <variation key="widthClass=compact" constant="60"/>
+                                            </constraint>
+                                            <constraint firstAttribute="width" constant="80" id="bXt-Sz-P6m">
+                                                <variation key="widthClass=compact" constant="60"/>
+                                            </constraint>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Vnz-8e-adD"/>
+                                                <exclude reference="bXt-Sz-P6m"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Vnz-8e-adD"/>
+                                                <include reference="bXt-Sz-P6m"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Jid-wq-1AM"/>
-                                    <constraint firstAttribute="width" constant="100" id="TsH-Ka-AHM"/>
+                                    <constraint firstAttribute="height" constant="100" id="Jid-wq-1AM">
+                                        <variation key="widthClass=compact" constant="80"/>
+                                    </constraint>
+                                    <constraint firstAttribute="centerY" secondItem="nSs-n1-Jqy" secondAttribute="centerY" id="KxB-5M-qVC"/>
+                                    <constraint firstAttribute="width" constant="100" id="TsH-Ka-AHM">
+                                        <variation key="widthClass=compact" constant="80"/>
+                                    </constraint>
+                                    <constraint firstAttribute="centerX" secondItem="nSs-n1-Jqy" secondAttribute="centerX" id="j5b-qK-pxg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -461,15 +492,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="nSs-n1-Jqy"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="Jid-wq-1AM"/>
                                         <exclude reference="TsH-Ka-AHM"/>
+                                        <exclude reference="KxB-5M-qVC"/>
+                                        <exclude reference="j5b-qK-pxg"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="nSs-n1-Jqy"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="Jid-wq-1AM"/>
                                         <include reference="TsH-Ka-AHM"/>
+                                        <include reference="KxB-5M-qVC"/>
+                                        <include reference="j5b-qK-pxg"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1725,6 +1766,7 @@
         <image name="background" width="400" height="400"/>
         <image name="day-countdown" width="30" height="30"/>
         <image name="hourglass" width="30" height="30"/>
+        <image name="loader_spinner-1" width="80" height="80"/>
         <image name="passedDays" width="30" height="30"/>
         <image name="retireDate" width="30" height="30"/>
         <image name="setting" width="30" height="30"/>
