@@ -448,7 +448,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view alpha="0.69999999999999973" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddf-HG-K3c" userLabel="LoadingView">
+                            <view hidden="YES" alpha="0.69999999999999973" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddf-HG-K3c" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader_spinner-1" translatesAutoresizingMaskIntoConstraints="NO" id="nSs-n1-Jqy">

@@ -18,6 +18,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
 
+    var loadingTimer: NSTimer!
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingImage: UIImageView!
 
@@ -210,10 +211,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func startLoadingAnimation() {
-        var laodingTimer = NSTimer.scheduledTimerWithTimeInterval( 0.2, target: self, selector: "updateLoadingStage:", userInfo: nil, repeats: true )
+        loadingView.hidden = false
+        loadingView.tag = 1
+        loadingImage.image = UIImage(named: "loader_spinner-1")
+        loadingTimer = NSTimer.scheduledTimerWithTimeInterval( 0.2, target: self, selector: "updateLoadingStage:", userInfo: nil, repeats: true )
     }
 
     func updateLoadingStage( timer: NSTimer ) {
+        println(loadingView.tag)
         switch( loadingView.tag ) {
             case 1:
                 loadingImage.image = UIImage(named: "loader_spinner-2")
@@ -245,7 +250,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func stopLaodingAnimation() {
-        
+        loadingView.hidden = true
+        loadingTimer.invalidate()
     }
 
     override func didReceiveMemoryWarning() {
