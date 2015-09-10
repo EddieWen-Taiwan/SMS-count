@@ -41,7 +41,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
-//        startLoadingAnimation()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -94,19 +93,30 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let askAlertController = UIAlertController( title: "分享", message: "將進行螢幕截圖並分享至您的 Facebook，要繼續進行嗎？", preferredStyle: .Alert )
         let yesAction = UIAlertAction( title: "好", style: .Default, handler: {(action) -> Void in
 
-            // Create the UIImage
-            // let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
-            let mainWindowLayer = self.screenShotScale.layer
-            UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
-            mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
-            let screenShot = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
+            self.startLoadingAnimation()
+            
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                // do some task
+                sleep(1)
+                // Create the UIImage
+                // let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
+                let mainWindowLayer = self.screenShotScale.layer
+                UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
+                mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
+                let screenShot = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                // Save it to the camera roll
+                UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
 
-            // Save it to the camera roll
-            UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
+                dispatch_async(dispatch_get_main_queue()) {
+                    // update some UI
 
-            // Show images picker
-            self.showImagesPickerView()
+                    // Show images picker
+                    self.showImagesPickerView()
+                }
+            }
 
         })
         let noAction = UIAlertAction( title: "取消", style: .Cancel, handler: nil )
@@ -125,6 +135,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
             imagePicker.allowsEditing = false
+
+            self.stopLoadingAnimation()
+
             self.presentViewController( imagePicker, animated: true, completion: nil )
         }
     }
@@ -211,10 +224,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func startLoadingAnimation() {
-        loadingView.hidden = false
-        loadingView.tag = 1
-        loadingImage.image = UIImage(named: "loader_spinner-1")
-        loadingTimer = NSTimer.scheduledTimerWithTimeInterval( 0.2, target: self, selector: "updateLoadingStage:", userInfo: nil, repeats: true )
+        println("start")
+        self.loadingView.hidden = false
+        self.loadingTimer = NSTimer.scheduledTimerWithTimeInterval( 0.1, target: self, selector: "updateLoadingStage:", userInfo: nil, repeats: true )
     }
 
     func updateLoadingStage( timer: NSTimer ) {
@@ -249,9 +261,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
 
-    func stopLaodingAnimation() {
-        loadingView.hidden = true
-        loadingTimer.invalidate()
+    func stopLoadingAnimation() {
+        println("stop")
+        self.loadingView.hidden = true
+        self.loadingTimer.invalidate()
     }
 
     override func didReceiveMemoryWarning() {
