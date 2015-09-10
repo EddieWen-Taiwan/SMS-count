@@ -448,7 +448,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view alpha="0.69999999999999973" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddf-HG-K3c" userLabel="LoadingView">
+                            <view alpha="0.69999999999999973" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddf-HG-K3c" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader_spinner-1" translatesAutoresizingMaskIntoConstraints="NO" id="nSs-n1-Jqy">
@@ -675,6 +675,8 @@
                         <outlet property="backRemainedDaysLabel" destination="NyZ-Jo-ImC" id="Bgo-yL-duS"/>
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
                         <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
+                        <outlet property="loadingImage" destination="nSs-n1-Jqy" id="59p-4t-Sqn"/>
+                        <outlet property="loadingView" destination="Ddf-HG-K3c" id="CrS-4o-TqZ"/>
                         <outlet property="passedDaysLabel" destination="dx0-W7-8Tm" id="AaB-xt-vfH"/>
                         <outlet property="retireDateLabel" destination="kVr-2u-f4R" id="udP-e7-hXf"/>
                         <outlet property="screenShotScale" destination="OJc-wj-ATG" id="YSt-LB-kak"/>
@@ -1766,7 +1768,7 @@
         <image name="background" width="400" height="400"/>
         <image name="day-countdown" width="30" height="30"/>
         <image name="hourglass" width="30" height="30"/>
-        <image name="loader_spinner-1" width="80" height="80"/>
+        <image name="loader_spinner-1" width="60" height="60"/>
         <image name="passedDays" width="30" height="30"/>
         <image name="retireDate" width="30" height="30"/>
         <image name="setting" width="30" height="30"/>

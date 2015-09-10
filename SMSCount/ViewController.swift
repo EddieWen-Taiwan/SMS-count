@@ -13,10 +13,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var backRemainedDaysLabel: UILabel!
     @IBOutlet var screenShotScale: UIView!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
-    @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
 
+    @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
+
+    @IBOutlet var loadingView: UIView!
+    @IBOutlet var loadingImage: UIImageView!
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
@@ -37,6 +40,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
+//        startLoadingAnimation()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -203,6 +207,45 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             default:
                 break;
         }
+    }
+
+    func startLoadingAnimation() {
+        var laodingTimer = NSTimer.scheduledTimerWithTimeInterval( 0.2, target: self, selector: "updateLoadingStage:", userInfo: nil, repeats: true )
+    }
+
+    func updateLoadingStage( timer: NSTimer ) {
+        switch( loadingView.tag ) {
+            case 1:
+                loadingImage.image = UIImage(named: "loader_spinner-2")
+                loadingView.tag = 2
+            case 2:
+                loadingImage.image = UIImage(named: "loader_spinner-3")
+                loadingView.tag = 3
+            case 3:
+                loadingImage.image = UIImage(named: "loader_spinner-4")
+                loadingView.tag = 4
+            case 4:
+                loadingImage.image = UIImage(named: "loader_spinner-5")
+                loadingView.tag = 5
+            case 5:
+                loadingImage.image = UIImage(named: "loader_spinner-6")
+                loadingView.tag = 6
+            case 6:
+                loadingImage.image = UIImage(named: "loader_spinner-7")
+                loadingView.tag = 7
+            case 7:
+                loadingImage.image = UIImage(named: "loader_spinner-8")
+                loadingView.tag = 8
+            case 8:
+                loadingImage.image = UIImage(named: "loader_spinner-1")
+                loadingView.tag = 1
+            default:
+                break;
+        }
+    }
+
+    func stopLaodingAnimation() {
+        
     }
 
     override func didReceiveMemoryWarning() {
