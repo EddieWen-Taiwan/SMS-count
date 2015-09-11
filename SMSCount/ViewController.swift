@@ -18,9 +18,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
 
-    var loadingTimer: NSTimer!
     @IBOutlet var loadingView: UIView!
-    @IBOutlet var loadingImage: UIImageView!
+    @IBOutlet var loadingActivity: UIActivityIndicatorView!
 
     var animationIndex: Int = 0
     var animationArray = [ "" ]
@@ -93,7 +92,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let askAlertController = UIAlertController( title: "分享", message: "將進行螢幕截圖並分享至您的 Facebook，要繼續進行嗎？", preferredStyle: .Alert )
         let yesAction = UIAlertAction( title: "好", style: .Default, handler: {(action) -> Void in
 
-            self.startLoadingAnimation()
+            // START
+            self.loadingView.hidden = false
+            self.loadingActivity.startAnimating()
             
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async( dispatch_get_global_queue( priority, 0 ) ) {
@@ -136,7 +137,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
             imagePicker.allowsEditing = false
 
-            self.stopLoadingAnimation()
+            // STOP
+            self.loadingView.hidden = true
+            self.loadingActivity.stopAnimating()
 
             self.presentViewController( imagePicker, animated: true, completion: nil )
         }
@@ -221,48 +224,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             default:
                 break;
         }
-    }
-
-    func startLoadingAnimation() {
-        self.loadingView.hidden = false
-        self.loadingTimer = NSTimer.scheduledTimerWithTimeInterval( 0.1, target: self, selector: "updateLoadingStage:", userInfo: nil, repeats: true )
-    }
-
-    func updateLoadingStage( timer: NSTimer ) {
-        switch( loadingView.tag ) {
-            case 1:
-                loadingImage.image = UIImage(named: "loader_spinner-2")
-                loadingView.tag = 2
-            case 2:
-                loadingImage.image = UIImage(named: "loader_spinner-3")
-                loadingView.tag = 3
-            case 3:
-                loadingImage.image = UIImage(named: "loader_spinner-4")
-                loadingView.tag = 4
-            case 4:
-                loadingImage.image = UIImage(named: "loader_spinner-5")
-                loadingView.tag = 5
-            case 5:
-                loadingImage.image = UIImage(named: "loader_spinner-6")
-                loadingView.tag = 6
-            case 6:
-                loadingImage.image = UIImage(named: "loader_spinner-7")
-                loadingView.tag = 7
-            case 7:
-                loadingImage.image = UIImage(named: "loader_spinner-8")
-                loadingView.tag = 8
-            case 8:
-                loadingImage.image = UIImage(named: "loader_spinner-1")
-                loadingView.tag = 1
-            default:
-                loadingImage.image = UIImage(named: "loader_spinner-1")
-                loadingView.tag = 1
-        }
-    }
-
-    func stopLoadingAnimation() {
-        self.loadingView.hidden = true
-        self.loadingTimer.invalidate()
     }
 
     override func didReceiveMemoryWarning() {
