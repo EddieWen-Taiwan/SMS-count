@@ -96,7 +96,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.startLoadingAnimation()
             
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            dispatch_async( dispatch_get_global_queue( priority, 0 ) ) {
                 // do some task
                 sleep(1)
                 // Create the UIImage
@@ -110,7 +110,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 // Save it to the camera roll
                 UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
 
-                dispatch_async(dispatch_get_main_queue()) {
+                dispatch_async( dispatch_get_main_queue() ) {
                     // update some UI
 
                     // Show images picker
@@ -224,13 +224,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func startLoadingAnimation() {
-        println("start")
         self.loadingView.hidden = false
         self.loadingTimer = NSTimer.scheduledTimerWithTimeInterval( 0.1, target: self, selector: "updateLoadingStage:", userInfo: nil, repeats: true )
     }
 
     func updateLoadingStage( timer: NSTimer ) {
-        println(loadingView.tag)
         switch( loadingView.tag ) {
             case 1:
                 loadingImage.image = UIImage(named: "loader_spinner-2")
@@ -257,12 +255,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 loadingImage.image = UIImage(named: "loader_spinner-1")
                 loadingView.tag = 1
             default:
-                break;
+                loadingImage.image = UIImage(named: "loader_spinner-1")
+                loadingView.tag = 1
         }
     }
 
     func stopLoadingAnimation() {
-        println("stop")
         self.loadingView.hidden = true
         self.loadingTimer.invalidate()
     }
