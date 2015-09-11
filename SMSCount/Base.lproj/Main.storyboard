@@ -451,40 +451,36 @@
                             <view hidden="YES" alpha="0.69999999999999973" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddf-HG-K3c" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader_spinner-1" translatesAutoresizingMaskIntoConstraints="NO" id="nSs-n1-Jqy">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gRk-2u-jxd">
+                                        <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="Vnz-8e-adD">
-                                                <variation key="widthClass=compact" constant="60"/>
-                                            </constraint>
-                                            <constraint firstAttribute="width" constant="80" id="bXt-Sz-P6m">
-                                                <variation key="widthClass=compact" constant="60"/>
-                                            </constraint>
+                                            <constraint firstAttribute="height" constant="50" id="KeW-IU-ksT"/>
+                                            <constraint firstAttribute="width" constant="50" id="k2c-fy-auX"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="Vnz-8e-adD"/>
-                                                <exclude reference="bXt-Sz-P6m"/>
+                                                <exclude reference="KeW-IU-ksT"/>
+                                                <exclude reference="k2c-fy-auX"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="Vnz-8e-adD"/>
-                                                <include reference="bXt-Sz-P6m"/>
+                                                <exclude reference="KeW-IU-ksT"/>
+                                                <exclude reference="k2c-fy-auX"/>
                                             </mask>
                                         </variation>
-                                    </imageView>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="gRk-2u-jxd" secondAttribute="centerY" id="1vV-rT-Ynk"/>
                                     <constraint firstAttribute="height" constant="100" id="Jid-wq-1AM">
                                         <variation key="widthClass=compact" constant="80"/>
                                     </constraint>
-                                    <constraint firstAttribute="centerY" secondItem="nSs-n1-Jqy" secondAttribute="centerY" id="KxB-5M-qVC"/>
                                     <constraint firstAttribute="width" constant="100" id="TsH-Ka-AHM">
                                         <variation key="widthClass=compact" constant="80"/>
                                     </constraint>
-                                    <constraint firstAttribute="centerX" secondItem="nSs-n1-Jqy" secondAttribute="centerX" id="j5b-qK-pxg"/>
+                                    <constraint firstAttribute="centerX" secondItem="gRk-2u-jxd" secondAttribute="centerX" id="fr5-c5-SiS"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -493,24 +489,24 @@
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="subviews">
-                                        <exclude reference="nSs-n1-Jqy"/>
+                                        <exclude reference="gRk-2u-jxd"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="Jid-wq-1AM"/>
                                         <exclude reference="TsH-Ka-AHM"/>
-                                        <exclude reference="KxB-5M-qVC"/>
-                                        <exclude reference="j5b-qK-pxg"/>
+                                        <exclude reference="1vV-rT-Ynk"/>
+                                        <exclude reference="fr5-c5-SiS"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
-                                        <include reference="nSs-n1-Jqy"/>
+                                        <include reference="gRk-2u-jxd"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="Jid-wq-1AM"/>
                                         <include reference="TsH-Ka-AHM"/>
-                                        <include reference="KxB-5M-qVC"/>
-                                        <include reference="j5b-qK-pxg"/>
+                                        <include reference="1vV-rT-Ynk"/>
+                                        <include reference="fr5-c5-SiS"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -675,7 +671,7 @@
                         <outlet property="backRemainedDaysLabel" destination="NyZ-Jo-ImC" id="Bgo-yL-duS"/>
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
                         <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
-                        <outlet property="loadingImage" destination="nSs-n1-Jqy" id="59p-4t-Sqn"/>
+                        <outlet property="loadingActivity" destination="gRk-2u-jxd" id="Hdx-fO-o54"/>
                         <outlet property="loadingView" destination="Ddf-HG-K3c" id="CrS-4o-TqZ"/>
                         <outlet property="passedDaysLabel" destination="dx0-W7-8Tm" id="AaB-xt-vfH"/>
                         <outlet property="retireDateLabel" destination="kVr-2u-f4R" id="udP-e7-hXf"/>
@@ -1768,7 +1764,6 @@
         <image name="background" width="400" height="400"/>
         <image name="day-countdown" width="30" height="30"/>
         <image name="hourglass" width="30" height="30"/>
-        <image name="loader_spinner-1" width="60" height="60"/>
         <image name="passedDays" width="30" height="30"/>
         <image name="retireDate" width="30" height="30"/>
         <image name="setting" width="30" height="30"/>
