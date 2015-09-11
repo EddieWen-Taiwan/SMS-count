@@ -15,6 +15,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
 
+    @IBOutlet var ghostButton: UIView!
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
 
@@ -40,6 +41,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
+        self.ghostButton.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
+        var tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
+        self.ghostButton.addGestureRecognizer(tapGhostButton)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -224,6 +228,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             default:
                 break;
         }
+    }
+
+    func expandDetailView() {
+        println("click")
     }
 
     override func didReceiveMemoryWarning() {
