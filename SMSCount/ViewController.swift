@@ -16,6 +16,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var backgroundImage: UIImageView!
 
     @IBOutlet var ghostButton: UIView!
+    @IBOutlet var detailView: UIView!
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
 
@@ -200,7 +201,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 } else {
                     timer.invalidate()
                     var timer5 = NSTimer.scheduledTimerWithTimeInterval( 0.16, target: self, selector: "daysAddingEffect:", userInfo: "stage5", repeats: true )
-            }
+                }
 
             case "stage5":
                 if animationIndex < stageIndexArray[4] {
@@ -208,7 +209,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 } else {
                     timer.invalidate()
                     var timer6 = NSTimer.scheduledTimerWithTimeInterval( 0.32, target: self, selector: "daysAddingEffect:", userInfo: "stage6", repeats: true )
-            }
+                }
 
             case "stage6":
                 if animationIndex < stageIndexArray[5] {
@@ -216,7 +217,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 } else {
                     timer.invalidate()
                     var timer7 = NSTimer.scheduledTimerWithTimeInterval( 0.5, target: self, selector: "daysAddingEffect:", userInfo: "stage7", repeats: true )
-            }
+                }
 
             case "stage7":
                 if animationIndex == stageIndexArray[5] {
@@ -231,7 +232,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func expandDetailView() {
-        println("click")
+        UIView.animateWithDuration(0.6, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            println("START")
+            self.detailView.frame.origin.y = 200
+        }, completion: { finish in
+            println("OVER")
+        })
     }
 
     override func didReceiveMemoryWarning() {
