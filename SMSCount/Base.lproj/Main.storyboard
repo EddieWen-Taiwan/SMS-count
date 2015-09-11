@@ -106,7 +106,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sY1-RK-Tl8" userLabel="FrontDisplayView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_02" translatesAutoresizingMaskIntoConstraints="NO" id="vxp-Hu-SuH" userLabel="backgroundImg">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxp-Hu-SuH" userLabel="backgroundImg">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     </imageView>
                                     <view alpha="0.10000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6DD-jS-bAd" userLabel="BlackMask">
@@ -292,6 +292,10 @@
                                         <include reference="iRT-9r-1av"/>
                                     </mask>
                                 </variation>
+                            </view>
+                            <view hidden="YES" alpha="0.59999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GpE-0J-DE7" userLabel="ScreenMask">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kd-0l-gi2" userLabel="DetailView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -660,14 +664,18 @@
                             <constraint firstItem="OJc-wj-ATG" firstAttribute="top" secondItem="Fgg-OY-Bue" secondAttribute="bottom" id="GTA-w4-XLv"/>
                             <constraint firstAttribute="trailing" secondItem="OJc-wj-ATG" secondAttribute="trailing" id="ITd-jN-iMd"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="bottom" id="JYE-wh-NGP"/>
+                            <constraint firstAttribute="centerY" secondItem="GpE-0J-DE7" secondAttribute="centerY" id="MRe-2B-Q8m"/>
                             <constraint firstItem="OJc-wj-ATG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="O8o-kr-NCZ"/>
+                            <constraint firstItem="GpE-0J-DE7" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="Pbv-by-pAQ"/>
                             <constraint firstAttribute="centerX" secondItem="0kd-0l-gi2" secondAttribute="centerX" id="SFd-7l-Iif"/>
                             <constraint firstAttribute="centerX" secondItem="Ddf-HG-K3c" secondAttribute="centerX" id="T0U-9S-bjt"/>
                             <constraint firstItem="2un-Bn-97q" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="TbF-xO-JgJ"/>
                             <constraint firstAttribute="centerY" secondItem="Ddf-HG-K3c" secondAttribute="centerY" id="WuZ-pp-MOu"/>
                             <constraint firstItem="0kd-0l-gi2" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.8" id="XOe-9t-hdr"/>
+                            <constraint firstAttribute="centerX" secondItem="GpE-0J-DE7" secondAttribute="centerX" id="ayr-hz-PwR"/>
                             <constraint firstItem="2un-Bn-97q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="d8l-xC-fSo"/>
                             <constraint firstItem="sY1-RK-Tl8" firstAttribute="top" secondItem="Fgg-OY-Bue" secondAttribute="bottom" id="gMI-CS-4Lh"/>
+                            <constraint firstItem="GpE-0J-DE7" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="mJR-20-lY2"/>
                             <constraint firstItem="Fgg-OY-Bue" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="rb5-wd-NGA"/>
                             <constraint firstAttribute="trailing" secondItem="Fgg-OY-Bue" secondAttribute="trailing" id="vFm-g9-6Z0"/>
                             <constraint firstAttribute="trailing" secondItem="sY1-RK-Tl8" secondAttribute="trailing" id="zk8-eZ-8IV"/>
@@ -676,6 +684,7 @@
                             <mask key="subviews">
                                 <exclude reference="OJc-wj-ATG"/>
                                 <exclude reference="sY1-RK-Tl8"/>
+                                <exclude reference="GpE-0J-DE7"/>
                                 <exclude reference="0kd-0l-gi2"/>
                                 <exclude reference="Ddf-HG-K3c"/>
                                 <exclude reference="Fgg-OY-Bue"/>
@@ -694,6 +703,10 @@
                                 <exclude reference="2YI-tE-a3t"/>
                                 <exclude reference="gMI-CS-4Lh"/>
                                 <exclude reference="zk8-eZ-8IV"/>
+                                <exclude reference="MRe-2B-Q8m"/>
+                                <exclude reference="Pbv-by-pAQ"/>
+                                <exclude reference="ayr-hz-PwR"/>
+                                <exclude reference="mJR-20-lY2"/>
                                 <exclude reference="T0U-9S-bjt"/>
                                 <exclude reference="WuZ-pp-MOu"/>
                                 <exclude reference="5dy-eg-JLc"/>
@@ -706,6 +719,7 @@
                             <mask key="subviews">
                                 <include reference="OJc-wj-ATG"/>
                                 <include reference="sY1-RK-Tl8"/>
+                                <include reference="GpE-0J-DE7"/>
                                 <include reference="0kd-0l-gi2"/>
                                 <include reference="Ddf-HG-K3c"/>
                                 <include reference="Fgg-OY-Bue"/>
@@ -724,6 +738,10 @@
                                 <include reference="2YI-tE-a3t"/>
                                 <include reference="gMI-CS-4Lh"/>
                                 <include reference="zk8-eZ-8IV"/>
+                                <include reference="MRe-2B-Q8m"/>
+                                <include reference="Pbv-by-pAQ"/>
+                                <include reference="ayr-hz-PwR"/>
+                                <include reference="mJR-20-lY2"/>
                                 <include reference="T0U-9S-bjt"/>
                                 <include reference="WuZ-pp-MOu"/>
                                 <include reference="5dy-eg-JLc"/>
@@ -746,6 +764,7 @@
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
                         <outlet property="detailView" destination="0kd-0l-gi2" id="TaJ-5u-CGK"/>
                         <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
+                        <outlet property="fullScreenMask" destination="GpE-0J-DE7" id="xqN-Wj-VMv"/>
                         <outlet property="ghostButton" destination="8gY-Oj-6W8" id="R2k-fQ-k3e"/>
                         <outlet property="loadingActivity" destination="gRk-2u-jxd" id="Hdx-fO-o54"/>
                         <outlet property="loadingView" destination="Ddf-HG-K3c" id="CrS-4o-TqZ"/>
@@ -1323,9 +1342,9 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZs-p4-qWQ" userLabel="ScreenMask">
+                            <view alpha="0.59999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZs-p4-qWQ" userLabel="ScreenMask">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hidden" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -1839,7 +1858,6 @@
     <resources>
         <image name="arrow-down-white" width="20" height="20"/>
         <image name="background" width="400" height="400"/>
-        <image name="background_02" width="400" height="400"/>
         <image name="day-countdown" width="30" height="30"/>
         <image name="hourglass" width="30" height="30"/>
         <image name="passedDays" width="30" height="30"/>

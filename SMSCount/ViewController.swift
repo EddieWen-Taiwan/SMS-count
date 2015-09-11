@@ -15,6 +15,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
 
+    @IBOutlet var fullScreenMask: UIView!
     @IBOutlet var ghostButton: UIView!
     @IBOutlet var detailView: UIView!
     @IBOutlet var retireDateLabel: UILabel!
@@ -233,11 +234,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     func expandDetailView() {
         UIView.animateWithDuration(0.6, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            println("START")
-            self.detailView.frame.origin.y = 200
-        }, completion: { finish in
-            println("OVER")
-        })
+            self.fullScreenMask.hidden = false
+            self.detailView.frame.origin.y = 100
+        }, completion: { finish in })
     }
 
     override func didReceiveMemoryWarning() {
