@@ -20,6 +20,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var detailView: UIView!
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
+    @IBOutlet var backGhostButton: UIView!
 
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
@@ -43,9 +44,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
-        self.ghostButton.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).CGColor
+        self.ghostButton.layer.borderColor = UIColor.whiteColor().CGColor
         var tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
         self.ghostButton.addGestureRecognizer(tapGhostButton)
+        self.backGhostButton.layer.borderColor = UIColor.whiteColor().CGColor
+        var tapBackGhostButton = UITapGestureRecognizer(target: self, action: "dismissDetailView")
+        self.backGhostButton.addGestureRecognizer(tapBackGhostButton)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -233,9 +237,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func expandDetailView() {
+        self.ghostButton.hidden = true
         UIView.animateWithDuration(0.6, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.fullScreenMask.hidden = false
-            self.detailView.frame.origin.y = 100
+            self.detailView.frame.origin.y = 80
+        }, completion: { finish in })
+    }
+
+    func dismissDetailView() {
+        self.ghostButton.hidden = false
+        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.fullScreenMask.hidden = true
+            self.detailView.frame.origin.y = UIScreen.mainScreen().bounds.height
         }, completion: { finish in })
     }
 
