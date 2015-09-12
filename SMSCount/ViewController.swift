@@ -11,8 +11,10 @@ import UIKit
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var backRemainedDaysLabel: UILabel!
+    @IBOutlet var backRemainedDaysWord: UILabel!
     @IBOutlet var screenShotScale: UIView!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
+    @IBOutlet var frontRemainedDaysWord: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
 
     @IBOutlet var fullScreenMask: UIView!
@@ -69,17 +71,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             countingClass.updateDate()
             if self.frontRemainedDaysLabel.text != String( countingClass.getRemainedDays() ) {
                 var remainedDays = countingClass.getRemainedDays()
+                if remainedDays < 0 {
+                    remainedDays *= (-1)
+                    self.backRemainedDaysWord.text = "自由天數"
+                    self.frontRemainedDaysWord.text = "自由天數"
+                } else {
+                    self.backRemainedDaysWord.text = "剩餘天數"
+                    self.frontRemainedDaysWord.text = "剩餘天數"
+                }
                 self.backRemainedDaysLabel.text = String( remainedDays )
 
                 self.retireDateLabel.text = countingClass.getRetireDate()
-
                 self.passedDaysLabel.text = String( countingClass.getPassedDays() )
 
                 // Timer Effect
                 animationIndex = 0
                 animationArray.removeAll(keepCapacity: false)
-                if remainedDays < 100 && remainedDays > 0 {
-                    for var i = 1; i <= remainedDays; i++ {
+                if remainedDays < 100 {
+                    for var i = 0; i <= remainedDays; i++ {
                         animationArray.append( String(i) )
                     }
                 } else {
