@@ -57,6 +57,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        // Reset animation
+        self.fullScreenMask.hidden = false
+        self.fullScreenMask.alpha = 0
+        self.ghostButton.alpha = 1
         self.detailViewTopConstraint.constant = self.screenHeight
         self.view.layoutIfNeeded()
 
@@ -178,7 +182,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func daysAddingEffect( timer: NSTimer ) {
 
         func updateLabel() {
-            self.frontRemainedDaysLabel.text = animationArray[ animationIndex++ ]
+            self.frontRemainedDaysLabel.text = self.animationArray[ self.animationIndex++ ]
         }
 
         switch( timer.userInfo! as! String ) {
@@ -269,4 +273,3 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
 }
-

@@ -1434,7 +1434,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view alpha="0.59999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZs-p4-qWQ" userLabel="ScreenMask">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZs-p4-qWQ" userLabel="ScreenMask">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>

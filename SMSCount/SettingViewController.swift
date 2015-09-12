@@ -29,7 +29,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-    var screenHeight: CGFloat!
+    var appViewHeight: CGFloat!
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -42,7 +42,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        screenHeight = self.view.frame.height
+        appViewHeight = self.view.frame.height
         datepickerElement.datePickerMode = UIDatePickerMode.Date
         serviceDaysPickerElement.dataSource = self
         serviceDaysPickerElement.delegate = self
@@ -78,10 +78,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func editEnterDate(sender: AnyObject) {
 
-        serviceDaysPickerView.frame.origin.y = screenHeight
-        discountDaysPickerView.frame.origin.y = screenHeight
-        screenMask.hidden = false
-
+        serviceDaysPickerView.frame.origin.y = appViewHeight
+        discountDaysPickerView.frame.origin.y = appViewHeight
         showPickerView( datepickerView )
 
         if enterDateLabel.text != "" {
@@ -93,9 +91,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func editServiceDays(sender: AnyObject) {
 
-        datepickerView.frame.origin.y = screenHeight
-        discountDaysPickerView.frame.origin.y = screenHeight
-        screenMask.hidden = false
+        datepickerView.frame.origin.y = appViewHeight
+        discountDaysPickerView.frame.origin.y = appViewHeight
         showPickerView( serviceDaysPickerView )
 
         if userPreference.stringForKey("serviceDays") != nil {
@@ -107,9 +104,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func editDiscountDays(sender: AnyObject) {
 
-        datepickerView.frame.origin.y = screenHeight
-        serviceDaysPickerView.frame.origin.y = screenHeight
-        screenMask.hidden = false
+        datepickerView.frame.origin.y = appViewHeight
+        serviceDaysPickerView.frame.origin.y = appViewHeight
         showPickerView( discountDaysPickerView )
 
         if let selectedRow = userPreference.stringForKey("discountDays") {
@@ -120,11 +116,13 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     func showPickerView( viewBeShow: UIView ) {
 
+        self.screenMask.hidden = false
         UIView.animateWithDuration( 0.4, animations: {
             // show PickerView
-            viewBeShow.frame.origin.y = self.screenHeight-200
+            self.screenMask.alpha = 0.6
+            viewBeShow.frame.origin.y = self.appViewHeight-200
             // hide Tabbar
-            self.tabBarController?.tabBar.frame.origin.y = self.screenHeight
+            self.tabBarController?.tabBar.frame.origin.y = self.appViewHeight
         })
 
     }
@@ -165,22 +163,23 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     func dismissScreenMask() {
-        UIView.animateWithDuration( 0.4, animations: {
+        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.screenMask.alpha = 0
             // hide PickerView
-            if self.datepickerView.frame.origin.y != self.screenHeight {
-                self.datepickerView.frame.origin.y = self.screenHeight
+            if self.datepickerView.frame.origin.y != self.appViewHeight {
+                self.datepickerView.frame.origin.y = self.appViewHeight
             }
-            if self.serviceDaysPickerView.frame.origin.y != self.screenHeight {
-                self.serviceDaysPickerView.frame.origin.y = self.screenHeight
+            if self.serviceDaysPickerView.frame.origin.y != self.appViewHeight {
+                self.serviceDaysPickerView.frame.origin.y = self.appViewHeight
             }
-            if self.discountDaysPickerView.frame.origin.y != self.screenHeight {
-                self.discountDaysPickerView.frame.origin.y = self.screenHeight
+            if self.discountDaysPickerView.frame.origin.y != self.appViewHeight {
+                self.discountDaysPickerView.frame.origin.y = self.appViewHeight
             }
             // show Tabbar
-            self.tabBarController?.tabBar.frame.origin.y = self.screenHeight-50
+            self.tabBarController?.tabBar.frame.origin.y = self.appViewHeight-50
+        }, completion: { finish in
+            self.screenMask.hidden = true;
         })
-        // 不做 trigger "done" 但下兩列會自動 update....
-        screenMask.hidden = true;
 
         if serviceDaysLabel.text != "" {
             var serviceDay = serviceDaysLabel.text == "一年" ? "1y" : "1y15d"
