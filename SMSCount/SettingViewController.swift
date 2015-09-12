@@ -17,19 +17,22 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet var discountDaysLabel: UILabel!
 
     @IBOutlet var datepickerView: UIView!
+    @IBOutlet var datepickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var datepickerElement: UIDatePicker!
 
     @IBOutlet var serviceDaysPickerView: UIView!
+    @IBOutlet var serviceDaysPickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var serviceDaysPickerElement: UIPickerView!
     var serviceDaysPickerDataSource = [ "一年", "一年十五天" ]
 
     @IBOutlet var discountDaysPickerView: UIView!
+    @IBOutlet var discountDaysPickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var discountDaysPickerElement: UIPickerView!
     var discountDaysPickerDataSource = [ "0 天", "1 天", "2 天", "3 天", "4 天", "5 天", "6 天", "7 天", "8 天", "9 天", "10 天",  "11 天", "12 天", "13 天", "14 天", "15 天", "16 天", "17 天", "18 天", "19 天", "20 天", "21 天", "22 天", "23 天", "24 天", "25 天", "26 天", "27 天", "28 天", "29 天", "30 天" ]
 
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-    var appViewHeight: CGFloat!
+
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -42,7 +45,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        appViewHeight = self.view.frame.height
         datepickerElement.datePickerMode = UIDatePickerMode.Date
         serviceDaysPickerElement.dataSource = self
         serviceDaysPickerElement.delegate = self
@@ -67,20 +69,20 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     override func viewDidAppear(animated: Bool) {
 
         if discountDaysLabel.text == "" {
-
             if let userDiscountDays = userPreference.stringForKey("discountDays") {
                 discountDaysLabel.text = userDiscountDays
             }
-
         }
 
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
 
-        serviceDaysPickerView.frame.origin.y = appViewHeight
-        discountDaysPickerView.frame.origin.y = appViewHeight
-        showPickerView( datepickerView )
+        self.serviceDaysPickerViewBottomConstraint.constant = -250
+        self.discountDaysPickerViewBottomConstraint.constant = -250
+        self.datepickerViewBottomConstraint.constant = -50
+
+        self.showPickerView()
 
         if enterDateLabel.text != "" {
             var showDateOnPicker: String = enterDateLabel.text!
@@ -90,10 +92,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     @IBAction func editServiceDays(sender: AnyObject) {
+        
+        self.datepickerViewBottomConstraint.constant = -250
+        self.discountDaysPickerViewBottomConstraint.constant = -250
+        self.serviceDaysPickerViewBottomConstraint.constant = -50
 
-        datepickerView.frame.origin.y = appViewHeight
-        discountDaysPickerView.frame.origin.y = appViewHeight
-        showPickerView( serviceDaysPickerView )
+        self.showPickerView()
 
         if userPreference.stringForKey("serviceDays") != nil {
             var selectedRow = userPreference.stringForKey("serviceDays") == "1y" ? 0 : 1
@@ -104,9 +108,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func editDiscountDays(sender: AnyObject) {
 
-        datepickerView.frame.origin.y = appViewHeight
-        serviceDaysPickerView.frame.origin.y = appViewHeight
-        showPickerView( discountDaysPickerView )
+        self.datepickerViewBottomConstraint.constant = -250
+        self.serviceDaysPickerViewBottomConstraint.constant = -250
+        self.discountDaysPickerViewBottomConstraint.constant = -50
+
+        self.showPickerView()
 
         if let selectedRow = userPreference.stringForKey("discountDays") {
             discountDaysPickerElement.selectRow( selectedRow.toInt()!, inComponent: 0, animated: false )
@@ -114,15 +120,15 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     }
 
-    func showPickerView( viewBeShow: UIView ) {
+    func showPickerView() {
 
         self.screenMask.hidden = false
         UIView.animateWithDuration( 0.4, animations: {
-            // show PickerView
             self.screenMask.alpha = 0.6
-            viewBeShow.frame.origin.y = self.appViewHeight-200
+            // show PickerView
+            self.view.layoutIfNeeded()
             // hide Tabbar
-            self.tabBarController?.tabBar.frame.origin.y = self.appViewHeight
+            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height
         })
 
     }
@@ -163,20 +169,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     func dismissScreenMask() {
+        self.datepickerViewBottomConstraint.constant = -250
+        self.serviceDaysPickerViewBottomConstraint.constant = -250
+        self.discountDaysPickerViewBottomConstraint.constant = -250
         UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.view.layoutIfNeeded()
             self.screenMask.alpha = 0
-            // hide PickerView
-            if self.datepickerView.frame.origin.y != self.appViewHeight {
-                self.datepickerView.frame.origin.y = self.appViewHeight
-            }
-            if self.serviceDaysPickerView.frame.origin.y != self.appViewHeight {
-                self.serviceDaysPickerView.frame.origin.y = self.appViewHeight
-            }
-            if self.discountDaysPickerView.frame.origin.y != self.appViewHeight {
-                self.discountDaysPickerView.frame.origin.y = self.appViewHeight
-            }
             // show Tabbar
-            self.tabBarController?.tabBar.frame.origin.y = self.appViewHeight-50
+            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height-50
         }, completion: { finish in
             self.screenMask.hidden = true;
         })

@@ -1912,14 +1912,17 @@
                     <connections>
                         <outlet property="datepickerElement" destination="7zy-gh-Gm0" id="gbq-Lv-aMq"/>
                         <outlet property="datepickerView" destination="88W-ka-Ekc" id="oeG-xZ-zNI"/>
+                        <outlet property="datepickerViewBottomConstraint" destination="139-oi-t4d" id="qM5-LF-x0s"/>
                         <outlet property="discountDaysLabel" destination="bVN-n2-pTn" id="LaB-V5-62l"/>
                         <outlet property="discountDaysPickerElement" destination="l1l-di-CdO" id="SYT-RV-Vjt"/>
                         <outlet property="discountDaysPickerView" destination="9Yh-7a-vZS" id="8Lr-Sg-Uuc"/>
+                        <outlet property="discountDaysPickerViewBottomConstraint" destination="piG-TB-1zw" id="RsN-oT-hpJ"/>
                         <outlet property="enterDateLabel" destination="RRl-qb-GIg" id="LE9-bW-uMs"/>
                         <outlet property="screenMask" destination="rZs-p4-qWQ" id="ANv-Sm-i7q"/>
                         <outlet property="serviceDaysLabel" destination="1l2-Iu-97Q" id="rLc-Kg-KKC"/>
                         <outlet property="serviceDaysPickerElement" destination="rEJ-Z4-dYX" id="ROn-Ue-lqG"/>
                         <outlet property="serviceDaysPickerView" destination="Vo5-eB-Y1f" id="ajF-zn-2nO"/>
+                        <outlet property="serviceDaysPickerViewBottomConstraint" destination="uan-59-KNh" id="kAy-cs-fx7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUy-di-tP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
