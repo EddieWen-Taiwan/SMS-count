@@ -84,9 +84,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         self.showPickerView()
 
-        if enterDateLabel.text != "" {
-            var showDateOnPicker: String = enterDateLabel.text!
-            datepickerElement.setDate( dateFormatter.dateFromString(showDateOnPicker)!, animated: false )
+        if let userEnterDate = userPreference.stringForKey("enterDate") {
+            datepickerElement.setDate( dateFormatter.dateFromString(userEnterDate)!, animated: false )
         }
 
     }
@@ -99,8 +98,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         self.showPickerView()
 
-        if userPreference.stringForKey("serviceDays") != nil {
-            var selectedRow = userPreference.stringForKey("serviceDays") == "1y" ? 0 : 1
+        if let userServiceDays = userPreference.stringForKey("serviceDays") {
+            var selectedRow = userServiceDays == "1y" ? 0 : 1
             serviceDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
         }
 
