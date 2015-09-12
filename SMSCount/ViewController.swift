@@ -18,6 +18,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var fullScreenMask: UIView!
     @IBOutlet var ghostButton: UIView!
     @IBOutlet var detailView: UIView!
+    @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
     @IBOutlet var backGhostButton: UIView!
@@ -31,6 +32,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var monthImage = "background_01"
 
     let countingClass = CountingDate()
+    var screenHeight = UIScreen.mainScreen().bounds.height
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -53,6 +55,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.detailViewTopConstraint.constant = self.screenHeight
+        self.view.layoutIfNeeded()
 
         if countingClass.isSettingAllDone() {
             // OK
@@ -238,18 +244,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     func expandDetailView() {
         self.fullScreenMask.hidden = false
+        self.detailViewTopConstraint.constant = 100
         UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.fullScreenMask.alpha = 0.6
-            self.detailView.frame.origin.y = 80
             self.ghostButton.alpha = 0.0
+            self.view.layoutIfNeeded()
         }, completion: { finish in })
     }
 
     func dismissDetailView() {
+        self.detailViewTopConstraint.constant = self.screenHeight
         UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.fullScreenMask.alpha = 0.0
-            self.detailView.frame.origin.y = UIScreen.mainScreen().bounds.height
             self.ghostButton.alpha = 1.0
+            self.view.layoutIfNeeded()
         }, completion: { finish in
             self.fullScreenMask.hidden = true
         })
