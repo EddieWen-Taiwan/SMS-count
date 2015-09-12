@@ -237,19 +237,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func expandDetailView() {
-        self.ghostButton.hidden = true
-        UIView.animateWithDuration(0.6, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.fullScreenMask.hidden = false
+        self.fullScreenMask.hidden = false
+        UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.fullScreenMask.alpha = 0.6
             self.detailView.frame.origin.y = 80
+            self.ghostButton.alpha = 0.0
         }, completion: { finish in })
     }
 
     func dismissDetailView() {
-        self.ghostButton.hidden = false
-        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.fullScreenMask.hidden = true
+        UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.fullScreenMask.alpha = 0.0
             self.detailView.frame.origin.y = UIScreen.mainScreen().bounds.height
-        }, completion: { finish in })
+            self.ghostButton.alpha = 1.0
+        }, completion: { finish in
+            self.fullScreenMask.hidden = true
+        })
     }
 
     override func didReceiveMemoryWarning() {
