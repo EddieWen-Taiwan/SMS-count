@@ -18,12 +18,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var backgroundImage: UIImageView!
 
     @IBOutlet var fullScreenMask: UIView!
+    @IBOutlet var xMark: UIView!
     @IBOutlet var ghostButton: UIView!
     @IBOutlet var detailView: UIView!
     @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
-    @IBOutlet var backGhostButton: UIView!
 
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
@@ -48,12 +48,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
+        var tapXMark = UITapGestureRecognizer(target: self, action: "dismissDetailView")
+        self.xMark.addGestureRecognizer(tapXMark)
         self.ghostButton.layer.borderColor = UIColor.whiteColor().CGColor
         var tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
         self.ghostButton.addGestureRecognizer(tapGhostButton)
-        self.backGhostButton.layer.borderColor = UIColor.whiteColor().CGColor
-        var tapBackGhostButton = UITapGestureRecognizer(target: self, action: "dismissDetailView")
-        self.backGhostButton.addGestureRecognizer(tapBackGhostButton)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -257,13 +256,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     func expandDetailView() {
         self.fullScreenMask.hidden = false
-        self.detailViewTopConstraint.constant = 100
+        self.detailViewTopConstraint.constant = 120
         UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.fullScreenMask.alpha = 0.6
             self.ghostButton.alpha = 0.0
             self.view.layoutIfNeeded()
         }, completion: { finish in })
     }
+
 
     func dismissDetailView() {
         self.detailViewTopConstraint.constant = self.screenHeight
