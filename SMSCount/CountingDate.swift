@@ -62,7 +62,7 @@ class CountingDate {
         dayComponent.year = 1
         dayComponent.day = userServiceDays == "1y" ? -1 : 14
 
-        self.defaultRetireDate = calendar!.dateByAddingComponents( dayComponent, toDate: enterDate, options: nil)!
+        self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: nil)!
         // 預定退伍日 - defaultRetireDate
 
         var userDiscountDays: Int = 0
@@ -74,7 +74,7 @@ class CountingDate {
         }
         dayComponent.year = 0
         dayComponent.day = userDiscountDays*(-1)
-        self.realRetireDate = calendar!.dateByAddingComponents( dayComponent, toDate: defaultRetireDate, options: nil)!
+        self.realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: nil)!
         // 折抵後退伍日 - realRetireDate
 
         let cal = NSCalendar.currentCalendar()
@@ -83,14 +83,22 @@ class CountingDate {
         // 剩餘幾天 - remainedDays
         self.passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: nil)
         // 已過天數 - passedDays
-        self.wholeServiceDays = cal.components( unit, fromDate: enterDate!, toDate: realRetireDate!, options: nil)
+        self.wholeServiceDays = cal.components(unit, fromDate: enterDate!, toDate: realRetireDate!, options: nil)
 
         self.weekendComponent = calendar!.components( .CalendarUnitWeekday, fromDate: realRetireDate! )
         self.fixWeekend()
+
+        println( self.getFixedRetireDate() )
     }
 
     func getFixedRetireDate() -> String {
-        return ""
+        var fixedRetireDate = self.realRetireDate
+        if self.days2beFixed > 0 {
+            dayComponent.year = 0
+            dayComponent.day = self.days2beFixed*(-1)
+            fixedRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: fixedRetireDate, options: nil)!
+        }
+        return dateFormatter.stringFromDate( fixedRetireDate ) + switchWeekday( weekendComponent.weekday - self.days2beFixed )
     }
 
     func getRetireDate() -> String {
