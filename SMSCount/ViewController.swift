@@ -86,19 +86,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.retireDateLabel.text = countingClass.getRetireDate()
                 self.passedDaysLabel.text = String( countingClass.getPassedDays() )
 
-                if countingClass.isAutoWeekendFixed() && countingClass.getRetireDate() != countingClass.getFixedRetireDate() {
-                    self.fixedRetireDateLabel.text = countingClass.getFixedRetireDate()
-                    self.fixedRetireDateLine.hidden = false
-                    self.detailViewHeightConstraint.constant = 238
-                    self.retireDateLineTopConstraint.constant = 66
-                } else {
-                    if self.fixedRetireDateLine.hidden == false {
-                        self.fixedRetireDateLine.hidden = true
-                        self.detailViewHeightConstraint.constant = 172
-                        self.retireDateLineTopConstraint.constant = 0
-                    }
-                }
-
                 // Timer Effect
                 animationIndex = 0
                 animationArray.removeAll(keepCapacity: false)
@@ -123,6 +110,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 stageIndexArray[5] = animationArray.count-1
 
                 var timer = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
+            }
+            // WeekendFixed layout show/hide
+            if countingClass.isAutoWeekendFixed() && countingClass.getRetireDate() != countingClass.getFixedRetireDate() {
+                if self.fixedRetireDateLabel.text != countingClass.getFixedRetireDate() {
+                    self.fixedRetireDateLabel.text = countingClass.getFixedRetireDate()
+                    self.fixedRetireDateLine.hidden = false
+                    self.detailViewHeightConstraint.constant = 238
+                    self.retireDateLineTopConstraint.constant = 66
+                }
+            } else {
+                if self.fixedRetireDateLine.hidden == false {
+                    self.fixedRetireDateLine.hidden = true
+                    self.detailViewHeightConstraint.constant = 172
+                    self.retireDateLineTopConstraint.constant = 0
+                    self.fixedRetireDateLabel.text = ""
+                }
             }
         } else {
             // switch to settingViewController ?

@@ -90,11 +90,7 @@ class CountingDate {
     }
 
     func isAutoWeekendFixed() -> Bool {
-        if userPreference.stringForKey("autoWeekendFixed") == "true" {
-            return true
-        } else {
-            return false
-        }
+        return userPreference.boolForKey("autoWeekendFixed")
     }
 
     func getFixedRetireDate() -> String {

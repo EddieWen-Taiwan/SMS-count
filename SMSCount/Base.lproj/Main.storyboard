@@ -2192,7 +2192,7 @@
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="autoWeekendSwitch" destination="rZs-p4-qWQ" id="N1L-tk-I95"/>
+                        <outlet property="autoWeekendSwitch" destination="PDo-qB-IuZ" id="ina-uS-uY4"/>
                         <outlet property="datepickerElement" destination="7zy-gh-Gm0" id="gbq-Lv-aMq"/>
                         <outlet property="datepickerView" destination="88W-ka-Ekc" id="oeG-xZ-zNI"/>
                         <outlet property="datepickerViewBottomConstraint" destination="139-oi-t4d" id="qM5-LF-x0s"/>

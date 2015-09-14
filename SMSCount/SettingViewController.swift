@@ -30,7 +30,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet var discountDaysPickerElement: UIPickerView!
     var discountDaysPickerDataSource = [ "0 天", "1 天", "2 天", "3 天", "4 天", "5 天", "6 天", "7 天", "8 天", "9 天", "10 天",  "11 天", "12 天", "13 天", "14 天", "15 天", "16 天", "17 天", "18 天", "19 天", "20 天", "21 天", "22 天", "23 天", "24 天", "25 天", "26 天", "27 天", "28 天", "29 天", "30 天" ]
 
-    @IBOutlet var autoWeekendSwitch: UIView!
+
+    @IBOutlet var autoWeekendSwitch: UISwitch!
 
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
@@ -56,16 +57,19 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
-        if let userEnterDate = userPreference.stringForKey("enterDate") {
+        if let userEnterDate = self.userPreference.stringForKey("enterDate") {
             enterDateLabel.text = userEnterDate
         }
-        if let userServiceDays = userPreference.stringForKey("serviceDays") {
+        if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
             serviceDaysLabel.text = userServiceDays == "1y" ? "一年" : "一年十五天"
         }
-        if let userDiscountDays = userPreference.stringForKey("discountDays") {
+        if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
             discountDaysLabel.text = userDiscountDays
         }
-
+        self.autoWeekendSwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
+        if self.userPreference.boolForKey("autoWeekendFixed") {
+            self.autoWeekendSwitch.setOn(true, animated: false)
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -193,6 +197,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         } else {
             userPreference.removeObjectForKey( "discountDays" )
         }
+    }
+
+    func switchClick( mySwitch: UISwitch ) {
+        self.userPreference.setBool( mySwitch.on ? true : false, forKey: "autoWeekendFixed" )
     }
 
     // MARK: These are the functions for UIPickerView
