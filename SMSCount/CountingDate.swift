@@ -108,7 +108,7 @@ class CountingDate {
         return Double( self.passedDays.day ) / Double( total_days )*100
     }
 
-    func switchWeekday( var weekday: Int ) -> String {
+    private func switchWeekday( var weekday: Int ) -> String {
         switch( weekday ) {
             case 1:
                 return " Sun."
@@ -129,7 +129,7 @@ class CountingDate {
         }
     }
 
-    func fixWeekend( var originalDays: Int ) -> Int {
+    private func fixWeekend( var originalDays: Int ) -> Int {
 
         if weekendComponent.weekday == 1 {
             originalDays -= 2
