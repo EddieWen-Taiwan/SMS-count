@@ -1343,14 +1343,6 @@
                                     </constraint>
                                     <constraint firstItem="cWr-w4-TYI" firstAttribute="leading" secondItem="cyF-Rw-P7I" secondAttribute="leading" id="w9Q-6A-gBB"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                        <real key="value" value="0.14999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                        <size key="value" width="1" height="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="gYJ-AR-a5U"/>
@@ -1493,14 +1485,6 @@
                                     </constraint>
                                     <constraint firstItem="R0q-Eg-6yg" firstAttribute="leading" secondItem="euX-9L-J7X" secondAttribute="leading" id="qfO-HT-lW4"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                        <real key="value" value="0.14999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                        <size key="value" width="1" height="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="R0q-Eg-6yg"/>
