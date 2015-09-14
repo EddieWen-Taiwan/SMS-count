@@ -82,7 +82,6 @@ class CountingDate {
         // 剩餘幾天 - remainedDays
         self.passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: nil)
         // 已過天數 - passedDays
-        // widget 那邊似乎時區有問題，不過算了ㄏㄏ
         self.wholeServiceDays = cal.components( unit, fromDate: enterDate!, toDate: realRetireDate!, options: nil)
 
         self.weekendComponent = calendar!.components( .CalendarUnitWeekday, fromDate: realRetireDate! )
@@ -101,7 +100,8 @@ class CountingDate {
     }
 
     func getCurrentProgress() -> Double {
-        return Double( wholeServiceDays.day - self.fixWeekend( remainedDays.day ) ) / Double( wholeServiceDays.day )*100
+        let total_days = self.fixWeekend( wholeServiceDays.day )
+        return Double( self.passedDays.day ) / Double( total_days )*100
     }
 
     func switchWeekday( var weekday: Int ) -> String {
