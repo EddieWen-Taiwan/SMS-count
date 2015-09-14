@@ -389,7 +389,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yj0-mh-xZ3" userLabel="FixedRetireDateLine">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yj0-mh-xZ3" userLabel="RetireDateLine">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retireDate" translatesAutoresizingMaskIntoConstraints="NO" id="vSX-c1-q1s">
@@ -415,7 +415,7 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="調整退伍日期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLU-6h-HhT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退伍日期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLU-6h-HhT">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                 <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -482,7 +482,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-D7-aW8" userLabel="RetireDateLine">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-D7-aW8" userLabel="FixedRetireDateLine">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retireDate" translatesAutoresizingMaskIntoConstraints="NO" id="9LB-lo-4rV">
@@ -671,11 +671,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="5yi-sn-cEz" firstAttribute="top" secondItem="8VY-D7-aW8" secondAttribute="bottom" id="BdB-JA-UH7"/>
+                                    <constraint firstItem="8VY-D7-aW8" firstAttribute="top" secondItem="Yj0-mh-xZ3" secondAttribute="bottom" id="SFp-hP-OWW"/>
                                     <constraint firstItem="ShV-5V-SSt" firstAttribute="top" secondItem="0kd-0l-gi2" secondAttribute="top" id="XCH-gY-90e"/>
-                                    <constraint firstItem="8VY-D7-aW8" firstAttribute="top" secondItem="ShV-5V-SSt" secondAttribute="bottom" constant="66" id="Yei-jm-f4z">
-                                        <variation key="widthClass=compact" constant="0.0"/>
-                                    </constraint>
                                     <constraint firstItem="ShV-5V-SSt" firstAttribute="leading" secondItem="0kd-0l-gi2" secondAttribute="leading" id="aSQ-72-RTd"/>
                                     <constraint firstAttribute="trailing" secondItem="ShV-5V-SSt" secondAttribute="trailing" id="bYP-ZT-irT"/>
                                     <constraint firstItem="5yi-sn-cEz" firstAttribute="leading" secondItem="0kd-0l-gi2" secondAttribute="leading" id="dLP-Kz-joG"/>
@@ -686,6 +683,9 @@
                                         <variation key="widthClass=compact" constant="172"/>
                                     </constraint>
                                     <constraint firstItem="Yj0-mh-xZ3" firstAttribute="top" secondItem="ShV-5V-SSt" secondAttribute="bottom" id="peg-4I-IdC"/>
+                                    <constraint firstItem="5yi-sn-cEz" firstAttribute="top" secondItem="Yj0-mh-xZ3" secondAttribute="bottom" constant="66" id="uVj-Lc-WZa">
+                                        <variation key="widthClass=compact" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstItem="8VY-D7-aW8" firstAttribute="leading" secondItem="0kd-0l-gi2" secondAttribute="leading" id="yq8-HT-5jY"/>
                                     <constraint firstAttribute="trailing" secondItem="8VY-D7-aW8" secondAttribute="trailing" id="zHd-xV-6Yy"/>
                                 </constraints>
@@ -699,17 +699,17 @@
                                     <mask key="constraints">
                                         <exclude reference="nEi-Bj-ugt"/>
                                         <exclude reference="XCH-gY-90e"/>
-                                        <exclude reference="Yei-jm-f4z"/>
                                         <exclude reference="aSQ-72-RTd"/>
                                         <exclude reference="bYP-ZT-irT"/>
                                         <exclude reference="kQY-eB-2Qt"/>
                                         <exclude reference="lDd-hm-pog"/>
                                         <exclude reference="peg-4I-IdC"/>
+                                        <exclude reference="SFp-hP-OWW"/>
                                         <exclude reference="yq8-HT-5jY"/>
                                         <exclude reference="zHd-xV-6Yy"/>
-                                        <exclude reference="BdB-JA-UH7"/>
                                         <exclude reference="dLP-Kz-joG"/>
                                         <exclude reference="fHY-au-1fw"/>
+                                        <exclude reference="uVj-Lc-WZa"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -722,17 +722,17 @@
                                     <mask key="constraints">
                                         <include reference="nEi-Bj-ugt"/>
                                         <include reference="XCH-gY-90e"/>
-                                        <include reference="Yei-jm-f4z"/>
                                         <include reference="aSQ-72-RTd"/>
                                         <include reference="bYP-ZT-irT"/>
                                         <include reference="kQY-eB-2Qt"/>
                                         <include reference="lDd-hm-pog"/>
                                         <include reference="peg-4I-IdC"/>
+                                        <include reference="SFp-hP-OWW"/>
                                         <include reference="yq8-HT-5jY"/>
                                         <include reference="zHd-xV-6Yy"/>
-                                        <include reference="BdB-JA-UH7"/>
                                         <include reference="dLP-Kz-joG"/>
                                         <include reference="fHY-au-1fw"/>
+                                        <include reference="uVj-Lc-WZa"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -969,8 +969,8 @@
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
                         <outlet property="detailViewHeightConstraint" destination="nEi-Bj-ugt" id="uri-Lp-odj"/>
                         <outlet property="detailViewTopConstraint" destination="Nm5-iC-Vu1" id="PGv-bg-0kk"/>
-                        <outlet property="fixedRetireDateLabel" destination="MFL-CO-GH0" id="NYe-xP-P5x"/>
-                        <outlet property="fixedRetireDateLine" destination="Yj0-mh-xZ3" id="SLW-fQ-x9G"/>
+                        <outlet property="fixedRetireDateLabel" destination="kVr-2u-f4R" id="zFr-Yz-IE0"/>
+                        <outlet property="fixedRetireDateLine" destination="8VY-D7-aW8" id="6xW-eL-f9a"/>
                         <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
                         <outlet property="frontRemainedDaysWord" destination="SMP-hf-NE4" id="RuV-Lq-zfy"/>
                         <outlet property="fullScreenMask" destination="GpE-0J-DE7" id="xqN-Wj-VMv"/>
@@ -978,8 +978,8 @@
                         <outlet property="loadingActivity" destination="gRk-2u-jxd" id="Hdx-fO-o54"/>
                         <outlet property="loadingView" destination="Ddf-HG-K3c" id="CrS-4o-TqZ"/>
                         <outlet property="passedDaysLabel" destination="dx0-W7-8Tm" id="AaB-xt-vfH"/>
-                        <outlet property="retireDateLabel" destination="kVr-2u-f4R" id="udP-e7-hXf"/>
-                        <outlet property="retireDateLineTopConstraint" destination="Yei-jm-f4z" id="aNo-wO-KEQ"/>
+                        <outlet property="passedDaysLineTopConstraint" destination="uVj-Lc-WZa" id="fIl-Tq-Xez"/>
+                        <outlet property="retireDateLabel" destination="cLU-6h-HhT" id="FBT-kG-MMK"/>
                         <outlet property="screenShotScale" destination="OJc-wj-ATG" id="YSt-LB-kak"/>
                         <outlet property="xMark" destination="GpE-0J-DE7" id="pbQ-bl-ane"/>
                     </connections>
