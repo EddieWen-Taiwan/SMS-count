@@ -389,7 +389,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yj0-mh-xZ3" userLabel="FixedRetireDateLine">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yj0-mh-xZ3" userLabel="FixedRetireDateLine">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retireDate" translatesAutoresizingMaskIntoConstraints="NO" id="vSX-c1-q1s">
@@ -674,7 +674,7 @@
                                     <constraint firstItem="5yi-sn-cEz" firstAttribute="top" secondItem="8VY-D7-aW8" secondAttribute="bottom" id="BdB-JA-UH7"/>
                                     <constraint firstItem="ShV-5V-SSt" firstAttribute="top" secondItem="0kd-0l-gi2" secondAttribute="top" id="XCH-gY-90e"/>
                                     <constraint firstItem="8VY-D7-aW8" firstAttribute="top" secondItem="ShV-5V-SSt" secondAttribute="bottom" constant="66" id="Yei-jm-f4z">
-                                        <variation key="widthClass=compact" constant="66"/>
+                                        <variation key="widthClass=compact" constant="0.0"/>
                                     </constraint>
                                     <constraint firstItem="ShV-5V-SSt" firstAttribute="leading" secondItem="0kd-0l-gi2" secondAttribute="leading" id="aSQ-72-RTd"/>
                                     <constraint firstAttribute="trailing" secondItem="ShV-5V-SSt" secondAttribute="trailing" id="bYP-ZT-irT"/>
@@ -683,7 +683,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Yj0-mh-xZ3" secondAttribute="trailing" id="kQY-eB-2Qt"/>
                                     <constraint firstItem="Yj0-mh-xZ3" firstAttribute="leading" secondItem="0kd-0l-gi2" secondAttribute="leading" id="lDd-hm-pog"/>
                                     <constraint firstAttribute="height" constant="300" id="nEi-Bj-ugt">
-                                        <variation key="widthClass=compact" constant="238"/>
+                                        <variation key="widthClass=compact" constant="172"/>
                                     </constraint>
                                     <constraint firstItem="Yj0-mh-xZ3" firstAttribute="top" secondItem="ShV-5V-SSt" secondAttribute="bottom" id="peg-4I-IdC"/>
                                     <constraint firstItem="8VY-D7-aW8" firstAttribute="leading" secondItem="0kd-0l-gi2" secondAttribute="leading" id="yq8-HT-5jY"/>
@@ -967,7 +967,7 @@
                         <outlet property="backRemainedDaysLabel" destination="NyZ-Jo-ImC" id="Bgo-yL-duS"/>
                         <outlet property="backRemainedDaysWord" destination="0oN-8k-ZGV" id="rnI-uH-6mF"/>
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
-                        <outlet property="detailView" destination="0kd-0l-gi2" id="TaJ-5u-CGK"/>
+                        <outlet property="detailViewHeightConstraint" destination="nEi-Bj-ugt" id="uri-Lp-odj"/>
                         <outlet property="detailViewTopConstraint" destination="Nm5-iC-Vu1" id="PGv-bg-0kk"/>
                         <outlet property="fixedRetireDateLabel" destination="MFL-CO-GH0" id="NYe-xP-P5x"/>
                         <outlet property="fixedRetireDateLine" destination="Yj0-mh-xZ3" id="SLW-fQ-x9G"/>

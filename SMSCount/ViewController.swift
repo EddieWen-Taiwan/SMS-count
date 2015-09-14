@@ -16,11 +16,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
     @IBOutlet var backgroundImage: UIImageView!
-
+    
+    @IBOutlet var ghostButton: UIView!
     @IBOutlet var fullScreenMask: UIView!
     @IBOutlet var xMark: UIView!
-    @IBOutlet var ghostButton: UIView!
-    @IBOutlet var detailView: UIView!
+    @IBOutlet var detailViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var fixedRetireDateLine: UIView!
     @IBOutlet var fixedRetireDateLabel: UILabel!
@@ -85,6 +85,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
                 self.retireDateLabel.text = countingClass.getRetireDate()
                 self.passedDaysLabel.text = String( countingClass.getPassedDays() )
+
+                if countingClass.isAutoWeekendFixed() && countingClass.getRetireDate() != countingClass.getFixedRetireDate() {
+                    self.fixedRetireDateLabel.text = countingClass.getFixedRetireDate()
+                    self.fixedRetireDateLine.hidden = false
+                    self.detailViewHeightConstraint.constant = 238
+                    self.retireDateLineTopConstraint.constant = 66
+                } else {
+                    if self.fixedRetireDateLine.hidden == false {
+                        self.fixedRetireDateLine.hidden = true
+                        self.detailViewHeightConstraint.constant = 172
+                        self.retireDateLineTopConstraint.constant = 0
+                    }
+                }
 
                 // Timer Effect
                 animationIndex = 0
