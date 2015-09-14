@@ -22,11 +22,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var xMark: UIView!
     @IBOutlet var detailViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var fixedRetireDateLine: UIView!
     @IBOutlet var fixedRetireDateLabel: UILabel!
-    @IBOutlet var retireDateLabel: UILabel!
-    @IBOutlet var retireDateLineTopConstraint: NSLayoutConstraint!
     @IBOutlet var passedDaysLabel: UILabel!
+    @IBOutlet var passedDaysLineTopConstraint: NSLayoutConstraint!
 
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
@@ -117,13 +117,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     self.fixedRetireDateLabel.text = countingClass.getFixedRetireDate()
                     self.fixedRetireDateLine.hidden = false
                     self.detailViewHeightConstraint.constant = 238
-                    self.retireDateLineTopConstraint.constant = 66
+                    self.passedDaysLineTopConstraint.constant = 66
                 }
             } else {
                 if self.fixedRetireDateLine.hidden == false {
                     self.fixedRetireDateLine.hidden = true
                     self.detailViewHeightConstraint.constant = 172
-                    self.retireDateLineTopConstraint.constant = 0
+                    self.passedDaysLineTopConstraint.constant = 0
                     self.fixedRetireDateLabel.text = ""
                 }
             }
