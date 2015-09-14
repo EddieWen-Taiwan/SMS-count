@@ -87,8 +87,6 @@ class CountingDate {
 
         self.weekendComponent = calendar!.components( .CalendarUnitWeekday, fromDate: realRetireDate! )
         self.fixWeekend()
-
-        println( self.getFixedRetireDate() )
     }
 
     func getFixedRetireDate() -> String {

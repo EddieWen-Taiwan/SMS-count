@@ -22,7 +22,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var ghostButton: UIView!
     @IBOutlet var detailView: UIView!
     @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var fixedRetireDateLine: UIView!
+    @IBOutlet var fixedRetireDateLabel: UILabel!
     @IBOutlet var retireDateLabel: UILabel!
+    @IBOutlet var retireDateLineTopConstraint: NSLayoutConstraint!
     @IBOutlet var passedDaysLabel: UILabel!
 
     @IBOutlet var loadingView: UIView!
@@ -258,7 +261,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.fullScreenMask.hidden = false
         self.detailViewTopConstraint.constant = 120
         UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.fullScreenMask.alpha = 0.6
+            self.fullScreenMask.alpha = 0.8
             self.ghostButton.alpha = 0.0
             self.view.layoutIfNeeded()
         }, completion: { finish in })
