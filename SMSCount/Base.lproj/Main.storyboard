@@ -389,7 +389,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yj0-mh-xZ3" userLabel="RetireDateLine">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yj0-mh-xZ3" userLabel="FinalRetireDateLine">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retireDate" translatesAutoresizingMaskIntoConstraints="NO" id="vSX-c1-q1s">
@@ -482,7 +482,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-D7-aW8" userLabel="FixedRetireDateLine">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-D7-aW8" userLabel="RetireDateLine">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retireDate" translatesAutoresizingMaskIntoConstraints="NO" id="9LB-lo-4rV">
@@ -969,8 +969,7 @@
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
                         <outlet property="detailViewHeightConstraint" destination="nEi-Bj-ugt" id="uri-Lp-odj"/>
                         <outlet property="detailViewTopConstraint" destination="Nm5-iC-Vu1" id="PGv-bg-0kk"/>
-                        <outlet property="fixedRetireDateLabel" destination="kVr-2u-f4R" id="zFr-Yz-IE0"/>
-                        <outlet property="fixedRetireDateLine" destination="8VY-D7-aW8" id="6xW-eL-f9a"/>
+                        <outlet property="finalRetireDateLabel" destination="MFL-CO-GH0" id="TjJ-NU-T7c"/>
                         <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
                         <outlet property="frontRemainedDaysWord" destination="SMP-hf-NE4" id="RuV-Lq-zfy"/>
                         <outlet property="fullScreenMask" destination="GpE-0J-DE7" id="xqN-Wj-VMv"/>
@@ -979,7 +978,8 @@
                         <outlet property="loadingView" destination="Ddf-HG-K3c" id="CrS-4o-TqZ"/>
                         <outlet property="passedDaysLabel" destination="dx0-W7-8Tm" id="AaB-xt-vfH"/>
                         <outlet property="passedDaysLineTopConstraint" destination="uVj-Lc-WZa" id="fIl-Tq-Xez"/>
-                        <outlet property="retireDateLabel" destination="cLU-6h-HhT" id="FBT-kG-MMK"/>
+                        <outlet property="retireDateLabel" destination="kVr-2u-f4R" id="hTJ-L5-k97"/>
+                        <outlet property="retireDateLine" destination="8VY-D7-aW8" id="XA4-KS-HUt"/>
                         <outlet property="screenShotScale" destination="OJc-wj-ATG" id="YSt-LB-kak"/>
                         <outlet property="xMark" destination="GpE-0J-DE7" id="pbQ-bl-ane"/>
                     </connections>

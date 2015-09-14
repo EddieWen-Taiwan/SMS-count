@@ -22,9 +22,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var xMark: UIView!
     @IBOutlet var detailViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var finalRetireDateLabel: UILabel!
+    @IBOutlet var retireDateLine: UIView!
     @IBOutlet var retireDateLabel: UILabel!
-    @IBOutlet var fixedRetireDateLine: UIView!
-    @IBOutlet var fixedRetireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
     @IBOutlet var passedDaysLineTopConstraint: NSLayoutConstraint!
 
@@ -82,8 +82,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     self.frontRemainedDaysWord.text = "剩餘天數"
                 }
                 self.backRemainedDaysLabel.text = String( remainedDays )
-
-                self.retireDateLabel.text = countingClass.getRetireDate()
                 self.passedDaysLabel.text = String( countingClass.getPassedDays() )
 
                 // Timer Effect
@@ -111,20 +109,27 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
                 var timer = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
-            // WeekendFixed layout show/hide
+
+            // DetailView
             if countingClass.isAutoWeekendFixed() && countingClass.getRetireDate() != countingClass.getFixedRetireDate() {
-                if self.fixedRetireDateLabel.text != countingClass.getFixedRetireDate() {
-                    self.fixedRetireDateLabel.text = countingClass.getFixedRetireDate()
-                    self.fixedRetireDateLine.hidden = false
+                // Line 1
+                self.finalRetireDateLabel.text = countingClass.getFixedRetireDate()
+                // Line 2
+                if self.retireDateLabel.text != countingClass.getFixedRetireDate() {
+                    self.retireDateLabel.text = countingClass.getFixedRetireDate()
+                    self.retireDateLine.hidden = false
                     self.detailViewHeightConstraint.constant = 238
                     self.passedDaysLineTopConstraint.constant = 66
                 }
             } else {
-                if self.fixedRetireDateLine.hidden == false {
-                    self.fixedRetireDateLine.hidden = true
+                // Line 1
+                self.finalRetireDateLabel.text = countingClass.getRetireDate()
+                // Line 2
+                if self.retireDateLine.hidden == false {
+                    self.retireDateLine.hidden = true
                     self.detailViewHeightConstraint.constant = 172
                     self.passedDaysLineTopConstraint.constant = 0
-                    self.fixedRetireDateLabel.text = ""
+                    self.retireDateLabel.text = ""
                 }
             }
         } else {
