@@ -23,6 +23,7 @@ class CountingDate {
     var remainedDays: NSDateComponents!
     var passedDays: NSDateComponents!
     var wholeServiceDays: NSDateComponents!
+    var days2beFixed: Int = 0
 
     init() {
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
@@ -85,6 +86,7 @@ class CountingDate {
         self.wholeServiceDays = cal.components( unit, fromDate: enterDate!, toDate: realRetireDate!, options: nil)
 
         self.weekendComponent = calendar!.components( .CalendarUnitWeekday, fromDate: realRetireDate! )
+        self.fixWeekend()
     }
 
     func getFixedRetireDate() -> String {
@@ -100,16 +102,18 @@ class CountingDate {
     }
 
     func getRemainedDays() -> Int {
-        return self.fixWeekend( remainedDays.day )
+        return remainedDays.day - self.days2beFixed
     }
 
     func getCurrentProgress() -> Double {
-        let total_days = self.fixWeekend( wholeServiceDays.day )
+        let total_days = wholeServiceDays.day - self.days2beFixed
         return Double( self.passedDays.day ) / Double( total_days )*100
     }
 
     private func switchWeekday( var weekday: Int ) -> String {
         switch( weekday ) {
+            case -1:
+                return " Fri."
             case 1:
                 return " Sun."
             case 2:
@@ -125,19 +129,19 @@ class CountingDate {
             case 7:
                 return " Sat."
             default:
-                return " Sun."
+                return " ."
         }
     }
 
-    private func fixWeekend( var originalDays: Int ) -> Int {
+    private func fixWeekend() {
 
-        if weekendComponent.weekday == 1 {
-            originalDays -= 2
-        } else if weekendComponent.weekday == 7 {
-            originalDays -= 1
+        if self.weekendComponent.weekday == 1 {
+            self.days2beFixed = 2
+        } else if self.weekendComponent.weekday == 7 {
+            self.days2beFixed = 1
+        } else {
+            self.days2beFixed = 0
         }
-
-        return originalDays
 
     }
 
