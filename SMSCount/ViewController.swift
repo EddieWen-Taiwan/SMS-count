@@ -115,8 +115,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 // Line 1
                 self.finalRetireDateLabel.text = countingClass.getFixedRetireDate()
                 // Line 2
-                if self.retireDateLabel.text != countingClass.getFixedRetireDate() {
-                    self.retireDateLabel.text = countingClass.getFixedRetireDate()
+                if self.retireDateLabel.text != countingClass.getRetireDate() {
+                    self.retireDateLabel.text = countingClass.getRetireDate()
                     self.retireDateLine.hidden = false
                     self.detailViewHeightConstraint.constant = 238
                     self.passedDaysLineTopConstraint.constant = 66
