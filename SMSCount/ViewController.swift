@@ -18,8 +18,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var backgroundImage: UIImageView!
     
     @IBOutlet var ghostButton: UIView!
-    @IBOutlet var fullScreenMask: UIView!
-    @IBOutlet var xMark: UIView!
+    @IBOutlet var visualEffectView: UIVisualEffectView!
+    @IBOutlet var xMark: UIImageView!
     @IBOutlet var detailViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var finalRetireDateLabel: UILabel!
@@ -64,8 +64,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidDisappear(animated)
 
         // Reset animation
-        self.fullScreenMask.hidden = false
-        self.fullScreenMask.alpha = 0
+        self.visualEffectView.hidden = false
+        self.visualEffectView.alpha = 0
         self.ghostButton.alpha = 1
         self.detailViewTopConstraint.constant = self.screenHeight
         self.view.layoutIfNeeded()
@@ -285,24 +285,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func expandDetailView() {
-        self.fullScreenMask.hidden = false
+        self.visualEffectView.hidden = false
         self.detailViewTopConstraint.constant = 120
         UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.fullScreenMask.alpha = 0.8
+            self.visualEffectView.alpha = 0.8
             self.ghostButton.alpha = 0.0
             self.view.layoutIfNeeded()
         }, completion: { finish in })
     }
 
-
     func dismissDetailView() {
+
         self.detailViewTopConstraint.constant = self.screenHeight
         UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.fullScreenMask.alpha = 0.0
+            self.visualEffectView.alpha = 0.0
             self.ghostButton.alpha = 1.0
             self.view.layoutIfNeeded()
         }, completion: { finish in
-            self.fullScreenMask.hidden = true
+            self.visualEffectView.hidden = true
         })
     }
 
