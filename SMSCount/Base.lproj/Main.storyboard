@@ -698,18 +698,18 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="nEi-Bj-ugt"/>
+                                        <exclude reference="dLP-Kz-joG"/>
+                                        <exclude reference="fHY-au-1fw"/>
+                                        <exclude reference="uVj-Lc-WZa"/>
+                                        <exclude reference="SFp-hP-OWW"/>
+                                        <exclude reference="yq8-HT-5jY"/>
+                                        <exclude reference="zHd-xV-6Yy"/>
                                         <exclude reference="XCH-gY-90e"/>
                                         <exclude reference="aSQ-72-RTd"/>
                                         <exclude reference="bYP-ZT-irT"/>
                                         <exclude reference="kQY-eB-2Qt"/>
                                         <exclude reference="lDd-hm-pog"/>
                                         <exclude reference="peg-4I-IdC"/>
-                                        <exclude reference="SFp-hP-OWW"/>
-                                        <exclude reference="yq8-HT-5jY"/>
-                                        <exclude reference="zHd-xV-6Yy"/>
-                                        <exclude reference="dLP-Kz-joG"/>
-                                        <exclude reference="fHY-au-1fw"/>
-                                        <exclude reference="uVj-Lc-WZa"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -721,18 +721,18 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="nEi-Bj-ugt"/>
+                                        <include reference="dLP-Kz-joG"/>
+                                        <include reference="fHY-au-1fw"/>
+                                        <include reference="uVj-Lc-WZa"/>
+                                        <include reference="SFp-hP-OWW"/>
+                                        <include reference="yq8-HT-5jY"/>
+                                        <include reference="zHd-xV-6Yy"/>
                                         <include reference="XCH-gY-90e"/>
                                         <include reference="aSQ-72-RTd"/>
                                         <include reference="bYP-ZT-irT"/>
                                         <include reference="kQY-eB-2Qt"/>
                                         <include reference="lDd-hm-pog"/>
                                         <include reference="peg-4I-IdC"/>
-                                        <include reference="SFp-hP-OWW"/>
-                                        <include reference="yq8-HT-5jY"/>
-                                        <include reference="zHd-xV-6Yy"/>
-                                        <include reference="dLP-Kz-joG"/>
-                                        <include reference="fHY-au-1fw"/>
-                                        <include reference="uVj-Lc-WZa"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1581,13 +1581,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-Eg-6yg" userLabel="AutoWeekend">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="週末調整" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7R-6i-0BB">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="週末退伍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7R-6i-0BB">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退伍日於週末可提前退伍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSR-tx-jp9">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退伍日遇六日週休可提前退伍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSR-tx-jp9">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                 <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
