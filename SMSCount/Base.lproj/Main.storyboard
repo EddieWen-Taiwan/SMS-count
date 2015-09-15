@@ -867,7 +867,7 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="bottom" id="JYE-wh-NGP"/>
                             <constraint firstAttribute="centerY" secondItem="GpE-0J-DE7" secondAttribute="centerY" id="MRe-2B-Q8m"/>
                             <constraint firstItem="0kd-0l-gi2" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Nm5-iC-Vu1">
-                                <variation key="widthClass=compact" constant="150"/>
+                                <variation key="widthClass=compact" constant="740"/>
                             </constraint>
                             <constraint firstItem="OJc-wj-ATG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="O8o-kr-NCZ"/>
                             <constraint firstItem="GpE-0J-DE7" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="Pbv-by-pAQ"/>
