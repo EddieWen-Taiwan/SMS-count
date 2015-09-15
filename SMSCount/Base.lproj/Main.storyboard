@@ -742,22 +742,6 @@
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gRk-2u-jxd">
                                         <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="KeW-IU-ksT"/>
-                                            <constraint firstAttribute="width" constant="50" id="k2c-fy-auX"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="KeW-IU-ksT"/>
-                                                <exclude reference="k2c-fy-auX"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="constraints">
-                                                <exclude reference="KeW-IU-ksT"/>
-                                                <exclude reference="k2c-fy-auX"/>
-                                            </mask>
-                                        </variation>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
