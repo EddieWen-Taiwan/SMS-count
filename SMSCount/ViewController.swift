@@ -51,8 +51,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
+
         var tapXMark = UITapGestureRecognizer(target: self, action: "dismissDetailView")
         self.xMark.addGestureRecognizer(tapXMark)
+
         self.ghostButton.layer.borderColor = UIColor.whiteColor().CGColor
         var tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
         self.ghostButton.addGestureRecognizer(tapGhostButton)
