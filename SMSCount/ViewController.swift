@@ -58,8 +58,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.ghostButton.addGestureRecognizer(tapGhostButton)
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
 
         // Reset animation
         self.fullScreenMask.hidden = false
@@ -67,6 +67,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.ghostButton.alpha = 1
         self.detailViewTopConstraint.constant = self.screenHeight
         self.view.layoutIfNeeded()
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 
         if countingClass.isSettingAllDone() {
             // OK
