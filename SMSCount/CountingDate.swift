@@ -30,7 +30,7 @@ class CountingDate {
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
         calendar!.timeZone = NSTimeZone.localTimeZone()
 
-        var tempTimeString = dateFormatter.stringFromDate( NSDate() )
+        let tempTimeString = dateFormatter.stringFromDate( NSDate() )
         self.currentDate = dateFormatter.dateFromString( tempTimeString )
 
         if self.isSettingAllDone() {
@@ -62,30 +62,30 @@ class CountingDate {
         dayComponent.year = 1
         dayComponent.day = userServiceDays == "1y" ? -1 : 14
 
-        self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: nil)!
+        self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
 
         var userDiscountDays: Int = 0
 
         if let discountDayString = userPreference.stringForKey("discountDays") {
-            userDiscountDays = discountDayString.toInt()!
+            userDiscountDays = Int(discountDayString)!
         } else {
             self.userPreference.setObject( "0", forKey: "discountDays" )
         }
         dayComponent.year = 0
         dayComponent.day = userDiscountDays*(-1)
-        self.realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: nil)!
+        self.realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: [])!
         // 折抵後退伍日 - realRetireDate
 
         let cal = NSCalendar.currentCalendar()
-        let unit: NSCalendarUnit = .CalendarUnitDay
-        self.remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: nil)
+        let unit: NSCalendarUnit = .Day
+        self.remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: [])
         // 剩餘幾天 - remainedDays
-        self.passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: nil)
+        self.passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: [])
         // 已過天數 - passedDays
-        self.wholeServiceDays = cal.components(unit, fromDate: enterDate!, toDate: realRetireDate!, options: nil)
+        self.wholeServiceDays = cal.components(unit, fromDate: enterDate!, toDate: realRetireDate!, options: [])
 
-        self.weekendComponent = calendar!.components( .CalendarUnitWeekday, fromDate: realRetireDate! )
+        self.weekendComponent = calendar!.components( .Weekday, fromDate: realRetireDate! )
         self.fixWeekend()
     }
 
@@ -98,7 +98,7 @@ class CountingDate {
         if self.days2beFixed > 0 {
             dayComponent.year = 0
             dayComponent.day = self.days2beFixed*(-1)
-            fixedRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: fixedRetireDate, options: nil)!
+            fixedRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: fixedRetireDate, options: [])!
         }
         return dateFormatter.stringFromDate( fixedRetireDate ) + switchWeekday( weekendComponent.weekday - self.days2beFixed )
     }
@@ -120,7 +120,7 @@ class CountingDate {
         return Double( self.passedDays.day ) / Double( total_days )*100
     }
 
-    private func switchWeekday( var weekday: Int ) -> String {
+    private func switchWeekday( weekday: Int ) -> String {
         switch( weekday ) {
             case -1:
                 return " Fri."

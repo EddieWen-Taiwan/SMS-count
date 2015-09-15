@@ -22,8 +22,8 @@ class PercentageViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        var chartHeight = self.view.frame.height
-        var chartWidth = chartHeight
+        let chartHeight = self.view.frame.height
+        let chartWidth = chartHeight
         circleView = PercentageCircleView( frame: CGRectMake( (chartWidth-self.view.frame.width)/(-2), 0, chartWidth, chartHeight ) )
         self.view.addSubview( circleView )
     }

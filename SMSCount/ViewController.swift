@@ -39,10 +39,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     let countingClass = CountingDate()
     var screenHeight = UIScreen.mainScreen().bounds.height
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        let currentMonth = NSCalendar.currentCalendar().components( .CalendarUnitMonth, fromDate: NSDate() ).month
+        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
         let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
         monthImage = "background_" + currentMonthStr
     }
@@ -52,11 +52,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
 
-        var tapXMark = UITapGestureRecognizer(target: self, action: "dismissDetailView")
+        let tapXMark = UITapGestureRecognizer(target: self, action: "dismissDetailView")
         self.xMark.addGestureRecognizer(tapXMark)
 
         self.ghostButton.layer.borderColor = UIColor.whiteColor().CGColor
-        var tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
+        let tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
         self.ghostButton.addGestureRecognizer(tapGhostButton)
     }
 
@@ -204,7 +204,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     // Once the User selects a photo, the following delegate method is called.
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let photo = FBSDKSharePhoto()
         photo.image = info[UIImagePickerControllerOriginalImage] as! UIImage
         photo.userGenerated = true

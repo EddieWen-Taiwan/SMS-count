@@ -54,8 +54,8 @@ class PercentageCircleView: UIView {
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
 
         // get currentPercentage
-        var startAngle = CGFloat( M_PI*(0.5)*(-1) )
-        var endAngle = CGFloat( M_PI*2*( percent ) - M_PI*(0.5) )
+        let startAngle = CGFloat( M_PI*(0.5)*(-1) )
+        let endAngle = CGFloat( M_PI*2*( percent ) - M_PI*(0.5) )
         
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
         // The path should be the entire circle.
@@ -68,7 +68,7 @@ class PercentageCircleView: UIView {
         circleLayer.addAnimation(animation, forKey: "animateCircle")
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
