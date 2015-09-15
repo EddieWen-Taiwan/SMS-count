@@ -113,7 +113,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 stageIndexArray[4] = Int( Double(animationArray.count)*0.97 )
                 stageIndexArray[5] = animationArray.count-1
 
-                var timer = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
+                NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
 
             // DetailView
@@ -162,7 +162,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 // let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
                 let mainWindowLayer = self.screenShotScale.layer
                 UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
-                mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext() )
+                mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext()! )
                 let screenShot = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
                 
@@ -229,7 +229,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     updateLabel()
                 } else {
                     timer.invalidate()
-                    var timer2 = NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
+                   NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
                 }
 
             case "stage2":
@@ -237,7 +237,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     updateLabel()
                 } else {
                     timer.invalidate()
-                    var timer3 = NSTimer.scheduledTimerWithTimeInterval( 0.04, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
+                    NSTimer.scheduledTimerWithTimeInterval( 0.04, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
                 }
             
             case "stage3":
@@ -245,7 +245,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     updateLabel()
                 } else {
                     timer.invalidate()
-                    var timer4 = NSTimer.scheduledTimerWithTimeInterval( 0.08, target: self, selector: "daysAddingEffect:", userInfo: "stage4", repeats: true )
+                    NSTimer.scheduledTimerWithTimeInterval( 0.08, target: self, selector: "daysAddingEffect:", userInfo: "stage4", repeats: true )
                 }
 
             case "stage4":
@@ -253,7 +253,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     updateLabel()
                 } else {
                     timer.invalidate()
-                    var timer5 = NSTimer.scheduledTimerWithTimeInterval( 0.16, target: self, selector: "daysAddingEffect:", userInfo: "stage5", repeats: true )
+                    NSTimer.scheduledTimerWithTimeInterval( 0.16, target: self, selector: "daysAddingEffect:", userInfo: "stage5", repeats: true )
                 }
 
             case "stage5":
@@ -261,7 +261,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     updateLabel()
                 } else {
                     timer.invalidate()
-                    var timer6 = NSTimer.scheduledTimerWithTimeInterval( 0.32, target: self, selector: "daysAddingEffect:", userInfo: "stage6", repeats: true )
+                    NSTimer.scheduledTimerWithTimeInterval( 0.32, target: self, selector: "daysAddingEffect:", userInfo: "stage6", repeats: true )
                 }
 
             case "stage6":
@@ -269,7 +269,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     updateLabel()
                 } else {
                     timer.invalidate()
-                    var timer7 = NSTimer.scheduledTimerWithTimeInterval( 0.5, target: self, selector: "daysAddingEffect:", userInfo: "stage7", repeats: true )
+                    NSTimer.scheduledTimerWithTimeInterval( 0.5, target: self, selector: "daysAddingEffect:", userInfo: "stage7", repeats: true )
                 }
 
             case "stage7":

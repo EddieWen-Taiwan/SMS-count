@@ -213,7 +213,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         return ( pickerView == serviceDaysPickerElement ) ? serviceDaysPickerDataSource.count : discountDaysPickerDataSource.count
     }
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return ( pickerView == serviceDaysPickerElement ) ? serviceDaysPickerDataSource[row] : discountDaysPickerDataSource[row]
     }
 
