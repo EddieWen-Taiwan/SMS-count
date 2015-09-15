@@ -37,7 +37,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         dateFormatter.dateFormat = "yyyy / MM / dd"
@@ -106,7 +106,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.showPickerView()
 
         if let userServiceDays = userPreference.stringForKey("serviceDays") {
-            var selectedRow = userServiceDays == "1y" ? 0 : 1
+            let selectedRow = userServiceDays == "1y" ? 0 : 1
             serviceDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
         }
 
@@ -121,7 +121,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.showPickerView()
 
         if let selectedRow = userPreference.stringForKey("discountDays") {
-            discountDaysPickerElement.selectRow( selectedRow.toInt()!, inComponent: 0, animated: false )
+            discountDaysPickerElement.selectRow( Int(selectedRow)!, inComponent: 0, animated: false )
         }
 
     }
@@ -188,7 +188,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         })
 
         if serviceDaysLabel.text != "" {
-            var serviceDay = serviceDaysLabel.text == "一年" ? "1y" : "1y15d"
+            let serviceDay = serviceDaysLabel.text == "一年" ? "1y" : "1y15d"
             userPreference.setObject( serviceDay, forKey: "serviceDays" )
         } else {
             userPreference.removeObjectForKey( "serviceDays" )
@@ -219,7 +219,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == serviceDaysPickerElement {
-            var days: String = row == 0 ? "1y" : "1y15d"
+            let days: String = row == 0 ? "1y" : "1y15d"
             userPreference.setObject( days, forKey: "serviceDays" )
         } else if pickerView == discountDaysPickerElement {
             userPreference.setObject( row, forKey: "discountDays" )
