@@ -66,6 +66,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
             discountDaysLabel.text = userDiscountDays
         }
+        self.autoWeekendSwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
         self.autoWeekendSwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
