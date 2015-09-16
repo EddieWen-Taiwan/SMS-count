@@ -77,7 +77,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if countingClass.isSettingAllDone() {
             // OK
             countingClass.updateDate()
-            print( countingClass.getRemainedDays() )
             if self.frontRemainedDaysLabel.text != String( countingClass.getRemainedDays() ) {
                 var remainedDays = countingClass.getRemainedDays()
                 if remainedDays < 0 {
