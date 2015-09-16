@@ -19,7 +19,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     @IBOutlet var ghostButton: UIView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
-    @IBOutlet var xMark: UIImageView!
+
     @IBOutlet var detailViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var finalRetireDateLabel: UILabel!
@@ -27,7 +27,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
     @IBOutlet var passedDaysLineTopConstraint: NSLayoutConstraint!
-
+    @IBOutlet var xMark: UIView!
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
 
@@ -288,7 +288,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.visualEffectView.hidden = false
         self.detailViewTopConstraint.constant = 120
         UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.visualEffectView.alpha = 0.8
+            self.visualEffectView.alpha = 0.9
             self.ghostButton.alpha = 0.0
             self.view.layoutIfNeeded()
         }, completion: { finish in })
