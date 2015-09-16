@@ -145,12 +145,14 @@ class CountingDate {
 
     private func fixWeekend() {
 
-        if self.weekendComponent.weekday == 1 {
-            self.days2beFixed = 2
-        } else if self.weekendComponent.weekday == 7 {
-            self.days2beFixed = 1
-        } else {
-            self.days2beFixed = 0
+        self.days2beFixed = 0
+
+        if self.isAutoWeekendFixed() {
+            if self.weekendComponent.weekday == 1 {
+                self.days2beFixed = 2
+            } else if self.weekendComponent.weekday == 7 {
+                self.days2beFixed = 1
+            }
         }
 
     }
