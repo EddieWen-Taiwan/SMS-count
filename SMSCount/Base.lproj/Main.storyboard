@@ -1758,6 +1758,7 @@
                                     <constraint firstAttribute="bottom" secondItem="spS-BM-WXb" secondAttribute="bottom" id="JbO-xL-h8R">
                                         <variation key="widthClass=compact" constant="0.0"/>
                                     </constraint>
+                                    <constraint firstItem="spS-BM-WXb" firstAttribute="centerX" secondItem="2ml-Wm-2mg" secondAttribute="centerX" id="Tje-TZ-E0S"/>
                                     <constraint firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" id="qzk-Ft-dXC"/>
                                     <constraint firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="uXc-fG-7Md"/>
                                 </constraints>
@@ -1768,6 +1769,7 @@
                                     <mask key="constraints">
                                         <exclude reference="BF6-b6-0mE"/>
                                         <exclude reference="JbO-xL-h8R"/>
+                                        <exclude reference="Tje-TZ-E0S"/>
                                         <exclude reference="qzk-Ft-dXC"/>
                                         <exclude reference="uXc-fG-7Md"/>
                                     </mask>
@@ -1779,6 +1781,7 @@
                                     <mask key="constraints">
                                         <include reference="BF6-b6-0mE"/>
                                         <include reference="JbO-xL-h8R"/>
+                                        <include reference="Tje-TZ-E0S"/>
                                         <include reference="qzk-Ft-dXC"/>
                                         <include reference="uXc-fG-7Md"/>
                                     </mask>
