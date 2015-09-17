@@ -1693,7 +1693,6 @@
                                                 </variation>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.87104235197368418" green="0.63529411759999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Ajt-y4-q3x" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="6E4-ck-GkA"/>
                                             <constraint firstAttribute="trailing" secondItem="euX-9L-J7X" secondAttribute="trailing" id="7j8-QG-2LB"/>
@@ -1705,7 +1704,9 @@
                                             <constraint firstItem="Akh-bt-ITr" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="gCo-nU-rdD"/>
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="hPQ-GH-Rjn"/>
                                             <constraint firstItem="euX-9L-J7X" firstAttribute="top" secondItem="Ajt-y4-q3x" secondAttribute="bottom" constant="10" id="ld7-C6-DTv"/>
-                                            <constraint firstAttribute="height" constant="1000" id="vfF-uK-Zj1"/>
+                                            <constraint firstAttribute="height" constant="1000" id="vfF-uK-Zj1">
+                                                <variation key="widthClass=compact" constant="400"/>
+                                            </constraint>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
