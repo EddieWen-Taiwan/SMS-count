@@ -23,7 +23,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet var serviceDaysPickerView: UIView!
     @IBOutlet var serviceDaysPickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var serviceDaysPickerElement: UIPickerView!
-    var serviceDaysPickerDataSource = [ "一年", "一年十五天" ]
+    var serviceDaysPickerDataSource = [ "四個月", "四個月五天", "一年", "一年十五天", "三年" ]
 
     @IBOutlet var discountDaysPickerView: UIView!
     @IBOutlet var discountDaysPickerViewBottomConstraint: NSLayoutConstraint!
@@ -60,7 +60,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             enterDateLabel.text = userEnterDate
         }
         if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            serviceDaysLabel.text = userServiceDays == "1y" ? "一年" : "一年十五天"
+            print(userServiceDays)
+            serviceDaysLabel.text = switchPeriod( userServiceDays )
         }
         if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
             discountDaysLabel.text = userDiscountDays
@@ -104,9 +105,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         self.showPickerView()
 
-        if let userServiceDays = userPreference.stringForKey("serviceDays") {
-            let selectedRow = userServiceDays == "1y" ? 0 : 1
-            serviceDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
+        if let userServiceDays: Int = userPreference.integerForKey("serviceDays") {
+            serviceDaysPickerElement.selectRow( userServiceDays, inComponent: 0, animated: false )
         }
 
     }
@@ -119,8 +119,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         self.showPickerView()
 
-        if let selectedRow = userPreference.stringForKey("discountDays") {
-            discountDaysPickerElement.selectRow( Int(selectedRow)!, inComponent: 0, animated: false )
+        if let selectedRow: Int = userPreference.integerForKey("discountDays") {
+            discountDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
         }
 
     }
@@ -152,10 +152,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBAction func serviceDaysDoneIsPressed(sender: AnyObject) {
 
         if userPreference.stringForKey("serviceDays") == nil {
-            userPreference.setObject( "1y", forKey: "serviceDays" )
+            userPreference.setObject( 0, forKey: "serviceDays" )
         }
 
-        serviceDaysLabel.text = userPreference.stringForKey("serviceDays") == "1y" ? "一年" : "一年十五天"
+        serviceDaysLabel.text = self.switchPeriod( userPreference.stringForKey("serviceDays")! )
 
         dismissScreenMask()
 
@@ -187,8 +187,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         })
 
         if serviceDaysLabel.text != "" {
-            let serviceDay = serviceDaysLabel.text == "一年" ? "1y" : "1y15d"
-            userPreference.setObject( serviceDay, forKey: "serviceDays" )
+            userPreference.setObject( self.switchPeriod(serviceDaysLabel.text!), forKey: "serviceDays" )
         } else {
             userPreference.removeObjectForKey( "serviceDays" )
         }
@@ -209,20 +208,45 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return ( pickerView == serviceDaysPickerElement ) ? serviceDaysPickerDataSource.count : discountDaysPickerDataSource.count
+        return pickerView == serviceDaysPickerElement ? serviceDaysPickerDataSource.count : discountDaysPickerDataSource.count
     }
 
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return ( pickerView == serviceDaysPickerElement ) ? serviceDaysPickerDataSource[row] : discountDaysPickerDataSource[row]
+        return pickerView == serviceDaysPickerElement ? serviceDaysPickerDataSource[row] : discountDaysPickerDataSource[row]
     }
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == serviceDaysPickerElement {
-            let days: String = row == 0 ? "1y" : "1y15d"
-            userPreference.setObject( days, forKey: "serviceDays" )
-        } else if pickerView == discountDaysPickerElement {
-            userPreference.setObject( row, forKey: "discountDays" )
+        let forKeyString = pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays"
+        self.userPreference.setObject( row, forKey: forKeyString )
+    }
+
+    func switchPeriod( period: String ) -> String {
+        var output: String = ""
+        switch(period) {
+            case "0":
+                output = "四個月"
+            case "1":
+                output = "四個月五天"
+            case "2":
+                output = "一年"
+            case "3":
+                output = "一年十五天"
+            case "4":
+                output = "三年"
+            case "四個月":
+                output = "0"
+            case "四個月五天":
+                output = "1"
+            case "一年":
+                output = "2"
+            case "一年十五天":
+                output = "3"
+            case "三年":
+                output = "4"
+            default:
+                output = "."
         }
+        return output
     }
 
     override func didReceiveMemoryWarning() {
