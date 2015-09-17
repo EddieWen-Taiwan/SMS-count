@@ -58,13 +58,34 @@ class CountingDate {
         self.enterDate = dateFormatter.dateFromString( userPreference.stringForKey("enterDate")! )!
         // 入伍日 - enterDate
 
-        let userServiceDays = userPreference.stringForKey("serviceDays")!
-        dayComponent.year = 1
-        dayComponent.day = userServiceDays == "1y" ? -1 : 14
+        let userServiceDays: Int = userPreference.integerForKey("serviceDays")
+        switch( userServiceDays ) {
+            case 0:
+                dayComponent.year = 0
+                dayComponent.month = 4
+                dayComponent.day = -1
+            case 1:
+                dayComponent.year = 0
+                dayComponent.month = 4
+                dayComponent.day = 5-1
+            case 2:
+                dayComponent.year = 1
+                dayComponent.month = 0
+                dayComponent.day = -1
+            case 3:
+                dayComponent.year = 1
+                dayComponent.month = 0
+                dayComponent.day = 15-1
+            default:
+                // as value = 4
+                dayComponent.year = 3
+                dayComponent.month = 0
+                dayComponent.day = -1
+        }
 
         self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
-
+print(self.defaultRetireDate)
         var userDiscountDays: Int = 0
 
         if let discountDayString = userPreference.stringForKey("discountDays") {
@@ -73,10 +94,11 @@ class CountingDate {
             self.userPreference.setObject( "0", forKey: "discountDays" )
         }
         dayComponent.year = 0
+        dayComponent.month = 0
         dayComponent.day = userDiscountDays*(-1)
         self.realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: [])!
         // 折抵後退伍日 - realRetireDate
-
+print(self.realRetireDate)
         let cal = NSCalendar.currentCalendar()
         let unit: NSCalendarUnit = .Day
         self.remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: [])
