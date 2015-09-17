@@ -36,7 +36,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 

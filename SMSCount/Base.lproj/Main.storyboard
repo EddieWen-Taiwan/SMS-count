@@ -1704,9 +1704,7 @@
                                             <constraint firstItem="Akh-bt-ITr" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="gCo-nU-rdD"/>
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="hPQ-GH-Rjn"/>
                                             <constraint firstItem="euX-9L-J7X" firstAttribute="top" secondItem="Ajt-y4-q3x" secondAttribute="bottom" constant="10" id="ld7-C6-DTv"/>
-                                            <constraint firstAttribute="height" constant="1000" id="vfF-uK-Zj1">
-                                                <variation key="widthClass=compact" constant="400"/>
-                                            </constraint>
+                                            <constraint firstAttribute="height" constant="400" id="vfF-uK-Zj1"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
