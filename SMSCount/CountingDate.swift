@@ -85,7 +85,7 @@ class CountingDate {
 
         self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
-print(self.defaultRetireDate)
+
         var userDiscountDays: Int = 0
 
         if let discountDayString = userPreference.stringForKey("discountDays") {
@@ -98,7 +98,7 @@ print(self.defaultRetireDate)
         dayComponent.day = userDiscountDays*(-1)
         self.realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: [])!
         // 折抵後退伍日 - realRetireDate
-print(self.realRetireDate)
+
         let cal = NSCalendar.currentCalendar()
         let unit: NSCalendarUnit = .Day
         self.remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: [])
@@ -119,6 +119,7 @@ print(self.realRetireDate)
         var fixedRetireDate = self.realRetireDate
         if self.days2beFixed > 0 {
             dayComponent.year = 0
+            dayComponent.month = 0
             dayComponent.day = self.days2beFixed*(-1)
             fixedRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: fixedRetireDate, options: [])!
         }
