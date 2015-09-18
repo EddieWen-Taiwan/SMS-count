@@ -98,10 +98,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                         animationArray.append( String(i) )
                     }
                 } else {
-                    for var i = 1; i <= 97; i++ {
+                    for var i = 1; i <= 95; i++ {
                         animationArray.append( String( format: "%.f", Double( (remainedDays-3)*i )*0.01 ) )
                     }
-                    for var i = 98; i <= 100; i++ {
+                    for var i = 96; i <= 100; i++ {
                         animationArray.append( String( remainedDays-(100-i) ) )
                     }
                 }
