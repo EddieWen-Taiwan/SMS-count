@@ -60,7 +60,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             enterDateLabel.text = userEnterDate
         }
         if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            print(userServiceDays)
             serviceDaysLabel.text = switchPeriod( userServiceDays )
         }
         if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
