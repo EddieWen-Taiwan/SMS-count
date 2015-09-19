@@ -292,7 +292,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <visualEffectView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="liD-GH-Tz4">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="liD-GH-Tz4">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="evA-tM-Tdp">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -302,13 +302,14 @@
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="dNf-dI-Hne">
-                                                    <variation key="widthClass=compact" constant="20"/>
+                                                    <variation key="widthClass=compact" constant="30"/>
                                                 </constraint>
                                                 <constraint firstAttribute="width" constant="30" id="x6B-fd-628">
-                                                    <variation key="widthClass=compact" constant="20"/>
+                                                    <variation key="widthClass=compact" constant="30"/>
                                                 </constraint>
                                             </constraints>
-                                            <state key="normal" image="x-mark"/>
+                                            <state key="normal" image="xMark"/>
+                                            <state key="highlighted" image="xMark-hover"/>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="dNf-dI-Hne"/>
@@ -327,8 +328,12 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="f4F-BT-4gC" secondAttribute="trailing" constant="20" id="7xp-Bb-wRB"/>
-                                        <constraint firstItem="f4F-BT-4gC" firstAttribute="top" secondItem="evA-tM-Tdp" secondAttribute="top" constant="20" id="dgA-sB-Omb"/>
+                                        <constraint firstAttribute="trailing" secondItem="f4F-BT-4gC" secondAttribute="trailing" constant="20" id="7xp-Bb-wRB">
+                                            <variation key="widthClass=compact" constant="10"/>
+                                        </constraint>
+                                        <constraint firstItem="f4F-BT-4gC" firstAttribute="top" secondItem="evA-tM-Tdp" secondAttribute="top" constant="20" id="dgA-sB-Omb">
+                                            <variation key="widthClass=compact" constant="10"/>
+                                        </constraint>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
@@ -883,28 +888,28 @@
                                 <exclude reference="2un-Bn-97q"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="FIi-zT-JCn"/>
-                                <exclude reference="TbF-xO-JgJ"/>
-                                <exclude reference="d8l-xC-fSo"/>
+                                <exclude reference="JYE-wh-NGP"/>
+                                <exclude reference="asR-a9-jcL"/>
                                 <exclude reference="EhH-5p-M0Q"/>
                                 <exclude reference="rb5-wd-NGA"/>
                                 <exclude reference="vFm-g9-6Z0"/>
+                                <exclude reference="J6k-Cb-iuw"/>
+                                <exclude reference="bCG-UF-qOq"/>
+                                <exclude reference="z6w-x5-uDM"/>
+                                <exclude reference="Nm5-iC-Vu1"/>
+                                <exclude reference="SFd-7l-Iif"/>
+                                <exclude reference="XOe-9t-hdr"/>
+                                <exclude reference="FIi-zT-JCn"/>
+                                <exclude reference="TbF-xO-JgJ"/>
+                                <exclude reference="d8l-xC-fSo"/>
+                                <exclude reference="T0U-9S-bjt"/>
+                                <exclude reference="WuZ-pp-MOu"/>
                                 <exclude reference="GTA-w4-XLv"/>
                                 <exclude reference="ITd-jN-iMd"/>
                                 <exclude reference="O8o-kr-NCZ"/>
                                 <exclude reference="2YI-tE-a3t"/>
                                 <exclude reference="gMI-CS-4Lh"/>
                                 <exclude reference="zk8-eZ-8IV"/>
-                                <exclude reference="J6k-Cb-iuw"/>
-                                <exclude reference="bCG-UF-qOq"/>
-                                <exclude reference="z6w-x5-uDM"/>
-                                <exclude reference="T0U-9S-bjt"/>
-                                <exclude reference="WuZ-pp-MOu"/>
-                                <exclude reference="JYE-wh-NGP"/>
-                                <exclude reference="asR-a9-jcL"/>
-                                <exclude reference="Nm5-iC-Vu1"/>
-                                <exclude reference="SFd-7l-Iif"/>
-                                <exclude reference="XOe-9t-hdr"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -918,28 +923,28 @@
                                 <include reference="2un-Bn-97q"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="FIi-zT-JCn"/>
-                                <include reference="TbF-xO-JgJ"/>
-                                <include reference="d8l-xC-fSo"/>
+                                <include reference="JYE-wh-NGP"/>
+                                <include reference="asR-a9-jcL"/>
                                 <include reference="EhH-5p-M0Q"/>
                                 <include reference="rb5-wd-NGA"/>
                                 <include reference="vFm-g9-6Z0"/>
+                                <include reference="J6k-Cb-iuw"/>
+                                <include reference="bCG-UF-qOq"/>
+                                <include reference="z6w-x5-uDM"/>
+                                <include reference="Nm5-iC-Vu1"/>
+                                <include reference="SFd-7l-Iif"/>
+                                <include reference="XOe-9t-hdr"/>
+                                <include reference="FIi-zT-JCn"/>
+                                <include reference="TbF-xO-JgJ"/>
+                                <include reference="d8l-xC-fSo"/>
+                                <include reference="T0U-9S-bjt"/>
+                                <include reference="WuZ-pp-MOu"/>
                                 <include reference="GTA-w4-XLv"/>
                                 <include reference="ITd-jN-iMd"/>
                                 <include reference="O8o-kr-NCZ"/>
                                 <include reference="2YI-tE-a3t"/>
                                 <include reference="gMI-CS-4Lh"/>
                                 <include reference="zk8-eZ-8IV"/>
-                                <include reference="J6k-Cb-iuw"/>
-                                <include reference="bCG-UF-qOq"/>
-                                <include reference="z6w-x5-uDM"/>
-                                <include reference="T0U-9S-bjt"/>
-                                <include reference="WuZ-pp-MOu"/>
-                                <include reference="JYE-wh-NGP"/>
-                                <include reference="asR-a9-jcL"/>
-                                <include reference="Nm5-iC-Vu1"/>
-                                <include reference="SFd-7l-Iif"/>
-                                <include reference="XOe-9t-hdr"/>
                             </mask>
                         </variation>
                     </view>
@@ -2557,6 +2562,7 @@
         <image name="retireDate" width="30" height="30"/>
         <image name="setting" width="30" height="30"/>
         <image name="sticker" width="80" height="80"/>
-        <image name="x-mark" width="30" height="30"/>
+        <image name="xMark" width="40" height="40"/>
+        <image name="xMark-hover" width="40" height="40"/>
     </resources>
 </document>
