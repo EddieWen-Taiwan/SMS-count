@@ -321,6 +321,9 @@
                                                     <include reference="x6B-fd-628"/>
                                                 </mask>
                                             </variation>
+                                            <connections>
+                                                <action selector="dismissDetailView:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3lM-Ge-fPT"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
