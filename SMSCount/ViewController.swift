@@ -291,15 +291,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }, completion: { finish in })
     }
 
-    func dismissDetailView() {
-
+    @IBAction func dismissDetailView(sender: AnyObject) {
         self.detailViewTopConstraint.constant = self.screenHeight
         UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.visualEffectView.alpha = 0.0
             self.ghostButton.alpha = 1.0
             self.view.layoutIfNeeded()
-        }, completion: { finish in
-            self.visualEffectView.hidden = true
+            }, completion: { finish in
+                self.visualEffectView.hidden = true
         })
     }
 
