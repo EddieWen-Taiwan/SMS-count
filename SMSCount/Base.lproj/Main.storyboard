@@ -1027,10 +1027,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pn-K5-iUY">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlm-uS-yDp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
@@ -1290,6 +1286,9 @@
                                     <constraint firstItem="BjK-Rs-1wA" firstAttribute="leading" secondItem="Tlm-uS-yDp" secondAttribute="leading" id="avM-n0-Scl"/>
                                     <constraint firstAttribute="bottom" secondItem="BjK-Rs-1wA" secondAttribute="bottom" id="i4P-nm-ZKN"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="alwaysBounceVertical" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="BjK-Rs-1wA"/>
@@ -1367,17 +1366,13 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="42o-T5-48Z" secondAttribute="trailing" id="18n-wl-UEc"/>
                             <constraint firstItem="Tlm-uS-yDp" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="5j1-Vk-08Z"/>
-                            <constraint firstItem="Gv2-N8-ce4" firstAttribute="top" secondItem="9pn-K5-iUY" secondAttribute="bottom" id="7bi-hd-B3w"/>
-                            <constraint firstAttribute="trailing" secondItem="9pn-K5-iUY" secondAttribute="trailing" id="DtN-MC-qLE"/>
                             <constraint firstAttribute="trailing" secondItem="cDX-yj-aHc" secondAttribute="trailing" id="Fkc-r9-2H9"/>
                             <constraint firstItem="07l-yk-BiA" firstAttribute="top" secondItem="nSo-7u-Zv2" secondAttribute="top" id="Hap-CH-dzt"/>
-                            <constraint firstItem="9pn-K5-iUY" firstAttribute="top" secondItem="07l-yk-BiA" secondAttribute="bottom" id="J33-sY-eeY"/>
                             <constraint firstItem="42o-T5-48Z" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="LR8-z5-PcR"/>
                             <constraint firstItem="07l-yk-BiA" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="MxA-Uv-Xmf"/>
                             <constraint firstItem="cDX-yj-aHc" firstAttribute="top" secondItem="nSo-7u-Zv2" secondAttribute="top" id="QX5-oC-dWi"/>
                             <constraint firstAttribute="trailing" secondItem="07l-yk-BiA" secondAttribute="trailing" id="Qnv-Rj-4AS"/>
                             <constraint firstItem="cDX-yj-aHc" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="SO5-ZE-lE1"/>
-                            <constraint firstItem="9pn-K5-iUY" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="TIM-LR-xkG"/>
                             <constraint firstItem="BUv-c9-YJF" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" id="TUL-8P-43n"/>
                             <constraint firstItem="07l-yk-BiA" firstAttribute="height" secondItem="nSo-7u-Zv2" secondAttribute="height" multiplier="0.5" id="Y1g-BS-tcX"/>
                             <constraint firstItem="Tlm-uS-yDp" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" id="Y4R-E5-Qpb"/>
@@ -1393,7 +1388,6 @@
                             <mask key="subviews">
                                 <exclude reference="07l-yk-BiA"/>
                                 <exclude reference="BUv-c9-YJF"/>
-                                <exclude reference="9pn-K5-iUY"/>
                                 <exclude reference="Tlm-uS-yDp"/>
                                 <exclude reference="42o-T5-48Z"/>
                                 <exclude reference="cDX-yj-aHc"/>
@@ -1402,15 +1396,11 @@
                                 <exclude reference="18n-wl-UEc"/>
                                 <exclude reference="LR8-z5-PcR"/>
                                 <exclude reference="zmd-Iy-vLS"/>
-                                <exclude reference="7bi-hd-B3w"/>
                                 <exclude reference="fAi-Jp-L83"/>
                                 <exclude reference="Hap-CH-dzt"/>
                                 <exclude reference="MxA-Uv-Xmf"/>
                                 <exclude reference="Qnv-Rj-4AS"/>
                                 <exclude reference="Y1g-BS-tcX"/>
-                                <exclude reference="DtN-MC-qLE"/>
-                                <exclude reference="J33-sY-eeY"/>
-                                <exclude reference="TIM-LR-xkG"/>
                                 <exclude reference="TUL-8P-43n"/>
                                 <exclude reference="nZw-ml-X8P"/>
                                 <exclude reference="ptL-6i-PmY"/>
@@ -1428,7 +1418,6 @@
                             <mask key="subviews">
                                 <include reference="07l-yk-BiA"/>
                                 <include reference="BUv-c9-YJF"/>
-                                <include reference="9pn-K5-iUY"/>
                                 <include reference="Tlm-uS-yDp"/>
                                 <include reference="42o-T5-48Z"/>
                                 <include reference="cDX-yj-aHc"/>
@@ -1437,15 +1426,11 @@
                                 <include reference="18n-wl-UEc"/>
                                 <include reference="LR8-z5-PcR"/>
                                 <include reference="zmd-Iy-vLS"/>
-                                <include reference="7bi-hd-B3w"/>
                                 <include reference="fAi-Jp-L83"/>
                                 <include reference="Hap-CH-dzt"/>
                                 <include reference="MxA-Uv-Xmf"/>
                                 <include reference="Qnv-Rj-4AS"/>
                                 <include reference="Y1g-BS-tcX"/>
-                                <include reference="DtN-MC-qLE"/>
-                                <include reference="J33-sY-eeY"/>
-                                <include reference="TIM-LR-xkG"/>
                                 <include reference="TUL-8P-43n"/>
                                 <include reference="nZw-ml-X8P"/>
                                 <include reference="ptL-6i-PmY"/>
@@ -2072,6 +2057,9 @@
                                     <constraint firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" id="qzk-Ft-dXC"/>
                                     <constraint firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="uXc-fG-7Md"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="alwaysBounceVertical" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="spS-BM-WXb"/>

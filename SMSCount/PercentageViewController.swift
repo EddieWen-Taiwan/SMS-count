@@ -35,7 +35,7 @@ class PercentageViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //        self.backgroundImage.image = UIImage(named: monthImage)
-        self.profileHeightConstraint.constant = self.view.frame.height-64-50-95
+        self.profileHeightConstraint.constant = self.view.frame.height-64-50-100
         self.updateStageText()
 
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
