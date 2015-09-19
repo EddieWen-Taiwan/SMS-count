@@ -1241,6 +1241,14 @@
                                             <constraint firstItem="Ksz-gc-Zql" firstAttribute="leading" secondItem="BjK-Rs-1wA" secondAttribute="leading" id="qBq-w0-Cvs"/>
                                             <constraint firstItem="Ksz-gc-Zql" firstAttribute="top" secondItem="BjK-Rs-1wA" secondAttribute="top" id="sja-Eb-MvB"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                <real key="value" value="0.20000000000000001"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                <size key="value" width="0.0" height="-2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="Ksz-gc-Zql"/>
