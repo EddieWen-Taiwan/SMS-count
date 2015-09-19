@@ -10,6 +10,7 @@ import UIKit
 
 class PercentageViewController: UIViewController {
 
+    @IBOutlet var pieChartView: UIView!
     @IBOutlet var percentageLabel: UILabel!
     @IBOutlet var percentSymbol: UILabel!
 
@@ -22,10 +23,12 @@ class PercentageViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        let chartHeight = self.view.frame.height
-        let chartWidth = chartHeight
-        circleView = PercentageCircleView( frame: CGRectMake( (chartWidth-self.view.frame.width)/(-2), 0, chartWidth, chartHeight ) )
-        self.view.addSubview( circleView )
+//        let chartHeight = self.pieChartView.frame.height
+//        let chartWidth = chartHeight
+//print(self.pieChartView.layer)
+        circleView = PercentageCircleView( frame: self.pieChartView.frame )
+//        circleView.layer.zPosition = 30
+        self.pieChartView.addSubview( circleView )
     }
 
     override func viewDidAppear(animated: Bool) {
