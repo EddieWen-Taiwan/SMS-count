@@ -67,39 +67,41 @@ class PercentageViewController: UIViewController {
     }
 
     func updateStageText( process: Double ) {
-        var stageText: String  = ""
-        if process < 0 {
-            stageText = "尚未入伍"
-        } else if process >= 100 {
-            stageText = "呼～ 還好我退了"
-        } else {
-            switch( Int( floor(process/10) ) ) {
-                case 0:
-                    stageText = "扣你兩分有沒有問題"
-                case 1:
-                    stageText = "菜蟲掉滿地"
-                case 2:
-                    stageText = "菜蟲掉滿地"
-                case 3:
-                    stageText = "3"
-                case 4:
-                    stageText = "4"
-                case 5:
-                    stageText = "5"
-                case 6:
-                    stageText = "6"
-                case 7:
-                    stageText = "7"
-                case 8:
-                    stageText = "8"
-                case 9:
-                    stageText = "9"
-                default:
-                    stageText = "尚未入伍"
-            }
-            
-        }
-        self.stageText.text = stageText
+        let songArray = [ "替代役青年們夢想起飛", "像螞蟻默默做自己", "愛心服務責任紀律", "沒有懷疑沒有怨言" ]
+        let status: String = songArray[ Int( arc4random_uniform(4) ) ]
+//        var stageText: String  = ""
+//        if process < 0 {
+//            stageText = "尚未入伍"
+//        } else if process >= 100 {
+//            stageText = "呼～ 還好我退了"
+//        } else {
+//            switch( Int( floor(process/10) ) ) {
+//                case 0:
+//                    stageText = "扣你兩分有沒有問題"
+//                case 1:
+//                    stageText = "菜蟲掉滿地"
+//                case 2:
+//                    stageText = "菜蟲掉滿地"
+//                case 3:
+//                    stageText = "3"
+//                case 4:
+//                    stageText = "4"
+//                case 5:
+//                    stageText = "5"
+//                case 6:
+//                    stageText = "6"
+//                case 7:
+//                    stageText = "7"
+//                case 8:
+//                    stageText = "8"
+//                case 9:
+//                    stageText = "9"
+//                default:
+//                    stageText = "尚未入伍"
+//            }
+//            
+//        }
+        self.stageText.text = status
     }
 
     override func didReceiveMemoryWarning() {
