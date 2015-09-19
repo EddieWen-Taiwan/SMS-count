@@ -1020,7 +1020,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="repeat-image" translatesAutoresizingMaskIntoConstraints="NO" id="07l-yk-BiA" userLabel="Background">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="repeat-image" translatesAutoresizingMaskIntoConstraints="NO" id="07l-yk-BiA" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tlm-uS-yDp">
