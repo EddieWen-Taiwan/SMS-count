@@ -27,7 +27,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var retireDateLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
     @IBOutlet var passedDaysLineTopConstraint: NSLayoutConstraint!
-    @IBOutlet var xMark: UIView!
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
 
@@ -51,10 +50,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
-
-        let tapXMark = UITapGestureRecognizer(target: self, action: "dismissDetailView")
-        self.xMark.addGestureRecognizer(tapXMark)
-
         self.ghostButton.layer.borderColor = UIColor.whiteColor().CGColor
         let tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
         self.ghostButton.addGestureRecognizer(tapGhostButton)
