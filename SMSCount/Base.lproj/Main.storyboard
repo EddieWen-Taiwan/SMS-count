@@ -1217,7 +1217,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="krP-YA-Kr5" firstAttribute="centerX" secondItem="BjK-Rs-1wA" secondAttribute="centerX" id="2eB-o9-SZh"/>
-                                            <constraint firstAttribute="height" constant="350" id="BAZ-24-tXs"/>
+                                            <constraint firstAttribute="height" constant="350" id="BAZ-24-tXs">
+                                                <variation key="widthClass=compact" constant="385"/>
+                                            </constraint>
                                             <constraint firstItem="krP-YA-Kr5" firstAttribute="centerY" secondItem="BjK-Rs-1wA" secondAttribute="centerY" id="c8X-zQ-aKw">
                                                 <variation key="widthClass=compact" constant="35"/>
                                             </constraint>
