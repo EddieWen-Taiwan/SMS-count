@@ -1023,11 +1023,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="repeat-image" translatesAutoresizingMaskIntoConstraints="NO" id="07l-yk-BiA" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUv-c9-YJF" userLabel="Mask">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlm-uS-yDp">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tlm-uS-yDp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjK-Rs-1wA" userLabel="Profile">
@@ -1286,9 +1282,6 @@
                                     <constraint firstItem="BjK-Rs-1wA" firstAttribute="leading" secondItem="Tlm-uS-yDp" secondAttribute="leading" id="avM-n0-Scl"/>
                                     <constraint firstAttribute="bottom" secondItem="BjK-Rs-1wA" secondAttribute="bottom" id="i4P-nm-ZKN"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="alwaysBounceVertical" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="BjK-Rs-1wA"/>
@@ -1373,21 +1366,16 @@
                             <constraint firstItem="cDX-yj-aHc" firstAttribute="top" secondItem="nSo-7u-Zv2" secondAttribute="top" id="QX5-oC-dWi"/>
                             <constraint firstAttribute="trailing" secondItem="07l-yk-BiA" secondAttribute="trailing" id="Qnv-Rj-4AS"/>
                             <constraint firstItem="cDX-yj-aHc" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="SO5-ZE-lE1"/>
-                            <constraint firstItem="BUv-c9-YJF" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" id="TUL-8P-43n"/>
-                            <constraint firstItem="07l-yk-BiA" firstAttribute="height" secondItem="nSo-7u-Zv2" secondAttribute="height" multiplier="0.5" id="Y1g-BS-tcX"/>
+                            <constraint firstItem="07l-yk-BiA" firstAttribute="height" secondItem="nSo-7u-Zv2" secondAttribute="height" multiplier="0.3" id="Y1g-BS-tcX"/>
                             <constraint firstItem="Tlm-uS-yDp" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" id="Y4R-E5-Qpb"/>
                             <constraint firstAttribute="trailing" secondItem="Tlm-uS-yDp" secondAttribute="trailing" id="cI9-xk-oPk"/>
                             <constraint firstItem="Gv2-N8-ce4" firstAttribute="top" secondItem="Tlm-uS-yDp" secondAttribute="bottom" id="fAi-Jp-L83"/>
-                            <constraint firstItem="BUv-c9-YJF" firstAttribute="bottom" secondItem="07l-yk-BiA" secondAttribute="bottom" id="nZw-ml-X8P"/>
-                            <constraint firstItem="BUv-c9-YJF" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="ptL-6i-PmY"/>
-                            <constraint firstAttribute="trailing" secondItem="BUv-c9-YJF" secondAttribute="trailing" id="vul-rd-Mfk"/>
                             <constraint firstItem="BjK-Rs-1wA" firstAttribute="width" secondItem="nSo-7u-Zv2" secondAttribute="width" id="wOZ-gB-hqG"/>
                             <constraint firstItem="42o-T5-48Z" firstAttribute="top" secondItem="fyC-rT-2BF" secondAttribute="bottom" id="zmd-Iy-vLS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="07l-yk-BiA"/>
-                                <exclude reference="BUv-c9-YJF"/>
                                 <exclude reference="Tlm-uS-yDp"/>
                                 <exclude reference="42o-T5-48Z"/>
                                 <exclude reference="cDX-yj-aHc"/>
@@ -1401,10 +1389,6 @@
                                 <exclude reference="MxA-Uv-Xmf"/>
                                 <exclude reference="Qnv-Rj-4AS"/>
                                 <exclude reference="Y1g-BS-tcX"/>
-                                <exclude reference="TUL-8P-43n"/>
-                                <exclude reference="nZw-ml-X8P"/>
-                                <exclude reference="ptL-6i-PmY"/>
-                                <exclude reference="vul-rd-Mfk"/>
                                 <exclude reference="wOZ-gB-hqG"/>
                                 <exclude reference="5j1-Vk-08Z"/>
                                 <exclude reference="Y4R-E5-Qpb"/>
@@ -1417,7 +1401,6 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="07l-yk-BiA"/>
-                                <include reference="BUv-c9-YJF"/>
                                 <include reference="Tlm-uS-yDp"/>
                                 <include reference="42o-T5-48Z"/>
                                 <include reference="cDX-yj-aHc"/>
@@ -1431,10 +1414,6 @@
                                 <include reference="MxA-Uv-Xmf"/>
                                 <include reference="Qnv-Rj-4AS"/>
                                 <include reference="Y1g-BS-tcX"/>
-                                <include reference="TUL-8P-43n"/>
-                                <include reference="nZw-ml-X8P"/>
-                                <include reference="ptL-6i-PmY"/>
-                                <include reference="vul-rd-Mfk"/>
                                 <include reference="wOZ-gB-hqG"/>
                                 <include reference="5j1-Vk-08Z"/>
                                 <include reference="Y4R-E5-Qpb"/>
@@ -1479,7 +1458,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ml-Wm-2mg">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ml-Wm-2mg">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spS-BM-WXb" userLabel="ContentView">
@@ -2057,9 +2036,6 @@
                                     <constraint firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" id="qzk-Ft-dXC"/>
                                     <constraint firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="uXc-fG-7Md"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="alwaysBounceVertical" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="spS-BM-WXb"/>
