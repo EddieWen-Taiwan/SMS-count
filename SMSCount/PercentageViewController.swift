@@ -10,6 +10,7 @@ import UIKit
 
 class PercentageViewController: UIViewController {
 
+    @IBOutlet var checkMyHeight: UIView!
     @IBOutlet var profileHeightConstraint: NSLayoutConstraint!
     @IBOutlet var stageText: UILabel!
     @IBOutlet var pieChartView: UIView!
@@ -31,15 +32,20 @@ class PercentageViewController: UIViewController {
 //        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
 //        monthImage = "background_" + currentMonthStr
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //        self.backgroundImage.image = UIImage(named: monthImage)
-        self.profileHeightConstraint.constant = self.view.frame.height-64-50-100
+
         self.updateStageText()
 
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
         self.pieChartView.addSubview( circleView )
+    }
+
+    override func viewDidLayoutSubviews() {
+        self.profileHeightConstraint.constant = self.checkMyHeight.bounds.height-100
     }
 
     override func viewDidAppear(animated: Bool) {
