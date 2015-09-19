@@ -10,6 +10,7 @@ import UIKit
 
 class PercentageViewController: UIViewController {
 
+    @IBOutlet var stageText: UILabel!
     @IBOutlet var pieChartView: UIView!
     @IBOutlet var percentageLabel: UILabel!
     @IBOutlet var percentSymbol: UILabel!
@@ -45,10 +46,12 @@ class PercentageViewController: UIViewController {
             percentSymbol.hidden = false
 
             countingClass.updateDate()
-            let currentProgress = String( format: "%.1f", countingClass.getCurrentProgress() )
-            if percentageLabel.text != currentProgress {
-                percentageLabel.text = currentProgress
+            let currentProgress = countingClass.getCurrentProgress()
+            let currentProgressString = String( format: "%.1f", currentProgress )
+            if percentageLabel.text != currentProgressString {
+                percentageLabel.text = currentProgressString
                 drawPercentageChart()
+                self.updateStageText( currentProgress )
             }
 
         } else {
@@ -61,6 +64,41 @@ class PercentageViewController: UIViewController {
     func drawPercentageChart() {
         // Animate the drawing of the circle over the course of 1 second
         circleView.animateCircle( countingClass.getCurrentProgress()*(0.01) )
+    }
+
+    func updateStageText( process: Double ) {
+        var stageText = ""
+        if process < 0 {
+            stageText = "尚未入伍"
+        } else if process >= 100 {
+            stageText = "恭喜退伍啦"
+        }
+        let processInt = Int( floor(process/10) )
+        switch( processInt ) {
+            case 0:
+                stageText = ""
+            case 1:
+                stageText = "菜鳥兵"
+            case 2:
+                stageText = ""
+            case 3:
+                stageText = ""
+            case 4:
+                stageText = ""
+            case 5:
+                stageText = ""
+            case 6:
+                stageText = ""
+            case 7:
+                stageText = ""
+            case 8:
+                stageText = ""
+            case 9:
+                stageText = ""
+            default:
+                break
+        }
+        self.stageText.text = stageText
     }
 
     override func didReceiveMemoryWarning() {

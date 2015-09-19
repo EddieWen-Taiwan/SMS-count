@@ -1471,6 +1471,7 @@
                         <outlet property="percentSymbol" destination="6ea-8x-Vd3" id="dcf-Yy-RVC"/>
                         <outlet property="percentageLabel" destination="Z6b-as-Cqi" id="SbA-0J-g5F"/>
                         <outlet property="pieChartView" destination="krP-YA-Kr5" id="H60-Yz-7Xg"/>
+                        <outlet property="stageText" destination="kX6-fT-muD" id="WDh-bH-a7s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9D-qQ-Plu" userLabel="First Responder" sceneMemberID="firstResponder"/>
