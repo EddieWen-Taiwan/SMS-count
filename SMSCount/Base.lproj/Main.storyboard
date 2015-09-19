@@ -1020,12 +1020,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_05" translatesAutoresizingMaskIntoConstraints="NO" id="07l-yk-BiA" userLabel="Background">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="07l-yk-BiA" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjK-Rs-1wA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticker" translatesAutoresizingMaskIntoConstraints="NO" id="zqf-Gi-c3G" userLabel="Sticker">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="n4h-vv-oHI"/>
+                                            <constraint firstAttribute="height" constant="70" id="rmX-rW-Mc3"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="35"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="n4h-vv-oHI"/>
+                                                <exclude reference="rmX-rW-Mc3"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="n4h-vv-oHI"/>
+                                                <include reference="rmX-rW-Mc3"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krP-YA-Kr5" userLabel="PieChart">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <subviews>
@@ -1099,21 +1123,31 @@
                                 <constraints>
                                     <constraint firstItem="krP-YA-Kr5" firstAttribute="centerX" secondItem="BjK-Rs-1wA" secondAttribute="centerX" id="2eB-o9-SZh"/>
                                     <constraint firstItem="krP-YA-Kr5" firstAttribute="centerY" secondItem="BjK-Rs-1wA" secondAttribute="centerY" id="c8X-zQ-aKw"/>
+                                    <constraint firstItem="zqf-Gi-c3G" firstAttribute="top" secondItem="BjK-Rs-1wA" secondAttribute="top" constant="-35" id="fLm-mL-lcA">
+                                        <variation key="widthClass=compact" constant="-45"/>
+                                    </constraint>
+                                    <constraint firstItem="zqf-Gi-c3G" firstAttribute="leading" secondItem="BjK-Rs-1wA" secondAttribute="leading" constant="16" id="mlc-J4-JHX"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
+                                        <exclude reference="zqf-Gi-c3G"/>
                                         <exclude reference="krP-YA-Kr5"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="fLm-mL-lcA"/>
+                                        <exclude reference="mlc-J4-JHX"/>
                                         <exclude reference="2eB-o9-SZh"/>
                                         <exclude reference="c8X-zQ-aKw"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
+                                        <include reference="zqf-Gi-c3G"/>
                                         <include reference="krP-YA-Kr5"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="fLm-mL-lcA"/>
+                                        <include reference="mlc-J4-JHX"/>
                                         <include reference="2eB-o9-SZh"/>
                                         <include reference="c8X-zQ-aKw"/>
                                     </mask>
@@ -1171,7 +1205,9 @@
                         <constraints>
                             <constraint firstItem="Gv2-N8-ce4" firstAttribute="top" secondItem="BjK-Rs-1wA" secondAttribute="bottom" id="0yx-aN-emf"/>
                             <constraint firstAttribute="trailing" secondItem="42o-T5-48Z" secondAttribute="trailing" id="18n-wl-UEc"/>
-                            <constraint firstItem="BjK-Rs-1wA" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" constant="50" id="7WW-l7-sEe"/>
+                            <constraint firstItem="BjK-Rs-1wA" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" constant="50" id="7WW-l7-sEe">
+                                <variation key="widthClass=compact" constant="100"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="cDX-yj-aHc" secondAttribute="trailing" id="Fkc-r9-2H9"/>
                             <constraint firstItem="42o-T5-48Z" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="LR8-z5-PcR"/>
                             <constraint firstAttribute="trailing" secondItem="BjK-Rs-1wA" secondAttribute="trailing" id="Mah-G3-wDn"/>
@@ -1243,6 +1279,7 @@
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backgroundImage" destination="07l-yk-BiA" id="YXY-GD-Q13"/>
                         <outlet property="percentSymbol" destination="6ea-8x-Vd3" id="dcf-Yy-RVC"/>
                         <outlet property="percentageLabel" destination="Z6b-as-Cqi" id="SbA-0J-g5F"/>
                         <outlet property="pieChartView" destination="krP-YA-Kr5" id="H60-Yz-7Xg"/>
@@ -2387,12 +2424,12 @@
     <resources>
         <image name="arrow-up" width="20" height="20"/>
         <image name="background" width="400" height="400"/>
-        <image name="background_05" width="400" height="400"/>
         <image name="day-countdown" width="30" height="30"/>
         <image name="hourglass" width="30" height="30"/>
         <image name="passedDays" width="30" height="30"/>
         <image name="retireDate" width="30" height="30"/>
         <image name="setting" width="30" height="30"/>
+        <image name="sticker" width="80" height="80"/>
         <image name="x-mark" width="30" height="30"/>
     </resources>
 </document>

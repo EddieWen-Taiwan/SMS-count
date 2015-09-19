@@ -14,20 +14,27 @@ class PercentageViewController: UIViewController {
     @IBOutlet var percentageLabel: UILabel!
     @IBOutlet var percentSymbol: UILabel!
 
+    @IBOutlet var backgroundImage: UIImageView!
+    var monthImage = "background_01"
+
     let countingClass = CountingDate()
 
     // Create a new CircleView
     var circleView: PercentageCircleView!
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
+        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
+        monthImage = "background_" + currentMonthStr
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.backgroundImage.image = UIImage(named: monthImage)
 
-//        let chartHeight = self.pieChartView.frame.height
-//        let chartWidth = chartHeight
-//print(self.pieChartView.layer)
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
-//        circleView.layer.zPosition = 30
         self.pieChartView.addSubview( circleView )
     }
 
