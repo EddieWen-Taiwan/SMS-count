@@ -1069,7 +1069,7 @@
                                                 <variation key="widthClass=compact" constant="20"/>
                                             </constraint>
                                             <constraint firstAttribute="height" constant="80" id="8rD-Nt-HNh">
-                                                <variation key="widthClass=compact" constant="70"/>
+                                                <variation key="widthClass=compact" constant="75"/>
                                             </constraint>
                                             <constraint firstAttribute="bottom" secondItem="MXE-DS-a5G" secondAttribute="bottom" id="RK9-Vb-O7E"/>
                                             <constraint firstAttribute="trailing" secondItem="MXE-DS-a5G" secondAttribute="trailing" id="csR-22-UUu"/>
@@ -1077,7 +1077,7 @@
                                                 <variation key="widthClass=compact" constant="0.0"/>
                                             </constraint>
                                             <constraint firstItem="MXE-DS-a5G" firstAttribute="top" secondItem="kX6-fT-muD" secondAttribute="bottom" constant="9" id="sAb-E0-dWZ">
-                                                <variation key="widthClass=compact" constant="4"/>
+                                                <variation key="widthClass=compact" constant="9"/>
                                             </constraint>
                                             <constraint firstItem="kX6-fT-muD" firstAttribute="leading" secondItem="Ksz-gc-Zql" secondAttribute="leading" constant="20" id="zsH-aK-qLx">
                                                 <variation key="widthClass=compact" constant="20"/>
