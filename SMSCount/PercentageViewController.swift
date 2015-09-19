@@ -69,7 +69,7 @@ class PercentageViewController: UIViewController {
     }
 
     func updateStageText() {
-        let songArray = [ "替代役青年們夢想起飛", "像螞蟻默默做自己", "愛心服務責任紀律", "沒有懷疑沒有怨言" ]
+        let songArray = [ "替代役青年們夢想起飛", "像螞蟻默默做自己", "沒有懷疑沒有怨言", "愛心服務責任紀律" ]
         self.stageText.text = songArray[ Int( arc4random_uniform(4) ) ]
     }
 
