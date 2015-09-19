@@ -33,7 +33,8 @@ class PercentageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        self.backgroundImage.image = UIImage(named: monthImage)
+        //        self.backgroundImage.image = UIImage(named: monthImage)
+        self.updateStageText()
 
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
         self.pieChartView.addSubview( circleView )
@@ -51,7 +52,6 @@ class PercentageViewController: UIViewController {
             if percentageLabel.text != currentProgressString {
                 percentageLabel.text = currentProgressString
                 drawPercentageChart()
-                self.updateStageText( currentProgress )
             }
 
         } else {
@@ -66,7 +66,7 @@ class PercentageViewController: UIViewController {
         circleView.animateCircle( countingClass.getCurrentProgress()*(0.01) )
     }
 
-    func updateStageText( process: Double ) {
+    func updateStageText() {
         let songArray = [ "替代役青年們夢想起飛", "像螞蟻默默做自己", "愛心服務責任紀律", "沒有懷疑沒有怨言" ]
         let status: String = songArray[ Int( arc4random_uniform(4) ) ]
 //        var stageText: String  = ""
