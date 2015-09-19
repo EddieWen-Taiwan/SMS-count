@@ -17,7 +17,7 @@ class PercentageViewController: UIViewController {
     @IBOutlet var percentSymbol: UILabel!
 
     @IBOutlet var backgroundImage: UIImageView!
-    var monthImage = "background_01"
+//    var monthImage = "background_01"
 
     let countingClass = CountingDate()
 
@@ -27,9 +27,9 @@ class PercentageViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
-        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
-        monthImage = "background_" + currentMonthStr
+//        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
+//        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
+//        monthImage = "background_" + currentMonthStr
     }
     override func viewDidLoad() {
         super.viewDidLoad()
