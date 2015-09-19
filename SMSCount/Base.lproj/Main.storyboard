@@ -1023,13 +1023,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="repeat-image" translatesAutoresizingMaskIntoConstraints="NO" id="07l-yk-BiA" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pn-K5-iUY">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUv-c9-YJF" userLabel="Mask">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pn-K5-iUY">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlm-uS-yDp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -1376,6 +1376,7 @@
                             <constraint firstItem="07l-yk-BiA" firstAttribute="height" secondItem="nSo-7u-Zv2" secondAttribute="height" multiplier="0.5" id="Y1g-BS-tcX"/>
                             <constraint firstItem="Tlm-uS-yDp" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" id="Y4R-E5-Qpb"/>
                             <constraint firstAttribute="trailing" secondItem="Tlm-uS-yDp" secondAttribute="trailing" id="cI9-xk-oPk"/>
+                            <constraint firstItem="BUv-c9-YJF" firstAttribute="height" secondItem="nSo-7u-Zv2" secondAttribute="height" multiplier="0.5" id="e0r-N0-75R"/>
                             <constraint firstItem="Gv2-N8-ce4" firstAttribute="top" secondItem="Tlm-uS-yDp" secondAttribute="bottom" id="fAi-Jp-L83"/>
                             <constraint firstItem="07l-yk-BiA" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" id="jSg-Ew-e0N"/>
                             <constraint firstItem="BUv-c9-YJF" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="ptL-6i-PmY"/>
@@ -1386,8 +1387,8 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="07l-yk-BiA"/>
-                                <exclude reference="9pn-K5-iUY"/>
                                 <exclude reference="BUv-c9-YJF"/>
+                                <exclude reference="9pn-K5-iUY"/>
                                 <exclude reference="Tlm-uS-yDp"/>
                                 <exclude reference="42o-T5-48Z"/>
                                 <exclude reference="cDX-yj-aHc"/>
@@ -1404,6 +1405,7 @@
                                 <exclude reference="Y1g-BS-tcX"/>
                                 <exclude reference="jSg-Ew-e0N"/>
                                 <exclude reference="TUL-8P-43n"/>
+                                <exclude reference="e0r-N0-75R"/>
                                 <exclude reference="ptL-6i-PmY"/>
                                 <exclude reference="vul-rd-Mfk"/>
                                 <exclude reference="5j1-Vk-08Z"/>
@@ -1421,8 +1423,8 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="07l-yk-BiA"/>
-                                <include reference="9pn-K5-iUY"/>
                                 <include reference="BUv-c9-YJF"/>
+                                <include reference="9pn-K5-iUY"/>
                                 <include reference="Tlm-uS-yDp"/>
                                 <include reference="42o-T5-48Z"/>
                                 <include reference="cDX-yj-aHc"/>
@@ -1439,6 +1441,7 @@
                                 <include reference="Y1g-BS-tcX"/>
                                 <include reference="jSg-Ew-e0N"/>
                                 <include reference="TUL-8P-43n"/>
+                                <include reference="e0r-N0-75R"/>
                                 <include reference="ptL-6i-PmY"/>
                                 <include reference="vul-rd-Mfk"/>
                                 <include reference="5j1-Vk-08Z"/>
@@ -1449,7 +1452,7 @@
                                 <include reference="J33-sY-eeY"/>
                                 <include reference="TIM-LR-xkG"/>
                                 <include reference="7bi-hd-B3w"/>
-                                <include reference="QGD-SZ-lUJ"/>
+                                <exclude reference="QGD-SZ-lUJ"/>
                                 <include reference="fAi-Jp-L83"/>
                             </mask>
                         </variation>
