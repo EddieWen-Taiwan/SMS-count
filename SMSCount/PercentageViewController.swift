@@ -37,7 +37,6 @@ class PercentageViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //        self.backgroundImage.image = UIImage(named: monthImage)
-
         self.updateStageText()
 
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
