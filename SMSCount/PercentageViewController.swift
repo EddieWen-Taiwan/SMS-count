@@ -32,7 +32,7 @@ class PercentageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.backgroundImage.image = UIImage(named: monthImage)
+//        self.backgroundImage.image = UIImage(named: monthImage)
 
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
         self.pieChartView.addSubview( circleView )

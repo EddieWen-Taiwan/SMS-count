@@ -12,7 +12,7 @@ import UIKit
 class PercentageCircleView: UIView {
 
     let circleLayer = CAShapeLayer()
-    let circleRadius = CGFloat(100)
+    let circleRadius = CGFloat(90)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +23,7 @@ class PercentageCircleView: UIView {
         circleBackLayer.lineWidth = 1.0
         circleBackLayer.strokeEnd = 1.0
 
-        let circleBackPath = UIBezierPath(arcCenter: CGPoint(x: 100, y: 100), radius: circleRadius, startAngle: 0.0, endAngle: CGFloat(M_PI*2), clockwise: true)
+        let circleBackPath = UIBezierPath(arcCenter: CGPoint(x: 90, y: 90), radius: circleRadius, startAngle: 0.0, endAngle: CGFloat(M_PI*2), clockwise: true)
         circleBackLayer.path = circleBackPath.CGPath
         layer.addSublayer(circleBackLayer)
 
@@ -60,7 +60,7 @@ class PercentageCircleView: UIView {
         
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
         // The path should be the entire circle.
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 100, y: 100), radius: circleRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 90, y: 90), radius: circleRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         circleLayer.path = circlePath.CGPath
         // Set the circleLayer's strokeEnd property to 1.0 now so that it's the right value when the animation ends.
         circleLayer.strokeEnd = 1.0
