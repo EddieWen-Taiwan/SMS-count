@@ -57,8 +57,18 @@ class CountingDate {
 
         self.enterDate = dateFormatter.dateFromString( userPreference.stringForKey("enterDate")! )!
         // 入伍日 - enterDate
+//self.userPreference.setObject( "1y15d", forKey: "serviceDays" )
+        // v1.1 -> v1.2 dataFormat is change
+        if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
+            if userServiceDays == "1y" {
+                self.userPreference.setObject( 2, forKey: "serviceDays" )
+            } else if userServiceDays == "1y15d" {
+                self.userPreference.setObject( 3, forKey: "serviceDays" )
+            }
+        }
 
         let userServiceDays: Int = userPreference.integerForKey("serviceDays")
+print( "Line 72 : \(userServiceDays)" )
         switch( userServiceDays ) {
             case 0:
                 dayComponent.year = 0
