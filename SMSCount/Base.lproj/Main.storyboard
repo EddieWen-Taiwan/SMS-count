@@ -1003,7 +1003,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tlm-uS-yDp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjK-Rs-1wA" userLabel="Profile">
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="BjK-Rs-1wA" userLabel="Profile">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ksz-gc-Zql" userLabel="UserInfo">
@@ -1218,7 +1218,7 @@
                                         <constraints>
                                             <constraint firstItem="krP-YA-Kr5" firstAttribute="centerX" secondItem="BjK-Rs-1wA" secondAttribute="centerX" id="2eB-o9-SZh"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="BAZ-24-tXs"/>
-                                            <constraint firstItem="JPE-VO-pTK" firstAttribute="leading" secondItem="BjK-Rs-1wA" secondAttribute="leading" constant="20" id="Xfo-qb-EIW"/>
+                                            <constraint firstItem="JPE-VO-pTK" firstAttribute="leading" secondItem="BjK-Rs-1wA" secondAttribute="leading" constant="20" id="HQz-he-zuR"/>
                                             <constraint firstAttribute="trailing" secondItem="Ksz-gc-Zql" secondAttribute="trailing" id="fEd-1X-I2k"/>
                                             <constraint firstItem="zqf-Gi-c3G" firstAttribute="top" secondItem="BjK-Rs-1wA" secondAttribute="top" constant="-35" id="fLm-mL-lcA">
                                                 <variation key="widthClass=compact" constant="-50"/>
@@ -1249,16 +1249,16 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="BAZ-24-tXs"/>
-                                                <exclude reference="Xfo-qb-EIW"/>
-                                                <exclude reference="xXN-Yc-lJn"/>
                                                 <exclude reference="fEd-1X-I2k"/>
                                                 <exclude reference="qBq-w0-Cvs"/>
                                                 <exclude reference="sja-Eb-MvB"/>
+                                                <exclude reference="fLm-mL-lcA"/>
+                                                <exclude reference="mlc-J4-JHX"/>
+                                                <exclude reference="HQz-he-zuR"/>
+                                                <exclude reference="xXN-Yc-lJn"/>
                                                 <exclude reference="2eB-o9-SZh"/>
                                                 <exclude reference="iGU-38-IMT"/>
                                                 <exclude reference="m0G-sV-Jyo"/>
-                                                <exclude reference="fLm-mL-lcA"/>
-                                                <exclude reference="mlc-J4-JHX"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -1270,16 +1270,16 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="BAZ-24-tXs"/>
-                                                <include reference="Xfo-qb-EIW"/>
-                                                <include reference="xXN-Yc-lJn"/>
                                                 <include reference="fEd-1X-I2k"/>
                                                 <include reference="qBq-w0-Cvs"/>
                                                 <include reference="sja-Eb-MvB"/>
+                                                <include reference="fLm-mL-lcA"/>
+                                                <include reference="mlc-J4-JHX"/>
+                                                <include reference="HQz-he-zuR"/>
+                                                <include reference="xXN-Yc-lJn"/>
                                                 <include reference="2eB-o9-SZh"/>
                                                 <include reference="iGU-38-IMT"/>
                                                 <include reference="m0G-sV-Jyo"/>
-                                                <include reference="fLm-mL-lcA"/>
-                                                <include reference="mlc-J4-JHX"/>
                                             </mask>
                                         </variation>
                                     </view>
