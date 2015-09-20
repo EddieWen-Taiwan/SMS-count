@@ -1249,16 +1249,16 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="BAZ-24-tXs"/>
+                                                <exclude reference="Xfo-qb-EIW"/>
+                                                <exclude reference="xXN-Yc-lJn"/>
                                                 <exclude reference="fEd-1X-I2k"/>
                                                 <exclude reference="qBq-w0-Cvs"/>
                                                 <exclude reference="sja-Eb-MvB"/>
-                                                <exclude reference="fLm-mL-lcA"/>
-                                                <exclude reference="mlc-J4-JHX"/>
-                                                <exclude reference="Xfo-qb-EIW"/>
-                                                <exclude reference="xXN-Yc-lJn"/>
                                                 <exclude reference="2eB-o9-SZh"/>
                                                 <exclude reference="iGU-38-IMT"/>
                                                 <exclude reference="m0G-sV-Jyo"/>
+                                                <exclude reference="fLm-mL-lcA"/>
+                                                <exclude reference="mlc-J4-JHX"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -1269,17 +1269,17 @@
                                                 <include reference="krP-YA-Kr5"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <exclude reference="BAZ-24-tXs"/>
+                                                <include reference="BAZ-24-tXs"/>
+                                                <include reference="Xfo-qb-EIW"/>
+                                                <include reference="xXN-Yc-lJn"/>
                                                 <include reference="fEd-1X-I2k"/>
                                                 <include reference="qBq-w0-Cvs"/>
                                                 <include reference="sja-Eb-MvB"/>
-                                                <include reference="fLm-mL-lcA"/>
-                                                <include reference="mlc-J4-JHX"/>
-                                                <include reference="Xfo-qb-EIW"/>
-                                                <include reference="xXN-Yc-lJn"/>
                                                 <include reference="2eB-o9-SZh"/>
                                                 <include reference="iGU-38-IMT"/>
                                                 <include reference="m0G-sV-Jyo"/>
+                                                <include reference="fLm-mL-lcA"/>
+                                                <include reference="mlc-J4-JHX"/>
                                             </mask>
                                         </variation>
                                     </view>

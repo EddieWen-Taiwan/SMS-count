@@ -44,7 +44,9 @@ class PercentageViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
-//        self.profileHeightConstraint.constant = self.checkMyHeight.bounds.height-100
+        if self.profileHeightConstraint.constant != self.checkMyHeight.bounds.height-100 {
+            self.profileHeightConstraint.constant = self.checkMyHeight.bounds.height-100
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
