@@ -18,6 +18,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     // <<Front>>
     @IBOutlet var backgroundImage: UIImageView!
     var monthImage = "background_01"
+    @IBOutlet var arrowLeft: UIButton!
+    @IBOutlet var arrowRight: UIButton!
     // RemainedDays
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
@@ -226,6 +228,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             default:
                 break;
         }
+    }
+
+    @IBAction func swipeLeft(sender: AnyObject) {
+    }
+
+    @IBAction func swipeRight(sender: AnyObject) {
     }
 
     func expandDetailView() {
