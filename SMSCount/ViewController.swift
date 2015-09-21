@@ -27,10 +27,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var animationIndex: Int = 0
     var animationArray = [ "" ]
     var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
+    var isDaysJumped: Bool = false
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
     @IBOutlet var percentageLabel: UILabel!
-
     var isCircleDrawn: Bool = false
 
     // about DetailView
@@ -126,7 +126,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 stageIndexArray[4] = Int( Double(animationArray.count)*0.97 )
                 stageIndexArray[5] = animationArray.count-1
 
-                NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
+                self.isDaysJumped = false
+                self.checkDaysAnimation()
+                self.frontRemainedDaysLabel.text = "0"
             }
             // currentProcess
             let currentProcess = countingClass.getCurrentProgress()
@@ -134,6 +136,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             if self.percentageLabel.text != currentProcessString {
                 self.percentageLabel.text = currentProcessString
                 self.isCircleDrawn = false
+                self.checkCircleAnimation()
             }
 
             // DetailView
@@ -241,6 +244,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.arrowLeft.alpha = 0
         }, completion: { finish in
             self.arrowLeft.hidden = true
+            if self.isDaysJumped != true {
+                self.checkDaysAnimation()
+            }
         })
     }
 
@@ -253,11 +259,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.arrowRight.alpha = 0
         }, completion: { finish in
             self.arrowRight.hidden = true
-            if self.percentageLabel.text != "" && self.isCircleDrawn != true {
-                self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
-                self.isCircleDrawn = true
+            if self.isCircleDrawn != true {
+                self.checkCircleAnimation()
             }
         })
+    }
+
+    func checkDaysAnimation() {
+        if self.basicLeftConstraint.constant == 0 && self.isDaysJumped != true {
+            NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
+            self.isDaysJumped = true
+        }
+    }
+
+    func checkCircleAnimation() {
+        if self.basicLeftConstraint.constant == self.screenWidth*(-1) && self.isCircleDrawn != true {
+            self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
+            self.isCircleDrawn = true
+        }
     }
 
     func expandDetailView() {
