@@ -1144,6 +1144,35 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krP-YA-Kr5" userLabel="PieChart">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTs-eR-XkW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="160" id="2Y0-m9-NYj">
+                                                                <variation key="widthClass=compact" constant="170"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="width" constant="160" id="J66-vT-Jtx">
+                                                                <variation key="widthClass=compact" constant="170"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="85"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="2Y0-m9-NYj"/>
+                                                                <exclude reference="J66-vT-Jtx"/>
+                                                            </mask>
+                                                        </variation>
+                                                        <variation key="widthClass=compact">
+                                                            <mask key="constraints">
+                                                                <include reference="2Y0-m9-NYj"/>
+                                                                <include reference="J66-vT-Jtx"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6b-as-Cqi">
                                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                         <constraints>
@@ -1183,9 +1212,12 @@
                                                         <variation key="widthClass=compact" constant="180"/>
                                                     </constraint>
                                                     <constraint firstAttribute="centerX" secondItem="Z6b-as-Cqi" secondAttribute="centerX" constant="12" id="h02-39-djj"/>
+                                                    <constraint firstItem="MTs-eR-XkW" firstAttribute="centerY" secondItem="krP-YA-Kr5" secondAttribute="centerY" id="jG9-lz-T8R"/>
+                                                    <constraint firstItem="MTs-eR-XkW" firstAttribute="centerX" secondItem="krP-YA-Kr5" secondAttribute="centerX" id="xJB-TQ-2Pb"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="subviews">
+                                                        <exclude reference="MTs-eR-XkW"/>
                                                         <exclude reference="Z6b-as-Cqi"/>
                                                         <exclude reference="6ea-8x-Vd3"/>
                                                     </mask>
@@ -1196,10 +1228,13 @@
                                                         <exclude reference="4pQ-Tb-73i"/>
                                                         <exclude reference="aBO-wH-38w"/>
                                                         <exclude reference="h02-39-djj"/>
+                                                        <exclude reference="jG9-lz-T8R"/>
+                                                        <exclude reference="xJB-TQ-2Pb"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="widthClass=compact">
                                                     <mask key="subviews">
+                                                        <include reference="MTs-eR-XkW"/>
                                                         <include reference="Z6b-as-Cqi"/>
                                                         <include reference="6ea-8x-Vd3"/>
                                                     </mask>
@@ -1210,6 +1245,8 @@
                                                         <include reference="4pQ-Tb-73i"/>
                                                         <include reference="aBO-wH-38w"/>
                                                         <include reference="h02-39-djj"/>
+                                                        <include reference="jG9-lz-T8R"/>
+                                                        <include reference="xJB-TQ-2Pb"/>
                                                     </mask>
                                                 </variation>
                                             </view>
@@ -1249,16 +1286,16 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="BAZ-24-tXs"/>
+                                                <exclude reference="HQz-he-zuR"/>
+                                                <exclude reference="xXN-Yc-lJn"/>
                                                 <exclude reference="fEd-1X-I2k"/>
                                                 <exclude reference="qBq-w0-Cvs"/>
                                                 <exclude reference="sja-Eb-MvB"/>
-                                                <exclude reference="fLm-mL-lcA"/>
-                                                <exclude reference="mlc-J4-JHX"/>
-                                                <exclude reference="HQz-he-zuR"/>
-                                                <exclude reference="xXN-Yc-lJn"/>
                                                 <exclude reference="2eB-o9-SZh"/>
                                                 <exclude reference="iGU-38-IMT"/>
                                                 <exclude reference="m0G-sV-Jyo"/>
+                                                <exclude reference="fLm-mL-lcA"/>
+                                                <exclude reference="mlc-J4-JHX"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -1270,16 +1307,16 @@
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="BAZ-24-tXs"/>
+                                                <include reference="HQz-he-zuR"/>
+                                                <include reference="xXN-Yc-lJn"/>
                                                 <include reference="fEd-1X-I2k"/>
                                                 <include reference="qBq-w0-Cvs"/>
                                                 <include reference="sja-Eb-MvB"/>
-                                                <include reference="fLm-mL-lcA"/>
-                                                <include reference="mlc-J4-JHX"/>
-                                                <include reference="HQz-he-zuR"/>
-                                                <include reference="xXN-Yc-lJn"/>
                                                 <include reference="2eB-o9-SZh"/>
                                                 <include reference="iGU-38-IMT"/>
                                                 <include reference="m0G-sV-Jyo"/>
+                                                <include reference="fLm-mL-lcA"/>
+                                                <include reference="mlc-J4-JHX"/>
                                             </mask>
                                         </variation>
                                     </view>
