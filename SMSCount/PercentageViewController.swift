@@ -11,6 +11,7 @@ import UIKit
 class PercentageViewController: UIViewController {
 
     @IBOutlet var profileHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var serviceCard: UIView!
     @IBOutlet var stageText: UILabel!
     
     let countingClass = CountingDate()
@@ -26,6 +27,8 @@ class PercentageViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.profileHeightConstraint.constant = self.screenHeight-64-50-100
         self.updateStageText()
+        self.serviceCard.layer.borderWidth = 1
+        self.serviceCard.layer.borderColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1).CGColor
     }
 
     override func viewDidAppear(animated: Bool) {
