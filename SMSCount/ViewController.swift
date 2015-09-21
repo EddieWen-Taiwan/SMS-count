@@ -233,6 +233,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     @IBAction func swipeLeft(sender: AnyObject) {
+        self.arrowRight.hidden = false
+        self.basicLeftConstraint.constant = 0
+        UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+            self.arrowRight.alpha = 1
+            self.arrowLeft.alpha = 0
+        }, completion: { finish in
+            self.arrowLeft.hidden = true
+        })
     }
 
     @IBAction func swipeRight(sender: AnyObject) {
@@ -244,9 +253,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.arrowRight.alpha = 0
         }, completion: { finish in
             self.arrowRight.hidden = true
-            if self.isCircleDrawn != true {
-                print((self.percentageLabel.text! as NSString).doubleValue*(0.01))
+            if self.percentageLabel.text != "" && self.isCircleDrawn != true {
                 self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
+                self.isCircleDrawn = true
             }
         })
     }
@@ -270,7 +279,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.ghostButton.alpha = 1.0
             self.view.layoutIfNeeded()
         }, completion: { finish in
-                self.visualEffectView.hidden = true
+            self.visualEffectView.hidden = true
         })
     }
 
