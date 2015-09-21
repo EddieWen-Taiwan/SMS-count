@@ -16,21 +16,13 @@ class PercentageViewController: UIViewController {
     @IBOutlet var pieChartView: UIView!
     @IBOutlet var percentageLabel: UILabel!
     @IBOutlet var percentSymbol: UILabel!
-
-    @IBOutlet var backgroundImage: UIImageView!
-//    var monthImage = "background_01"
-
+    
     let countingClass = CountingDate()
 
-    // Create a new CircleView
-    var circleView: PercentageCircleView!
+    let screenHeight = UIScreen.mainScreen().bounds.height
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
-//        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
-//        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
-//        monthImage = "background_" + currentMonthStr
     }
 
     override func viewDidLoad() {
@@ -38,9 +30,6 @@ class PercentageViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //        self.backgroundImage.image = UIImage(named: monthImage)
         self.updateStageText()
-
-        circleView = PercentageCircleView( frame: self.pieChartView.frame )
-        self.pieChartView.addSubview( circleView )
     }
 
     override func viewDidLayoutSubviews() {
@@ -53,26 +42,11 @@ class PercentageViewController: UIViewController {
 
         if countingClass.isSettingAllDone() {
             // OK
-            percentSymbol.hidden = false
-
-            countingClass.updateDate()
-            let currentProgress = countingClass.getCurrentProgress()
-            let currentProgressString = String( format: "%.1f", currentProgress )
-            if percentageLabel.text != currentProgressString {
-                percentageLabel.text = currentProgressString
-                drawPercentageChart()
-            }
 
         } else {
-            percentSymbol.hidden = true
             // switch to settingViewController ?
         }
 
-    }
-    
-    func drawPercentageChart() {
-        // Animate the drawing of the circle over the course of 1 second
-        circleView.animateCircle( countingClass.getCurrentProgress()*(0.01) )
     }
 
     func updateStageText() {
