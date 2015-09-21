@@ -127,8 +127,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 stageIndexArray[5] = animationArray.count-1
 
                 self.isDaysJumped = false
-                self.checkDaysAnimation()
                 self.frontRemainedDaysLabel.text = "0"
+                self.checkDaysAnimation()
             }
             // currentProcess
             let currentProcess = countingClass.getCurrentProgress()
