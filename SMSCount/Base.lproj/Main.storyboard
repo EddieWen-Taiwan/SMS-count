@@ -200,8 +200,7 @@
                                                                 <exclude reference="NPd-WY-4qG"/>
                                                             </mask>
                                                         </variation>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="25" y="62" width="100" height="54"/>
+                                                        <variation key="widthClass=compact">
                                                             <mask key="constraints">
                                                                 <exclude reference="NPd-WY-4qG"/>
                                                             </mask>
@@ -212,9 +211,6 @@
                                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="26"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="125" y="81" width="28" height="32"/>
-                                                        </variation>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
