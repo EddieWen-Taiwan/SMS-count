@@ -185,7 +185,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXW-cI-vr1">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6H-dK-4Zf">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6H-dK-4Zf">
                                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="69" id="NPd-WY-4qG">
@@ -202,7 +202,7 @@
                                                         </variation>
                                                         <variation key="widthClass=compact">
                                                             <mask key="constraints">
-                                                                <include reference="NPd-WY-4qG"/>
+                                                                <exclude reference="NPd-WY-4qG"/>
                                                             </mask>
                                                         </variation>
                                                     </label>
@@ -216,14 +216,12 @@
                                                 <constraints>
                                                     <constraint firstItem="6oS-m5-JlH" firstAttribute="leading" secondItem="p6H-dK-4Zf" secondAttribute="trailing" id="I9L-ci-4hA"/>
                                                     <constraint firstAttribute="centerY" secondItem="6oS-m5-JlH" secondAttribute="centerY" constant="-8" id="RBY-nR-vVD">
-                                                        <variation key="widthClass=compact" constant="-8"/>
+                                                        <variation key="widthClass=compact" constant="-12"/>
                                                     </constraint>
-                                                    <constraint firstItem="p6H-dK-4Zf" firstAttribute="centerY" secondItem="TXW-cI-vr1" secondAttribute="centerY" id="Usb-hj-pMw"/>
+                                                    <constraint firstItem="p6H-dK-4Zf" firstAttribute="centerY" secondItem="TXW-cI-vr1" secondAttribute="centerY" constant="4" id="Usb-hj-pMw"/>
                                                     <constraint firstAttribute="width" constant="170" id="c1C-8h-3x5"/>
                                                     <constraint firstAttribute="height" constant="170" id="o5y-gr-HU9"/>
-                                                    <constraint firstAttribute="centerX" secondItem="p6H-dK-4Zf" secondAttribute="centerX" constant="12" id="wpe-CS-UxG">
-                                                        <variation key="widthClass=compact" constant="12"/>
-                                                    </constraint>
+                                                    <constraint firstAttribute="centerX" secondItem="p6H-dK-4Zf" secondAttribute="centerX" constant="10" id="wpe-CS-UxG"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="subviews">
@@ -268,7 +266,8 @@
                                                 <exclude reference="c3f-fH-Rta"/>
                                             </mask>
                                         </variation>
-                                        <variation key="widthClass=compact">
+                                        <variation key="widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="487"/>
                                             <mask key="subviews">
                                                 <include reference="TXW-cI-vr1"/>
                                             </mask>
