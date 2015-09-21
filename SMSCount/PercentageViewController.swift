@@ -10,12 +10,8 @@ import UIKit
 
 class PercentageViewController: UIViewController {
 
-    @IBOutlet var checkMyHeight: UIView!
     @IBOutlet var profileHeightConstraint: NSLayoutConstraint!
     @IBOutlet var stageText: UILabel!
-    @IBOutlet var pieChartView: UIView!
-    @IBOutlet var percentageLabel: UILabel!
-    @IBOutlet var percentSymbol: UILabel!
     
     let countingClass = CountingDate()
 
@@ -28,14 +24,8 @@ class PercentageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //        self.backgroundImage.image = UIImage(named: monthImage)
+        self.profileHeightConstraint.constant = self.screenHeight-64-50-100
         self.updateStageText()
-    }
-
-    override func viewDidLayoutSubviews() {
-        if self.profileHeightConstraint.constant != self.checkMyHeight.bounds.height-100 {
-            self.profileHeightConstraint.constant = self.checkMyHeight.bounds.height-100
-        }
     }
 
     override func viewDidAppear(animated: Bool) {
