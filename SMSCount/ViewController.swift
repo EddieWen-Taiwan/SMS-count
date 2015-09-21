@@ -10,13 +10,27 @@ import UIKit
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    // <<Back>> - about ScreenShot
     @IBOutlet var backRemainedDaysLabel: UILabel!
     @IBOutlet var backRemainedDaysWord: UILabel!
     @IBOutlet var screenShotScale: UIView!
+
+    // <<Front>>
+    @IBOutlet var backgroundImage: UIImageView!
+    var monthImage = "background_01"
+    // RemainedDays
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
-    @IBOutlet var backgroundImage: UIImageView!
-    
+    var animationIndex: Int = 0
+    var animationArray = [ "" ]
+    var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
+    // currentProcess %
+    @IBOutlet var pieChartView: UIView!
+    @IBOutlet var percentageLabel: UILabel!
+
+    var isCircleDrawn: Bool = false
+
+    // about DetailView
     @IBOutlet var ghostButton: UIView!
     @IBOutlet var visualEffectView: UIVisualEffectView!
 
@@ -30,12 +44,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
 
-    var animationIndex: Int = 0
-    var animationArray = [ "" ]
-    var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
-    var monthImage = "background_01"
-
     let countingClass = CountingDate()
+    var circleView: PercentageCircleView!
     var screenHeight = UIScreen.mainScreen().bounds.height
 
     required init?(coder aDecoder: NSCoder) {
@@ -53,6 +63,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.ghostButton.layer.borderColor = UIColor.whiteColor().CGColor
         let tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
         self.ghostButton.addGestureRecognizer(tapGhostButton)
+
+        circleView = PercentageCircleView( frame: self.pieChartView.frame )
+        self.pieChartView.addSubview( circleView )
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -72,6 +85,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if countingClass.isSettingAllDone() {
             // OK
             countingClass.updateDate()
+            // RemainedDays
             if self.frontRemainedDaysLabel.text != String( countingClass.getRemainedDays() ) {
                 var remainedDays = countingClass.getRemainedDays()
                 if remainedDays < 0 {
@@ -110,6 +124,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
                 NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
+            // currentProcess
+            let currentProcess = countingClass.getCurrentProgress()
+            let currentProcessString = String( format: "%.1f", currentProcess )
+            if self.percentageLabel.text != currentProcessString {
+                self.percentageLabel.text = currentProcessString
+                self.isCircleDrawn = false
+            }
 
             // DetailView
             if countingClass.isAutoWeekendFixed() && countingClass.getRetireDate() != countingClass.getFixedRetireDate() {
@@ -138,78 +159,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             // tabBarController?.selectedIndex = 2
         }
 
-    }
-
-    @IBAction func pressShareButton(sender: AnyObject) {
-
-        let askAlertController = UIAlertController( title: "分享", message: "將製作分享圖片並分享至您的 Facebook，要繼續進行嗎？", preferredStyle: .Alert )
-        let yesAction = UIAlertAction( title: "好", style: .Default, handler: {(action) -> Void in
-
-            // START
-            self.loadingView.hidden = false
-            self.loadingActivity.startAnimating()
-            
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async( dispatch_get_global_queue( priority, 0 ) ) {
-                // do some task
-                sleep(1)
-                // Create the UIImage
-                // let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
-                let mainWindowLayer = self.screenShotScale.layer
-                UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
-                mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext()! )
-                let screenShot = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                
-                // Save it to the camera roll
-                UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
-
-                dispatch_async( dispatch_get_main_queue() ) {
-                    // update some UI
-
-                    // Show images picker
-                    self.showImagesPickerView()
-                }
-            }
-
-        })
-        let noAction = UIAlertAction( title: "取消", style: .Cancel, handler: nil )
-
-        askAlertController.addAction( yesAction )
-        askAlertController.addAction( noAction )
-
-        self.presentViewController( askAlertController, animated: true, completion: nil )
-
-    }
-
-    // the following method is called to show the iOS image picker:
-    func showImagesPickerView(){
-        if UIImagePickerController.isSourceTypeAvailable( UIImagePickerControllerSourceType.SavedPhotosAlbum ) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
-            imagePicker.allowsEditing = false
-
-            // STOP
-            self.loadingView.hidden = true
-            self.loadingActivity.stopAnimating()
-
-            self.presentViewController( imagePicker, animated: true, completion: nil )
-        }
-    }
-
-    // Once the User selects a photo, the following delegate method is called.
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let photo = FBSDKSharePhoto()
-        photo.image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        photo.userGenerated = true
-
-        let content = FBSDKSharePhotoContent()
-        content.photos = [photo]
-
-        FBSDKShareDialog.showFromViewController( self, withContent: content, delegate: nil )
-
-        dismissViewControllerAnimated( true, completion: nil )
     }
 
     func daysAddingEffect( timer: NSTimer ) {
@@ -300,6 +249,78 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }, completion: { finish in
                 self.visualEffectView.hidden = true
         })
+    }
+
+    @IBAction func pressShareButton(sender: AnyObject) {
+
+        let askAlertController = UIAlertController( title: "分享", message: "將製作分享圖片並分享至您的 Facebook，要繼續進行嗎？", preferredStyle: .Alert )
+        let yesAction = UIAlertAction( title: "好", style: .Default, handler: {(action) -> Void in
+
+            // START
+            self.loadingView.hidden = false
+            self.loadingActivity.startAnimating()
+
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async( dispatch_get_global_queue( priority, 0 ) ) {
+                // do some task
+                sleep(1)
+                // Create the UIImage
+                // let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
+                let mainWindowLayer = self.screenShotScale.layer
+                UIGraphicsBeginImageContextWithOptions( CGSize( width: mainWindowLayer.frame.width, height: mainWindowLayer.frame.height ), true, UIScreen.mainScreen().scale )
+                mainWindowLayer.renderInContext( UIGraphicsGetCurrentContext()! )
+                let screenShot = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+
+                // Save it to the camera roll
+                UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
+
+                dispatch_async( dispatch_get_main_queue() ) {
+                    // update some UI
+
+                    // Show images picker
+                    self.showImagesPickerView()
+                }
+            }
+
+        })
+        let noAction = UIAlertAction( title: "取消", style: .Cancel, handler: nil )
+
+        askAlertController.addAction( yesAction )
+        askAlertController.addAction( noAction )
+
+        self.presentViewController( askAlertController, animated: true, completion: nil )
+
+    }
+
+    // the following method is called to show the iOS image picker:
+    func showImagesPickerView(){
+        if UIImagePickerController.isSourceTypeAvailable( UIImagePickerControllerSourceType.SavedPhotosAlbum ) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+            imagePicker.allowsEditing = false
+
+            // STOP
+            self.loadingView.hidden = true
+            self.loadingActivity.stopAnimating()
+
+            self.presentViewController( imagePicker, animated: true, completion: nil )
+        }
+    }
+
+    // Once the User selects a photo, the following delegate method is called.
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let photo = FBSDKSharePhoto()
+        photo.image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        photo.userGenerated = true
+
+        let content = FBSDKSharePhotoContent()
+        content.photos = [photo]
+
+        FBSDKShareDialog.showFromViewController( self, withContent: content, delegate: nil )
+
+        dismissViewControllerAnimated( true, completion: nil )
     }
 
     override func didReceiveMemoryWarning() {
