@@ -278,7 +278,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKx-jK-dcD" userLabel="LeftBtn">
+                                    <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKx-jK-dcD" userLabel="LeftBtn">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="8TA-JQ-BNt"/>
@@ -1177,6 +1177,7 @@
                         <outlet property="backRemainedDaysLabel" destination="NyZ-Jo-ImC" id="Bgo-yL-duS"/>
                         <outlet property="backRemainedDaysWord" destination="0oN-8k-ZGV" id="rnI-uH-6mF"/>
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
+                        <outlet property="basicLeftConstraint" destination="6Qq-Cp-qek" id="95R-b8-JVB"/>
                         <outlet property="detailViewHeightConstraint" destination="nEi-Bj-ugt" id="uri-Lp-odj"/>
                         <outlet property="detailViewTopConstraint" destination="Nm5-iC-Vu1" id="PGv-bg-0kk"/>
                         <outlet property="finalRetireDateLabel" destination="MFL-CO-GH0" id="TjJ-NU-T7c"/>

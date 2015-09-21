@@ -21,6 +21,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var arrowLeft: UIButton!
     @IBOutlet var arrowRight: UIButton!
     // RemainedDays
+    @IBOutlet var basicLeftConstraint: NSLayoutConstraint!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
     var animationIndex: Int = 0
@@ -49,6 +50,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     let countingClass = CountingDate()
     var circleView: PercentageCircleView!
     var screenHeight = UIScreen.mainScreen().bounds.height
+    var screenWidth = UIScreen.mainScreen().bounds.width
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -234,6 +236,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     @IBAction func swipeRight(sender: AnyObject) {
+        self.arrowLeft.hidden = false
+        self.basicLeftConstraint.constant = self.screenWidth*(-1)
+        UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.arrowLeft.alpha = 1
+            self.view.layoutIfNeeded()
+            self.arrowRight.alpha = 0
+        }, completion: { finish in
+            self.arrowRight.hidden = true
+            if self.isCircleDrawn != true {
+                print((self.percentageLabel.text! as NSString).doubleValue*(0.01))
+                self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
+            }
+        })
     }
 
     func expandDetailView() {
