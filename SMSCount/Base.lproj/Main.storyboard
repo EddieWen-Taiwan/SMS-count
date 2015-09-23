@@ -2108,10 +2108,10 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="yL3-nU-Qw0" firstAttribute="top" secondItem="AXv-5p-op3" secondAttribute="bottom" constant="20" id="1yp-QS-k6K">
-                                                        <variation key="widthClass=compact" constant="20"/>
+                                                        <variation key="widthClass=compact" constant="15"/>
                                                     </constraint>
                                                     <constraint firstItem="oNV-Un-zaK" firstAttribute="top" secondItem="E1a-JJ-dpv" secondAttribute="bottom" constant="10" id="1zP-tH-2qe">
-                                                        <variation key="widthClass=compact" constant="20"/>
+                                                        <variation key="widthClass=compact" constant="15"/>
                                                     </constraint>
                                                     <constraint firstItem="oNV-Un-zaK" firstAttribute="top" secondItem="XQa-fW-ivT" secondAttribute="top" id="2T9-x1-rEp"/>
                                                     <constraint firstAttribute="trailing" secondItem="AXv-5p-op3" secondAttribute="trailing" id="43f-Pf-izd"/>
@@ -2123,16 +2123,16 @@
                                                     <constraint firstItem="XQa-fW-ivT" firstAttribute="leading" secondItem="oNV-Un-zaK" secondAttribute="trailing" constant="10" id="FQ3-8E-VYN"/>
                                                     <constraint firstAttribute="leading" secondItem="oNV-Un-zaK" secondAttribute="leading" id="HWa-Hr-15c"/>
                                                     <constraint firstItem="7HW-01-pXC" firstAttribute="top" secondItem="oNV-Un-zaK" secondAttribute="bottom" constant="10" id="JjO-rX-qD9">
-                                                        <variation key="widthClass=compact" constant="20"/>
+                                                        <variation key="widthClass=compact" constant="15"/>
                                                     </constraint>
                                                     <constraint firstAttribute="bottom" secondItem="7HW-01-pXC" secondAttribute="bottom" id="Rtw-ww-j1R"/>
                                                     <constraint firstAttribute="trailing" secondItem="OgB-Sh-J0d" secondAttribute="trailing" id="YgV-qO-mgY"/>
                                                     <constraint firstItem="E1a-JJ-dpv" firstAttribute="top" secondItem="AXv-5p-op3" secondAttribute="bottom" constant="20" id="ZZt-QO-ibH">
-                                                        <variation key="widthClass=compact" constant="20"/>
+                                                        <variation key="widthClass=compact" constant="15"/>
                                                     </constraint>
                                                     <constraint firstAttribute="trailing" secondItem="XQa-fW-ivT" secondAttribute="trailing" id="ab6-9k-eUJ"/>
                                                     <constraint firstItem="XQa-fW-ivT" firstAttribute="top" secondItem="yL3-nU-Qw0" secondAttribute="bottom" id="eIa-oD-wwW">
-                                                        <variation key="widthClass=compact" constant="20"/>
+                                                        <variation key="widthClass=compact" constant="15"/>
                                                     </constraint>
                                                     <constraint firstItem="AXv-5p-op3" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="fjG-Mg-Nha"/>
                                                     <constraint firstItem="OgB-Sh-J0d" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="giw-kY-ZhY"/>
@@ -2142,7 +2142,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="7HW-01-pXC" secondAttribute="trailing" id="hZp-hf-y9U"/>
                                                     <constraint firstAttribute="trailing" secondItem="yL3-nU-Qw0" secondAttribute="trailing" id="hkR-zO-DeS"/>
                                                     <constraint firstItem="7HW-01-pXC" firstAttribute="top" secondItem="XQa-fW-ivT" secondAttribute="bottom" constant="10" id="rXV-PW-RhP">
-                                                        <variation key="widthClass=compact" constant="20"/>
+                                                        <variation key="widthClass=compact" constant="15"/>
                                                     </constraint>
                                                     <constraint firstItem="E1a-JJ-dpv" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="rl9-Ik-Gtz"/>
                                                 </constraints>
