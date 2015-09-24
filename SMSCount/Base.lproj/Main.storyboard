@@ -1993,14 +1993,16 @@
                                                     <constraint firstItem="OgB-Sh-J0d" firstAttribute="top" secondItem="iF0-J0-2Pa" secondAttribute="top" id="A1z-J3-PEX"/>
                                                     <constraint firstItem="7HW-01-pXC" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="CUY-dL-Q4f"/>
                                                     <constraint firstItem="7HW-01-pXC" firstAttribute="top" secondItem="XQa-fW-ivT" secondAttribute="bottom" id="H8C-ph-RlX">
-                                                        <variation key="widthClass=compact" constant="15"/>
+                                                        <variation key="widthClass=compact" constant="20"/>
                                                     </constraint>
                                                     <constraint firstAttribute="leading" secondItem="oNV-Un-zaK" secondAttribute="leading" id="HWa-Hr-15c"/>
                                                     <constraint firstAttribute="trailing" secondItem="oNV-Un-zaK" secondAttribute="trailing" id="PsJ-gx-ukA"/>
                                                     <constraint firstAttribute="bottom" secondItem="7HW-01-pXC" secondAttribute="bottom" id="Rtw-ww-j1R"/>
                                                     <constraint firstAttribute="trailing" secondItem="OgB-Sh-J0d" secondAttribute="trailing" id="YgV-qO-mgY"/>
                                                     <constraint firstAttribute="trailing" secondItem="XQa-fW-ivT" secondAttribute="trailing" id="ab6-9k-eUJ"/>
-                                                    <constraint firstItem="oNV-Un-zaK" firstAttribute="top" secondItem="yL3-nU-Qw0" secondAttribute="bottom" constant="15" id="cur-jN-ovr"/>
+                                                    <constraint firstItem="oNV-Un-zaK" firstAttribute="top" secondItem="yL3-nU-Qw0" secondAttribute="bottom" constant="15" id="cur-jN-ovr">
+                                                        <variation key="widthClass=compact" constant="20"/>
+                                                    </constraint>
                                                     <constraint firstItem="yL3-nU-Qw0" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="egb-Og-eWH"/>
                                                     <constraint firstItem="AXv-5p-op3" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="fjG-Mg-Nha"/>
                                                     <constraint firstItem="OgB-Sh-J0d" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="giw-kY-ZhY"/>
@@ -2012,11 +2014,17 @@
                                                     </constraint>
                                                     <constraint firstAttribute="trailing" secondItem="7HW-01-pXC" secondAttribute="trailing" id="hZp-hf-y9U"/>
                                                     <constraint firstAttribute="trailing" secondItem="yL3-nU-Qw0" secondAttribute="trailing" id="hkR-zO-DeS"/>
-                                                    <constraint firstItem="yL3-nU-Qw0" firstAttribute="top" secondItem="E1a-JJ-dpv" secondAttribute="bottom" constant="15" id="mdQ-ZN-FC9"/>
+                                                    <constraint firstItem="yL3-nU-Qw0" firstAttribute="top" secondItem="E1a-JJ-dpv" secondAttribute="bottom" constant="15" id="mdQ-ZN-FC9">
+                                                        <variation key="widthClass=compact" constant="20"/>
+                                                    </constraint>
                                                     <constraint firstItem="XQa-fW-ivT" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="pXs-uM-07i"/>
                                                     <constraint firstItem="E1a-JJ-dpv" firstAttribute="leading" secondItem="iF0-J0-2Pa" secondAttribute="leading" id="rl9-Ik-Gtz"/>
-                                                    <constraint firstItem="E1a-JJ-dpv" firstAttribute="top" secondItem="AXv-5p-op3" secondAttribute="bottom" constant="15" id="wSR-O1-2RM"/>
-                                                    <constraint firstItem="XQa-fW-ivT" firstAttribute="top" secondItem="oNV-Un-zaK" secondAttribute="bottom" constant="15" id="xYX-Un-wdO"/>
+                                                    <constraint firstItem="E1a-JJ-dpv" firstAttribute="top" secondItem="AXv-5p-op3" secondAttribute="bottom" constant="15" id="wSR-O1-2RM">
+                                                        <variation key="widthClass=compact" constant="20"/>
+                                                    </constraint>
+                                                    <constraint firstItem="XQa-fW-ivT" firstAttribute="top" secondItem="oNV-Un-zaK" secondAttribute="bottom" constant="15" id="xYX-Un-wdO">
+                                                        <variation key="widthClass=compact" constant="20"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="subviews">
