@@ -1484,7 +1484,7 @@
                                                                 </variation>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="vd0-9a-6DC" secondAttribute="trailing" constant="5" id="L0Q-Zf-NGk">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -1493,7 +1493,7 @@
                                                                 <variation key="widthClass=compact" constant="0.0"/>
                                                             </constraint>
                                                             <constraint firstAttribute="bottom" secondItem="vd0-9a-6DC" secondAttribute="bottom" constant="5" id="ezO-vh-95C">
-                                                                <variation key="widthClass=compact" constant="2"/>
+                                                                <variation key="widthClass=compact" constant="1"/>
                                                             </constraint>
                                                             <constraint firstItem="vd0-9a-6DC" firstAttribute="leading" secondItem="AXv-5p-op3" secondAttribute="leading" constant="5" id="rca-5Z-499">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -1578,10 +1578,10 @@
                                                                 </variation>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.82745098039215681" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="5RM-0X-kkp" secondAttribute="bottom" constant="5" id="8fW-Jm-Vpx">
-                                                                <variation key="widthClass=compact" constant="2"/>
+                                                                <variation key="widthClass=compact" constant="1"/>
                                                             </constraint>
                                                             <constraint firstItem="5RM-0X-kkp" firstAttribute="leading" secondItem="E1a-JJ-dpv" secondAttribute="leading" constant="5" id="A2f-hJ-309">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -1672,7 +1672,7 @@
                                                                 </variation>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.78823529411764703" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="hGM-bm-gNX" secondAttribute="trailing" constant="5" id="7wH-Ew-f6Q">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -1684,7 +1684,7 @@
                                                                 <variation key="widthClass=compact" constant="0.0"/>
                                                             </constraint>
                                                             <constraint firstAttribute="bottom" secondItem="hGM-bm-gNX" secondAttribute="bottom" constant="5" id="sPN-Vt-dv5">
-                                                                <variation key="widthClass=compact" constant="2"/>
+                                                                <variation key="widthClass=compact" constant="1"/>
                                                             </constraint>
                                                         </constraints>
                                                         <variation key="default">
@@ -1766,7 +1766,7 @@
                                                                 </variation>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.75294117647058822" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="IIJ-0x-qra" firstAttribute="leading" secondItem="oNV-Un-zaK" secondAttribute="leading" constant="2" id="Gr9-Yf-4DR">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -1777,7 +1777,9 @@
                                                             <constraint firstItem="IIJ-0x-qra" firstAttribute="top" secondItem="oNV-Un-zaK" secondAttribute="top" constant="2" id="ezh-2Z-Pad">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
                                                             </constraint>
-                                                            <constraint firstAttribute="bottom" secondItem="IIJ-0x-qra" secondAttribute="bottom" constant="2" id="rXJ-00-Rcg"/>
+                                                            <constraint firstAttribute="bottom" secondItem="IIJ-0x-qra" secondAttribute="bottom" constant="2" id="rXJ-00-Rcg">
+                                                                <variation key="widthClass=compact" constant="1"/>
+                                                            </constraint>
                                                         </constraints>
                                                         <variation key="default">
                                                             <mask key="subviews">
@@ -1858,9 +1860,11 @@
                                                                 </variation>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.71764705882352942" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="8qv-KW-g8Q" secondAttribute="bottom" constant="2" id="Q2U-Au-oH0"/>
+                                                            <constraint firstAttribute="bottom" secondItem="8qv-KW-g8Q" secondAttribute="bottom" constant="2" id="Q2U-Au-oH0">
+                                                                <variation key="widthClass=compact" constant="1"/>
+                                                            </constraint>
                                                             <constraint firstItem="8qv-KW-g8Q" firstAttribute="leading" secondItem="XQa-fW-ivT" secondAttribute="leading" constant="2" id="TDi-Ic-kZf">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
                                                             </constraint>
@@ -1950,7 +1954,7 @@
                                                                 </variation>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.67843137254901964" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.88235294117647056" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="pT4-hX-ZIy" secondAttribute="trailing" constant="2" id="AyA-oU-Wst">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -1961,7 +1965,9 @@
                                                             <constraint firstItem="pT4-hX-ZIy" firstAttribute="top" secondItem="7HW-01-pXC" secondAttribute="top" constant="2" id="MzP-XH-OHM">
                                                                 <variation key="widthClass=compact" constant="0.0"/>
                                                             </constraint>
-                                                            <constraint firstAttribute="bottom" secondItem="pT4-hX-ZIy" secondAttribute="bottom" constant="2" id="rvr-28-4XZ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="pT4-hX-ZIy" secondAttribute="bottom" constant="2" id="rvr-28-4XZ">
+                                                                <variation key="widthClass=compact" constant="1"/>
+                                                            </constraint>
                                                         </constraints>
                                                         <variation key="default">
                                                             <mask key="subviews">
@@ -2361,7 +2367,9 @@
                                                 <variation key="widthClass=compact" constant="-50"/>
                                             </constraint>
                                             <constraint firstAttribute="trailing" secondItem="f2A-qQ-mIy" secondAttribute="trailing" constant="20" id="gFw-wW-tRb"/>
-                                            <constraint firstItem="iF0-J0-2Pa" firstAttribute="leading" secondItem="BjK-Rs-1wA" secondAttribute="leading" constant="20" id="j8r-xb-MBG"/>
+                                            <constraint firstItem="iF0-J0-2Pa" firstAttribute="leading" secondItem="BjK-Rs-1wA" secondAttribute="leading" constant="20" id="j8r-xb-MBG">
+                                                <variation key="widthClass=compact" constant="20"/>
+                                            </constraint>
                                             <constraint firstItem="zqf-Gi-c3G" firstAttribute="leading" secondItem="BjK-Rs-1wA" secondAttribute="leading" constant="16" id="mlc-J4-JHX">
                                                 <variation key="widthClass=compact" constant="20"/>
                                             </constraint>
