@@ -283,7 +283,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.ghostButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
         self.visualEffectView.hidden = false
         self.detailViewTopConstraint.constant = 120
-        UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+        UIView.animateWithDuration(0.4, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.visualEffectView.alpha = 0.9
             self.ghostButton.backgroundColor = UIColor.clearColor()
             self.ghostButton.alpha = 0.0
