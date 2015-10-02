@@ -276,6 +276,37 @@
                                             </mask>
                                         </variation>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yO5-wV-F64">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="83e-cG-bfs"/>
+                                            <constraint firstAttribute="height" constant="50" id="bKK-5Q-Z3W"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                <real key="value" value="0.40000000000000002"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                <size key="value" width="1" height="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="83e-cG-bfs"/>
+                                                <exclude reference="bKK-5Q-Z3W"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="83e-cG-bfs"/>
+                                                <include reference="bKK-5Q-Z3W"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -284,6 +315,9 @@
                                     <constraint firstItem="53F-TZ-OfW" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="6Qq-Cp-qek"/>
                                     <constraint firstItem="NCO-wY-X7w" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="8Gr-96-50P"/>
                                     <constraint firstItem="vxp-Hu-SuH" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="top" id="GtL-ZB-eqp"/>
+                                    <constraint firstAttribute="bottom" secondItem="yO5-wV-F64" secondAttribute="bottom" constant="87" id="HPY-rt-vZN">
+                                        <variation key="widthClass=compact" constant="20"/>
+                                    </constraint>
                                     <constraint firstItem="NCO-wY-X7w" firstAttribute="width" secondItem="sY1-RK-Tl8" secondAttribute="width" id="JUP-Uu-EW0"/>
                                     <constraint firstItem="53F-TZ-OfW" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="top" id="L3Y-ej-bN7"/>
                                     <constraint firstAttribute="trailing" secondItem="vxp-Hu-SuH" secondAttribute="trailing" id="NbK-2h-eZh"/>
@@ -294,6 +328,7 @@
                                     <constraint firstItem="6DD-jS-bAd" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="hIr-H8-sE5"/>
                                     <constraint firstItem="vxp-Hu-SuH" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="ojJ-cc-sbI"/>
                                     <constraint firstAttribute="bottom" secondItem="53F-TZ-OfW" secondAttribute="bottom" id="tzN-9d-7rM"/>
+                                    <constraint firstAttribute="trailing" secondItem="yO5-wV-F64" secondAttribute="trailing" constant="30" id="wHu-a0-FHK"/>
                                     <constraint firstAttribute="trailing" secondItem="6DD-jS-bAd" secondAttribute="trailing" id="wUp-Md-AZL"/>
                                 </constraints>
                                 <variation key="default">
@@ -302,6 +337,7 @@
                                         <exclude reference="6DD-jS-bAd"/>
                                         <exclude reference="53F-TZ-OfW"/>
                                         <exclude reference="NCO-wY-X7w"/>
+                                        <exclude reference="yO5-wV-F64"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="6Qq-Cp-qek"/>
@@ -320,6 +356,8 @@
                                         <exclude reference="GtL-ZB-eqp"/>
                                         <exclude reference="NbK-2h-eZh"/>
                                         <exclude reference="ojJ-cc-sbI"/>
+                                        <exclude reference="HPY-rt-vZN"/>
+                                        <exclude reference="wHu-a0-FHK"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -328,6 +366,7 @@
                                         <include reference="6DD-jS-bAd"/>
                                         <include reference="53F-TZ-OfW"/>
                                         <include reference="NCO-wY-X7w"/>
+                                        <include reference="yO5-wV-F64"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="6Qq-Cp-qek"/>
@@ -346,6 +385,8 @@
                                         <include reference="GtL-ZB-eqp"/>
                                         <include reference="NbK-2h-eZh"/>
                                         <include reference="ojJ-cc-sbI"/>
+                                        <include reference="HPY-rt-vZN"/>
+                                        <include reference="wHu-a0-FHK"/>
                                     </mask>
                                 </variation>
                             </view>
