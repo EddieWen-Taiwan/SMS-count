@@ -18,6 +18,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     // <<Front>>
     @IBOutlet var backgroundImage: UIImageView!
     var monthImage = "background_01"
+    var currentDisplay = "day"
+    @IBOutlet var switchViewButton: UIView!
 
     // RemainedDays
     @IBOutlet var frontRemainedDaysLabel: UILabel!
@@ -53,6 +55,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
+        let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
+        self.switchViewButton.addGestureRecognizer( switchGesture )
 
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
         self.pieChartView.addSubview( circleView )
@@ -209,6 +213,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.checkCircleAnimation()
             }
         })
+    }
+    func switchView() {
+        print("switch")
     }
 
     func checkDaysAnimation() {
