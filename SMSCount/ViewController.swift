@@ -239,8 +239,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     self.checkDaysAnimation()
             })
 
-        } else {
-            print("animating")
         }
 
     }
