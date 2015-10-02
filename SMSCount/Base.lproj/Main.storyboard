@@ -585,6 +585,7 @@
                         <outlet property="percentageLabel" destination="p6H-dK-4Zf" id="ulZ-WP-dIG"/>
                         <outlet property="pieChartView" destination="TXW-cI-vr1" id="LpM-Fo-DUS"/>
                         <outlet property="screenShotScale" destination="OJc-wj-ATG" id="YSt-LB-kak"/>
+                        <outlet property="switchViewButton" destination="yO5-wV-F64" id="41N-w8-TII"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
