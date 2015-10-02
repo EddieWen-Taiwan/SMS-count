@@ -344,10 +344,6 @@
                                         <exclude reference="L3Y-ej-bN7"/>
                                         <exclude reference="e0d-G3-pUo"/>
                                         <exclude reference="tzN-9d-7rM"/>
-                                        <exclude reference="QbW-Ia-PvL"/>
-                                        <exclude reference="gVf-FX-L7P"/>
-                                        <exclude reference="hIr-H8-sE5"/>
-                                        <exclude reference="wUp-Md-AZL"/>
                                         <exclude reference="5Nn-gI-FQG"/>
                                         <exclude reference="8Gr-96-50P"/>
                                         <exclude reference="JUP-Uu-EW0"/>
@@ -358,6 +354,10 @@
                                         <exclude reference="ojJ-cc-sbI"/>
                                         <exclude reference="HPY-rt-vZN"/>
                                         <exclude reference="wHu-a0-FHK"/>
+                                        <exclude reference="QbW-Ia-PvL"/>
+                                        <exclude reference="gVf-FX-L7P"/>
+                                        <exclude reference="hIr-H8-sE5"/>
+                                        <exclude reference="wUp-Md-AZL"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -373,10 +373,6 @@
                                         <include reference="L3Y-ej-bN7"/>
                                         <include reference="e0d-G3-pUo"/>
                                         <include reference="tzN-9d-7rM"/>
-                                        <include reference="QbW-Ia-PvL"/>
-                                        <include reference="gVf-FX-L7P"/>
-                                        <include reference="hIr-H8-sE5"/>
-                                        <include reference="wUp-Md-AZL"/>
                                         <include reference="5Nn-gI-FQG"/>
                                         <include reference="8Gr-96-50P"/>
                                         <include reference="JUP-Uu-EW0"/>
@@ -387,6 +383,10 @@
                                         <include reference="ojJ-cc-sbI"/>
                                         <include reference="HPY-rt-vZN"/>
                                         <include reference="wHu-a0-FHK"/>
+                                        <include reference="QbW-Ia-PvL"/>
+                                        <include reference="gVf-FX-L7P"/>
+                                        <include reference="hIr-H8-sE5"/>
+                                        <include reference="wUp-Md-AZL"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -578,7 +578,6 @@
                         <outlet property="backRemainedDaysLabel" destination="NyZ-Jo-ImC" id="Bgo-yL-duS"/>
                         <outlet property="backRemainedDaysWord" destination="0oN-8k-ZGV" id="rnI-uH-6mF"/>
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
-                        <outlet property="basicLeftConstraint" destination="6Qq-Cp-qek" id="95R-b8-JVB"/>
                         <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
                         <outlet property="frontRemainedDaysWord" destination="SMP-hf-NE4" id="RuV-Lq-zfy"/>
                         <outlet property="loadingActivity" destination="gRk-2u-jxd" id="Hdx-fO-o54"/>
