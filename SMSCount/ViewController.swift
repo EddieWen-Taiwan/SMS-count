@@ -201,7 +201,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if self.currentDisplay == "day" {
 
             self.currentDisplay = "running"
-            UIView.animateWithDuration( 1.0, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            UIView.animateWithDuration( 0.7, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                 self.remainedView.alpha = 0
                 self.pieChartView.alpha = 1
             }, completion: { finish in
@@ -212,12 +212,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         } else if self.currentDisplay == "chart" {
 
             self.currentDisplay = "running"
-            UIView.animateWithDuration( 1.0, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            UIView.animateWithDuration( 0.7, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                 self.pieChartView.alpha = 0
                 self.remainedView.alpha = 1
-                }, completion: { finish in
-                    self.currentDisplay = "day"
-                    self.checkDaysAnimation()
+            }, completion: { finish in
+                self.currentDisplay = "day"
+                self.checkDaysAnimation()
             })
 
         }
