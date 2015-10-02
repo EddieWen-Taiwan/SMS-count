@@ -196,25 +196,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
 
-    @IBAction func swipeLeft(sender: AnyObject) {
-        UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: { finish in
-            if self.isDaysJumped != true {
-                self.checkDaysAnimation()
-            }
-        })
-    }
-
-    @IBAction func swipeRight(sender: AnyObject) {
-        UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: { finish in
-            if self.isCircleDrawn != true {
-                self.checkCircleAnimation()
-            }
-        })
-    }
     func switchView() {
 
         if self.currentDisplay == "day" {
