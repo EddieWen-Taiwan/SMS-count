@@ -20,7 +20,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var monthImage = "background_01"
 
     // RemainedDays
-    @IBOutlet var basicLeftConstraint: NSLayoutConstraint!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
     var animationIndex: Int = 0
@@ -193,7 +192,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     @IBAction func swipeLeft(sender: AnyObject) {
-        self.basicLeftConstraint.constant = 0
         UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: { finish in
@@ -204,7 +202,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     @IBAction func swipeRight(sender: AnyObject) {
-        self.basicLeftConstraint.constant = self.screenWidth*(-1)
         UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: { finish in
@@ -215,14 +212,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func checkDaysAnimation() {
-        if self.basicLeftConstraint.constant == 0 && self.isDaysJumped != true {
+        if self.isDaysJumped != true {
             NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             self.isDaysJumped = true
         }
     }
 
     func checkCircleAnimation() {
-        if self.basicLeftConstraint.constant == self.screenWidth*(-1) && self.isCircleDrawn != true {
+        if self.isCircleDrawn != true {
             self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
             self.isCircleDrawn = true
         }
