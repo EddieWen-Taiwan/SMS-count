@@ -20,6 +20,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var monthImage = "background_01"
     @IBOutlet var arrowLeft: UIButton!
     @IBOutlet var arrowRight: UIButton!
+
     // RemainedDays
     @IBOutlet var basicLeftConstraint: NSLayoutConstraint!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
@@ -28,22 +29,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var animationArray = [ "" ]
     var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
     var isDaysJumped: Bool = false
+
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
     @IBOutlet var percentageLabel: UILabel!
     var isCircleDrawn: Bool = false
 
-    // about DetailView
-    @IBOutlet var ghostButton: UIView!
-    @IBOutlet var visualEffectView: UIVisualEffectView!
-
-    @IBOutlet var detailViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var detailViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet var finalRetireDateLabel: UILabel!
-    @IBOutlet var retireDateLine: UIView!
-    @IBOutlet var retireDateLabel: UILabel!
-    @IBOutlet var passedDaysLabel: UILabel!
-    @IBOutlet var passedDaysLineTopConstraint: NSLayoutConstraint!
+    // LoaingView after screenshot
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
 
@@ -64,9 +56,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.backgroundImage.image = UIImage(named: monthImage)
-        self.ghostButton.layer.borderColor = UIColor.whiteColor().CGColor
-        let tapGhostButton = UITapGestureRecognizer(target: self, action: "expandDetailView")
-        self.ghostButton.addGestureRecognizer(tapGhostButton)
 
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
         self.pieChartView.addSubview( circleView )
@@ -74,13 +63,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-
-        // Reset animation
-        self.visualEffectView.hidden = false
-        self.visualEffectView.alpha = 0
-        self.ghostButton.alpha = 1
-        self.detailViewTopConstraint.constant = self.screenHeight
-        self.view.layoutIfNeeded()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -101,7 +83,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     self.frontRemainedDaysWord.text = "剩餘天數"
                 }
                 self.backRemainedDaysLabel.text = String( remainedDays )
-                self.passedDaysLabel.text = String( countingClass.getPassedDays() )
 
                 // Timer Effect
                 animationIndex = 0
@@ -139,28 +120,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.checkCircleAnimation()
             }
 
-            // DetailView
-            if countingClass.isAutoWeekendFixed() && countingClass.getRetireDate() != countingClass.getFixedRetireDate() {
-                // Line 1
-                self.finalRetireDateLabel.text = countingClass.getFixedRetireDate()
-                // Line 2
-                if self.retireDateLabel.text != countingClass.getRetireDate() {
-                    self.retireDateLabel.text = countingClass.getRetireDate()
-                    self.retireDateLine.hidden = false
-                    self.detailViewHeightConstraint.constant = 238
-                    self.passedDaysLineTopConstraint.constant = 66
-                }
-            } else {
-                // Line 1
-                self.finalRetireDateLabel.text = countingClass.getRetireDate()
-                // Line 2
-                if self.retireDateLine.hidden == false {
-                    self.retireDateLine.hidden = true
-                    self.detailViewHeightConstraint.constant = 172
-                    self.passedDaysLineTopConstraint.constant = 0
-                    self.retireDateLabel.text = ""
-                }
-            }
         } else {
             // switch to settingViewController ?
             // tabBarController?.selectedIndex = 2
@@ -277,29 +236,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
             self.isCircleDrawn = true
         }
-    }
-
-    func expandDetailView() {
-        self.ghostButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
-        self.visualEffectView.hidden = false
-        self.detailViewTopConstraint.constant = 120
-        UIView.animateWithDuration(0.4, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.visualEffectView.alpha = 0.9
-            self.ghostButton.backgroundColor = UIColor.clearColor()
-            self.ghostButton.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }, completion: { finish in })
-    }
-
-    @IBAction func dismissDetailView(sender: AnyObject) {
-        self.detailViewTopConstraint.constant = self.screenHeight
-        UIView.animateWithDuration(0.4, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.visualEffectView.alpha = 0.0
-            self.ghostButton.alpha = 1.0
-            self.view.layoutIfNeeded()
-        }, completion: { finish in
-            self.visualEffectView.hidden = true
-        })
     }
 
     @IBAction func pressShareButton(sender: AnyObject) {
