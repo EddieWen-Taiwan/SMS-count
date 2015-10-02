@@ -22,6 +22,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var switchViewButton: UIView!
 
     // RemainedDays
+    @IBOutlet var remainedView: UIView!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
     var animationIndex: Int = 0
@@ -215,7 +216,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         })
     }
     func switchView() {
-        print("switch")
+
+        if self.currentDisplay == "day" {
+
+            self.currentDisplay = "running"
+            UIView.animateWithDuration( 0.4, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                
+            }, completion: { finish in
+                
+            })
+
+        } else if self.currentDisplay == "chart" {
+
+            
+
+        } else {
+            print("animating")
+        }
+
     }
 
     func checkDaysAnimation() {
