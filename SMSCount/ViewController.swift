@@ -18,8 +18,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     // <<Front>>
     @IBOutlet var backgroundImage: UIImageView!
     var monthImage = "background_01"
-    @IBOutlet var arrowLeft: UIButton!
-    @IBOutlet var arrowRight: UIButton!
 
     // RemainedDays
     @IBOutlet var basicLeftConstraint: NSLayoutConstraint!
@@ -195,14 +193,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     @IBAction func swipeLeft(sender: AnyObject) {
-        self.arrowRight.hidden = false
         self.basicLeftConstraint.constant = 0
         UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.view.layoutIfNeeded()
-            self.arrowRight.alpha = 1
-            self.arrowLeft.alpha = 0
         }, completion: { finish in
-            self.arrowLeft.hidden = true
             if self.isDaysJumped != true {
                 self.checkDaysAnimation()
             }
@@ -210,14 +204,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     @IBAction func swipeRight(sender: AnyObject) {
-        self.arrowLeft.hidden = false
         self.basicLeftConstraint.constant = self.screenWidth*(-1)
         UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.arrowLeft.alpha = 1
             self.view.layoutIfNeeded()
-            self.arrowRight.alpha = 0
         }, completion: { finish in
-            self.arrowRight.hidden = true
             if self.isCircleDrawn != true {
                 self.checkCircleAnimation()
             }
