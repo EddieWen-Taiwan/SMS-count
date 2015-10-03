@@ -561,6 +561,7 @@
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
                         <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
                         <outlet property="frontRemainedDaysWord" destination="SMP-hf-NE4" id="RuV-Lq-zfy"/>
+                        <outlet property="imageOnSwitchBtn" destination="M0i-Su-8TO" id="HWC-BX-H7o"/>
                         <outlet property="loadingActivity" destination="gRk-2u-jxd" id="Hdx-fO-o54"/>
                         <outlet property="loadingView" destination="Ddf-HG-K3c" id="CrS-4o-TqZ"/>
                         <outlet property="percentageLabel" destination="p6H-dK-4Zf" id="ulZ-WP-dIG"/>
