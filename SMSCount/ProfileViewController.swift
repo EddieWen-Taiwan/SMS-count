@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PercentageViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     @IBOutlet var profileHeightConstraint: NSLayoutConstraint!
     @IBOutlet var serviceCard: UIView!

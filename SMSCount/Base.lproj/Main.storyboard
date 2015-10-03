@@ -605,7 +605,7 @@
         <!--Percentage-->
         <scene sceneID="1nZ-Im-AdM">
             <objects>
-                <viewController title="Percentage" id="L92-j8-KKk" customClass="PercentageViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController title="Percentage" id="L92-j8-KKk" customClass="ProfileViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fyC-rT-2BF"/>
                         <viewControllerLayoutGuide type="bottom" id="Gv2-N8-ce4"/>
