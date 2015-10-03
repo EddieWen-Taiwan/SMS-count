@@ -198,26 +198,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     func switchView() {
 
-        if self.currentDisplay == "day" {
+        if self.currentDisplay != "running" {
 
-            self.currentDisplay = "running"
+            let currentIsDay: Bool = ( self.currentDisplay == "day" ) ? true : false
+
+            self.currentDisplay = "runnung"
             UIView.animateWithDuration( 0.7, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                self.remainedView.alpha = 0
-                self.pieChartView.alpha = 1
+                self.remainedView.alpha = currentIsDay ? 0 : 1
+                self.pieChartView.alpha = currentIsDay ? 1 : 0
             }, completion: { finish in
-                self.currentDisplay = "chart"
-                self.checkCircleAnimation()
-            })
-
-        } else if self.currentDisplay == "chart" {
-
-            self.currentDisplay = "running"
-            UIView.animateWithDuration( 0.7, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                self.pieChartView.alpha = 0
-                self.remainedView.alpha = 1
-            }, completion: { finish in
-                self.currentDisplay = "day"
-                self.checkDaysAnimation()
+                self.currentDisplay = currentIsDay ? "chart" : "day"
+                if currentIsDay {
+                    self.checkCircleAnimation()
+                } else {
+                    self.checkDaysAnimation()
+                }
             })
 
         }
