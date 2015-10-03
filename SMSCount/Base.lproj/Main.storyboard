@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Day Countdown-->
+        <!--Countdown-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="Day Countdown" id="vXZ-lx-hvc" customClass="ViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController title="Countdown" id="vXZ-lx-hvc" customClass="ViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -602,10 +602,10 @@
             </objects>
             <point key="canvasLocation" x="-567" y="1117"/>
         </scene>
-        <!--Percentage-->
+        <!--Profile-->
         <scene sceneID="1nZ-Im-AdM">
             <objects>
-                <viewController title="Percentage" id="L92-j8-KKk" customClass="ProfileViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController title="Profile" id="L92-j8-KKk" customClass="ProfileViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fyC-rT-2BF"/>
                         <viewControllerLayoutGuide type="bottom" id="Gv2-N8-ce4"/>
