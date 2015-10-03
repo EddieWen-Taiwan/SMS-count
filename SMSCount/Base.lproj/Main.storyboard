@@ -254,25 +254,44 @@
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="M0i-Su-8TO">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="sLA-n2-LUw"/>
+                                                    <constraint firstAttribute="width" constant="30" id="tz8-R7-aHq"/>
+                                                </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="sLA-n2-LUw"/>
+                                                        <exclude reference="tz8-R7-aHq"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="sLA-n2-LUw"/>
+                                                        <include reference="tz8-R7-aHq"/>
+                                                    </mask>
                                                 </variation>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="83e-cG-bfs"/>
-                                            <constraint firstAttribute="height" constant="50" id="bKK-5Q-Z3W"/>
+                                            <constraint firstAttribute="width" constant="50" id="83e-cG-bfs">
+                                                <variation key="widthClass=compact" constant="60"/>
+                                            </constraint>
+                                            <constraint firstItem="M0i-Su-8TO" firstAttribute="centerY" secondItem="yO5-wV-F64" secondAttribute="centerY" id="MHg-Yc-dl0"/>
+                                            <constraint firstItem="M0i-Su-8TO" firstAttribute="centerX" secondItem="yO5-wV-F64" secondAttribute="centerX" id="UCv-IS-ekU"/>
+                                            <constraint firstAttribute="height" constant="50" id="bKK-5Q-Z3W">
+                                                <variation key="widthClass=compact" constant="60"/>
+                                            </constraint>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="25"/>
+                                                <integer key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                                <real key="value" value="0.40000000000000002"/>
+                                                <real key="value" value="0.5"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                                <size key="value" width="1" height="1"/>
+                                                <size key="value" width="2" height="2"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <variation key="default">
@@ -282,6 +301,8 @@
                                             <mask key="constraints">
                                                 <exclude reference="83e-cG-bfs"/>
                                                 <exclude reference="bKK-5Q-Z3W"/>
+                                                <exclude reference="MHg-Yc-dl0"/>
+                                                <exclude reference="UCv-IS-ekU"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -291,6 +312,8 @@
                                             <mask key="constraints">
                                                 <include reference="83e-cG-bfs"/>
                                                 <include reference="bKK-5Q-Z3W"/>
+                                                <include reference="MHg-Yc-dl0"/>
+                                                <include reference="UCv-IS-ekU"/>
                                             </mask>
                                         </variation>
                                     </view>
