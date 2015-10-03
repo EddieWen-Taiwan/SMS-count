@@ -315,18 +315,18 @@
                                         <exclude reference="L3Y-ej-bN7"/>
                                         <exclude reference="e0d-G3-pUo"/>
                                         <exclude reference="tzN-9d-7rM"/>
-                                        <exclude reference="QbW-Ia-PvL"/>
-                                        <exclude reference="gVf-FX-L7P"/>
-                                        <exclude reference="hIr-H8-sE5"/>
-                                        <exclude reference="wUp-Md-AZL"/>
+                                        <exclude reference="4d1-Ma-7Kb"/>
+                                        <exclude reference="5pL-yI-Hka"/>
                                         <exclude reference="1Ih-K1-D1C"/>
                                         <exclude reference="GtL-ZB-eqp"/>
                                         <exclude reference="NbK-2h-eZh"/>
                                         <exclude reference="ojJ-cc-sbI"/>
-                                        <exclude reference="4d1-Ma-7Kb"/>
-                                        <exclude reference="5pL-yI-Hka"/>
                                         <exclude reference="HPY-rt-vZN"/>
                                         <exclude reference="wHu-a0-FHK"/>
+                                        <exclude reference="QbW-Ia-PvL"/>
+                                        <exclude reference="gVf-FX-L7P"/>
+                                        <exclude reference="hIr-H8-sE5"/>
+                                        <exclude reference="wUp-Md-AZL"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -342,18 +342,18 @@
                                         <include reference="L3Y-ej-bN7"/>
                                         <include reference="e0d-G3-pUo"/>
                                         <include reference="tzN-9d-7rM"/>
-                                        <include reference="QbW-Ia-PvL"/>
-                                        <include reference="gVf-FX-L7P"/>
-                                        <include reference="hIr-H8-sE5"/>
-                                        <include reference="wUp-Md-AZL"/>
+                                        <include reference="4d1-Ma-7Kb"/>
+                                        <include reference="5pL-yI-Hka"/>
                                         <include reference="1Ih-K1-D1C"/>
                                         <include reference="GtL-ZB-eqp"/>
                                         <include reference="NbK-2h-eZh"/>
                                         <include reference="ojJ-cc-sbI"/>
-                                        <include reference="4d1-Ma-7Kb"/>
-                                        <include reference="5pL-yI-Hka"/>
                                         <include reference="HPY-rt-vZN"/>
                                         <include reference="wHu-a0-FHK"/>
+                                        <include reference="QbW-Ia-PvL"/>
+                                        <include reference="gVf-FX-L7P"/>
+                                        <include reference="hIr-H8-sE5"/>
+                                        <include reference="wUp-Md-AZL"/>
                                     </mask>
                                 </variation>
                             </view>
