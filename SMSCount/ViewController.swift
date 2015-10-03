@@ -200,12 +200,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         if self.currentDisplay != "running" {
 
+            self.switchViewButton.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
             let currentIsDay: Bool = ( self.currentDisplay == "day" ) ? true : false
-
             self.currentDisplay = "runnung"
-            UIView.animateWithDuration( 0.7, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+
+            UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                 self.remainedView.alpha = currentIsDay ? 0 : 1
                 self.pieChartView.alpha = currentIsDay ? 1 : 0
+                self.switchViewButton.backgroundColor = UIColor.whiteColor()
             }, completion: { finish in
                 self.currentDisplay = currentIsDay ? "chart" : "day"
                 if currentIsDay {
