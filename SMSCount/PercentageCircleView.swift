@@ -19,7 +19,7 @@ class PercentageCircleView: UIView {
 
         let circleBasicLayer = CAShapeLayer()
         circleBasicLayer.fillColor = UIColor.clearColor().CGColor
-        circleBasicLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).CGColor
+        circleBasicLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3).CGColor
         circleBasicLayer.lineWidth = 1.0
         circleBasicLayer.strokeEnd = 1.0
 
@@ -29,7 +29,7 @@ class PercentageCircleView: UIView {
 
         // Setup the CAShapeLayer with the path, colors, and line width
         circleLayer.fillColor = UIColor.clearColor().CGColor
-        circleLayer.strokeColor = UIColor(red: 255/255, green: 140/255, blue: 66/255, alpha: 100/100).CGColor
+        circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).CGColor
 
         circleLayer.lineWidth = 5
 
