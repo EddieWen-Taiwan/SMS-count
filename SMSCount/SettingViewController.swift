@@ -33,6 +33,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBOutlet var autoWeekendSwitch: UISwitch!
 
+    let countingClass = CountingDate()
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
@@ -60,7 +61,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             enterDateLabel.text = userEnterDate
         }
         if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            serviceDaysLabel.text = switchPeriod( userServiceDays )
+            serviceDaysLabel.text = countingClass.switchPeriod( userServiceDays )
         }
         if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
             discountDaysLabel.text = userDiscountDays
@@ -154,7 +155,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             userPreference.setObject( 0, forKey: "serviceDays" )
         }
 
-        serviceDaysLabel.text = self.switchPeriod( userPreference.stringForKey("serviceDays")! )
+        serviceDaysLabel.text = countingClass.switchPeriod( userPreference.stringForKey("serviceDays")! )
 
         dismissScreenMask()
 
@@ -186,7 +187,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         })
 
         if serviceDaysLabel.text != "" {
-            userPreference.setObject( self.switchPeriod(serviceDaysLabel.text!), forKey: "serviceDays" )
+            userPreference.setObject( countingClass.switchPeriod(serviceDaysLabel.text!), forKey: "serviceDays" )
         } else {
             userPreference.removeObjectForKey( "serviceDays" )
         }
@@ -217,35 +218,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let forKeyString = pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays"
         self.userPreference.setObject( row, forKey: forKeyString )
-    }
-
-    func switchPeriod( period: String ) -> String {
-        var output: String = ""
-        switch(period) {
-            case "0":
-                output = "四個月"
-            case "1":
-                output = "四個月五天"
-            case "2":
-                output = "一年"
-            case "3":
-                output = "一年十五天"
-            case "4":
-                output = "三年"
-            case "四個月":
-                output = "0"
-            case "四個月五天":
-                output = "1"
-            case "一年":
-                output = "2"
-            case "一年十五天":
-                output = "3"
-            case "三年":
-                output = "4"
-            default:
-                output = "."
-        }
-        return output
     }
 
     override func didReceiveMemoryWarning() {

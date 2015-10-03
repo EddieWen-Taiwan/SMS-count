@@ -148,9 +148,34 @@ class CountingDate {
         let total_days = wholeServiceDays.day - self.days2beFixed
         return Double( self.passedDays.day ) / Double( total_days )*100
     }
-
-    func getEnterDate() -> String {
-        return dateFormatter.stringFromDate( self.enterDate )
+    
+    func switchPeriod( period: String ) -> String {
+        var output: String = ""
+        switch(period) {
+            case "0":
+                output = "四個月"
+            case "1":
+                output = "四個月五天"
+            case "2":
+                output = "一年"
+            case "3":
+                output = "一年十五天"
+            case "4":
+                output = "三年"
+            case "四個月":
+                output = "0"
+            case "四個月五天":
+                output = "1"
+            case "一年":
+                output = "2"
+            case "一年十五天":
+                output = "3"
+            case "三年":
+                output = "4"
+            default:
+                output = "."
+        }
+        return output
     }
 
     private func switchWeekday( weekday: Int ) -> String {
