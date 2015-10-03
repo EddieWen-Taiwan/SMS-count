@@ -11,16 +11,20 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet var profileHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var serviceCard: UIView!
     @IBOutlet var stageText: UILabel!
-    
+
+    // Detail
+    @IBOutlet var enterDateLabel: UILabel!
+    @IBOutlet var serviceDaysLabel: UILabel!
+    @IBOutlet var discountDaysLabel: UILabel!
+    @IBOutlet var passedDaysLabel: UILabel!
+    @IBOutlet var remainedDaysLabel: UILabel!
+    @IBOutlet var retireDateLabel: UILabel!
+
     let countingClass = CountingDate()
+    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
     let screenHeight = UIScreen.mainScreen().bounds.height
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,13 @@ class ProfileViewController: UIViewController {
 
         if countingClass.isSettingAllDone() {
             // OK
+            countingClass.updateDate()
+            self.enterDateLabel.text = self.userPreference.stringForKey("enterDate")
+            self.serviceDaysLabel.text = countingClass.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
+            self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
+            self.passedDaysLabel.text = String( countingClass.getPassedDays() )
+            self.remainedDaysLabel.text = String( countingClass.getRemainedDays() )
+            self.retireDateLabel.text = countingClass.getFixedRetireDate()
 
         } else {
             // switch to settingViewController ?
