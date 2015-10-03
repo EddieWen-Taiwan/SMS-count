@@ -251,6 +251,14 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yO5-wV-F64">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="M0i-Su-8TO">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                <variation key="widthClass=compact" fixedFrame="YES">
+                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                                </variation>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="83e-cG-bfs"/>
@@ -268,12 +276,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="M0i-Su-8TO"/>
+                                            </mask>
                                             <mask key="constraints">
                                                 <exclude reference="83e-cG-bfs"/>
                                                 <exclude reference="bKK-5Q-Z3W"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="M0i-Su-8TO"/>
+                                            </mask>
                                             <mask key="constraints">
                                                 <include reference="83e-cG-bfs"/>
                                                 <include reference="bKK-5Q-Z3W"/>
@@ -3096,6 +3110,7 @@
     </scenes>
     <resources>
         <image name="background" width="400" height="400"/>
+        <image name="chart" width="30" height="30"/>
         <image name="data" width="30" height="30"/>
         <image name="person" width="30" height="30"/>
         <image name="repeat-image" width="400" height="400"/>
