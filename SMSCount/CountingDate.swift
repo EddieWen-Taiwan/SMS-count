@@ -40,9 +40,6 @@ class CountingDate {
 
     func isSettingAllDone() -> Bool {
 
-        // Only ""enterDate"" & ""serviceDays""
-        // Don't judge ""discountDays""
-
         if self.userPreference.stringForKey("enterDate") == nil {
             return false
         }
@@ -150,6 +147,10 @@ class CountingDate {
     func getCurrentProgress() -> Double {
         let total_days = wholeServiceDays.day - self.days2beFixed
         return Double( self.passedDays.day ) / Double( total_days )*100
+    }
+
+    func getEnterDate() -> String {
+        return dateFormatter.stringFromDate( self.enterDate )
     }
 
     private func switchWeekday( weekday: Int ) -> String {
