@@ -216,8 +216,12 @@
                                                 <variation key="widthClass=compact" constant="-12"/>
                                             </constraint>
                                             <constraint firstItem="p6H-dK-4Zf" firstAttribute="centerY" secondItem="TXW-cI-vr1" secondAttribute="centerY" constant="4" id="Usb-hj-pMw"/>
-                                            <constraint firstAttribute="width" constant="170" id="c1C-8h-3x5"/>
-                                            <constraint firstAttribute="height" constant="170" id="o5y-gr-HU9"/>
+                                            <constraint firstAttribute="width" constant="170" id="c1C-8h-3x5">
+                                                <variation key="widthClass=compact" constant="180"/>
+                                            </constraint>
+                                            <constraint firstAttribute="height" constant="170" id="o5y-gr-HU9">
+                                                <variation key="widthClass=compact" constant="180"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerX" secondItem="p6H-dK-4Zf" secondAttribute="centerX" constant="10" id="wpe-CS-UxG"/>
                                         </constraints>
                                         <variation key="default">

@@ -203,7 +203,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if self.currentDisplay != "running" {
             
             let currentIsDay: Bool = ( self.currentDisplay == "day" ) ? true : false
-            self.switchViewButton.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+            self.switchViewButton.backgroundColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
             self.imageOnSwitchBtn.image = UIImage(named: currentIsDay ? "date" : "chart" )
             self.currentDisplay = "runnung"
 
