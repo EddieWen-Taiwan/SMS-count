@@ -20,6 +20,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var monthImage = "background_01"
     var currentDisplay = "day"
     @IBOutlet var switchViewButton: UIView!
+    @IBOutlet var imageOnSwitchBtn: UIImageView!
+
 
     // RemainedDays
     @IBOutlet var remainedView: UIView!
@@ -199,9 +201,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func switchView() {
 
         if self.currentDisplay != "running" {
-
-            self.switchViewButton.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+            
             let currentIsDay: Bool = ( self.currentDisplay == "day" ) ? true : false
+            self.switchViewButton.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+            self.imageOnSwitchBtn.image = UIImage(named: currentIsDay ? "date" : "chart" )
             self.currentDisplay = "runnung"
 
             UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseOut, animations: {
