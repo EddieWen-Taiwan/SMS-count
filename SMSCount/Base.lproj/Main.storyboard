@@ -294,17 +294,17 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="83e-cG-bfs">
-                                                <variation key="widthClass=compact" constant="60"/>
+                                                <variation key="widthClass=compact" constant="50"/>
                                             </constraint>
                                             <constraint firstItem="M0i-Su-8TO" firstAttribute="centerY" secondItem="yO5-wV-F64" secondAttribute="centerY" id="MHg-Yc-dl0"/>
                                             <constraint firstItem="M0i-Su-8TO" firstAttribute="centerX" secondItem="yO5-wV-F64" secondAttribute="centerX" id="UCv-IS-ekU"/>
                                             <constraint firstAttribute="height" constant="50" id="bKK-5Q-Z3W">
-                                                <variation key="widthClass=compact" constant="60"/>
+                                                <variation key="widthClass=compact" constant="50"/>
                                             </constraint>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="30"/>
+                                                <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
                                                 <real key="value" value="0.5"/>
