@@ -14,16 +14,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet var stageText: UILabel!
 
     // Detail
-    @IBOutlet var enterDateLabel: UILabel!
-    @IBOutlet var serviceDaysLabel: UILabel!
-    @IBOutlet var discountDaysLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
-    @IBOutlet var remainedDaysLabel: UILabel!
     @IBOutlet var finalRetireDateLabel: UILabel!
     @IBOutlet var retireDateBottomConstraint: NSLayoutConstraint!
     @IBOutlet var retireDateView: UIView!
     @IBOutlet var retireDateLabel: UILabel!
-
 
     let countingClass = CountingDate()
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
@@ -42,11 +37,7 @@ class ProfileViewController: UIViewController {
         if countingClass.isSettingAllDone() {
             // OK
             countingClass.updateDate()
-            self.enterDateLabel.text =  countingClass.getEnterDate()
-            self.serviceDaysLabel.text = countingClass.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
-            self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
             self.passedDaysLabel.text = String( countingClass.getPassedDays() )
-            self.remainedDaysLabel.text = String( countingClass.getRemainedDays() )
 
             if countingClass.isRetireDateFixed() {
                 self.finalRetireDateLabel.text = countingClass.getFixedRetireDate()

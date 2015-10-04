@@ -15,7 +15,6 @@ class CountingDate {
     let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
     var dayComponent = NSDateComponents()
     var weekendComponent = NSDateComponents()
-    var enterWeekComponenet = NSDateComponents()
 
     var enterDate: NSDate!
     var currentDate: NSDate!
@@ -55,7 +54,6 @@ class CountingDate {
 
         self.enterDate = dateFormatter.dateFromString( userPreference.stringForKey("enterDate")! )!
         // 入伍日 - enterDate
-        enterWeekComponenet = calendar!.components( .Weekday, fromDate: self.enterDate! )
 
         // v1.1 -> v1.2 dataFormat is change
         if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
@@ -154,10 +152,6 @@ class CountingDate {
     func getCurrentProgress() -> Double {
         let total_days = wholeServiceDays.day - self.days2beFixed
         return Double( self.passedDays.day ) / Double( total_days )*100
-    }
-
-    func getEnterDate() -> String {
-        return dateFormatter.stringFromDate( self.enterDate ) + switchWeekday( enterWeekComponenet.weekday )
     }
     
     func switchPeriod( period: String ) -> String {
