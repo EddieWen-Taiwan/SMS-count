@@ -19,7 +19,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet var discountDaysLabel: UILabel!
     @IBOutlet var passedDaysLabel: UILabel!
     @IBOutlet var remainedDaysLabel: UILabel!
+    @IBOutlet var finalRetireDateLabel: UILabel!
     @IBOutlet var retireDateLabel: UILabel!
+
 
     let countingClass = CountingDate()
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
@@ -43,7 +45,7 @@ class ProfileViewController: UIViewController {
             self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
             self.passedDaysLabel.text = String( countingClass.getPassedDays() )
             self.remainedDaysLabel.text = String( countingClass.getRemainedDays() )
-            self.retireDateLabel.text = countingClass.getFixedRetireDate()
+            self.finalRetireDateLabel.text = countingClass.getFixedRetireDate()
 
         } else {
             // switch to settingViewController ?
