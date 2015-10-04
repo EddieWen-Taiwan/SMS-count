@@ -57,7 +57,7 @@ class PercentageCircleView: UIView {
         // get currentPercentage
         let startAngle = CGFloat( M_PI*(0.5)*(-1) )
         let endAngle = CGFloat( M_PI*2*( percent ) - M_PI*(0.5) )
-        
+
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
         // The path should be the entire circle.
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: 90, y: 90), radius: circleRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
@@ -68,7 +68,7 @@ class PercentageCircleView: UIView {
         // Do the actual animation
         circleLayer.addAnimation(animation, forKey: "animateCircle")
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
