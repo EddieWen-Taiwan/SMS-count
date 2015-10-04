@@ -743,7 +743,7 @@
                                                         <color key="backgroundColor" red="0.4039215686" green="0.82745098039999998" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="70" id="Fz1-Ue-YsK">
-                                                                <variation key="widthClass=compact" constant="50"/>
+                                                                <variation key="widthClass=compact" constant="40"/>
                                                             </constraint>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="PingFangTC-Medium" family="PingFang TC" pointSize="14"/>
@@ -1597,7 +1597,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="BAZ-24-tXs"/>
                                             <constraint firstAttribute="bottom" secondItem="f2A-qQ-mIy" secondAttribute="bottom" constant="30" id="JeP-gd-NZM"/>
                                             <constraint firstItem="iF0-J0-2Pa" firstAttribute="top" secondItem="Ksz-gc-Zql" secondAttribute="bottom" constant="40" id="OS3-sF-sOZ">
-                                                <variation key="widthClass=compact" constant="10"/>
+                                                <variation key="widthClass=compact" constant="20"/>
                                             </constraint>
                                             <constraint firstAttribute="trailing" secondItem="iF0-J0-2Pa" secondAttribute="trailing" constant="102" id="Zrb-IY-lN0">
                                                 <variation key="widthClass=compact" constant="20"/>
