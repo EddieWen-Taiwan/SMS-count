@@ -274,8 +274,12 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart" translatesAutoresizingMaskIntoConstraints="NO" id="M0i-Su-8TO">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="sLA-n2-LUw"/>
-                                                    <constraint firstAttribute="width" constant="30" id="tz8-R7-aHq"/>
+                                                    <constraint firstAttribute="height" constant="30" id="sLA-n2-LUw">
+                                                        <variation key="widthClass=compact" constant="25"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="30" id="tz8-R7-aHq">
+                                                        <variation key="widthClass=compact" constant="25"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
