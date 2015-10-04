@@ -30,6 +30,8 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.profileHeightConstraint.constant = self.screenHeight-64-50-100
         self.updateStageText()
+
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "repeat-image")!)
     }
 
     override func viewDidAppear(animated: Bool) {
