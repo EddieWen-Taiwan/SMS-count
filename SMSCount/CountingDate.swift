@@ -153,7 +153,7 @@ class CountingDate {
         let total_days = wholeServiceDays.day - self.days2beFixed
         return Double( self.passedDays.day ) / Double( total_days )*100
     }
-    
+
     func switchPeriod( period: String ) -> String {
         var output: String = ""
         switch(period) {
