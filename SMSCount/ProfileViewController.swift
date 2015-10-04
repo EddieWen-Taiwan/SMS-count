@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet var profileHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var profileBottomConstraint: NSLayoutConstraint!
     @IBOutlet var stageText: UILabel!
 
     // Detail
@@ -28,7 +28,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.profileHeightConstraint.constant = self.screenHeight-64-50-100
+//        if self.screenHeight-64-50-100 > 305
+
         self.updateStageText()
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "repeat-image")!)
