@@ -148,6 +148,11 @@ class CountingDate {
         let total_days = wholeServiceDays.day - self.days2beFixed
         return Double( self.passedDays.day ) / Double( total_days )*100
     }
+
+    func getEnterDate() -> String {
+        let enterWeekComponenet = calendar!.components( .Weekday, fromDate: self.enterDate! )
+        return dateFormatter.stringFromDate( self.enterDate ) + switchWeekday( enterWeekComponenet.weekday )
+    }
     
     func switchPeriod( period: String ) -> String {
         var output: String = ""

@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController {
         if countingClass.isSettingAllDone() {
             // OK
             countingClass.updateDate()
-            self.enterDateLabel.text = self.userPreference.stringForKey("enterDate")
+            self.enterDateLabel.text =  countingClass.getEnterDate()
             self.serviceDaysLabel.text = countingClass.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
             self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
             self.passedDaysLabel.text = String( countingClass.getPassedDays() )
