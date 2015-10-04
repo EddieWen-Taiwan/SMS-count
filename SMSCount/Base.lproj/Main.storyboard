@@ -245,10 +245,10 @@
                                                 <exclude reference="o5y-gr-HU9"/>
                                                 <exclude reference="I9L-ci-4hA"/>
                                                 <exclude reference="RBY-nR-vVD"/>
-                                                <exclude reference="Usb-hj-pMw"/>
-                                                <exclude reference="wpe-CS-UxG"/>
                                                 <exclude reference="hSo-AA-ur6"/>
                                                 <exclude reference="mjJ-Ay-DpC"/>
+                                                <exclude reference="Usb-hj-pMw"/>
+                                                <exclude reference="wpe-CS-UxG"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -262,10 +262,10 @@
                                                 <include reference="o5y-gr-HU9"/>
                                                 <include reference="I9L-ci-4hA"/>
                                                 <include reference="RBY-nR-vVD"/>
-                                                <include reference="Usb-hj-pMw"/>
-                                                <include reference="wpe-CS-UxG"/>
                                                 <include reference="hSo-AA-ur6"/>
                                                 <include reference="mjJ-Ay-DpC"/>
+                                                <include reference="Usb-hj-pMw"/>
+                                                <include reference="wpe-CS-UxG"/>
                                             </mask>
                                         </variation>
                                     </view>
