@@ -119,8 +119,13 @@ class CountingDate {
         self.fixWeekend()
     }
 
-    func isAutoWeekendFixed() -> Bool {
-        return userPreference.boolForKey("autoWeekendFixed")
+    func isRetireDateFixed() -> Bool {
+        if userPreference.boolForKey("autoWeekendFixed") {
+            if self.getRetireDate() != self.getFixedRetireDate() {
+                return true
+            }
+        }
+        return false
     }
 
     func getFixedRetireDate() -> String {
@@ -211,7 +216,7 @@ class CountingDate {
 
         self.days2beFixed = 0
 
-        if self.isAutoWeekendFixed() {
+        if userPreference.boolForKey("autoWeekendFixed") {
             if self.weekendComponent.weekday == 1 {
                 self.days2beFixed = 2
             } else if self.weekendComponent.weekday == 7 {

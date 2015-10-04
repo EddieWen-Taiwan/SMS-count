@@ -20,6 +20,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet var passedDaysLabel: UILabel!
     @IBOutlet var remainedDaysLabel: UILabel!
     @IBOutlet var finalRetireDateLabel: UILabel!
+    @IBOutlet var retireDateBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var retireDateView: UIView!
     @IBOutlet var retireDateLabel: UILabel!
 
 
@@ -45,7 +47,17 @@ class ProfileViewController: UIViewController {
             self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
             self.passedDaysLabel.text = String( countingClass.getPassedDays() )
             self.remainedDaysLabel.text = String( countingClass.getRemainedDays() )
-            self.finalRetireDateLabel.text = countingClass.getFixedRetireDate()
+
+            if countingClass.isRetireDateFixed() {
+                self.finalRetireDateLabel.text = countingClass.getFixedRetireDate()
+                self.retireDateBottomConstraint.constant = 60
+                self.retireDateView.hidden = false
+                self.retireDateLabel.text = countingClass.getRetireDate()
+            } else {
+                self.finalRetireDateLabel.text = countingClass.getRetireDate()
+                self.retireDateBottomConstraint.constant = 0
+                self.retireDateView.hidden = true
+            }
 
         } else {
             // switch to settingViewController ?
