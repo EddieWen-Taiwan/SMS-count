@@ -10,7 +10,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet var profileBottomConstraint: NSLayoutConstraint!
     @IBOutlet var stageText: UILabel!
 
     // Detail
