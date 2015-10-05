@@ -1141,12 +1141,12 @@
                                                 <exclude reference="fEd-1X-I2k"/>
                                                 <exclude reference="qBq-w0-Cvs"/>
                                                 <exclude reference="sja-Eb-MvB"/>
-                                                <exclude reference="fLm-mL-lcA"/>
-                                                <exclude reference="mlc-J4-JHX"/>
                                                 <exclude reference="9eA-zc-DP0"/>
                                                 <exclude reference="OS3-sF-sOZ"/>
                                                 <exclude reference="Zrb-IY-lN0"/>
                                                 <exclude reference="j8r-xb-MBG"/>
+                                                <exclude reference="fLm-mL-lcA"/>
+                                                <exclude reference="mlc-J4-JHX"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
@@ -1159,12 +1159,12 @@
                                                 <include reference="fEd-1X-I2k"/>
                                                 <include reference="qBq-w0-Cvs"/>
                                                 <include reference="sja-Eb-MvB"/>
-                                                <include reference="fLm-mL-lcA"/>
-                                                <include reference="mlc-J4-JHX"/>
                                                 <include reference="9eA-zc-DP0"/>
                                                 <include reference="OS3-sF-sOZ"/>
                                                 <include reference="Zrb-IY-lN0"/>
                                                 <include reference="j8r-xb-MBG"/>
+                                                <include reference="fLm-mL-lcA"/>
+                                                <include reference="mlc-J4-JHX"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -1344,7 +1344,6 @@
                     <connections>
                         <outlet property="finalRetireDateLabel" destination="6QW-d5-bMB" id="FBl-Mu-RAr"/>
                         <outlet property="passedDaysLabel" destination="iIj-xA-Bqs" id="fNv-AO-q44"/>
-                        <outlet property="profileBottomConstraint" destination="9eA-zc-DP0" id="Ull-Ib-aPU"/>
                         <outlet property="retireDateBottomConstraint" destination="ET2-Va-7vK" id="UvH-4z-kua"/>
                         <outlet property="retireDateLabel" destination="9Q2-RK-h9n" id="EcX-Jt-d9y"/>
                         <outlet property="retireDateView" destination="23l-uZ-zl8" id="pQk-Sh-CpS"/>
