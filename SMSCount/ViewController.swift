@@ -145,7 +145,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                     updateLabel()
                 } else {
                     timer.invalidate()
-                   NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
+                    NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
                 }
 
             case "stage2":
@@ -283,7 +283,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     // the following method is called to show the iOS image picker:
-    func showImagesPickerView(){
+    func showImagesPickerView() {
         if UIImagePickerController.isSourceTypeAvailable( UIImagePickerControllerSourceType.SavedPhotosAlbum ) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
