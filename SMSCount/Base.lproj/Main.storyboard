@@ -1180,6 +1180,7 @@
                                     <constraint firstAttribute="trailing" secondItem="BjK-Rs-1wA" secondAttribute="trailing" id="XeY-4n-Tgz"/>
                                     <constraint firstItem="BjK-Rs-1wA" firstAttribute="top" secondItem="Tlm-uS-yDp" secondAttribute="top" constant="100" id="a5p-oN-25Y"/>
                                     <constraint firstItem="BjK-Rs-1wA" firstAttribute="leading" secondItem="Tlm-uS-yDp" secondAttribute="leading" id="avM-n0-Scl"/>
+                                    <constraint firstItem="eJS-bp-Mhy" firstAttribute="height" secondItem="Tlm-uS-yDp" secondAttribute="height" id="giU-9R-jeF"/>
                                     <constraint firstAttribute="bottom" secondItem="BjK-Rs-1wA" secondAttribute="bottom" id="i4P-nm-ZKN"/>
                                     <constraint firstAttribute="trailing" secondItem="eJS-bp-Mhy" secondAttribute="trailing" id="qoa-ES-sOv"/>
                                 </constraints>
@@ -1196,6 +1197,7 @@
                                         <exclude reference="i4P-nm-ZKN"/>
                                         <exclude reference="28m-4B-sti"/>
                                         <exclude reference="3ei-X3-bmk"/>
+                                        <exclude reference="giU-9R-jeF"/>
                                         <exclude reference="qoa-ES-sOv"/>
                                     </mask>
                                 </variation>
@@ -1212,6 +1214,7 @@
                                         <include reference="i4P-nm-ZKN"/>
                                         <include reference="28m-4B-sti"/>
                                         <include reference="3ei-X3-bmk"/>
+                                        <include reference="giU-9R-jeF"/>
                                         <include reference="qoa-ES-sOv"/>
                                     </mask>
                                 </variation>
@@ -1317,7 +1320,7 @@
                                 <include reference="Y4R-E5-Qpb"/>
                                 <include reference="cI9-xk-oPk"/>
                                 <include reference="wOZ-gB-hqG"/>
-                                <include reference="GGv-K2-8la"/>
+                                <exclude reference="GGv-K2-8la"/>
                                 <include reference="fAi-Jp-L83"/>
                             </mask>
                         </variation>
