@@ -122,7 +122,7 @@
                                                     <constraint firstAttribute="height" constant="60" id="6AJ-xx-RAc"/>
                                                     <constraint firstAttribute="width" constant="200" id="dcb-Gi-rVH"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="70"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="74"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
