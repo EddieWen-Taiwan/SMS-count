@@ -359,7 +359,9 @@
                                     <constraint firstItem="6DD-jS-bAd" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="hIr-H8-sE5"/>
                                     <constraint firstItem="vxp-Hu-SuH" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="ojJ-cc-sbI"/>
                                     <constraint firstAttribute="bottom" secondItem="53F-TZ-OfW" secondAttribute="bottom" id="tzN-9d-7rM"/>
-                                    <constraint firstAttribute="trailing" secondItem="yO5-wV-F64" secondAttribute="trailing" constant="30" id="wHu-a0-FHK"/>
+                                    <constraint firstAttribute="trailing" secondItem="yO5-wV-F64" secondAttribute="trailing" constant="30" id="wHu-a0-FHK">
+                                        <variation key="widthClass=compact" constant="30"/>
+                                    </constraint>
                                     <constraint firstAttribute="trailing" secondItem="6DD-jS-bAd" secondAttribute="trailing" id="wUp-Md-AZL"/>
                                 </constraints>
                                 <variation key="default">
@@ -597,7 +599,7 @@
                         <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="1" green="0.80392156862745101" blue="0.32941176470588235" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="value" red="1" green="0.80392156862745101" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
@@ -1329,7 +1331,7 @@
                         <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="value" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
@@ -2432,7 +2434,7 @@
                         <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="1" green="0.80392156862745101" blue="0.32941176470588235" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="value" red="1" green="0.80392156862745101" blue="0.32941176470588235" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
