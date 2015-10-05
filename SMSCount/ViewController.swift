@@ -60,6 +60,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.backgroundImage.image = UIImage(named: monthImage)
         let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
         self.switchViewButton.addGestureRecognizer( switchGesture )
+        self.switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
+        self.switchViewButton.layer.borderWidth = 3
 
         circleView = PercentageCircleView( frame: self.pieChartView.frame )
         self.pieChartView.addSubview( circleView )
@@ -203,14 +205,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if self.currentDisplay != "running" {
             
             let currentIsDay: Bool = ( self.currentDisplay == "day" ) ? true : false
-            self.switchViewButton.backgroundColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+            self.switchViewButton.backgroundColor = UIColor.whiteColor()
             self.imageOnSwitchBtn.image = UIImage(named: currentIsDay ? "date" : "chart" )
             self.currentDisplay = "runnung"
 
             UIView.animateWithDuration( 0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 self.remainedView.alpha = currentIsDay ? 0 : 1
                 self.pieChartView.alpha = currentIsDay ? 1 : 0
-                self.switchViewButton.backgroundColor = UIColor.whiteColor()
+                self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
             }, completion: { finish in
                 self.currentDisplay = currentIsDay ? "chart" : "day"
                 if currentIsDay {
