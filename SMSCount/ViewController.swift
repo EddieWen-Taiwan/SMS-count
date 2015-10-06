@@ -215,10 +215,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
             }, completion: { finish in
                 self.currentDisplay = currentIsDay ? "chart" : "day"
-                if currentIsDay {
-                    self.checkCircleAnimation()
-                } else {
-                    self.checkDaysAnimation()
+                if self.countingClass.isSettingAllDone() {
+                    if currentIsDay {
+                        self.checkCircleAnimation()
+                    } else {
+                        self.checkDaysAnimation()
+                    }
                 }
             })
 
