@@ -45,6 +45,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var circleView: PercentageCircleView!
     var screenHeight = UIScreen.mainScreen().bounds.height
     var screenWidth = UIScreen.mainScreen().bounds.width
+    var settingStatus: Bool = false
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -74,7 +75,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        if countingClass.isSettingAllDone() {
+        settingStatus = countingClass.isSettingAllDone() ? true : false
+
+        if self.settingStatus {
             // OK
             countingClass.updateDate()
             // RemainedDays
@@ -215,7 +218,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
             }, completion: { finish in
                 self.currentDisplay = currentIsDay ? "chart" : "day"
-                if self.countingClass.isSettingAllDone() {
+                if self.settingStatus {
                     if currentIsDay {
                         self.checkCircleAnimation()
                     } else {
