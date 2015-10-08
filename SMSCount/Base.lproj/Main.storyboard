@@ -126,7 +126,6 @@
                                             </label>
                                         </subviews>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.4039215686" green="0.82745098039999998" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="TXW-cI-vr1" secondAttribute="height" multiplier="1:1" id="CZx-lh-6CD"/>
                                             <constraint firstItem="6oS-m5-JlH" firstAttribute="leading" secondItem="p6H-dK-4Zf" secondAttribute="trailing" id="I9L-ci-4hA"/>

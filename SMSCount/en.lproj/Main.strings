@@ -1,0 +1,87 @@
+
+/* Class = "UILabel"; text = "剩餘天數"; ObjectID = "0oN-8k-ZGV"; */
+"0oN-8k-ZGV.text" = "剩餘天數";
+
+/* Class = "UILabel"; text = "原退伍日期"; ObjectID = "1LZ-Jk-q73"; */
+"1LZ-Jk-q73.text" = "原退伍日期";
+
+/* Class = "UILabel"; text = "折抵天數"; ObjectID = "20A-QN-nXN"; */
+"20A-QN-nXN.text" = "折抵天數";
+
+/* Class = "UIButton"; normalTitle = "EDIT"; ObjectID = "2JB-Nr-YdL"; */
+"2JB-Nr-YdL.normalTitle" = "EDIT";
+
+/* Class = "UILabel"; text = "退伍日期"; ObjectID = "2w4-kT-6Dk"; */
+"2w4-kT-6Dk.text" = "退伍日期";
+
+/* Class = "UILabel"; text = "%"; ObjectID = "6oS-m5-JlH"; */
+"6oS-m5-JlH.text" = "%";
+
+/* Class = "UILabel"; text = "偏好設定"; ObjectID = "Ajt-y4-q3x"; */
+"Ajt-y4-q3x.text" = "偏好設定";
+
+/* Class = "UILabel"; text = "一般設定"; ObjectID = "Akh-bt-ITr"; */
+"Akh-bt-ITr.text" = "一般設定";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ClE-d6-gwm"; */
+"ClE-d6-gwm.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "阿替"; ObjectID = "DC4-c7-BCR"; */
+"DC4-c7-BCR.text" = "阿替";
+
+/* Class = "UILabel"; text = "役期天數"; ObjectID = "GBY-53-8BI"; */
+"GBY-53-8BI.text" = "役期天數";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "HjR-y3-w1G"; */
+"HjR-y3-w1G.normalTitle" = "Done";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "KnC-Co-mJY"; */
+"KnC-Co-mJY.normalTitle" = "Done";
+
+/* Class = "UIViewController"; title = "Profile"; ObjectID = "L92-j8-KKk"; */
+"L92-j8-KKk.title" = "Profile";
+
+/* Class = "UIViewController"; title = "Setting"; ObjectID = "LA8-N0-01Z"; */
+"LA8-N0-01Z.title" = "Setting";
+
+/* Class = "UIButton"; normalTitle = "EDIT"; ObjectID = "LhZ-La-3S6"; */
+"LhZ-La-3S6.normalTitle" = "EDIT";
+
+/* Class = "UINavigationItem"; title = "阿替倒數中"; ObjectID = "Nhu-mF-dlU"; */
+"Nhu-mF-dlU.title" = "阿替倒數中";
+
+/* Class = "UILabel"; text = "剩餘天數"; ObjectID = "SMP-hf-NE4"; */
+"SMP-hf-NE4.text" = "剩餘天數";
+
+/* Class = "UILabel"; text = "退伍進度"; ObjectID = "Yx9-2q-40P"; */
+"Yx9-2q-40P.text" = "退伍進度";
+
+/* Class = "UILabel"; text = "已過天數"; ObjectID = "abV-tx-1ZG"; */
+"abV-tx-1ZG.text" = "已過天數";
+
+/* Class = "UINavigationItem"; title = "阿替倒數中"; ObjectID = "cZt-Ng-nRU"; */
+"cZt-Ng-nRU.title" = "阿替倒數中";
+
+/* Class = "UINavigationItem"; title = "阿替倒數中"; ObjectID = "d6d-um-2Xf"; */
+"d6d-um-2Xf.title" = "阿替倒數中";
+
+/* Class = "UILabel"; text = "退伍日遇週休六日可提前退伍"; ObjectID = "hSR-tx-jp9"; */
+"hSR-tx-jp9.text" = "退伍日遇週休六日可提前退伍";
+
+/* Class = "UILabel"; text = "詳細資訊"; ObjectID = "hVz-oK-HPn"; */
+"hVz-oK-HPn.text" = "詳細資訊";
+
+/* Class = "UILabel"; text = "學長學帝雉"; ObjectID = "kX6-fT-muD"; */
+"kX6-fT-muD.text" = "學長學帝雉";
+
+/* Class = "UIButton"; normalTitle = "EDIT"; ObjectID = "mgL-N7-hym"; */
+"mgL-N7-hym.normalTitle" = "EDIT";
+
+/* Class = "UILabel"; text = "入伍日期"; ObjectID = "poU-JY-DIK"; */
+"poU-JY-DIK.text" = "入伍日期";
+
+/* Class = "UIViewController"; title = "Countdown"; ObjectID = "vXZ-lx-hvc"; */
+"vXZ-lx-hvc.title" = "Countdown";
+
+/* Class = "UILabel"; text = "週末退伍"; ObjectID = "x7R-6i-0BB"; */
+"x7R-6i-0BB.text" = "週末退伍";
