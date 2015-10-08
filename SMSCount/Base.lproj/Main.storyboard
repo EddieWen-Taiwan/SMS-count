@@ -127,13 +127,13 @@
                                         </subviews>
                                         <animations/>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="TXW-cI-vr1" secondAttribute="height" multiplier="1:1" id="CZx-lh-6CD"/>
                                             <constraint firstItem="6oS-m5-JlH" firstAttribute="leading" secondItem="p6H-dK-4Zf" secondAttribute="trailing" id="I9L-ci-4hA"/>
                                             <constraint firstAttribute="centerY" secondItem="6oS-m5-JlH" secondAttribute="centerY" constant="-12" id="RBY-nR-vVD"/>
                                             <constraint firstItem="p6H-dK-4Zf" firstAttribute="centerY" secondItem="TXW-cI-vr1" secondAttribute="centerY" constant="4" id="Usb-hj-pMw"/>
                                             <constraint firstAttribute="width" constant="180" id="c1C-8h-3x5"/>
                                             <constraint firstItem="Yx9-2q-40P" firstAttribute="top" secondItem="6oS-m5-JlH" secondAttribute="bottom" constant="80" id="hSo-AA-ur6"/>
                                             <constraint firstItem="Yx9-2q-40P" firstAttribute="centerX" secondItem="TXW-cI-vr1" secondAttribute="centerX" id="mjJ-Ay-DpC"/>
-                                            <constraint firstAttribute="height" constant="180" id="o5y-gr-HU9"/>
                                             <constraint firstAttribute="centerX" secondItem="p6H-dK-4Zf" secondAttribute="centerX" constant="10" id="wpe-CS-UxG"/>
                                         </constraints>
                                     </view>
