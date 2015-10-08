@@ -63,9 +63,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.switchViewButton.addGestureRecognizer( switchGesture )
         self.switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.switchViewButton.layer.borderWidth = 2
-        self.view.layoutIfNeeded()
-print(self.pieChartView.frame)
-        circleView = PercentageCircleView( frame: self.pieChartView.frame )
+
+        circleView = PercentageCircleView( view: self.pieChartView )
         self.pieChartView.addSubview( circleView )
     }
 
