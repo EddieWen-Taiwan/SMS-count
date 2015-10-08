@@ -68,10 +68,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.pieChartView.addSubview( circleView )
     }
 
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
