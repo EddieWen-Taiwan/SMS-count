@@ -17,7 +17,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     // <<Front>>
     @IBOutlet var backgroundImage: UIImageView!
-    var monthImage = "background_01"
+    var currentMonthStr = "00"
     var currentDisplay = "day"
     @IBOutlet var switchViewButton: UIView!
     @IBOutlet var imageOnSwitchBtn: UIImageView!
@@ -51,14 +51,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.init(coder: aDecoder)
 
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
-        let currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
-        monthImage = "background_" + currentMonthStr
+        currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.backgroundImage.image = UIImage(named: monthImage)
+//        self.backgroundImage.image = UIImage(named: "background_" + currentMonthStr )
         let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
         self.switchViewButton.addGestureRecognizer( switchGesture )
         self.switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
@@ -66,6 +65,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         circleView = PercentageCircleView( view: self.pieChartView )
         self.pieChartView.addSubview( circleView )
+
+        _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
+
     }
 
     override func viewDidAppear(animated: Bool) {
