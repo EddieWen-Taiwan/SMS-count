@@ -10,25 +10,31 @@
 
 class MonthlyImages {
 
+    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
+    let path: String
+    var urlString = "http://i.imgur.com/"
+    var currentMonth = "0"
 
-    init() {
-NSLog("%@", "init")
+    init(month: String) {
+        NSLog("%@", "init")
+        currentMonth = month
+//        print(currentMonth)
         // update and svae image
-        if let imageURL = NSURL(string: "http://i.imgur.com/HOcvMMW.png") {
-            self.downloadImage(imageURL)
-        }
-
+        path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
+        urlString += "HOcvMMW.png"
+self.downloadImage(NSURL(string: urlString)!)
     }
 
     private func downloadImage( url: NSURL ) {
-        print("Started downloading \"\(url.URLByDeletingPathExtension!.lastPathComponent!)\".")
+
         self.getImageFromUrl(url) { (data, response, error)  in
             dispatch_async( dispatch_get_main_queue() ) { () -> Void in
-                guard let data = data where error == nil else { return }
+//                guard let data = data where error == nil else { return }
                 print("Finished downloading \"\(url.URLByDeletingPathExtension!.lastPathComponent!)\".")
 
-                self.saveImage( UIImage(data: data)! )
+                self.saveImage( UIImage(data: data!)! )
+                self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
             }
         }
     }
@@ -40,22 +46,28 @@ NSLog("%@", "init")
     }
 
     func currentImage() -> UIImage {
-        let path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
+        if NSFileManager.defaultManager().fileExistsAtPath(path) {
+            print("yes")
+        }else {print("no")}
+        
         print("\(path)")
 
         return UIImage(contentsOfFile: path)!
-    }
-
-    // Get path for a file in the directory
-    private func fileInDocumentsDirectory() -> String {
-        return documentURL.URLByAppendingPathComponent("backgroundImage").path!
+//        while let path = documentURL.URLByAppendingPathComponent("backgroundImage") {
+        
+//        }
     }
 
     private func saveImage( image: UIImage ) -> Bool {
         let pngImageData = UIImagePNGRepresentation(image)!
-        let result = pngImageData.writeToFile( self.fileInDocumentsDirectory(), atomically: true )
+        let result = pngImageData.writeToFile( self.path, atomically: true )
 
         return result
+    }
+
+    private func isMonthMatch() -> Bool {
+        let imageMonth = userPreference.stringForKey("backgroundMonth")
+        return imageMonth == currentMonth ? true : false
     }
 
 }
