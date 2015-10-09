@@ -17,20 +17,22 @@ class MonthlyImages {
     var currentMonth = "0"
 
     init(month: String) {
-        NSLog("%@", "init")
         currentMonth = month
-//        print(currentMonth)
+
         // update and svae image
         path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
-        urlString += "HOcvMMW.png"
-self.downloadImage(NSURL(string: urlString)!)
+
+        if !self.isMonthMatch() {
+            print("have to download new one")
+            urlString += "HOcvMMW.png"
+            self.downloadImage( NSURL(string: urlString)! )
+        }else{print("no necessery")}
     }
 
     private func downloadImage( url: NSURL ) {
 
         self.getImageFromUrl(url) { (data, response, error)  in
             dispatch_async( dispatch_get_main_queue() ) { () -> Void in
-//                guard let data = data where error == nil else { return }
                 print("Finished downloading \"\(url.URLByDeletingPathExtension!.lastPathComponent!)\".")
 
                 self.saveImage( UIImage(data: data!)! )
@@ -46,16 +48,26 @@ self.downloadImage(NSURL(string: urlString)!)
     }
 
     func currentImage() -> UIImage {
-        if NSFileManager.defaultManager().fileExistsAtPath(path) {
-            print("yes")
-        }else {print("no")}
-        
-        print("\(path)")
 
-        return UIImage(contentsOfFile: path)!
-//        while let path = documentURL.URLByAppendingPathComponent("backgroundImage") {
+        func imageStatus() -> Bool {
+            if NSFileManager.defaultManager().fileExistsAtPath( self.path ) {
+                if self.isMonthMatch() {
+                    print("Status is TRUE")
+                    return true
+                }
+            }
+            print("Status is FALSE")
+            return false
+        }
         
-//        }
+//        print("\(path)")
+
+        while imageStatus() {
+            print("success")
+            return UIImage(contentsOfFile: path)!
+        }
+        print("fail")
+        return UIImage(named: "repeat-image")!
     }
 
     private func saveImage( image: UIImage ) -> Bool {
