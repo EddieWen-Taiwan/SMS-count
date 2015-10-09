@@ -10,16 +10,18 @@
 
 class MonthlyImages {
 
-    init() {
+    let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
 
-        // code
+    init() {
+NSLog("%@", "init")
+        // update and svae image
         if let imageURL = NSURL(string: "http://i.imgur.com/HOcvMMW.png") {
             self.downloadImage(imageURL)
         }
 
     }
 
-    func downloadImage( url: NSURL ) {
+    private func downloadImage( url: NSURL ) {
         print("Started downloading \"\(url.URLByDeletingPathExtension!.lastPathComponent!)\".")
         self.getImageFromUrl(url) { (data, response, error)  in
             dispatch_async( dispatch_get_main_queue() ) { () -> Void in
@@ -37,13 +39,19 @@ class MonthlyImages {
         }.resume()
     }
 
+    func currentImage() -> UIImage {
+        let path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
+        print("\(path)")
+
+        return UIImage(contentsOfFile: path)!
+    }
+
     // Get path for a file in the directory
-    func fileInDocumentsDirectory() -> String {
-        let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
+    private func fileInDocumentsDirectory() -> String {
         return documentURL.URLByAppendingPathComponent("backgroundImage").path!
     }
 
-    func saveImage( image: UIImage ) -> Bool {
+    private func saveImage( image: UIImage ) -> Bool {
         let pngImageData = UIImagePNGRepresentation(image)!
         let result = pngImageData.writeToFile( self.fileInDocumentsDirectory(), atomically: true )
 
