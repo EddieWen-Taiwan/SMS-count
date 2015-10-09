@@ -21,7 +21,6 @@ class MonthlyImages {
         path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
 
         if !self.isMonthMatch() {
-            print("have to download new one")
             background.alpha = 0
             // month case here
             switch currentMonth {
