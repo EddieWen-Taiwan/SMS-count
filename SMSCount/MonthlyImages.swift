@@ -11,32 +11,32 @@
 class MonthlyImages {
 
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-    let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
     let path: String
     var urlString = "http://i.imgur.com/"
     var currentMonth = "0"
 
-    init(month: String) {
+    init(month: String, background: UIImageView) {
         currentMonth = month
 
         // update and svae image
+        let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
         path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
 
         if !self.isMonthMatch() {
             print("have to download new one")
             urlString += "HOcvMMW.png"
-            self.downloadImage( NSURL(string: urlString)! )
-        }else{print("no necessery")}
+            self.downloadImage( NSURL(string: urlString)!, backgroundImage: background )
+        }
     }
 
-    private func downloadImage( url: NSURL ) {
-
+    private func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
         self.getImageFromUrl(url) { (data, response, error)  in
             dispatch_async( dispatch_get_main_queue() ) { () -> Void in
                 print("Finished downloading \"\(url.URLByDeletingPathExtension!.lastPathComponent!)\".")
 
                 self.saveImage( UIImage(data: data!)! )
                 self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
+                backgroundImage.image = UIImage(data: data!)
             }
         }
     }
@@ -45,29 +45,6 @@ class MonthlyImages {
         NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
             completion(data: data, response: response, error: error)
         }.resume()
-    }
-
-    func currentImage() -> UIImage {
-
-        func imageStatus() -> Bool {
-            if NSFileManager.defaultManager().fileExistsAtPath( self.path ) {
-                if self.isMonthMatch() {
-                    print("Status is TRUE")
-                    return true
-                }
-            }
-            print("Status is FALSE")
-            return false
-        }
-        
-//        print("\(path)")
-
-        while imageStatus() {
-            print("success")
-            return UIImage(contentsOfFile: path)!
-        }
-        print("fail")
-        return UIImage(named: "repeat-image")!
     }
 
     private func saveImage( image: UIImage ) -> Bool {
