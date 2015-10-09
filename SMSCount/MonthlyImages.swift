@@ -25,7 +25,10 @@ class MonthlyImages {
         if !self.isMonthMatch() {
             print("have to download new one")
             urlString += "HOcvMMW.png"
+            // month case here
             self.downloadImage( NSURL(string: urlString)!, backgroundImage: background )
+        } else {
+            background.image = UIImage(contentsOfFile: path)
         }
     }
 
