@@ -6,8 +6,6 @@
 //  Copyright © 2015年 Wen. All rights reserved.
 //
 
-//import Foundation
-
 class MonthlyImages {
 
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
@@ -24,8 +22,46 @@ class MonthlyImages {
 
         if !self.isMonthMatch() {
             print("have to download new one")
-            urlString += "HOcvMMW.png"
+            background.alpha = 0
             // month case here
+            switch currentMonth {
+                case "01":
+                    urlString += "EcF4PCU.png"
+                    break
+                case "02":
+                    urlString += "2tAGwJN.png"
+                    break
+                case "03":
+                    urlString += "pFUhPyd.png"
+                    break
+                case "04":
+                    urlString += "4Qj4g64.png"
+                    break
+                case "05":
+                    urlString += "bRMsY13.png"
+                    break
+                case "06":
+                    urlString += "umSwCmz.png"
+                    break
+                case "07":
+                    urlString += "kpDMmFD.png"
+                    break
+                case "08":
+                    urlString += "mSGXZlD.png"
+                    break
+                case "09":
+                    urlString += "OhZ2J6Q.png"
+                    break
+                case "10":
+                    urlString += "aImI8Lr.png"
+                    break
+                case "11":
+                    urlString += "4GFJfSt.png"
+                    break
+                default:
+                    urlString += "c5A2WpA.png"
+                    break
+            }
             self.downloadImage( NSURL(string: urlString)!, backgroundImage: background )
         } else {
             background.image = UIImage(contentsOfFile: path)
@@ -40,6 +76,10 @@ class MonthlyImages {
                 self.saveImage( UIImage(data: data!)! )
                 self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
                 backgroundImage.image = UIImage(data: data!)
+
+                UIView.animateWithDuration( 1, animations: {
+                    backgroundImage.alpha = 1
+                })
             }
         }
     }
