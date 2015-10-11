@@ -10,7 +10,6 @@ class MonthlyImages {
 
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     let path: String
-    var urlString = "http://i.imgur.com/"
     var currentMonth = "0"
 
     init(month: String, background: UIImageView) {
@@ -23,6 +22,7 @@ class MonthlyImages {
         if !self.isMonthMatch() {
             background.alpha = 0
             // month case here
+            var urlString = "http://i.imgur.com/"
             switch currentMonth {
                 case "01":
                     urlString += "EcF4PCU.png"
