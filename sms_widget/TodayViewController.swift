@@ -35,17 +35,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         if countingClass.isSettingAllDone() {
 
-            correctDataShow( true )
+            self.correctDataShow( true )
             countingClass.updateDate()
             let remainedDays = countingClass.getRemainedDays()
-        
-            if remainedDaysLabel.text != String( remainedDays ) {
-                remainedDaysLabel.text = String( remainedDays )
-                updateResult = NCUpdateResult.NewData
+
+            if self.remainedDaysLabel.text != String( remainedDays ) {
+                self.remainedDaysLabel.text = String( remainedDays )
+                self.updateResult = NCUpdateResult.NewData
             }
 
         } else {
-            correctDataShow( false )
+            self.correctDataShow( false )
         }
         
     }
@@ -84,7 +84,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
 
-        completionHandler(updateResult)
+        completionHandler( self.updateResult )
     }
     
     override func didReceiveMemoryWarning() {
