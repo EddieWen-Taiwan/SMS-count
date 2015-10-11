@@ -57,7 +57,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        self.backgroundImage.image = UIImage(named: "background_" + currentMonthStr )
         let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
         self.switchViewButton.addGestureRecognizer( switchGesture )
         self.switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
@@ -73,7 +72,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        settingStatus = countingClass.isSettingAllDone() ? true : false
+        self.settingStatus = countingClass.isSettingAllDone() ? true : false
 
         if self.settingStatus {
             // OK
