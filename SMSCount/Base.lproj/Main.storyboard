@@ -468,7 +468,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23l-uZ-zl8">
                                                         <rect key="frame" x="0.0" y="160" width="600" height="60"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="L7r-Kf-fJv">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retireDate" translatesAutoresizingMaskIntoConstraints="NO" id="L7r-Kf-fJv">
                                                                 <rect key="frame" x="20" y="20" width="20" height="20"/>
                                                                 <animations/>
                                                                 <constraints>
@@ -1174,6 +1174,7 @@
         <image name="logout" width="30" height="30"/>
         <image name="passedDays" width="30" height="30"/>
         <image name="person" width="30" height="30"/>
+        <image name="retireDate" width="30" height="30"/>
         <image name="setting" width="30" height="30"/>
         <image name="sticker" width="80" height="80"/>
     </resources>
