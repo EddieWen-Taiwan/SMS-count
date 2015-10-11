@@ -27,7 +27,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        if self.screenHeight-64-50-100 > 305
         self.updateStageText()
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "repeat-image")!)
