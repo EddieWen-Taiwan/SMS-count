@@ -254,7 +254,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async( dispatch_get_global_queue( priority, 0 ) ) {
                 // do some task
-                sleep(1)
+
                 // Create the UIImage
                 // let mainWindowLayer = UIApplication.sharedApplication().keyWindow!.layer
                 let mainWindowLayer = self.screenShotScale.layer
@@ -265,6 +265,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
                 // Save it to the camera roll
                 UIImageWriteToSavedPhotosAlbum( screenShot, nil, nil, nil )
+
+                sleep(1)
 
                 dispatch_async( dispatch_get_main_queue() ) {
                     // update some UI
