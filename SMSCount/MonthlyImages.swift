@@ -19,9 +19,11 @@ class MonthlyImages {
         let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
         path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
 
-        if !self.isMonthMatch() {
+        if self.isMonthMatch() {
+            background.image = UIImage(contentsOfFile: path)
+        } else {
             background.alpha = 0
-            // month case here
+
             var urlString = "http://i.imgur.com/"
             switch currentMonth {
                 case "01":
@@ -62,8 +64,6 @@ class MonthlyImages {
                     break
             }
             self.downloadImage( NSURL(string: urlString)!, backgroundImage: background )
-        } else {
-            background.image = UIImage(contentsOfFile: path)
         }
     }
 
