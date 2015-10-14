@@ -71,7 +71,7 @@ class MonthlyImages {
         self.getImageFromUrl(url) { (data, response, error)  in
 
             if data == nil {
-                print("No data")
+                backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
             } else {
                 dispatch_async( dispatch_get_main_queue() ) { () -> Void in
                     self.saveImage( UIImage(data: data!)! )
