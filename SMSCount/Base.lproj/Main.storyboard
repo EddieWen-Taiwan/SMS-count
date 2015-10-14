@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJc-wj-ATG" userLabel="ShotScale">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="50" y="50" width="500" height="500"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="R5F-Eu-oUp">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                                         <animations/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyZ-Jo-ImC">
-                                        <rect key="frame" x="200" y="270" width="200" height="60"/>
+                                        <rect key="frame" x="150" y="220" width="200" height="60"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="NbF-dN-wzE"/>
@@ -37,7 +37,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩餘天數" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oN-8k-ZGV">
-                                        <rect key="frame" x="268" y="350" width="64" height="19"/>
+                                        <rect key="frame" x="218" y="300" width="64" height="19"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
@@ -48,10 +48,10 @@
                                 <constraints>
                                     <constraint firstItem="R5F-Eu-oUp" firstAttribute="top" secondItem="OJc-wj-ATG" secondAttribute="top" id="60J-Et-nvx"/>
                                     <constraint firstAttribute="bottom" secondItem="R5F-Eu-oUp" secondAttribute="bottom" id="7ok-Ch-0NN"/>
-                                    <constraint firstAttribute="width" constant="600" id="GcV-o5-Pnf"/>
+                                    <constraint firstAttribute="width" constant="500" id="GcV-o5-Pnf"/>
                                     <constraint firstAttribute="centerX" secondItem="NyZ-Jo-ImC" secondAttribute="centerX" id="MEh-rs-V73"/>
                                     <constraint firstItem="0oN-8k-ZGV" firstAttribute="top" secondItem="NyZ-Jo-ImC" secondAttribute="bottom" constant="20" id="Psv-SY-DdY"/>
-                                    <constraint firstAttribute="height" constant="600" id="Rrs-ip-Qfg"/>
+                                    <constraint firstAttribute="height" constant="500" id="Rrs-ip-Qfg"/>
                                     <constraint firstItem="R5F-Eu-oUp" firstAttribute="leading" secondItem="OJc-wj-ATG" secondAttribute="leading" id="SsQ-Bm-OXv"/>
                                     <constraint firstAttribute="centerY" secondItem="NyZ-Jo-ImC" secondAttribute="centerY" id="fg4-Nq-zP7"/>
                                     <constraint firstAttribute="centerX" secondItem="0oN-8k-ZGV" secondAttribute="centerX" id="hUN-ds-tc7"/>
