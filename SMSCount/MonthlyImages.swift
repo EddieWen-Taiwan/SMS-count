@@ -69,15 +69,21 @@ class MonthlyImages {
 
     private func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
         self.getImageFromUrl(url) { (data, response, error)  in
-            dispatch_async( dispatch_get_main_queue() ) { () -> Void in
-                self.saveImage( UIImage(data: data!)! )
-                self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
-                backgroundImage.image = UIImage(data: data!)
 
-                UIView.animateWithDuration( 1, animations: {
-                    backgroundImage.alpha = 1
-                })
+            if data == nil {
+                print("No data")
+            } else {
+                dispatch_async( dispatch_get_main_queue() ) { () -> Void in
+                    self.saveImage( UIImage(data: data!)! )
+                    self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
+                    backgroundImage.image = UIImage(data: data!)
+                    
+                    UIView.animateWithDuration( 1, animations: {
+                        backgroundImage.alpha = 1
+                    })
+                }
             }
+
         }
     }
 
