@@ -34,6 +34,7 @@ class MonthlyImages {
 
             if data == nil {
                 backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
+                backgroundImage.alpha = 1
             } else {
                 dispatch_async( dispatch_get_main_queue() ) { () -> Void in
                     self.saveImage( UIImage(data: data!)! )
