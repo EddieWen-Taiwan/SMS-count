@@ -55,11 +55,9 @@ class MonthlyImages {
         }.resume()
     }
 
-    private func saveImage( image: UIImage ) -> Bool {
+    private func saveImage( image: UIImage ) {
         let pngImageData = UIImagePNGRepresentation(image)!
-        let result = pngImageData.writeToFile( self.path, atomically: true )
-
-        return result
+        pngImageData.writeToFile( self.path, atomically: true )
     }
 
     private func isMonthMatch() -> Bool {
