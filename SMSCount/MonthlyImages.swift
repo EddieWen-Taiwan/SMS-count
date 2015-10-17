@@ -58,7 +58,11 @@ class MonthlyImages {
 
     private func saveImage( image: UIImage ) {
         let pngImageData = UIImagePNGRepresentation(image)!
-//        NSFileManager.removeItemAtPath( self.path )
+        if NSFileManager.defaultManager().fileExistsAtPath( self.path ) {
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath( self.path )
+            } catch {}
+        }
         pngImageData.writeToFile( self.path, atomically: true )
     }
 
