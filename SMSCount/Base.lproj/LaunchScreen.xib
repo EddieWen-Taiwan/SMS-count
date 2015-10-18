@@ -11,6 +11,23 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-on-splash" translatesAutoresizingMaskIntoConstraints="NO" id="z5C-vJ-RXm">
+                    <rect key="frame" x="110" y="103" width="100" height="100"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="CXv-nU-TZl"/>
+                        <constraint firstAttribute="height" constant="100" id="KDx-JU-45K"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dd-jB-sdT">
+                    <rect key="frame" x="55" y="223" width="210" height="1"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="nna-7B-WvA"/>
+                        <constraint firstAttribute="width" constant="210" id="ucZ-o9-m9k"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C63-yD-4ik">
                     <rect key="frame" x="10" y="224" width="300" height="50"/>
                     <subviews>
@@ -57,23 +74,6 @@
                         <constraint firstAttribute="height" constant="50" id="xOw-m6-jGk"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dd-jB-sdT">
-                    <rect key="frame" x="55" y="223" width="210" height="1"/>
-                    <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="nna-7B-WvA"/>
-                        <constraint firstAttribute="width" constant="210" id="ucZ-o9-m9k"/>
-                    </constraints>
-                </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-on-splash" translatesAutoresizingMaskIntoConstraints="NO" id="z5C-vJ-RXm">
-                    <rect key="frame" x="110" y="103" width="100" height="100"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="CXv-nU-TZl"/>
-                        <constraint firstAttribute="height" constant="100" id="KDx-JU-45K"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
