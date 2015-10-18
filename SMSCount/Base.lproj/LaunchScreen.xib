@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,31 +14,36 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C63-yD-4ik">
                     <rect key="frame" x="10" y="224" width="300" height="50"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="愛心" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnP-qB-BSA">
+                            <rect key="frame" x="46" y="15" width="28" height="20"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服務" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjI-h3-6Bk">
-                            <rect key="frame" x="106" y="16" width="28" height="17"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                            <rect key="frame" x="106" y="15" width="28" height="20"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="責任" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PK-CO-fNp">
-                            <rect key="frame" x="166" y="17" width="28" height="17"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                            <rect key="frame" x="166" y="15" width="28" height="20"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="紀律" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lu-uM-hXS">
-                            <rect key="frame" x="226" y="17" width="28" height="17"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="愛心" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnP-qB-BSA">
-                            <rect key="frame" x="46" y="17" width="28" height="17"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                            <rect key="frame" x="226" y="15" width="28" height="20"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="cnP-qB-BSA" secondAttribute="centerY" id="3Xa-i0-o2u"/>
                         <constraint firstAttribute="centerX" secondItem="0PK-CO-fNp" secondAttribute="centerX" constant="-30" id="5CG-Bi-o6R"/>
@@ -45,20 +51,15 @@
                         <constraint firstAttribute="centerX" secondItem="2Lu-uM-hXS" secondAttribute="centerX" constant="-90" id="BhE-Xl-eZl"/>
                         <constraint firstAttribute="centerX" secondItem="GjI-h3-6Bk" secondAttribute="centerX" constant="30" id="aqS-YH-UBU"/>
                         <constraint firstAttribute="centerY" secondItem="GjI-h3-6Bk" secondAttribute="centerY" id="eKg-p4-yKV"/>
-                        <constraint firstAttribute="centerX" secondItem="cnP-qB-BSA" secondAttribute="centerX" constant="90" id="guY-qy-Ajg"/>
                         <constraint firstAttribute="centerY" secondItem="2Lu-uM-hXS" secondAttribute="centerY" id="ieK-iw-Nvj"/>
                         <constraint firstAttribute="centerY" secondItem="0PK-CO-fNp" secondAttribute="centerY" id="jgu-2j-G6c"/>
                         <constraint firstAttribute="width" constant="300" id="tjo-Ah-0FI"/>
                         <constraint firstAttribute="height" constant="50" id="xOw-m6-jGk"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="guY-qy-Ajg"/>
-                        </mask>
-                    </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dd-jB-sdT">
                     <rect key="frame" x="55" y="223" width="210" height="1"/>
+                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="nna-7B-WvA"/>
@@ -67,12 +68,14 @@
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-on-splash" translatesAutoresizingMaskIntoConstraints="NO" id="z5C-vJ-RXm">
                     <rect key="frame" x="110" y="103" width="100" height="100"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="CXv-nU-TZl"/>
                         <constraint firstAttribute="height" constant="100" id="KDx-JU-45K"/>
                     </constraints>
                 </imageView>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="8dd-jB-sdT" secondAttribute="centerX" id="0Vg-cg-ya4"/>
