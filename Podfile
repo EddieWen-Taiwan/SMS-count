@@ -10,8 +10,8 @@ xcodeproj 'SMSCount'
 
 target 'SMSCount' do
 
-	pod 'FBSDKCoreKit', '~> 4.7.0'
-	pod 'FBSDKShareKit', '~> 4.7.0'
+	pod 'FBSDKCoreKit', '~> 4.5.0'
+	pod 'FBSDKShareKit', '~> 4.5.0'
 
 end
 
