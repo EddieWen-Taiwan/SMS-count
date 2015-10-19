@@ -3,7 +3,15 @@
 # Uncomment this line if you're using Swift
 # use_frameworks!
 
+platform :ios, '8.0'
+use_frameworks!
+
+xcodeproj 'SMSCount'
+
 target 'SMSCount' do
+
+	pod 'FBSDKCoreKit', '~> 4.7.0'
+	pod 'FBSDKShareKit', '~> 4.7.0'
 
 end
 
