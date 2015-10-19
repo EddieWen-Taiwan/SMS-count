@@ -24,7 +24,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var switchViewButton: UIView!
     @IBOutlet var imageOnSwitchBtn: UIImageView!
 
-
     // RemainedDays
     @IBOutlet var remainedView: UIView!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
