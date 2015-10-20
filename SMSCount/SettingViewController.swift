@@ -12,6 +12,7 @@ import FBSDKLoginKit
 class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet var screenMask: UIView!
+    @IBOutlet var FBLoginView: UIView!
 
     @IBOutlet var enterDateLabel: UILabel!
     @IBOutlet var serviceDaysLabel: UILabel!
