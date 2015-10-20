@@ -924,6 +924,14 @@
                                     <constraint firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="uXc-fG-7Md"/>
                                 </constraints>
                             </scrollView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZs-p4-qWQ" userLabel="ScreenMask">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hidden" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88W-ka-Ekc" userLabel="EnterDateView">
                                 <rect key="frame" x="0.0" y="601" width="600" height="200"/>
                                 <subviews>
@@ -1098,11 +1106,13 @@
                         <animations/>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="rZs-p4-qWQ" secondAttribute="centerY" id="0Y2-FN-4yw"/>
                             <constraint firstAttribute="trailing" secondItem="Tcl-Ip-5Q2" secondAttribute="trailing" id="0hg-X5-7Rr"/>
                             <constraint firstItem="exL-yX-59J" firstAttribute="top" secondItem="88W-ka-Ekc" secondAttribute="bottom" constant="-250" id="139-oi-t4d"/>
                             <constraint firstItem="9Yh-7a-vZS" firstAttribute="leading" secondItem="mdR-f6-NkB" secondAttribute="leading" id="8Zl-M7-z7p"/>
                             <constraint firstAttribute="trailing" secondItem="88W-ka-Ekc" secondAttribute="trailing" id="Gim-yt-pM2"/>
                             <constraint firstAttribute="trailing" secondItem="9Yh-7a-vZS" secondAttribute="trailing" id="KXe-xP-ZEL"/>
+                            <constraint firstItem="rZs-p4-qWQ" firstAttribute="width" secondItem="mdR-f6-NkB" secondAttribute="width" id="N2S-8H-pBy"/>
                             <constraint firstAttribute="width" secondItem="spS-BM-WXb" secondAttribute="width" id="Pmc-NK-8i1"/>
                             <constraint firstAttribute="trailing" secondItem="2ml-Wm-2mg" secondAttribute="trailing" id="Ryn-6H-F2c"/>
                             <constraint firstItem="RgN-zh-Z6V" firstAttribute="top" secondItem="mdR-f6-NkB" secondAttribute="top" id="WUZ-4o-Snq"/>
@@ -1113,8 +1123,10 @@
                             <constraint firstItem="Tcl-Ip-5Q2" firstAttribute="top" secondItem="2f6-z5-fp3" secondAttribute="bottom" id="hXp-mN-MQo"/>
                             <constraint firstItem="exL-yX-59J" firstAttribute="top" secondItem="9Yh-7a-vZS" secondAttribute="bottom" constant="-250" id="piG-TB-1zw"/>
                             <constraint firstItem="RgN-zh-Z6V" firstAttribute="leading" secondItem="mdR-f6-NkB" secondAttribute="leading" id="rGO-KA-0wK"/>
+                            <constraint firstAttribute="centerX" secondItem="rZs-p4-qWQ" secondAttribute="centerX" id="tdj-7R-iij"/>
                             <constraint firstAttribute="leading" secondItem="2ml-Wm-2mg" secondAttribute="leading" id="uNq-BI-ylF"/>
                             <constraint firstItem="exL-yX-59J" firstAttribute="top" secondItem="Vo5-eB-Y1f" secondAttribute="bottom" constant="-250" id="uan-59-KNh"/>
+                            <constraint firstItem="rZs-p4-qWQ" firstAttribute="height" secondItem="mdR-f6-NkB" secondAttribute="height" id="vW2-db-TrS"/>
                             <constraint firstAttribute="trailing" secondItem="RgN-zh-Z6V" secondAttribute="trailing" id="vop-0l-D9Z"/>
                             <constraint firstItem="exL-yX-59J" firstAttribute="top" secondItem="2ml-Wm-2mg" secondAttribute="bottom" id="xbF-60-8Fq"/>
                             <constraint firstItem="Tcl-Ip-5Q2" firstAttribute="bottom" secondItem="2ml-Wm-2mg" secondAttribute="top" id="xfG-6V-Alx"/>
@@ -1139,6 +1151,7 @@
                         <outlet property="discountDaysPickerView" destination="9Yh-7a-vZS" id="8Lr-Sg-Uuc"/>
                         <outlet property="discountDaysPickerViewBottomConstraint" destination="piG-TB-1zw" id="RsN-oT-hpJ"/>
                         <outlet property="enterDateLabel" destination="RRl-qb-GIg" id="LE9-bW-uMs"/>
+                        <outlet property="screenMask" destination="rZs-p4-qWQ" id="ANv-Sm-i7q"/>
                         <outlet property="serviceDaysLabel" destination="1l2-Iu-97Q" id="rLc-Kg-KKC"/>
                         <outlet property="serviceDaysPickerElement" destination="rEJ-Z4-dYX" id="ROn-Ue-lqG"/>
                         <outlet property="serviceDaysPickerView" destination="Vo5-eB-Y1f" id="ajF-zn-2nO"/>
