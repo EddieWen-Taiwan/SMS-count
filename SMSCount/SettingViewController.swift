@@ -99,8 +99,28 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             // Handle cancellations
         } else {
             // Navigate to other view
+            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
+            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+
+                if error != nil {
+                    print("Error: \(error)")
+                } else {
+                    if let userId = result.objectForKey("id") {
+                        print("User name : \(userId)")
+                    }
+                    if let userName = result.objectForKey("name") {
+                        print("User mail : \(userName)")
+                    }
+                    if let userMail = result.objectForKey("email") {
+                        print("User mail : \(userMail)")
+                    }
+                }
+
+            })
         }
     }
+
+
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
