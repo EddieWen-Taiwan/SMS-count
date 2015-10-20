@@ -132,6 +132,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             // tabBarController?.selectedIndex = 2
         }
 
+        print("* FB Login Status: \(FBSDKAccessToken.currentAccessToken()) \n* Line: 135")
+
     }
 
     func daysAddingEffect( timer: NSTimer ) {
