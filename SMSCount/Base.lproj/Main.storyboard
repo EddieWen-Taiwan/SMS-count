@@ -648,17 +648,25 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spS-BM-WXb" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IjB-OC-LB7">
+                                                <rect key="frame" x="20" y="30" width="560" height="50"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="1" green="0.60356702302631571" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="d2M-8d-fet"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akh-bt-ITr">
-                                                <rect key="frame" x="20" y="24" width="48" height="17"/>
+                                                <rect key="frame" x="20" y="104" width="48" height="17"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                                 <color key="textColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyF-Rw-P7I" userLabel="BasicCard">
-                                                <rect key="frame" x="0.0" y="51" width="600" height="200"/>
+                                                <rect key="frame" x="0.0" y="131" width="600" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYJ-AR-a5U" userLabel="enterDateRow">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
@@ -828,14 +836,14 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="偏好設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajt-y4-q3x">
-                                                <rect key="frame" x="20" y="275" width="48" height="17"/>
+                                                <rect key="frame" x="20" y="355" width="48" height="17"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                                 <color key="textColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euX-9L-J7X" userLabel="SystemCard">
-                                                <rect key="frame" x="0.0" y="302" width="600" height="66"/>
+                                                <rect key="frame" x="0.0" y="382" width="600" height="66"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-Eg-6yg" userLabel="AutoWeekend">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
@@ -886,16 +894,25 @@
                                         <constraints>
                                             <constraint firstItem="Ajt-y4-q3x" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="6E4-ck-GkA"/>
                                             <constraint firstAttribute="trailing" secondItem="euX-9L-J7X" secondAttribute="trailing" id="7j8-QG-2LB"/>
+                                            <constraint firstAttribute="trailing" secondItem="IjB-OC-LB7" secondAttribute="trailing" constant="20" id="AbM-h4-Bs1"/>
                                             <constraint firstItem="Akh-bt-ITr" firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" constant="24" id="Cps-ja-pnl"/>
                                             <constraint firstItem="Ajt-y4-q3x" firstAttribute="top" secondItem="cyF-Rw-P7I" secondAttribute="bottom" constant="24" id="JNx-en-eVC"/>
                                             <constraint firstAttribute="trailing" secondItem="cyF-Rw-P7I" secondAttribute="trailing" id="S1d-eK-OlF"/>
+                                            <constraint firstItem="IjB-OC-LB7" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="WGQ-Gy-C6S"/>
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="top" secondItem="Akh-bt-ITr" secondAttribute="bottom" constant="10" id="aK5-tm-pkb"/>
+                                            <constraint firstItem="IjB-OC-LB7" firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" constant="30" id="b9E-S5-F9w"/>
                                             <constraint firstItem="euX-9L-J7X" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="fVc-0m-Uzx"/>
                                             <constraint firstItem="Akh-bt-ITr" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="gCo-nU-rdD"/>
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="hPQ-GH-Rjn"/>
                                             <constraint firstItem="euX-9L-J7X" firstAttribute="top" secondItem="Ajt-y4-q3x" secondAttribute="bottom" constant="10" id="ld7-C6-DTv"/>
-                                            <constraint firstAttribute="height" constant="400" id="vfF-uK-Zj1"/>
+                                            <constraint firstItem="Akh-bt-ITr" firstAttribute="top" secondItem="IjB-OC-LB7" secondAttribute="bottom" constant="24" id="sHP-e8-wTZ"/>
+                                            <constraint firstAttribute="height" constant="480" id="vfF-uK-Zj1"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Cps-ja-pnl"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <animations/>
@@ -1125,6 +1142,7 @@
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="FBLoginView" destination="IjB-OC-LB7" id="egG-x9-AsJ"/>
                         <outlet property="autoWeekendSwitch" destination="PDo-qB-IuZ" id="ina-uS-uY4"/>
                         <outlet property="datepickerElement" destination="7zy-gh-Gm0" id="gbq-Lv-aMq"/>
                         <outlet property="datepickerView" destination="88W-ka-Ekc" id="oeG-xZ-zNI"/>

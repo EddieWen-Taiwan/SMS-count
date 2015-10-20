@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Parse
 
-class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet var screenMask: UIView!
+    @IBOutlet var FBLoginView: UIView!
 
     @IBOutlet var enterDateLabel: UILabel!
     @IBOutlet var serviceDaysLabel: UILabel!
@@ -70,6 +73,62 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
+        
+        // FB Login
+        self.view.layoutIfNeeded()
+
+        let loginView = FBSDKLoginButton()
+        self.FBLoginView.addSubview( loginView )
+        loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
+        loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
+        loginView.delegate = self
+
+    }
+
+    
+    // *************** \\
+    //      FBSDK      \\
+    // *************** \\
+
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User Logged In")
+
+        if error != nil {
+            // Process error
+        } else if result.isCancelled {
+            // Handle cancellations
+        } else {
+            // Navigate to other view
+            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
+            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+
+                if error != nil {
+                    print("Error: \(error)")
+                } else {
+                    let userInfo = PFObject(className: "User")
+                    if let userId = result.objectForKey("id") {
+                        print("User name : \(userId)")
+                        userInfo["user_id"] = userId
+                    }
+                    if let userName = result.objectForKey("name") {
+                        print("User name : \(userName)")
+                        userInfo["username"] = userName
+                    }
+                    if let userMail = result.objectForKey("email") {
+                        print("User mail : \(userMail)")
+                        userInfo["email"] = userMail
+                    }
+//                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+//                        print("Status of Saving data is success : \(success)")
+//                    }
+                }
+
+            })
+        }
+    }
+
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
     }
 
     override func viewDidAppear(animated: Bool) {
