@@ -75,29 +75,29 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
         
         // FB Login
-//        if FBSDKAccessToken.currentAccessToken() != nil {
-            // User is login.
-//        } else {
-            self.view.layoutIfNeeded()
+        self.view.layoutIfNeeded()
 
-            let loginView = FBSDKLoginButton()
-            self.FBLoginView.addSubview( loginView )
-            loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
-            loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
-            loginView.delegate = self
-//        }
+        let loginView = FBSDKLoginButton()
+        self.FBLoginView.addSubview( loginView )
+        loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
+        loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
+        loginView.delegate = self
 
     }
 
+    
+    // *************** \\
+    //      FBSDK      \\
+    // *************** \\
+
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User Logged In")
-        if ((error) != nil) {
+
+        if error != nil {
             // Process error
-        }
-        else if result.isCancelled {
+        } else if result.isCancelled {
             // Handle cancellations
-        }
-        else {
+        } else {
             // Navigate to other view
         }
     }
