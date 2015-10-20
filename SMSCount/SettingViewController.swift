@@ -120,8 +120,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
     }
 
-
-
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
     }
