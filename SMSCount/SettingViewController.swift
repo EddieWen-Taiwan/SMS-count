@@ -109,7 +109,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                         print("User name : \(userId)")
                     }
                     if let userName = result.objectForKey("name") {
-                        print("User mail : \(userName)")
+                        print("User name : \(userName)")
                     }
                     if let userMail = result.objectForKey("email") {
                         print("User mail : \(userMail)")
