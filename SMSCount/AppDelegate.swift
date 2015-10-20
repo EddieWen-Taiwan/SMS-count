@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().barTintColor = UIColor(red: 255/255, green: 206/255, blue: 68/255, alpha: 100/100)
 
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application( application, didFinishLaunchingWithOptions: launchOptions )
     }
 
     // Facebook SDK related -----
