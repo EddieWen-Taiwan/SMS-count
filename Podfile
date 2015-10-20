@@ -20,4 +20,3 @@ end
 target 'SMS_Widget' do
 
 end
-
