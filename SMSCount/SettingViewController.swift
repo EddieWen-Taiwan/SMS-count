@@ -7,8 +7,8 @@
 //
 
 import UIKit
-//import FBSDKCoreKit
 import FBSDKLoginKit
+import Parse
 
 class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, FBSDKLoginButtonDelegate {
 
@@ -105,15 +105,22 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 if error != nil {
                     print("Error: \(error)")
                 } else {
+                    let userInfo = PFObject(className: "User")
                     if let userId = result.objectForKey("id") {
                         print("User name : \(userId)")
+                        userInfo["user_id"] = userId
                     }
                     if let userName = result.objectForKey("name") {
                         print("User name : \(userName)")
+                        userInfo["username"] = userName
                     }
                     if let userMail = result.objectForKey("email") {
                         print("User mail : \(userMail)")
+                        userInfo["email"] = userMail
                     }
+//                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+//                        print("Status of Saving data is success : \(success)")
+//                    }
                 }
 
             })
