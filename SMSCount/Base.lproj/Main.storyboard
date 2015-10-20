@@ -1142,6 +1142,7 @@
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="FBLoginView" destination="IjB-OC-LB7" id="egG-x9-AsJ"/>
                         <outlet property="autoWeekendSwitch" destination="PDo-qB-IuZ" id="ina-uS-uY4"/>
                         <outlet property="datepickerElement" destination="7zy-gh-Gm0" id="gbq-Lv-aMq"/>
                         <outlet property="datepickerView" destination="88W-ka-Ekc" id="oeG-xZ-zNI"/>
