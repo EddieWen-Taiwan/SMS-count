@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import FBSDKCoreKit
 import FBSDKLoginKit
 
 class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -72,6 +73,20 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
+        
+        // FB Login
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            // User is login.
+        } else {
+            self.view.layoutIfNeeded()
+
+            let loginView = FBSDKLoginButton()
+            self.FBLoginView.addSubview( loginView )
+            loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
+            loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
+            //            loginView.delegate = self
+        }
+
     }
 
     override func viewDidAppear(animated: Bool) {
