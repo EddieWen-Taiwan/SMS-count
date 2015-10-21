@@ -204,7 +204,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         enterDateLabel.text = newSelectDate
         userPreference.setObject( newSelectDate, forKey: "enterDate" )
 
-        dismissScreenMask()
+        self.dismissScreenMask()
 
     }
 
@@ -216,7 +216,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         serviceDaysLabel.text = countingClass.switchPeriod( userPreference.stringForKey("serviceDays")! )
 
-        dismissScreenMask()
+        self.dismissScreenMask()
 
     }
 
@@ -228,7 +228,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         discountDaysLabel.text = userPreference.stringForKey("discountDays")
 
-        dismissScreenMask()
+        self.dismissScreenMask()
 
     }
 
