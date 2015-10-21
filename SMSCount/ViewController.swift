@@ -72,9 +72,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if let userFBID = userPreference.stringForKey("FBID") {
             let userQuery = PFQuery(className: "User")
             userQuery.whereKey( "user_id", equalTo: userFBID )
-            userQuery.findObjectsInBackgroundWithBlock({ (object: [PFObject]?, error: NSError?) -> Void in
+            userQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
-                    print(object)
+                    print(objects)
+                    print("****************")
+                    for object in objects! {
+                        print(object)
+                        print(object.objectForKey("email"))
+                        print("================")
+                    }
                 } else {
                     print(error)
                 }
