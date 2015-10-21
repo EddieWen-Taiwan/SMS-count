@@ -108,8 +108,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     let userInfo = PFObject(className: "User")
                     if let userId = result.objectForKey("id") {
                         print("User name : \(userId)")
-                        userInfo["user_id"] = userId
-                        self.userPreference.setObject( userId, forKey: "FBID" )
+                        userInfo["fb_user_id"] = userId
                     }
                     if let userName = result.objectForKey("name") {
                         print("User name : \(userName)")
@@ -119,12 +118,26 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                         print("User mail : \(userMail)")
                         userInfo["email"] = userMail
                     }
-//                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-//                        print("Status of Saving data is success : \(success)")
-//                    }
+                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                        print("Status of Saving data is success : \(success)")
+
+                        if success {
+                            let objectIdQuery = PFQuery(className: "User")
+                            objectIdQuery.whereKey("fb_user_id", equalTo: result.objectForKey("id"))
+                            objectIdQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                                if error == nil {
+                                    for object in objects! {
+                                        print(object)
+                                        print(object.objectId)
+                                        self.userPreference.setObject( object.objectId, forKey: "UserId" )
+                                    }
+                                }
+                            })
+                        }
+                    }
                 }
 
-            })
+            }) // graphRequest
         }
     }
 
