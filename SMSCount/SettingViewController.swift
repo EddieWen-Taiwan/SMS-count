@@ -102,12 +102,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
-                if error != nil {
-                    print("Error: \(error)")
-                } else {
+                if error == nil {
                     let userInfo = PFObject(className: "User")
                     if let userId = result.objectForKey("id") {
-                        print("User name : \(userId)")
+                        print("User id : \(userId)")
                         userInfo["fb_user_id"] = userId
                     }
                     if let userName = result.objectForKey("name") {
@@ -133,6 +131,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                             })
                         }
                     }
+                } else {
+                    print("ERROR : \(error)")
                 }
 
             }) // graphRequest
