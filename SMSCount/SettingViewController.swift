@@ -107,7 +107,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     let userInfo = PFObject(className: "User")
                     if let userId = result.objectForKey("id") {
                         print("User id : \(userId)")
-                        userInfo["fb_user_id"] = userId
+                        userInfo["fb_id"] = userId
                     }
                     if let userName = result.objectForKey("name") {
                         print("User name : \(userName)")
@@ -120,7 +120,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                         if success {
                             let objectIdQuery = PFQuery(className: "User")
-                            objectIdQuery.whereKey("fb_user_id", equalTo: result.objectForKey("id"))
+                            objectIdQuery.whereKey("fb_id", equalTo: result.objectForKey("id"))
                             objectIdQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
                                 if error == nil {
                                     for object in objects! {
