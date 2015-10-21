@@ -91,7 +91,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     // *************** \\
 
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
 
         if error != nil {
             // Process error
@@ -99,6 +98,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             // Handle cancellations
         } else {
             // Navigate to other view
+            print("User Logged In")
+
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
