@@ -117,8 +117,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                         userInfo["email"] = userMail
                     }
                     userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-                        print("Status of Saving data is success : \(success)")
-
                         if success {
                             let objectIdQuery = PFQuery(className: "User")
                             objectIdQuery.whereKey("fb_user_id", equalTo: result.objectForKey("id"))
