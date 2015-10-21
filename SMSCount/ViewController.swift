@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKShareKit
+import Parse
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -67,6 +68,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
+        let userPreference = NSUserDefaults( suiteName:"group.EddieWen.SMSCount" )!
+        if let userFBID = userPreference.stringForKey("FBID") {
+            let userQuery = PFQuery(className: "User")
+            userQuery.whereKey( "user_id", equalTo: userFBID )
+            userQuery.findObjectsInBackgroundWithBlock({ (object: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    print(object)
+                } else {
+                    print(error)
+                }
+            })
+        } else {
+            print("NO USER FB ID")
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
