@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBSDKCoreKit
 import FBSDKShareKit
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -133,7 +132,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
 
         print("* FB Login Status: \(FBSDKAccessToken.currentAccessToken()) \n* Line: 135")
-
     }
 
     func daysAddingEffect( timer: NSTimer ) {
