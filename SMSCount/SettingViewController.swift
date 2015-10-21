@@ -105,13 +105,24 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
                 if error == nil {
                     let userInfo = PFObject(className: "User")
-                    if let userId = result.objectForKey("id") {
-                        print("User id : \(userId)")
-                        userInfo["fb_id"] = userId
+                    if let FBID = result.objectForKey("id") {
+                        print("User id : \(FBID)")
+                        userInfo["fb_id"] = FBID
 
                         // Use FB_ID to query Parse data,
                         // if userInfo exists, get objectId and update userPreference.
                         // if userInfo doesn't exist, save the other infomations to Parse
+                        let selectUserQuery = PFQuery(className: "User")
+                        selectUserQuery.whereKey("fb_id", equalTo: FBID)
+                        selectUserQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                            if error == nil {
+                                if objects!.count > 0 {
+                                    // User exists
+                                } else {
+                                    // Not
+                                }
+                            }
+                        })
                     }
                     if let userName = result.objectForKey("name") {
                         print("User name : \(userName)")
