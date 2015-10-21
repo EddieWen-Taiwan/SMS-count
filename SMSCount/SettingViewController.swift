@@ -127,8 +127,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                             objectIdQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
                                 if error == nil {
                                     for object in objects! {
-                                        print(object)
-                                        print(object.objectId)
                                         self.userPreference.setObject( object.objectId, forKey: "UserId" )
                                     }
                                 }
