@@ -109,6 +109,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     if let userId = result.objectForKey("id") {
                         print("User name : \(userId)")
                         userInfo["user_id"] = userId
+                        self.userPreference.setObject( userId, forKey: "FBID" )
                     }
                     if let userName = result.objectForKey("name") {
                         print("User name : \(userName)")
