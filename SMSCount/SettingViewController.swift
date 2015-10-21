@@ -104,13 +104,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
                 if error == nil {
-                    let userInfo = PFObject(className: "User")
                     if let FBID = result.objectForKey("id") {
                         print("User id : \(FBID)")
-                        userInfo["fb_id"] = FBID
 
                         // Use FB_ID to query Parse data,
-                        // if userInfo exists, get objectId and update userPreference.
+                        // if userInfo exists, get "objectId" and update userPreference.
                         // if userInfo doesn't exist, save the other infomations to Parse
                         let selectUserQuery = PFQuery(className: "User")
                         selectUserQuery.whereKey("fb_id", equalTo: FBID)
@@ -119,37 +117,39 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                 if objects!.count > 0 {
                                     // User exists
                                 } else {
-                                    // Not
-                                }
-                            }
-                        })
-                    }
-                    if let userName = result.objectForKey("name") {
-                        print("User name : \(userName)")
-                        userInfo["username"] = userName
-                    }
-                    if let userMail = result.objectForKey("email") {
-                        print("User mail : \(userMail)")
-                        userInfo["email"] = userMail
-                    }
-                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-                        if success {
-                            let objectIdQuery = PFQuery(className: "User")
-                            objectIdQuery.whereKey("fb_id", equalTo: result.objectForKey("id"))
-                            objectIdQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-                                if error == nil {
-                                    for object in objects! {
-                                        self.userPreference.setObject( object.objectId, forKey: "UserId" )
+                                    // New user
+                                    let userInfo = PFObject(className: "User")
+                                    userInfo["fb_id"] = FBID
+                                    if let userName = result.objectForKey("name") {
+                                        print("User name : \(userName)")
+                                        userInfo["username"] = userName
                                     }
-                                }
-                            })
-                        }
+                                    if let userMail = result.objectForKey("email") {
+                                        print("User mail : \(userMail)")
+                                        userInfo["email"] = userMail
+                                    }
+                                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                                        if success {
+                                            let objectIdQuery = PFQuery(className: "User")
+                                            objectIdQuery.whereKey("fb_id", equalTo: result.objectForKey("id"))
+                                            objectIdQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                                                if error == nil {
+                                                    for object in objects! {
+                                                        self.userPreference.setObject( object.objectId, forKey: "UserID" )
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    }
+                                } // --- if objects.count
+                            }
+                        }) // --- selectUserQuery
                     }
                 } else {
                     print("ERROR : \(error)")
                 }
 
-            }) // graphRequest
+            }) // --- graphRequest
         }
     }
 
