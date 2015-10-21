@@ -112,6 +112,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     if let userName = result.objectForKey("name") {
                         print("User name : \(userName)")
                         userInfo["username"] = userName
+                        
+                        // Use userName to query Parse data,
+                        // if userInfo exists, get objectId and update userPreference.
+                        // if userInfo doesn't exist, save the other infomations to Parse
                     }
                     if let userMail = result.objectForKey("email") {
                         print("User mail : \(userMail)")
