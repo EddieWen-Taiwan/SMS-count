@@ -68,26 +68,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
-        let userPreference = NSUserDefaults( suiteName:"group.EddieWen.SMSCount" )!
-        if let userFBID = userPreference.stringForKey("FBID") {
-            let userQuery = PFQuery(className: "User")
-            userQuery.whereKey( "user_id", equalTo: userFBID )
-            userQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-                if error == nil {
-                    print(objects)
-                    print("****************")
-                    for object in objects! {
-                        print(object)
-                        print(object.objectForKey("email"))
-                        print("================")
-                    }
-                } else {
-                    print(error)
-                }
-            })
-        } else {
-            print("NO USER FB ID")
-        }
+//        let userPreference = NSUserDefaults( suiteName:"group.EddieWen.SMSCount" )!
+//        if let userID = userPreference.stringForKey("UserId") {
+//            let userQuery = PFQuery(className: "User")
+//            userQuery.whereKey( "objectId", equalTo: userID )
+//            userQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+//                if error == nil && objects!.count > 0 {
+//                    for object in objects! {
+//                        print(object)
+//                        print(object.objectForKey("email"))
+//                        print("================")
+//                    }
+//                }
+//            })
+//        } else {
+//            print("NO USER FB ID")
+//        }
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -152,7 +148,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             // tabBarController?.selectedIndex = 2
         }
 
-        print("* FB Login Status: \(FBSDKAccessToken.currentAccessToken()) \n* Line: 135")
     }
 
     func daysAddingEffect( timer: NSTimer ) {
