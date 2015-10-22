@@ -116,6 +116,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                             if error == nil {
                                 if objects!.count > 0 {
                                     // User exists
+                                    for user in objects! {
+                                        self.userPreference.setObject( user.objectId, forKey: "UserID" )
+                                    }
                                 } else {
                                     // New user
                                     let userInfo = PFObject(className: "User")
