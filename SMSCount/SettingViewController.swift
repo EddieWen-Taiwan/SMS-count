@@ -133,15 +133,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                     }
                                     userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                                         if success {
-                                            let objectIdQuery = PFQuery(className: "User")
-                                            objectIdQuery.whereKey("fb_id", equalTo: result.objectForKey("id"))
-                                            objectIdQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-                                                if error == nil {
-                                                    for object in objects! {
-                                                        self.userPreference.setObject( object.objectId, forKey: "UserID" )
-                                                    }
-                                                }
-                                            })
+                                            print("NEW objectId is \(userInfo.objectId)")
+                                            self.userPreference.setObject( userInfo.objectId, forKey: "UserID" )
                                         }
                                     }
                                 } // --- if objects.count
