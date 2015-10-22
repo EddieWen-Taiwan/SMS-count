@@ -85,7 +85,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     }
 
-    
     // *************** \\
     //      FBSDK      \\
     // *************** \\
