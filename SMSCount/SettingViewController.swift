@@ -99,7 +99,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 
-        
+        // Save userPreference and compare them while leaving this view.
+	// If they are different, update the Parse data.
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
