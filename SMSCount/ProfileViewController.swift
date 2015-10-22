@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 
         if countingClass.isSettingAllDone() {
             // OK
