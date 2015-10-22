@@ -86,6 +86,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 
         if discountDaysLabel.text == "" {
             if let userDiscountDays = userPreference.stringForKey("discountDays") {
