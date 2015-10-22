@@ -85,73 +85,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     }
 
-    // *************** \\
-    //      FBSDK      \\
-    // *************** \\
-
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-
-        if error != nil {
-            // Process error
-        } else if result.isCancelled {
-            // Handle cancellations
-        } else {
-            // Navigate to other view
-            print("User Logged In")
-
-            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
-            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-
-                if error == nil {
-                    if let FBID = result.objectForKey("id") {
-                        print("User id : \(FBID)")
-
-                        // Use FB_ID to query Parse data,
-                        // if userInfo exists, get "objectId" and update userPreference.
-                        // if userInfo doesn't exist, save infomations to Parse
-                        let selectUserQuery = PFQuery(className: "User")
-                        selectUserQuery.whereKey("fb_id", equalTo: FBID)
-                        selectUserQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-                            if error == nil {
-                                if objects!.count > 0 {
-                                    // User exists
-                                    for user in objects! {
-                                        self.userPreference.setObject( user.objectId, forKey: "UserID" )
-                                    }
-                                } else {
-                                    // New user
-                                    let userInfo = PFObject(className: "User")
-                                    userInfo["fb_id"] = FBID
-                                    if let userName = result.objectForKey("name") {
-                                        print("User name : \(userName)")
-                                        userInfo["username"] = userName
-                                    }
-                                    if let userMail = result.objectForKey("email") {
-                                        print("User mail : \(userMail)")
-                                        userInfo["email"] = userMail
-                                    }
-                                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-                                        if success {
-                                            print("NEW objectId is \(userInfo.objectId)")
-                                            self.userPreference.setObject( userInfo.objectId, forKey: "UserID" )
-                                        }
-                                    }
-                                } // --- if objects.count
-                            }
-                        }) // --- selectUserQuery
-                    }
-                } else {
-                    print("ERROR : \(error)")
-                }
-
-            }) // --- graphRequest
-        }
-    }
-
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
-    }
-
     override func viewDidAppear(animated: Bool) {
 
         if discountDaysLabel.text == "" {
@@ -279,6 +212,73 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     func switchClick( mySwitch: UISwitch ) {
         self.userPreference.setBool( mySwitch.on ? true : false, forKey: "autoWeekendFixed" )
+    }
+    
+    // *************** \\
+    //      FBSDK      \\
+    // *************** \\
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+        if error != nil {
+            // Process error
+        } else if result.isCancelled {
+            // Handle cancellations
+        } else {
+            // Navigate to other view
+            print("User Logged In")
+            
+            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
+            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+                
+                if error == nil {
+                    if let FBID = result.objectForKey("id") {
+                        print("User id : \(FBID)")
+                        
+                        // Use FB_ID to query Parse data,
+                        // if userInfo exists, get "objectId" and update userPreference.
+                        // if userInfo doesn't exist, save infomations to Parse
+                        let selectUserQuery = PFQuery(className: "User")
+                        selectUserQuery.whereKey("fb_id", equalTo: FBID)
+                        selectUserQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                            if error == nil {
+                                if objects!.count > 0 {
+                                    // User exists
+                                    for user in objects! {
+                                        self.userPreference.setObject( user.objectId, forKey: "UserID" )
+                                    }
+                                } else {
+                                    // New user
+                                    let userInfo = PFObject(className: "User")
+                                    userInfo["fb_id"] = FBID
+                                    if let userName = result.objectForKey("name") {
+                                        print("User name : \(userName)")
+                                        userInfo["username"] = userName
+                                    }
+                                    if let userMail = result.objectForKey("email") {
+                                        print("User mail : \(userMail)")
+                                        userInfo["email"] = userMail
+                                    }
+                                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                                        if success {
+                                            print("NEW objectId is \(userInfo.objectId)")
+                                            self.userPreference.setObject( userInfo.objectId, forKey: "UserID" )
+                                        }
+                                    }
+                                } // --- if objects.count
+                            }
+                        }) // --- selectUserQuery
+                    }
+                } else {
+                    print("ERROR : \(error)")
+                }
+                
+            }) // --- graphRequest
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
     }
 
     // MARK: These are the functions for UIPickerView
