@@ -73,7 +73,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
-        
+
         // FB Login
         self.view.layoutIfNeeded()
 
@@ -109,7 +109,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
                         // Use FB_ID to query Parse data,
                         // if userInfo exists, get "objectId" and update userPreference.
-                        // if userInfo doesn't exist, save the other infomations to Parse
+                        // if userInfo doesn't exist, save infomations to Parse
                         let selectUserQuery = PFQuery(className: "User")
                         selectUserQuery.whereKey("fb_id", equalTo: FBID)
                         selectUserQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
