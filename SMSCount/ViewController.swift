@@ -90,7 +90,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             }
             newUser.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
-                    print("New objectId is \(newUser.objectId)")
                     userPreference.setObject( newUser.objectId, forKey: "UserID" )
                 }
             }
