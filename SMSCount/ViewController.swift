@@ -70,6 +70,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
         // If app is without ObjectId, create a new data row.
+        let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+        if userPreference.stringForKey("UserID") == nil {
+            let newUser = PFObject(className: "User")
+            if let userEnter = userPreference.stringForKey("enterDate") {
+                newUser["enterDate"] = userEnter
+            }
+            if let userService: Int = userPreference.integerForKey("serviceDays") {
+                newUser["serviceDays"] = userService
+            }
+            if let userDiscount: Int = userPreference.integerForKey("discountDays") {
+                newUser["discountDays"] = userDiscount
+            }
+            newUser.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                if success {
+                    print("New objectId is \(newUser.objectId)")
+                    userPreference.setObject( newUser.objectId, forKey: "UserID" )
+                }
+            }
+        }
         
 //        let userPreference = NSUserDefaults( suiteName:"group.EddieWen.SMSCount" )!
 //        if let userID = userPreference.stringForKey("UserID") {
