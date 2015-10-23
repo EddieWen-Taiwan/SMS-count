@@ -73,10 +73,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
         if userPreference.stringForKey("UserID") == nil {
             let newUser = PFObject(className: "User")
-            if let userEnter: String = userPreference.stringForKey("enterDate") {
-                let year = (userEnter as NSString).substringToIndex(4)
-                let month = (userEnter as NSString).substringWithRange(NSMakeRange(7, 2))
-                let date = (userEnter as NSString).substringFromIndex(12)
+            if let userEnter: NSString = userPreference.stringForKey("enterDate") {
+                let year = userEnter.substringToIndex(4)
+                let month = userEnter.substringWithRange(NSMakeRange(7, 2))
+                let date = userEnter.substringFromIndex(12)
                 newUser["yearOfEnterDate"] = Int(year)
                 newUser["monthOfEnterDate"] = Int(month)
                 newUser["dateOfEnterDate"] = Int(date)
