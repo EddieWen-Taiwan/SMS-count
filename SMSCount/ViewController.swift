@@ -71,7 +71,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         // If app is without ObjectId, create a new data row.
         let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-        userPreference.setObject( nil, forKey: "UserID")
         if userPreference.stringForKey("UserID") == nil {
             let newUser = PFObject(className: "User")
             if let userEnter: String = userPreference.stringForKey("enterDate") {
