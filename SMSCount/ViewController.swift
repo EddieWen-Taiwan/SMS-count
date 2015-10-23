@@ -71,10 +71,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         // If app is without ObjectId, create a new data row.
         let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+        userPreference.setObject( nil, forKey: "UserID")
         if userPreference.stringForKey("UserID") == nil {
             let newUser = PFObject(className: "User")
-            if let userEnter = userPreference.stringForKey("enterDate") {
-                newUser["enterDate"] = userEnter
+            if let userEnter: String = userPreference.stringForKey("enterDate") {
+                let year = (userEnter as NSString).substringToIndex(4)
+                let month = (userEnter as NSString).substringWithRange(NSMakeRange(7, 2))
+                let date = (userEnter as NSString).substringFromIndex(12)
+                newUser["yearOfEnterDate"] = Int(year)
+                newUser["monthOfEnterDate"] = Int(month)
+                newUser["dateOfEnterDate"] = Int(date)
             }
             if let userService: Int = userPreference.integerForKey("serviceDays") {
                 newUser["serviceDays"] = userService
