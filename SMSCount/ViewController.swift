@@ -57,6 +57,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view, typically from a nib.
         let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
         self.switchViewButton.addGestureRecognizer( switchGesture )
@@ -68,6 +69,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
+        // If app is without ObjectId, create a new data row.
+        
 //        let userPreference = NSUserDefaults( suiteName:"group.EddieWen.SMSCount" )!
 //        if let userID = userPreference.stringForKey("UserID") {
 //            let userQuery = PFQuery(className: "User")
