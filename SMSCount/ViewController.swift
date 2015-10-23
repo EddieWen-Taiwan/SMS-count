@@ -89,21 +89,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 }
             }
         }
-        
-//        let userPreference = NSUserDefaults( suiteName:"group.EddieWen.SMSCount" )!
-//        if let userID = userPreference.stringForKey("UserID") {
-//            let userQuery = PFQuery(className: "User")
-//            userQuery.getObjectInBackgroundWithId( userID, block: { (user: PFObject?, error: NSError?) -> Void in
-//                if error == nil {
-//                    if let user = user {
-//                        user["aaa"] = "newData"
-//                        user.saveInBackground()
-//                    }
-//                }
-//            })
-//        } else {
-//            print("NO USER FB ID")
-//        }
+
     }
 
     override func viewDidAppear(animated: Bool) {
