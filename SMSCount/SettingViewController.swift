@@ -235,17 +235,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     if let FBID = result.objectForKey("id") {
                         print("User id : \(FBID)")
                         // Search parse data by FBID, check whether there is matched data.
-                        // If there is, update local objectId.
                         let fbIdQuery = PFQuery(className: "User")
                         fbIdQuery.whereKey( "fb_id", equalTo: FBID )
-                        fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
-                            print(objects)
+                        fbIdQuery.getFirstObjectInBackgroundWithBlock{ (object: PFObject?, error: NSError?) -> Void in
+                            print(object)
 
-                            if objects!.count > 0 {
-                                
-                            } else {
-
+                            if object == nil {
                                 // Update user email, name .... by objectId
+                                
                                 let userQuery = PFQuery(className: "User")
                                 userQuery.getObjectInBackgroundWithId( self.userPreference.stringForKey("UserID")! ) {
                                     (user: PFObject?, error: NSError?) -> Void in
@@ -261,7 +258,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         user!.saveInBackground()
                                     }
                                 }
+                            } else {
+                                // Update local objectId
 
+                                print(object!.objectId)
                             }
 
                         } // --- fbIdQuery
