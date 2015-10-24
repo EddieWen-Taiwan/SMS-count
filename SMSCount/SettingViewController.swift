@@ -238,7 +238,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                         let fbIdQuery = PFQuery(className: "User")
                         fbIdQuery.whereKey( "fb_id", equalTo: FBID )
                         fbIdQuery.getFirstObjectInBackgroundWithBlock{ (object: PFObject?, error: NSError?) -> Void in
-                            print(object)
 
                             if object == nil {
                                 // Update user email, name .... by objectId
