@@ -93,14 +93,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 discountDaysLabel.text = userDiscountDays
             }
         }
-
-    }
-
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-
-        // Save userPreference and compare them while leaving this view.
-	// If they are different, update the Parse data.
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
@@ -238,47 +230,45 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-                
+
                 if error == nil {
                     if let FBID = result.objectForKey("id") {
-                        print("User id : \(FBID)")
-                        
-                        // Use FB_ID to query Parse data,
-                        // if userInfo exists, get "objectId" and update userPreference.
-                        // if userInfo doesn't exist, save infomations to Parse
-                        let selectUserQuery = PFQuery(className: "User")
-                        selectUserQuery.whereKey("fb_id", equalTo: FBID)
-                        selectUserQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-                            if error == nil {
-                                if objects!.count > 0 {
-                                    // User exists
-                                    for user in objects! {
-                                        self.userPreference.setObject( user.objectId, forKey: "UserID" )
-                                    }
-                                } else {
-                                    // New user
-                                    let userInfo = PFObject(className: "User")
-                                    userInfo["fb_id"] = FBID
-                                    if let userName = result.objectForKey("name") {
-                                        print("User name : \(userName)")
-                                        userInfo["username"] = userName
-                                    }
-                                    if let userMail = result.objectForKey("email") {
-                                        print("User mail : \(userMail)")
-                                        userInfo["email"] = userMail
-                                    }
-                                    userInfo.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-                                        if success {
-                                            print("NEW objectId is \(userInfo.objectId)")
-                                            self.userPreference.setObject( userInfo.objectId, forKey: "UserID" )
+                        // Search parse data by FBID, check whether there is matched data.
+                        let fbIdQuery = PFQuery(className: "User")
+                        fbIdQuery.whereKey( "fb_id", equalTo: FBID )
+                        fbIdQuery.getFirstObjectInBackgroundWithBlock{ (object: PFObject?, error: NSError?) -> Void in
+
+                            if object == nil {
+                                // Update user email, name .... by objectId
+
+                                let userQuery = PFQuery(className: "User")
+                                userQuery.getObjectInBackgroundWithId( self.userPreference.stringForKey("UserID")! ) {
+                                    (user: PFObject?, error: NSError?) -> Void in
+                                    if error == nil {
+                                        
+                                        user!.setObject( FBID, forKey: "fb_id" )
+                                        if let userName = result.objectForKey("name") {
+                                            user!.setObject( userName, forKey: "username" )
                                         }
+                                        if let userMail = result.objectForKey("email") {
+                                            user!.setObject( userMail, forKey: "email" )
+                                        }
+                                        user!.saveInBackground()
                                     }
-                                } // --- if objects.count
+                                }
+                            } else {
+                                // Update local objectId
+
+                                if let userID = object!.objectId {
+                                    self.userPreference.setObject( userID, forKey: "UserID" )
+                                }
                             }
-                        }) // --- selectUserQuery
+
+                        } // --- fbIdQuery
+
                     }
                 } else {
-                    print("ERROR : \(error)")
+                    print("FB Graph API ERROR : \(error)")
                 }
                 
             }) // --- graphRequest

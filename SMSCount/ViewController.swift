@@ -57,6 +57,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view, typically from a nib.
         let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
         self.switchViewButton.addGestureRecognizer( switchGesture )
@@ -68,20 +69,31 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
-//        let userPreference = NSUserDefaults( suiteName:"group.EddieWen.SMSCount" )!
-//        if let userID = userPreference.stringForKey("UserID") {
-//            let userQuery = PFQuery(className: "User")
-//            userQuery.getObjectInBackgroundWithId( userID, block: { (user: PFObject?, error: NSError?) -> Void in
-//                if error == nil {
-//                    if let user = user {
-//                        user["aaa"] = "newData"
-//                        user.saveInBackground()
-//                    }
-//                }
-//            })
-//        } else {
-//            print("NO USER FB ID")
-//        }
+        // If app is without ObjectId, create a new data row.
+        let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+        if userPreference.stringForKey("UserID") == nil {
+            let newUser = PFObject(className: "User")
+            if let userEnter: NSString = userPreference.stringForKey("enterDate") {
+                let year = userEnter.substringToIndex(4)
+                let month = userEnter.substringWithRange(NSMakeRange(7, 2))
+                let date = userEnter.substringFromIndex(12)
+                newUser["yearOfEnterDate"] = Int(year)
+                newUser["monthOfEnterDate"] = Int(month)
+                newUser["dateOfEnterDate"] = Int(date)
+            }
+            if let userService: Int = userPreference.integerForKey("serviceDays") {
+                newUser["serviceDays"] = userService
+            }
+            if let userDiscount: Int = userPreference.integerForKey("discountDays") {
+                newUser["discountDays"] = userDiscount
+            }
+            newUser.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                if success {
+                    userPreference.setObject( newUser.objectId, forKey: "UserID" )
+                }
+            }
+        }
+
     }
 
     override func viewDidAppear(animated: Bool) {
