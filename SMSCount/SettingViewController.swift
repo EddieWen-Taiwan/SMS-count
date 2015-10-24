@@ -234,28 +234,41 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 if error == nil {
                     if let FBID = result.objectForKey("id") {
                         print("User id : \(FBID)")
-                        // Search parse data by FBID, check whether there is matched data
-                        // update local objectId
+                        // Search parse data by FBID, check whether there is matched data.
+                        // If there is, update local objectId.
+                        let fbIdQuery = PFQuery(className: "User")
+                        fbIdQuery.whereKey( "fb_id", equalTo: FBID )
+                        fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
+                            print(objects)
 
-                        // Update user email, name .... by objectId
-                        let userQuery = PFQuery(className: "User")
-                        userQuery.getObjectInBackgroundWithId( self.userPreference.stringForKey("UserID")! ) {
-                            (user: PFObject?, error: NSError?) -> Void in
-                            if error == nil {
+                            if objects!.count > 0 {
+                                
+                            } else {
 
-                                user!.setObject( FBID, forKey: "fb_id" )
-                                if let userName = result.objectForKey("name") {
-                                    user!.setObject( userName, forKey: "username" )
+                                // Update user email, name .... by objectId
+                                let userQuery = PFQuery(className: "User")
+                                userQuery.getObjectInBackgroundWithId( self.userPreference.stringForKey("UserID")! ) {
+                                    (user: PFObject?, error: NSError?) -> Void in
+                                    if error == nil {
+                                        
+                                        user!.setObject( FBID, forKey: "fb_id" )
+                                        if let userName = result.objectForKey("name") {
+                                            user!.setObject( userName, forKey: "username" )
+                                        }
+                                        if let userMail = result.objectForKey("email") {
+                                            user!.setObject( userMail, forKey: "email" )
+                                        }
+                                        user!.saveInBackground()
+                                    }
                                 }
-                                if let userMail = result.objectForKey("email") {
-                                    user!.setObject( userMail, forKey: "email" )
-                                }
-                                user!.saveInBackground()
+
                             }
-                        }
+
+                        } // --- fbIdQuery
+
                     }
                 } else {
-                    print("ERROR : \(error)")
+                    print("FB Graph API ERROR : \(error)")
                 }
                 
             }) // --- graphRequest
