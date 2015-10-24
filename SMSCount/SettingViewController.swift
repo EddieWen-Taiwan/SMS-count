@@ -230,7 +230,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-                
+
                 if error == nil {
                     if let FBID = result.objectForKey("id") {
                         // Search parse data by FBID, check whether there is matched data.
