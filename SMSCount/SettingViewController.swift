@@ -261,7 +261,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                             } else {
                                 // Update local objectId
 
-                                print(object!.objectId)
+                                if let userID = object!.objectId {
+                                    self.userPreference.setObject( userID, forKey: "UserID" )
+                                }
                             }
 
                         } // --- fbIdQuery
