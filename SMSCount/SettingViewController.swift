@@ -233,7 +233,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 
                 if error == nil {
                     if let FBID = result.objectForKey("id") {
-                        print("User id : \(FBID)")
                         // Search parse data by FBID, check whether there is matched data.
                         let fbIdQuery = PFQuery(className: "User")
                         fbIdQuery.whereKey( "fb_id", equalTo: FBID )
@@ -241,7 +240,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
                             if object == nil {
                                 // Update user email, name .... by objectId
-                                
+
                                 let userQuery = PFQuery(className: "User")
                                 userQuery.getObjectInBackgroundWithId( self.userPreference.stringForKey("UserID")! ) {
                                     (user: PFObject?, error: NSError?) -> Void in
