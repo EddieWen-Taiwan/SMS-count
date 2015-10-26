@@ -32,10 +32,17 @@ class UserInfo { // Save userInfomation to Parse
 
     }
 
+    func updateLocalObjectId( objectId: String ) {
+        self.userPreference.setObject( objectId, forKey: "UserID" )
+        self.userObject.objectId = objectId
+        self.objectIdStatus = true
+    }
+
     // Save local data to Parse
     func save() {
         if self.objectIsChanged {
             self.userObject.saveInBackground()
+            self.objectIdStatus = false
         }
     }
 
