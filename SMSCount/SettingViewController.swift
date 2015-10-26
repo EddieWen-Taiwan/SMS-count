@@ -259,14 +259,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                     if let localUserID = self.userPreference.stringForKey("UserID") {
                                         userQuery.getObjectInBackgroundWithId( localUserID ) { (user: PFObject?, error: NSError?) -> Void in
                                             if error == nil {
-                                                user!.setObject( FBID, forKey: "fb_id" )
+                                                self.userInfo.addUserFBID( FBID as! String )
                                                 if let userName = result.objectForKey("name") {
-                                                    user!.setObject( userName, forKey: "username" )
+                                                    self.userInfo.addUserName( userName as! String )
                                                 }
                                                 if let userMail = result.objectForKey("email") {
-                                                    user!.setObject( userMail, forKey: "email" )
+                                                    self.userInfo.addUserMail( userMail as! String )
                                                 }
-                                                user!.saveInBackground()
+                                                self.userInfo.save()
                                             }
                                         }
                                     } else {
