@@ -39,6 +39,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
+    let userInfo = UserInfo()
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -243,9 +245,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                 if objects!.count > 0 {
                                     for user in objects! {
                                         // Update local objectId
-                                        
+
                                         if let userID = user.objectId {
-                                            self.userPreference.setObject( userID, forKey: "UserID" )
+                                            self.userInfo.updateLocalObjectId( userID )
                                         }
                                     }
                                 } else {
