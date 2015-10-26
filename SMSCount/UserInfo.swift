@@ -17,7 +17,7 @@ class UserInfo { // Save userInfomation to Parse
 
     init() {
         // Initialize
-        
+        self.addUserObjectId()
     }
 
     private func addUserObjectId() {
