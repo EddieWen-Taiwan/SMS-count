@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountingDate {
+class CalculateHelper {
 
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     let dateFormatter = NSDateFormatter()
