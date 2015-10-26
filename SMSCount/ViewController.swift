@@ -81,11 +81,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 newUser["monthOfEnterDate"] = Int(month)
                 newUser["dateOfEnterDate"] = Int(date)
             }
-            if let userService: Int = userPreference.integerForKey("serviceDays") {
-                newUser["serviceDays"] = userService
+            if let userService = userPreference.stringForKey("serviceDays") {
+                newUser["serviceDays"] = Int(userService)
             }
-            if let userDiscount: Int = userPreference.integerForKey("discountDays") {
-                newUser["discountDays"] = userDiscount
+            if let userDiscount = userPreference.stringForKey("discountDays") {
+                newUser["discountDays"] = Int(userDiscount)
             }
             newUser.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
