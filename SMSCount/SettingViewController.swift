@@ -246,7 +246,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                 userQuery.getObjectInBackgroundWithId( self.userPreference.stringForKey("UserID")! ) {
                                     (user: PFObject?, error: NSError?) -> Void in
                                     if error == nil {
-                                        
                                         user!.setObject( FBID, forKey: "fb_id" )
                                         if let userName = result.objectForKey("name") {
                                             user!.setObject( userName, forKey: "username" )
