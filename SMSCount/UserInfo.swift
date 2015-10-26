@@ -36,6 +36,7 @@ class UserInfo { // Save userInfomation to Parse
         self.userPreference.setObject( objectId, forKey: "UserID" )
         self.userObject.objectId = objectId
         self.objectIdStatus = true
+        self.objectIsChanged = true
     }
 
     // Save local data to Parse
