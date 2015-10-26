@@ -227,7 +227,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         } else {
             // Navigate to other view
             print("User Logged In")
-            
+
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
