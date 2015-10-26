@@ -242,7 +242,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                 // Update user email, name .... by objectId
 
                                 let userQuery = PFQuery(className: "User")
-                                // Warning!!! If UserID is nil, App will crash.
+                                // Warning!!!
+                                // If UserID is nil, App will crash.
                                 userQuery.getObjectInBackgroundWithId( self.userPreference.stringForKey("UserID")! ) {
                                     (user: PFObject?, error: NSError?) -> Void in
                                     if error == nil {
