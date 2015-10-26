@@ -8,15 +8,24 @@
 
 import Parse
 
-class UserInfo {
+class UserInfo { // Save userInfomation to Parse
 
-    var objectStatus: Bool = false
+    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+
+    var objectIdStatus: Bool = false
     let userObject = PFObject(className: "User")
 
     init() {
         // Initialize
+        
     }
 
+    private func addUserObjectId() {
+        if objectIdStatus == false && self.userPreference.stringForKey("UserID") != nil {
+            self.userObject.objectId = self.userPreference.stringForKey("UserID")
+            self.objectIdStatus = true
+        }
+    }
     
 
 }
