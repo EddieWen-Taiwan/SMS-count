@@ -39,6 +39,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
+    let userInfo = UserInfo()
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -233,41 +235,35 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
                 if error == nil {
                     if let FBID = result.objectForKey("id") {
+
                         // Search parse data by FBID, check whether there is matched data.
                         let fbIdQuery = PFQuery(className: "User")
                         fbIdQuery.whereKey( "fb_id", equalTo: FBID )
-                        fbIdQuery.getFirstObjectInBackgroundWithBlock{ (object: PFObject?, error: NSError?) -> Void in
+                        fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
+                            if error == nil {
 
-                            if object == nil {
-                                // Update user email, name .... by objectId
+                                if objects!.count > 0 {
+                                    for user in objects! {
+                                        // Update local objectId
 
-                                let userQuery = PFQuery(className: "User")
-                                // Warning!!!
-                                // If UserID is nil, App will crash.
-                                if let localUserID = self.userPreference.stringForKey("UserID") {
-                                    userQuery.getObjectInBackgroundWithId( localUserID ) { (user: PFObject?, error: NSError?) -> Void in
-                                        if error == nil {
-                                            user!.setObject( FBID, forKey: "fb_id" )
-                                            if let userName = result.objectForKey("name") {
-                                                user!.setObject( userName, forKey: "username" )
-                                            }
-                                            if let userMail = result.objectForKey("email") {
-                                                user!.setObject( userMail, forKey: "email" )
-                                            }
-                                            user!.saveInBackground()
+                                        if let userID = user.objectId {
+                                            self.userInfo.updateLocalObjectId( userID )
                                         }
                                     }
                                 } else {
-                                    
-                                }
-                            } else {
-                                // Update local objectId
+                                    // Update user email, name .... by objectId
 
-                                if let userID = object!.objectId {
-                                    self.userPreference.setObject( userID, forKey: "UserID" )
+                                    self.userInfo.addUserFBID( FBID as! String )
+                                    if let userName = result.objectForKey("name") {
+                                        self.userInfo.addUserName( userName as! String )
+                                    }
+                                    if let userMail = result.objectForKey("email") {
+                                        self.userInfo.addUserMail( userMail as! String )
+                                    }
+                                    self.userInfo.save()
                                 }
+
                             }
-
                         } // --- fbIdQuery
 
                     }
