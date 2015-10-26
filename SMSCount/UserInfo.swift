@@ -18,20 +18,58 @@ class UserInfo { // Save userInfomation to Parse
 
     init() {
         // Initialize
-        self.addUserObjectId()
-    }
-
-    private func addUserObjectId() {
-        if self.objectIdStatus == false && self.userPreference.stringForKey("UserID") != nil {
+        if self.userPreference.stringForKey("UserID") != nil {
             self.userObject.objectId = self.userPreference.stringForKey("UserID")
             self.objectIdStatus = true
         }
     }
 
+    private func addUserObjectId() {
+
+        if self.objectIdStatus == false {
+            self.registerNewUser()
+        }
+
+    }
+
+    // save local data to Parse
     func save() {
         if self.objectIsChanged {
             self.userObject.saveInBackground()
         }
+    }
+
+    // Register a new user data in Parse
+    // And save objectId in local userPreference
+    func registerNewUser() {
+
+        if Reachability().isConnectedToNetwork() {
+            let newUser = PFObject(className: "User")
+
+            if let userEnter: NSString = userPreference.stringForKey("enterDate") {
+                let year = userEnter.substringToIndex(4)
+                let month = userEnter.substringWithRange(NSMakeRange(7, 2))
+                let date = userEnter.substringFromIndex(12)
+                newUser["yearOfEnterDate"] = Int(year)
+                newUser["monthOfEnterDate"] = Int(month)
+                newUser["dateOfEnterDate"] = Int(date)
+            }
+            if let userService = userPreference.stringForKey("serviceDays") {
+                newUser["serviceDays"] = Int(userService)
+            }
+            if let userDiscount = userPreference.stringForKey("discountDays") {
+                newUser["discountDays"] = Int(userDiscount)
+            }
+
+            newUser.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                if success {
+                    self.userPreference.setObject( newUser.objectId, forKey: "UserID" )
+                    self.userObject.objectId = newUser.objectId
+                    self.objectIdStatus = true
+                }
+            }
+        }
+
     }
 
 }
