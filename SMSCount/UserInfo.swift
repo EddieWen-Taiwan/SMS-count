@@ -12,6 +12,7 @@ class UserInfo { // Save userInfomation to Parse
 
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
+    var objectIsChanged: Bool = false
     var objectIdStatus: Bool = false
     let userObject = PFObject(className: "User")
 
@@ -21,11 +22,16 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     private func addUserObjectId() {
-        if objectIdStatus == false && self.userPreference.stringForKey("UserID") != nil {
+        if self.objectIdStatus == false && self.userPreference.stringForKey("UserID") != nil {
             self.userObject.objectId = self.userPreference.stringForKey("UserID")
             self.objectIdStatus = true
         }
     }
-    
+
+    func save() {
+        if self.objectIsChanged {
+            self.userObject.saveInBackground()
+        }
+    }
 
 }
