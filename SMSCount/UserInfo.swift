@@ -32,7 +32,7 @@ class UserInfo { // Save userInfomation to Parse
 
     }
 
-    // save local data to Parse
+    // Save local data to Parse
     func save() {
         if self.objectIsChanged {
             self.userObject.saveInBackground()
