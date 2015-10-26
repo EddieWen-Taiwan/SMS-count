@@ -32,6 +32,21 @@ class UserInfo { // Save userInfomation to Parse
 
     }
 
+    func addUserFBID( fbid: String ) {
+        self.userObject.setObject( fbid, forKey: "fb_id" )
+        self.objectIsChanged = true
+    }
+
+    func addUserName( name: String ) {
+        self.userObject.setObject( name, forKey: "username" )
+        self.objectIsChanged = true
+    }
+
+    func addUserMail( mail: String ) {
+        self.userObject.setObject( mail, forKey: "email" )
+        self.objectIsChanged = true
+    }
+
     func updateLocalObjectId( objectId: String ) {
         self.userPreference.setObject( objectId, forKey: "UserID" )
         self.userObject.objectId = objectId
