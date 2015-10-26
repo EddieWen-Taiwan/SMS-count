@@ -252,26 +252,15 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                     }
                                 } else {
                                     // Update user email, name .... by objectId
-                                    
-                                    let userQuery = PFQuery(className: "User")
-                                    // Warning!!!
-                                    // If UserID is nil, App will crash.
-                                    if let localUserID = self.userPreference.stringForKey("UserID") {
-                                        userQuery.getObjectInBackgroundWithId( localUserID ) { (user: PFObject?, error: NSError?) -> Void in
-                                            if error == nil {
-                                                self.userInfo.addUserFBID( FBID as! String )
-                                                if let userName = result.objectForKey("name") {
-                                                    self.userInfo.addUserName( userName as! String )
-                                                }
-                                                if let userMail = result.objectForKey("email") {
-                                                    self.userInfo.addUserMail( userMail as! String )
-                                                }
-                                                self.userInfo.save()
-                                            }
-                                        }
-                                    } else {
-                                        
+
+                                    self.userInfo.addUserFBID( FBID as! String )
+                                    if let userName = result.objectForKey("name") {
+                                        self.userInfo.addUserName( userName as! String )
                                     }
+                                    if let userMail = result.objectForKey("email") {
+                                        self.userInfo.addUserMail( userMail as! String )
+                                    }
+                                    self.userInfo.save()
                                 }
 
                             }
