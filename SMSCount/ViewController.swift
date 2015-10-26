@@ -70,30 +70,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
         // If app is without ObjectId, create a new data row.
-        if Reachability().isConnectedToNetwork() {
-            let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-            if userPreference.stringForKey("UserID") == nil {
-                let newUser = PFObject(className: "User")
-                if let userEnter: NSString = userPreference.stringForKey("enterDate") {
-                    let year = userEnter.substringToIndex(4)
-                    let month = userEnter.substringWithRange(NSMakeRange(7, 2))
-                    let date = userEnter.substringFromIndex(12)
-                    newUser["yearOfEnterDate"] = Int(year)
-                    newUser["monthOfEnterDate"] = Int(month)
-                    newUser["dateOfEnterDate"] = Int(date)
-                }
-                if let userService = userPreference.stringForKey("serviceDays") {
-                    newUser["serviceDays"] = Int(userService)
-                }
-                if let userDiscount = userPreference.stringForKey("discountDays") {
-                    newUser["discountDays"] = Int(userDiscount)
-                }
-                newUser.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-                    if success {
-                        userPreference.setObject( newUser.objectId, forKey: "UserID" )
-                    }
-                }
-            }
+        let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+        if userPreference.stringForKey("UserID") == nil {
+            UserInfo().registerNewUser()
         }
 
     }
