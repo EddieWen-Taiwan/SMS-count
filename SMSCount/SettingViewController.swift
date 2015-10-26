@@ -35,7 +35,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBOutlet var autoWeekendSwitch: UISwitch!
 
-    let countingClass = CountingDate()
+    let calculateHelper = CalculateHelper()
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
@@ -63,7 +63,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             enterDateLabel.text = userEnterDate
         }
         if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            serviceDaysLabel.text = countingClass.switchPeriod( userServiceDays )
+            serviceDaysLabel.text = calculateHelper.switchPeriod( userServiceDays )
         }
         if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
             discountDaysLabel.text = userDiscountDays
@@ -167,7 +167,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             userPreference.setObject( 0, forKey: "serviceDays" )
         }
 
-        serviceDaysLabel.text = countingClass.switchPeriod( userPreference.stringForKey("serviceDays")! )
+        serviceDaysLabel.text = calculateHelper.switchPeriod( userPreference.stringForKey("serviceDays")! )
 
         self.dismissScreenMask()
 
@@ -199,7 +199,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         })
 
         if serviceDaysLabel.text != "" {
-            userPreference.setObject( countingClass.switchPeriod(serviceDaysLabel.text!), forKey: "serviceDays" )
+            userPreference.setObject( calculateHelper.switchPeriod(serviceDaysLabel.text!), forKey: "serviceDays" )
         } else {
             userPreference.removeObjectForKey( "serviceDays" )
         }
