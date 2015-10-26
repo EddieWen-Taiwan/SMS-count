@@ -244,18 +244,21 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                 let userQuery = PFQuery(className: "User")
                                 // Warning!!!
                                 // If UserID is nil, App will crash.
-                                userQuery.getObjectInBackgroundWithId( self.userPreference.stringForKey("UserID")! ) {
-                                    (user: PFObject?, error: NSError?) -> Void in
-                                    if error == nil {
-                                        user!.setObject( FBID, forKey: "fb_id" )
-                                        if let userName = result.objectForKey("name") {
-                                            user!.setObject( userName, forKey: "username" )
+                                if let localUserID = self.userPreference.stringForKey("UserID") {
+                                    userQuery.getObjectInBackgroundWithId( localUserID ) { (user: PFObject?, error: NSError?) -> Void in
+                                        if error == nil {
+                                            user!.setObject( FBID, forKey: "fb_id" )
+                                            if let userName = result.objectForKey("name") {
+                                                user!.setObject( userName, forKey: "username" )
+                                            }
+                                            if let userMail = result.objectForKey("email") {
+                                                user!.setObject( userMail, forKey: "email" )
+                                            }
+                                            user!.saveInBackground()
                                         }
-                                        if let userMail = result.objectForKey("email") {
-                                            user!.setObject( userMail, forKey: "email" )
-                                        }
-                                        user!.saveInBackground()
                                     }
+                                } else {
+                                    
                                 }
                             } else {
                                 // Update local objectId
