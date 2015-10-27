@@ -94,12 +94,11 @@ class UserInfo { // Save userInfomation to Parse
         if Reachability().isConnectedToNetwork() {
 
             if let userEnter: NSString = userPreference.stringForKey("enterDate") {
-                let year = userEnter.substringToIndex(4)
-                let month = userEnter.substringWithRange(NSMakeRange(7, 2))
-                let date = userEnter.substringFromIndex(12)
-                userObject.setObject( Int(year)!, forKey: "yearOfEnterDate" )
-                userObject.setObject( Int(month)!, forKey: "monthOfEnterDate" )
-                userObject.setObject( Int(date)!, forKey: "dateOfEnterDate" )
+                let userEnterArray = self.split2Int(userEnter)
+
+                userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
+                userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
+                userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
             }
             if let userService = userPreference.stringForKey("serviceDays") {
                 userObject.setObject( Int(userService)!, forKey: "serviceDays" )
@@ -117,6 +116,20 @@ class UserInfo { // Save userInfomation to Parse
             }
         }
 
+    }
+
+    private func split2Int( string: NSString ) -> NSArray {
+        var splitArray: [Int] = []
+
+        let year = string.substringToIndex(4)
+        let month = string.substringWithRange(NSMakeRange(7, 2))
+        let date = string.substringFromIndex(12)
+
+        splitArray.append( Int(year)! )
+        splitArray.append( Int(month)! )
+        splitArray.append( Int(date)! )
+
+        return splitArray
     }
 
 }
