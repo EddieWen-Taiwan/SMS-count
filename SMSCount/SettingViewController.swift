@@ -159,6 +159,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         enterDateLabel.text = newSelectDate
         userPreference.setObject( newSelectDate, forKey: "enterDate" )
+        userInfo.updateEnterDate( newSelectDate )
 
         self.dismissScreenMask()
 
