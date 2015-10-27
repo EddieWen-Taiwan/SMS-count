@@ -61,8 +61,12 @@ class UserInfo { // Save userInfomation to Parse
         self.objectIsChanged = true
     }
 
-    func updateEnterDate() {
-        // have to split
+    func updateEnterDate( date: String ) {
+        let userEnterArray = self.split2Int( date )
+        userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
+        userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
+        userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
+        self.objectIsChanged = true
     }
 
     func updateServiceDays( days: Int ) {
