@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var retireDateLabel: UILabel!
 
     @IBOutlet var userSticker: UIImageView!
+    var stickerIsDownloaded: Bool = false
 
     let calculateHelper = CalculateHelper()
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
@@ -55,6 +56,13 @@ class ProfileViewController: UIViewController {
 
         } else {
             // switch to settingViewController ?
+        }
+
+        if let fbid = self.userPreference.stringForKey("fb_id") {
+            if Reachability().isConnectedToNetwork() {
+                // Download Facebook profile
+                self.stickerIsDownloaded = true
+            }
         }
 
     }
