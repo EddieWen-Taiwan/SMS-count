@@ -32,6 +32,8 @@ class UserInfo { // Save userInfomation to Parse
 
     }
 
+    // From Facebook API
+    // Add user infomation: ID, name, email
     func addUserFBID( fbid: String ) {
 
         self.checkObjectId()
@@ -50,10 +52,26 @@ class UserInfo { // Save userInfomation to Parse
         self.objectIsChanged = true
     }
 
+    // This user has registered on Parse
+    // Update the objectId in app
     func updateLocalObjectId( objectId: String ) {
         self.userPreference.setObject( objectId, forKey: "UserID" )
         self.userObject.objectId = objectId
         self.objectIdStatus = true
+        self.objectIsChanged = true
+    }
+
+    func updateEnterDate() {
+        // have to split
+    }
+
+    func updateServiceDays( days: Int ) {
+        self.userObject.setObject( days, forKey: "serviceDays" )
+        self.objectIsChanged = true
+    }
+
+    func updateDiscountDays( days: Int ) {
+        self.userObject.setObject( days, forKey: "discountDays" )
         self.objectIsChanged = true
     }
 
