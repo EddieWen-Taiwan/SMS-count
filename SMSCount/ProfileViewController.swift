@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController {
         }
 
         if let fbid = self.userPreference.stringForKey("fb_id") {
-            if Reachability().isConnectedToNetwork() {
+            if !self.stickerIsDownloaded && Reachability().isConnectedToNetwork() {
                 // Download Facebook profile
                 self.stickerIsDownloaded = true
             }
