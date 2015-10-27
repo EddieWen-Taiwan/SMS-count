@@ -40,7 +40,7 @@ class MonthlyImages {
                     self.saveImage( UIImage(data: data!)! )
                     self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
                     backgroundImage.image = UIImage(data: data!)
-                    
+
                     UIView.animateWithDuration( 1, animations: {
                         backgroundImage.alpha = 1
                     })
