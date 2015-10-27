@@ -19,6 +19,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet var retireDateView: UIView!
     @IBOutlet var retireDateLabel: UILabel!
 
+    @IBOutlet var userSticker: UIImageView!
+
     let calculateHelper = CalculateHelper()
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
