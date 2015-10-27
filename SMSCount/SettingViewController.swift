@@ -98,6 +98,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
     }
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        userInfo.save()
+    }
+
     @IBAction func editEnterDate(sender: AnyObject) {
 
         self.serviceDaysPickerViewBottomConstraint.constant = -250
