@@ -32,6 +32,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var animationArray = [ "" ]
     var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
     var isDaysJumped: Bool = false
+    var isUserRetired: Bool = false
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
@@ -44,8 +45,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     let calculateHelper = CalculateHelper()
     var circleView: PercentageCircleView!
+
     var screenHeight = UIScreen.mainScreen().bounds.height
     var screenWidth = UIScreen.mainScreen().bounds.width
+
     var settingStatus: Bool = false
 
     required init?(coder aDecoder: NSCoder) {
@@ -90,12 +93,22 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             var shouldBeUpdated: Bool = false
             var newRemainedDays = calculateHelper.getRemainedDays()
             if newRemainedDays >= 0 {
-                if self.frontRemainedDaysLabel.text != String( newRemainedDays ) {
+                if self.isUserRetired {
                     shouldBeUpdated = true
+                    self.isUserRetired = false
+                } else {
+                    if self.frontRemainedDaysLabel.text != String( newRemainedDays ) {
+                        shouldBeUpdated = true
+                    }
                 }
             } else {
-                if self.frontRemainedDaysLabel.text != String( newRemainedDays*(-1) ) {
+                if self.isUserRetired {
+                    if self.frontRemainedDaysLabel.text != String( newRemainedDays*(-1) ) {
+                        shouldBeUpdated = true
+                    }
+                } else {
                     shouldBeUpdated = true
+                    self.isUserRetired = true
                 }
             }
 
