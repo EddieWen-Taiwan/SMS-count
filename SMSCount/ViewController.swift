@@ -85,32 +85,45 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if self.settingStatus {
             // OK
             calculateHelper.updateDate()
-            // RemainedDays
-            if self.frontRemainedDaysLabel.text != String( calculateHelper.getRemainedDays() ) {
-                var remainedDays = calculateHelper.getRemainedDays()
-                if remainedDays < 0 {
-                    remainedDays *= (-1)
+
+            // Check whether should run countdown animation
+            var shouldBeUpdated: Bool = false
+            var newRemainedDays = calculateHelper.getRemainedDays()
+            if newRemainedDays >= 0 {
+                if self.frontRemainedDaysLabel.text != String( newRemainedDays ) {
+                    shouldBeUpdated = true
+                }
+            } else {
+                if self.frontRemainedDaysLabel.text != String( newRemainedDays*(-1) ) {
+                    shouldBeUpdated = true
+                }
+            }
+
+            // Set remainedDays
+            if shouldBeUpdated {
+                if newRemainedDays < 0 {
+                    newRemainedDays *= (-1)
                     self.backRemainedDaysWord.text = "自由天數"
                     self.frontRemainedDaysWord.text = "自由天數"
                 } else {
                     self.backRemainedDaysWord.text = "剩餘天數"
                     self.frontRemainedDaysWord.text = "剩餘天數"
                 }
-                self.backRemainedDaysLabel.text = String( remainedDays )
+                self.backRemainedDaysLabel.text = String( newRemainedDays )
 
                 // Timer Effect
                 animationIndex = 0
                 animationArray.removeAll(keepCapacity: false)
-                if remainedDays < 100 {
-                    for var i = 0; i <= remainedDays; i++ {
+                if newRemainedDays < 100 {
+                    for var i = 0; i <= newRemainedDays; i++ {
                         animationArray.append( String(i) )
                     }
                 } else {
                     for var i = 1; i <= 95; i++ {
-                        animationArray.append( String( format: "%.f", Double( (remainedDays-3)*i )*0.01 ) )
+                        animationArray.append( String( format: "%.f", Double( (newRemainedDays-3)*i )*0.01 ) )
                     }
                     for var i = 96; i <= 100; i++ {
-                        animationArray.append( String( remainedDays-(100-i) ) )
+                        animationArray.append( String( newRemainedDays-(100-i) ) )
                     }
                 }
 
@@ -125,7 +138,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.frontRemainedDaysLabel.text = "0"
                 self.checkDaysAnimation()
             }
-            // currentProcess
+            // Set currentProcess
             let currentProcess = calculateHelper.getCurrentProgress()
             let currentProcessString = String( format: "%.1f", currentProcess )
             if self.percentageLabel.text != currentProcessString {
