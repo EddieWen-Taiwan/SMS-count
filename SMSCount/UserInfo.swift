@@ -33,6 +33,9 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     func addUserFBID( fbid: String ) {
+
+        self.checkObjectId()
+
         self.userObject.setObject( fbid, forKey: "fb_id" )
         self.objectIsChanged = true
     }
@@ -63,11 +66,7 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     private func checkObjectId() {
-
-        if self.objectIdStatus == false {
-            self.registerNewUser()
-        }
-
+        if !self.objectIdStatus { self.registerNewUser() }
     }
 
     // Register a new user data in Parse
