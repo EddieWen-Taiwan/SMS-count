@@ -12,6 +12,8 @@ class MonthlyImages {
     let path: String
     var currentMonth = "0"
 
+    let reachability = Reachability()
+
     init(month: String, background: UIImageView) {
         self.currentMonth = month
 
@@ -24,13 +26,15 @@ class MonthlyImages {
         } else {
             background.alpha = 0
 
-            let urlString = "http://smscount.lol/app/backgroundImg/" + self.currentMonth
-            self.downloadImage( NSURL(string: urlString)!, backgroundImage: background )
+            if reachability.isConnectedToNetwork() {
+                let urlString = "http://smscount.lol/app/backgroundImg/" + self.currentMonth
+                self.downloadImage( NSURL(string: urlString)!, backgroundImage: background )
+            }
         }
     }
 
     private func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
-        self.getImageFromUrl(url) { (data, response, error)  in
+        reachability.getImageFromUrl(url) { (data, response, error)  in
 
             if data == nil {
                 backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
@@ -48,12 +52,6 @@ class MonthlyImages {
             }
 
         }
-    }
-
-    private func getImageFromUrl( url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void) ) {
-        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-            completion(data: data, response: response, error: error)
-        }.resume()
     }
 
     private func saveImage( image: UIImage ) {
