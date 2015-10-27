@@ -166,11 +166,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func serviceDaysDoneIsPressed(sender: AnyObject) {
 
-        if userPreference.stringForKey("serviceDays") == nil {
-            userPreference.setObject( 0, forKey: "serviceDays" )
+        if self.userPreference.stringForKey("serviceDays") == nil {
+            self.userPreference.setObject( 0, forKey: "serviceDays" )
         }
 
-        serviceDaysLabel.text = calculateHelper.switchPeriod( userPreference.stringForKey("serviceDays")! )
+        self.serviceDaysLabel.text = calculateHelper.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
+        userInfo.updateServiceDays( self.userPreference.integerForKey("serviceDays") )
 
         self.dismissScreenMask()
 
@@ -178,11 +179,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func discountDaysDoneIsPressed(sender: AnyObject) {
 
-        if userPreference.stringForKey("discountDays") == nil {
-            userPreference.setObject( "0", forKey: "discountDays" )
+        if self.userPreference.stringForKey("discountDays") == nil {
+            self.userPreference.setObject( "0", forKey: "discountDays" )
         }
 
-        discountDaysLabel.text = userPreference.stringForKey("discountDays")
+        self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
+        userInfo.updateDiscountDays( self.userPreference.integerForKey("discountDays") )
 
         self.dismissScreenMask()
 
