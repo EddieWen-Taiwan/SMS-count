@@ -74,27 +74,26 @@ class UserInfo { // Save userInfomation to Parse
     func registerNewUser() {
 
         if Reachability().isConnectedToNetwork() {
-            let newUser = PFObject(className: "User")
 
             if let userEnter: NSString = userPreference.stringForKey("enterDate") {
                 let year = userEnter.substringToIndex(4)
                 let month = userEnter.substringWithRange(NSMakeRange(7, 2))
                 let date = userEnter.substringFromIndex(12)
-                newUser["yearOfEnterDate"] = Int(year)
-                newUser["monthOfEnterDate"] = Int(month)
-                newUser["dateOfEnterDate"] = Int(date)
+                userObject.setObject( Int(year)!, forKey: "yearOfEnterDate" )
+                userObject.setObject( Int(month)!, forKey: "monthOfEnterDate" )
+                userObject.setObject( Int(date)!, forKey: "dateOfEnterDate" )
             }
             if let userService = userPreference.stringForKey("serviceDays") {
-                newUser["serviceDays"] = Int(userService)
+                userObject.setObject( Int(userService)!, forKey: "serviceDays" )
             }
             if let userDiscount = userPreference.stringForKey("discountDays") {
-                newUser["discountDays"] = Int(userDiscount)
+                userObject.setObject( Int(userDiscount)!, forKey: "discountDays" )
             }
 
-            newUser.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+            userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
-                    self.userPreference.setObject( newUser.objectId, forKey: "UserID" )
-                    self.userObject.objectId = newUser.objectId
+                    self.userPreference.setObject( self.userObject.objectId, forKey: "UserID" )
+                    self.userObject.objectId = self.userObject.objectId
                     self.objectIdStatus = true
                 }
             }
