@@ -39,7 +39,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
-    let userInfo = UserInfo()
+    var userInfo: UserInfo!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -85,6 +85,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         loginView.readPermissions = [ "public_profile", "email" ]
         loginView.delegate = self
 
+        self.userInfo = UserInfo()
     }
 
     override func viewDidAppear(animated: Bool) {
