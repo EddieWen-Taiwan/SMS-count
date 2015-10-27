@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FBSDKCoreKit
 import FBSDKShareKit
+import Parse
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -42,7 +42,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
 
-    let countingClass = CountingDate()
+    let calculateHelper = CalculateHelper()
     var circleView: PercentageCircleView!
     var screenHeight = UIScreen.mainScreen().bounds.height
     var screenWidth = UIScreen.mainScreen().bounds.width
@@ -57,6 +57,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view, typically from a nib.
         let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
         self.switchViewButton.addGestureRecognizer( switchGesture )
@@ -68,19 +69,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
+        // If app is without ObjectId, create a new data row.
+        let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+        if userPreference.stringForKey("UserID") == nil {
+            UserInfo().registerNewUser()
+        }
+
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.settingStatus = countingClass.isSettingAllDone() ? true : false
+        self.settingStatus = calculateHelper.isSettingAllDone() ? true : false
 
         if self.settingStatus {
             // OK
-            countingClass.updateDate()
+            calculateHelper.updateDate()
             // RemainedDays
-            if self.frontRemainedDaysLabel.text != String( countingClass.getRemainedDays() ) {
-                var remainedDays = countingClass.getRemainedDays()
+            if self.frontRemainedDaysLabel.text != String( calculateHelper.getRemainedDays() ) {
+                var remainedDays = calculateHelper.getRemainedDays()
                 if remainedDays < 0 {
                     remainedDays *= (-1)
                     self.backRemainedDaysWord.text = "自由天數"
@@ -119,7 +126,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
                 self.checkDaysAnimation()
             }
             // currentProcess
-            let currentProcess = countingClass.getCurrentProgress()
+            let currentProcess = calculateHelper.getCurrentProgress()
             let currentProcessString = String( format: "%.1f", currentProcess )
             if self.percentageLabel.text != currentProcessString {
                 self.percentageLabel.text = currentProcessString

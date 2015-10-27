@@ -19,7 +19,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet var retireDateView: UIView!
     @IBOutlet var retireDateLabel: UILabel!
 
-    let countingClass = CountingDate()
+    @IBOutlet var userSticker: UIImageView!
+    var stickerIsDownloaded: Bool = false
+
+    let calculateHelper = CalculateHelper()
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
     let screenHeight = UIScreen.mainScreen().bounds.height
@@ -33,25 +36,33 @@ class ProfileViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 
-        if countingClass.isSettingAllDone() {
+        if calculateHelper.isSettingAllDone() {
             // OK
-            countingClass.updateDate()
-            self.passedDaysLabel.text = String( countingClass.getPassedDays() )
+            calculateHelper.updateDate()
+            self.passedDaysLabel.text = String( calculateHelper.getPassedDays() )
 
-            if countingClass.isRetireDateFixed() {
-                self.finalRetireDateLabel.text = countingClass.getFixedRetireDate()
+            if calculateHelper.isRetireDateFixed() {
+                self.finalRetireDateLabel.text = calculateHelper.getFixedRetireDate()
                 self.retireDateBottomConstraint.constant = 60
                 self.retireDateView.hidden = false
-                self.retireDateLabel.text = countingClass.getRetireDate()
+                self.retireDateLabel.text = calculateHelper.getRetireDate()
             } else {
-                self.finalRetireDateLabel.text = countingClass.getRetireDate()
+                self.finalRetireDateLabel.text = calculateHelper.getRetireDate()
                 self.retireDateBottomConstraint.constant = 0
                 self.retireDateView.hidden = true
             }
 
         } else {
             // switch to settingViewController ?
+        }
+
+        if let fbid = self.userPreference.stringForKey("fb_id") {
+            if Reachability().isConnectedToNetwork() {
+                // Download Facebook profile
+                self.stickerIsDownloaded = true
+            }
         }
 
     }

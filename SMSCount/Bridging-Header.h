@@ -10,6 +10,8 @@
 #define SMSCount_Bridging_Header_h
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import <Parse/Parse.h>
 
 #endif

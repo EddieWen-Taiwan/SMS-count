@@ -17,7 +17,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet var firstWord: UILabel!
     @IBOutlet var secondWord: UILabel!
 
-    let countingClass = CountingDate()
+    let calculateHelper = CalculateHelper()
     var updateResult: NCUpdateResult = NCUpdateResult.NoData
     
     override func viewDidLoad() {
@@ -33,11 +33,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func checkCurrentData() {
 
-        if countingClass.isSettingAllDone() {
+        if calculateHelper.isSettingAllDone() {
 
             self.correctDataShow( true )
-            countingClass.updateDate()
-            let remainedDays = countingClass.getRemainedDays()
+            calculateHelper.updateDate()
+            let remainedDays = calculateHelper.getRemainedDays()
 
             if self.remainedDaysLabel.text != String( remainedDays ) {
                 self.remainedDaysLabel.text = String( remainedDays )

@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Parse
 
-class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet var screenMask: UIView!
+    @IBOutlet var FBLoginView: UIView!
 
     @IBOutlet var enterDateLabel: UILabel!
     @IBOutlet var serviceDaysLabel: UILabel!
@@ -32,9 +35,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBOutlet var autoWeekendSwitch: UISwitch!
 
-    let countingClass = CountingDate()
+    let calculateHelper = CalculateHelper()
     let dateFormatter = NSDateFormatter()
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+
+    var userInfo: UserInfo!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -60,7 +65,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             enterDateLabel.text = userEnterDate
         }
         if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            serviceDaysLabel.text = countingClass.switchPeriod( userServiceDays )
+            serviceDaysLabel.text = calculateHelper.switchPeriod( userServiceDays )
         }
         if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
             discountDaysLabel.text = userDiscountDays
@@ -70,16 +75,33 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
+
+        // FB Login
+        self.view.layoutIfNeeded()
+
+        let loginView = FBSDKLoginButton()
+        self.FBLoginView.addSubview( loginView )
+        loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
+        loginView.readPermissions = [ "public_profile", "email" ]
+        loginView.delegate = self
+
+        self.userInfo = UserInfo()
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 
         if discountDaysLabel.text == "" {
             if let userDiscountDays = userPreference.stringForKey("discountDays") {
                 discountDaysLabel.text = userDiscountDays
             }
         }
+    }
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        userInfo.save()
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
@@ -143,32 +165,35 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         enterDateLabel.text = newSelectDate
         userPreference.setObject( newSelectDate, forKey: "enterDate" )
+        userInfo.updateEnterDate( newSelectDate )
 
-        dismissScreenMask()
+        self.dismissScreenMask()
 
     }
 
     @IBAction func serviceDaysDoneIsPressed(sender: AnyObject) {
 
-        if userPreference.stringForKey("serviceDays") == nil {
-            userPreference.setObject( 0, forKey: "serviceDays" )
+        if self.userPreference.stringForKey("serviceDays") == nil {
+            self.userPreference.setObject( 0, forKey: "serviceDays" )
         }
 
-        serviceDaysLabel.text = countingClass.switchPeriod( userPreference.stringForKey("serviceDays")! )
+        self.serviceDaysLabel.text = calculateHelper.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
+        userInfo.updateServiceDays( self.userPreference.integerForKey("serviceDays") )
 
-        dismissScreenMask()
+        self.dismissScreenMask()
 
     }
 
     @IBAction func discountDaysDoneIsPressed(sender: AnyObject) {
 
-        if userPreference.stringForKey("discountDays") == nil {
-            userPreference.setObject( "0", forKey: "discountDays" )
+        if self.userPreference.stringForKey("discountDays") == nil {
+            self.userPreference.setObject( "0", forKey: "discountDays" )
         }
 
-        discountDaysLabel.text = userPreference.stringForKey("discountDays")
+        self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
+        userInfo.updateDiscountDays( self.userPreference.integerForKey("discountDays") )
 
-        dismissScreenMask()
+        self.dismissScreenMask()
 
     }
 
@@ -186,7 +211,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         })
 
         if serviceDaysLabel.text != "" {
-            userPreference.setObject( countingClass.switchPeriod(serviceDaysLabel.text!), forKey: "serviceDays" )
+            userPreference.setObject( calculateHelper.switchPeriod(serviceDaysLabel.text!), forKey: "serviceDays" )
         } else {
             userPreference.removeObjectForKey( "serviceDays" )
         }
@@ -199,6 +224,69 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     func switchClick( mySwitch: UISwitch ) {
         self.userPreference.setBool( mySwitch.on ? true : false, forKey: "autoWeekendFixed" )
+    }
+    
+    // *************** \\
+    //      FBSDK      \\
+    // *************** \\
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+        if error != nil {
+            // Process error
+        } else if result.isCancelled {
+            // Handle cancellations
+        } else {
+            // Navigate to other view
+            print("User Logged In")
+
+            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
+            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+
+                if error == nil {
+                    if let FBID = result.objectForKey("id") {
+
+                        // Search parse data by FBID, check whether there is matched data.
+                        let fbIdQuery = PFQuery(className: "User")
+                        fbIdQuery.whereKey( "fb_id", equalTo: FBID )
+                        fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
+                            if error == nil {
+
+                                if objects!.count > 0 {
+                                    for user in objects! {
+                                        // Update local objectId
+
+                                        if let userID = user.objectId {
+                                            self.userInfo.updateLocalObjectId( userID )
+                                        }
+                                    }
+                                } else {
+                                    // Update user email, name .... by objectId
+
+                                    self.userInfo.addUserFBID( FBID as! String )
+                                    if let userName = result.objectForKey("name") {
+                                        self.userInfo.addUserName( userName as! String )
+                                    }
+                                    if let userMail = result.objectForKey("email") {
+                                        self.userInfo.addUserMail( userMail as! String )
+                                    }
+                                    self.userInfo.save()
+                                }
+
+                            }
+                        } // --- fbIdQuery
+
+                    }
+                } else {
+                    print("FB Graph API ERROR : \(error)")
+                }
+                
+            }) // --- graphRequest
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
     }
 
     // MARK: These are the functions for UIPickerView

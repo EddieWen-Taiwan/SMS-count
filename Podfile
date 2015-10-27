@@ -11,11 +11,12 @@ xcodeproj 'SMSCount'
 target 'SMSCount' do
 
 	pod 'FBSDKCoreKit', '~> 4.5.0'
+	pod 'FBSDKLoginKit', '~> 4.5.0'
 	pod 'FBSDKShareKit', '~> 4.5.0'
+	pod 'Parse'
 
 end
 
 target 'SMS_Widget' do
 
 end
-
