@@ -61,7 +61,7 @@ class UserInfo { // Save userInfomation to Parse
     func save() {
         if self.objectIdStatus && self.objectIsChanged {
             self.userObject.saveInBackground()
-            self.objectIdStatus = false
+            self.objectIsChanged = false
         }
     }
 
