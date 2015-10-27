@@ -39,6 +39,7 @@ class UserInfo { // Save userInfomation to Parse
         self.checkObjectId()
 
         self.userObject.setObject( fbid, forKey: "fb_id" )
+        self.userPreference.setObject( fbid, forKey: "fb_id" )
         self.objectIsChanged = true
     }
 
