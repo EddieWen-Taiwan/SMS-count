@@ -56,10 +56,18 @@ class UserInfo { // Save userInfomation to Parse
 
     // Save local data to Parse
     func save() {
-        if self.objectIsChanged {
+        if self.objectIdStatus && self.objectIsChanged {
             self.userObject.saveInBackground()
             self.objectIdStatus = false
         }
+    }
+
+    private func checkObjectId() {
+
+        if self.objectIdStatus == false {
+            self.registerNewUser()
+        }
+
     }
 
     // Register a new user data in Parse
