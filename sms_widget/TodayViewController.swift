@@ -19,7 +19,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     let calculateHelper = CalculateHelper()
     var updateResult: NCUpdateResult = NCUpdateResult.NoData
-    
+
+    var isUserRetired: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
