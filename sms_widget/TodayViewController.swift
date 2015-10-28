@@ -39,10 +39,40 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
             self.correctDataShow( true )
             calculateHelper.updateDate()
+
+            // Check whether should run countdown animation
+            var shouldBeUpdated: Bool = false
             let newRemainedDays = calculateHelper.getRemainedDays()
 
-            if self.remainedDaysLabel.text != String( newRemainedDays ) {
-                self.remainedDaysLabel.text = String( newRemainedDays )
+            if newRemainedDays >= 0 {
+                if self.isUserRetired {
+                    shouldBeUpdated = true
+                    self.isUserRetired = false
+                } else {
+                    if self.remainedDaysLabel.text != String( newRemainedDays ) {
+                        shouldBeUpdated = true
+                    }
+                }
+            } else {
+                if self.isUserRetired {
+                    if self.remainedDaysLabel.text != String( newRemainedDays*(-1) ) {
+                        shouldBeUpdated = true
+                    }
+                } else {
+                    shouldBeUpdated = true
+                    self.isUserRetired = true
+                }
+            }
+
+            if shouldBeUpdated {
+                if newRemainedDays >= 0 {
+                    self.firstWord.text = "還有"
+                    self.remainedDaysLabel.text = String( newRemainedDays )
+                } else {
+                    self.firstWord.text = "自由"
+                    self.remainedDaysLabel.text = String( newRemainedDays*(-1) )
+                }
+
                 self.updateResult = NCUpdateResult.NewData
             }
 
