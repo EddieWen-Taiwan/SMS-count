@@ -63,16 +63,16 @@ class ProfileViewController: UIViewController {
             if !self.stickerIsDownloaded && reachability.isConnectedToNetwork() {
                 // Download Facebook profile
                 // Facebook API url : http://graph.facebook.com/100001967509786/picture?type=large
-                
+
                 self.stickerIsDownloaded = true
             }
         }
 
     }
-    
-    func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
+
+    func downloadImage( url: NSURL ) {
         reachability.getImageFromUrl(url) { (data, response, error)  in
-            
+
             if data == nil {
                 // Have to do nothing
             } else {
@@ -86,7 +86,7 @@ class ProfileViewController: UIViewController {
 //                    })
 //                }
             }
-            
+
         }
     }
 
