@@ -76,7 +76,6 @@ class ProfileViewController: UIViewController {
             if data == nil {
                 // Have to do nothing
             } else {
-                print("Download successfully.")
                 dispatch_async( dispatch_get_main_queue() ) { () -> Void in
                     self.userSticker.image = UIImage(data: data!)
                 }
