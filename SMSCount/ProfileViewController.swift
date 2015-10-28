@@ -67,6 +67,27 @@ class ProfileViewController: UIViewController {
         }
 
     }
+    
+    private func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
+        reachability.getImageFromUrl(url) { (data, response, error)  in
+            
+//            if data == nil {
+//                backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
+//                backgroundImage.alpha = 1
+//            } else {
+//                dispatch_async( dispatch_get_main_queue() ) { () -> Void in
+//                    self.saveImage( UIImage(data: data!)! )
+//                    self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
+//                    backgroundImage.image = UIImage(data: data!)
+//                    
+//                    UIView.animateWithDuration( 1, animations: {
+//                        backgroundImage.alpha = 1
+//                    })
+//                }
+//            }
+            
+        }
+    }
 
     func updateStageText() {
         let songArray = [ "替代役青年們夢想起飛", "像螞蟻默默做自己", "沒有懷疑沒有怨言", "愛心服務責任紀律" ]
