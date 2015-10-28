@@ -23,8 +23,9 @@ class ProfileViewController: UIViewController {
     var stickerIsDownloaded: Bool = false
 
     let calculateHelper = CalculateHelper()
-    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+    let reachability = Reachability()
 
+    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
     let screenHeight = UIScreen.mainScreen().bounds.height
 
     override func viewDidLoad() {
@@ -59,7 +60,7 @@ class ProfileViewController: UIViewController {
         }
 
         if let fbid = self.userPreference.stringForKey("fb_id") {
-            if !self.stickerIsDownloaded && Reachability().isConnectedToNetwork() {
+            if !self.stickerIsDownloaded && reachability.isConnectedToNetwork() {
                 // Download Facebook profile
                 self.stickerIsDownloaded = true
             }
