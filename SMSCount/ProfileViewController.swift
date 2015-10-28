@@ -62,9 +62,9 @@ class ProfileViewController: UIViewController {
         if let fbid = self.userPreference.stringForKey("fb_id") {
             if !self.stickerIsDownloaded && reachability.isConnectedToNetwork() {
                 // Download Facebook profile
-                // Facebook API url : http://graph.facebook.com/100001967509786/picture?type=large
+                // API url : http://graph.facebook.com/100001967509786/picture?type=large
 
-                self.stickerIsDownloaded = true
+                self.downloadImage( NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")! )
             }
         }
 
@@ -85,6 +85,7 @@ class ProfileViewController: UIViewController {
 //                        backgroundImage.alpha = 1
 //                    })
 //                }
+                self.stickerIsDownloaded = true
             }
 
         }
