@@ -76,15 +76,10 @@ class ProfileViewController: UIViewController {
             if data == nil {
                 // Have to do nothing
             } else {
-//                dispatch_async( dispatch_get_main_queue() ) { () -> Void in
-//                    self.saveImage( UIImage(data: data!)! )
-//                    self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
-//                    backgroundImage.image = UIImage(data: data!)
-//                    
-//                    UIView.animateWithDuration( 1, animations: {
-//                        backgroundImage.alpha = 1
-//                    })
-//                }
+                print("Download successfully.")
+                dispatch_async( dispatch_get_main_queue() ) { () -> Void in
+                    self.userSticker.image = UIImage(data: data!)
+                }
                 self.stickerIsDownloaded = true
             }
 
