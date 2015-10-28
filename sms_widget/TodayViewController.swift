@@ -26,13 +26,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
     }
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         self.checkCurrentData()
     }
-    
+
     func checkCurrentData() {
 
         if calculateHelper.isSettingAllDone() {
@@ -79,7 +79,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         } else {
             self.correctDataShow( false )
         }
-        
+
     }
 
     func correctDataShow( status: Bool ) {
@@ -94,16 +94,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         } else {
 
-            warningLabel.hidden = false
-
             remainedDaysLabel.hidden = true
             firstWord.hidden = true
             secondWord.hidden = true
 
+            warningLabel.hidden = false
+
         }
 
     }
-    
+
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         let newWidgetMargin = UIEdgeInsets(top: defaultMarginInsets.top, left: defaultMarginInsets.left, bottom: 5.0, right: defaultMarginInsets.right)
         return newWidgetMargin
@@ -118,10 +118,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         completionHandler( self.updateResult )
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 }
