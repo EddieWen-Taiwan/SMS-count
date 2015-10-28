@@ -71,10 +71,9 @@ class ProfileViewController: UIViewController {
     func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
         reachability.getImageFromUrl(url) { (data, response, error)  in
             
-//            if data == nil {
-//                backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
-//                backgroundImage.alpha = 1
-//            } else {
+            if data == nil {
+                // Have to do nothing
+            } else {
 //                dispatch_async( dispatch_get_main_queue() ) { () -> Void in
 //                    self.saveImage( UIImage(data: data!)! )
 //                    self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
@@ -84,7 +83,7 @@ class ProfileViewController: UIViewController {
 //                        backgroundImage.alpha = 1
 //                    })
 //                }
-//            }
+            }
             
         }
     }
