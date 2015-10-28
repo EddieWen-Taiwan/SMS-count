@@ -39,10 +39,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
             self.correctDataShow( true )
             calculateHelper.updateDate()
-            let remainedDays = calculateHelper.getRemainedDays()
+            let newRemainedDays = calculateHelper.getRemainedDays()
 
-            if self.remainedDaysLabel.text != String( remainedDays ) {
-                self.remainedDaysLabel.text = String( remainedDays )
+            if self.remainedDaysLabel.text != String( newRemainedDays ) {
+                self.remainedDaysLabel.text = String( newRemainedDays )
                 self.updateResult = NCUpdateResult.NewData
             }
 
