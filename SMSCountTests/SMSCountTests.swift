@@ -11,14 +11,9 @@ import XCTest
 
 class SMSCountTests: XCTestCase {
 
-    var helper: CalculateHelper!
-    var userPreference: NSUserDefaults!
-
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        helper = CalculateHelper()
-        self.userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     }
 
     override func tearDown() {
