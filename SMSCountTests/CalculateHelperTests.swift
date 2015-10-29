@@ -37,7 +37,6 @@ class CalculateHelperTests: XCTestCase {
 
     func testIsSettingAllDone() {
 
-        //        self.userPreference.setObject( nil, forKey: "serviceDays" )
         var enterDate: String = "XX"
         var serviceDays: Int = -1
 
