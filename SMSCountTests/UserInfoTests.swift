@@ -9,7 +9,7 @@
 import XCTest
 @testable import SMSCount
 
-class SMSCountTests: XCTestCase {
+class UserInfoTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
