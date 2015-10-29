@@ -48,6 +48,7 @@ class SMSCountTests: XCTestCase {
         XCTAssertEqual( dateArray[0] as? Int, 2015, "Year should be 2015, but is \(dateArray[0])" )
         XCTAssertEqual( dateArray[1] as? Int, 06, "Month should be 06, but is \(dateArray[1])" )
         XCTAssertEqual( dateArray[2] as? Int, 25, "Date should be 25, but is \(dateArray[2])" )
+
     }
 
     func testPerformanceExample() {
