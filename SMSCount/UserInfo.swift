@@ -123,7 +123,7 @@ class UserInfo { // Save userInfomation to Parse
 
     }
 
-    private func split2Int( string: NSString ) -> NSArray {
+    func split2Int( string: NSString ) -> NSArray {
         var splitArray: [Int] = []
 
         let year = string.substringToIndex(4)
