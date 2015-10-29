@@ -31,46 +31,6 @@ class SMSCountTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testIsSettingAllDone() {
-
-        //        self.userPreference.setObject( nil, forKey: "serviceDays" )
-        var enterDate: String = "XX"
-        var serviceDays: Int = -1
-        
-        if self.userPreference.stringForKey("enterDate") != nil {
-            enterDate = self.userPreference.stringForKey("enterDate")!
-        }
-        if self.userPreference.stringForKey("serviceDays") != nil {
-            serviceDays = self.userPreference.integerForKey("serviceDays")
-        }
-
-        self.userPreference.setObject( nil, forKey: "enterDate" )
-        self.userPreference.setObject( nil, forKey: "serviceDays" )
-        XCTAssertFalse( helper.isSettingAllDone(), "It should be False" )
-
-        self.userPreference.setObject( "2015 / 06 / 25", forKey: "enterDate" )
-        XCTAssertFalse( helper.isSettingAllDone(), "It should be False" )
-        
-        self.userPreference.setObject( nil, forKey: "enterDate" )
-        self.userPreference.setObject( 3, forKey: "serviceDays" )
-        XCTAssertFalse( helper.isSettingAllDone(), "It should be False" )
-
-        self.userPreference.setObject( "2015 / 06 / 25", forKey: "enterDate" )
-        self.userPreference.setObject( 1, forKey: "serviceDays" )
-        XCTAssertTrue( helper.isSettingAllDone(), "It should be True" )
-
-        if enterDate != "XX" {
-            self.userPreference.setObject( enterDate, forKey: "enterDate" )
-        }
-        if serviceDays != -1 {
-            self.userPreference.setObject( serviceDays, forKey: "serviceDays" )
-        }
-    }
-
-    func testCalculate() {
-
-    }
-
     func testSplit2Int() {
 
         let userinfo = UserInfo()
