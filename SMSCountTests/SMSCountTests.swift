@@ -26,6 +26,10 @@ class SMSCountTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testCalculate() {
+        
+    }
+
     func testSplit2Int() {
 
         let userinfo = UserInfo()
