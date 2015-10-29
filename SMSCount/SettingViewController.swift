@@ -173,8 +173,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func serviceDaysDoneIsPressed(sender: AnyObject) {
 
-        if self.userPreference.stringForKey("serviceDays") == nil {
-            self.userPreference.setObject( 0, forKey: "serviceDays" )
+        if self.userPreference.objectForKey("serviceDays") == nil {
+            self.userPreference.setInteger( 0, forKey: "serviceDays" )
         }
 
         self.serviceDaysLabel.text = calculateHelper.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
@@ -186,7 +186,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func discountDaysDoneIsPressed(sender: AnyObject) {
 
-        if self.userPreference.stringForKey("discountDays") == nil {
+        if self.userPreference.objectForKey("discountDays") == nil {
             self.userPreference.setObject( "0", forKey: "discountDays" )
         }
 
@@ -211,12 +211,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         })
 
         if serviceDaysLabel.text != "" {
-            userPreference.setObject( calculateHelper.switchPeriod(serviceDaysLabel.text!), forKey: "serviceDays" )
+            let newServiceDays = calculateHelper.switchPeriod(serviceDaysLabel.text!)
+            userPreference.setObject( Int(newServiceDays), forKey: "serviceDays" )
         } else {
             userPreference.removeObjectForKey( "serviceDays" )
         }
         if discountDaysLabel.text != "" {
-            userPreference.setObject( discountDaysLabel.text, forKey: "discountDays" )
+            let newDiscountDays = discountDaysLabel.text!
+            userPreference.setInteger( Int(newDiscountDays)!, forKey: "discountDays" )
         } else {
             userPreference.removeObjectForKey( "discountDays" )
         }
@@ -305,7 +307,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let forKeyString = pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays"
-        self.userPreference.setObject( row, forKey: forKeyString )
+        self.userPreference.setInteger( row, forKey: forKeyString )
     }
 
     override func didReceiveMemoryWarning() {

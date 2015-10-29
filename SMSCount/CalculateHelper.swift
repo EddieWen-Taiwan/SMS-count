@@ -58,9 +58,9 @@ class CalculateHelper {
         // v1.1 -> v1.2 dataFormat is change
         if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
             if userServiceDays == "1y" {
-                self.userPreference.setObject( 2, forKey: "serviceDays" )
+                self.userPreference.setInteger( 2, forKey: "serviceDays" )
             } else if userServiceDays == "1y15d" {
-                self.userPreference.setObject( 3, forKey: "serviceDays" )
+                self.userPreference.setInteger( 3, forKey: "serviceDays" )
             }
         }
 
@@ -97,7 +97,7 @@ class CalculateHelper {
         if let discountDayString = userPreference.stringForKey("discountDays") {
             userDiscountDays = Int(discountDayString)!
         } else {
-            self.userPreference.setObject( "0", forKey: "discountDays" )
+            self.userPreference.setInteger( 0, forKey: "discountDays" )
         }
         dayComponent.year = 0
         dayComponent.month = 0

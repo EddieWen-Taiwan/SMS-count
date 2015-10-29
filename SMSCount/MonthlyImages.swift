@@ -34,7 +34,7 @@ class MonthlyImages {
     }
 
     private func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
-        reachability.getImageFromUrl(url) { (data, response, error)  in
+        reachability.getImageFromUrl(url) { (data, response, error) in
 
             if data == nil {
                 backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
