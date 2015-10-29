@@ -27,7 +27,12 @@ class SMSCountTests: XCTestCase {
     }
 
     func testCalculate() {
+
+        let helper = CalculateHelper()
+        let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+
         
+
     }
 
     func testSplit2Int() {
