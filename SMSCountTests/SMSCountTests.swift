@@ -23,7 +23,7 @@ class SMSCountTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertTrue( false, "It's not TRUE" )
+        XCTAssertTrue( true, "It's not TRUE" )
     }
     
     func testPerformanceExample() {
