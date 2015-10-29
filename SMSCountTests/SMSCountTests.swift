@@ -24,6 +24,9 @@ class SMSCountTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    func testSplit2Int() {
 
         let userinfo = UserInfo()
         var dateString = "2014 / 01 / 02"
