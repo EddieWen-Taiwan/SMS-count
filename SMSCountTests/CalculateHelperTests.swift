@@ -74,7 +74,7 @@ class CalculateHelperTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testRetireDate() {
+    func testRetire() {
 
         // test Group #1
         self.userPreference.setObject( dataObject1[0], forKey: "enterDate" )
@@ -102,10 +102,6 @@ class CalculateHelperTests: XCTestCase {
         helper.updateDate()
 
         XCTAssertEqual( helper.getRetireDate(), dataObject3[3], "RetireDate is wrong. #3" )
-
-    }
-
-    func testFixedRetireDate() {
 
     }
 
