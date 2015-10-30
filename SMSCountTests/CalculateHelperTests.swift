@@ -14,9 +14,9 @@ class CalculateHelperTests: XCTestCase {
     var helper: CalculateHelper!
     var userPreference: NSUserDefaults!
 
-    let dataObject1 = [ "2015 / 06 / 25", 2, 27, "2016 / 06 / 28", "2016 / 06 / 27" ]
-    let dataObject2 = [ "2014 / 10 / 30", 3, 27, "2015 / 10 / 17", "2015 / 10 / 16" ]
-    let dataObject3 = [ "2015 / 08 / 06", 3,  9, "2016 / 08 / 11", "2016 / 08 / 11" ]
+    let dataObject1 = [ "2015 / 06 / 25", 2, 27, "2016 / 05 / 28 Sat.", "2016 / 05 / 27 Fri." ]
+    let dataObject2 = [ "2014 / 10 / 30", 3, 27, "2015 / 10 / 17 Sat.", "2015 / 10 / 16 Fri." ]
+    let dataObject3 = [ "2015 / 08 / 06", 3,  9, "2016 / 08 / 11 Thu.", "2016 / 08 / 11 Thu." ]
     var dataOriginal: [AnyObject] = []
 
     override func setUp() {
@@ -75,6 +75,33 @@ class CalculateHelperTests: XCTestCase {
     }
 
     func testRetireDate() {
+
+        // test Group #1
+        self.userPreference.setObject( dataObject1[0], forKey: "enterDate" )
+        self.userPreference.setObject( dataObject1[1], forKey: "serviceDays" )
+        self.userPreference.setObject( dataObject1[2], forKey: "discountDays" )
+
+        helper.updateDate()
+
+        XCTAssertEqual( helper.getRetireDate(), dataObject1[3], "RetireDate is wrong. #1" )
+
+        // test Group #2
+        self.userPreference.setObject( dataObject2[0], forKey: "enterDate" )
+        self.userPreference.setObject( dataObject2[1], forKey: "serviceDays" )
+        self.userPreference.setObject( dataObject2[2], forKey: "discountDays" )
+
+        helper.updateDate()
+
+        XCTAssertEqual( helper.getRetireDate(), dataObject2[3], "RetireDate is wrong. #2" )
+
+        // test Group #3
+        self.userPreference.setObject( dataObject3[0], forKey: "enterDate" )
+        self.userPreference.setObject( dataObject3[1], forKey: "serviceDays" )
+        self.userPreference.setObject( dataObject3[2], forKey: "discountDays" )
+
+        helper.updateDate()
+
+        XCTAssertEqual( helper.getRetireDate(), dataObject3[3], "RetireDate is wrong. #3" )
 
     }
 
