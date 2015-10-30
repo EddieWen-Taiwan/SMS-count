@@ -48,6 +48,25 @@ class CalculateHelperTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+
+        if dataOriginal[0] as! String != "X" {
+            self.userPreference.setObject( dataOriginal[0] as! String, forKey: "enterDate" )
+        } else {
+            self.userPreference.setObject( nil, forKey: "enterDate" )
+        }
+
+        if dataOriginal[1] as! Int != -1 {
+            self.userPreference.setInteger( dataOriginal[1] as! Int, forKey: "serviceDays" )
+        } else {
+            self.userPreference.setObject( nil, forKey: "serviceDays" )
+        }
+
+        if dataOriginal[2] as! Int != -1 {
+            self.userPreference.setInteger( dataOriginal[2] as! Int, forKey: "discountDays" )
+        } else {
+            self.userPreference.setObject( nil, forKey: "discountDays" )
+        }
+
     }
 
     func testExample() {
