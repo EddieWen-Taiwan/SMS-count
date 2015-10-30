@@ -14,6 +14,10 @@ class CalculateHelperTests: XCTestCase {
     var helper: CalculateHelper!
     var userPreference: NSUserDefaults!
 
+    let dataObject1 = [ "2015 / 06 / 25", 2, 27, "2016 / 06 / 28", "2016 / 06 / 27" ]
+    let dataObject2 = [ "2014 / 10 / 30", 3, 27, "2015 / 10 / 17", "2015 / 10 / 16" ]
+    let dataObject3 = [ "2015 / 08 / 06", 3, 9, "2016 / 08 / 11", "2016 / 08 / 11" ]
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
