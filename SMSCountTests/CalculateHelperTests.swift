@@ -17,12 +17,32 @@ class CalculateHelperTests: XCTestCase {
     let dataObject1 = [ "2015 / 06 / 25", 2, 27, "2016 / 06 / 28", "2016 / 06 / 27" ]
     let dataObject2 = [ "2014 / 10 / 30", 3, 27, "2015 / 10 / 17", "2015 / 10 / 16" ]
     let dataObject3 = [ "2015 / 08 / 06", 3,  9, "2016 / 08 / 11", "2016 / 08 / 11" ]
+    var dataOriginal: [AnyObject] = []
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         helper = CalculateHelper()
         self.userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )
+
+        if self.userPreference.stringForKey("enterDate") != nil {
+            self.dataOriginal.append( self.userPreference.stringForKey("enterDate")! )
+        } else {
+            self.dataOriginal.append( "X" )
+        }
+
+        if self.userPreference.stringForKey("serviceDays") != nil {
+            self.dataOriginal.append( self.userPreference.integerForKey("serviceDays") )
+        } else {
+            self.dataOriginal.append( -1 )
+        }
+
+        if self.userPreference.stringForKey("discountDays") != nil {
+            self.dataOriginal.append( self.userPreference.integerForKey("discountDays") )
+        } else {
+            self.dataOriginal.append( -1 )
+        }
+
     }
 
     override func tearDown() {
