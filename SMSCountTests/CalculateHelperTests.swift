@@ -70,6 +70,21 @@ class CalculateHelperTests: XCTestCase {
         }
     }
 
+    func testSwitchPeriod() {
+
+        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("1"), "四個月五天" )
+        XCTAssertEqual( helper.switchPeriod("2"), "一年" )
+        XCTAssertEqual( helper.switchPeriod("3"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("4"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
+
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
