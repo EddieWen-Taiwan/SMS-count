@@ -75,13 +75,13 @@ class CalculateHelperTests: XCTestCase {
         XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
         XCTAssertEqual( helper.switchPeriod("1"), "四個月五天" )
         XCTAssertEqual( helper.switchPeriod("2"), "一年" )
-        XCTAssertEqual( helper.switchPeriod("3"), "四個月" )
-        XCTAssertEqual( helper.switchPeriod("4"), "四個月" )
-        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
-        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
-        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
-        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
-        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("3"), "一年十五天" )
+        XCTAssertEqual( helper.switchPeriod("4"), "三年" )
+        XCTAssertEqual( helper.switchPeriod("四個月"), "0" )
+        XCTAssertEqual( helper.switchPeriod("四個月五天"), "1" )
+        XCTAssertEqual( helper.switchPeriod("一年"), "2" )
+        XCTAssertEqual( helper.switchPeriod("一年十五天"), "3" )
+        XCTAssertEqual( helper.switchPeriod("三年"), "4" )
 
     }
 
