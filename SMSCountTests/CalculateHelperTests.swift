@@ -84,6 +84,7 @@ class CalculateHelperTests: XCTestCase {
         helper.updateDate()
 
         XCTAssertEqual( helper.getRetireDate(), dataObject1[3], "RetireDate is wrong. #1" )
+        XCTAssertEqual( helper.getFixedRetireDate(), dataObject1[4], "FixedRetireDate is wrong. #1" )
 
         // test Group #2
         self.userPreference.setObject( dataObject2[0], forKey: "enterDate" )
@@ -93,6 +94,7 @@ class CalculateHelperTests: XCTestCase {
         helper.updateDate()
 
         XCTAssertEqual( helper.getRetireDate(), dataObject2[3], "RetireDate is wrong. #2" )
+        XCTAssertEqual( helper.getFixedRetireDate(), dataObject2[4], "FixedRetireDate is wrong. #2" )
 
         // test Group #3
         self.userPreference.setObject( dataObject3[0], forKey: "enterDate" )
@@ -102,6 +104,7 @@ class CalculateHelperTests: XCTestCase {
         helper.updateDate()
 
         XCTAssertEqual( helper.getRetireDate(), dataObject3[3], "RetireDate is wrong. #3" )
+        XCTAssertEqual( helper.getFixedRetireDate(), dataObject3[4], "FixedRetireDate is wrong. #3" )
 
     }
 
