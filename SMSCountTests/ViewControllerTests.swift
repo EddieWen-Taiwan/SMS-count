@@ -34,6 +34,10 @@ class ViewControllerTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testViewControllerExist() {
+        XCTAssertNotNil( self.targetViewController, "ViewController is not existed." )
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
