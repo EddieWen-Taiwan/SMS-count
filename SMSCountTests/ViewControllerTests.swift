@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import SMSCount
 
 class ViewControllerTests: XCTestCase {
 
