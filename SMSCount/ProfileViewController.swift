@@ -69,6 +69,10 @@ class ProfileViewController: UIViewController {
             }
         }
 
+        // If user can't log out ....
+        if let username = self.userPreference.stringForKey("username") {
+            self.usernameLabel.text = username
+        }
     }
 
     func downloadImage( url: NSURL ) {
