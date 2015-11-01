@@ -81,7 +81,6 @@ class ViewControllerTests: XCTestCase {
         }
     }
 
-
     private func makeDispatchTime( second: Double ) -> dispatch_time_t {
         let delay = second * Double(NSEC_PER_SEC)
         return dispatch_time( DISPATCH_TIME_NOW, Int64(delay) )
