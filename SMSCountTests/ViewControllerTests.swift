@@ -63,16 +63,15 @@ class ViewControllerTests: XCTestCase {
 
     }
 
-    func test_CheckDaysAnimation() {
-
-        self.targetViewController.currentDisplay = "day"
-        self.targetViewController.isDaysJumped = false
-
-        dispatch_after( self.makeDispatchTime(0.01), dispatch_get_main_queue(), {
-            XCTAssertTrue( self.targetViewController.isDaysJumped, "isDaysJumped doesn't be change to True." )
-        })
-
-    }
+//    func test_CheckDaysAnimation() {
+//
+//        self.targetViewController.currentDisplay = "day"
+//        self.targetViewController.isDaysJumped = false
+//        self.targetViewController.checkDaysAnimation()
+//
+//        XCTAssertTrue( self.targetViewController.isDaysJumped, "isDaysJumped doesn't be change to True." )
+//
+//    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
