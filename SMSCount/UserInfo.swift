@@ -55,6 +55,11 @@ class UserInfo { // Save userInfomation to Parse
         self.objectIsChanged = true
     }
 
+    // Update the username in app
+    func updateLocalUsername( name: String ) {
+        self.userPreference.setObject( name, forKey: "username" )
+    }
+
     func updateEnterDate( date: String ) {
         let userEnterArray = self.split2Int( date )
         userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
