@@ -11,14 +11,14 @@ import XCTest
 
 class ViewControllerTests: XCTestCase {
 
-    var targetViewController: UIViewController!
+    var targetViewController: ViewController!
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.targetViewController = storyboard.instantiateViewControllerWithIdentifier("ViewController") as UIViewController!
+        self.targetViewController = storyboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
 
         self.targetViewController.loadView()
         self.targetViewController.viewDidLoad()
