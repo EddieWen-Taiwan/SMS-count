@@ -240,7 +240,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.switchViewButton.backgroundColor = UIColor.whiteColor()
         self.imageOnSwitchBtn.image = UIImage(named: currentIsDay ? "date" : "chart" )
 
-        UIView.animateWithDuration( 0.g, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+        UIView.animateWithDuration( 0.3, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.remainedView.alpha = currentIsDay ? 0 : 1
             self.pieChartView.alpha = currentIsDay ? 1 : 0
             self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
