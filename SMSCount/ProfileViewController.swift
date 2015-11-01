@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet var userSticker: UIImageView!
     var stickerIsDownloaded: Bool = false
+    @IBOutlet var usernameLabel: UILabel!
 
     let calculateHelper = CalculateHelper()
     let reachability = Reachability()

@@ -627,6 +627,7 @@
                         <outlet property="retireDateView" destination="23l-uZ-zl8" id="pQk-Sh-CpS"/>
                         <outlet property="stageText" destination="kX6-fT-muD" id="WDh-bH-a7s"/>
                         <outlet property="userSticker" destination="zqf-Gi-c3G" id="fBK-u9-S3j"/>
+                        <outlet property="usernameLabel" destination="DC4-c7-BCR" id="Z6N-Am-eDQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9D-qQ-Plu" userLabel="First Responder" sceneMemberID="firstResponder"/>
