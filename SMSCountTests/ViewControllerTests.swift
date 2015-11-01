@@ -48,12 +48,12 @@ class ViewControllerTests: XCTestCase {
         // Display : day -> chart
         self.targetViewController.currentDisplay = "day"
         self.targetViewController.switchView()
-        XCTAssertEqual( self.targetViewController.currentDisplay, "chart", "Function dowsn't change currentDisplay. It should be a chart." )
+        XCTAssertEqual( self.targetViewController.currentDisplay, "running", "Function should be running now." )
 
         // Display : chart -> day
         self.targetViewController.currentDisplay = "chart"
         self.targetViewController.switchView()
-        XCTAssertEqual( self.targetViewController.currentDisplay, "day", "Function dowsn't change currentDisplay. It should be a countdown day." )
+        XCTAssertEqual( self.targetViewController.currentDisplay, "running", "Function should be running now." )
 
     }
 
