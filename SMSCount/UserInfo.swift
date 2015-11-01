@@ -45,6 +45,7 @@ class UserInfo { // Save userInfomation to Parse
 
     func addUserName( name: String ) {
         self.userObject.setObject( name, forKey: "username" )
+        self.userPreference.setObject( name, forKey: "username" )
         self.objectIsChanged = true
     }
 
