@@ -24,14 +24,6 @@ class UserInfo { // Save userInfomation to Parse
         }
     }
 
-//    private func addUserObjectId() {
-//
-//        if self.objectIdStatus == false {
-//            self.registerNewUser()
-//        }
-//
-//    }
-
     // From Facebook API
     // Add user infomation: ID, name, email
     func addUserFBID( fbid: String ) {
