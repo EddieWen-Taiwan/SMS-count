@@ -38,7 +38,7 @@ class ViewControllerTests: XCTestCase {
         XCTAssertNotNil( self.targetViewController, "ViewController is not existed." )
     }
 
-    func testSwitchView() {
+    func test_SwitchView() {
 
         // Should do nothing
         self.targetViewController.currentDisplay = "running"
@@ -63,7 +63,7 @@ class ViewControllerTests: XCTestCase {
 
     }
 
-    func testCheckDaysAnimation() {
+    func test_CheckDaysAnimation() {
         
     }
 
