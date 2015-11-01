@@ -40,7 +40,20 @@ class ViewControllerTests: XCTestCase {
 
     func testSwitchView() {
 
-        //
+        // Should do nothing
+        self.targetViewController.currentDisplay = "running"
+        self.targetViewController.switchView()
+        XCTAssertEqual( self.targetViewController.currentDisplay, "running", "This function should do nothing." )
+
+        // Display : day -> chart
+        self.targetViewController.currentDisplay = "day"
+        self.targetViewController.switchView()
+        XCTAssertEqual( self.targetViewController.currentDisplay, "chart", "Function dowsn't change currentDisplay. It should be a chart." )
+
+        // Display : chart -> day
+        self.targetViewController.currentDisplay = "chart"
+        self.targetViewController.switchView()
+        XCTAssertEqual( self.targetViewController.currentDisplay, "day", "Function dowsn't change currentDisplay. It should be a countdown day." )
 
     }
 
