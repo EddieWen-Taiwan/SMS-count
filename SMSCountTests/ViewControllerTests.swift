@@ -48,10 +48,18 @@ class ViewControllerTests: XCTestCase {
         // Display : day -> chart
         self.targetViewController.currentDisplay = "day"
         self.targetViewController.switchView()
+        let delay = (0.5) * Double(NSEC_PER_SEC)
+        let dispatchTime = dispatch_time( DISPATCH_TIME_NOW, Int64(delay) )
+        dispatch_after( dispatchTime, dispatch_get_main_queue(), {
+            XCTAssertEqual( self.targetViewController.currentDisplay, "chart", "It should be changed to 'chart'." )
+        })
 
         // Display : chart -> day
         self.targetViewController.currentDisplay = "chart"
         self.targetViewController.switchView()
+        dispatch_after( dispatchTime, dispatch_get_main_queue(), {
+            XCTAssertEqual( self.targetViewController.currentDisplay, "day", "It should be changed to 'day'." )
+        })
 
     }
 
