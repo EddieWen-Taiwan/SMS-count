@@ -48,8 +48,8 @@ class ViewControllerTests: XCTestCase {
         // Display : day -> chart
         self.targetViewController.currentDisplay = "day"
         self.targetViewController.switchView()
-        let delay = (0.5) * Double(NSEC_PER_SEC)
-        let dispatchTime = dispatch_time( DISPATCH_TIME_NOW, Int64(delay) )
+
+        let dispatchTime = self.makeDispatchTime( 0.5 )
         dispatch_after( dispatchTime, dispatch_get_main_queue(), {
             XCTAssertEqual( self.targetViewController.currentDisplay, "chart", "It should be changed to 'chart'." )
         })
@@ -64,7 +64,7 @@ class ViewControllerTests: XCTestCase {
     }
 
     func test_CheckDaysAnimation() {
-        
+
     }
 
     func testPerformanceExample() {
@@ -72,6 +72,12 @@ class ViewControllerTests: XCTestCase {
         self.measureBlock {
             // Put the code you want to measure the time of here.
         }
+    }
+
+
+    private func makeDispatchTime( second: Double ) -> dispatch_time_t {
+        let delay = second * Double(NSEC_PER_SEC)
+        return dispatch_time( DISPATCH_TIME_NOW, Int64(delay) )
     }
 
 }
