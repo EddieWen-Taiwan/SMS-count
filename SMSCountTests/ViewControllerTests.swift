@@ -38,6 +38,12 @@ class ViewControllerTests: XCTestCase {
         XCTAssertNotNil( self.targetViewController, "ViewController is not existed." )
     }
 
+    func testSwitchView() {
+
+        //
+
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
