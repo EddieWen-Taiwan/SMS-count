@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Csq-8F-bwh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Csq-8F-bwh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -660,15 +660,30 @@
                                                     <constraint firstAttribute="height" constant="50" id="d2M-8d-fet"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akh-bt-ITr">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="個人狀態" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycu-Ie-nu2">
                                                 <rect key="frame" x="20" y="104" width="48" height="17"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                                 <color key="textColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDl-9I-TRu">
+                                                <rect key="frame" x="0.0" y="130" width="600" height="66"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="66" id="YWv-dr-ahP"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akh-bt-ITr">
+                                                <rect key="frame" x="20" y="220" width="48" height="17"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
+                                                <color key="textColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyF-Rw-P7I" userLabel="BasicCard">
-                                                <rect key="frame" x="0.0" y="131" width="600" height="200"/>
+                                                <rect key="frame" x="0.0" y="247" width="600" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYJ-AR-a5U" userLabel="enterDateRow">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
@@ -838,14 +853,14 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="偏好設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajt-y4-q3x">
-                                                <rect key="frame" x="20" y="355" width="48" height="17"/>
+                                                <rect key="frame" x="20" y="471" width="48" height="17"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                                 <color key="textColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euX-9L-J7X" userLabel="SystemCard">
-                                                <rect key="frame" x="0.0" y="382" width="600" height="66"/>
+                                                <rect key="frame" x="0.0" y="498" width="600" height="66"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-Eg-6yg" userLabel="AutoWeekend">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
@@ -894,11 +909,15 @@
                                         </subviews>
                                         <animations/>
                                         <constraints>
+                                            <constraint firstItem="JDl-9I-TRu" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="2Lz-SY-di9"/>
                                             <constraint firstItem="Ajt-y4-q3x" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="6E4-ck-GkA"/>
+                                            <constraint firstAttribute="trailing" secondItem="JDl-9I-TRu" secondAttribute="trailing" id="71I-25-i4L"/>
                                             <constraint firstAttribute="trailing" secondItem="euX-9L-J7X" secondAttribute="trailing" id="7j8-QG-2LB"/>
+                                            <constraint firstItem="JDl-9I-TRu" firstAttribute="top" secondItem="Ycu-Ie-nu2" secondAttribute="bottom" constant="9" id="7wt-VT-lB3"/>
                                             <constraint firstAttribute="trailing" secondItem="IjB-OC-LB7" secondAttribute="trailing" constant="20" id="AbM-h4-Bs1"/>
-                                            <constraint firstItem="Akh-bt-ITr" firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" constant="24" id="Cps-ja-pnl"/>
+                                            <constraint firstItem="Ycu-Ie-nu2" firstAttribute="top" secondItem="IjB-OC-LB7" secondAttribute="bottom" constant="24" id="Hdt-wx-sUH"/>
                                             <constraint firstItem="Ajt-y4-q3x" firstAttribute="top" secondItem="cyF-Rw-P7I" secondAttribute="bottom" constant="24" id="JNx-en-eVC"/>
+                                            <constraint firstItem="Akh-bt-ITr" firstAttribute="top" secondItem="JDl-9I-TRu" secondAttribute="bottom" constant="24" id="P9s-f0-3mo"/>
                                             <constraint firstAttribute="trailing" secondItem="cyF-Rw-P7I" secondAttribute="trailing" id="S1d-eK-OlF"/>
                                             <constraint firstItem="IjB-OC-LB7" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="WGQ-Gy-C6S"/>
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="top" secondItem="Akh-bt-ITr" secondAttribute="bottom" constant="10" id="aK5-tm-pkb"/>
@@ -907,14 +926,9 @@
                                             <constraint firstItem="Akh-bt-ITr" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="gCo-nU-rdD"/>
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="hPQ-GH-Rjn"/>
                                             <constraint firstItem="euX-9L-J7X" firstAttribute="top" secondItem="Ajt-y4-q3x" secondAttribute="bottom" constant="10" id="ld7-C6-DTv"/>
-                                            <constraint firstItem="Akh-bt-ITr" firstAttribute="top" secondItem="IjB-OC-LB7" secondAttribute="bottom" constant="24" id="sHP-e8-wTZ"/>
+                                            <constraint firstItem="Ycu-Ie-nu2" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="mFm-Ku-bzT"/>
                                             <constraint firstAttribute="height" constant="480" id="vfF-uK-Zj1"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Cps-ja-pnl"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <animations/>
