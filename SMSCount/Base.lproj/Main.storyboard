@@ -673,11 +673,18 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="du9-iH-tZZ" userLabel="Status">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前狀態" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cn-EN-L1B">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前狀態" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cn-EN-L1B">
                                                                 <rect key="frame" x="20" y="15" width="48" height="17"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
                                                                 <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還是八仙好玩" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3T-vf-vDU">
+                                                                <rect key="frame" x="20" y="28" width="96" height="23"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
+                                                                <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -686,6 +693,8 @@
                                                         <constraints>
                                                             <constraint firstItem="6cn-EN-L1B" firstAttribute="leading" secondItem="du9-iH-tZZ" secondAttribute="leading" constant="20" id="68Q-fd-SNw"/>
                                                             <constraint firstItem="6cn-EN-L1B" firstAttribute="top" secondItem="du9-iH-tZZ" secondAttribute="top" constant="15" id="MZ1-kU-8ly"/>
+                                                            <constraint firstAttribute="bottom" secondItem="C3T-vf-vDU" secondAttribute="bottom" constant="15" id="lfb-7m-Kyw"/>
+                                                            <constraint firstItem="C3T-vf-vDU" firstAttribute="leading" secondItem="du9-iH-tZZ" secondAttribute="leading" constant="20" id="lhh-Ex-y26"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -767,7 +776,7 @@
                                                                 <rect key="frame" x="20" y="15" width="48" height="17"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
-                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1l2-Iu-97Q">
