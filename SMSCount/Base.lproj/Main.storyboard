@@ -650,7 +650,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spS-BM-WXb" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IjB-OC-LB7">
                                                 <rect key="frame" x="20" y="30" width="560" height="50"/>
@@ -687,12 +687,25 @@
                                                                 <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCk-SF-liE">
+                                                                <rect key="frame" x="550" y="18" width="30" height="30"/>
+                                                                <animations/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="UsU-fi-DeX"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                                                <state key="normal" title="EDIT">
+                                                                    <color key="titleShadowColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                            </button>
                                                         </subviews>
                                                         <animations/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="6cn-EN-L1B" firstAttribute="leading" secondItem="du9-iH-tZZ" secondAttribute="leading" constant="20" id="68Q-fd-SNw"/>
+                                                            <constraint firstAttribute="trailing" secondItem="kCk-SF-liE" secondAttribute="trailing" constant="20" id="G4M-Wc-ZqG"/>
                                                             <constraint firstItem="6cn-EN-L1B" firstAttribute="top" secondItem="du9-iH-tZZ" secondAttribute="top" constant="15" id="MZ1-kU-8ly"/>
+                                                            <constraint firstItem="kCk-SF-liE" firstAttribute="centerY" secondItem="du9-iH-tZZ" secondAttribute="centerY" id="krm-I4-9QI"/>
                                                             <constraint firstAttribute="bottom" secondItem="C3T-vf-vDU" secondAttribute="bottom" constant="15" id="lfb-7m-Kyw"/>
                                                             <constraint firstItem="C3T-vf-vDU" firstAttribute="leading" secondItem="du9-iH-tZZ" secondAttribute="leading" constant="20" id="lhh-Ex-y26"/>
                                                         </constraints>
@@ -794,7 +807,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                                 <state key="normal" title="EDIT">
-                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="titleShadowColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="editServiceDays:" destination="LA8-N0-01Z" eventType="touchUpInside" id="Jre-La-bPe"/>
@@ -960,7 +973,7 @@
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="hPQ-GH-Rjn"/>
                                             <constraint firstItem="euX-9L-J7X" firstAttribute="top" secondItem="Ajt-y4-q3x" secondAttribute="bottom" constant="10" id="ld7-C6-DTv"/>
                                             <constraint firstItem="Ycu-Ie-nu2" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="mFm-Ku-bzT"/>
-                                            <constraint firstAttribute="height" constant="480" id="vfF-uK-Zj1"/>
+                                            <constraint firstAttribute="height" constant="600" id="vfF-uK-Zj1"/>
                                         </constraints>
                                     </view>
                                 </subviews>
