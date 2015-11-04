@@ -1225,6 +1225,25 @@
             </objects>
             <point key="canvasLocation" x="1290" y="1117"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="xQq-jw-u3Q">
+            <objects>
+                <viewController id="7nu-gR-Quz" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aX7-6k-ytV"/>
+                        <viewControllerLayoutGuide type="bottom" id="CeA-zb-sP5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PDU-w2-gil">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugH-WD-i8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1290" y="1889"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8DF-L5-HKD">
             <objects>
