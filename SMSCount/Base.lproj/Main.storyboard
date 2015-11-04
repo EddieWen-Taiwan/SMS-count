@@ -1236,13 +1236,35 @@
                     <view key="view" contentMode="scaleToFill" id="PDU-w2-gil">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HTI-Tf-jTN">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="Title" id="eoT-dA-1qM"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYF-BN-qgm" userLabel="StatusBarBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.75686274509803919" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="pbV-NK-dUI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dYF-BN-qgm" firstAttribute="top" secondItem="PDU-w2-gil" secondAttribute="top" id="76o-DG-k3X"/>
+                            <constraint firstAttribute="trailing" secondItem="dYF-BN-qgm" secondAttribute="trailing" id="UrF-7j-Sdv"/>
+                            <constraint firstItem="dYF-BN-qgm" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" id="nOy-02-17Y"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugH-WD-i8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="1889"/>
+            <point key="canvasLocation" x="1359" y="1834"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8DF-L5-HKD">
