@@ -1278,7 +1278,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9Y-rG-USe">
-                                <rect key="frame" x="40" y="184" width="520" height="40"/>
+                                <rect key="frame" x="40" y="174" width="520" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1301,7 +1301,7 @@
                             <constraint firstItem="y9Y-rG-USe" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leadingMargin" constant="20" id="cz9-lz-mmw"/>
                             <constraint firstItem="HTI-Tf-jTN" firstAttribute="top" secondItem="aX7-6k-ytV" secondAttribute="bottom" id="foA-4a-p1W"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ilg-RM-Hva" secondAttribute="trailing" constant="20" id="gIL-gV-GxU"/>
-                            <constraint firstItem="y9Y-rG-USe" firstAttribute="top" secondItem="Ilg-RM-Hva" secondAttribute="bottom" constant="30" id="kKb-Qd-D61"/>
+                            <constraint firstItem="y9Y-rG-USe" firstAttribute="top" secondItem="Ilg-RM-Hva" secondAttribute="bottom" constant="20" id="kKb-Qd-D61"/>
                             <constraint firstItem="dYF-BN-qgm" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" id="nOy-02-17Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="y9Y-rG-USe" secondAttribute="trailing" constant="20" id="teR-ny-0cL"/>
                         </constraints>
