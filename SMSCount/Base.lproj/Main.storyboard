@@ -1225,10 +1225,10 @@
             </objects>
             <point key="canvasLocation" x="1290" y="1117"/>
         </scene>
-        <!--View Controller-->
+        <!--Status-->
         <scene sceneID="xQq-jw-u3Q">
             <objects>
-                <viewController id="7nu-gR-Quz" sceneMemberID="viewController">
+                <viewController title="Status" id="7nu-gR-Quz" customClass="StatusViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aX7-6k-ytV"/>
                         <viewControllerLayoutGuide type="bottom" id="CeA-zb-sP5"/>
