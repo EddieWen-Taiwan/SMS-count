@@ -16,6 +16,12 @@ class StatusViewController: UIViewController {
 
     }
 
+    @IBAction func saveTextFieldStatus(sender: AnyObject) {
+
+        // After saving
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+
     @IBAction func dismissViewController(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
     }

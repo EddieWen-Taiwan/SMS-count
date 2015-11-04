@@ -1287,6 +1287,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveTextFieldStatus:" destination="7nu-gR-Quz" eventType="touchUpInside" id="S3T-OY-OQa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
