@@ -1242,10 +1242,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ilg-RM-Hva">
-                                <rect key="frame" x="40" y="114" width="520" height="50"/>
+                                <rect key="frame" x="40" y="114" width="520" height="40"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="4VQ-UR-Ya6"/>
+                                    <constraint firstAttribute="height" constant="40" id="4VQ-UR-Ya6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1278,11 +1278,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9Y-rG-USe">
-                                <rect key="frame" x="40" y="194" width="520" height="50"/>
+                                <rect key="frame" x="40" y="184" width="520" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Nzy-PW-Opy"/>
+                                    <constraint firstAttribute="height" constant="40" id="Nzy-PW-Opy"/>
                                 </constraints>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
