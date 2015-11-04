@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Countdown-->
@@ -1240,6 +1241,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ilg-RM-Hva">
+                                <rect key="frame" x="40" y="114" width="520" height="50"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4VQ-UR-Ya6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTI-Tf-jTN">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <animations/>
@@ -1267,16 +1277,33 @@
                                     <constraint firstAttribute="height" constant="20" id="pbV-NK-dUI"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9Y-rG-USe">
+                                <rect key="frame" x="40" y="194" width="520" height="50"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Nzy-PW-Opy"/>
+                                </constraints>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Ilg-RM-Hva" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leadingMargin" constant="20" id="5IC-Uu-5vW"/>
+                            <constraint firstItem="Ilg-RM-Hva" firstAttribute="top" secondItem="HTI-Tf-jTN" secondAttribute="bottom" constant="50" id="75X-xO-vsK"/>
                             <constraint firstItem="dYF-BN-qgm" firstAttribute="top" secondItem="PDU-w2-gil" secondAttribute="top" id="76o-DG-k3X"/>
                             <constraint firstItem="HTI-Tf-jTN" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" id="KH9-Sc-5WP"/>
                             <constraint firstAttribute="trailing" secondItem="dYF-BN-qgm" secondAttribute="trailing" id="UrF-7j-Sdv"/>
                             <constraint firstAttribute="trailing" secondItem="HTI-Tf-jTN" secondAttribute="trailing" id="ZwG-Ux-sfl"/>
+                            <constraint firstItem="y9Y-rG-USe" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leadingMargin" constant="20" id="cz9-lz-mmw"/>
                             <constraint firstItem="HTI-Tf-jTN" firstAttribute="top" secondItem="aX7-6k-ytV" secondAttribute="bottom" id="foA-4a-p1W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ilg-RM-Hva" secondAttribute="trailing" constant="20" id="gIL-gV-GxU"/>
+                            <constraint firstItem="y9Y-rG-USe" firstAttribute="top" secondItem="Ilg-RM-Hva" secondAttribute="bottom" constant="30" id="kKb-Qd-D61"/>
                             <constraint firstItem="dYF-BN-qgm" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" id="nOy-02-17Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y9Y-rG-USe" secondAttribute="trailing" constant="20" id="teR-ny-0cL"/>
                         </constraints>
                     </view>
                 </viewController>
