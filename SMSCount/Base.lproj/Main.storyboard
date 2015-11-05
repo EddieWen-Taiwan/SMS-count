@@ -1291,6 +1291,7 @@
                                 </state>
                                 <connections>
                                     <action selector="saveTextFieldStatus:" destination="7nu-gR-Quz" eventType="touchUpInside" id="S3T-OY-OQa"/>
+                                    <segue destination="N4z-zO-dgT" kind="unwind" unwindAction="unwindForSegue:towardsViewController:" id="WOg-5n-eYk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1316,6 +1317,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugH-WD-i8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="N4z-zO-dgT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1290" y="1899"/>
         </scene>
