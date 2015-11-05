@@ -10,6 +10,8 @@ import UIKit
 
 class StatusViewController: UIViewController {
 
+    @IBOutlet var statusTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +21,7 @@ class StatusViewController: UIViewController {
     @IBAction func saveTextFieldStatus(sender: AnyObject) {
 
         // After saving
-        self.dismissViewControllerAnimated(true, completion: {})
+//        self.dismissViewControllerAnimated(true, completion: {})
     }
 
     @IBAction func dismissViewController(sender: AnyObject) {
