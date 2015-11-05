@@ -699,7 +699,7 @@
                                                                     <color key="titleShadowColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <segue destination="7nu-gR-Quz" kind="show" id="Pcq-5N-XWV"/>
+                                                                    <segue destination="7nu-gR-Quz" kind="presentation" id="jLe-2M-YrO"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
