@@ -15,6 +15,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet var screenMask: UIView!
     @IBOutlet var FBLoginView: UIView!
 
+    @IBOutlet var statusLabel: UIView!
     @IBOutlet var enterDateLabel: UILabel!
     @IBOutlet var serviceDaysLabel: UILabel!
     @IBOutlet var discountDaysLabel: UILabel!
