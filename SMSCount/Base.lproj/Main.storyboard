@@ -1310,6 +1310,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="y9Y-rG-USe" secondAttribute="trailing" constant="20" id="teR-ny-0cL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="statusTextField" destination="Ilg-RM-Hva" id="Ehy-O6-2dg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugH-WD-i8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
