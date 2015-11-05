@@ -1262,6 +1262,7 @@
                                 <items>
                                     <navigationItem title="目前狀態" id="eoT-dA-1qM">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cSq-rY-L7f">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="dismissViewController:" destination="7nu-gR-Quz" id="RiN-7A-yHh"/>
                                             </connections>
