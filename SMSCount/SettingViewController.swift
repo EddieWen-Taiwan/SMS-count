@@ -107,6 +107,13 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
         // code...
+        print("StatusViewController is fired.")
+
+        if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
+            print( statusVC.statusTextField.text )
+        } else {
+            print("ERROR")
+        }
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
