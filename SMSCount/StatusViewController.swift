@@ -25,8 +25,10 @@ class StatusViewController: UIViewController {
     @IBAction func saveTextFieldStatus(sender: AnyObject) {
 
         if self.statusTextField.text != "" {
-            print("y")
-            print("It's \(self.statusTextField.text)")
+            let userStatus = self.statusTextField.text
+
+            self.userPreference.setObject( userStatus , forKey: "status" )
+
         } else {
             print("n")
         }
