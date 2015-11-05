@@ -1223,6 +1223,7 @@
                         <outlet property="serviceDaysPickerElement" destination="rEJ-Z4-dYX" id="ROn-Ue-lqG"/>
                         <outlet property="serviceDaysPickerView" destination="Vo5-eB-Y1f" id="ajF-zn-2nO"/>
                         <outlet property="serviceDaysPickerViewBottomConstraint" destination="uan-59-KNh" id="kAy-cs-fx7"/>
+                        <outlet property="statusLabel" destination="C3T-vf-vDU" id="wXK-tC-Gif"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUy-di-tP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
