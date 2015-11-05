@@ -33,11 +33,11 @@ class StatusViewController: UIViewController {
             print("n")
         }
         // After saving
-//        self.dismissViewControllerAnimated(true, completion: {})
+//        self.dismissViewControllerAnimated(true, completion: nil )
     }
 
     @IBAction func dismissViewController(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+        self.dismissViewControllerAnimated( true, completion: nil )
     }
 
     override func didReceiveMemoryWarning() {
