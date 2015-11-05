@@ -11,15 +11,25 @@ import UIKit
 class StatusViewController: UIViewController {
 
     @IBOutlet var statusTextField: UITextField!
+    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        if let userStatus = self.userPreference.stringForKey("status") {
+            self.statusTextField.text = userStatus
+        }
     }
 
     @IBAction func saveTextFieldStatus(sender: AnyObject) {
 
+        if self.statusTextField.text != "" {
+            print("y")
+            print("It's \(self.statusTextField.text)")
+        } else {
+            print("n")
+        }
         // After saving
 //        self.dismissViewControllerAnimated(true, completion: {})
     }
