@@ -105,6 +105,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         userInfo.save()
     }
 
+    @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        //
+    }
+
     @IBAction func editEnterDate(sender: AnyObject) {
 
         self.serviceDaysPickerViewBottomConstraint.constant = -250
