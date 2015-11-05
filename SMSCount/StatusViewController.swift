@@ -33,7 +33,7 @@ class StatusViewController: UIViewController {
             print("n")
         }
         // After saving
-//        self.dismissViewControllerAnimated(true, completion: nil )
+//        self.dismissViewControllerAnimated( true, completion: nil )
     }
 
     @IBAction func dismissViewController(sender: AnyObject) {
