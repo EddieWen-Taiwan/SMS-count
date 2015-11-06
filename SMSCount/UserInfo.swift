@@ -56,7 +56,9 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     func updateUserStatus( status: String ) {
-        
+        self.userObject.setObject( status, forKey: "status" )
+        self.userPreference.setObject( status, forKey: "status" )
+        self.objectIsChanged = true
     }
 
     // Update the username in app
