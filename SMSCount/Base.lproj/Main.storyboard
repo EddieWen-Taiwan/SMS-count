@@ -626,7 +626,7 @@
                         <outlet property="retireDateBottomConstraint" destination="ET2-Va-7vK" id="UvH-4z-kua"/>
                         <outlet property="retireDateLabel" destination="9Q2-RK-h9n" id="EcX-Jt-d9y"/>
                         <outlet property="retireDateView" destination="23l-uZ-zl8" id="pQk-Sh-CpS"/>
-                        <outlet property="stageText" destination="kX6-fT-muD" id="WDh-bH-a7s"/>
+                        <outlet property="statusLabel" destination="kX6-fT-muD" id="vqd-w2-gJR"/>
                         <outlet property="userSticker" destination="zqf-Gi-c3G" id="fBK-u9-S3j"/>
                         <outlet property="usernameLabel" destination="DC4-c7-BCR" id="Z6N-Am-eDQ"/>
                     </connections>
