@@ -114,7 +114,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             if statusVC.statusTextField.text != "" {
                 let userStatus = statusVC.statusTextField.text
                 self.statusLabel.text = userStatus
-                
+                userInfo.updateUserStatus( userStatus! )
             }
         } else {
             print("ERROR")
