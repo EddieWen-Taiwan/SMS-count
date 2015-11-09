@@ -15,6 +15,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet var screenMask: UIView!
     @IBOutlet var FBLoginView: UIView!
 
+    @IBOutlet var statusLabel: UILabel!
     @IBOutlet var enterDateLabel: UILabel!
     @IBOutlet var serviceDaysLabel: UILabel!
     @IBOutlet var discountDaysLabel: UILabel!
@@ -61,6 +62,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
+        if let userStatus = self.userPreference.stringForKey("status") {
+            statusLabel.text = userStatus
+        }
+
         if let userEnterDate = self.userPreference.stringForKey("enterDate") {
             enterDateLabel.text = userEnterDate
         }
@@ -82,7 +87,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let loginView = FBSDKLoginButton()
         self.FBLoginView.addSubview( loginView )
         loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
-        loginView.readPermissions = [ "public_profile", "email" ]
+        loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
         loginView.delegate = self
 
         self.userInfo = UserInfo()
@@ -102,6 +107,16 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         super.viewDidDisappear(animated)
 
         userInfo.save()
+    }
+
+    @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+
+        if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
+            let userStatus = statusVC.statusTextField.text
+            self.statusLabel.text = userStatus
+            userInfo.updateUserStatus( userStatus! )
+        }
+
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {

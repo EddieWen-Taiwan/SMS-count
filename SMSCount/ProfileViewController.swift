@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet var stageText: UILabel!
+    @IBOutlet var statusLabel: UILabel!
 
     // Detail
     @IBOutlet var passedDaysLabel: UILabel!
@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.updateStageText()
+        self.updateStageText() // Remove this?
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "repeat-image")!)
     }
@@ -73,6 +73,10 @@ class ProfileViewController: UIViewController {
         if let username = self.userPreference.stringForKey("username") {
             self.usernameLabel.text = username
         }
+
+        if let userStatus = self.userPreference.stringForKey("status") {
+            self.statusLabel.text = userStatus
+        }
     }
 
     func downloadImage( url: NSURL ) {
@@ -90,9 +94,10 @@ class ProfileViewController: UIViewController {
         }
     }
 
+    // Remove this?
     func updateStageText() {
         let songArray = [ "替代役青年們夢想起飛", "像螞蟻默默做自己", "沒有懷疑沒有怨言", "愛心服務責任紀律" ]
-        self.stageText.text = songArray[ Int( arc4random_uniform(4) ) ]
+        self.statusLabel.text = songArray[ Int( arc4random_uniform(4) ) ]
     }
 
     override func didReceiveMemoryWarning() {
