@@ -62,6 +62,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
+        if let userStatus = self.userPreference.stringForKey("status") {
+            statusLabel.text = userStatus
+        }
+
         if let userEnterDate = self.userPreference.stringForKey("enterDate") {
             enterDateLabel.text = userEnterDate
         }
