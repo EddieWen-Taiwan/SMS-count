@@ -83,7 +83,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let loginView = FBSDKLoginButton()
         self.FBLoginView.addSubview( loginView )
         loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
-        loginView.readPermissions = [ "public_profile", "email" ]
+        loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
         loginView.delegate = self
 
         self.userInfo = UserInfo()
