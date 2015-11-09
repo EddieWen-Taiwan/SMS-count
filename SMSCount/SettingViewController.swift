@@ -255,7 +255,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             // Handle cancellations
         } else {
             // Navigate to other view
-            print("User Logged In")
 
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -298,8 +297,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                         } // --- fbIdQuery
 
                     }
-                } else {
-                    print("FB Graph API ERROR : \(error)")
                 }
                 
             }) // --- graphRequest
