@@ -87,7 +87,12 @@ class UserInfo { // Save userInfomation to Parse
     // Save local data to Parse
     func save() {
         if self.objectIdStatus && self.objectIsChanged {
-            self.userObject.saveInBackground()
+            self.userPreference.setObject( "no", forKey: "sync" )
+            self.userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                if success {
+                    self.userPreference.removeObjectForKey("sync")
+                }
+            }
             self.objectIsChanged = false
         }
     }
