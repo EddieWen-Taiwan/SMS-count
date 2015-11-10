@@ -33,7 +33,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // If last time didn't finish syncTask to Parse
             if userPreference.stringForKey("sync") == "no" {
-                print("have to save data to parse")
+
+                let userObject = PFObject(className: "User")
+                userObject.objectId = userPreference.stringForKey("UserID")
+                if let fbid = userPreference.stringForKey("fb_id") {
+                    userObject.setObject( fbid, forKey: "fb_id" )
+                }
+                if let name = userPreference.stringForKey("username") {
+                    userObject.setObject( name, forKey: "username" )
+                }
+                if let mail = userPreference.stringForKey("email") {
+                    userObject.setObject( mail, forKey: "email" )
+                }
+                if let userStatus = userPreference.stringForKey("status") {
+                    userObject.setObject( userStatus, forKey: "status" )
+                }
+                if let userEnterDate: NSString = userPreference.stringForKey("enterDate") {
+                    let userEnterArray = UserInfo().split2Int(userEnterDate)
+                    userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
+                    userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
+                    userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
+                }
+                if userPreference.stringForKey("serviceDays") != nil {
+                    userObject.setObject( userPreference.integerForKey("serviceDays"), forKey: "serviceDays" )
+                }
+                if userPreference.stringForKey("discountDays") != nil {
+                    userObject.setObject( userPreference.integerForKey("discountDays"), forKey: "discountDays" )
+                }
+
+                // Save to Parse
+                userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        userPreference.removeObjectForKey("sync")
+                    }
+                }
+
             }
         }
 
