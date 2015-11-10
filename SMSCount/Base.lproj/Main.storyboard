@@ -662,14 +662,14 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="個人設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycu-Ie-nu2">
-                                                <rect key="frame" x="20" y="104" width="48" height="17"/>
+                                                <rect key="frame" x="20" y="24" width="48" height="17"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                                 <color key="textColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDl-9I-TRu" userLabel="PersonalCard">
-                                                <rect key="frame" x="0.0" y="130" width="600" height="66"/>
+                                                <rect key="frame" x="0.0" y="50" width="600" height="66"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="du9-iH-tZZ" userLabel="Status">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
@@ -726,14 +726,14 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一般設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akh-bt-ITr">
-                                                <rect key="frame" x="20" y="220" width="48" height="17"/>
+                                                <rect key="frame" x="20" y="140" width="48" height="17"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                                 <color key="textColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyF-Rw-P7I" userLabel="BasicCard">
-                                                <rect key="frame" x="0.0" y="247" width="600" height="200"/>
+                                                <rect key="frame" x="0.0" y="167" width="600" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYJ-AR-a5U" userLabel="enterDateRow">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
@@ -903,14 +903,14 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="偏好設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajt-y4-q3x">
-                                                <rect key="frame" x="20" y="471" width="48" height="17"/>
+                                                <rect key="frame" x="20" y="391" width="48" height="17"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                                 <color key="textColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euX-9L-J7X" userLabel="SystemCard">
-                                                <rect key="frame" x="0.0" y="498" width="600" height="66"/>
+                                                <rect key="frame" x="0.0" y="418" width="600" height="66"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-Eg-6yg" userLabel="AutoWeekend">
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
@@ -976,7 +976,7 @@
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="hPQ-GH-Rjn"/>
                                             <constraint firstItem="euX-9L-J7X" firstAttribute="top" secondItem="Ajt-y4-q3x" secondAttribute="bottom" constant="10" id="ld7-C6-DTv"/>
                                             <constraint firstItem="Ycu-Ie-nu2" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="mFm-Ku-bzT"/>
-                                            <constraint firstItem="Ycu-Ie-nu2" firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" constant="104" id="vaP-FG-xQl"/>
+                                            <constraint firstItem="Ycu-Ie-nu2" firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" constant="24" id="vaP-FG-xQl"/>
                                             <constraint firstAttribute="height" constant="600" id="vfF-uK-Zj1"/>
                                         </constraints>
                                     </view>
