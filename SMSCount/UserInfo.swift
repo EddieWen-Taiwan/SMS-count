@@ -43,6 +43,7 @@ class UserInfo { // Save userInfomation to Parse
 
     func addUserMail( mail: String ) {
         self.userObject.setObject( mail, forKey: "email" )
+        self.userPreference.setObject( mail, forKey: "email" )
         self.objectIsChanged = true
     }
 
