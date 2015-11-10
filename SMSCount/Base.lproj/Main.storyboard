@@ -1248,7 +1248,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4VQ-UR-Ya6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTI-Tf-jTN">
@@ -1286,6 +1286,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Nzy-PW-Opy"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
