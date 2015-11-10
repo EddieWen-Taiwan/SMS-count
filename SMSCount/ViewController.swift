@@ -72,12 +72,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
-        // If app is without ObjectId, create a new data row.
-        let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-        if userPreference.stringForKey("UserID") == nil {
-            UserInfo().registerNewUser()
-        }
-
     }
 
     override func viewDidAppear(animated: Bool) {

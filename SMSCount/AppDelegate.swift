@@ -26,9 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().barTintColor = UIColor(red: 255/255, green: 206/255, blue: 68/255, alpha: 100/100)
 
-        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")
-        if userPreference?.stringForKey("sync") == "no" {
-            print("have to save data to parse")
+        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+        // If app is without ObjectId, create a new data row.
+        if userPreference.stringForKey("UserID") == nil {
+            UserInfo().registerNewUser()
+        } else {
+            if userPreference.stringForKey("sync") == "no" {
+                print("have to save data to parse")
+            }
         }
 
         return FBSDKApplicationDelegate.sharedInstance().application( application, didFinishLaunchingWithOptions: launchOptions )
