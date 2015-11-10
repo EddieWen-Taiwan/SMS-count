@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userPreference.stringForKey("UserID") == nil {
             UserInfo().registerNewUser()
         } else {
+            // If last time didn't finish syncTask to Parse
             if userPreference.stringForKey("sync") == "no" {
                 print("have to save data to parse")
             }
