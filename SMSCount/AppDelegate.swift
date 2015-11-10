@@ -26,6 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().barTintColor = UIColor(red: 255/255, green: 206/255, blue: 68/255, alpha: 100/100)
 
+        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")
+        if let syncStatus = userPreference?.stringForKey("sync") {
+            if syncStatus == "no" {
+                print("have to save data to parse")
+            }
+        }
+
         return FBSDKApplicationDelegate.sharedInstance().application( application, didFinishLaunchingWithOptions: launchOptions )
     }
 
