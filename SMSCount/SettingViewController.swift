@@ -188,7 +188,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         userPreference.setObject( newSelectDate, forKey: "enterDate" )
         userInfo.updateEnterDate( newSelectDate )
 
-        self.dismissScreenMask()
+        self.dismissRelativeViews()
 
     }
 
@@ -201,7 +201,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.serviceDaysLabel.text = calculateHelper.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
         userInfo.updateServiceDays( self.userPreference.integerForKey("serviceDays") )
 
-        self.dismissScreenMask()
+        self.dismissRelativeViews()
 
     }
 
@@ -214,22 +214,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
         userInfo.updateDiscountDays( self.userPreference.integerForKey("discountDays") )
 
-        self.dismissScreenMask()
+        self.dismissRelativeViews()
 
     }
 
     func dismissScreenMask() {
-        self.datepickerViewBottomConstraint.constant = -250
-        self.serviceDaysPickerViewBottomConstraint.constant = -250
-        self.discountDaysPickerViewBottomConstraint.constant = -250
-        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.view.layoutIfNeeded()
-            self.screenMask.alpha = 0
-            // show Tabbar
-            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height-50
-        }, completion: { finish in
-            self.screenMask.hidden = true;
-        })
+        self.dismissRelativeViews()
 
         if serviceDaysLabel.text != "" {
             let newServiceDays = calculateHelper.switchPeriod(serviceDaysLabel.text!)
@@ -243,6 +233,20 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         } else {
             userPreference.removeObjectForKey( "discountDays" )
         }
+    }
+
+    func dismissRelativeViews() {
+        self.datepickerViewBottomConstraint.constant = -250
+        self.serviceDaysPickerViewBottomConstraint.constant = -250
+        self.discountDaysPickerViewBottomConstraint.constant = -250
+        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+            self.screenMask.alpha = 0
+            // show Tabbar
+            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height-50
+            }, completion: { finish in
+                self.screenMask.hidden = true;
+        })
     }
 
     func switchClick( mySwitch: UISwitch ) {
