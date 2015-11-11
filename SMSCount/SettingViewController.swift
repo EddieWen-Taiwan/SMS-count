@@ -289,6 +289,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         if let username = user.valueForKey("username") {
                                             self.userInfo.updateLocalUsername(username as! String)
                                         }
+                                        if let userMail = user.valueForKey("email") {
+                                            self.userInfo.updateLocalMail( userMail as! String )
+                                        }
                                     }
                                 } else {
                                     // Update user email, name .... by objectId

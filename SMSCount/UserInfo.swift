@@ -67,6 +67,10 @@ class UserInfo { // Save userInfomation to Parse
         self.userPreference.setObject( name, forKey: "username" )
     }
 
+    func updateLocalMail( mail: String ) {
+        self.userPreference.setObject( mail, forKey: "email" )
+    }
+
     func updateEnterDate( date: String ) {
         let userEnterArray = self.split2Int( date )
         userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
