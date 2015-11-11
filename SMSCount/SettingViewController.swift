@@ -223,17 +223,21 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     func dismissScreenMask() {
         self.dismissRelativeViews()
 
-        if serviceDaysLabel.text != "" {
-            let newServiceDays = calculateHelper.switchPeriod(serviceDaysLabel.text!)
-            userPreference.setObject( Int(newServiceDays), forKey: "serviceDays" )
-        } else {
-            userPreference.removeObjectForKey( "serviceDays" )
+        if self.screenMask.tag == 2 {
+            if serviceDaysLabel.text != "" {
+                let newServiceDays = calculateHelper.switchPeriod(serviceDaysLabel.text!)
+                userPreference.setObject( Int(newServiceDays), forKey: "serviceDays" )
+            } else {
+                userPreference.removeObjectForKey( "serviceDays" )
+            }
         }
-        if discountDaysLabel.text != "" {
-            let newDiscountDays = discountDaysLabel.text!
-            userPreference.setInteger( Int(newDiscountDays)!, forKey: "discountDays" )
-        } else {
-            userPreference.removeObjectForKey( "discountDays" )
+        if self.screenMask.tag == 3 {
+            if discountDaysLabel.text != "" {
+                let newDiscountDays = discountDaysLabel.text!
+                userPreference.setInteger( Int(newDiscountDays)!, forKey: "discountDays" )
+            } else {
+                userPreference.removeObjectForKey( "discountDays" )
+            }
         }
     }
 
@@ -241,6 +245,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.datepickerViewBottomConstraint.constant = -250
         self.serviceDaysPickerViewBottomConstraint.constant = -250
         self.discountDaysPickerViewBottomConstraint.constant = -250
+
         UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.view.layoutIfNeeded()
             self.screenMask.alpha = 0
