@@ -185,7 +185,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let newSelectDate = dateFormatter.stringFromDate(datepickerElement.date)
 
         enterDateLabel.text = newSelectDate
-        userPreference.setObject( newSelectDate, forKey: "enterDate" )
         userInfo.updateEnterDate( newSelectDate )
 
         self.dismissRelativeViews()
