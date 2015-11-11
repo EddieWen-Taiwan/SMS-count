@@ -72,6 +72,7 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     func updateEnterDate( date: String ) {
+        self.userPreference.setObject( date, forKey: "enterDate" )
         let userEnterArray = self.split2Int( date )
         userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
         userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
