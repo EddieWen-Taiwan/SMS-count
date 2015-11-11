@@ -251,8 +251,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             self.screenMask.alpha = 0
             // show Tabbar
             self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height-50
-            }, completion: { finish in
-                self.screenMask.hidden = true;
+        }, completion: { finish in
+            self.screenMask.hidden = true;
         })
     }
 
