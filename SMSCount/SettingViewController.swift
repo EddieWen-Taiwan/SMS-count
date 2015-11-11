@@ -208,7 +208,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBAction func discountDaysDoneIsPressed(sender: AnyObject) {
 
         if self.userPreference.objectForKey("discountDays") == nil {
-            self.userPreference.setObject( "0", forKey: "discountDays" )
+            self.userPreference.setInteger( 0, forKey: "discountDays" )
         }
 
         self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
