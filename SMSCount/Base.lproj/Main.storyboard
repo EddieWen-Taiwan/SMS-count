@@ -651,7 +651,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spS-BM-WXb" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="534"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IjB-OC-LB7">
                                                 <rect key="frame" x="20" y="30" width="560" height="50"/>
@@ -976,9 +976,15 @@
                                             <constraint firstItem="cyF-Rw-P7I" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" id="hPQ-GH-Rjn"/>
                                             <constraint firstItem="euX-9L-J7X" firstAttribute="top" secondItem="Ajt-y4-q3x" secondAttribute="bottom" constant="10" id="ld7-C6-DTv"/>
                                             <constraint firstItem="Ycu-Ie-nu2" firstAttribute="leading" secondItem="spS-BM-WXb" secondAttribute="leading" constant="20" id="mFm-Ku-bzT"/>
+                                            <constraint firstAttribute="bottom" secondItem="euX-9L-J7X" secondAttribute="bottom" constant="50" id="qga-TW-Ju8"/>
                                             <constraint firstItem="Ycu-Ie-nu2" firstAttribute="top" secondItem="spS-BM-WXb" secondAttribute="top" constant="24" id="vaP-FG-xQl"/>
                                             <constraint firstAttribute="height" constant="600" id="vfF-uK-Zj1"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="vfF-uK-Zj1"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <animations/>
