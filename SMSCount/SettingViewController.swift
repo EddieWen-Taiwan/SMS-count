@@ -66,7 +66,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         if let userStatus = self.userPreference.stringForKey("status") {
             statusLabel.text = userStatus
         }
-
         if let userEnterDate = self.userPreference.stringForKey("enterDate") {
             enterDateLabel.text = userEnterDate
         }
@@ -76,6 +75,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
             discountDaysLabel.text = userDiscountDays
         }
+
         self.autoWeekendSwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
         self.autoWeekendSwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
         if self.userPreference.boolForKey("autoWeekendFixed") {
