@@ -129,6 +129,7 @@ class UserInfo { // Save userInfomation to Parse
                     self.objectIdStatus = true
                 }
             }
+
         }
 
     }
