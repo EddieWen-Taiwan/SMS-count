@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatusViewController: UIViewController {
+class StatusViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var statusTextField: UITextField!
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
@@ -16,6 +16,7 @@ class StatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.statusTextField.delegate = self
 
         if let userStatus = self.userPreference.stringForKey("status") {
             self.statusTextField.text = userStatus
@@ -24,6 +25,12 @@ class StatusViewController: UIViewController {
 
     @IBAction func dismissViewController(sender: AnyObject) {
         self.dismissViewControllerAnimated( true, completion: nil )
+    }
+
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.characters.count + string.characters.count - range.length
+        return newLength <= 20
     }
 
     override func didReceiveMemoryWarning() {
