@@ -30,7 +30,7 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let newLength = text.characters.count + string.characters.count - range.length
-        return newLength <= 20
+        return newLength <= 30
     }
 
     override func didReceiveMemoryWarning() {
