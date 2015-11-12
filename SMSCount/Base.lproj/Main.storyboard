@@ -328,7 +328,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kX6-fT-muD">
-                                                        <rect key="frame" x="20" y="65" width="0.0" height="0.0"/>
+                                                        <rect key="frame" x="20" y="65" width="560" height="0.0"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
                                                         <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
@@ -352,6 +352,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="MXE-DS-a5G" secondAttribute="bottom" id="RK9-Vb-O7E"/>
                                                     <constraint firstItem="DC4-c7-BCR" firstAttribute="top" secondItem="Ksz-gc-Zql" secondAttribute="top" constant="25" id="awI-pd-Hy3"/>
                                                     <constraint firstAttribute="trailing" secondItem="MXE-DS-a5G" secondAttribute="trailing" id="csR-22-UUu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="kX6-fT-muD" secondAttribute="trailing" constant="20" id="hY2-mW-qB3"/>
                                                     <constraint firstItem="MXE-DS-a5G" firstAttribute="top" secondItem="kX6-fT-muD" secondAttribute="bottom" constant="9" id="sAb-E0-dWZ"/>
                                                     <constraint firstItem="kX6-fT-muD" firstAttribute="leading" secondItem="Ksz-gc-Zql" secondAttribute="leading" constant="20" id="zsH-aK-qLx"/>
                                                 </constraints>
