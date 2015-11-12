@@ -118,9 +118,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
 
         if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
-            let userStatus = statusVC.statusTextField.text
-            self.statusLabel.text = userStatus
-            userInfo.updateUserStatus( userStatus! )
+            var userStatus = statusVC.statusTextField.text! as NSString
+            if userStatus.length > 20 {
+                userStatus = userStatus.substringToIndex(20)
+            }
+            self.statusLabel.text = userStatus as String
+            userInfo.updateUserStatus( userStatus as String )
         }
 
     }
