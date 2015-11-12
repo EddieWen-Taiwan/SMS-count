@@ -56,7 +56,10 @@ class UserInfo { // Save userInfomation to Parse
         self.objectIsChanged = true
     }
 
-    func updateUserStatus( status: String ) {
+    func updateUserStatus( var status: NSString ) {
+        if status.length > 20 {
+            status = status.substringToIndex(20)
+        }
         self.userObject.setObject( status, forKey: "status" )
         self.userPreference.setObject( status, forKey: "status" )
         self.objectIsChanged = true
