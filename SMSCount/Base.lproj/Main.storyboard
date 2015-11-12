@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Countdown-->
@@ -1307,18 +1306,18 @@
                         <animations/>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Ilg-RM-Hva" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leadingMargin" constant="20" id="5IC-Uu-5vW"/>
                             <constraint firstItem="Ilg-RM-Hva" firstAttribute="top" secondItem="HTI-Tf-jTN" secondAttribute="bottom" constant="50" id="75X-xO-vsK"/>
                             <constraint firstItem="dYF-BN-qgm" firstAttribute="top" secondItem="PDU-w2-gil" secondAttribute="top" id="76o-DG-k3X"/>
                             <constraint firstItem="HTI-Tf-jTN" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" id="KH9-Sc-5WP"/>
+                            <constraint firstItem="Ilg-RM-Hva" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" constant="40" id="Tz6-E4-SDl"/>
                             <constraint firstAttribute="trailing" secondItem="dYF-BN-qgm" secondAttribute="trailing" id="UrF-7j-Sdv"/>
+                            <constraint firstAttribute="trailing" secondItem="Ilg-RM-Hva" secondAttribute="trailing" constant="40" id="XtM-SE-zsJ"/>
                             <constraint firstAttribute="trailing" secondItem="HTI-Tf-jTN" secondAttribute="trailing" id="ZwG-Ux-sfl"/>
-                            <constraint firstItem="y9Y-rG-USe" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leadingMargin" constant="20" id="cz9-lz-mmw"/>
                             <constraint firstItem="HTI-Tf-jTN" firstAttribute="top" secondItem="aX7-6k-ytV" secondAttribute="bottom" id="foA-4a-p1W"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ilg-RM-Hva" secondAttribute="trailing" constant="20" id="gIL-gV-GxU"/>
+                            <constraint firstItem="y9Y-rG-USe" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" constant="40" id="gEp-d4-TrO"/>
                             <constraint firstItem="y9Y-rG-USe" firstAttribute="top" secondItem="Ilg-RM-Hva" secondAttribute="bottom" constant="20" id="kKb-Qd-D61"/>
                             <constraint firstItem="dYF-BN-qgm" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" id="nOy-02-17Y"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="y9Y-rG-USe" secondAttribute="trailing" constant="20" id="teR-ny-0cL"/>
+                            <constraint firstAttribute="trailing" secondItem="y9Y-rG-USe" secondAttribute="trailing" constant="40" id="yDb-YS-YiE"/>
                         </constraints>
                     </view>
                     <connections>
