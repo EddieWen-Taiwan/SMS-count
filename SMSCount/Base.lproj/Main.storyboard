@@ -1252,7 +1252,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ilg-RM-Hva">
-                                <rect key="frame" x="40" y="114" width="520" height="40"/>
+                                <rect key="frame" x="30" y="114" width="540" height="40"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4VQ-UR-Ya6"/>
@@ -1289,7 +1289,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9Y-rG-USe">
-                                <rect key="frame" x="40" y="174" width="520" height="40"/>
+                                <rect key="frame" x="30" y="174" width="540" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.40392156862745099" green="0.82745098039215681" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1310,15 +1310,15 @@
                             <constraint firstItem="Ilg-RM-Hva" firstAttribute="top" secondItem="HTI-Tf-jTN" secondAttribute="bottom" constant="50" id="75X-xO-vsK"/>
                             <constraint firstItem="dYF-BN-qgm" firstAttribute="top" secondItem="PDU-w2-gil" secondAttribute="top" id="76o-DG-k3X"/>
                             <constraint firstItem="HTI-Tf-jTN" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" id="KH9-Sc-5WP"/>
-                            <constraint firstItem="Ilg-RM-Hva" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" constant="40" id="Tz6-E4-SDl"/>
+                            <constraint firstItem="Ilg-RM-Hva" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" constant="30" id="Tz6-E4-SDl"/>
                             <constraint firstAttribute="trailing" secondItem="dYF-BN-qgm" secondAttribute="trailing" id="UrF-7j-Sdv"/>
-                            <constraint firstAttribute="trailing" secondItem="Ilg-RM-Hva" secondAttribute="trailing" constant="40" id="XtM-SE-zsJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Ilg-RM-Hva" secondAttribute="trailing" constant="30" id="XtM-SE-zsJ"/>
                             <constraint firstAttribute="trailing" secondItem="HTI-Tf-jTN" secondAttribute="trailing" id="ZwG-Ux-sfl"/>
                             <constraint firstItem="HTI-Tf-jTN" firstAttribute="top" secondItem="aX7-6k-ytV" secondAttribute="bottom" id="foA-4a-p1W"/>
-                            <constraint firstItem="y9Y-rG-USe" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" constant="40" id="gEp-d4-TrO"/>
+                            <constraint firstItem="y9Y-rG-USe" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" constant="30" id="gEp-d4-TrO"/>
                             <constraint firstItem="y9Y-rG-USe" firstAttribute="top" secondItem="Ilg-RM-Hva" secondAttribute="bottom" constant="20" id="kKb-Qd-D61"/>
                             <constraint firstItem="dYF-BN-qgm" firstAttribute="leading" secondItem="PDU-w2-gil" secondAttribute="leading" id="nOy-02-17Y"/>
-                            <constraint firstAttribute="trailing" secondItem="y9Y-rG-USe" secondAttribute="trailing" constant="40" id="yDb-YS-YiE"/>
+                            <constraint firstAttribute="trailing" secondItem="y9Y-rG-USe" secondAttribute="trailing" constant="30" id="yDb-YS-YiE"/>
                         </constraints>
                     </view>
                     <connections>
