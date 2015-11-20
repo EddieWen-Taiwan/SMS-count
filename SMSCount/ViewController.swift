@@ -327,16 +327,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     // Once the User selects a photo, the following delegate method is called.
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let photo = FBSDKSharePhoto()
-        photo.image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        photo.userGenerated = true
 
-        let content = FBSDKSharePhotoContent()
-        content.photos = [photo]
-
+        // Hide imagePickerController
         dismissViewControllerAnimated( false, completion: nil )
 
-        FBSDKShareDialog.showFromViewController( self, withContent: content, delegate: nil )
+        let postImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let activityViewController = UIActivityViewController(activityItems: [postImage], applicationActivities: nil)
+
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+
     }
 
     override func didReceiveMemoryWarning() {
