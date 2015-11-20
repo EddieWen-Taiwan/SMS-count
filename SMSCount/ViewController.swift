@@ -334,9 +334,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let content = FBSDKSharePhotoContent()
         content.photos = [photo]
 
-        FBSDKShareDialog.showFromViewController( self, withContent: content, delegate: nil )
+        dismissViewControllerAnimated( false, completion: nil )
 
-        dismissViewControllerAnimated( true, completion: nil )
+        FBSDKShareDialog.showFromViewController( self, withContent: content, delegate: nil )
     }
 
     override func didReceiveMemoryWarning() {
