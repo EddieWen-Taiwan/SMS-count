@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBSDKShareKit
 import Parse
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
