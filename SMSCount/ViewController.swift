@@ -316,7 +316,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
             imagePicker.allowsEditing = false
 
-            // STOP
+            // Stop loading animation
             self.loadingView.hidden = true
             self.loadingActivity.stopAnimating()
 
