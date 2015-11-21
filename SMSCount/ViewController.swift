@@ -266,7 +266,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     @IBAction func pressShareButton(sender: AnyObject) {
 
-        let askAlertController = UIAlertController( title: "分享", message: "將製作分享圖片並分享至您的 Facebook，要繼續進行嗎？", preferredStyle: .Alert )
+        let askAlertController = UIAlertController( title: "分享", message: "將製作分享圖片並可分享至其他平台，要繼續進行嗎？", preferredStyle: .Alert )
         let yesAction = UIAlertAction( title: "好", style: .Default, handler: {(action) -> Void in
 
             // START
