@@ -1,10 +1,11 @@
 PODS:
-  - Bolts (1.3.0):
-    - Bolts/AppLinks (= 1.3.0)
-    - Bolts/Tasks (= 1.3.0)
-  - Bolts/AppLinks (1.3.0):
+  - Bolts (1.5.0):
+    - Bolts/AppLinks (= 1.5.0)
+    - Bolts/Tasks (= 1.5.0)
+  - Bolts/AppLinks (1.5.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.3.0)
+  - Bolts/Tasks (1.5.0)
+  - ENSwiftSideMenu (0.0.9)
   - FBSDKCoreKit (4.5.1):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc (= 4.5.1)
@@ -16,18 +17,20 @@ PODS:
     - FBSDKCoreKit/arc
   - FBSDKLoginKit (4.5.1):
     - FBSDKCoreKit
-  - Parse (1.9.0):
-    - Bolts/Tasks (>= 1.3.0)
+  - Parse (1.10.0):
+    - Bolts/Tasks (~> 1.5)
 
 DEPENDENCIES:
+  - ENSwiftSideMenu (~> 0.0.9)
   - FBSDKCoreKit (~> 4.5.0)
   - FBSDKLoginKit (~> 4.5.0)
   - Parse
 
 SPEC CHECKSUMS:
-  Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  ENSwiftSideMenu: e2232c78b76c798455134e399c84cd6642bc09c0
   FBSDKCoreKit: f335eaf6865e1e1597dee1debfb533045500da47
   FBSDKLoginKit: 225cc9a388a92916ee3f3bb14422017b6e44b65b
-  Parse: 712efbc476d4f47b0f96b70db7e53101575753aa
+  Parse: 90b2544822200f84b18bfacc4e8b0a3a6c3584a2
 
 COCOAPODS: 0.39.0
