@@ -15,6 +15,7 @@ import DrawerController
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var drawerController: DrawerController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -70,6 +71,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             }
         }
+
+        // MAEK: DrawerController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("ViewController")
+        let drawerViewController = storyboard.instantiateViewControllerWithIdentifier("DrawerViewController")
+        self.drawerController = DrawerController(centerViewController: mainViewController, leftDrawerViewController: drawerViewController)
+        self.drawerController.showsShadows = true
+        self.drawerController.restorationIdentifier = "Drawer"
+        self.drawerController.maximumLeftDrawerWidth = 240
+        self.drawerController.openDrawerGestureModeMask = .All
+        self.drawerController.closeDrawerGestureModeMask = .All
+        self.window?.rootViewController = self.drawerController
 
         return FBSDKApplicationDelegate.sharedInstance().application( application, didFinishLaunchingWithOptions: launchOptions )
     }
