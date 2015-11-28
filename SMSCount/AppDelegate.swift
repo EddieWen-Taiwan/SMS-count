@@ -72,12 +72,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        // MAEK: DrawerController
+        // MARK: DrawerController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("ViewController")
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
         let drawerViewController = storyboard.instantiateViewControllerWithIdentifier("DrawerViewController")
+
         self.drawerController = DrawerController(centerViewController: mainViewController, leftDrawerViewController: drawerViewController)
-        self.drawerController.showsShadows = true
         self.drawerController.restorationIdentifier = "Drawer"
         self.drawerController.maximumLeftDrawerWidth = 240
         self.drawerController.openDrawerGestureModeMask = .All
