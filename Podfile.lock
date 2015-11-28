@@ -5,7 +5,12 @@ PODS:
   - Bolts/AppLinks (1.5.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.5.0)
-  - ENSwiftSideMenu (0.0.9)
+  - DrawerController (1.1.0):
+    - DrawerController/Core (= 1.1.0)
+    - DrawerController/DrawerVisualStates (= 1.1.0)
+  - DrawerController/Core (1.1.0)
+  - DrawerController/DrawerVisualStates (1.1.0):
+    - DrawerController/Core
   - FBSDKCoreKit (4.5.1):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc (= 4.5.1)
@@ -21,14 +26,14 @@ PODS:
     - Bolts/Tasks (~> 1.5)
 
 DEPENDENCIES:
-  - ENSwiftSideMenu (~> 0.0.9)
+  - DrawerController (~> 1.0)
   - FBSDKCoreKit (~> 4.5.0)
   - FBSDKLoginKit (~> 4.5.0)
   - Parse
 
 SPEC CHECKSUMS:
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
-  ENSwiftSideMenu: e2232c78b76c798455134e399c84cd6642bc09c0
+  DrawerController: 8fd56e6238399a08c4af054fbea0ef8669cd81f3
   FBSDKCoreKit: f335eaf6865e1e1597dee1debfb533045500da47
   FBSDKLoginKit: 225cc9a388a92916ee3f3bb14422017b6e44b65b
   Parse: 90b2544822200f84b18bfacc4e8b0a3a6c3584a2
