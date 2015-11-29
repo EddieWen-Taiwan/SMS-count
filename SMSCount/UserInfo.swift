@@ -19,10 +19,10 @@ class UserInfo { // Save userInfomation to Parse
     init() {
         // Initialize
         if self.userPreference.stringForKey("UserID") != nil {
-            self.userObject.objectId = self.userPreference.stringForKey("UserID")
+            userObject.objectId = self.userPreference.stringForKey("UserID")
             self.objectIdStatus = true
         }
-        self.userObject.setObject( "iOS", forKey: "platform" )
+        userObject.setObject( "iOS", forKey: "platform" )
     }
 
     // From Facebook API
@@ -31,19 +31,19 @@ class UserInfo { // Save userInfomation to Parse
 
         self.checkObjectId()
 
-        self.userObject.setObject( fbid, forKey: "fb_id" )
+        userObject.setObject( fbid, forKey: "fb_id" )
         self.userPreference.setObject( fbid, forKey: "fb_id" )
         self.objectIsChanged = true
     }
 
     func addUserName( name: String ) {
-        self.userObject.setObject( name, forKey: "username" )
+        userObject.setObject( name, forKey: "username" )
         self.userPreference.setObject( name, forKey: "username" )
         self.objectIsChanged = true
     }
 
     func addUserMail( mail: String ) {
-        self.userObject.setObject( mail, forKey: "email" )
+        userObject.setObject( mail, forKey: "email" )
         self.userPreference.setObject( mail, forKey: "email" )
         self.objectIsChanged = true
     }
@@ -52,13 +52,13 @@ class UserInfo { // Save userInfomation to Parse
     // Update the objectId in app
     func updateLocalObjectId( objectId: String ) {
         self.userPreference.setObject( objectId, forKey: "UserID" )
-        self.userObject.objectId = objectId
+        userObject.objectId = objectId
         self.objectIdStatus = true
         self.objectIsChanged = true
     }
 
     func updateUserStatus( status: String ) {
-        self.userObject.setObject( status, forKey: "status" )
+        userObject.setObject( status, forKey: "status" )
         self.userPreference.setObject( status, forKey: "status" )
         self.objectIsChanged = true
     }
@@ -75,19 +75,19 @@ class UserInfo { // Save userInfomation to Parse
     func updateEnterDate( date: String ) {
         self.userPreference.setObject( date, forKey: "enterDate" )
         let userEnterArray = self.split2Int( date )
-        self.userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
-        self.userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
-        self.userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
+        userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
+        userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
+        userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
         self.objectIsChanged = true
     }
 
     func updateServiceDays( days: Int ) {
-        self.userObject.setObject( days, forKey: "serviceDays" )
+        userObject.setObject( days, forKey: "serviceDays" )
         self.objectIsChanged = true
     }
 
     func updateDiscountDays( days: Int ) {
-        self.userObject.setObject( days, forKey: "discountDays" )
+        userObject.setObject( days, forKey: "discountDays" )
         self.objectIsChanged = true
     }
 
@@ -95,7 +95,7 @@ class UserInfo { // Save userInfomation to Parse
     func save() {
         if self.objectIdStatus && self.objectIsChanged {
             self.userPreference.setObject( "no", forKey: "sync" )
-            self.userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+            userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
                     self.userPreference.removeObjectForKey("sync")
                 }
@@ -108,28 +108,28 @@ class UserInfo { // Save userInfomation to Parse
     func continueTask() {
 
         if let fbid = self.userPreference.stringForKey("fb_id") {
-            self.userObject.setObject( fbid, forKey: "fb_id" )
+            userObject.setObject( fbid, forKey: "fb_id" )
         }
         if let name = self.userPreference.stringForKey("username") {
-            self.userObject.setObject( name, forKey: "username" )
+            userObject.setObject( name, forKey: "username" )
         }
         if let mail = self.userPreference.stringForKey("email") {
-            self.userObject.setObject( mail, forKey: "email" )
+            userObject.setObject( mail, forKey: "email" )
         }
         if let userStatus = self.userPreference.stringForKey("status") {
-            self.userObject.setObject( userStatus, forKey: "status" )
+            userObject.setObject( userStatus, forKey: "status" )
         }
         if let userEnterDate: NSString = self.userPreference.stringForKey("enterDate") {
             let userEnterArray = self.split2Int(userEnterDate)
-            self.userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
-            self.userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
-            self.userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
+            userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
+            userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
+            userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
         }
         if self.userPreference.stringForKey("serviceDays") != nil {
-            self.userObject.setObject( self.userPreference.integerForKey("serviceDays"), forKey: "serviceDays" )
+            userObject.setObject( self.userPreference.integerForKey("serviceDays"), forKey: "serviceDays" )
         }
         if self.userPreference.stringForKey("discountDays") != nil {
-            self.userObject.setObject( self.userPreference.integerForKey("discountDays"), forKey: "discountDays" )
+            userObject.setObject( self.userPreference.integerForKey("discountDays"), forKey: "discountDays" )
         }
 
         // Save to Parse
@@ -150,21 +150,21 @@ class UserInfo { // Save userInfomation to Parse
             if let userEnter: NSString = userPreference.stringForKey("enterDate") {
                 let userEnterArray = self.split2Int(userEnter)
 
-                self.userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
-                self.userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
-                self.userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
+                userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
+                userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
+                userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
             }
             if let userService = userPreference.stringForKey("serviceDays") {
-                self.userObject.setObject( Int(userService)!, forKey: "serviceDays" )
+                userObject.setObject( Int(userService)!, forKey: "serviceDays" )
             }
             if let userDiscount = userPreference.stringForKey("discountDays") {
-                self.userObject.setObject( Int(userDiscount)!, forKey: "discountDays" )
+                userObject.setObject( Int(userDiscount)!, forKey: "discountDays" )
             }
 
             // Note to parse this is iOS
-            self.userObject.setObject( "iOS", forKey: "platform" )
+            userObject.setObject( "iOS", forKey: "platform" )
 
-            self.userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+            userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
                     self.userPreference.setObject( self.userObject.objectId, forKey: "UserID" )
                     self.objectIdStatus = true
