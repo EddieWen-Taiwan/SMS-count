@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CountViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     // <<Back>> - about ScreenShot
     @IBOutlet var backRemainedDaysLabel: UILabel!

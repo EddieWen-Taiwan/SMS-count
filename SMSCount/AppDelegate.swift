@@ -9,11 +9,13 @@
 import UIKit
 import CoreData
 import Parse
+import DrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var drawerController: DrawerController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -70,12 +72,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        // MARK: DrawerController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let rootViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
+        let drawerViewController = storyboard.instantiateViewControllerWithIdentifier("DrawerViewController")
+
+        self.drawerController = DrawerController(centerViewController: rootViewController, leftDrawerViewController: drawerViewController)
+        self.drawerController.restorationIdentifier = "Drawer"
+        self.drawerController.maximumLeftDrawerWidth = 240
+        self.drawerController.openDrawerGestureModeMask = .All
+        self.drawerController.closeDrawerGestureModeMask = .All
+        self.window?.rootViewController = self.drawerController
+
         return FBSDKApplicationDelegate.sharedInstance().application( application, didFinishLaunchingWithOptions: launchOptions )
     }
 
     // Facebook SDK related -----
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-            return FBSDKApplicationDelegate.sharedInstance().application( application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        return FBSDKApplicationDelegate.sharedInstance().application( application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {

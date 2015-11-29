@@ -15,7 +15,7 @@ target 'SMSCount' do
 
 	pod 'Parse'
 
-	pod 'ENSwiftSideMenu', '~> 0.0.9'
+	pod 'DrawerController', '~> 1.0'
 
 end
 
