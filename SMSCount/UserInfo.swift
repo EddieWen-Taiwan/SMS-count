@@ -51,10 +51,16 @@ class UserInfo { // Save userInfomation to Parse
     // This user has registered on Parse
     // Update the objectId in app
     func updateLocalObjectId( objectId: String ) {
-        self.userPreference.setObject( objectId, forKey: "UserID" )
-        userObject.objectId = objectId
-        self.objectIdStatus = true
-        self.objectIsChanged = true
+
+        userObject.deleteInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+
+            self.userPreference.setObject( objectId, forKey: "UserID" )
+            self.userObject.objectId = objectId
+            self.objectIdStatus = true
+            self.objectIsChanged = true
+
+        }
+
     }
 
     func updateUserStatus( status: String ) {
