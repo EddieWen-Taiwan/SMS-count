@@ -134,7 +134,7 @@ class UserInfo { // Save userInfomation to Parse
 
         // Save to Parse
         self.save()
-g
+
     }
 
     private func checkObjectId() {
