@@ -306,6 +306,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         if let userMail = user.valueForKey("email") {
                                             self.userInfo.updateLocalMail( userMail as! String )
                                         }
+
+                                        // MISSION: Ask user whether to download data from Parse or not
                                     }
                                 } else {
                                     // Update user email, name .... by objectId
