@@ -286,7 +286,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     if let FBID = result.objectForKey("id") {
 
                         // Search parse data by FBID, check whether there is matched data.
-                        let fbIdQuery = PFQuery(className: "User")
+                        let fbIdQuery = PFQuery(className: "UserT")
                         fbIdQuery.whereKey( "fb_id", equalTo: FBID )
                         fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
                             if error == nil {
@@ -306,6 +306,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         if let userMail = user.valueForKey("email") {
                                             self.userInfo.updateLocalMail( userMail as! String )
                                         }
+
+                                        // MISSION: Ask user whether to download data from Parse or not
                                     }
                                 } else {
                                     // Update user email, name .... by objectId
