@@ -127,6 +127,9 @@ class UserInfo { // Save userInfomation to Parse
                 userObject.setObject( Int(userDiscount)!, forKey: "discountDays" )
             }
 
+            // Note to parse this is iOS
+            userObject.setObject( "iOS", forKey: "platform" )
+
             userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
                     self.userPreference.setObject( self.userObject.objectId, forKey: "UserID" )
