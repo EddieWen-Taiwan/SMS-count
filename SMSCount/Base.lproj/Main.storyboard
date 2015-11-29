@@ -6,10 +6,10 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Left Drawer View Controller-->
         <scene sceneID="5kq-Q6-uSj">
             <objects>
-                <viewController storyboardIdentifier="DrawerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7aD-15-c2R" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7aD-15-c2R" customClass="LeftDrawerViewController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u6T-1f-yQE"/>
                         <viewControllerLayoutGuide type="bottom" id="q6n-PG-DUo"/>
@@ -32,11 +32,17 @@
                                 <rect key="frame" x="30" y="104" width="90" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Main Tab Bar"/>
+                                <connections>
+                                    <action selector="goMainTabBarController:" destination="7aD-15-c2R" eventType="touchUpInside" id="ojT-JF-Vsb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVk-Jx-wsa">
                                 <rect key="frame" x="30" y="174" width="72" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Friend List"/>
+                                <connections>
+                                    <action selector="goFriendListController:" destination="7aD-15-c2R" eventType="touchUpInside" id="044-9I-QXu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

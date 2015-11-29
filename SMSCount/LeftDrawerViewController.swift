@@ -21,6 +21,11 @@ class LeftDrawerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func goMainTabBarController(sender: AnyObject) {
+    }
+
+    @IBAction func goFriendListController(sender: AnyObject) {
+    }
 
     /*
     // MARK: - Navigation
