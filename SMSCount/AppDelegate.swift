@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // If last time didn't finish syncTask to Parse
             if userPreference.stringForKey("sync") == "no" {
-                UserInfo().continueTask()
+                UserInfo().continueUploadTask()
             }
         }
 
