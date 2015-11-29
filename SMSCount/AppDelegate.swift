@@ -74,10 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARK: DrawerController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
+        let rootViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
         let drawerViewController = storyboard.instantiateViewControllerWithIdentifier("DrawerViewController")
 
-        self.drawerController = DrawerController(centerViewController: mainViewController, leftDrawerViewController: drawerViewController)
+        self.drawerController = DrawerController(centerViewController: rootViewController, leftDrawerViewController: drawerViewController)
         self.drawerController.restorationIdentifier = "Drawer"
         self.drawerController.maximumLeftDrawerWidth = 240
         self.drawerController.openDrawerGestureModeMask = .All
