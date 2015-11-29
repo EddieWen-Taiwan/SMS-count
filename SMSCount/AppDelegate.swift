@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // If last time didn't finish syncTask to Parse
             if userPreference.stringForKey("sync") == "no" {
 
-                let userObject = PFObject(className: "User")
+                let userObject = PFObject(className: "UserT")
                 userObject.objectId = userPreference.stringForKey("UserID")
                 if let fbid = userPreference.stringForKey("fb_id") {
                     userObject.setObject( fbid, forKey: "fb_id" )

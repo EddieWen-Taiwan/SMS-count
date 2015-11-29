@@ -14,7 +14,7 @@ class UserInfo { // Save userInfomation to Parse
 
     var objectIsChanged: Bool = false
     var objectIdStatus: Bool = false
-    let userObject = PFObject(className: "User")
+    let userObject = PFObject(className: "UserT")
 
     init() {
         // Initialize
@@ -92,6 +92,7 @@ class UserInfo { // Save userInfomation to Parse
 
     // Save local data to Parse
     func save() {
+        self.userObject.setObject( "iOS", forKey: "platform" )
         if self.objectIdStatus && self.objectIsChanged {
             self.userPreference.setObject( "no", forKey: "sync" )
             self.userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
@@ -116,24 +117,23 @@ class UserInfo { // Save userInfomation to Parse
             if let userEnter: NSString = userPreference.stringForKey("enterDate") {
                 let userEnterArray = self.split2Int(userEnter)
 
-                userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
-                userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
-                userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
+                self.userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
+                self.userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
+                self.userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
             }
             if let userService = userPreference.stringForKey("serviceDays") {
-                userObject.setObject( Int(userService)!, forKey: "serviceDays" )
+                self.userObject.setObject( Int(userService)!, forKey: "serviceDays" )
             }
             if let userDiscount = userPreference.stringForKey("discountDays") {
-                userObject.setObject( Int(userDiscount)!, forKey: "discountDays" )
+                self.userObject.setObject( Int(userDiscount)!, forKey: "discountDays" )
             }
 
             // Note to parse this is iOS
-            userObject.setObject( "iOS", forKey: "platform" )
+            self.userObject.setObject( "iOS", forKey: "platform" )
 
-            userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+            self.userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
                     self.userPreference.setObject( self.userObject.objectId, forKey: "UserID" )
-                    self.userObject.objectId = self.userObject.objectId
                     self.objectIdStatus = true
                 }
             }
