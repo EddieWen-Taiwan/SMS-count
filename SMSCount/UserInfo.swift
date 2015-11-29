@@ -22,6 +22,7 @@ class UserInfo { // Save userInfomation to Parse
             self.userObject.objectId = self.userPreference.stringForKey("UserID")
             self.objectIdStatus = true
         }
+        self.userObject.setObject( "iOS", forKey: "platform" )
     }
 
     // From Facebook API
@@ -92,7 +93,6 @@ class UserInfo { // Save userInfomation to Parse
 
     // Save local data to Parse
     func save() {
-        self.userObject.setObject( "iOS", forKey: "platform" )
         if self.objectIdStatus && self.objectIsChanged {
             self.userPreference.setObject( "no", forKey: "sync" )
             self.userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
@@ -102,6 +102,39 @@ class UserInfo { // Save userInfomation to Parse
             }
             self.objectIsChanged = false
         }
+    }
+
+    // There is not completed task at last time, continue to do it
+    func continueTask() {
+
+        if let fbid = self.userPreference.stringForKey("fb_id") {
+            self.userObject.setObject( fbid, forKey: "fb_id" )
+        }
+        if let name = self.userPreference.stringForKey("username") {
+            self.userObject.setObject( name, forKey: "username" )
+        }
+        if let mail = self.userPreference.stringForKey("email") {
+            self.userObject.setObject( mail, forKey: "email" )
+        }
+        if let userStatus = self.userPreference.stringForKey("status") {
+            self.userObject.setObject( userStatus, forKey: "status" )
+        }
+        if let userEnterDate: NSString = self.userPreference.stringForKey("enterDate") {
+            let userEnterArray = self.split2Int(userEnterDate)
+            self.userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
+            self.userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
+            self.userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
+        }
+        if self.userPreference.stringForKey("serviceDays") != nil {
+            self.userObject.setObject( self.userPreference.integerForKey("serviceDays"), forKey: "serviceDays" )
+        }
+        if self.userPreference.stringForKey("discountDays") != nil {
+            self.userObject.setObject( self.userPreference.integerForKey("discountDays"), forKey: "discountDays" )
+        }
+
+        // Save to Parse
+        self.save()
+g
     }
 
     private func checkObjectId() {
