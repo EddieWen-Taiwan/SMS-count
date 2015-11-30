@@ -43,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.drawerController = DrawerController(centerViewController: rootViewController, leftDrawerViewController: drawerViewController)
         self.drawerController.restorationIdentifier = "Drawer"
-        self.drawerController.maximumLeftDrawerWidth = 240
         self.drawerController.openDrawerGestureModeMask = .All
         self.drawerController.closeDrawerGestureModeMask = .All
         self.window?.rootViewController = self.drawerController
