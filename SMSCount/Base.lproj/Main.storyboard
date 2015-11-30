@@ -24,7 +24,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="XYz-5m-avU"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.22739109848484851" green="0.22739109848484851" blue="0.22739109848484851" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="lb2-oA-kmT"/>
                                 </items>
@@ -47,7 +47,7 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.93333333330000001" green="0.38823529410000002" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nVk-Jx-wsa" firstAttribute="leading" secondItem="Yst-r8-pw8" secondAttribute="leading" constant="30" id="5c7-EI-yD3"/>
                             <constraint firstItem="bES-W8-uKm" firstAttribute="leading" secondItem="Yst-r8-pw8" secondAttribute="leading" constant="30" id="Bqh-Kw-mBG"/>
