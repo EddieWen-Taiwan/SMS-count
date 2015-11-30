@@ -40,8 +40,8 @@ class LeftDrawerViewController: UIViewController {
 
         self.appDelegate.drawerController.centerViewController = rootViewController
         self.appDelegate.drawerController.toggleDrawerSide( DrawerSide.Left, animated: true, completion: { (success: Bool) -> Void in
-            print(success)
-            print("Done")
+//            print(success)
+//            print("Done")
         })
 
     }
