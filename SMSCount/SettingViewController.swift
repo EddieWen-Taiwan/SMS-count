@@ -307,6 +307,17 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                             self.userInfo.updateLocalMail( userMail as! String )
                                         }
 
+                                        let syncAlertController = UIAlertController(title: "是否將資料同步？", message: "", preferredStyle: .Alert)
+                                        let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
+                                            // ...
+                                        })
+                                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+                                        syncAlertController.addAction(yesAction)
+                                        syncAlertController.addAction(noAction)
+                                        self.presentViewController( syncAlertController, animated: true, completion: {
+                                            // ...
+                                        })
+
                                         // MISSION: Ask user whether to download data from Parse or not
                                     }
                                 } else {
