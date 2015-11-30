@@ -77,6 +77,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njw-oA-YRB">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                         <inset key="contentEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Friends">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
