@@ -22,6 +22,8 @@ class UserInfo { // Save userInfomation to Parse
             userObject.objectId = self.userPreference.stringForKey("UserID")
             self.objectIdStatus = true
         }
+
+        // Note to parse this is iOS
         userObject.setObject( "iOS", forKey: "platform" )
     }
 
@@ -166,9 +168,6 @@ class UserInfo { // Save userInfomation to Parse
             if let userDiscount = userPreference.stringForKey("discountDays") {
                 userObject.setObject( Int(userDiscount)!, forKey: "discountDays" )
             }
-
-            // Note to parse this is iOS
-            userObject.setObject( "iOS", forKey: "platform" )
 
             userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
