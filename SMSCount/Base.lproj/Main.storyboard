@@ -39,13 +39,11 @@
                                             <constraint firstAttribute="height" constant="24" id="Suc-HW-avV"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQp-s6-79N">
-                                        <rect key="frame" x="20" y="0.0" width="160" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQp-s6-79N">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="160" id="GiO-fE-lTR"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Home"/>
                                         <connections>
                                             <action selector="goMainTabBarController:" destination="7aD-15-c2R" eventType="touchUpInside" id="IuD-Fa-etn"/>
@@ -54,10 +52,11 @@
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="hQp-s6-79N" firstAttribute="leading" secondItem="v41-lR-QJA" secondAttribute="leading" constant="20" id="Hbe-Dm-x1S"/>
+                                    <constraint firstItem="hQp-s6-79N" firstAttribute="leading" secondItem="v41-lR-QJA" secondAttribute="leading" id="Hbe-Dm-x1S"/>
                                     <constraint firstItem="VYd-e5-7Lr" firstAttribute="leading" secondItem="v41-lR-QJA" secondAttribute="leading" constant="30" id="Uny-oI-bbf"/>
                                     <constraint firstAttribute="bottom" secondItem="hQp-s6-79N" secondAttribute="bottom" id="bLx-2e-cZN"/>
                                     <constraint firstItem="hQp-s6-79N" firstAttribute="top" secondItem="v41-lR-QJA" secondAttribute="top" id="cH5-FT-0JH"/>
+                                    <constraint firstAttribute="trailing" secondItem="hQp-s6-79N" secondAttribute="trailing" id="kgr-bX-8sZ"/>
                                     <constraint firstItem="VYd-e5-7Lr" firstAttribute="centerY" secondItem="v41-lR-QJA" secondAttribute="centerY" id="mal-7S-3JH"/>
                                     <constraint firstAttribute="height" constant="60" id="p8z-bd-bgv"/>
                                 </constraints>
@@ -73,22 +72,21 @@
                                             <constraint firstAttribute="width" constant="24" id="YmO-qQ-b4s"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njw-oA-YRB">
-                                        <rect key="frame" x="20" y="0.0" width="170" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njw-oA-YRB">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="170" id="1y2-kR-xrm"/>
-                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Friends"/>
                                     </button>
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="Njw-oA-YRB" firstAttribute="leading" secondItem="9aa-MW-BEr" secondAttribute="leading" constant="20" id="Fbr-DP-eH4"/>
+                                    <constraint firstItem="Njw-oA-YRB" firstAttribute="leading" secondItem="9aa-MW-BEr" secondAttribute="leading" id="Fbr-DP-eH4"/>
                                     <constraint firstAttribute="height" constant="60" id="OwW-gV-x34"/>
                                     <constraint firstItem="28e-3Q-pA2" firstAttribute="centerY" secondItem="9aa-MW-BEr" secondAttribute="centerY" id="STs-4I-vRb"/>
                                     <constraint firstItem="Njw-oA-YRB" firstAttribute="top" secondItem="9aa-MW-BEr" secondAttribute="top" id="T2u-lU-jqY"/>
                                     <constraint firstItem="28e-3Q-pA2" firstAttribute="leading" secondItem="9aa-MW-BEr" secondAttribute="leading" constant="30" id="VQE-65-OQP"/>
+                                    <constraint firstAttribute="trailing" secondItem="Njw-oA-YRB" secondAttribute="trailing" id="cYB-bi-f53"/>
                                     <constraint firstAttribute="bottom" secondItem="Njw-oA-YRB" secondAttribute="bottom" id="gHs-kh-coF"/>
                                 </constraints>
                             </view>
