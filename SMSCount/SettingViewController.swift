@@ -83,7 +83,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
 
         // About FB login button
-        if FBSDKAccessToken.currentAccessToken() == nil {
+//        if FBSDKAccessToken.currentAccessToken() == nil {
             self.FBLoginView.hidden = false
             self.topConstraint.constant = 104
             // FB Login
@@ -94,7 +94,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
             loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
             loginView.delegate = self
-        }
+//        }
 
         self.userInfo = UserInfo()
     }
