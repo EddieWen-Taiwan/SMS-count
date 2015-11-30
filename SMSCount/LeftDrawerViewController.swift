@@ -11,7 +11,8 @@ import DrawerController
 
 class LeftDrawerViewController: UIViewController {
 
-    var storyborad: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    let mainStoryborad = UIStoryboard(name: "Main", bundle: nil)
+    let friendsStroyboard = UIStoryboard(name: "Friends", bundle: nil)
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
@@ -25,15 +26,15 @@ class LeftDrawerViewController: UIViewController {
     }
     
     @IBAction func goMainTabBarController(sender: AnyObject) {
-        let rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController")
+        let rootViewController = self.mainStoryborad.instantiateViewControllerWithIdentifier("TabBarController")
 
-        self.switchRootViewController(rootViewController!)
+        self.switchRootViewController(rootViewController)
     }
 
     @IBAction func goFriendListController(sender: AnyObject) {
-        let rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FriendListController")
+        let rootViewController = self.friendsStroyboard.instantiateViewControllerWithIdentifier("FriendListController")
 
-        self.switchRootViewController(rootViewController!)
+        self.switchRootViewController(rootViewController)
     }
 
     func switchRootViewController( rootViewController: UIViewController ) {
