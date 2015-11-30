@@ -30,11 +30,11 @@ class LeftDrawerViewController: UIViewController {
         self.switchRootViewController(rootViewController!)
     }
 
-//    @IBAction func goFriendListController(sender: AnyObject) {
-//        let rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FriendListController")
-//
-//        self.switchRootViewController(rootViewController!)
-//    }
+    @IBAction func goFriendListController(sender: AnyObject) {
+        let rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("FriendListController")
+
+        self.switchRootViewController(rootViewController!)
+    }
 
     func switchRootViewController( rootViewController: UIViewController ) {
 
