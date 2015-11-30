@@ -24,6 +24,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="XYz-5m-avU"/>
                                 </constraints>
+                                <color key="barTintColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="lb2-oA-kmT"/>
                                 </items>
@@ -277,6 +278,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Cbw-Sp-UV1"/>
                                 </constraints>
+                                <color key="barTintColor" red="1" green="0.80784313725490198" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
@@ -617,6 +619,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="v6y-Vi-9Za"/>
                                 </constraints>
+                                <color key="barTintColor" red="1" green="0.80784313725490198" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
@@ -1187,6 +1190,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="aOu-Fe-D8k"/>
                                 </constraints>
+                                <color key="barTintColor" red="1" green="0.80784313725490198" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
