@@ -315,14 +315,15 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                             messageContent += "\(user.valueForKey("dateOfEnterDate")!)\n"
                                         }
                                         if let service = user.valueForKey("serviceDays") {
-                                            messageContent += "役期天數：\(service)\n"
+                                            let serviceStr: String = self.calculateHelper.switchPeriod( String(service) )
+                                            messageContent += "役期天數：\(serviceStr)\n"
                                         }
                                         if let discount = user.valueForKey("discountDays") {
-                                            messageContent += "折抵天數：\(discount)"
+                                            messageContent += "折抵天數：\(discount)天"
                                         }
 
                                         // Ask user whether to download data from Parse or not
-                                        let syncAlertController = UIAlertController(title: "是否將資料同步？", message: messageContent, preferredStyle: .Alert)
+                                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
                                         let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
                                             // ...
                                         })
