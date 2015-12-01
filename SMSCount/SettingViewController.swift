@@ -350,7 +350,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                                 self.discountDaysLabel.text = String(newDiscountDays)
                                             }
                                         })
-                                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+                                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
+                                            // upload to Parse
+                                        })
                                         syncAlertController.addAction(yesAction)
                                         syncAlertController.addAction(noAction)
 
