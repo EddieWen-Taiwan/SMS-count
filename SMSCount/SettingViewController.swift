@@ -307,7 +307,22 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                             self.userInfo.updateLocalMail( userMail as! String )
                                         }
 
-                                        let syncAlertController = UIAlertController(title: "是否將資料同步？", message: "", preferredStyle: .Alert)
+                                        // Make message of detail data
+                                        var messageContent = ""
+                                        if let year = user.valueForKey("yearOfEnterDate") {
+                                            messageContent += "入伍日期：\(year) / "
+                                            messageContent += "\(user.valueForKey("monthOfEnterDate")!) / "
+                                            messageContent += "\(user.valueForKey("dateOfEnterDate")!)\n"
+                                        }
+                                        if let service = user.valueForKey("serviceDays") {
+                                            messageContent += "役期天數：\(service)\n"
+                                        }
+                                        if let discount = user.valueForKey("discountDays") {
+                                            messageContent += "折抵天數：\(discount)"
+                                        }
+
+                                        // Ask user whether to download data from Parse or not
+                                        let syncAlertController = UIAlertController(title: "是否將資料同步？", message: messageContent, preferredStyle: .Alert)
                                         let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
                                             // ...
                                         })
@@ -318,7 +333,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                             // ...
                                         })
 
-                                        // MISSION: Ask user whether to download data from Parse or not
                                     }
                                 } else {
                                     // Update user email, name .... by objectId
