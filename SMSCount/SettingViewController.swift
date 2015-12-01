@@ -314,17 +314,19 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         var newDiscountDays: Int = -1
 
                                         if let year = user.valueForKey("yearOfEnterDate") {
-                                            messageContent += "入伍日期："
                                             let month = (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0"+String(user.valueForKey("monthOfEnterDate")!) : user.valueForKey("monthOfEnterDate")!
+                                            // Store data
                                             newEnterDate = "\(year) / \(month) / \(user.valueForKey("dateOfEnterDate")!)"
-                                            messageContent += "\(newEnterDate)\n"
+                                            messageContent += "入伍日期：\(newEnterDate)\n"
                                         }
                                         if let service = user.valueForKey("serviceDays") {
+                                            // Store data
                                             newServiceDays = service as! Int
                                             let serviceStr: String = self.calculateHelper.switchPeriod( String(service) )
                                             messageContent += "役期天數：\(serviceStr)\n"
                                         }
                                         if let discount = user.valueForKey("discountDays") {
+                                            // Store data
                                             newDiscountDays = discount as! Int
                                             messageContent += "折抵天數：\(discount)天"
                                         }
