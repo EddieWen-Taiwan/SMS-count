@@ -309,10 +309,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
                                         // Make message of detail data
                                         var messageContent = ""
+                                        var newEnterDate = ""
                                         if let year = user.valueForKey("yearOfEnterDate") {
-                                            messageContent += "入伍日期：\(year) / "
-                                            messageContent += "\(user.valueForKey("monthOfEnterDate")!) / "
-                                            messageContent += "\(user.valueForKey("dateOfEnterDate")!)\n"
+                                            messageContent += "入伍日期："
+                                            let month = (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0"+String(user.valueForKey("monthOfEnterDate")!) : user.valueForKey("monthOfEnterDate")!
+                                            newEnterDate = "\(year) / \(month) / \(user.valueForKey("dateOfEnterDate")!)"
+                                            messageContent += "\(newEnterDate)\n"
                                         }
                                         if let service = user.valueForKey("serviceDays") {
                                             let serviceStr: String = self.calculateHelper.switchPeriod( String(service) )
@@ -325,6 +327,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         // Ask user whether to download data from Parse or not
                                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
                                         let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
+                                            // EnterDate
+                                            // ...
+                                            // ServiceDays
+                                            // ...
+                                            // DiscountDays
                                             // ...
                                         })
                                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
