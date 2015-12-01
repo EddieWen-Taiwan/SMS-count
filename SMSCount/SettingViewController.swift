@@ -312,6 +312,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         var newEnterDate = ""
                                         var newServiceDays: Int = -1
                                         var newDiscountDays: Int = -1
+
                                         if let year = user.valueForKey("yearOfEnterDate") {
                                             messageContent += "入伍日期："
                                             let month = (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0"+String(user.valueForKey("monthOfEnterDate")!) : user.valueForKey("monthOfEnterDate")!
