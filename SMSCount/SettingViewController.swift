@@ -310,6 +310,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         // Make message of detail data
                                         var messageContent = ""
                                         var newEnterDate = ""
+                                        var newServiceDays: Int = -1
+                                        var newDiscountDays: Int = -1
                                         if let year = user.valueForKey("yearOfEnterDate") {
                                             messageContent += "入伍日期："
                                             let month = (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0"+String(user.valueForKey("monthOfEnterDate")!) : user.valueForKey("monthOfEnterDate")!
@@ -317,10 +319,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                             messageContent += "\(newEnterDate)\n"
                                         }
                                         if let service = user.valueForKey("serviceDays") {
+                                            newServiceDays = service as! Int
                                             let serviceStr: String = self.calculateHelper.switchPeriod( String(service) )
                                             messageContent += "役期天數：\(serviceStr)\n"
                                         }
                                         if let discount = user.valueForKey("discountDays") {
+                                            newDiscountDays = discount as! Int
                                             messageContent += "折抵天數：\(discount)天"
                                         }
 
