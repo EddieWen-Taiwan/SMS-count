@@ -330,9 +330,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
                                         syncAlertController.addAction(yesAction)
                                         syncAlertController.addAction(noAction)
-                                        self.presentViewController( syncAlertController, animated: true, completion: {
-                                            // ...
-                                        })
+                                        self.presentViewController( syncAlertController, animated: true, completion: nil)
 
                                     }
                                 } else {
