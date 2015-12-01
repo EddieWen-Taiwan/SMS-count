@@ -307,7 +307,57 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                             self.userInfo.updateLocalMail( userMail as! String )
                                         }
 
-                                        // MISSION: Ask user whether to download data from Parse or not
+                                        // Make message of detail data
+                                        var messageContent = ""
+                                        var newEnterDate = ""
+                                        var newServiceDays: Int = -1
+                                        var newDiscountDays: Int = -1
+
+                                        if let year = user.valueForKey("yearOfEnterDate") {
+                                            let month = (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0"+String(user.valueForKey("monthOfEnterDate")!) : user.valueForKey("monthOfEnterDate")!
+                                            // Store data
+                                            newEnterDate = "\(year) / \(month) / \(user.valueForKey("dateOfEnterDate")!)"
+                                            messageContent += "入伍日期：\(newEnterDate)\n"
+                                        }
+                                        if let service = user.valueForKey("serviceDays") {
+                                            // Store data
+                                            newServiceDays = service as! Int
+                                            let serviceStr: String = self.calculateHelper.switchPeriod( String(service) )
+                                            messageContent += "役期天數：\(serviceStr)\n"
+                                        }
+                                        if let discount = user.valueForKey("discountDays") {
+                                            // Store data
+                                            newDiscountDays = discount as! Int
+                                            messageContent += "折抵天數：\(discount)天"
+                                        }
+
+                                        // Ask user whether to download data from Parse or not
+                                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
+                                        let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
+                                            // EnterDate
+                                            if newEnterDate != "" {
+                                                self.userPreference.setObject( newEnterDate, forKey: "enterDate")
+                                                self.enterDateLabel.text = newEnterDate
+                                            }
+                                            // ServiceDays
+                                            if newServiceDays != -1 {
+                                                self.userPreference.setInteger( newServiceDays, forKey: "serviceDays")
+                                                self.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
+                                            }
+                                            // DiscountDays
+                                            if newDiscountDays != -1 {
+                                                self.userPreference.setInteger( newDiscountDays, forKey: "discountDays")
+                                                self.discountDaysLabel.text = String(newDiscountDays)
+                                            }
+                                        })
+                                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
+                                            // upload to Parse
+                                        })
+                                        syncAlertController.addAction(yesAction)
+                                        syncAlertController.addAction(noAction)
+
+                                        self.presentViewController( syncAlertController, animated: true, completion: nil)
+
                                     }
                                 } else {
                                     // Update user email, name .... by objectId
