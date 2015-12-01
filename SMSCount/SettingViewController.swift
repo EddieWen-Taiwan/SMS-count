@@ -336,15 +336,18 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
                                             // EnterDate
                                             if newEnterDate != "" {
-                                                
+                                                self.userPreference.setObject( newEnterDate, forKey: "enterDate")
+                                                self.enterDateLabel.text = newEnterDate
                                             }
                                             // ServiceDays
                                             if newServiceDays != -1 {
-                                                
+                                                self.userPreference.setInteger( newServiceDays, forKey: "serviceDays")
+                                                self.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
                                             }
                                             // DiscountDays
                                             if newDiscountDays != -1 {
-                                                
+                                                self.userPreference.setInteger( newDiscountDays, forKey: "discountDays")
+                                                self.discountDaysLabel.text = String(newDiscountDays)
                                             }
                                         })
                                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
