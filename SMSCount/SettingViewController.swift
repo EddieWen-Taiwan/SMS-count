@@ -335,17 +335,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
                                         let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
                                             // EnterDate
-                                            // ...
                                             if newEnterDate != "" {
                                                 
                                             }
                                             // ServiceDays
-                                            // ...
                                             if newServiceDays != -1 {
                                                 
                                             }
                                             // DiscountDays
-                                            // ...
                                             if newDiscountDays != -1 {
                                                 
                                             }
