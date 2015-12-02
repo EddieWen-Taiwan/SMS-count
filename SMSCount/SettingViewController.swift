@@ -312,7 +312,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         var newEnterDate = ""
                                         var newServiceDays: Int = -1
                                         var newDiscountDays: Int = -1
+                                        var newStatus = ""
 
+                                        if user.valueForKey("status") != nil {
+                                            newStatus = user.valueForKey("status") as! String
+                                        }
                                         if let year = user.valueForKey("yearOfEnterDate") {
                                             let month = (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0"+String(user.valueForKey("monthOfEnterDate")!) : user.valueForKey("monthOfEnterDate")!
                                             // Store data
@@ -335,12 +339,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
                                         let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
                                             // Status
-                                            if user.valueForKey("status") != nil {
-                                                let status = user.valueForKey("status") as! String
-                                                if status != "" {
-                                                    self.userPreference.setObject( status, forKey: "status")
-                                                    self.statusLabel.text = status
-                                                }
+                                            if newStatus != "" {
+                                                self.userPreference.setObject( newStatus, forKey: "status")
+                                                self.statusLabel.text = newStatus
                                             }
                                             // EnterDate
                                             if newEnterDate != "" {
