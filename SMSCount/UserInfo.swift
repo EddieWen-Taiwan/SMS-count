@@ -140,6 +140,7 @@ class UserInfo { // Save userInfomation to Parse
             userObject.setObject( self.userPreference.integerForKey("discountDays"), forKey: "discountDays" )
         }
 
+        self.objectIsChanged = true
         // Save to Parse
         self.save()
 
