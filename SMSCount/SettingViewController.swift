@@ -334,6 +334,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         // Ask user whether to download data from Parse or not
                                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
                                         let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
+                                            // Status
+                                            if user.valueForKey("status") != nil {
+                                                let status = user.valueForKey("status") as! String
+                                                if status != "" {
+                                                    self.userPreference.setObject( status, forKey: "status")
+                                                    self.statusLabel.text = status
+                                                }
+                                            }
                                             // EnterDate
                                             if newEnterDate != "" {
                                                 self.userPreference.setObject( newEnterDate, forKey: "enterDate")
