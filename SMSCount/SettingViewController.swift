@@ -361,7 +361,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                             }
                                         })
                                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
-                                            // upload to Parse
+                                            self.userInfo.uploadAllData()
                                         })
                                         syncAlertController.addAction(yesAction)
                                         syncAlertController.addAction(noAction)
