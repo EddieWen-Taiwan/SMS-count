@@ -113,7 +113,7 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     // There is not completed task at last time, continue to do it
-    func continueUploadTask() {
+    func uploadAllData() {
 
         if let fbid = self.userPreference.stringForKey("fb_id") {
             userObject.setObject( fbid, forKey: "fb_id" )
