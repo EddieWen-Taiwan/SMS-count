@@ -319,8 +319,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         }
                                         if let year = user.valueForKey("yearOfEnterDate") {
                                             let month = ( (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.valueForKey("monthOfEnterDate")!)
+                                            let date = ( (user.valueForKey("dateOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.valueForKey("dateOfEnterDate")!)
                                             // Store data
-                                            newEnterDate = "\(year) / \(month) / \(user.valueForKey("dateOfEnterDate")!)"
+                                            newEnterDate = "\(year) / \(month) / \(date)"
                                             messageContent += "入伍日期：\(newEnterDate)\n"
                                         }
                                         if let service = user.valueForKey("serviceDays") {
