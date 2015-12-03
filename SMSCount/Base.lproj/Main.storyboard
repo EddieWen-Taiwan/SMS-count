@@ -615,10 +615,10 @@
             </objects>
             <point key="canvasLocation" x="379" y="1153"/>
         </scene>
-        <!--View Controller-->
+        <!--Friends View Controller-->
         <scene sceneID="lhv-bI-ZFg">
             <objects>
-                <viewController id="VEB-9J-HFe" sceneMemberID="viewController">
+                <viewController id="VEB-9J-HFe" customClass="FriendsViewController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AVu-Vt-qVq"/>
                         <viewControllerLayoutGuide type="bottom" id="3hM-Sm-gWw"/>
