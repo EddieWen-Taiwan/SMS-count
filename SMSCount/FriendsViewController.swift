@@ -21,19 +21,17 @@ class FriendsViewController: UIViewController {
             friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
             
                 if error == nil {
-                    var friendIdArray: [String] = []
+                    var friendArray: [String] = []
                     if let users = result.valueForKey("data") {
                         for user in users as! [AnyObject] {
-                            friendIdArray.append( user.valueForKey("id") as! String )
+                            friendArray.append( user.valueForKey("id") as! String )
                         }
                     }
-//                    let aa = PFQuery(className: "User")
-//                    aa.whereKey( "fb_id", containedIn: ["1253866021297652","10205365288114470"])
-//                    aa.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-//                        print("OUTCOME -------")
-//                        print(objects)
-//                        print(error)
-//                    })
+                    let friendsDetail = PFQuery(className: "User")
+                    friendsDetail.whereKey( "fb_id", containedIn: friendArray )
+                    friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                        print(objects)
+                    })
                 }
 
             }
