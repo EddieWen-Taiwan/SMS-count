@@ -12,7 +12,8 @@ import DrawerController
 class LeftDrawerViewController: UIViewController {
 
     let mainStoryborad = UIStoryboard(name: "Main", bundle: nil)
-    let friendsStroyboard = UIStoryboard(name: "Friends", bundle: nil)
+    let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
+
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -39,8 +40,8 @@ class LeftDrawerViewController: UIViewController {
         self.switchRootViewController(rootViewController)
     }
 
-    @IBAction func goFriendListController(sender: AnyObject) {
-        let rootViewController = self.friendsStroyboard.instantiateViewControllerWithIdentifier("FriendListController")
+    @IBAction func goSettingViewController(sender: AnyObject) {
+        let rootViewController = self.settingStoryboard.instantiateViewControllerWithIdentifier("SettingViewController")
 
         self.switchRootViewController(rootViewController)
     }
