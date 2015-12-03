@@ -615,7 +615,7 @@
             </objects>
             <point key="canvasLocation" x="379" y="1153"/>
         </scene>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="lhv-bI-ZFg">
             <objects>
                 <viewController id="VEB-9J-HFe" sceneMemberID="viewController">
@@ -629,7 +629,14 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Gve-DP-PaG"/>
+                    <tabBarItem key="tabBarItem" title="" image="friends" id="Gve-DP-PaG">
+                        <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9b-Li-JQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -662,6 +669,7 @@
         <image name="background" width="400" height="400"/>
         <image name="chart" width="30" height="30"/>
         <image name="data" width="30" height="30"/>
+        <image name="friends" width="30" height="30"/>
         <image name="logout" width="30" height="30"/>
         <image name="passedDays" width="30" height="30"/>
         <image name="person" width="30" height="30"/>
