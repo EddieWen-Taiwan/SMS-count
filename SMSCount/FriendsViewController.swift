@@ -25,11 +25,8 @@ class FriendsViewController: UIViewController {
                 print("Friends list -------")
 //                print(result)
                 if let users = result.valueForKey("data") {
-//                    print( users )
-//                    print( users[0] )
-//                    print( users[0].valueForKey("id") )
                     for user in users as! [AnyObject] {
-                        print(user)
+                        print( user.valueForKey("id") )
                     }
                 }
             }
