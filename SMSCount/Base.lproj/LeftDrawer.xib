@@ -63,7 +63,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUx-0S-2uz">
                     <rect key="frame" x="0.0" y="144" width="600" height="60"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Vv-2Ih">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Vv-2Ih">
                             <rect key="frame" x="20" y="18" width="24" height="24"/>
                             <animations/>
                             <constraints>
@@ -76,7 +76,7 @@
                             <animations/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="Friends">
+                            <state key="normal" title="Setting">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -134,7 +134,7 @@
     </objects>
     <resources>
         <image name="DrawerBackground" width="320" height="640"/>
-        <image name="friends" width="24" height="24"/>
         <image name="home" width="24" height="24"/>
+        <image name="setting" width="30" height="30"/>
     </resources>
 </document>
