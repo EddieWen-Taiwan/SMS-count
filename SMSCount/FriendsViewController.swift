@@ -15,6 +15,7 @@ class FriendsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        if Reachability().isConnectedToNetwork() {
         // Request for friendList
         let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
         friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
@@ -39,6 +40,9 @@ class FriendsViewController: UIViewController {
 //                })
             }
             
+        }
+        } else {
+            // without Internet
         }
     }
 
