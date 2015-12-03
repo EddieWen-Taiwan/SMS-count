@@ -615,6 +615,26 @@
             </objects>
             <point key="canvasLocation" x="379" y="1153"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="lhv-bI-ZFg">
+            <objects>
+                <viewController id="VEB-9J-HFe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AVu-Vt-qVq"/>
+                        <viewControllerLayoutGuide type="bottom" id="3hM-Sm-gWw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j0V-OV-ZwS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Gve-DP-PaG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9b-Li-JQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1287" y="1153"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8DF-L5-HKD">
             <objects>
@@ -630,6 +650,7 @@
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="7ad-qR-WPF"/>
                         <segue destination="L92-j8-KKk" kind="relationship" relationship="viewControllers" id="JEG-c5-08S"/>
+                        <segue destination="VEB-9J-HFe" kind="relationship" relationship="viewControllers" id="GJG-eK-gdL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMP-zj-LVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
