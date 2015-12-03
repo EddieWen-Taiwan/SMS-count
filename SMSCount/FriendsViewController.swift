@@ -13,6 +13,28 @@ class FriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        // Request for friendKist
+        let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
+        friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+            
+            if error != nil {
+                print("ERROR -------")
+                print(error)
+            } else {
+                print("Friends list -------")
+//                print(result)
+                if let users = result.valueForKey("data") {
+//                    print( users )
+//                    print( users[0] )
+//                    print( users[0].valueForKey("id") )
+                    for user in users as! [AnyObject] {
+                        print(user)
+                    }
+                }
+            }
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
