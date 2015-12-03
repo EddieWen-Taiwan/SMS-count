@@ -16,31 +16,31 @@ class FriendsViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         if Reachability().isConnectedToNetwork() {
-        // Request for friendList
-        let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
-        friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+            // Request for friendList
+            let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
+            friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
             
-            if error != nil {
-                print("ERROR -------")
-                print(error)
-            } else {
-                print("Friends list -------")
-//                print(result)
-                if let users = result.valueForKey("data") {
-                    for user in users as! [AnyObject] {
-                        print( user.valueForKey("id") )
+                if error != nil {
+                    print("ERROR -------")
+                    print(error)
+                } else {
+                    print("Friends list -------")
+                    print(result)
+                    if let users = result.valueForKey("data") {
+                        for user in users as! [AnyObject] {
+                            print( user.valueForKey("id") )
+                        }
                     }
+//                    let aa = PFQuery(className: "User")
+//                    aa.whereKey( "fb_id", containedIn: ["1253866021297652","10205365288114470"])
+//                    aa.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+//                        print("OUTCOME -------")
+//                        print(objects)
+//                        print(error)
+//                    })
                 }
-//                let aa = PFQuery(className: "User")
-//                aa.whereKey( "fb_id", containedIn: ["1253866021297652","10205365288114470"])
-//                aa.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-//                    print("OUTCOME -------")
-//                    print(objects)
-//                    print(error)
-//                })
+
             }
-            
-        }
         } else {
             // without Internet
         }
