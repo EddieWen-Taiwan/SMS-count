@@ -20,15 +20,11 @@ class FriendsViewController: UIViewController {
             let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
             friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
             
-                if error != nil {
-                    print("ERROR -------")
-                    print(error)
-                } else {
-                    print("Friends list -------")
-                    print(result)
+                if error == nil {
+                    var friendIdArray: [String] = []
                     if let users = result.valueForKey("data") {
                         for user in users as! [AnyObject] {
-                            print( user.valueForKey("id") )
+                            friendIdArray.append( user.valueForKey("id") as! String )
                         }
                     }
 //                    let aa = PFQuery(className: "User")
