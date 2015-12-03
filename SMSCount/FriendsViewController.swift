@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class FriendsViewController: UIViewController {
 
@@ -29,6 +30,13 @@ class FriendsViewController: UIViewController {
                         print( user.valueForKey("id") )
                     }
                 }
+//                let aa = PFQuery(className: "User")
+//                aa.whereKey( "fb_id", containedIn: ["1253866021297652","10205365288114470"])
+//                aa.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+//                    print("OUTCOME -------")
+//                    print(objects)
+//                    print(error)
+//                })
             }
             
         }
