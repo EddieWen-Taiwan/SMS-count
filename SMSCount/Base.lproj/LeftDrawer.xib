@@ -43,6 +43,9 @@
                             <state key="normal" title="Home">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="goMainTabBarController:" destination="-1" eventType="touchUpInside" id="Y81-uT-4dn"/>
+                            </connections>
                         </button>
                     </subviews>
                     <animations/>
@@ -76,6 +79,9 @@
                             <state key="normal" title="Friends">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="goSettingViewController:" destination="-1" eventType="touchUpInside" id="BjH-YP-GhS"/>
+                            </connections>
                         </button>
                     </subviews>
                     <animations/>
