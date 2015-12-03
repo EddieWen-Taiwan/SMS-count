@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: DrawerController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let rootViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
-        let drawerViewController = storyboard.instantiateViewControllerWithIdentifier("DrawerViewController")
+        let drawerViewController = LeftDrawerViewController(nibName: "LeftDrawer", bundle: nil)
 
         self.drawerController = DrawerController(centerViewController: rootViewController, leftDrawerViewController: drawerViewController)
         self.drawerController.restorationIdentifier = "Drawer"
