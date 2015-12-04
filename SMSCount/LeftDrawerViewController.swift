@@ -41,7 +41,7 @@ class LeftDrawerViewController: UIViewController {
     }
 
     @IBAction func goSettingViewController(sender: AnyObject) {
-        let rootViewController = self.settingStoryboard.instantiateViewControllerWithIdentifier("SettingViewController")
+        let rootViewController = self.settingStoryboard.instantiateViewControllerWithIdentifier("NavigationOfSettingVC")
 
         self.switchRootViewController(rootViewController)
     }

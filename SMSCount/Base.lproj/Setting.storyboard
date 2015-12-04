@@ -89,7 +89,7 @@
         <!--阿替倒數中-->
         <scene sceneID="0Td-vm-vAX">
             <objects>
-                <viewController id="TXv-9S-kLZ" customClass="SettingViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" id="TXv-9S-kLZ" customClass="SettingViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5jD-Yb-wGa"/>
                         <viewControllerLayoutGuide type="bottom" id="XGt-dK-Gtb"/>
@@ -650,7 +650,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GBs-hG-tdN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yIk-nW-5qD" customClass="NavigationController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationOfSettingVC" automaticallyAdjustsScrollViewInsets="NO" id="yIk-nW-5qD" customClass="NavigationController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="setting" id="hxV-he-jCt">
                         <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
                         <userDefinedRuntimeAttributes>
