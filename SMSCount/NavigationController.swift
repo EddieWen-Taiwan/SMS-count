@@ -21,6 +21,10 @@ class NavigationController: UINavigationController {
         self.navigationBar.setBackgroundImage( UIImage(named: "standard-color"), forBarMetrics: .Default )
         self.navigationBar.shadowImage = UIImage()
 
+        // Add shadow to navigation bar
+        self.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.navigationBar.layer.shadowOpacity = 0.4
+
         // Set style of NavigationBar
         self.navigationBar.barTintColor = UIColor(red: 255/255, green: 206/255, blue: 84/255, alpha: 1)
         self.navigationBar.tintColor = UIColor.whiteColor()
