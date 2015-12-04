@@ -6,7 +6,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Count View Controller-->
+        <!--阿替倒數中-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="CountViewController" customModule="SMSCount" sceneMemberID="viewController">
@@ -228,7 +228,13 @@
                             <constraint firstAttribute="trailing" secondItem="sY1-RK-Tl8" secondAttribute="trailing" id="zk8-eZ-8IV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IhC-IH-OFw"/>
+                    <navigationItem key="navigationItem" title="阿替倒數中" id="IhC-IH-OFw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="lLe-yv-BjF">
+                            <connections>
+                                <action selector="pressShareButton:" destination="vXZ-lx-hvc" id="Cte-3e-04b"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backRemainedDaysLabel" destination="NyZ-Jo-ImC" id="Bgo-yL-duS"/>
                         <outlet property="backRemainedDaysWord" destination="0oN-8k-ZGV" id="rnI-uH-6mF"/>
