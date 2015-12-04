@@ -533,7 +533,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="阿替倒數中" id="rTJ-2w-lpI"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="finalRetireDateLabel" destination="6QW-d5-bMB" id="FBl-Mu-RAr"/>
                         <outlet property="passedDaysLabel" destination="iIj-xA-Bqs" id="fNv-AO-q44"/>
