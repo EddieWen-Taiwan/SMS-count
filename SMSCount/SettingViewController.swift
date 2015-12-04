@@ -130,9 +130,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func editEnterDate(sender: AnyObject) {
 
-        self.serviceDaysPickerViewBottomConstraint.constant = -250
-        self.discountDaysPickerViewBottomConstraint.constant = -250
-        self.datepickerViewBottomConstraint.constant = -50
+        self.serviceDaysPickerViewBottomConstraint.constant = -200
+        self.discountDaysPickerViewBottomConstraint.constant = -200
+        self.datepickerViewBottomConstraint.constant = 0
         self.screenMask.tag = 1
 
         self.showPickerView()
@@ -145,9 +145,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func editServiceDays(sender: AnyObject) {
 
-        self.datepickerViewBottomConstraint.constant = -250
-        self.discountDaysPickerViewBottomConstraint.constant = -250
-        self.serviceDaysPickerViewBottomConstraint.constant = -50
+        self.datepickerViewBottomConstraint.constant = -200
+        self.discountDaysPickerViewBottomConstraint.constant = -200
+        self.serviceDaysPickerViewBottomConstraint.constant = 0
         self.screenMask.tag = 2
 
         self.showPickerView()
@@ -160,9 +160,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func editDiscountDays(sender: AnyObject) {
 
-        self.datepickerViewBottomConstraint.constant = -250
-        self.serviceDaysPickerViewBottomConstraint.constant = -250
-        self.discountDaysPickerViewBottomConstraint.constant = -50
+        self.datepickerViewBottomConstraint.constant = -200
+        self.serviceDaysPickerViewBottomConstraint.constant = -200
+        self.discountDaysPickerViewBottomConstraint.constant = 0
         self.screenMask.tag = 3
 
         self.showPickerView()
@@ -245,9 +245,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     func dismissRelativeViews() {
-        self.datepickerViewBottomConstraint.constant = -250
-        self.serviceDaysPickerViewBottomConstraint.constant = -250
-        self.discountDaysPickerViewBottomConstraint.constant = -250
+        self.datepickerViewBottomConstraint.constant = -200
+        self.serviceDaysPickerViewBottomConstraint.constant = -200
+        self.discountDaysPickerViewBottomConstraint.constant = -200
 
         UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.view.layoutIfNeeded()
