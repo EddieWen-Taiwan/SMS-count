@@ -39,13 +39,17 @@ class FriendsViewController: UIViewController {
             // without Internet
         }
 
-        let drawerItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "")
+        let drawerItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "test")
         self.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func test() {
+        print("Press")
     }
 
     /*
