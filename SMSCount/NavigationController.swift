@@ -17,6 +17,10 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        // Remove bottom border of navigation bar
+        self.navigationBar.setBackgroundImage( UIImage(named: "standard-color"), forBarMetrics: .Default )
+        self.navigationBar.shadowImage = UIImage()
+
         // Set style of NavigationBar
         self.navigationBar.barTintColor = UIColor(red: 255/255, green: 206/255, blue: 84/255, alpha: 1)
         self.navigationBar.tintColor = UIColor.whiteColor()
