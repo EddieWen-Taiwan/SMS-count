@@ -556,49 +556,17 @@
                                     <constraint firstAttribute="trailing" secondItem="eJS-bp-Mhy" secondAttribute="trailing" id="qoa-ES-sOv"/>
                                 </constraints>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42o-T5-48Z">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="v6y-Vi-9Za"/>
-                                </constraints>
-                                <color key="barTintColor" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="阿替倒數中" id="cZt-Ng-nRU"/>
-                                </items>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                        <real key="value" value="0.20000000000000001"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                        <size key="value" width="0.0" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </navigationBar>
                         </subviews>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="42o-T5-48Z" secondAttribute="trailing" id="18n-wl-UEc"/>
                             <constraint firstItem="Tlm-uS-yDp" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="5j1-Vk-08Z"/>
-                            <constraint firstItem="42o-T5-48Z" firstAttribute="leading" secondItem="nSo-7u-Zv2" secondAttribute="leading" id="LR8-z5-PcR"/>
-                            <constraint firstItem="Tlm-uS-yDp" firstAttribute="top" secondItem="42o-T5-48Z" secondAttribute="bottom" id="Y4R-E5-Qpb"/>
+                            <constraint firstItem="Tlm-uS-yDp" firstAttribute="top" secondItem="fyC-rT-2BF" secondAttribute="bottom" id="TaN-I7-F22"/>
                             <constraint firstAttribute="trailing" secondItem="Tlm-uS-yDp" secondAttribute="trailing" id="cI9-xk-oPk"/>
                             <constraint firstItem="Gv2-N8-ce4" firstAttribute="top" secondItem="Tlm-uS-yDp" secondAttribute="bottom" id="fAi-Jp-L83"/>
                             <constraint firstItem="BjK-Rs-1wA" firstAttribute="width" secondItem="nSo-7u-Zv2" secondAttribute="width" id="wOZ-gB-hqG"/>
-                            <constraint firstItem="42o-T5-48Z" firstAttribute="top" secondItem="fyC-rT-2BF" secondAttribute="bottom" id="zmd-Iy-vLS"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="person" id="XQs-Oz-TWn">
-                        <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="rTJ-2w-lpI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="finalRetireDateLabel" destination="6QW-d5-bMB" id="FBl-Mu-RAr"/>
@@ -613,9 +581,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9D-qQ-Plu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="379" y="1153"/>
+            <point key="canvasLocation" x="379" y="1857"/>
         </scene>
-        <!--阿替-->
+        <!--Friends View Controller-->
         <scene sceneID="lhv-bI-ZFg">
             <objects>
                 <viewController id="VEB-9J-HFe" customClass="FriendsViewController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
@@ -629,13 +597,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="阿替" id="cgD-oa-O63">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="F0T-fd-Y1D"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="cgD-oa-O63"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9b-Li-JQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="1909"/>
+            <point key="canvasLocation" x="1287" y="1857"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8DF-L5-HKD">
@@ -651,7 +617,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="7ad-qR-WPF"/>
-                        <segue destination="L92-j8-KKk" kind="relationship" relationship="viewControllers" id="JEG-c5-08S"/>
+                        <segue destination="tmR-tJ-IEn" kind="relationship" relationship="viewControllers" id="JEG-c5-08S"/>
                         <segue destination="Wgm-LR-pJF" kind="relationship" relationship="viewControllers" id="GJG-eK-gdL"/>
                     </connections>
                 </tabBarController>
@@ -685,6 +651,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nux-qJ-DlG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1287" y="1153"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CBL-MQ-Y1M">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tmR-tJ-IEn" customClass="NavigationController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="person" id="XQs-Oz-TWn">
+                        <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sAy-E2-iF7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L92-j8-KKk" kind="relationship" relationship="rootViewController" id="bI7-Gk-Ssh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lbg-wO-Ndf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="379" y="1153"/>
         </scene>
     </scenes>
     <resources>
