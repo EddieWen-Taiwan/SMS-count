@@ -14,10 +14,15 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        // Set style of NavigationBar
         self.navigationBar.barTintColor = UIColor(red: 255/255, green: 206/255, blue: 84/255, alpha: 1)
+        self.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
+        // Add LeftBarItem and title
         let drawerItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "test")
-        self.childViewControllers.first?.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
+        let childVC = self.childViewControllers.first!
+        childVC.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
     }
 
     override func didReceiveMemoryWarning() {

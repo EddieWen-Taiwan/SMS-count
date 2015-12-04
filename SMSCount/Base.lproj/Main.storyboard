@@ -289,7 +289,7 @@
             </objects>
             <point key="canvasLocation" x="-567" y="1153"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--阿替倒數中-->
         <scene sceneID="1nZ-Im-AdM">
             <objects>
                 <viewController id="L92-j8-KKk" customClass="ProfileViewController" customModule="SMSCount" sceneMemberID="viewController">
@@ -566,7 +566,7 @@
                             <constraint firstItem="BjK-Rs-1wA" firstAttribute="width" secondItem="nSo-7u-Zv2" secondAttribute="width" id="wOZ-gB-hqG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rTJ-2w-lpI"/>
+                    <navigationItem key="navigationItem" title="阿替倒數中" id="rTJ-2w-lpI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="finalRetireDateLabel" destination="6QW-d5-bMB" id="FBl-Mu-RAr"/>
@@ -583,7 +583,7 @@
             </objects>
             <point key="canvasLocation" x="379" y="1857"/>
         </scene>
-        <!--Friends View Controller-->
+        <!--阿替倒數中-->
         <scene sceneID="lhv-bI-ZFg">
             <objects>
                 <viewController id="VEB-9J-HFe" customClass="FriendsViewController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
@@ -597,7 +597,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cgD-oa-O63"/>
+                    <navigationItem key="navigationItem" title="阿替倒數中" id="cgD-oa-O63"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9b-Li-JQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
