@@ -615,7 +615,7 @@
             </objects>
             <point key="canvasLocation" x="379" y="1153"/>
         </scene>
-        <!--Friends View Controller-->
+        <!--阿替-->
         <scene sceneID="lhv-bI-ZFg">
             <objects>
                 <viewController id="VEB-9J-HFe" customClass="FriendsViewController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
@@ -629,18 +629,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="friends" id="Gve-DP-PaG">
-                        <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="阿替" id="cgD-oa-O63">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="F0T-fd-Y1D"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9b-Li-JQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="1153"/>
+            <point key="canvasLocation" x="1287" y="1909"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8DF-L5-HKD">
@@ -657,12 +652,39 @@
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="7ad-qR-WPF"/>
                         <segue destination="L92-j8-KKk" kind="relationship" relationship="viewControllers" id="JEG-c5-08S"/>
-                        <segue destination="VEB-9J-HFe" kind="relationship" relationship="viewControllers" id="GJG-eK-gdL"/>
+                        <segue destination="Wgm-LR-pJF" kind="relationship" relationship="viewControllers" id="GJG-eK-gdL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMP-zj-LVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="379.5" y="314"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JYv-I9-OJw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wgm-LR-pJF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="friends" id="Gve-DP-PaG">
+                        <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.80784313725490198" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7gU-1Y-XSZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VEB-9J-HFe" kind="relationship" relationship="rootViewController" id="SX8-1B-EhE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nux-qJ-DlG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1287" y="1153"/>
         </scene>
     </scenes>
     <resources>
