@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--Status-->
+        <!--Status View Controller-->
         <scene sceneID="85K-8h-xzZ">
             <objects>
-                <viewController title="Status" id="DUU-JR-dQ9" customClass="StatusViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController id="DUU-JR-dQ9" customClass="StatusViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hNh-73-Exu"/>
                         <viewControllerLayoutGuide type="bottom" id="B4w-s0-jgF"/>
@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="1290" y="1899"/>
         </scene>
-        <!--Setting-->
+        <!--Setting View Controller-->
         <scene sceneID="0Td-vm-vAX">
             <objects>
-                <viewController storyboardIdentifier="SettingViewController" title="Setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TXv-9S-kLZ" customClass="SettingViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TXv-9S-kLZ" customClass="SettingViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5jD-Yb-wGa"/>
                         <viewControllerLayoutGuide type="bottom" id="XGt-dK-Gtb"/>
