@@ -23,7 +23,7 @@ class NavigationController: UINavigationController {
         self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
         // Add LeftBarItem and title
-        let drawerItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "test")
+        let drawerItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "toggleDrawer")
         let childVC = self.childViewControllers.first!
         childVC.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
     }
@@ -33,7 +33,7 @@ class NavigationController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
 
-    func test() {
+    func toggleDrawer() {
         self.appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
     }
 
