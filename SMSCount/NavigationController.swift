@@ -29,11 +29,6 @@ class NavigationController: UINavigationController {
         childVC.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func toggleDrawer() {
         self.appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
     }
@@ -47,5 +42,10 @@ class NavigationController: UINavigationController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
 }
