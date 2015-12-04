@@ -133,12 +133,13 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                     }
                 }
 
-                stageIndexArray[0] = Int( Double(animationArray.count)*0.55 )
-                stageIndexArray[1] = Int( Double(animationArray.count)*0.75 )
-                stageIndexArray[2] = Int( Double(animationArray.count)*0.88 )
-                stageIndexArray[3] = Int( Double(animationArray.count)*0.94 )
-                stageIndexArray[4] = Int( Double(animationArray.count)*0.97 )
-                stageIndexArray[5] = animationArray.count-1
+                let arrayLength = animationArray.count
+                stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
+                stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
+                stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
+                stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
+                stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
+                stageIndexArray[5] = arrayLength-1
 
                 self.isDaysJumped = false
                 self.frontRemainedDaysLabel.text = "0"
