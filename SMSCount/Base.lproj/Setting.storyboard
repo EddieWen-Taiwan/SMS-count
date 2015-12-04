@@ -89,7 +89,7 @@
         <!--阿替倒數中-->
         <scene sceneID="0Td-vm-vAX">
             <objects>
-                <viewController storyboardIdentifier="SettingViewController" id="TXv-9S-kLZ" customClass="SettingViewController" customModule="SMSCount" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" automaticallyAdjustsScrollViewInsets="NO" id="TXv-9S-kLZ" customClass="SettingViewController" customModule="SMSCount" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5jD-Yb-wGa"/>
                         <viewControllerLayoutGuide type="bottom" id="XGt-dK-Gtb"/>
