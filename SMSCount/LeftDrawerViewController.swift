@@ -16,8 +16,8 @@ class LeftDrawerViewController: UIViewController {
 
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    init() {
+        super.init(nibName: "LeftDrawer", bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
