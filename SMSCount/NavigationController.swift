@@ -14,7 +14,7 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        self.navigationBar.barTintColor = UIColor.redColor()
+        self.navigationBar.barTintColor = UIColor(red: 255/255, green: 206/255, blue: 84/255, alpha: 1)
 
         let drawerItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "test")
         self.childViewControllers.first?.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
