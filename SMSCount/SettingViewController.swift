@@ -132,7 +132,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         self.serviceDaysPickerViewBottomConstraint.constant = -250
         self.discountDaysPickerViewBottomConstraint.constant = -250
-        self.datepickerViewBottomConstraint.constant = -50
+        self.datepickerViewBottomConstraint.constant = 0
         self.screenMask.tag = 1
 
         self.showPickerView()
@@ -147,7 +147,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         self.datepickerViewBottomConstraint.constant = -250
         self.discountDaysPickerViewBottomConstraint.constant = -250
-        self.serviceDaysPickerViewBottomConstraint.constant = -50
+        self.serviceDaysPickerViewBottomConstraint.constant = 0
         self.screenMask.tag = 2
 
         self.showPickerView()
@@ -162,7 +162,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         self.datepickerViewBottomConstraint.constant = -250
         self.serviceDaysPickerViewBottomConstraint.constant = -250
-        self.discountDaysPickerViewBottomConstraint.constant = -50
+        self.discountDaysPickerViewBottomConstraint.constant = 0
         self.screenMask.tag = 3
 
         self.showPickerView()
