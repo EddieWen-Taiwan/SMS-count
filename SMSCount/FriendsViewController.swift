@@ -15,29 +15,29 @@ class FriendsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        if Reachability().isConnectedToNetwork() {
-            // Request for friendList
-            let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
-            friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
-            
-                if error == nil {
-                    var friendArray: [String] = []
-                    if let users = result.valueForKey("data") {
-                        for user in users as! [AnyObject] {
-                            friendArray.append( user.valueForKey("id") as! String )
-                        }
-                    }
-                    let friendsDetail = PFQuery(className: "User")
-                    friendsDetail.whereKey( "fb_id", containedIn: friendArray )
-                    friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-                        print(objects)
-                    })
-                }
-
-            }
-        } else {
-            // without Internet
-        }
+//        if Reachability().isConnectedToNetwork() {
+//            // Request for friendList
+//            let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
+//            friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+//            
+//                if error == nil {
+//                    var friendArray: [String] = []
+//                    if let users = result.valueForKey("data") {
+//                        for user in users as! [AnyObject] {
+//                            friendArray.append( user.valueForKey("id") as! String )
+//                        }
+//                    }
+//                    let friendsDetail = PFQuery(className: "User")
+//                    friendsDetail.whereKey( "fb_id", containedIn: friendArray )
+//                    friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+//                        print(objects)
+//                    })
+//                }
+//
+//            }
+//        } else {
+//            // without Internet
+//        }
 
         let drawerItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "test")
         self.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
