@@ -36,6 +36,7 @@ class NavigationController: UINavigationController {
         childVC.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
     }
 
+    // Switch drawer Open / Close
     func toggleDrawer() {
         self.appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
     }
