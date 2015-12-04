@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import DrawerController
 
 class NavigationController: UINavigationController {
+
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +34,7 @@ class NavigationController: UINavigationController {
     }
 
     func test() {
-        print("OOOO")
+        self.appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
     }
 
     /*
