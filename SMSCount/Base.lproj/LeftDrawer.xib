@@ -55,13 +55,12 @@
                         <constraint firstItem="aVp-JE-our" firstAttribute="leading" secondItem="O0X-fL-zul" secondAttribute="leading" constant="20" id="Rte-7c-lu3"/>
                         <constraint firstItem="QeY-NN-a8h" firstAttribute="top" secondItem="O0X-fL-zul" secondAttribute="top" id="VQj-ZM-vV9"/>
                         <constraint firstItem="aVp-JE-our" firstAttribute="centerY" secondItem="O0X-fL-zul" secondAttribute="centerY" id="rIw-D6-DGv"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="wLS-SA-3Vb"/>
                         <constraint firstAttribute="bottom" secondItem="QeY-NN-a8h" secondAttribute="bottom" id="wdD-Cd-6qV"/>
                         <constraint firstItem="QeY-NN-a8h" firstAttribute="leading" secondItem="O0X-fL-zul" secondAttribute="leading" id="yyN-7W-JJH"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUx-0S-2uz">
-                    <rect key="frame" x="0.0" y="144" width="600" height="60"/>
+                    <rect key="frame" x="0.0" y="124" width="600" height="60"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Vv-2Ih">
                             <rect key="frame" x="20" y="18" width="24" height="24"/>
@@ -88,7 +87,6 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="vI4-BB-iiu" secondAttribute="trailing" id="6g7-ts-eRj"/>
                         <constraint firstAttribute="height" constant="60" id="SVS-K8-46t"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="XtK-af-c4a"/>
                         <constraint firstItem="vI4-BB-iiu" firstAttribute="top" secondItem="VUx-0S-2uz" secondAttribute="top" id="Ydq-0L-D4Y"/>
                         <constraint firstAttribute="bottom" secondItem="vI4-BB-iiu" secondAttribute="bottom" id="kLD-iM-xAC"/>
                         <constraint firstItem="UgW-Vv-2Ih" firstAttribute="leading" secondItem="VUx-0S-2uz" secondAttribute="leading" constant="20" id="lWp-FD-b0l"/>
@@ -113,7 +111,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="O0X-fL-zul" secondAttribute="trailing" id="0Qv-Mq-Cvw"/>
-                <constraint firstItem="VUx-0S-2uz" firstAttribute="top" secondItem="O0X-fL-zul" secondAttribute="bottom" constant="20" id="A8h-mO-7z5"/>
+                <constraint firstItem="VUx-0S-2uz" firstAttribute="top" secondItem="O0X-fL-zul" secondAttribute="bottom" id="A8h-mO-7z5"/>
                 <constraint firstItem="dev-AP-cRC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FDm-ua-xUz"/>
                 <constraint firstAttribute="bottom" secondItem="N1g-OG-6rr" secondAttribute="bottom" id="Q7b-OO-CDs"/>
                 <constraint firstAttribute="trailing" secondItem="VUx-0S-2uz" secondAttribute="trailing" id="Szt-Vc-3ce"/>
