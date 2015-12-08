@@ -589,6 +589,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="阿替倒數中" id="cgD-oa-O63"/>
+                    <connections>
+                        <outlet property="tableView" destination="Ezs-Kh-diY" id="EuO-1P-Dgs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9b-Li-JQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
