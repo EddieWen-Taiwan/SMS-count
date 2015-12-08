@@ -9,13 +9,16 @@
 import UIKit
 import Parse
 
-class FriendsViewController: UIViewController {
+class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        tableView.delegate = self
+        tableView.dataSource = self
 
         if Reachability().isConnectedToNetwork() {
             // Request for friendList
@@ -40,6 +43,36 @@ class FriendsViewController: UIViewController {
         } else {
             // without Internet
         }
+    }
+    
+    // MARK: - Table view data source
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+//        return self.userObject.count
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! FriendsTableViewCell
+        
+//        let thisUser = self.userObject[indexPath.row]
+//        // Configure the cell...
+//        
+//        if let userName: String = thisUser.valueForKey("username") as? String {
+//            cell.userName.text = userName
+//        } else {
+//            cell.userName.text = ""
+//        }
+//        
+//        cell.userStatus.text = thisUser.valueForKey("status") as? String
+        
+        return cell
     }
 
     override func didReceiveMemoryWarning() {
