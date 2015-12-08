@@ -575,7 +575,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticker" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-ns-vsB">
-                                                    <rect key="frame" x="28" y="13" width="60" height="60"/>
+                                                    <rect key="frame" x="20" y="5" width="60" height="60"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="6c4-ty-MNt"/>
@@ -586,8 +586,16 @@
                                             <animations/>
                                             <constraints>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="leading" secondItem="ZuT-RG-Ie9" secondAttribute="leadingMargin" constant="20" id="PrM-Px-LHN"/>
+                                                <constraint firstItem="z5d-ns-vsB" firstAttribute="leading" secondItem="ZuT-RG-Ie9" secondAttribute="leading" constant="20" id="Yfx-Wb-5ZX"/>
+                                                <constraint firstItem="z5d-ns-vsB" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="5" id="qPX-Om-S4l"/>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="topMargin" constant="5" id="uyv-qx-vGh"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="PrM-Px-LHN"/>
+                                                    <exclude reference="uyv-qx-vGh"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
