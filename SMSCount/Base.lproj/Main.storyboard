@@ -590,6 +590,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="userSticker" destination="z5d-ns-vsB" id="f8e-SD-9t5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

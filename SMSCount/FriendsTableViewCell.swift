@@ -10,6 +10,7 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
+    @IBOutlet var userSticker: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
