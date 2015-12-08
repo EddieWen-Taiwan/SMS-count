@@ -19,7 +19,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 70
 
 //        if Reachability().isConnectedToNetwork() {
 //            // Request for friendList
