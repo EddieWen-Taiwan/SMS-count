@@ -65,15 +65,13 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendsTableViewCell
         
-//        let thisUser = self.userObject[indexPath.row]
-//        // Configure the cell...
-//        
-//        if let userName: String = thisUser.valueForKey("username") as? String {
-//            cell.userName.text = userName
-//        } else {
-//            cell.userName.text = ""
-//        }
-//        
+        let thisUser = self.friendsObject[indexPath.row]
+        // Configure the cell...
+        
+        if let userName: String = thisUser.valueForKey("username") as? String {
+            cell.name.text = userName
+        }
+        
 //        cell.userStatus.text = thisUser.valueForKey("status") as? String
         
         return cell
