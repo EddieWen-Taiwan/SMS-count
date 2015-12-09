@@ -12,6 +12,7 @@ import Parse
 class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
+    var friendsObject: [PFObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,29 +21,33 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
 
-//        if Reachability().isConnectedToNetwork() {
-//            // Request for friendList
-//            let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
-//            friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
-//            
-//                if error == nil {
-//                    var friendArray: [String] = []
-//                    if let users = result.valueForKey("data") {
-//                        for user in users as! [AnyObject] {
-//                            friendArray.append( user.valueForKey("id") as! String )
-//                        }
-//                    }
-//                    let friendsDetail = PFQuery(className: "User")
-//                    friendsDetail.whereKey( "fb_id", containedIn: friendArray )
-//                    friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-//                        print(objects)
-//                    })
-//                }
-//
-//            }
-//        } else {
-//            // without Internet
-//        }
+        if Reachability().isConnectedToNetwork() {
+            // Request for friendList
+            let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
+            friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+
+                if error == nil {
+                    var friendArray: [String] = []
+                    if let users = result.valueForKey("data") {
+                        for user in users as! [AnyObject] {
+                            friendArray.append( user.valueForKey("id") as! String )
+                        }
+                    }
+                    let friendsDetail = PFQuery(className: "User")
+                    friendsDetail.whereKey( "fb_id", containedIn: friendArray )
+                    friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                        if error == nil {
+                            print(objects)
+                            self.friendsObject = objects!
+                            self.tableView.reloadData()
+                        }
+                    })
+                }
+
+            }
+        } else {
+            // without Internet
+        }
     }
     
     // MARK: - Table view data source
@@ -54,8 +59,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-//        return self.userObject.count
-        return 5
+        return self.friendsObject.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
