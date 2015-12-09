@@ -574,7 +574,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sticker" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-ns-vsB">
-                                                    <rect key="frame" x="20" y="5" width="60" height="60"/>
+                                                    <rect key="frame" x="10" y="5" width="60" height="60"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="6c4-ty-MNt"/>
@@ -582,28 +582,28 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eddie Wen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8u-Fq-ycD">
-                                                    <rect key="frame" x="90" y="10" width="94" height="24"/>
+                                                    <rect key="frame" x="80" y="10" width="94" height="24"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩餘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUR-XZ-hNa">
-                                                    <rect key="frame" x="90" y="40" width="26" height="19"/>
+                                                    <rect key="frame" x="80" y="40" width="26" height="19"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="13"/>
                                                     <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="124" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1z-Uz-D6b">
-                                                    <rect key="frame" x="118" y="41" width="24" height="17"/>
+                                                    <rect key="frame" x="108" y="41" width="24" height="17"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1w-HV-lSD">
-                                                    <rect key="frame" x="144" y="40" width="13" height="19"/>
+                                                    <rect key="frame" x="134" y="40" width="13" height="19"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="13"/>
                                                     <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
@@ -617,7 +617,7 @@
                                                 <constraint firstItem="m1z-Uz-D6b" firstAttribute="centerY" secondItem="oUR-XZ-hNa" secondAttribute="centerY" id="QFu-fg-LQG"/>
                                                 <constraint firstItem="N1w-HV-lSD" firstAttribute="leading" secondItem="m1z-Uz-D6b" secondAttribute="trailing" constant="2" id="XLF-Pp-5bW"/>
                                                 <constraint firstAttribute="bottom" secondItem="oUR-XZ-hNa" secondAttribute="bottom" constant="10" id="YRk-7l-lvu"/>
-                                                <constraint firstItem="z5d-ns-vsB" firstAttribute="leading" secondItem="ZuT-RG-Ie9" secondAttribute="leading" constant="20" id="Yfx-Wb-5ZX"/>
+                                                <constraint firstItem="z5d-ns-vsB" firstAttribute="leading" secondItem="ZuT-RG-Ie9" secondAttribute="leading" constant="10" id="Yfx-Wb-5ZX"/>
                                                 <constraint firstItem="H8u-Fq-ycD" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="10" id="b9E-Nf-dQ2"/>
                                                 <constraint firstItem="m1z-Uz-D6b" firstAttribute="leading" secondItem="oUR-XZ-hNa" secondAttribute="trailing" constant="2" id="euK-FC-DYG"/>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="5" id="qPX-Om-S4l"/>
