@@ -13,6 +13,7 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet var userSticker: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var dayNumber: UILabel!
+    @IBOutlet var status: UILabel!
 
     // 剩餘 or 自由
     @IBOutlet var textBeforeDays: UILabel!
