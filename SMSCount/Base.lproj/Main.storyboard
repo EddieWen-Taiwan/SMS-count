@@ -543,23 +543,23 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIz-Jg-dZi">
-                                                    <rect key="frame" x="175" y="10" width="67" height="20"/>
+                                                    <rect key="frame" x="175" y="13" width="58" height="16"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩餘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUR-XZ-hNa">
-                                                            <rect key="frame" x="0.0" y="1" width="26" height="19"/>
-                                                            <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="13"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="16"/>
+                                                            <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="11"/>
                                                             <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="124" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1z-Uz-D6b">
-                                                            <rect key="frame" x="28" y="2" width="24" height="17"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                            <rect key="frame" x="24" y="1" width="21" height="15"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1w-HV-lSD">
-                                                            <rect key="frame" x="54" y="1" width="13" height="19"/>
-                                                            <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="13"/>
+                                                            <rect key="frame" x="47" y="0.0" width="11" height="16"/>
+                                                            <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="11"/>
                                                             <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -567,9 +567,9 @@
                                                     <constraints>
                                                         <constraint firstItem="N1w-HV-lSD" firstAttribute="leading" secondItem="m1z-Uz-D6b" secondAttribute="trailing" constant="2" id="3EA-bO-GFf"/>
                                                         <constraint firstItem="oUR-XZ-hNa" firstAttribute="leading" secondItem="VIz-Jg-dZi" secondAttribute="leading" id="46I-KU-bs3"/>
-                                                        <constraint firstAttribute="height" constant="20" id="KGA-5a-s8V"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oUR-XZ-hNa" secondAttribute="bottom" id="E3a-NZ-Q4a"/>
+                                                        <constraint firstAttribute="height" constant="16" id="KGA-5a-s8V"/>
                                                         <constraint firstItem="m1z-Uz-D6b" firstAttribute="leading" secondItem="oUR-XZ-hNa" secondAttribute="trailing" constant="2" id="a0o-Sc-73r"/>
-                                                        <constraint firstItem="oUR-XZ-hNa" firstAttribute="centerY" secondItem="VIz-Jg-dZi" secondAttribute="centerY" id="a1w-XE-g6N"/>
                                                         <constraint firstItem="m1z-Uz-D6b" firstAttribute="centerY" secondItem="VIz-Jg-dZi" secondAttribute="centerY" id="eHS-Dr-aLb"/>
                                                         <constraint firstItem="N1w-HV-lSD" firstAttribute="centerY" secondItem="VIz-Jg-dZi" secondAttribute="centerY" id="tpc-LY-r6K"/>
                                                         <constraint firstAttribute="trailing" secondItem="N1w-HV-lSD" secondAttribute="trailing" id="vrY-5I-B3V"/>
@@ -578,7 +578,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VIz-Jg-dZi" firstAttribute="leading" secondItem="H8u-Fq-ycD" secondAttribute="trailing" constant="10" id="CBK-yP-H8X"/>
-                                                <constraint firstItem="VIz-Jg-dZi" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="10" id="EmP-db-SNq"/>
+                                                <constraint firstItem="VIz-Jg-dZi" firstAttribute="centerY" secondItem="H8u-Fq-ycD" secondAttribute="centerY" id="O4v-Ck-PED"/>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="leading" secondItem="ZuT-RG-Ie9" secondAttribute="leading" constant="10" id="Yfx-Wb-5ZX"/>
                                                 <constraint firstItem="H8u-Fq-ycD" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="10" id="b9E-Nf-dQ2"/>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="5" id="qPX-Om-S4l"/>
