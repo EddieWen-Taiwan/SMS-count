@@ -575,12 +575,20 @@
                                                         <constraint firstAttribute="trailing" secondItem="N1w-HV-lSD" secondAttribute="trailing" id="vrY-5I-B3V"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天天氣好好喔。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFL-RD-FZL">
+                                                    <rect key="frame" x="80" y="39" width="112" height="20"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="14"/>
+                                                    <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VIz-Jg-dZi" firstAttribute="leading" secondItem="H8u-Fq-ycD" secondAttribute="trailing" constant="10" id="CBK-yP-H8X"/>
                                                 <constraint firstItem="VIz-Jg-dZi" firstAttribute="centerY" secondItem="H8u-Fq-ycD" secondAttribute="centerY" id="O4v-Ck-PED"/>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="leading" secondItem="ZuT-RG-Ie9" secondAttribute="leading" constant="10" id="Yfx-Wb-5ZX"/>
                                                 <constraint firstItem="H8u-Fq-ycD" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="10" id="b9E-Nf-dQ2"/>
+                                                <constraint firstItem="MFL-RD-FZL" firstAttribute="leading" secondItem="z5d-ns-vsB" secondAttribute="trailing" constant="10" id="lDF-gO-vGJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="MFL-RD-FZL" secondAttribute="bottom" constant="10" id="mBo-gy-8d1"/>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="5" id="qPX-Om-S4l"/>
                                                 <constraint firstItem="H8u-Fq-ycD" firstAttribute="leading" secondItem="z5d-ns-vsB" secondAttribute="trailing" constant="10" id="vke-87-kHh"/>
                                             </constraints>
