@@ -20,6 +20,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
 
         if Reachability().isConnectedToNetwork() {
             // Request for friendList
