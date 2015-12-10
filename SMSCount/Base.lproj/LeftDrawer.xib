@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftDrawerViewController" customModule="SMSCount">
@@ -17,11 +17,9 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrawerBackground" translatesAutoresizingMaskIntoConstraints="NO" id="N1g-OG-6rr">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <animations/>
                 </imageView>
                 <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dev-AP-cRC">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0X-fL-zul">
@@ -29,7 +27,6 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="aVp-JE-our">
                             <rect key="frame" x="20" y="18" width="24" height="24"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="24" id="Ba9-5v-uup"/>
                                 <constraint firstAttribute="height" constant="24" id="yyX-18-hnS"/>
@@ -37,7 +34,6 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-NN-a8h">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                            <animations/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Home">
@@ -48,7 +44,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Fe6-kL-JIF"/>
                         <constraint firstAttribute="trailing" secondItem="QeY-NN-a8h" secondAttribute="trailing" id="Ihd-Qv-Kpl"/>
@@ -64,7 +59,6 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Vv-2Ih">
                             <rect key="frame" x="20" y="18" width="24" height="24"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="ac8-iV-Ee2"/>
                                 <constraint firstAttribute="width" constant="24" id="gIv-YP-PPN"/>
@@ -72,7 +66,6 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vI4-BB-iiu">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                            <animations/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Setting">
@@ -83,7 +76,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="vI4-BB-iiu" secondAttribute="trailing" id="6g7-ts-eRj"/>
                         <constraint firstAttribute="height" constant="60" id="SVS-K8-46t"/>
@@ -96,7 +88,6 @@
                 </view>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7W-Cy-DIM">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="5gd-kQ-bWG"/>
                         <constraint firstAttribute="height" constant="44" id="odn-rD-TT8"/>
@@ -107,7 +98,6 @@
                     </items>
                 </navigationBar>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="O0X-fL-zul" secondAttribute="trailing" id="0Qv-Mq-Cvw"/>
