@@ -13,6 +13,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet var tableView: UITableView!
     var friendsObject: [PFObject] = []
+    var getData: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                         if error == nil {
                             print(objects)
                             self.friendsObject = objects!
+                            self.getData = true
                             self.tableView.reloadData()
                         }
                     })
@@ -60,23 +62,27 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.friendsObject.count
+        return self.getData ? self.friendsObject.count : 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendsTableViewCell
+
+        if getData {
+
+            let thisUser = self.friendsObject[indexPath.row]
+            // Configure the cell...
         
-        let thisUser = self.friendsObject[indexPath.row]
-        // Configure the cell...
-        
-        if let userName: String = thisUser.valueForKey("username") as? String {
-            cell.name.text = userName
+            if let userName: String = thisUser.valueForKey("username") as? String {
+                cell.name.text = userName
+            }
+            if let userStatus: String = thisUser.valueForKey("status") as? String {
+                cell.status.text = userStatus
+            }
+            cell.name.backgroundColor = UIColor.clearColor()
+            cell.status.backgroundColor = UIColor.clearColor()
+
         }
-        if let userStatus: String = thisUser.valueForKey("status") as? String {
-            cell.status.text = userStatus
-        }
-        
-//        cell.userStatus.text = thisUser.valueForKey("status") as? String
         
         return cell
     }
