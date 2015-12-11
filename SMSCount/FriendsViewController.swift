@@ -39,7 +39,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                     friendsDetail.whereKey( "fb_id", containedIn: friendArray )
                     friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
                         if error == nil {
-                            print(objects)
+//                            print(objects)
                             self.friendsObject = objects!
                             self.getData = true
                             self.tableView.reloadData()
