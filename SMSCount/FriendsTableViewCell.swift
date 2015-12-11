@@ -10,7 +10,7 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
-    @IBOutlet var userSticker: UIImageView!
+    @IBOutlet var sticker: UIImageView!
     @IBOutlet var name: UILabel!
     @IBOutlet var dayNumber: UILabel!
     @IBOutlet var status: UILabel!

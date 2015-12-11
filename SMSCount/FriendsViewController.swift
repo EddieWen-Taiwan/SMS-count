@@ -15,6 +15,8 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var friendsObject: [PFObject] = []
     var getData: Bool = false
 
+    let reachability = Reachability()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -79,6 +81,20 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             if let userStatus: String = thisUser.valueForKey("status") as? String {
                 cell.status.text = userStatus
             }
+            // Sticker
+            let fbid = thisUser.valueForKey("fb_id") as! String
+            let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
+            print(url)
+            self.reachability.getImageFromUrl(url) { (data, response, error) in
+                if data != nil {
+                    dispatch_async( dispatch_get_main_queue(), {
+                        cell.sticker.image = UIImage(data: data!)
+                    })
+                }
+            }
+            
+
+            // Clean default background-color
             cell.name.backgroundColor = UIColor.clearColor()
             cell.status.backgroundColor = UIColor.clearColor()
 

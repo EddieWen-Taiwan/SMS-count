@@ -613,8 +613,8 @@
                                             <outlet property="dayNumber" destination="m1z-Uz-D6b" id="9Qj-NZ-SHS"/>
                                             <outlet property="name" destination="H8u-Fq-ycD" id="fow-aY-c0z"/>
                                             <outlet property="status" destination="MFL-RD-FZL" id="p7p-y4-up0"/>
+                                            <outlet property="sticker" destination="z5d-ns-vsB" id="LRy-zv-VqP"/>
                                             <outlet property="textBeforeDays" destination="oUR-XZ-hNa" id="wxJ-eQ-OTr"/>
-                                            <outlet property="userSticker" destination="z5d-ns-vsB" id="f8e-SD-9t5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
