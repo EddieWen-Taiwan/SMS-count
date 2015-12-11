@@ -72,6 +72,9 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let userName: String = thisUser.valueForKey("username") as? String {
             cell.name.text = userName
         }
+        if let userStatus: String = thisUser.valueForKey("status") as? String {
+            cell.status.text = userStatus
+        }
         
 //        cell.userStatus.text = thisUser.valueForKey("status") as? String
         
