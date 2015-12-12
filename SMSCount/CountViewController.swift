@@ -76,7 +76,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.settingStatus = calculateHelper.isSettingAllDone() ? true : false
+        self.settingStatus = calculateHelper.isSettingAllDone()
 
         if self.settingStatus {
             // OK
