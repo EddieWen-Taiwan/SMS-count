@@ -17,10 +17,10 @@ class CalculateHelper {
     var weekendComponent = NSDateComponents()
 
     // Original data
-    var valueEnterDate: String = ""
-    var valueServiceDays: Int = 0
-    var valueDiscountDays: Int = 0
-    var valueAutoFixed: Bool = false
+    var valueEnterDate: String
+    var valueServiceDays: Int
+    var valueDiscountDays: Int
+    var valueAutoFixed: Bool
 
     // Outcome
     var enterDate: NSDate!
