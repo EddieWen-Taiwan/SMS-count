@@ -60,8 +60,8 @@ class CalculateHelper {
         let userP = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
         let localEnterDate = userP.stringForKey("enterDate") != nil ? userP.stringForKey("enterDate") : ""
-        let localServiceDays = userP.stringForKey("serviceDays") != nil ? userP.integerForKey("serviceDays") : 0
-        let localDiscountDays = userP.stringForKey("discountDays") != nil ? userP.integerForKey("discountDays") : 0
+        let localServiceDays = userP.stringForKey("serviceDays") != nil ? userP.integerForKey("serviceDays") : -1
+        let localDiscountDays = userP.stringForKey("discountDays") != nil ? userP.integerForKey("discountDays") : -1
         let localAutoFixed = userP.boolForKey("autoWeekendFixed")
 
         self.init( enterDate: localEnterDate, serviceDays: localServiceDays, discountDays: localDiscountDays, autoFixed: localAutoFixed )
