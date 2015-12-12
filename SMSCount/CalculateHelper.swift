@@ -110,8 +110,7 @@ class CalculateHelper {
 
         self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
-print(self.enterDate)
-print(self.defaultRetireDate)
+
         if self.valueDiscountDays == -1 {
             userPreference.setInteger( 0, forKey: "discountDays" )
             self.valueDiscountDays = 0
