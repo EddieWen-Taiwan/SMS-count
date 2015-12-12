@@ -16,6 +16,13 @@ class CalculateHelper {
     var dayComponent = NSDateComponents()
     var weekendComponent = NSDateComponents()
 
+    // Original data
+    var valueEnterDate: String
+    var valueServiceDays: Int
+    var valueDiscountDays: Int
+    var valueAutoFixed: Bool
+
+    // Outcome
     var enterDate: NSDate!
     var currentDate: NSDate!
     var defaultRetireDate: NSDate!
@@ -25,7 +32,12 @@ class CalculateHelper {
     var wholeServiceDays: NSDateComponents!
     var days2beFixed: Int = 0
 
-    init() {
+    init( enterDate: String, serviceDays: Int, discountDays: Int, autoFixed: Bool ) {
+        self.valueEnterDate = enterDate
+        self.valueServiceDays = serviceDays
+        self.valueDiscountDays = discountDays
+        self.valueAutoFixed = autoFixed
+
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
         calendar!.timeZone = NSTimeZone.localTimeZone()
