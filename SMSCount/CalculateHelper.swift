@@ -39,27 +39,16 @@ class CalculateHelper {
         self.valueDiscountDays = userPreference.stringForKey("discountDays") != nil ? userPreference.integerForKey("discountDays") : -1
         self.valueAutoFixed = userPreference.boolForKey("autoWeekendFixed")
 
-        self.otherInit()
-
-    }
-
-    func otherInit() {
-
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
         calendar!.timeZone = NSTimeZone.localTimeZone()
-
+        
         let tempTimeString = dateFormatter.stringFromDate( NSDate() )
         self.currentDate = dateFormatter.dateFromString( tempTimeString )
-
+        
         if self.isSettingAllDone() {
             self.updateDate()
         }
-        
-        print(self.valueEnterDate)
-        print(self.valueServiceDays)
-        print(self.valueDiscountDays)
-        print(self.valueAutoFixed)
 
     }
 
