@@ -32,12 +32,18 @@ class CalculateHelper {
     var wholeServiceDays: NSDateComponents!
     var days2beFixed: Int = 0
 
-    init( enterDate: String?, serviceDays: Int?, discountDays: Int?, autoFixed: Bool? ) {
+    init() {
 
-        self.valueEnterDate = enterDate ?? ""
-        self.valueServiceDays = serviceDays ?? -1
-        self.valueDiscountDays = discountDays ?? -1
-        self.valueAutoFixed = autoFixed ?? false
+        self.valueEnterDate = userPreference.stringForKey("enterDate") != nil ? userPreference.stringForKey("enterDate")! : ""
+        self.valueServiceDays = userPreference.stringForKey("serviceDays") != nil ? userPreference.integerForKey("serviceDays") : -1
+        self.valueDiscountDays = userPreference.stringForKey("discountDays") != nil ? userPreference.integerForKey("discountDays") : -1
+        self.valueAutoFixed = userPreference.boolForKey("autoWeekendFixed")
+
+        self.otherInit()
+
+    }
+
+    func otherInit() {
 
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
@@ -49,22 +55,12 @@ class CalculateHelper {
         if self.isSettingAllDone() {
             self.updateDate()
         }
-
+        
         print(self.valueEnterDate)
         print(self.valueServiceDays)
         print(self.valueDiscountDays)
         print(self.valueAutoFixed)
-    }
 
-    convenience init() {
-        let userP = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-
-        let localEnterDate = userP.stringForKey("enterDate") != nil ? userP.stringForKey("enterDate") : ""
-        let localServiceDays = userP.stringForKey("serviceDays") != nil ? userP.integerForKey("serviceDays") : -1
-        let localDiscountDays = userP.stringForKey("discountDays") != nil ? userP.integerForKey("discountDays") : -1
-        let localAutoFixed = userP.boolForKey("autoWeekendFixed")
-
-        self.init( enterDate: localEnterDate, serviceDays: localServiceDays, discountDays: localDiscountDays, autoFixed: localAutoFixed )
     }
 
     func isSettingAllDone() -> Bool {
