@@ -42,7 +42,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
 
-    let calculateHelper = CalculateHelper()
+    var calculateHelper: CalculateHelper!
     var circleView: PercentageCircleView!
 
     var screenHeight = UIScreen.mainScreen().bounds.height
@@ -52,6 +52,10 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        if let userP = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+            self.calculateHelper = CalculateHelper(enterDate: userP.stringForKey("enterDate")!, serviceDays: userP.integerForKey("serviceDays"), discountDays: userP.integerForKey("discountDays"), autoFixed: userP.boolForKey("autoWeekendFixed"))
+        }
 
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
         currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
