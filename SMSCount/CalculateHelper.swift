@@ -45,10 +45,6 @@ class CalculateHelper {
         
         let tempTimeString = dateFormatter.stringFromDate( NSDate() )
         self.currentDate = dateFormatter.dateFromString( tempTimeString )
-        
-        if self.isSettingAllDone() {
-            self.updateDate()
-        }
 
     }
 
