@@ -10,6 +10,10 @@ import UIKit
 
 class FriendsCalculate: CalculateHelper {
 
-    
+    func inputFriendData( enterDate: String?, serviceDays: Int?, discountDays: Int = 0, autoFixed: Bool = false ) {
+
+        
+
+    }
 
 }
