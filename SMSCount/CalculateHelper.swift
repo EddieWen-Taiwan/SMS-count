@@ -10,7 +10,6 @@ import UIKit
 
 class CalculateHelper {
 
-    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     let dateFormatter = NSDateFormatter()
     let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
     var dayComponent = NSDateComponents()
@@ -57,7 +56,14 @@ class CalculateHelper {
     }
 
     convenience init() {
-        self.init( enterDate: "999", serviceDays: nil, discountDays: 0, autoFixed: true )
+        let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+
+        let localEnterDate = userPreference.stringForKey("enterDate") != nil ? userPreference.stringForKey("enterDate") : ""
+        let localServiceDays = userPreference.stringForKey("serviceDays") != nil ? userPreference.integerForKey("serviceDays") : 0
+        let localDiscountDays = userPreference.stringForKey("discountDays") != nil ? userPreference.integerForKey("discountDays") : 0
+        let localAutoFixed = userPreference.boolForKey("autoWeekendFixed")
+
+        self.init( enterDate: localEnterDate, serviceDays: localServiceDays, discountDays: localDiscountDays, autoFixed: localAutoFixed )
     }
 
     func isSettingAllDone() -> Bool {
