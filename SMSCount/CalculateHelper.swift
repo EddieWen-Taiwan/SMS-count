@@ -10,6 +10,7 @@ import UIKit
 
 class CalculateHelper {
 
+    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     let dateFormatter = NSDateFormatter()
     let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
     var dayComponent = NSDateComponents()
@@ -56,22 +57,22 @@ class CalculateHelper {
     }
 
     convenience init() {
-        let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+        let userP = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
-        let localEnterDate = userPreference.stringForKey("enterDate") != nil ? userPreference.stringForKey("enterDate") : ""
-        let localServiceDays = userPreference.stringForKey("serviceDays") != nil ? userPreference.integerForKey("serviceDays") : 0
-        let localDiscountDays = userPreference.stringForKey("discountDays") != nil ? userPreference.integerForKey("discountDays") : 0
-        let localAutoFixed = userPreference.boolForKey("autoWeekendFixed")
+        let localEnterDate = userP.stringForKey("enterDate") != nil ? userP.stringForKey("enterDate") : ""
+        let localServiceDays = userP.stringForKey("serviceDays") != nil ? userP.integerForKey("serviceDays") : 0
+        let localDiscountDays = userP.stringForKey("discountDays") != nil ? userP.integerForKey("discountDays") : 0
+        let localAutoFixed = userP.boolForKey("autoWeekendFixed")
 
         self.init( enterDate: localEnterDate, serviceDays: localServiceDays, discountDays: localDiscountDays, autoFixed: localAutoFixed )
     }
 
     func isSettingAllDone() -> Bool {
 
-        if self.userPreference.stringForKey("enterDate") == nil {
+        if self.valueEnterDate == "" {
             return false
         }
-        if self.userPreference.stringForKey("serviceDays") == nil {
+        if self.valueServiceDays == 0 {
             return false
         }
         return true
@@ -80,7 +81,7 @@ class CalculateHelper {
 
     func updateDate() {
 
-        self.enterDate = dateFormatter.dateFromString( userPreference.stringForKey("enterDate")! )!
+        self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
         // 入伍日 - enterDate
 
         // v1.1 -> v1.2 dataFormat is change
