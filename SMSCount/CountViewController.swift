@@ -54,7 +54,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         super.init(coder: aDecoder)
 
         if let userP = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
-            self.calculateHelper = CalculateHelper(enterDate: userP.stringForKey("enterDate")!, serviceDays: userP.integerForKey("serviceDays"), discountDays: userP.integerForKey("discountDays"), autoFixed: userP.boolForKey("autoWeekendFixed"))
+            self.calculateHelper = CalculateHelper(enterDate: "1123", serviceDays: 123, discountDays: 15, autoFixed: false)
         }
 
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
