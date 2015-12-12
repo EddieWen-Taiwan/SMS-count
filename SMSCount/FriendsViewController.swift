@@ -15,6 +15,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     var friendsObject: [PFObject] = []
     var getData: Bool = false
 
+    let friendHelper = FriendsCalculate()
     let reachability = Reachability()
 
     override func viewDidLoad() {
@@ -91,7 +92,24 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                     })
                 }
             }
-            
+
+            if thisUser.valueForKey("yearOfEnterDate") != nil && thisUser.valueForKey("monthOfEnterDate") != nil && thisUser.valueForKey("dateOfEnterDate") != nil && thisUser.valueForKey("serviceDays") != nil {
+
+                var entireDate = "\(thisUser.valueForKey("yearOfEnterDate")!) / "
+                if (thisUser.valueForKey("monthOfEnterDate")! as! Int) < 10 {
+                    entireDate += "0"
+                }
+                entireDate += String(thisUser.valueForKey("monthOfEnterDate")!) + " / "
+                if (thisUser.valueForKey("dateOfEnterDate")! as! Int) < 10 {
+                    entireDate += "0"
+                }
+                entireDate += String(thisUser.valueForKey("dateOfEnterDate")!)
+
+                if friendHelper.inputFriendData( entireDate, serviceDays: thisUser.valueForKey("serviceDays") as! Int, discountDays: thisUser.valueForKey("discountDays") as! Int, autoFixed: false ) {
+                    cell.dayNumber.text = String( friendHelper.getRemainedDays() )
+                }
+
+            }
 
             // Clean default background-color
             cell.name.backgroundColor = UIColor.clearColor()
