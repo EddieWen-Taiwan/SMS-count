@@ -35,8 +35,8 @@ class CalculateHelper {
     init( enterDate: String?, serviceDays: Int?, discountDays: Int?, autoFixed: Bool? ) {
 
         self.valueEnterDate = enterDate ?? ""
-        self.valueServiceDays = serviceDays ?? 0
-        self.valueDiscountDays = discountDays ?? 0
+        self.valueServiceDays = serviceDays ?? -1
+        self.valueDiscountDays = discountDays ?? -1
         self.valueAutoFixed = autoFixed ?? false
 
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
@@ -72,7 +72,7 @@ class CalculateHelper {
         if self.valueEnterDate == "" {
             return false
         }
-        if self.valueServiceDays == 0 {
+        if self.valueServiceDays == -1 {
             return false
         }
         return true
@@ -111,16 +111,13 @@ class CalculateHelper {
         self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
 
-        var userDiscountDays: Int = 0
-
-        if let discountDayString = userPreference.stringForKey("discountDays") {
-            userDiscountDays = Int(discountDayString)!
-        } else {
-            self.userPreference.setInteger( 0, forKey: "discountDays" )
+        if self.valueDiscountDays == -1 {
+            userPreference.setInteger( 0, forKey: "discountDays" )
+            self.valueDiscountDays = 0
         }
         dayComponent.year = 0
         dayComponent.month = 0
-        dayComponent.day = userDiscountDays*(-1)
+        dayComponent.day = self.valueDiscountDays*(-1)
         self.realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: [])!
         // 折抵後退伍日 - realRetireDate
 
