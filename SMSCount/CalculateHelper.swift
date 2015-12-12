@@ -17,10 +17,10 @@ class CalculateHelper {
     var weekendComponent = NSDateComponents()
 
     // Original data
-    var valueEnterDate: String!
-    var valueServiceDays: Int!
-    var valueDiscountDays: Int!
-    var valueAutoFixed: Bool!
+    var valueEnterDate: String = ""
+    var valueServiceDays: Int = 0
+    var valueDiscountDays: Int = 0
+    var valueAutoFixed: Bool = false
 
     // Outcome
     var enterDate: NSDate!
@@ -32,12 +32,12 @@ class CalculateHelper {
     var wholeServiceDays: NSDateComponents!
     var days2beFixed: Int = 0
 
-    init( enterDate: String?, serviceDays: Int?, discountDays: Int = 0, autoFixed: Bool = false ) {
+    init( enterDate: String?, serviceDays: Int?, discountDays: Int?, autoFixed: Bool? ) {
 
-        self.valueEnterDate = enterDate
-        self.valueServiceDays = serviceDays
-        self.valueDiscountDays = discountDays
-        self.valueAutoFixed = autoFixed
+        self.valueEnterDate = enterDate ?? ""
+        self.valueServiceDays = serviceDays ?? 0
+        self.valueDiscountDays = discountDays ?? 0
+        self.valueAutoFixed = autoFixed ?? false
 
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
@@ -57,7 +57,7 @@ class CalculateHelper {
     }
 
     convenience init() {
-        self.init( enterDate: "999", serviceDays: 99, discountDays: 9, autoFixed: true )
+        self.init( enterDate: "999", serviceDays: nil, discountDays: 0, autoFixed: true )
     }
 
     func isSettingAllDone() -> Bool {
