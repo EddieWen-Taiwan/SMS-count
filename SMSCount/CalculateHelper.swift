@@ -110,7 +110,8 @@ class CalculateHelper {
 
         self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
-
+print(self.enterDate)
+print(self.defaultRetireDate)
         if self.valueDiscountDays == -1 {
             userPreference.setInteger( 0, forKey: "discountDays" )
             self.valueDiscountDays = 0
@@ -134,7 +135,7 @@ class CalculateHelper {
     }
 
     func isRetireDateFixed() -> Bool {
-        if userPreference.boolForKey("autoWeekendFixed") {
+        if self.valueAutoFixed {
             if self.getRetireDate() != self.getFixedRetireDate() {
                 return true
             }
@@ -226,7 +227,7 @@ class CalculateHelper {
 
         self.days2beFixed = 0
 
-        if userPreference.boolForKey("autoWeekendFixed") {
+        if self.valueAutoFixed {
             if self.weekendComponent.weekday == 1 {
                 self.days2beFixed = 2
             } else if self.weekendComponent.weekday == 7 {
