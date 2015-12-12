@@ -32,7 +32,7 @@ class CalculateHelper {
     var wholeServiceDays: NSDateComponents!
     var days2beFixed: Int = 0
 
-    init( enterDate: String = "", serviceDays: Int = -1, discountDays: Int = 0, autoFixed: Bool = false ) {
+    init( enterDate: String, serviceDays: Int, discountDays: Int, autoFixed: Bool ) {
 
 
 
