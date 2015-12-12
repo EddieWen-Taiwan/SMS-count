@@ -84,7 +84,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             // Sticker
             let fbid = thisUser.valueForKey("fb_id") as! String
             let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
-            print(url)
             self.reachability.getImageFromUrl(url) { (data, response, error) in
                 if data != nil {
                     dispatch_async( dispatch_get_main_queue(), {
