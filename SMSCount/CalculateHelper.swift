@@ -84,15 +84,6 @@ class CalculateHelper {
         self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
         // 入伍日 - enterDate
 
-        // v1.1 -> v1.2 dataFormat is change
-        if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            if userServiceDays == "1y" {
-                self.userPreference.setInteger( 2, forKey: "serviceDays" )
-            } else if userServiceDays == "1y15d" {
-                self.userPreference.setInteger( 3, forKey: "serviceDays" )
-            }
-        }
-
         let userServiceDays: Int = userPreference.integerForKey("serviceDays")
         switch( userServiceDays ) {
             case 0:
