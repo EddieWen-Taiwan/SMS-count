@@ -34,7 +34,7 @@ class CalculateHelper {
 
     init() {
 
-        self.valueEnterDate = userPreference.stringForKey("enterDate") != nil ? userPreference.stringForKey("enterDate")! : ""
+        self.valueEnterDate = userPreference.stringForKey("enterDate") ?? ""
         self.valueServiceDays = userPreference.stringForKey("serviceDays") != nil ? userPreference.integerForKey("serviceDays") : -1
         self.valueDiscountDays = userPreference.stringForKey("discountDays") != nil ? userPreference.integerForKey("discountDays") : -1
         self.valueAutoFixed = userPreference.boolForKey("autoWeekendFixed")
