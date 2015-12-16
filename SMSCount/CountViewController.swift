@@ -54,7 +54,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         super.init(coder: aDecoder)
 
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
-        currentMonthStr = ( currentMonth < 10 ) ? "0" + String(currentMonth) : String( currentMonth )
+        currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
     }
 
     override func viewDidLoad() {
