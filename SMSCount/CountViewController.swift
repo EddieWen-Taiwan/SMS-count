@@ -157,6 +157,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         } else {
             // switch to settingViewController ?
             // tabBarController?.selectedIndex = 2
+
+            self.percentageLabel.text = "0"
         }
 
     }
