@@ -16,6 +16,13 @@ class CalculateHelper {
     var dayComponent = NSDateComponents()
     var weekendComponent = NSDateComponents()
 
+    // Original data
+    var valueEnterDate: String
+    var valueServiceDays: Int
+    var valueDiscountDays: Int
+    var valueAutoFixed: Bool
+
+    // Outcome
     var enterDate: NSDate!
     var currentDate: NSDate!
     var defaultRetireDate: NSDate!
@@ -26,24 +33,27 @@ class CalculateHelper {
     var days2beFixed: Int = 0
 
     init() {
+
+        self.valueEnterDate = userPreference.stringForKey("enterDate") ?? ""
+        self.valueServiceDays = userPreference.stringForKey("serviceDays") != nil ? userPreference.integerForKey("serviceDays") : -1
+        self.valueDiscountDays = userPreference.stringForKey("discountDays") != nil ? userPreference.integerForKey("discountDays") : -1
+        self.valueAutoFixed = userPreference.boolForKey("autoWeekendFixed")
+
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
         calendar!.timeZone = NSTimeZone.localTimeZone()
-
+        
         let tempTimeString = dateFormatter.stringFromDate( NSDate() )
         self.currentDate = dateFormatter.dateFromString( tempTimeString )
 
-        if self.isSettingAllDone() {
-            self.updateDate()
-        }
     }
 
     func isSettingAllDone() -> Bool {
 
-        if self.userPreference.stringForKey("enterDate") == nil {
+        if self.valueEnterDate == "" {
             return false
         }
-        if self.userPreference.stringForKey("serviceDays") == nil {
+        if self.valueServiceDays == -1 {
             return false
         }
         return true
@@ -52,20 +62,10 @@ class CalculateHelper {
 
     func updateDate() {
 
-        self.enterDate = dateFormatter.dateFromString( userPreference.stringForKey("enterDate")! )!
+        self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
         // 入伍日 - enterDate
 
-        // v1.1 -> v1.2 dataFormat is change
-        if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            if userServiceDays == "1y" {
-                self.userPreference.setInteger( 2, forKey: "serviceDays" )
-            } else if userServiceDays == "1y15d" {
-                self.userPreference.setInteger( 3, forKey: "serviceDays" )
-            }
-        }
-
-        let userServiceDays: Int = userPreference.integerForKey("serviceDays")
-        switch( userServiceDays ) {
+        switch( valueServiceDays ) {
             case 0:
                 dayComponent.year = 0
                 dayComponent.month = 4
@@ -92,16 +92,13 @@ class CalculateHelper {
         self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
 
-        var userDiscountDays: Int = 0
-
-        if let discountDayString = userPreference.stringForKey("discountDays") {
-            userDiscountDays = Int(discountDayString)!
-        } else {
-            self.userPreference.setInteger( 0, forKey: "discountDays" )
+        if self.valueDiscountDays == -1 {
+            userPreference.setInteger( 0, forKey: "discountDays" )
+            self.valueDiscountDays = 0
         }
         dayComponent.year = 0
         dayComponent.month = 0
-        dayComponent.day = userDiscountDays*(-1)
+        dayComponent.day = self.valueDiscountDays*(-1)
         self.realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: [])!
         // 折抵後退伍日 - realRetireDate
 
@@ -118,7 +115,7 @@ class CalculateHelper {
     }
 
     func isRetireDateFixed() -> Bool {
-        if userPreference.boolForKey("autoWeekendFixed") {
+        if self.valueAutoFixed {
             if self.getRetireDate() != self.getFixedRetireDate() {
                 return true
             }
@@ -210,7 +207,7 @@ class CalculateHelper {
 
         self.days2beFixed = 0
 
-        if userPreference.boolForKey("autoWeekendFixed") {
+        if self.valueAutoFixed {
             if self.weekendComponent.weekday == 1 {
                 self.days2beFixed = 2
             } else if self.weekendComponent.weekday == 7 {

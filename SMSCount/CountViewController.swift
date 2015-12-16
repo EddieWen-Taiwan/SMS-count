@@ -42,7 +42,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     @IBOutlet var loadingView: UIView!
     @IBOutlet var loadingActivity: UIActivityIndicatorView!
 
-    let calculateHelper = CalculateHelper()
+    var calculateHelper = CalculateHelper()
     var circleView: PercentageCircleView!
 
     var screenHeight = UIScreen.mainScreen().bounds.height
@@ -76,7 +76,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.settingStatus = calculateHelper.isSettingAllDone() ? true : false
+        self.settingStatus = calculateHelper.isSettingAllDone()
 
         if self.settingStatus {
             // OK
@@ -157,6 +157,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         } else {
             // switch to settingViewController ?
             // tabBarController?.selectedIndex = 2
+
+            self.percentageLabel.text = "0"
         }
 
     }
