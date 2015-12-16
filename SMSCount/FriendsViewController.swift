@@ -55,19 +55,19 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             // without Internet
         }
     }
-    
+
     // MARK: - Table view data source
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.getData ? self.friendsObject.count : 5
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendsTableViewCell
 
@@ -75,7 +75,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             let thisUser = self.friendsObject[indexPath.row]
             // Configure the cell...
-        
+
             if let userName: String = thisUser.valueForKey("username") as? String {
                 cell.name.text = userName
             }
@@ -116,7 +116,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.status.backgroundColor = UIColor.clearColor()
 
         }
-        
+
         return cell
     }
 
