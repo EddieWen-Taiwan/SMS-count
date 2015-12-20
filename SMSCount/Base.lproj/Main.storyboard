@@ -610,6 +610,7 @@
                                                 <constraint firstItem="H8u-Fq-ycD" firstAttribute="leading" secondItem="z5d-ns-vsB" secondAttribute="trailing" constant="10" id="vke-87-kHh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="dayNumber" destination="m1z-Uz-D6b" id="9Qj-NZ-SHS"/>
                                             <outlet property="name" destination="H8u-Fq-ycD" id="fow-aY-c0z"/>
