@@ -40,12 +40,14 @@ class LeftDrawerViewController: UIViewController {
     @IBAction func goMainTabBarController(sender: AnyObject) {
         let rootViewController = self.mainStoryborad.instantiateViewControllerWithIdentifier("TabBarController")
 
+        self.switchRowBackground(0)
         self.switchRootViewController(rootViewController)
     }
 
     @IBAction func goSettingViewController(sender: AnyObject) {
         let rootViewController = self.settingStoryboard.instantiateViewControllerWithIdentifier("NavigationOfSettingVC")
 
+        self.switchRowBackground(1)
         self.switchRootViewController(rootViewController)
     }
 
@@ -56,6 +58,21 @@ class LeftDrawerViewController: UIViewController {
 //            print(success)
         })
 
+    }
+
+    func switchRowBackground( row: Int ) {
+
+        self.mainRow.backgroundColor = UIColor.clearColor()
+        self.settingRow.backgroundColor = UIColor.clearColor()
+
+        switch row {
+            case 0:
+                self.mainRow.backgroundColor = UIColor.redColor()
+            case 1:
+                self.settingRow.backgroundColor = UIColor.redColor()
+            default:
+                break
+        }
     }
 
     /*
