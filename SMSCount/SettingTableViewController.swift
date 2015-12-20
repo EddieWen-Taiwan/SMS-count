@@ -12,8 +12,14 @@ class SettingTableViewController: UITableViewController {
 
     @IBOutlet var statusLabel: UILabel!
 
+    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let status = self.userPreference?.stringForKey("status") {
+            self.statusLabel.text = status
+        }
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
