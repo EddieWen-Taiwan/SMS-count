@@ -16,7 +16,7 @@ class LeftDrawerViewController: UIViewController {
 
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
-    @IBOutlet var mainRow: UIView!
+    @IBOutlet var countRow: UIView!
     @IBOutlet var settingRow: UIView!
 
     init() {
@@ -62,12 +62,12 @@ class LeftDrawerViewController: UIViewController {
 
     func switchRowBackground( row: Int ) {
 
-        self.mainRow.backgroundColor = UIColor.clearColor()
+        self.countRow.backgroundColor = UIColor.clearColor()
         self.settingRow.backgroundColor = UIColor.clearColor()
 
         switch row {
             case 0:
-                self.mainRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+                self.countRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             case 1:
                 self.settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             default:

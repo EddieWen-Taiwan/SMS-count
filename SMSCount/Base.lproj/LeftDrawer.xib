@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftDrawerViewController" customModule="SMSCount">
             <connections>
-                <outlet property="mainRow" destination="O0X-fL-zul" id="sB2-Uz-ktv"/>
+                <outlet property="countRow" destination="O0X-fL-zul" id="wpw-tj-IyZ"/>
                 <outlet property="settingRow" destination="VUx-0S-2uz" id="9Cr-dX-vzL"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iUD-Md-XKh"/>
             </connections>
