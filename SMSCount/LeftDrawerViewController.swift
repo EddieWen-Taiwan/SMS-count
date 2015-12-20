@@ -16,6 +16,9 @@ class LeftDrawerViewController: UIViewController {
 
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
+    @IBOutlet var mainRow: UIView!
+    @IBOutlet var settingRow: UIView!
+
     init() {
         super.init(nibName: "LeftDrawer", bundle: nil)
     }
@@ -51,7 +54,6 @@ class LeftDrawerViewController: UIViewController {
         self.appDelegate.drawerController.centerViewController = rootViewController
         self.appDelegate.drawerController.toggleDrawerSide( DrawerSide.Left, animated: true, completion: { (success: Bool) -> Void in
 //            print(success)
-//            print("Done")
         })
 
     }
