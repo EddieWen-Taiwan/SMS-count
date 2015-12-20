@@ -97,18 +97,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
-
-        self.serviceDaysPickerViewBottomConstraint.constant = -200
-        self.discountDaysPickerViewBottomConstraint.constant = -200
-        self.datepickerViewBottomConstraint.constant = 0
-        self.screenMask.tag = 1
-
-        self.showPickerView()
-
-        if let userEnterDate = userPreference.stringForKey("enterDate") {
-            datepickerElement.setDate( dateFormatter.dateFromString(userEnterDate)!, animated: false )
-        }
-
     }
 
     @IBAction func editServiceDays(sender: AnyObject) {
@@ -226,7 +214,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             self.screenMask.hidden = true;
         })
     }
-    
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "embed" {
+            let settingTable = segue.destinationViewController as? SettingTableViewController
+            settingTable?.parentVC = self
+        }
+    }
+
     // *************** \\
     //      FBSDK      \\
     // *************** \\

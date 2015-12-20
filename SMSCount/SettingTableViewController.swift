@@ -26,8 +26,6 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.parentVC = self.parentViewController as? SettingViewController
-
         if let userEnterDate = self.userPreference.stringForKey("enterDate") {
             self.enterDateLabel.text = userEnterDate
         }
@@ -45,6 +43,23 @@ class SettingTableViewController: UITableViewController {
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
+    }
+
+    @IBAction func editEnterDate(sender: AnyObject) {
+
+        if let parentVC = self.parentVC {
+            parentVC.serviceDaysPickerViewBottomConstraint.constant = -200
+            parentVC.discountDaysPickerViewBottomConstraint.constant = -200
+            parentVC.datepickerViewBottomConstraint.constant = 0
+            parentVC.screenMask.tag = 1
+
+            parentVC.showPickerView()
+        }
+
+//        if let userEnterDate = userPreference.stringForKey("enterDate") {
+//            datepickerElement.setDate( dateFormatter.dateFromString(userEnterDate)!, animated: false )
+//        }
+
     }
 
     func switchClick( mySwitch: UISwitch ) {
