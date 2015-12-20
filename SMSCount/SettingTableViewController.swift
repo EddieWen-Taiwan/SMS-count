@@ -14,4 +14,12 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
     }
 
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+
 }
