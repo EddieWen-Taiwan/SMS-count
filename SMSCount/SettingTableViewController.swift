@@ -48,11 +48,9 @@ class SettingTableViewController: UITableViewController {
     }
 
     @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-print("HERE")
+
         if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
-            print(statusVC)
             var userStatus = statusVC.statusTextField.text! as NSString
-            print(userStatus)
             if userStatus.length > 30 {
                 userStatus = userStatus.substringToIndex(30)
             }
