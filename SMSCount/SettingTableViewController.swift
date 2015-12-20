@@ -10,6 +10,8 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
 
+    @IBOutlet var statusLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
