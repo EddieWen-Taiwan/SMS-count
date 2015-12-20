@@ -96,19 +96,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         userInfo.save()
     }
 
-    @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-
-        if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
-            var userStatus = statusVC.statusTextField.text! as NSString
-            if userStatus.length > 30 {
-                userStatus = userStatus.substringToIndex(30)
-            }
-            self.statusLabel.text = userStatus as String
-            userInfo.updateUserStatus( userStatus as String )
-        }
-
-    }
-
     @IBAction func editEnterDate(sender: AnyObject) {
 
         self.serviceDaysPickerViewBottomConstraint.constant = -200

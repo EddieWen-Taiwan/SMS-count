@@ -19,6 +19,7 @@ class SettingTableViewController: UITableViewController {
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
     let calculateHelper = CalculateHelper()
+    let userInfo = UserInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,21 @@ class SettingTableViewController: UITableViewController {
 
     func switchClick( mySwitch: UISwitch ) {
         self.userPreference.setBool( mySwitch.on ? true : false, forKey: "autoWeekendFixed" )
+    }
+
+    @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+print("HERE")
+        if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
+            print(statusVC)
+            var userStatus = statusVC.statusTextField.text! as NSString
+            print(userStatus)
+            if userStatus.length > 30 {
+                userStatus = userStatus.substringToIndex(30)
+            }
+            self.statusLabel.text = userStatus as String
+            userInfo.updateUserStatus( userStatus as String )
+        }
+
     }
 
     // MARK: table view
