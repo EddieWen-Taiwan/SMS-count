@@ -678,6 +678,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="役期天數" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbl-pO-PsS">
+                                                    <rect key="frame" x="20" y="15" width="48" height="17"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一年" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8V-Av-V17">
+                                                    <rect key="frame" x="20" y="27" width="32" height="23"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1A-MT-Q1k">
                                                     <rect key="frame" x="550" y="18" width="30" height="29"/>
                                                     <constraints>
@@ -690,8 +702,12 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="M8V-Av-V17" firstAttribute="leading" secondItem="Gwp-rJ-LvQ" secondAttribute="leading" constant="20" id="1nF-Lc-OUK"/>
+                                                <constraint firstItem="Qbl-pO-PsS" firstAttribute="top" secondItem="Gwp-rJ-LvQ" secondAttribute="top" constant="15" id="Cb7-AN-riv"/>
                                                 <constraint firstItem="v1A-MT-Q1k" firstAttribute="centerY" secondItem="Gwp-rJ-LvQ" secondAttribute="centerY" id="Js6-7V-fhf"/>
+                                                <constraint firstItem="Qbl-pO-PsS" firstAttribute="leading" secondItem="Gwp-rJ-LvQ" secondAttribute="leading" constant="20" id="hQM-ep-mbz"/>
                                                 <constraint firstAttribute="trailing" secondItem="v1A-MT-Q1k" secondAttribute="trailing" constant="20" id="hyF-JX-SU1"/>
+                                                <constraint firstAttribute="bottom" secondItem="M8V-Av-V17" secondAttribute="bottom" constant="15" id="lGo-4R-Gd6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
