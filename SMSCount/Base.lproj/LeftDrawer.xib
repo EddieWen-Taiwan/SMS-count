@@ -108,7 +108,7 @@
                         <constraint firstItem="qZs-ff-xOS" firstAttribute="centerY" secondItem="5va-Fv-ucO" secondAttribute="centerY" id="uQi-kM-xBj"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oub-lU-a8j">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="Oub-lU-a8j">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="PtQ-DD-qJG"/>
@@ -133,6 +133,7 @@
         </view>
     </objects>
     <resources>
+        <image name="banner" width="260" height="200"/>
         <image name="home" width="24" height="24"/>
         <image name="setting" width="24" height="24"/>
         <image name="team" width="24" height="24"/>
