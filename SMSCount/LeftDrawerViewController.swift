@@ -77,7 +77,7 @@ class LeftDrawerViewController: UIViewController {
             case 1:
                 self.settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             case 2:
-                self.settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+                self.teamRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             default:
                 break
         }
