@@ -14,6 +14,7 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet var serviceDaysLabel: UILabel!
     @IBOutlet var discountDaysLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var autoWeekendSwitch: UISwitch!
 
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
@@ -34,6 +35,15 @@ class SettingTableViewController: UITableViewController {
         if let status = self.userPreference.stringForKey("status") {
             self.statusLabel.text = status
         }
+        self.autoWeekendSwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
+        self.autoWeekendSwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
+        if self.userPreference.boolForKey("autoWeekendFixed") {
+            self.autoWeekendSwitch.setOn(true, animated: false)
+        }
+    }
+
+    func switchClick( mySwitch: UISwitch ) {
+        self.userPreference.setBool( mySwitch.on ? true : false, forKey: "autoWeekendFixed" )
     }
 
     // MARK: table view

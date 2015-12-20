@@ -834,6 +834,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="autoWeekendSwitch" destination="d8a-QV-DCL" id="Xig-Q4-PhK"/>
                         <outlet property="discountDaysLabel" destination="Kz1-80-G22" id="1J1-Ep-gMv"/>
                         <outlet property="enterDateLabel" destination="FgD-3f-36t" id="PRx-99-LOf"/>
                         <outlet property="serviceDaysLabel" destination="M8V-Av-V17" id="Pwt-cp-KHn"/>
