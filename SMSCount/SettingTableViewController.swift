@@ -19,7 +19,7 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return section == 1 ? 3 : 1
     }
 
 }
