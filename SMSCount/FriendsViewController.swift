@@ -40,6 +40,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                     let friendsDetail = PFQuery(className: "User")
                     friendsDetail.whereKey( "fb_id", containedIn: friendArray )
+                    friendsDetail.orderByDescending("updatedAt")
                     friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
                         if error == nil {
 //                            print(objects)
