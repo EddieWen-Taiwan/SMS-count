@@ -67,9 +67,9 @@ class LeftDrawerViewController: UIViewController {
 
         switch row {
             case 0:
-                self.mainRow.backgroundColor = UIColor.redColor()
+                self.mainRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             case 1:
-                self.settingRow.backgroundColor = UIColor.redColor()
+                self.settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             default:
                 break
         }
