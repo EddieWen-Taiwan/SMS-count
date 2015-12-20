@@ -18,11 +18,15 @@ class SettingTableViewController: UITableViewController {
 
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
+    var parentVC: SettingViewController?
+
     let calculateHelper = CalculateHelper()
     let userInfo = UserInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.parentVC = self.parentViewController as? SettingViewController
 
         if let userEnterDate = self.userPreference.stringForKey("enterDate") {
             self.enterDateLabel.text = userEnterDate
