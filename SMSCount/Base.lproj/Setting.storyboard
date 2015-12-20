@@ -411,8 +411,8 @@
                                     <constraint firstAttribute="height" constant="50" id="d3X-HX-zIO"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ws4-zf-uB1">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ws4-zf-uB1">
+                                <rect key="frame" x="0.0" y="164" width="600" height="436"/>
                                 <connections>
                                     <segue destination="9TE-h7-xoi" kind="embed" id="gOV-fO-Cc6"/>
                                 </connections>
@@ -562,10 +562,13 @@
                             <constraint firstItem="s0G-Tr-QFk" firstAttribute="leading" secondItem="CfT-Fs-YTf" secondAttribute="leading" id="Dvu-jb-xMZ"/>
                             <constraint firstAttribute="width" secondItem="7vz-Fh-GQF" secondAttribute="width" id="KxR-i7-6zz"/>
                             <constraint firstItem="qhw-t1-66k" firstAttribute="leading" secondItem="CfT-Fs-YTf" secondAttribute="leading" id="OQZ-lm-scK"/>
+                            <constraint firstAttribute="trailing" secondItem="Ws4-zf-uB1" secondAttribute="trailing" id="PM4-oT-cL7"/>
                             <constraint firstAttribute="trailing" secondItem="scP-n5-heI" secondAttribute="trailing" constant="20" id="Qsv-lz-gyf"/>
+                            <constraint firstItem="Ws4-zf-uB1" firstAttribute="leading" secondItem="CfT-Fs-YTf" secondAttribute="leading" id="VvG-V0-n6D"/>
                             <constraint firstItem="FWo-da-eoi" firstAttribute="leading" secondItem="CfT-Fs-YTf" secondAttribute="leading" id="WN0-QL-3R8"/>
                             <constraint firstAttribute="centerX" secondItem="OAq-Bw-9Og" secondAttribute="centerX" id="Wxd-wH-ITR"/>
                             <constraint firstItem="XGt-dK-Gtb" firstAttribute="top" secondItem="s0G-Tr-QFk" secondAttribute="bottom" constant="-200" id="YFY-qD-XXa"/>
+                            <constraint firstItem="XGt-dK-Gtb" firstAttribute="top" secondItem="Ws4-zf-uB1" secondAttribute="bottom" id="aTf-Hl-xeU"/>
                             <constraint firstItem="TMM-jS-v2V" firstAttribute="top" secondItem="5jD-Yb-wGa" secondAttribute="bottom" id="ad7-pU-pTS"/>
                             <constraint firstAttribute="leading" secondItem="TMM-jS-v2V" secondAttribute="leading" id="ak6-Hn-4tA"/>
                             <constraint firstItem="XGt-dK-Gtb" firstAttribute="top" secondItem="qhw-t1-66k" secondAttribute="bottom" constant="-200" id="bzj-ia-WC4"/>
@@ -576,6 +579,7 @@
                             <constraint firstAttribute="trailing" secondItem="TMM-jS-v2V" secondAttribute="trailing" id="iYr-9e-1O5"/>
                             <constraint firstAttribute="trailing" secondItem="FWo-da-eoi" secondAttribute="trailing" id="o1a-0p-biL"/>
                             <constraint firstItem="OAq-Bw-9Og" firstAttribute="height" secondItem="CfT-Fs-YTf" secondAttribute="height" id="o7X-1k-0hi"/>
+                            <constraint firstItem="Ws4-zf-uB1" firstAttribute="top" secondItem="scP-n5-heI" secondAttribute="bottom" constant="20" id="oez-6Y-mXg"/>
                             <constraint firstAttribute="centerY" secondItem="OAq-Bw-9Og" secondAttribute="centerY" id="vEU-4S-oqT"/>
                         </constraints>
                     </view>
@@ -609,15 +613,15 @@
             <objects>
                 <tableViewController id="9TE-h7-xoi" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lkJ-GM-zWx">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1gK-p3-dIg">
-                                <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1gK-p3-dIg" id="BuN-2b-7Vi">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
