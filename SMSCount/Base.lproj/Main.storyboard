@@ -519,7 +519,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ezs-Kh-diY">
-                                <rect key="frame" x="0.0" y="84" width="600" height="467"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" rowHeight="70" id="g0E-1d-pgg" customClass="FriendsTableViewCell" customModule="SMSCount" customModuleProvider="target">
@@ -625,7 +625,7 @@
                         <constraints>
                             <constraint firstItem="Ezs-Kh-diY" firstAttribute="leading" secondItem="j0V-OV-ZwS" secondAttribute="leading" id="KTt-Tp-8m5"/>
                             <constraint firstAttribute="trailing" secondItem="Ezs-Kh-diY" secondAttribute="trailing" id="UcE-c8-qBA"/>
-                            <constraint firstItem="Ezs-Kh-diY" firstAttribute="top" secondItem="AVu-Vt-qVq" secondAttribute="bottom" constant="20" id="r53-5a-Vsy"/>
+                            <constraint firstItem="Ezs-Kh-diY" firstAttribute="top" secondItem="AVu-Vt-qVq" secondAttribute="bottom" id="r53-5a-Vsy"/>
                             <constraint firstItem="3hM-Sm-gWw" firstAttribute="top" secondItem="Ezs-Kh-diY" secondAttribute="bottom" id="uoM-6l-HwL"/>
                         </constraints>
                     </view>
