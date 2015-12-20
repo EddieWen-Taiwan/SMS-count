@@ -10,14 +10,28 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
 
+    @IBOutlet var enterDateLabel: UILabel!
+    @IBOutlet var serviceDaysLabel: UILabel!
+    @IBOutlet var discountDaysLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
 
-    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")
+    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+
+    let calculateHelper = CalculateHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let status = self.userPreference?.stringForKey("status") {
+        if let userEnterDate = self.userPreference.stringForKey("enterDate") {
+            self.enterDateLabel.text = userEnterDate
+        }
+        if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
+            self.serviceDaysLabel.text = calculateHelper.switchPeriod( userServiceDays )
+        }
+        if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
+            self.discountDaysLabel.text = userDiscountDays
+        }
+        if let status = self.userPreference.stringForKey("status") {
             self.statusLabel.text = status
         }
     }
