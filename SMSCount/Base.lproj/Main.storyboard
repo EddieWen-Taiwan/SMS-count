@@ -555,7 +555,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIz-Jg-dZi">
-                                                    <rect key="frame" x="140" y="15" width="58" height="16"/>
+                                                    <rect key="frame" x="532" y="15" width="58" height="16"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩餘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUR-XZ-hNa">
                                                             <rect key="frame" x="0.0" y="0.0" width="22" height="16"/>
@@ -600,13 +600,13 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VIz-Jg-dZi" firstAttribute="leading" secondItem="H8u-Fq-ycD" secondAttribute="trailing" constant="10" id="CBK-yP-H8X"/>
                                                 <constraint firstItem="VIz-Jg-dZi" firstAttribute="centerY" secondItem="H8u-Fq-ycD" secondAttribute="centerY" id="O4v-Ck-PED"/>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="leading" secondItem="ZuT-RG-Ie9" secondAttribute="leading" constant="10" id="Yfx-Wb-5ZX"/>
                                                 <constraint firstItem="H8u-Fq-ycD" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="12" id="b9E-Nf-dQ2"/>
                                                 <constraint firstItem="MFL-RD-FZL" firstAttribute="leading" secondItem="z5d-ns-vsB" secondAttribute="trailing" constant="10" id="lDF-gO-vGJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="MFL-RD-FZL" secondAttribute="bottom" constant="12" id="mBo-gy-8d1"/>
                                                 <constraint firstItem="z5d-ns-vsB" firstAttribute="top" secondItem="ZuT-RG-Ie9" secondAttribute="top" constant="7" id="qPX-Om-S4l"/>
+                                                <constraint firstAttribute="trailing" secondItem="VIz-Jg-dZi" secondAttribute="trailing" constant="10" id="tS4-uM-Xac"/>
                                                 <constraint firstItem="H8u-Fq-ycD" firstAttribute="leading" secondItem="z5d-ns-vsB" secondAttribute="trailing" constant="10" id="vke-87-kHh"/>
                                             </constraints>
                                         </tableViewCellContentView>
