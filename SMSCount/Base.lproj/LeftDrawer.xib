@@ -89,6 +89,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5va-Fv-ucO">
                     <rect key="frame" x="0.0" y="184" width="600" height="60"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team" translatesAutoresizingMaskIntoConstraints="NO" id="qZs-ff-xOS">
+                            <rect key="frame" x="20" y="18" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="I8C-67-Hua"/>
+                                <constraint firstAttribute="width" constant="24" id="t9e-ny-M1W"/>
+                            </constraints>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuy-M8-IVa">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
@@ -101,9 +108,11 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Yuy-M8-IVa" secondAttribute="bottom" id="JuZ-ag-OgP"/>
                         <constraint firstItem="Yuy-M8-IVa" firstAttribute="leading" secondItem="5va-Fv-ucO" secondAttribute="leading" id="OaE-r9-GUY"/>
+                        <constraint firstItem="qZs-ff-xOS" firstAttribute="leading" secondItem="5va-Fv-ucO" secondAttribute="leading" constant="20" id="SXV-Ag-j6i"/>
                         <constraint firstItem="Yuy-M8-IVa" firstAttribute="top" secondItem="5va-Fv-ucO" secondAttribute="top" id="f3F-2C-h4d"/>
                         <constraint firstAttribute="trailing" secondItem="Yuy-M8-IVa" secondAttribute="trailing" id="fnX-1J-bl3"/>
                         <constraint firstAttribute="height" constant="60" id="jzn-7e-4uo"/>
+                        <constraint firstItem="qZs-ff-xOS" firstAttribute="centerY" secondItem="5va-Fv-ucO" secondAttribute="centerY" id="uQi-kM-xBj"/>
                     </constraints>
                 </view>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7W-Cy-DIM">
@@ -146,6 +155,7 @@
     <resources>
         <image name="DrawerBackground" width="320" height="640"/>
         <image name="home" width="24" height="24"/>
-        <image name="setting" width="30" height="30"/>
+        <image name="setting" width="24" height="24"/>
+        <image name="team" width="24" height="24"/>
     </resources>
 </document>
