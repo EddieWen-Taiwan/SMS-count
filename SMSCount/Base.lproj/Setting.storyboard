@@ -608,10 +608,10 @@
             </objects>
             <point key="canvasLocation" x="1290" y="1143"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Setting Table View Controller-->
         <scene sceneID="XHg-s7-pZd">
             <objects>
-                <tableViewController id="9TE-h7-xoi" sceneMemberID="viewController">
+                <tableViewController id="9TE-h7-xoi" customClass="SettingTableViewController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="50" sectionFooterHeight="10" id="lkJ-GM-zWx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
