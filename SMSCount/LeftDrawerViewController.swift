@@ -70,6 +70,7 @@ class LeftDrawerViewController: UIViewController {
 
         self.countRow.backgroundColor = UIColor.clearColor()
         self.settingRow.backgroundColor = UIColor.clearColor()
+        self.teamRow.backgroundColor = UIColor.clearColor()
 
         switch row {
             case 0:
