@@ -63,25 +63,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
-        if let userStatus = self.userPreference.stringForKey("status") {
-            statusLabel.text = userStatus
-        }
-        if let userEnterDate = self.userPreference.stringForKey("enterDate") {
-            enterDateLabel.text = userEnterDate
-        }
-        if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            serviceDaysLabel.text = calculateHelper.switchPeriod( userServiceDays )
-        }
-        if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
-            discountDaysLabel.text = userDiscountDays
-        }
-
-        self.autoWeekendSwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
-        self.autoWeekendSwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
-        if self.userPreference.boolForKey("autoWeekendFixed") {
-            self.autoWeekendSwitch.setOn(true, animated: false)
-        }
-
         // About FB login button
         if FBSDKAccessToken.currentAccessToken() == nil {
             self.FBLoginView.hidden = false
@@ -257,10 +238,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }, completion: { finish in
             self.screenMask.hidden = true;
         })
-    }
-
-    func switchClick( mySwitch: UISwitch ) {
-        self.userPreference.setBool( mySwitch.on ? true : false, forKey: "autoWeekendFixed" )
     }
     
     // *************** \\
