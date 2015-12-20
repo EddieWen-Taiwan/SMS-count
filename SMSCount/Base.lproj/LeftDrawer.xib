@@ -15,15 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrawerBackground" translatesAutoresizingMaskIntoConstraints="NO" id="N1g-OG-6rr">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </imageView>
-                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dev-AP-cRC">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0X-fL-zul">
-                    <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                    <rect key="frame" x="0.0" y="210" width="600" height="60"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="aVp-JE-our">
                             <rect key="frame" x="20" y="18" width="24" height="24"/>
@@ -55,7 +48,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUx-0S-2uz">
-                    <rect key="frame" x="0.0" y="124" width="600" height="60"/>
+                    <rect key="frame" x="0.0" y="270" width="600" height="60"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-Vv-2Ih">
                             <rect key="frame" x="20" y="18" width="24" height="24"/>
@@ -87,7 +80,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5va-Fv-ucO">
-                    <rect key="frame" x="0.0" y="184" width="600" height="60"/>
+                    <rect key="frame" x="0.0" y="330" width="600" height="60"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team" translatesAutoresizingMaskIntoConstraints="NO" id="qZs-ff-xOS">
                             <rect key="frame" x="20" y="18" width="24" height="24"/>
@@ -115,45 +108,31 @@
                         <constraint firstItem="qZs-ff-xOS" firstAttribute="centerY" secondItem="5va-Fv-ucO" secondAttribute="centerY" id="uQi-kM-xBj"/>
                     </constraints>
                 </view>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7W-Cy-DIM">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oub-lU-a8j">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="5gd-kQ-bWG"/>
-                        <constraint firstAttribute="height" constant="44" id="odn-rD-TT8"/>
+                        <constraint firstAttribute="height" constant="200" id="PtQ-DD-qJG"/>
                     </constraints>
-                    <color key="barTintColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <items>
-                        <navigationItem id="OPH-Hu-VeY"/>
-                    </items>
-                </navigationBar>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="O0X-fL-zul" secondAttribute="trailing" id="0Qv-Mq-Cvw"/>
+                <constraint firstItem="Oub-lU-a8j" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3VK-T8-uar"/>
+                <constraint firstAttribute="trailing" secondItem="Oub-lU-a8j" secondAttribute="trailing" id="6YE-GD-F7b"/>
                 <constraint firstItem="VUx-0S-2uz" firstAttribute="top" secondItem="O0X-fL-zul" secondAttribute="bottom" id="A8h-mO-7z5"/>
-                <constraint firstItem="dev-AP-cRC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FDm-ua-xUz"/>
                 <constraint firstItem="5va-Fv-ucO" firstAttribute="top" secondItem="VUx-0S-2uz" secondAttribute="bottom" id="MaD-9C-4MO"/>
-                <constraint firstAttribute="bottom" secondItem="N1g-OG-6rr" secondAttribute="bottom" id="Q7b-OO-CDs"/>
                 <constraint firstAttribute="trailing" secondItem="VUx-0S-2uz" secondAttribute="trailing" id="Szt-Vc-3ce"/>
                 <constraint firstItem="O0X-fL-zul" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uut-Ps-nxG"/>
-                <constraint firstItem="N1g-OG-6rr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="V5F-fd-NT2"/>
-                <constraint firstItem="O0X-fL-zul" firstAttribute="top" secondItem="a7W-Cy-DIM" secondAttribute="bottom" constant="20" id="VDd-o4-vZ0"/>
-                <constraint firstAttribute="trailing" secondItem="N1g-OG-6rr" secondAttribute="trailing" id="XyL-ia-qZj"/>
-                <constraint firstItem="a7W-Cy-DIM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="boD-a9-2Z1"/>
                 <constraint firstItem="VUx-0S-2uz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c7t-UJ-Fc1"/>
-                <constraint firstItem="dev-AP-cRC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e9e-XW-tIp"/>
                 <constraint firstAttribute="trailing" secondItem="5va-Fv-ucO" secondAttribute="trailing" id="faD-8Q-7AD"/>
                 <constraint firstItem="5va-Fv-ucO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gEI-zg-QJn"/>
-                <constraint firstAttribute="bottom" secondItem="dev-AP-cRC" secondAttribute="bottom" id="hKY-af-Ojt"/>
-                <constraint firstItem="a7W-Cy-DIM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jtw-Bp-dxp"/>
-                <constraint firstAttribute="trailing" secondItem="a7W-Cy-DIM" secondAttribute="trailing" id="nqL-FR-CBH"/>
-                <constraint firstItem="N1g-OG-6rr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rXZ-fS-4vS"/>
-                <constraint firstAttribute="trailing" secondItem="dev-AP-cRC" secondAttribute="trailing" id="wkQ-Tu-u5I"/>
+                <constraint firstItem="Oub-lU-a8j" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nFP-xF-EuS"/>
+                <constraint firstItem="O0X-fL-zul" firstAttribute="top" secondItem="Oub-lU-a8j" secondAttribute="bottom" constant="10" id="nZd-fB-ssL"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="DrawerBackground" width="320" height="640"/>
         <image name="home" width="24" height="24"/>
         <image name="setting" width="24" height="24"/>
         <image name="team" width="24" height="24"/>
