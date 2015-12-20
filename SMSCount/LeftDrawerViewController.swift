@@ -32,11 +32,6 @@ class LeftDrawerViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func goMainTabBarController(sender: AnyObject) {
         let rootViewController = self.mainStoryborad.instantiateViewControllerWithIdentifier("TabBarController")
@@ -93,5 +88,10 @@ class LeftDrawerViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
 }
