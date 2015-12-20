@@ -36,6 +36,7 @@ class SettingTableViewController: UITableViewController {
         }
     }
 
+    // MARK: table view
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
     }
