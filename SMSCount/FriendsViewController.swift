@@ -65,7 +65,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.getData ? self.friendsObject.count : 5
+        return self.getData ? self.friendsObject.count : Int( self.tableView.bounds.height / 74 )
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
