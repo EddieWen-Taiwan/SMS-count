@@ -648,6 +648,9 @@
                                                     <state key="normal" title="EDIT">
                                                         <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="DUU-JR-dQ9" kind="presentation" id="9sy-Lc-DEj"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -865,4 +868,7 @@
     <resources>
         <image name="setting" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9sy-Lc-DEj"/>
+    </inferredMetricsTieBreakers>
 </document>
