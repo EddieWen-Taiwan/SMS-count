@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="countRow" destination="O0X-fL-zul" id="wpw-tj-IyZ"/>
                 <outlet property="settingRow" destination="VUx-0S-2uz" id="9Cr-dX-vzL"/>
+                <outlet property="teamRow" destination="5va-Fv-ucO" id="u5z-bR-Vts"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iUD-Md-XKh"/>
             </connections>
         </placeholder>
@@ -99,6 +100,9 @@
                             <state key="normal" title="開發團隊">
                                 <color key="titleColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="goTeamViewController:" destination="-1" eventType="touchUpInside" id="uRW-uM-xoZ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
