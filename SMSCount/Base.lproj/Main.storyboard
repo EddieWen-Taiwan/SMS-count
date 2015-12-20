@@ -544,13 +544,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8u-Fq-ycD">
-                                                    <rect key="frame" x="80" y="12" width="50" height="22"/>
+                                                    <rect key="frame" x="80" y="12" width="50" height="21"/>
                                                     <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="AcN-vc-nyi"/>
+                                                        <constraint firstAttribute="height" constant="21" id="AcN-vc-nyi"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="aOq-se-MhD"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="15"/>
                                                     <color key="textColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
