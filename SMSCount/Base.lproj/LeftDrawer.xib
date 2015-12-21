@@ -30,7 +30,7 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-NN-a8h">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                             <inset key="contentEdgeInsets" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="役期倒數">
                                 <color key="titleColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
@@ -63,7 +63,7 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vI4-BB-iiu">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                             <inset key="contentEdgeInsets" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="設定">
                                 <color key="titleColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
@@ -95,7 +95,7 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuy-M8-IVa">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                             <inset key="contentEdgeInsets" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="開發團隊">
                                 <color key="titleColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
