@@ -102,7 +102,7 @@ class SettingTableViewController: UITableViewController {
     @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
 
         if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
-            var userStatus = statusVC.statusTextField.text! as NSString
+            var userStatus = (statusVC.statusTextField.text ?? "") as NSString
             if userStatus.length > 30 {
                 userStatus = userStatus.substringToIndex(30)
             }
