@@ -127,8 +127,15 @@ class SettingTableViewController: UITableViewController {
 
         let label = UILabel(frame: CGRectMake(20, 24, 48, 17))
         label.textColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
-        label.text = "一般設定"
         label.font = UIFont(name: "PingFangTC-Light", size: 12.0)
+        switch section {
+            case 0:
+                label.text = "個人設定"
+            case 1:
+                label.text = "一般設定"
+            default:
+                label.text = "偏好設定"
+        }
         
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 50))
         headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
