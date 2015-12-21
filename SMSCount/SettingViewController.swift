@@ -141,7 +141,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             self.userPreference.setInteger( 0, forKey: "serviceDays" )
         }
 
-        self.serviceDaysLabel.text = calculateHelper.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
+        if let containerVC = self.containerVC {
+            containerVC.serviceDaysLabel.text = calculateHelper.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
+        }
         userInfo.updateServiceDays( self.userPreference.integerForKey("serviceDays") )
 
         self.dismissRelativeViews()
@@ -154,7 +156,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             self.userPreference.setInteger( 0, forKey: "discountDays" )
         }
 
-        self.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
+        if let containerVC = self.containerVC {
+            containerVC.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
+        }
         userInfo.updateDiscountDays( self.userPreference.integerForKey("discountDays") )
 
         self.dismissRelativeViews()
