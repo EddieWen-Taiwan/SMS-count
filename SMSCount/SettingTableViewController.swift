@@ -125,7 +125,7 @@ class SettingTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
-        let label = UILabel(frame: CGRectMake(200, 24, 48, 17))
+        let label = UILabel(frame: CGRectMake(20, 24, 48, 17))
         label.textColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
         label.text = "一般設定"
         label.font = UIFont(name: "PingFangTC-Light", size: 14.0)
