@@ -144,8 +144,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         if self.screenMask.tag == 2 {
             if self.containerVC?.serviceDaysLabel.text != "" {
-                let newServiceDays = calculateHelper.switchPeriod((self.containerVC?.serviceDaysLabel.text!)!)
-                userPreference.setObject( Int(newServiceDays), forKey: "serviceDays" )
+                let newServiceDays = calculateHelper.switchPeriod( (self.containerVC?.serviceDaysLabel.text)! )
+                userPreference.setInteger( Int(newServiceDays)!, forKey: "serviceDays" )
             } else {
                 userPreference.removeObjectForKey( "serviceDays" )
             }
