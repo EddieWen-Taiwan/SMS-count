@@ -104,33 +104,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     @IBAction func editServiceDays(sender: AnyObject) {
-
-        self.datepickerViewBottomConstraint.constant = -200
-        self.discountDaysPickerViewBottomConstraint.constant = -200
-        self.serviceDaysPickerViewBottomConstraint.constant = 0
-        self.screenMask.tag = 2
-
-        self.showPickerView()
-
-        if let userServiceDays: Int = userPreference.integerForKey("serviceDays") {
-            serviceDaysPickerElement.selectRow( userServiceDays, inComponent: 0, animated: false )
-        }
-
     }
 
     @IBAction func editDiscountDays(sender: AnyObject) {
-
-        self.datepickerViewBottomConstraint.constant = -200
-        self.serviceDaysPickerViewBottomConstraint.constant = -200
-        self.discountDaysPickerViewBottomConstraint.constant = 0
-        self.screenMask.tag = 3
-
-        self.showPickerView()
-
-        if let selectedRow: Int = userPreference.integerForKey("discountDays") {
-            discountDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
-        }
-
     }
 
     func showPickerView() {

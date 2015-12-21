@@ -739,6 +739,9 @@
                                                     <state key="normal" title="EDIT">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="editServiceDays:" destination="9TE-h7-xoi" eventType="touchUpInside" id="qm6-9t-Lmd"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -779,6 +782,9 @@
                                                     <state key="normal" title="EDIT">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="editDiscountDays:" destination="9TE-h7-xoi" eventType="touchUpInside" id="4YX-j3-mpn"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -879,6 +885,6 @@
         <image name="setting" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="T4g-ZX-U7Y"/>
+        <segue reference="9sy-Lc-DEj"/>
     </inferredMetricsTieBreakers>
 </document>

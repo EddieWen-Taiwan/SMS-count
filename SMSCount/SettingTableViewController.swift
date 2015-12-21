@@ -61,6 +61,40 @@ class SettingTableViewController: UITableViewController {
 
     }
 
+    @IBAction func editServiceDays(sender: AnyObject) {
+
+        if let parentVC = self.parentVC {
+            parentVC.datepickerViewBottomConstraint.constant = -200
+            parentVC.discountDaysPickerViewBottomConstraint.constant = -200
+            parentVC.serviceDaysPickerViewBottomConstraint.constant = 0
+            parentVC.screenMask.tag = 2
+
+            parentVC.showPickerView()
+
+            if let userServiceDays: Int = userPreference.integerForKey("serviceDays") {
+                parentVC.serviceDaysPickerElement.selectRow( userServiceDays, inComponent: 0, animated: false )
+            }
+        }
+
+    }
+
+    @IBAction func editDiscountDays(sender: AnyObject) {
+
+        if let parentVC = self.parentVC {
+            parentVC.datepickerViewBottomConstraint.constant = -200
+            parentVC.serviceDaysPickerViewBottomConstraint.constant = -200
+            parentVC.discountDaysPickerViewBottomConstraint.constant = 0
+            parentVC.screenMask.tag = 3
+
+            parentVC.showPickerView()
+
+            if let selectedRow: Int = userPreference.integerForKey("discountDays") {
+                parentVC.discountDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
+            }
+        }
+
+    }
+
     func switchClick( mySwitch: UISwitch ) {
         self.userPreference.setBool( mySwitch.on ? true : false, forKey: "autoWeekendFixed" )
     }
