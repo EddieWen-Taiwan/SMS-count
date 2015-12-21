@@ -62,8 +62,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         // About FB login button
         if FBSDKAccessToken.currentAccessToken() == nil {
-            self.FBLoginView.hidden = false
-//            self.topConstraint.constant = 104
+            self.topConstraint.constant = 104
             // FB Login
             self.view.layoutIfNeeded()
 
@@ -221,7 +220,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
                 if error == nil {
                     // Hide FB login button
-                    self.FBLoginView.hidden = true
 //                    self.topConstraint.constant = 24
                     if let FBID = result.objectForKey("id") {
 
