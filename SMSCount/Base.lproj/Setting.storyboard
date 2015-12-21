@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="26B-h1-SHm">
-                                <rect key="frame" x="30" y="114" width="540" height="40"/>
+                                <rect key="frame" x="30" y="94" width="540" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="r5X-tC-REW"/>
                                 </constraints>
@@ -26,7 +26,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D30-rP-oAZ">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="fZJ-G8-oQT"/>
                                 </constraints>
@@ -46,7 +46,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao8-de-6be">
-                                <rect key="frame" x="30" y="174" width="540" height="40"/>
+                                <rect key="frame" x="30" y="154" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.4039215686" green="0.82745098039999998" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="suL-t3-Tle"/>

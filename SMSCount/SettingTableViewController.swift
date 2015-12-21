@@ -123,4 +123,12 @@ class SettingTableViewController: UITableViewController {
         return section == 1 ? 3 : 1
     }
 
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel(frame: CGRect(x: <#T##Int#>, y: <#T##Int#>, width: <#T##Int#>, height: <#T##Int#>))
+        label.textColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
+        label.text = "123"
+//        label.font
+
+        return label
+    }
 }
