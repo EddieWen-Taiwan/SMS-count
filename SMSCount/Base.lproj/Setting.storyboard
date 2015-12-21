@@ -95,14 +95,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scP-n5-heI">
-                                <rect key="frame" x="20" y="94" width="560" height="50"/>
+                                <rect key="frame" x="20" y="-6" width="560" height="50"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="d3X-HX-zIO"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ws4-zf-uB1">
-                                <rect key="frame" x="0.0" y="164" width="600" height="436"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <connections>
                                     <segue destination="9TE-h7-xoi" kind="embed" identifier="embed" id="gOV-fO-Cc6"/>
                                 </connections>
@@ -261,7 +261,7 @@
                             <constraint firstAttribute="trailing" secondItem="qhw-t1-66k" secondAttribute="trailing" id="g8g-dU-dtx"/>
                             <constraint firstItem="OAq-Bw-9Og" firstAttribute="width" secondItem="CfT-Fs-YTf" secondAttribute="width" id="gnA-3f-bKE"/>
                             <constraint firstItem="XGt-dK-Gtb" firstAttribute="top" secondItem="FWo-da-eoi" secondAttribute="bottom" constant="-200" id="h2T-Lm-7tC"/>
-                            <constraint firstItem="scP-n5-heI" firstAttribute="top" secondItem="5jD-Yb-wGa" secondAttribute="bottom" constant="30" id="h87-eT-pPQ"/>
+                            <constraint firstItem="scP-n5-heI" firstAttribute="top" secondItem="5jD-Yb-wGa" secondAttribute="bottom" constant="-70" id="h87-eT-pPQ"/>
                             <constraint firstAttribute="trailing" secondItem="FWo-da-eoi" secondAttribute="trailing" id="o1a-0p-biL"/>
                             <constraint firstItem="OAq-Bw-9Og" firstAttribute="height" secondItem="CfT-Fs-YTf" secondAttribute="height" id="o7X-1k-0hi"/>
                             <constraint firstItem="Ws4-zf-uB1" firstAttribute="top" secondItem="scP-n5-heI" secondAttribute="bottom" constant="20" id="oez-6Y-mXg"/>
@@ -293,7 +293,7 @@
             <objects>
                 <tableViewController id="9TE-h7-xoi" customClass="SettingTableViewController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="66" sectionHeaderHeight="50" sectionFooterHeight="10" id="lkJ-GM-zWx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
