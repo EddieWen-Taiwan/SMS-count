@@ -16,11 +16,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet var FBLoginView: UIView!
     @IBOutlet var topConstraint: NSLayoutConstraint!
 
-    @IBOutlet var statusLabel: UILabel!
-    @IBOutlet var enterDateLabel: UILabel!
-    @IBOutlet var serviceDaysLabel: UILabel!
-    @IBOutlet var discountDaysLabel: UILabel!
-
     @IBOutlet var datepickerView: UIView!
     @IBOutlet var datepickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var datepickerElement: UIDatePicker!
@@ -68,7 +63,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         // About FB login button
         if FBSDKAccessToken.currentAccessToken() == nil {
             self.FBLoginView.hidden = false
-            self.topConstraint.constant = 104
+//            self.topConstraint.constant = 104
             // FB Login
             self.view.layoutIfNeeded()
 
@@ -87,11 +82,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        if discountDaysLabel.text == "" {
-            if let userDiscountDays = userPreference.stringForKey("discountDays") {
-                discountDaysLabel.text = userDiscountDays
-            }
-        }
+//        if discountDaysLabel.text == "" {
+//            if let userDiscountDays = userPreference.stringForKey("discountDays") {
+//                discountDaysLabel.text = userDiscountDays
+//            }
+//        }
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -169,17 +164,17 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.dismissRelativeViews()
 
         if self.screenMask.tag == 2 {
-            if serviceDaysLabel.text != "" {
-                let newServiceDays = calculateHelper.switchPeriod(serviceDaysLabel.text!)
+            if self.containerVC?.serviceDaysLabel.text != "" {
+                let newServiceDays = calculateHelper.switchPeriod((self.containerVC?.serviceDaysLabel.text!)!)
                 userPreference.setObject( Int(newServiceDays), forKey: "serviceDays" )
             } else {
                 userPreference.removeObjectForKey( "serviceDays" )
             }
         }
         if self.screenMask.tag == 3 {
-            if discountDaysLabel.text != "" {
-                let newDiscountDays = discountDaysLabel.text!
-                userPreference.setInteger( Int(newDiscountDays)!, forKey: "discountDays" )
+            if self.containerVC?.discountDaysLabel.text != "" {
+                let newDiscountDays = self.containerVC?.discountDaysLabel.text!
+                userPreference.setInteger( Int(newDiscountDays!)!, forKey: "discountDays" )
             } else {
                 userPreference.removeObjectForKey( "discountDays" )
             }
@@ -227,7 +222,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 if error == nil {
                     // Hide FB login button
                     self.FBLoginView.hidden = true
-                    self.topConstraint.constant = 24
+//                    self.topConstraint.constant = 24
                     if let FBID = result.objectForKey("id") {
 
                         // Search parse data by FBID, check whether there is matched data.
@@ -287,22 +282,22 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                             // Status
                                             if newStatus != "" {
                                                 self.userPreference.setObject( newStatus, forKey: "status")
-                                                self.statusLabel.text = newStatus
+                                                self.containerVC?.statusLabel.text = newStatus
                                             }
                                             // EnterDate
                                             if newEnterDate != "" {
                                                 self.userPreference.setObject( newEnterDate, forKey: "enterDate")
-                                                self.enterDateLabel.text = newEnterDate
+                                                self.containerVC?.enterDateLabel.text = newEnterDate
                                             }
                                             // ServiceDays
                                             if newServiceDays != -1 {
                                                 self.userPreference.setInteger( newServiceDays, forKey: "serviceDays")
-                                                self.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
+                                                self.containerVC?.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
                                             }
                                             // DiscountDays
                                             if newDiscountDays != -1 {
                                                 self.userPreference.setInteger( newDiscountDays, forKey: "discountDays")
-                                                self.discountDaysLabel.text = String(newDiscountDays)
+                                                self.containerVC?.discountDaysLabel.text = String(newDiscountDays)
                                             }
                                         })
                                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
