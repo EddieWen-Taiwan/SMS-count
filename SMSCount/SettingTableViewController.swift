@@ -131,6 +131,7 @@ class SettingTableViewController: UITableViewController {
         label.font = UIFont(name: "PingFangTC-Light", size: 12.0)
         
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 50))
+        headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
         headerView.addSubview(label)
 
         return headerView

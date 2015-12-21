@@ -90,7 +90,7 @@
                         <viewControllerLayoutGuide type="top" id="5jD-Yb-wGa"/>
                         <viewControllerLayoutGuide type="bottom" id="XGt-dK-Gtb"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CfT-Fs-YTf" userLabel="MainView">
+                    <view key="view" contentMode="scaleToFill" id="CfT-Fs-YTf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
