@@ -85,15 +85,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         userInfo.save()
     }
 
-    @IBAction func editEnterDate(sender: AnyObject) {
-    }
-
-    @IBAction func editServiceDays(sender: AnyObject) {
-    }
-
-    @IBAction func editDiscountDays(sender: AnyObject) {
-    }
-
     func showPickerView() {
 
         self.screenMask.hidden = false
