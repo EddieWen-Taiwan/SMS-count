@@ -53,11 +53,11 @@ class SettingTableViewController: UITableViewController {
             parentVC.screenMask.tag = 1
 
             parentVC.showPickerView()
-        }
 
-//        if let userEnterDate = userPreference.stringForKey("enterDate") {
-//            datepickerElement.setDate( dateFormatter.dateFromString(userEnterDate)!, animated: false )
-//        }
+            if let userEnterDate = userPreference.stringForKey("enterDate") {
+                parentVC.datepickerElement.setDate( parentVC.dateFormatter.dateFromString(userEnterDate)!, animated: false )
+            }
+        }
 
     }
 
