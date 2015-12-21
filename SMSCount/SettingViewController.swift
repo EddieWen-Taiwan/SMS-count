@@ -43,6 +43,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     var userInfo: UserInfo!
 
+    var containerVC: SettingTableViewController?
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -78,6 +80,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
 
         self.userInfo = UserInfo()
+
+        self.containerVC = self.childViewControllers.first as? SettingTableViewController
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -146,7 +150,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         let newSelectDate = dateFormatter.stringFromDate(datepickerElement.date)
 
-        enterDateLabel.text = newSelectDate
+        if let containerVC = self.containerVC {
+            containerVC.enterDateLabel.text = newSelectDate
+        }
         userInfo.updateEnterDate( newSelectDate )
 
         self.dismissRelativeViews()
