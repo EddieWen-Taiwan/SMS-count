@@ -79,16 +79,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.containerVC = self.childViewControllers.first as? SettingTableViewController
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
-//        if discountDaysLabel.text == "" {
-//            if let userDiscountDays = userPreference.stringForKey("discountDays") {
-//                discountDaysLabel.text = userDiscountDays
-//            }
-//        }
-    }
-
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 
