@@ -21,7 +21,6 @@ class SettingTableViewController: UITableViewController {
     var parentVC: SettingViewController?
 
     let calculateHelper = CalculateHelper()
-    let userInfo = UserInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +73,9 @@ class SettingTableViewController: UITableViewController {
                 userStatus = userStatus.substringToIndex(30)
             }
             self.statusLabel.text = userStatus as String
-            userInfo.updateUserStatus( userStatus as String )
+            if let parentVC = self.parentVC {
+                parentVC.userInfo.updateUserStatus( userStatus as String )
+            }
         }
 
     }
