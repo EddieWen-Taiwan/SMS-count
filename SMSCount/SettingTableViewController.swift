@@ -42,6 +42,11 @@ class SettingTableViewController: UITableViewController {
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
+
+        // Add footer of TableView
+        let foorterView = UIView(frame: CGRectMake(0,0, tableView.frame.width, 0.5))
+        foorterView.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+        self.tableView.tableFooterView = foorterView
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
@@ -137,7 +142,7 @@ class SettingTableViewController: UITableViewController {
                 label.text = "偏好設定"
         }
 
-        let topBorder = UIView(frame: CGRectMake(0,0, tableView.frame.width, 0.5))
+        let topBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
         topBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
         let bottomBorder = UIView(frame: CGRectMake(0, 50, tableView.frame.width, 0.5))
         bottomBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
