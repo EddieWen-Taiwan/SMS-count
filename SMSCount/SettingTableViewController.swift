@@ -137,10 +137,10 @@ class SettingTableViewController: UITableViewController {
                 label.text = "偏好設定"
         }
 
-        let topBorder = UIView(frame: CGRectMake(0,0, tableView.frame.width, 1))
-        topBorder.backgroundColor = UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 1)
-        let bottomBorder = UIView(frame: CGRectMake(0, 49, tableView.frame.width, 1))
-        bottomBorder.backgroundColor = UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 1)
+        let topBorder = UIView(frame: CGRectMake(0,0, tableView.frame.width, 0.5))
+        topBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+        let bottomBorder = UIView(frame: CGRectMake(0, 50, tableView.frame.width, 0.5))
+        bottomBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
 
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 50))
         headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
