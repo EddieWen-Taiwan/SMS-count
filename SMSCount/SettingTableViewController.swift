@@ -149,7 +149,9 @@ class SettingTableViewController: UITableViewController {
 
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 50))
         headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-        headerView.addSubview(topBorder)
+        if section != 0 {
+            headerView.addSubview(topBorder)
+        }
         headerView.addSubview(bottomBorder)
         headerView.addSubview(label)
 
