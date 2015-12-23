@@ -21,6 +21,10 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
         if let userStatus = self.userPreference.stringForKey("status") {
             self.statusTextField.text = userStatus
         }
+
+        // Remove bottom border of navigation bar
+        UINavigationBar.appearance().setBackgroundImage( UIImage(named: "standard-color"), forBarMetrics: .Default )
+        UINavigationBar.appearance().shadowImage = UIImage()
     }
 
     @IBAction func dismissViewController(sender: AnyObject) {
