@@ -17,10 +17,6 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        // Remove bottom border of navigation bar
-        self.navigationBar.setBackgroundImage( UIImage(named: "standard-color"), forBarMetrics: .Default )
-        self.navigationBar.shadowImage = UIImage()
-
         // Add shadow to navigation bar
         self.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.navigationBar.layer.shadowOpacity = 0.4

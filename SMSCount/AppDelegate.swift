@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 
+        // Remove bottom border of navigation bar ( all ViewController )
+        UINavigationBar.appearance().setBackgroundImage( UIImage(named: "standard-color"), forBarMetrics: .Default )
+        UINavigationBar.appearance().shadowImage = UIImage()
+
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
         // If app is without ObjectId, create a new data row.
         if userPreference.stringForKey("UserID") == nil {
