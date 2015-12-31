@@ -30,8 +30,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var animationIndex: Int = 0
     var animationArray = [ "" ]
     var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
-    var isDaysJumped: Bool = false
-    var isUserRetired: Bool = false
+//    var isUserRetired: Bool = false
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
@@ -71,55 +70,32 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
         self.settingStatus = calculateHelper.isSettingAllDone()
 
         if self.settingStatus {
-            // OK
+
             calculateHelper.updateDate()
 
-            // Check whether should run countdown animation
-            var shouldBeUpdated: Bool = false
             var newRemainedDays = calculateHelper.getRemainedDays()
-            if newRemainedDays >= 0 {
-                if self.isUserRetired {
-                    shouldBeUpdated = true
-                    self.isUserRetired = false
-                } else {
-                    if self.frontRemainedDaysLabel.text != String( newRemainedDays ) {
-                        shouldBeUpdated = true
-                    }
-                }
+            if newRemainedDays < 0 {
+                newRemainedDays *= (-1)
+                self.backRemainedDaysWord.text = "自由天數"
+                self.frontRemainedDaysWord.text = "自由天數"
             } else {
-                if self.isUserRetired {
-                    if self.frontRemainedDaysLabel.text != String( newRemainedDays*(-1) ) {
-                        shouldBeUpdated = true
-                    }
-                } else {
-                    shouldBeUpdated = true
-                    self.isUserRetired = true
-                }
+                self.backRemainedDaysWord.text = "剩餘天數"
+                self.frontRemainedDaysWord.text = "剩餘天數"
             }
+            self.backRemainedDaysLabel.text = String( newRemainedDays )
 
             // Set remainedDays
-            if shouldBeUpdated {
-                if newRemainedDays < 0 {
-                    newRemainedDays *= (-1)
-                    self.backRemainedDaysWord.text = "自由天數"
-                    self.frontRemainedDaysWord.text = "自由天數"
-                } else {
-                    self.backRemainedDaysWord.text = "剩餘天數"
-                    self.frontRemainedDaysWord.text = "剩餘天數"
-                }
-                self.backRemainedDaysLabel.text = String( newRemainedDays )
-
-                // Timer Effect
+            let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+            if userPreference.boolForKey("dayAnimated") {
+                // Animation was completed
+                self.frontRemainedDaysLabel.text = String( newRemainedDays )
+            } else {
+                // Animation setting
                 animationIndex = 0
-                animationArray.removeAll(keepCapacity: false)
+                animationArray.removeAll(keepCapacity: false) // Maybe it should be true
                 if newRemainedDays < 100 {
                     for var i = 0; i <= newRemainedDays; i++ {
                         animationArray.append( String(i) )
@@ -141,26 +117,21 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                 stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
                 stageIndexArray[5] = arrayLength-1
 
-                self.isDaysJumped = false
                 self.frontRemainedDaysLabel.text = "0"
-                self.checkDaysAnimation()
+                NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
+
             // Set currentProcess
             let currentProcess = calculateHelper.getCurrentProgress()
             let currentProcessString = String( format: "%.1f", currentProcess )
-            if self.percentageLabel.text != currentProcessString {
-                self.percentageLabel.text = currentProcessString
-                self.isCircleDrawn = false
-                self.checkCircleAnimation()
-            }
+            self.percentageLabel.text = currentProcessString
 
         } else {
             // switch to settingViewController ?
             // tabBarController?.selectedIndex = 2
-
+            
             self.percentageLabel.text = "0"
         }
-
     }
 
     func daysAddingEffect( timer: NSTimer ) {
@@ -223,6 +194,9 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                     updateLabel()
                 } else {
                     timer.invalidate()
+
+                    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+                    userPreference.setBool( true, forKey: "dayAnimated" )
                 }
 
             default:
@@ -232,36 +206,27 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     func switchView() {
 
-        let currentIsDay: Bool = ( self.currentDisplay == "day" ) ? true : false
+        let switch2chart: Bool = ( self.currentDisplay == "day" ) ? true : false
         self.switchViewButton.backgroundColor = UIColor.whiteColor()
-        self.imageOnSwitchBtn.image = UIImage(named: currentIsDay ? "date" : "chart" )
+        self.imageOnSwitchBtn.image = UIImage(named: switch2chart ? "date" : "chart" )
 
         UIView.animateWithDuration( 0.3, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.remainedView.alpha = currentIsDay ? 0 : 1
-            self.pieChartView.alpha = currentIsDay ? 1 : 0
+            self.remainedView.alpha = switch2chart ? 0 : 1
+            self.pieChartView.alpha = switch2chart ? 1 : 0
             self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
         }, completion: { finish in
-            self.currentDisplay = currentIsDay ? "chart" : "day"
+            self.currentDisplay = switch2chart ? "chart" : "day"
             if self.settingStatus {
-                if currentIsDay {
+                if switch2chart {
                     self.checkCircleAnimation()
-                } else {
-                    self.checkDaysAnimation()
                 }
             }
         })
 
     }
 
-    func checkDaysAnimation() {
-        if self.currentDisplay == "day" && self.isDaysJumped != true {
-            NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
-            self.isDaysJumped = true
-        }
-    }
-
     func checkCircleAnimation() {
-        if self.currentDisplay == "chart" && self.isCircleDrawn != true {
+        if self.currentDisplay == "chart" && self.isCircleDrawn == false {
             self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
             self.isCircleDrawn = true
         }

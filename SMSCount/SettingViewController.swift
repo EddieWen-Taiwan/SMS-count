@@ -143,7 +143,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.dismissRelativeViews()
 
         if self.screenMask.tag == 2 {
-            if let oldService = self.containerVC?.serviceDaysLabel.text {
+            if let oldService = self.containerVC?.serviceDaysLabel.text where self.containerVC?.serviceDaysLabel.text != "" {
                 let oldService = calculateHelper.switchPeriod( oldService )
                 userPreference.setInteger( Int(oldService)!, forKey: "serviceDays" )
             } else {
@@ -151,7 +151,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             }
         }
         if self.screenMask.tag == 3 {
-            if let oldDiscount = self.containerVC?.discountDaysLabel.text {
+            if let oldDiscount = self.containerVC?.discountDaysLabel.text where self.containerVC?.discountDaysLabel.text != "" {
                 userPreference.setInteger( Int(oldDiscount)!, forKey: "discountDays" )
             } else {
                 userPreference.removeObjectForKey( "discountDays" )

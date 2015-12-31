@@ -102,6 +102,9 @@ class SettingTableViewController: UITableViewController {
 
     func switchClick( mySwitch: UISwitch ) {
         self.userPreference.setBool( mySwitch.on ? true : false, forKey: "autoWeekendFixed" )
+        if let parentVC = self.parentVC {
+            parentVC.userInfo.objectIsChanged = true
+        }
     }
 
     @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {

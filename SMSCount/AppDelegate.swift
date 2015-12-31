@@ -38,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserInfo().uploadAllData()
         }
 
+        // For countdown animation
+        userPreference.setBool( false, forKey: "dayAnimated" )
+
         // MARK: DrawerController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let rootViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
