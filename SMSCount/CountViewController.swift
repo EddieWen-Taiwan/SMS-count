@@ -223,6 +223,9 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                     updateLabel()
                 } else {
                     timer.invalidate()
+
+                    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+                    userPreference.setBool( true, forKey: "dayAnimated" )
                 }
 
             default:
