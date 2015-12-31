@@ -84,6 +84,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
             // Check whether should run countdown animation
             var shouldBeUpdated: Bool = false
+
             var newRemainedDays = calculateHelper.getRemainedDays()
             if newRemainedDays >= 0 {
                 if self.isUserRetired {
@@ -117,33 +118,40 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                 }
                 self.backRemainedDaysLabel.text = String( newRemainedDays )
 
-                // Timer Effect
-                animationIndex = 0
-                animationArray.removeAll(keepCapacity: false) // Maybe it should be true
-                if newRemainedDays < 100 {
-                    for var i = 0; i <= newRemainedDays; i++ {
-                        animationArray.append( String(i) )
-                    }
+                let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+                if userPreference.boolForKey("dayAnimated") {
+                    // Animation was completed
+                    self.frontRemainedDaysLabel.text = String( newRemainedDays )
+                    self.isDaysJumped = true
                 } else {
-                    for var i = 1; i <= 95; i++ {
-                        animationArray.append( String( format: "%.f", Double( (newRemainedDays-3)*i )*0.01 ) )
+                    // Timer Effect
+                    animationIndex = 0
+                    animationArray.removeAll(keepCapacity: false) // Maybe it should be true
+                    if newRemainedDays < 100 {
+                        for var i = 0; i <= newRemainedDays; i++ {
+                            animationArray.append( String(i) )
+                        }
+                    } else {
+                        for var i = 1; i <= 95; i++ {
+                            animationArray.append( String( format: "%.f", Double( (newRemainedDays-3)*i )*0.01 ) )
+                        }
+                        for var i = 96; i <= 100; i++ {
+                            animationArray.append( String( newRemainedDays-(100-i) ) )
+                        }
                     }
-                    for var i = 96; i <= 100; i++ {
-                        animationArray.append( String( newRemainedDays-(100-i) ) )
-                    }
+
+                    let arrayLength = animationArray.count
+                    stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
+                    stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
+                    stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
+                    stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
+                    stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
+                    stageIndexArray[5] = arrayLength-1
+
+                    self.isDaysJumped = false
+                    self.frontRemainedDaysLabel.text = "0"
+                    self.checkDaysAnimation()
                 }
-
-                let arrayLength = animationArray.count
-                stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
-                stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
-                stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
-                stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
-                stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
-                stageIndexArray[5] = arrayLength-1
-
-                self.isDaysJumped = false
-                self.frontRemainedDaysLabel.text = "0"
-                self.checkDaysAnimation()
             }
             // Set currentProcess
             let currentProcess = calculateHelper.getCurrentProgress()
