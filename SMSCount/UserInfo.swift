@@ -102,7 +102,7 @@ class UserInfo { // Save userInfomation to Parse
     // Save local data to Parse
     func save() {
 
-        if self.objectIsChanged{
+        if self.objectIsChanged {
 
             self.userPreference.setBool( false, forKey: "dayAnimated" )
             self.objectIsChanged = false
