@@ -299,18 +299,18 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     func switchView() {
 
-        let currentIsDay: Bool = ( self.currentDisplay == "day" ) ? true : false
+        let switch2chart: Bool = ( self.currentDisplay == "day" ) ? true : false
         self.switchViewButton.backgroundColor = UIColor.whiteColor()
-        self.imageOnSwitchBtn.image = UIImage(named: currentIsDay ? "date" : "chart" )
+        self.imageOnSwitchBtn.image = UIImage(named: switch2chart ? "date" : "chart" )
 
         UIView.animateWithDuration( 0.3, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.remainedView.alpha = currentIsDay ? 0 : 1
-            self.pieChartView.alpha = currentIsDay ? 1 : 0
+            self.remainedView.alpha = switch2chart ? 0 : 1
+            self.pieChartView.alpha = switch2chart ? 1 : 0
             self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
         }, completion: { finish in
-            self.currentDisplay = currentIsDay ? "chart" : "day"
+            self.currentDisplay = switch2chart ? "chart" : "day"
             if self.settingStatus {
-                if currentIsDay {
+                if switch2chart {
                     self.checkCircleAnimation()
                 }
             }
