@@ -44,9 +44,12 @@ class SettingTableViewController: UITableViewController {
         }
 
         // Add footer of TableView
-        let foorterView = UIView(frame: CGRectMake(0,0, tableView.frame.width, 0.5))
-        foorterView.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-        self.tableView.tableFooterView = foorterView
+        let footerBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
+            footerBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+        let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 40))
+            footerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            footerView.addSubview(footerBorder)
+        self.tableView.tableFooterView = footerView
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
