@@ -30,7 +30,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var animationIndex: Int = 0
     var animationArray = [ "" ]
     var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
-    var isDaysJumped: Bool = false
     var isUserRetired: Bool = false
 
     // currentProcess %
@@ -92,7 +91,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             if userPreference.boolForKey("dayAnimated") {
                 // Animation was completed
                 self.frontRemainedDaysLabel.text = String( newRemainedDays )
-                self.isDaysJumped = true
             } else {
                 // Timer Effect
                 animationIndex = 0
@@ -118,9 +116,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                 stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
                 stageIndexArray[5] = arrayLength-1
 
-                self.isDaysJumped = false
                 self.frontRemainedDaysLabel.text = "0"
-                self.checkDaysAnimation()
+                NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
 
         } else {
@@ -315,13 +312,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             }
         })
 
-    }
-
-    func checkDaysAnimation() {
-        if self.currentDisplay == "day" && self.isDaysJumped != true {
-            NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
-            self.isDaysJumped = true
-        }
     }
 
     func checkCircleAnimation() {
