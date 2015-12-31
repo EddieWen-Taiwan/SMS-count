@@ -102,6 +102,7 @@ class UserInfo { // Save userInfomation to Parse
     // Save local data to Parse
     func save() {
         if self.objectIdStatus && self.objectIsChanged {
+            self.userPreference.setBool( false, forKey: "dayAnimated" )
             self.userPreference.setObject( "no", forKey: "sync" )
             userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
