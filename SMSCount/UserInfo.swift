@@ -101,17 +101,23 @@ class UserInfo { // Save userInfomation to Parse
 
     // Save local data to Parse
     func save() {
-        self.userPreference.setBool( false, forKey: "dayAnimated" )
 
-        if self.objectIdStatus && self.objectIsChanged {
-            self.userPreference.setObject( "no", forKey: "sync" )
-            userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-                if success {
-                    self.userPreference.removeObjectForKey("sync")
+        if self.objectIsChanged{
+
+            self.userPreference.setBool( false, forKey: "dayAnimated" )
+            self.objectIsChanged = false
+
+            if self.objectIdStatus {
+                self.userPreference.setObject( "no", forKey: "sync" )
+                userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        self.userPreference.removeObjectForKey("sync")
+                    }
                 }
             }
-            self.objectIsChanged = false
+
         }
+
     }
 
     // There is not completed task at last time, continue to do it
