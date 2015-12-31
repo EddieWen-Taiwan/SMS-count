@@ -119,7 +119,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
                 // Timer Effect
                 animationIndex = 0
-                animationArray.removeAll(keepCapacity: false)
+                animationArray.removeAll(keepCapacity: false) // Maybe it should be true
                 if newRemainedDays < 100 {
                     for var i = 0; i <= newRemainedDays; i++ {
                         animationArray.append( String(i) )
