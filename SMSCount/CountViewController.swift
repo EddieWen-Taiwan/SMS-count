@@ -30,7 +30,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var animationIndex: Int = 0
     var animationArray = [ "" ]
     var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
-    var isUserRetired: Bool = false
+//    var isUserRetired: Bool = false
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
@@ -87,12 +87,13 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             }
             self.backRemainedDaysLabel.text = String( newRemainedDays )
 
+            // Set remainedDays
             let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
             if userPreference.boolForKey("dayAnimated") {
                 // Animation was completed
                 self.frontRemainedDaysLabel.text = String( newRemainedDays )
             } else {
-                // Timer Effect
+                // Animation setting
                 animationIndex = 0
                 animationArray.removeAll(keepCapacity: false) // Maybe it should be true
                 if newRemainedDays < 100 {
@@ -119,6 +120,11 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                 self.frontRemainedDaysLabel.text = "0"
                 NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
             }
+
+            // Set currentProcess
+            let currentProcess = calculateHelper.getCurrentProgress()
+            let currentProcessString = String( format: "%.1f", currentProcess )
+            self.percentageLabel.text = currentProcessString
 
         } else {
             // switch to settingViewController ?
@@ -306,8 +312,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             if self.settingStatus {
                 if currentIsDay {
                     self.checkCircleAnimation()
-                } else {
-                    self.checkDaysAnimation()
                 }
             }
         })
