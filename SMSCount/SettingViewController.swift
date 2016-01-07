@@ -210,8 +210,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                         fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
                             if error == nil {
 
-                                self.userInfo.addUserFBID( FBID as! String )
-
                                 if objects!.count > 0 {
                                     for user in objects! {
                                         // Update local objectId
@@ -288,16 +286,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                         self.presentViewController( syncAlertController, animated: true, completion: nil)
 
                                     }
-                                } else {
-                                    // Update user email, name .... by objectId
-
-                                    if let userName = result.objectForKey("name") {
-                                        self.userInfo.addUserName( userName as! String )
-                                    }
-                                    if let userMail = result.objectForKey("email") {
-                                        self.userInfo.addUserMail( userMail as! String )
-                                    }
-                                    self.userInfo.save()
                                 }
 
                             }

@@ -161,7 +161,26 @@ class UserInfo { // Save userInfomation to Parse
             let fbIdQuery = PFQuery(className: "UserT")
             fbIdQuery.whereKey( "fb_id", equalTo: FBID )
             fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
-                print(objects)
+                if error == nil {
+
+                    self.addUserFBID( FBID as! String )
+
+                    if objects!.count > 0 {
+                        
+                    } else {
+                        // New user
+                        // Update user email, name .... by objectId
+
+                        if let userName = info.objectForKey("name") {
+                            self.addUserName( userName as! String )
+                        }
+                        if let userMail = info.objectForKey("email") {
+                            self.addUserMail( userMail as! String )
+                        }
+                        self.save()
+                    }
+
+                }
             }
         }
     }
