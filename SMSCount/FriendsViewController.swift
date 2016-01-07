@@ -140,7 +140,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         self.view.addSubview(coverView)
         
-    }g
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
