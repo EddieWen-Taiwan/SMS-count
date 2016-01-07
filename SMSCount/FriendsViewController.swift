@@ -128,9 +128,15 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let coverView = UIView(frame: self.view.frame)
         coverView.backgroundColor = UIColor.whiteColor()
 
-        let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-24, 48, 48))
+        let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-50, 48, 48))
         iconView.image = UIImage(named: "person-pin")
         coverView.addSubview(iconView)
+
+        let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2, self.view.frame.width, 30))
+        titleLabel.text = "請先登入Facebook"
+        titleLabel.font = UIFont(name: "PingFangTC", size: 16.0)
+        titleLabel.textAlignment = NSTextAlignment.Center
+        coverView.addSubview(titleLabel)
 
         let tap2Setting = UITapGestureRecognizer(target: self, action: "switchToSettingView")
         coverView.addGestureRecognizer(tap2Setting)
