@@ -157,7 +157,7 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     // Call this after app gets the login result from facebook
-    func storeFacebookInfo( info: AnyObject ) {
+    func storeFacebookInfo( info: AnyObject ) -> UIAlertController? {
         if let FBID = info.objectForKey("id") {
             let fbIdQuery = PFQuery(className: "UserT")
             fbIdQuery.whereKey( "fb_id", equalTo: FBID )
@@ -198,7 +198,8 @@ class UserInfo { // Save userInfomation to Parse
                 }
             }
         }
-    }
+        return nil
+    }g
 
     private func checkObjectId() {
         if !self.objectIdStatus { self.registerNewUser() }
