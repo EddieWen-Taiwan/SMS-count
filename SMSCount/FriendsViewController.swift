@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import FBSDKLoginKit
 
 class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
