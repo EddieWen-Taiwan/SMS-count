@@ -201,110 +201,44 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     // Hide FB login button
                     self.FBLoginView.hidden = true
                     self.topConstraint.constant = -70
-                    if let FBID = result.objectForKey("id") {
 
-                        // Search parse data by FBID, check whether there is matched data.
-                        let fbIdQuery = PFQuery(className: "UserT")
-                        fbIdQuery.whereKey( "fb_id", equalTo: FBID )
-                        fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
-                            if error == nil {
+                    self.userInfo.storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays) -> Void in
 
-                                self.userInfo.addUserFBID( FBID as! String )
-
-                                if objects!.count > 0 {
-                                    for user in objects! {
-                                        // Update local objectId
-
-                                        if let userID = user.objectId {
-                                            self.userInfo.updateLocalObjectId( userID )
-                                        }
-                                        if let username = user.valueForKey("username") {
-                                            self.userInfo.updateLocalUsername(username as! String)
-                                        }
-                                        if let userMail = user.valueForKey("email") {
-                                            self.userInfo.updateLocalMail( userMail as! String )
-                                        }
-
-                                        // Make message of detail data
-                                        var messageContent = ""
-                                        var newEnterDate = ""
-                                        var newServiceDays: Int = -1
-                                        var newDiscountDays: Int = -1
-                                        var newStatus = ""
-
-                                        if user.valueForKey("status") != nil {
-                                            newStatus = user.valueForKey("status") as! String
-                                        }
-                                        if let year = user.valueForKey("yearOfEnterDate") {
-                                            let month = ( (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.valueForKey("monthOfEnterDate")!)
-                                            let date = ( (user.valueForKey("dateOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.valueForKey("dateOfEnterDate")!)
-                                            // Store data
-                                            newEnterDate = "\(year) / \(month) / \(date)"
-                                            messageContent += "入伍日期：\(newEnterDate)\n"
-                                        }
-                                        if let service = user.valueForKey("serviceDays") {
-                                            // Store data
-                                            newServiceDays = service as! Int
-                                            let serviceStr: String = self.calculateHelper.switchPeriod( String(service) )
-                                            messageContent += "役期天數：\(serviceStr)\n"
-                                        }
-                                        if let discount = user.valueForKey("discountDays") {
-                                            // Store data
-                                            newDiscountDays = discount as! Int
-                                            messageContent += "折抵天數：\(discount)天"
-                                        }
-
-                                        // Ask user whether to download data from Parse or not
-                                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
-                                        let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
-                                            // Status
-                                            if newStatus != "" {
-                                                self.userPreference.setObject( newStatus, forKey: "status")
-                                                self.containerVC?.statusLabel.text = newStatus
-                                            }
-                                            // EnterDate
-                                            if newEnterDate != "" {
-                                                self.userPreference.setObject( newEnterDate, forKey: "enterDate")
-                                                self.containerVC?.enterDateLabel.text = newEnterDate
-                                            }
-                                            // ServiceDays
-                                            if newServiceDays != -1 {
-                                                self.userPreference.setInteger( newServiceDays, forKey: "serviceDays")
-                                                self.containerVC?.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
-                                            }
-                                            // DiscountDays
-                                            if newDiscountDays != -1 {
-                                                self.userPreference.setInteger( newDiscountDays, forKey: "discountDays")
-                                                self.containerVC?.discountDaysLabel.text = String(newDiscountDays)
-                                            }
-                                        })
-                                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
-                                            self.userInfo.uploadAllData()
-                                        })
-                                        syncAlertController.addAction(yesAction)
-                                        syncAlertController.addAction(noAction)
-
-                                        self.presentViewController( syncAlertController, animated: true, completion: nil)
-
-                                    }
-                                } else {
-                                    // Update user email, name .... by objectId
-
-                                    if let userName = result.objectForKey("name") {
-                                        self.userInfo.addUserName( userName as! String )
-                                    }
-                                    if let userMail = result.objectForKey("email") {
-                                        self.userInfo.addUserMail( userMail as! String )
-                                    }
-                                    self.userInfo.save()
-                                }
-
+                        // Ask user whether to download data from Parse or not
+                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
+                        let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
+                            // Status
+                            if newStatus != "" {
+                                self.userPreference.setObject( newStatus, forKey: "status")
+                                self.containerVC?.statusLabel.text = newStatus
                             }
-                        } // --- fbIdQuery
+                            // EnterDate
+                            if newEnterDate != "" {
+                                self.userPreference.setObject( newEnterDate, forKey: "enterDate")
+                                self.containerVC?.enterDateLabel.text = newEnterDate
+                            }
+                            // ServiceDays
+                            if newServiceDays != -1 {
+                                self.userPreference.setInteger( newServiceDays, forKey: "serviceDays")
+                                self.containerVC?.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
+                            }
+                            // DiscountDays
+                            if newDiscountDays != -1 {
+                                self.userPreference.setInteger( newDiscountDays, forKey: "discountDays")
+                                self.containerVC?.discountDaysLabel.text = String(newDiscountDays)
+                            }
+                        })
+                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
+                            self.userInfo.uploadAllData()
+                        })
+                        syncAlertController.addAction(yesAction)
+                        syncAlertController.addAction(noAction)
 
-                    }
+                        self.presentViewController(syncAlertController, animated: true, completion: nil)
+                    })
+
                 }
-                
+
             }) // --- graphRequest
         }
     }

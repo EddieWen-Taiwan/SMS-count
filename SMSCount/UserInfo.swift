@@ -156,6 +156,83 @@ class UserInfo { // Save userInfomation to Parse
 
     }
 
+    // Call this after app gets the login result from facebook
+    func storeFacebookInfo( info: AnyObject, completion: ((messageContent: String, newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int) -> Void) ) {
+
+        if let FBID = info.objectForKey("id") {
+            // Search parse data by FBID, check whether there is matched data.
+            let fbIdQuery = PFQuery(className: "UserT")
+            fbIdQuery.whereKey( "fb_id", equalTo: FBID )
+            fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+
+                    self.addUserFBID( FBID as! String )
+
+                    if objects!.count > 0 {
+                        // User has registerd.
+                        if let user = objects!.first {
+
+                            if let userID = user.objectId {
+                                self.updateLocalObjectId( userID )
+                            }
+                            if let username = user.valueForKey("username") {
+                                self.updateLocalUsername(username as! String)
+                            }
+                            if let userMail = user.valueForKey("email") {
+                                self.updateLocalMail( userMail as! String )
+                            }
+
+                            // Make message of detail data
+                            var messageContent = ""
+                            var newEnterDate = ""
+                            var newServiceDays: Int = -1
+                            var newDiscountDays: Int = -1
+                            var newStatus = ""
+
+                            if user.valueForKey("status") != nil {
+                                newStatus = user.valueForKey("status") as! String
+                            }
+                            if let year = user.valueForKey("yearOfEnterDate") {
+                                let month = ( (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.valueForKey("monthOfEnterDate")!)
+                                let date = ( (user.valueForKey("dateOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.valueForKey("dateOfEnterDate")!)
+                                // Store data
+                                newEnterDate = "\(year) / \(month) / \(date)"
+                                messageContent += "入伍日期：\(newEnterDate)\n"
+                            }
+                            if let service = user.valueForKey("serviceDays") {
+                                // Store data
+                                newServiceDays = service as! Int
+                                let serviceStr: String = CalculateHelper().switchPeriod( String(service) )
+                                messageContent += "役期天數：\(serviceStr)\n"
+                            }
+                            if let discount = user.valueForKey("discountDays") {
+                                // Store data
+                                newDiscountDays = discount as! Int
+                                messageContent += "折抵天數：\(discount)天"
+                            }
+
+                            completion(messageContent: messageContent,newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays)
+
+                        }
+                    } else {
+                        // New user
+                        // Update user email, name .... by objectId
+
+                        if let userName = info.objectForKey("name") {
+                            self.addUserName( userName as! String )
+                        }
+                        if let userMail = info.objectForKey("email") {
+                            self.addUserMail( userMail as! String )
+                        }
+                        self.save()
+                    }
+
+                }
+            }
+        }
+
+    }
+
     private func checkObjectId() {
         if !self.objectIdStatus { self.registerNewUser() }
     }
