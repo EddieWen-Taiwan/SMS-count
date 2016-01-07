@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import FBSDKLoginKit
 
-class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FBSDKLoginButtonDelegate {
 
     @IBOutlet var tableView: UITableView!
     var friendsObject: [PFObject] = []
@@ -142,8 +142,34 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             titleLabel.textAlignment = NSTextAlignment.Center
         coverView.addSubview(titleLabel)
 
+        if situation == "facebook" {
+            let loginView = FBSDKLoginButton()
+            loginView.frame = CGRectMake( 20, self.view.frame.height/2+30, self.view.frame.width-40, 50 )
+            loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
+            loginView.delegate = self
+        }
+
         self.view.addSubview(coverView)
         
+    }
+
+    // *************** \\
+    //      FBSDK      \\
+    // *************** \\
+
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+
+        if error != nil {
+            // Process error
+        } else if result.isCancelled {
+            // Handle cancellations
+        } else {
+        }
+
+    }
+
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
     }
 
     /*
