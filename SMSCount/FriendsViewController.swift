@@ -22,8 +22,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        self.coverTableView()
-
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
@@ -134,7 +132,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         coverView.addSubview(iconView)
 
         let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2, self.view.frame.width, 30))
-            titleLabel.text = situation == "internet" ? "" : "請先登入Facebook"
+            titleLabel.text = situation == "internet" ? "目前沒有網路連線" : "請先登入Facebook"
             titleLabel.font = UIFont(name: "PingFangTC", size: 16.0)
             titleLabel.textColor = UIColor(red: 158/255, green: 158/255, blue: 158/255, alpha: 1)
             titleLabel.textAlignment = NSTextAlignment.Center
