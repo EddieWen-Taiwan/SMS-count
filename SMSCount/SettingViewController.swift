@@ -61,7 +61,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
         // About FB login button
-        if FBSDKAccessToken.currentAccessToken() == nil {
+//        if FBSDKAccessToken.currentAccessToken() == nil {
             self.FBLoginView.hidden = false
             self.topConstraint.constant = 30
             // FB Login
@@ -72,7 +72,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
             loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
             loginView.delegate = self
-        }
+//        }
 
         self.containerVC = self.childViewControllers.first as? SettingTableViewController
     }
@@ -201,6 +201,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     // Hide FB login button
                     self.FBLoginView.hidden = true
                     self.topConstraint.constant = -70
+FacebookLogin().storeInformation(result)
                     if let FBID = result.objectForKey("id") {
 
                         // Search parse data by FBID, check whether there is matched data.
