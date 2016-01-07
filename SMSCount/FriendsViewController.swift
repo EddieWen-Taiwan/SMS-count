@@ -54,6 +54,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         } else {
             // without Internet
+            self.coverTableView("internet")
         }
     }
 
@@ -121,9 +122,24 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func coverTableView(situation: String = "") {
+
+        let coverView = UIView(frame: self.view.frame)
+            coverView.backgroundColor = UIColor.whiteColor()
+
+        let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-50, 48, 48))
+            iconView.image = UIImage(named: situation == "facebook" ? "person-pin" : "no-internet")
+        coverView.addSubview(iconView)
+
+        let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2, self.view.frame.width, 30))
+            titleLabel.text = situation == "facebook" ? "請先登入Facebook" : "目前沒有網路連線"
+            titleLabel.font = UIFont(name: "PingFangTC", size: 16.0)
+            titleLabel.textColor = UIColor(red: 158/255, green: 158/255, blue: 158/255, alpha: 1)
+            titleLabel.textAlignment = NSTextAlignment.Center
+        coverView.addSubview(titleLabel)
+
+        self.view.addSubview(coverView)
+        
     }
 
     /*
@@ -135,5 +151,10 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Pass the selected object to the new view controller.
     }
     */
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
 }
