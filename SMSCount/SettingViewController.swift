@@ -291,6 +291,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         print("User Logged Out")
     }
 
+    func askSyncAlert( user: PFObject ) {
+
+    }
+
     // MARK: These are the functions for UIPickerView
     func numberOfComponentsInPickerView(pickerView : UIPickerView) -> Int {
         return 1
