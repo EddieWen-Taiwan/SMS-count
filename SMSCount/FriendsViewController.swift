@@ -21,11 +21,8 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        let coverView = UIView(frame: self.view.frame)
-        coverView.backgroundColor = UIColor.whiteColor()
 
-        self.view.addSubview(coverView)
+        self.coverTableView()
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -124,6 +121,21 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
 
         return cell
+    }
+
+    func coverTableView(situation: String = "") {
+
+        let coverView = UIView(frame: self.view.frame)
+        coverView.backgroundColor = UIColor.whiteColor()
+
+        self.view.addSubview(coverView)
+
+let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+appDelegate.drawerController.openDrawerSide(.Left, animated: false, completion: nil)
+let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
+let settingViewController = settingStoryboard.instantiateViewControllerWithIdentifier("NavigationOfSettingVC")
+appDelegate.drawerController.centerViewController = settingViewController
+appDelegate.drawerController.closeDrawerAnimated(false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
