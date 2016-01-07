@@ -22,7 +22,7 @@ class UserInfo { // Save userInfomation to Parse
             userObject.objectId = self.userPreference.stringForKey("UserID")
             self.objectIdStatus = true
         }
-
+print(userObject)
         // Note to parse this is iOS
         userObject.setObject( "iOS", forKey: "platform" )
     }
@@ -167,7 +167,7 @@ class UserInfo { // Save userInfomation to Parse
                 if error == nil {
 
                     self.addUserFBID( FBID as! String )
-g
+print(objects)
                     if objects!.count > 0 {
                         // User has registerd.
 //                        for user in objects! {

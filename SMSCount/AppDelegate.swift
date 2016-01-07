@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
 
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+        userPreference.removeObjectForKey("UserID")
         // If app is without ObjectId, create a new data row.
         if userPreference.stringForKey("UserID") == nil {
             UserInfo().registerNewUser()
