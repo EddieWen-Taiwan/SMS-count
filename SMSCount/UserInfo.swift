@@ -199,7 +199,7 @@ class UserInfo { // Save userInfomation to Parse
             }
         }
         return nil
-    }g
+    }
 
     private func checkObjectId() {
         if !self.objectIdStatus { self.registerNewUser() }
