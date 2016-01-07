@@ -212,17 +212,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
                                 if objects!.count > 0 {
                                     for user in objects! {
-                                        // Update local objectId
-
-                                        if let userID = user.objectId {
-                                            self.userInfo.updateLocalObjectId( userID )
-                                        }
-                                        if let username = user.valueForKey("username") {
-                                            self.userInfo.updateLocalUsername(username as! String)
-                                        }
-                                        if let userMail = user.valueForKey("email") {
-                                            self.userInfo.updateLocalMail( userMail as! String )
-                                        }
 
                                         // Make message of detail data
                                         var messageContent = ""

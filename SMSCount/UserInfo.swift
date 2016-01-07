@@ -156,6 +156,7 @@ class UserInfo { // Save userInfomation to Parse
 
     }
 
+    // Call this after app gets the login result from facebook
     func storeFacebookInfo( info: AnyObject ) {
         if let FBID = info.objectForKey("id") {
             let fbIdQuery = PFQuery(className: "UserT")
@@ -166,7 +167,21 @@ class UserInfo { // Save userInfomation to Parse
                     self.addUserFBID( FBID as! String )
 
                     if objects!.count > 0 {
-                        
+                        // User has registerd.
+//                        for user in objects! {
+                        if let user = objects!.first {
+
+                            if let userID = user.objectId {
+                                self.updateLocalObjectId( userID )
+                            }
+                            if let username = user.valueForKey("username") {
+                                self.updateLocalUsername(username as! String)
+                            }
+                            if let userMail = user.valueForKey("email") {
+                                self.updateLocalMail( userMail as! String )
+                            }
+
+                        }
                     } else {
                         // New user
                         // Update user email, name .... by objectId
