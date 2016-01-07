@@ -21,6 +21,11 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let coverView = UIView(frame: self.view.frame)
+        coverView.backgroundColor = UIColor.whiteColor()
+
+        self.view.addSubview(coverView)
 
         tableView.delegate = self
         tableView.dataSource = self
