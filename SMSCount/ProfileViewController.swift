@@ -79,7 +79,7 @@ class ProfileViewController: UIViewController {
     }
 
     func downloadImage( url: NSURL ) {
-        reachability.getImageFromUrl(url) { (data, response, error)  in
+        reachability.getImageFromUrl(url) { (data, response, error) in
 
             if data == nil {
                 // Have to do nothing
