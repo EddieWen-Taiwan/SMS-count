@@ -22,7 +22,7 @@ class UserInfo { // Save userInfomation to Parse
             userObject.objectId = self.userPreference.stringForKey("UserID")
             self.objectIdStatus = true
         }
-print(userObject)
+
         // Note to parse this is iOS
         userObject.setObject( "iOS", forKey: "platform" )
     }
@@ -157,8 +157,8 @@ print(userObject)
     }
 
     // Call this after app gets the login result from facebook
-    func storeFacebookInfo( info: AnyObject, completion: ((newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int) -> Void) ) {
-//        var outcome: UIAlertController? = nil
+    func storeFacebookInfo( info: AnyObject, completion: ((messageContent: String, newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int) -> Void) ) {
+
         if let FBID = info.objectForKey("id") {
             // Search parse data by FBID, check whether there is matched data.
             let fbIdQuery = PFQuery(className: "UserT")
@@ -167,10 +167,9 @@ print(userObject)
                 if error == nil {
 
                     self.addUserFBID( FBID as! String )
-print(objects)
+
                     if objects!.count > 0 {
                         // User has registerd.
-//                        for user in objects! {
                         if let user = objects!.first {
 
                             if let userID = user.objectId {
@@ -212,9 +211,8 @@ print(objects)
                                 messageContent += "折抵天數：\(discount)天"
                             }
 
-                            completion(newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays)
+                            completion(messageContent: messageContent,newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays)
 
-//                            outcome = syncAlertController
                         }
                     } else {
                         // New user
@@ -232,7 +230,7 @@ print(objects)
                 }
             }
         }
-//        return outcome
+
     }
 
     private func checkObjectId() {
