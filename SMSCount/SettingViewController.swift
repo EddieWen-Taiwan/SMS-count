@@ -61,7 +61,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
         // About FB login button
-        if FBSDKAccessToken.currentAccessToken() == nil {
+//        if FBSDKAccessToken.currentAccessToken() == nil {
             self.FBLoginView.hidden = false
             self.topConstraint.constant = 30
             // FB Login
@@ -72,7 +72,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
             loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
             loginView.delegate = self
-        }
+//        }
 
         self.containerVC = self.childViewControllers.first as? SettingTableViewController
     }
@@ -202,32 +202,44 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     self.FBLoginView.hidden = true
                     self.topConstraint.constant = -70
 
-                    let syncAlert = self.userInfo.storeFacebookInfo( result, completion: { (newStatus, newEnterDate, newServiceDays, newDiscountDays) -> Void in
-                        // Status
-                        if newStatus != "" {
-                            self.userPreference.setObject( newStatus, forKey: "status")
-                            self.containerVC?.statusLabel.text = newStatus
-                        }
-                        // EnterDate
-                        if newEnterDate != "" {
-                            self.userPreference.setObject( newEnterDate, forKey: "enterDate")
-                            self.containerVC?.enterDateLabel.text = newEnterDate
-                        }
-                        // ServiceDays
-                        if newServiceDays != -1 {
-                            self.userPreference.setInteger( newServiceDays, forKey: "serviceDays")
-                            self.containerVC?.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
-                        }
-                        // DiscountDays
-                        if newDiscountDays != -1 {
-                            self.userPreference.setInteger( newDiscountDays, forKey: "discountDays")
-                            self.containerVC?.discountDaysLabel.text = String(newDiscountDays)
-                        }
+                    self.userInfo.storeFacebookInfo( result, completion: { (newStatus, newEnterDate, newServiceDays, newDiscountDays) -> Void in
+
+                        // Ask user whether to download data from Parse or not
+                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: "ya", preferredStyle: .Alert)
+                        let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
+                            // Status
+                            if newStatus != "" {
+                                self.userPreference.setObject( newStatus, forKey: "status")
+                                self.containerVC?.statusLabel.text = newStatus
+                            }
+                            // EnterDate
+                            if newEnterDate != "" {
+                                self.userPreference.setObject( newEnterDate, forKey: "enterDate")
+                                self.containerVC?.enterDateLabel.text = newEnterDate
+                            }
+                            // ServiceDays
+                            if newServiceDays != -1 {
+                                self.userPreference.setInteger( newServiceDays, forKey: "serviceDays")
+                                self.containerVC?.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
+                            }
+                            // DiscountDays
+                            if newDiscountDays != -1 {
+                                self.userPreference.setInteger( newDiscountDays, forKey: "discountDays")
+                                self.containerVC?.discountDaysLabel.text = String(newDiscountDays)
+                            }
+                        })
+                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
+                            self.userInfo.uploadAllData()
+                        })
+                        syncAlertController.addAction(yesAction)
+                        syncAlertController.addAction(noAction)
+
+                        self.presentViewController(syncAlertController, animated: true, completion: nil)
                     })
 
-                    if let syncAlert = syncAlert {
-                        self.presentViewController(syncAlert, animated: true, completion: nil)
-                    }
+//                    if let syncAlert = syncAlert {
+//                        
+//                    }
                 }
 
             }) // --- graphRequest

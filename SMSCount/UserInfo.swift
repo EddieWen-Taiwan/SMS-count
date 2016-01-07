@@ -157,8 +157,8 @@ print(userObject)
     }
 
     // Call this after app gets the login result from facebook
-    func storeFacebookInfo( info: AnyObject, completion: ((newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int) -> Void) ) -> UIAlertController? {
-        var outcome: UIAlertController? = nil
+    func storeFacebookInfo( info: AnyObject, completion: ((newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int) -> Void) ) {
+//        var outcome: UIAlertController? = nil
         if let FBID = info.objectForKey("id") {
             // Search parse data by FBID, check whether there is matched data.
             let fbIdQuery = PFQuery(className: "UserT")
@@ -212,18 +212,9 @@ print(objects)
                                 messageContent += "折抵天數：\(discount)天"
                             }
 
-                            // Ask user whether to download data from Parse or not
-                            let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
-                            let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
-                                completion(newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays)
-                            })
-                            let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
-                                self.uploadAllData()
-                            })
-                            syncAlertController.addAction(yesAction)
-                            syncAlertController.addAction(noAction)
+                            completion(newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays)
 
-                            outcome = syncAlertController
+//                            outcome = syncAlertController
                         }
                     } else {
                         // New user
@@ -241,7 +232,7 @@ print(objects)
                 }
             }
         }
-        return outcome
+//        return outcome
     }
 
     private func checkObjectId() {
