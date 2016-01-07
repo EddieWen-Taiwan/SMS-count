@@ -157,15 +157,17 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     // Call this after app gets the login result from facebook
-    func storeFacebookInfo( info: AnyObject ) -> UIAlertController? {
+    func storeFacebookInfo( info: AnyObject, completion: ((newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int) -> Void) ) -> UIAlertController? {
+        var outcome: UIAlertController? = nil
         if let FBID = info.objectForKey("id") {
+            // Search parse data by FBID, check whether there is matched data.
             let fbIdQuery = PFQuery(className: "UserT")
             fbIdQuery.whereKey( "fb_id", equalTo: FBID )
             fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
 
                     self.addUserFBID( FBID as! String )
-
+g
                     if objects!.count > 0 {
                         // User has registerd.
 //                        for user in objects! {
@@ -181,6 +183,47 @@ class UserInfo { // Save userInfomation to Parse
                                 self.updateLocalMail( userMail as! String )
                             }
 
+                            // Make message of detail data
+                            var messageContent = ""
+                            var newEnterDate = ""
+                            var newServiceDays: Int = -1
+                            var newDiscountDays: Int = -1
+                            var newStatus = ""
+
+                            if user.valueForKey("status") != nil {
+                                newStatus = user.valueForKey("status") as! String
+                            }
+                            if let year = user.valueForKey("yearOfEnterDate") {
+                                let month = ( (user.valueForKey("monthOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.valueForKey("monthOfEnterDate")!)
+                                let date = ( (user.valueForKey("dateOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.valueForKey("dateOfEnterDate")!)
+                                // Store data
+                                newEnterDate = "\(year) / \(month) / \(date)"
+                                messageContent += "入伍日期：\(newEnterDate)\n"
+                            }
+                            if let service = user.valueForKey("serviceDays") {
+                                // Store data
+                                newServiceDays = service as! Int
+                                let serviceStr: String = CalculateHelper().switchPeriod( String(service) )
+                                messageContent += "役期天數：\(serviceStr)\n"
+                            }
+                            if let discount = user.valueForKey("discountDays") {
+                                // Store data
+                                newDiscountDays = discount as! Int
+                                messageContent += "折抵天數：\(discount)天"
+                            }
+
+                            // Ask user whether to download data from Parse or not
+                            let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
+                            let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
+                                completion(newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays)
+                            })
+                            let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
+                                self.uploadAllData()
+                            })
+                            syncAlertController.addAction(yesAction)
+                            syncAlertController.addAction(noAction)
+
+                            outcome = syncAlertController
                         }
                     } else {
                         // New user
@@ -198,7 +241,7 @@ class UserInfo { // Save userInfomation to Parse
                 }
             }
         }
-        return nil
+        return outcome
     }
 
     private func checkObjectId() {
