@@ -128,6 +128,10 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let coverView = UIView(frame: self.view.frame)
         coverView.backgroundColor = UIColor.whiteColor()
 
+        let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-24, 48, 48))
+        iconView.image = UIImage(named: "person-pin")
+        coverView.addSubview(iconView)
+
         let tap2Setting = UITapGestureRecognizer(target: self, action: "switchToSettingView")
         coverView.addGestureRecognizer(tap2Setting)
 
