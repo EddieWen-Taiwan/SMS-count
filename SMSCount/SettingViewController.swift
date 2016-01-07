@@ -201,7 +201,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     // Hide FB login button
                     self.FBLoginView.hidden = true
                     self.topConstraint.constant = -70
-FacebookLogin().storeInformation(result)
+
                     if let FBID = result.objectForKey("id") {
 
                         // Search parse data by FBID, check whether there is matched data.

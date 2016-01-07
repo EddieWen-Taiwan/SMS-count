@@ -156,6 +156,16 @@ class UserInfo { // Save userInfomation to Parse
 
     }
 
+    func storeFacebookInfo( info: AnyObject ) {
+        if let FBID = info.objectForKey("id") {
+            let fbIdQuery = PFQuery(className: "UserT")
+            fbIdQuery.whereKey( "fb_id", equalTo: FBID )
+            fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
+                print(objects)
+            }
+        }
+    }
+
     private func checkObjectId() {
         if !self.objectIdStatus { self.registerNewUser() }
     }
