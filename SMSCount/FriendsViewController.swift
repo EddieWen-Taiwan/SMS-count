@@ -144,9 +144,10 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         if situation == "facebook" {
             let loginView = FBSDKLoginButton()
-            loginView.frame = CGRectMake( 20, self.view.frame.height/2+30, self.view.frame.width-40, 50 )
-            loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
-            loginView.delegate = self
+                loginView.frame = CGRectMake( 20, self.view.frame.height/2+30, self.view.frame.width-40, 50 )
+                loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
+                loginView.delegate = self
+            coverView.addSubview(loginView)
         }
 
         self.view.addSubview(coverView)
