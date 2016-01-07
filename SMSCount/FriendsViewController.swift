@@ -128,14 +128,22 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let coverView = UIView(frame: self.view.frame)
         coverView.backgroundColor = UIColor.whiteColor()
 
-        self.view.addSubview(coverView)
+        let tap2Setting = UITapGestureRecognizer(target: self, action: "switchToSettingView")
+        coverView.addGestureRecognizer(tap2Setting)
 
-let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-appDelegate.drawerController.openDrawerSide(.Left, animated: false, completion: nil)
-let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
-let settingViewController = settingStoryboard.instantiateViewControllerWithIdentifier("NavigationOfSettingVC")
-appDelegate.drawerController.centerViewController = settingViewController
-appDelegate.drawerController.closeDrawerAnimated(false, completion: nil)
+        self.view.addSubview(coverView)
+        
+    }
+
+    func switchToSettingView() {
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.drawerController.openDrawerSide(.Left, animated: false, completion: nil)
+
+        let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
+        let settingViewController = settingStoryboard.instantiateViewControllerWithIdentifier("NavigationOfSettingVC")
+        appDelegate.drawerController.centerViewController = settingViewController
+
+        appDelegate.drawerController.closeDrawerAnimated(false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
