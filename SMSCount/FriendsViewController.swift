@@ -171,13 +171,16 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
-                if error != nil {
-                    // Remove coverView and reload tableView
+                if error == nil {
+                    // Remove coverView and reload tableView\
                     self.view.subviews.forEach({
                         if $0.tag == 7 {
                             $0.removeFromSuperview()
                         }
                     })
+
+                    // And reload tableView
+                    // ...
 
                     UserInfo().storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays) -> Void in
 
