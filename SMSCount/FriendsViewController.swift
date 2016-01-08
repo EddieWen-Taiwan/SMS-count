@@ -137,7 +137,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2-20, self.view.frame.width, 30))
             titleLabel.text = situation == "facebook" ? "請先登入Facebook" : "目前沒有網路連線"
-            titleLabel.font = UIFont(name: "PingFangTC", size: 16.0)
+            titleLabel.font = UIFont(name: "PingFangTC", size: 15.0)
             titleLabel.textColor = UIColor(red: 158/255, green: 158/255, blue: 158/255, alpha: 1)
             titleLabel.textAlignment = NSTextAlignment.Center
         coverView.addSubview(titleLabel)
@@ -150,8 +150,10 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             coverView.addSubview(loginView)
         }
 
+        coverView.tag = 7
+
         self.view.addSubview(coverView)
-        
+
     }
 
     // *************** \\
@@ -165,6 +167,54 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else if result.isCancelled {
             // Handle cancellations
         } else {
+
+            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
+            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+
+                if error != nil {
+                    // Remove coverView and reload tableView
+                    self.view.subviews.forEach({
+                        if $0.tag == 7 {
+                            $0.removeFromSuperview()
+                        }
+                    })
+
+                    UserInfo().storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays) -> Void in
+
+                        // Ask user whether to download data from Parse or not
+                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
+                        let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
+                            let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+                            // Status
+                            if newStatus != "" {
+                                userPreference.setObject( newStatus, forKey: "status")
+                            }
+                            // EnterDate
+                            if newEnterDate != "" {
+                                userPreference.setObject( newEnterDate, forKey: "enterDate")
+                            }
+                            // ServiceDays
+                            if newServiceDays != -1 {
+                                userPreference.setInteger( newServiceDays, forKey: "serviceDays")
+                            }
+                            // DiscountDays
+                            if newDiscountDays != -1 {
+                                userPreference.setInteger( newDiscountDays, forKey: "discountDays")
+                            }
+                        })
+                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
+                            UserInfo().uploadAllData()
+                        })
+                        syncAlertController.addAction(yesAction)
+                        syncAlertController.addAction(noAction)
+
+                        self.presentViewController(syncAlertController, animated: true, completion: nil)
+
+                    })
+                }
+
+            })
+
         }
 
     }
