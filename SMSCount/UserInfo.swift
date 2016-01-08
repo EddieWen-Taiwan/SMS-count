@@ -113,14 +113,7 @@ class UserInfo { // Save userInfomation to Parse
             self.objectIsChanged = false
 
             if self.objectIdStatus {
-                self.userPreference.setObject( "no", forKey: "sync" )
-                if Reachability().isConnectedToNetwork() {
-                    userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
-                        if success {
-                            self.userPreference.removeObjectForKey("sync")
-                        }
-                    }
-                }
+                userObject.saveEventually()
             }
 
         }
