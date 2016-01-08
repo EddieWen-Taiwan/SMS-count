@@ -32,33 +32,37 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             if FBSDKAccessToken.currentAccessToken() == nil {
                 self.coverTableView("facebook")
             } else {
-                let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
-                friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
-
-                    if error == nil {
-                        var friendArray: [String] = []
-                        if let users = result.valueForKey("data") {
-                            for user in users as! [AnyObject] {
-                                friendArray.append( user.valueForKey("id") as! String )
-                            }
-                        }
-                        let friendsDetail = PFQuery(className: "User")
-                        friendsDetail.whereKey( "fb_id", containedIn: friendArray )
-                        friendsDetail.orderByDescending("updatedAt")
-                        friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-                            if error == nil {
-                                self.friendsObject = objects!
-                                self.getData = true
-                                self.tableView.reloadData()
-                            }
-                        })
-                    }
-
-                }
+                self.requestFriendsList()
             }
         } else {
             // without Internet
             self.coverTableView("internet")
+        }
+    }
+
+    func requestFriendsList() {
+        let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
+        friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+
+            if error == nil {
+                var friendArray: [String] = []
+                if let users = result.valueForKey("data") {
+                    for user in users as! [AnyObject] {
+                        friendArray.append( user.valueForKey("id") as! String )
+                    }
+                }
+                let friendsDetail = PFQuery(className: "User")
+                friendsDetail.whereKey( "fb_id", containedIn: friendArray )
+                friendsDetail.orderByDescending("updatedAt")
+                friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                    if error == nil {
+                        self.friendsObject = objects!
+                        self.getData = true
+                        self.tableView.reloadData()
+                    }
+                })
+            }
+
         }
     }
 
@@ -180,7 +184,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                     })
 
                     // And reload tableView
-                    // ...
+                    self.requestFriendsList()
 
                     UserInfo().storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays) -> Void in
 
