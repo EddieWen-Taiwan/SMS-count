@@ -99,6 +99,11 @@ class UserInfo { // Save userInfomation to Parse
         self.objectIsChanged = true
     }
 
+    func updateWeekendFixed( fixed: Bool ) {
+        userObject.setObject( fixed, forKey: "weekendDischarge" )
+        self.objectIsChanged = true
+    }
+
     // Save local data to Parse
     func save() {
 
