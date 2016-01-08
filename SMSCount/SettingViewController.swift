@@ -8,7 +8,6 @@
 
 import UIKit
 import FBSDKLoginKit
-import Parse
 
 class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, FBSDKLoginButtonDelegate {
 
