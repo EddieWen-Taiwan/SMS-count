@@ -131,11 +131,11 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let coverView = UIView(frame: self.view.frame)
             coverView.backgroundColor = UIColor.whiteColor()
 
-        let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-50, 48, 48))
+        let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-70, 48, 48))
             iconView.image = UIImage(named: situation == "facebook" ? "person-pin" : "no-internet")
         coverView.addSubview(iconView)
 
-        let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2, self.view.frame.width, 30))
+        let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2-20, self.view.frame.width, 30))
             titleLabel.text = situation == "facebook" ? "請先登入Facebook" : "目前沒有網路連線"
             titleLabel.font = UIFont(name: "PingFangTC", size: 16.0)
             titleLabel.textColor = UIColor(red: 158/255, green: 158/255, blue: 158/255, alpha: 1)
@@ -144,7 +144,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         if situation == "facebook" {
             let loginView = FBSDKLoginButton()
-                loginView.frame = CGRectMake( 20, self.view.frame.height/2+30, self.view.frame.width-40, 50 )
+                loginView.frame = CGRectMake( 30, self.view.frame.height/2+30, self.view.frame.width-60, 50 )
                 loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
                 loginView.delegate = self
             coverView.addSubview(loginView)
