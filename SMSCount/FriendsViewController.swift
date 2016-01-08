@@ -40,6 +40,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
+    // Request user friends list from Facebook and reload TableView
     func requestFriendsList() {
         let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
         friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
@@ -130,6 +131,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
 
+    // Add a UIView to cover TableView with something wrong
     func coverTableView(situation: String = "") {
 
         let coverView = UIView(frame: self.view.frame)
