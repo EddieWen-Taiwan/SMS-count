@@ -33,9 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If app is without ObjectId, create a new data row.
         if userPreference.stringForKey("UserID") == nil {
             UserInfo().registerNewUser()
-        } else if userPreference.stringForKey("sync") == "no" {
-            // If last time didn't finish syncTask to Parse
-            UserInfo().uploadAllData()
         }
 
         // For countdown animation
