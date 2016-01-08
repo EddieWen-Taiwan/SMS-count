@@ -142,7 +142,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2-20, self.view.frame.width, 30))
             titleLabel.text = situation == "facebook" ? "請先登入Facebook" : "目前沒有網路連線"
             titleLabel.font = UIFont(name: "PingFangTC", size: 15.0)
-            titleLabel.textColor = UIColor(red: 158/255, green: 158/255, blue: 158/255, alpha: 1)
+            titleLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.38)
             titleLabel.textAlignment = NSTextAlignment.Center
         coverView.addSubview(titleLabel)
 
