@@ -150,7 +150,6 @@ class UserInfo { // Save userInfomation to Parse
         }
         userObject.setObject( self.userPreference.boolForKey("autoWeekendFixed"), forKey: "weekendDischarge" )
 
-
         self.objectIsChanged = true
         // Save to Parse
         self.save()
