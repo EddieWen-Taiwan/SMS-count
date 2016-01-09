@@ -156,6 +156,20 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+        if userPreference.boolForKey("downloadFromParse") {
+            self.isCircleDrawn = false
+            userPreference.setBool( false, forKey: "dayAnimated" )
+            userPreference.removeObjectForKey("downloadFromParse")
+print("Recheck")
+            calculateHelper = CalculateHelper()
+            self.checkSetting()
+        }
+    }
+
     func daysAddingEffect( timer: NSTimer ) {
 
         func updateLabel() {
