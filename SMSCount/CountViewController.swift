@@ -29,7 +29,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var animationIndex: Int = 0
     var animationArray = [ "" ]
     var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
-//    var isUserRetired: Bool = false
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
