@@ -38,10 +38,19 @@ class SettingTableViewController: UITableViewController {
         if let status = self.userPreference.stringForKey("status") {
             self.statusLabel.text = status
         }
-        self.autoWeekendSwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
-        self.autoWeekendSwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
+
+        // Curve UISwitch and add function
+        func prepareSwitch( mySwitch: UISwitch ) {
+            mySwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
+            mySwitch.addTarget(self, action: "switchClick", forControlEvents: .ValueChanged)
+        }
+        prepareSwitch(self.autoWeekendSwitch)
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
+        }
+        prepareSwitch(self.publicSwitch)
+        if self.userPreference.boolForKey("publicProfile") {
+            self.publicSwitch.setOn(true, animated: false)
         }
 
         // Add footer of TableView
