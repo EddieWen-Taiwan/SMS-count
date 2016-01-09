@@ -164,7 +164,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             self.isCircleDrawn = false
             userPreference.setBool( false, forKey: "dayAnimated" )
             userPreference.removeObjectForKey("downloadFromParse")
-print("Recheck")
+
             calculateHelper = CalculateHelper()
             self.checkSetting()
         }
