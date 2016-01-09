@@ -104,6 +104,11 @@ class UserInfo { // Save userInfomation to Parse
         self.objectIsChanged = true
     }
 
+    func updatePublicProfile( public_show: Bool ) {
+        userObject.setObject( public_show, forKey: "publicProfile" )
+        self.objectIsChanged = true
+    }
+
     // Save local data to Parse
     func save() {
 
