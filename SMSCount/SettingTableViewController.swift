@@ -39,10 +39,10 @@ class SettingTableViewController: UITableViewController {
             self.statusLabel.text = status
         }
 
-        // Curve UISwitch and add function
+        // Resize UISwitch and add function
         func prepareSwitch( mySwitch: UISwitch ) {
             mySwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
-            mySwitch.addTarget(self, action: "switchClick", forControlEvents: .ValueChanged)
+            mySwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
         }
         prepareSwitch(self.autoWeekendSwitch)
         if self.userPreference.boolForKey("autoWeekendFixed") {
@@ -146,7 +146,14 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 3 : 1
+        switch section {
+            case 0:
+                return 1
+            case 1:
+                return 3
+            default:
+                return 2
+        }
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
