@@ -75,10 +75,9 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     func checkSetting() {
 
         self.settingStatus = calculateHelper.isSettingAllDone()
-
         if self.settingStatus {
 
-            self.prepareAnimation()
+            self.prepareTextAndNumbers()
 
         } else {
             // switch to settingViewController ?
@@ -89,7 +88,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     }
 
-    func prepareAnimation() {
+    func prepareTextAndNumbers() {
 
         calculateHelper.updateDate()
 
@@ -109,13 +108,13 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             // Animation was completed
             self.frontRemainedDaysLabel.text = String( newRemainedDays )
         } else {
-            self.readyAndRunCountingAnimation(newRemainedDays)
+            self.beReadyAndRunCountingAnimation(newRemainedDays)
         }
 
-        self.setCircle()
+        self.setTextOfProcess()
     }
 
-    func readyAndRunCountingAnimation( remainedDays: Int ) {
+    func beReadyAndRunCountingAnimation( remainedDays: Int ) {
 
         // Animation setting
         animationIndex = 0
@@ -148,7 +147,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     }
 
-    func setCircle() {
+    func setTextOfProcess() {
 
         // Set currentProcess
         let currentProcess = calculateHelper.getCurrentProgress()
