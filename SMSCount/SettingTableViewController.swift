@@ -15,6 +15,7 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet var discountDaysLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var autoWeekendSwitch: UISwitch!
+    @IBOutlet var publicSwitch: UISwitch!
 
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
@@ -37,10 +38,19 @@ class SettingTableViewController: UITableViewController {
         if let status = self.userPreference.stringForKey("status") {
             self.statusLabel.text = status
         }
-        self.autoWeekendSwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
-        self.autoWeekendSwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
+
+        // Resize UISwitch and add function
+        func prepareSwitch( mySwitch: UISwitch ) {
+            mySwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
+            mySwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
+        }
+        prepareSwitch(self.autoWeekendSwitch)
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
+        }
+        prepareSwitch(self.publicSwitch)
+        if self.userPreference.boolForKey("publicProfile") {
+            self.publicSwitch.setOn(true, animated: false)
         }
 
         // Add footer of TableView
@@ -105,10 +115,13 @@ class SettingTableViewController: UITableViewController {
 
     func switchClick( mySwitch: UISwitch ) {
         let newValue: Bool = mySwitch.on ? true : false
-        self.userPreference.setBool( newValue, forKey: "autoWeekendFixed" )
+        self.userPreference.setBool( newValue, forKey: mySwitch.tag == 0 ? "autoWeekendFixed" : "publicProfile" )
         if let parentVC = self.parentVC {
-            parentVC.userInfo.objectIsChanged = true
-            parentVC.userInfo.updateWeekendFixed( newValue )
+            if mySwitch.tag == 0 {
+                parentVC.userInfo.updateWeekendFixed( newValue )
+            } else {
+                parentVC.userInfo.updatePublicProfile( newValue )
+            }
         }
     }
 
@@ -133,7 +146,14 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 3 : 1
+        switch section {
+            case 0:
+                return 1
+            case 1:
+                return 3
+            default:
+                return 2
+        }
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

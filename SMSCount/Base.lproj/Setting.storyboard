@@ -522,6 +522,39 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2TM-kT-DvJ">
+                                        <rect key="frame" x="0.0" y="480" width="600" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2TM-kT-DvJ" id="AWY-9n-t6N">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公開使用者" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwZ-nW-viJ">
+                                                    <rect key="frame" x="20" y="15" width="80" height="23"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開啟後好友才能在好友列表中看見你" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyf-84-Cka">
+                                                    <rect key="frame" x="20" y="33" width="192" height="17"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yhe-CC-rUr">
+                                                    <rect key="frame" x="531" y="17" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zyf-84-Cka" firstAttribute="leading" secondItem="AWY-9n-t6N" secondAttribute="leading" constant="20" id="BHt-g8-IK3"/>
+                                                <constraint firstAttribute="trailing" secondItem="yhe-CC-rUr" secondAttribute="trailing" constant="20" id="GpP-Qq-lxG"/>
+                                                <constraint firstItem="kwZ-nW-viJ" firstAttribute="leading" secondItem="AWY-9n-t6N" secondAttribute="leading" constant="20" id="HbM-vr-ZrA"/>
+                                                <constraint firstItem="kwZ-nW-viJ" firstAttribute="top" secondItem="AWY-9n-t6N" secondAttribute="top" constant="15" id="eOi-q4-SGF"/>
+                                                <constraint firstAttribute="bottom" secondItem="zyf-84-Cka" secondAttribute="bottom" constant="15" id="p4i-Ti-nEq"/>
+                                                <constraint firstItem="yhe-CC-rUr" firstAttribute="centerY" secondItem="AWY-9n-t6N" secondAttribute="centerY" id="tzf-k1-OMI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -534,6 +567,7 @@
                         <outlet property="autoWeekendSwitch" destination="d8a-QV-DCL" id="Xig-Q4-PhK"/>
                         <outlet property="discountDaysLabel" destination="Kz1-80-G22" id="1J1-Ep-gMv"/>
                         <outlet property="enterDateLabel" destination="FgD-3f-36t" id="PRx-99-LOf"/>
+                        <outlet property="publicSwitch" destination="yhe-CC-rUr" id="3hd-UM-4nv"/>
                         <outlet property="serviceDaysLabel" destination="M8V-Av-V17" id="Pwt-cp-KHn"/>
                         <outlet property="statusLabel" destination="fIb-Qb-GGU" id="wy2-jJ-kkZ"/>
                     </connections>
