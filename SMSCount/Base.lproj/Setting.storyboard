@@ -567,6 +567,7 @@
                         <outlet property="autoWeekendSwitch" destination="d8a-QV-DCL" id="Xig-Q4-PhK"/>
                         <outlet property="discountDaysLabel" destination="Kz1-80-G22" id="1J1-Ep-gMv"/>
                         <outlet property="enterDateLabel" destination="FgD-3f-36t" id="PRx-99-LOf"/>
+                        <outlet property="hideSwitch" destination="yhe-CC-rUr" id="Lx8-3G-6h9"/>
                         <outlet property="serviceDaysLabel" destination="M8V-Av-V17" id="Pwt-cp-KHn"/>
                         <outlet property="statusLabel" destination="fIb-Qb-GGU" id="wy2-jJ-kkZ"/>
                     </connections>
