@@ -75,14 +75,13 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             calculateHelper.updateDate()
 
             var newRemainedDays = calculateHelper.getRemainedDays()
+            var daysText = "剩餘天數"
             if newRemainedDays < 0 {
                 newRemainedDays *= (-1)
-                self.backRemainedDaysWord.text = "自由天數"
-                self.frontRemainedDaysWord.text = "自由天數"
-            } else {
-                self.backRemainedDaysWord.text = "剩餘天數"
-                self.frontRemainedDaysWord.text = "剩餘天數"
+                daysText = "自由天數"
             }
+            self.backRemainedDaysWord.text = daysText
+            self.frontRemainedDaysWord.text = daysText
             self.backRemainedDaysLabel.text = String( newRemainedDays )
 
             // Set remainedDays
