@@ -115,9 +115,13 @@ class SettingTableViewController: UITableViewController {
 
     func switchClick( mySwitch: UISwitch ) {
         let newValue: Bool = mySwitch.on ? true : false
-        self.userPreference.setBool( newValue, forKey: "autoWeekendFixed" )
+        self.userPreference.setBool( newValue, forKey: mySwitch.tag == 0 ? "autoWeekendFixed" : "publicProfile" )
         if let parentVC = self.parentVC {
-            parentVC.userInfo.updateWeekendFixed( newValue )
+            if mySwitch.tag == 0 {
+                parentVC.userInfo.updateWeekendFixed( newValue )
+            } else {
+                parentVC.userInfo.updatePublicProfile( newValue )
+            }
         }
     }
 
