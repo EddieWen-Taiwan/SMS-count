@@ -107,7 +107,6 @@ class SettingTableViewController: UITableViewController {
         let newValue: Bool = mySwitch.on ? true : false
         self.userPreference.setBool( newValue, forKey: "autoWeekendFixed" )
         if let parentVC = self.parentVC {
-            parentVC.userInfo.objectIsChanged = true
             parentVC.userInfo.updateWeekendFixed( newValue )
         }
     }
