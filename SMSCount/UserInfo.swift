@@ -162,7 +162,7 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     // Call this after app gets the login result from facebook
-    func storeFacebookInfo( info: AnyObject, completion: ((messageContent: String, newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int) -> Void) ) {
+    func storeFacebookInfo( info: AnyObject, completion: ((messageContent: String, newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int, newWeekendFixed: Bool, newPublicProfile: Bool) -> Void) ) {
 
         if let FBID = info.objectForKey("id") {
             // Search parse data by FBID, check whether there is matched data.
@@ -193,6 +193,8 @@ class UserInfo { // Save userInfomation to Parse
                             var newServiceDays: Int = -1
                             var newDiscountDays: Int = -1
                             var newStatus = ""
+                            var newWeekendFixed: Bool = false
+                            var newPublicProfile: Bool = false
 
                             if user.valueForKey("status") != nil {
                                 newStatus = user.valueForKey("status") as! String
@@ -215,8 +217,14 @@ class UserInfo { // Save userInfomation to Parse
                                 newDiscountDays = discount as! Int
                                 messageContent += "折抵天數：\(discount)天"
                             }
+                            if let weekendFixed = user.valueForKey("weekendDischarge") {
+                                newWeekendFixed = weekendFixed as! Bool
+                            }
+                            if let publicProfile = user.valueForKey("publicProfile") {
+                                newPublicProfile = publicProfile as! Bool
+                            }
 
-                            completion(messageContent: messageContent,newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays)
+                            completion( messageContent: messageContent, newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays, newWeekendFixed: newWeekendFixed, newPublicProfile: newPublicProfile)
 
                         }
                     } else {

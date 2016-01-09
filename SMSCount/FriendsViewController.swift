@@ -188,7 +188,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                     // And reload tableView
                     self.requestFriendsList()
 
-                    UserInfo().storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays) -> Void in
+                    UserInfo().storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
 
                         // Ask user whether to download data from Parse or not
                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
@@ -210,6 +210,8 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                             if newDiscountDays != -1 {
                                 userPreference.setInteger( newDiscountDays, forKey: "discountDays")
                             }
+                            userPreference.setBool( newWeekendFixed, forKey: "autoWeekendFixed" )
+                            userPreference.setBool( newPublicProfile, forKey: "publicProfile" )
                             userPreference.setBool( true, forKey: "downloadFromParse" )
                         })
                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in

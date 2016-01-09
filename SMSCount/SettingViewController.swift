@@ -201,7 +201,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     self.FBLoginView.hidden = true
                     self.topConstraint.constant = -70
 
-                    self.userInfo.storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays) -> Void in
+                    self.userInfo.storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
 
                         // Ask user whether to download data from Parse or not
                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
@@ -226,6 +226,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                                 self.userPreference.setInteger( newDiscountDays, forKey: "discountDays")
                                 self.containerVC?.discountDaysLabel.text = String(newDiscountDays)
                             }
+                            self.userPreference.setBool( newWeekendFixed, forKey: "autoWeekendFixed" )
+                            self.containerVC?.autoWeekendSwitch.setOn( newWeekendFixed, animated: true )
+                            self.userPreference.setBool( newPublicProfile, forKey: "publicProfile" )
+                            self.containerVC?.publicSwitch.setOn( newPublicProfile, animated: true )
                         })
                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
                             self.userInfo.uploadAllData()
