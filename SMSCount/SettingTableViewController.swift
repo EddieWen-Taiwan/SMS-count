@@ -15,7 +15,7 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet var discountDaysLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var autoWeekendSwitch: UISwitch!
-    @IBOutlet var hideSwitch: UISwitch!
+    @IBOutlet var publicSwitch: UISwitch!
 
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
