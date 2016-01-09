@@ -68,67 +68,93 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
+        self.checkSetting()
+
+    }
+
+    func checkSetting() {
+
         self.settingStatus = calculateHelper.isSettingAllDone()
 
         if self.settingStatus {
 
-            calculateHelper.updateDate()
-
-            var newRemainedDays = calculateHelper.getRemainedDays()
-            var daysText = "剩餘天數"
-            if newRemainedDays < 0 {
-                newRemainedDays *= (-1)
-                daysText = "自由天數"
-            }
-            self.backRemainedDaysWord.text = daysText
-            self.frontRemainedDaysWord.text = daysText
-            self.backRemainedDaysLabel.text = String( newRemainedDays )
-
-            // Set remainedDays
-            let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-            if userPreference.boolForKey("dayAnimated") {
-                // Animation was completed
-                self.frontRemainedDaysLabel.text = String( newRemainedDays )
-            } else {
-                // Animation setting
-                animationIndex = 0
-                animationArray.removeAll(keepCapacity: false) // Maybe it should be true
-                if newRemainedDays < 100 {
-                    for var i = 0; i <= newRemainedDays; i++ {
-                        animationArray.append( String(i) )
-                    }
-                } else {
-                    for var i = 1; i <= 95; i++ {
-                        animationArray.append( String( format: "%.f", Double( (newRemainedDays-3)*i )*0.01 ) )
-                    }
-                    for var i = 96; i <= 100; i++ {
-                        animationArray.append( String( newRemainedDays-(100-i) ) )
-                    }
-                }
-
-                let arrayLength = animationArray.count
-                stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
-                stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
-                stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
-                stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
-                stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
-                stageIndexArray[5] = arrayLength-1
-
-                self.frontRemainedDaysLabel.text = "0"
-                NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
-            }
-
-            // Set currentProcess
-            let currentProcess = calculateHelper.getCurrentProgress()
-            let currentProcessString = String( format: "%.1f", currentProcess )
-            self.percentageLabel.text = currentProcessString
+            self.prepareAnimation()
 
         } else {
             // switch to settingViewController ?
             // tabBarController?.selectedIndex = 2
-            
+
             self.percentageLabel.text = "0"
         }
+
+    }
+
+    func prepareAnimation() {
+
+        calculateHelper.updateDate()
+
+        var newRemainedDays = calculateHelper.getRemainedDays()
+        var daysText = "剩餘天數"
+        if newRemainedDays < 0 {
+            newRemainedDays *= (-1)
+            daysText = "自由天數"
+        }
+        self.backRemainedDaysWord.text = daysText
+        self.frontRemainedDaysWord.text = daysText
+        self.backRemainedDaysLabel.text = String( newRemainedDays )
+
+        // Set remainedDays
+        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+        if userPreference.boolForKey("dayAnimated") {
+            // Animation was completed
+            self.frontRemainedDaysLabel.text = String( newRemainedDays )
+        } else {
+            self.readyAndRunCountingAnimation(newRemainedDays)
+        }
+
+        self.setCircle()
+    }
+
+    func readyAndRunCountingAnimation( remainedDays: Int ) {
+
+        // Animation setting
+        animationIndex = 0
+        animationArray.removeAll(keepCapacity: false) // Maybe it should be true
+        if remainedDays < 100 {
+            for var i = 0; i <= remainedDays; i++ {
+                animationArray.append( String(i) )
+            }
+        } else {
+            for var i = 1; i <= 95; i++ {
+                animationArray.append( String( format: "%.f", Double( (remainedDays-3)*i )*0.01 ) )
+            }
+            for var i = 96; i <= 100; i++ {
+                animationArray.append( String( remainedDays-(100-i) ) )
+            }
+        }
+
+        let arrayLength = animationArray.count
+        stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
+        stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
+        stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
+        stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
+        stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
+        stageIndexArray[5] = arrayLength-1
+
+        self.frontRemainedDaysLabel.text = "0"
+
+        // Run animation
+        NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
+
+    }
+
+    func setCircle() {
+
+        // Set currentProcess
+        let currentProcess = calculateHelper.getCurrentProgress()
+        let currentProcessString = String( format: "%.1f", currentProcess )
+        self.percentageLabel.text = currentProcessString
+
     }
 
     func daysAddingEffect( timer: NSTimer ) {
@@ -203,7 +229,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     func switchView() {
 
-        let switch2chart: Bool = ( self.currentDisplay == "day" ) ? true : false
+        let switch2chart: Bool = self.currentDisplay == "day" ? true : false
         self.switchViewButton.backgroundColor = UIColor.whiteColor()
         self.imageOnSwitchBtn.image = UIImage(named: switch2chart ? "date" : "chart" )
 
