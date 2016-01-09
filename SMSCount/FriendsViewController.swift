@@ -210,6 +210,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                             if newDiscountDays != -1 {
                                 userPreference.setInteger( newDiscountDays, forKey: "discountDays")
                             }
+                            userPreference.setBool( true, forKey: "downloadFromParse" )
                         })
                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
                             UserInfo().uploadAllData()
