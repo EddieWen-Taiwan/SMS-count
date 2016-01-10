@@ -45,7 +45,7 @@ class PercentageCircleView: UIView {
         layer.addSublayer(circleLayer)
     }
 
-    func animateCircle( percent: Double ) {
+    func animateCircle( var percent: Double ) {
         // We want to animate the strokeEnd property of the circleLayer
         let animation = CABasicAnimation(keyPath: "strokeEnd")
 
@@ -61,6 +61,11 @@ class PercentageCircleView: UIView {
 
         // get currentPercentage
         let startAngle = CGFloat( M_PI*(0.5)*(-1) )
+        if percent > 1 {
+            percent = 1
+        } else if percent < 0 {
+            percent = 0
+        }
         let endAngle = CGFloat( M_PI*2*( percent ) - M_PI*(0.5) )
 
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
