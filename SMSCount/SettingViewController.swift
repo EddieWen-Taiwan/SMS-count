@@ -59,6 +59,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
+        self.containerVC = self.childViewControllers.first as? SettingTableViewController
+
         // About FB login button
         if FBSDKAccessToken.currentAccessToken() == nil {
             self.FBLoginView.hidden = false
@@ -71,9 +73,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
             loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
             loginView.delegate = self
+
+            // Disable publicSwitch
+            containerVC?.publicSwitch.enabled = false
         }
 
-        self.containerVC = self.childViewControllers.first as? SettingTableViewController
     }
 
     override func viewDidDisappear(animated: Bool) {
