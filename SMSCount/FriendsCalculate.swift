@@ -10,7 +10,7 @@ import UIKit
 
 class FriendsCalculate: CalculateHelper {
 
-    func inputFriendData( enterDate: String, serviceDays: Int, discountDays: Int = 0, autoFixed: Bool = false ) -> Bool {
+    func inputFriendData( enterDate: String, serviceDays: Int, discountDays: Int, autoFixed: Bool ) -> Bool {
 
         self.valueEnterDate = enterDate
         self.valueServiceDays = serviceDays
