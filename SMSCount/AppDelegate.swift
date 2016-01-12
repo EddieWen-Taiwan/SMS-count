@@ -38,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if userPreference.boolForKey("uploadNewValueIn2.0") != true {
                 let userInfo = UserInfo()
                 userInfo.updateWeekendFixed( userPreference.boolForKey("autoWeekendFixed") )
+                if userPreference.valueForKey("publicProfile") == nil {
+                    userPreference.setBool( true, forKey: "publicProfile")
+                }
                 userInfo.updatePublicProfile( userPreference.boolForKey("publicProfile") )
                 userInfo.save()
 
