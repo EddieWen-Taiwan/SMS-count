@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If app is without ObjectId, create a new data row.
         if userPreference.stringForKey("UserID") == nil {
             UserInfo().registerNewUser()
+            userPreference.setBool( true, forKey: "uploadNewValueIn2.0" )
         } else {
             // For uploading to v2.0
             if userPreference.boolForKey("uploadNewValueIn2.0") != true {
