@@ -78,7 +78,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             containerVC?.publicSwitch.enabled = false
         } else {
             // If there is FBtoken, then set UISwitch value depends on value in UserDefault
-            if self.userPreference.boolForKey("autoWeekendFixed") {
+            if self.userPreference.boolForKey("publicProfile") {
                 containerVC?.publicSwitch.setOn(true, animated: false)
             }
         }
@@ -204,7 +204,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
             // Enable UISwitch
             containerVC?.publicSwitch.enabled = true
-            if self.userPreference.boolForKey("autoWeekendFixed") {
+            if self.userPreference.boolForKey("publicProfile") {
                 containerVC?.publicSwitch.setOn(true, animated: false)
             }
 
