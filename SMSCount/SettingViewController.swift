@@ -197,6 +197,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         } else {
             // Navigate to other view
 
+            // Enable UISwitch
+            containerVC?.publicSwitch.enabled = true
+
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
