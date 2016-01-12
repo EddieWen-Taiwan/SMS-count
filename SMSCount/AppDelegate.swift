@@ -33,15 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If app is without ObjectId, create a new data row.
         if userPreference.stringForKey("UserID") == nil {
             UserInfo().registerNewUser()
-        }
-        // For uploading to v2.0
-        if userPreference.boolForKey("uploadNewValueIn2.0") != true {
-            let userInfo = UserInfo()
-            userInfo.updateWeekendFixed( userPreference.boolForKey("autoWeekendFixed") )
-            userInfo.updatePublicProfile( userPreference.boolForKey("publicProfile") )
-            userInfo.save()
+        } else {
+            // For uploading to v2.0
+            if userPreference.boolForKey("uploadNewValueIn2.0") != true {
+                let userInfo = UserInfo()
+                userInfo.updateWeekendFixed( userPreference.boolForKey("autoWeekendFixed") )
+                userInfo.updatePublicProfile( userPreference.boolForKey("publicProfile") )
+                userInfo.save()
 
-            userPreference.setBool( true, forKey: "uploadNewValueIn2.0" )
+                userPreference.setBool( true, forKey: "uploadNewValueIn2.0" )
+            }
         }
 
         // For countdown animation
