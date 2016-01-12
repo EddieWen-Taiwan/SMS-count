@@ -117,7 +117,13 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 entireDate += String(thisUser.valueForKey("dateOfEnterDate")!)
 
                 if friendHelper.inputFriendData( entireDate, serviceDays: thisUser.valueForKey("serviceDays") as! Int, discountDays: thisUser.valueForKey("discountDays") as! Int, autoFixed: false ) {
-                    cell.dayNumber.text = String( friendHelper.getRemainedDays() )
+                    if friendHelper.getRemainedDays() >= 0 {
+                        cell.preTextLabel.text = "剩餘"
+                        cell.dayNumber.text = String( friendHelper.getRemainedDays() )
+                    } else {
+                        cell.preTextLabel.text = "自由"
+                        cell.dayNumber.text = String( friendHelper.getRemainedDays()*(-1) )
+                    }
                 }
 
             }
