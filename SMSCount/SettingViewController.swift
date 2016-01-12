@@ -204,6 +204,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
             // Enable UISwitch
             containerVC?.publicSwitch.enabled = true
+            if self.userPreference.boolForKey("autoWeekendFixed") {
+                containerVC?.publicSwitch.setOn(true, animated: false)
+            }
 
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
