@@ -118,7 +118,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func serviceDaysDoneIsPressed(sender: AnyObject) {
 
-        if self.userPreference.objectForKey("serviceDays") == nil {
+        if self.userPreference.valueForKey("serviceDays") == nil {
             self.userPreference.setInteger( 0, forKey: "serviceDays" )
         }
 
@@ -132,7 +132,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     @IBAction func discountDaysDoneIsPressed(sender: AnyObject) {
 
-        if self.userPreference.objectForKey("discountDays") == nil {
+        if self.userPreference.valueForKey("discountDays") == nil {
             self.userPreference.setInteger( 0, forKey: "discountDays" )
         }
 
