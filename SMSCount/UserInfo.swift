@@ -100,11 +100,13 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     func updateWeekendFixed( fixed: Bool ) {
+        self.userPreference.setBool( fixed, forKey: "autoWeekendFixed" )
         userObject.setObject( fixed, forKey: "weekendDischarge" )
         self.objectIsChanged = true
     }
 
     func updatePublicProfile( public_show: Bool ) {
+        self.userPreference.setBool( public_show, forKey: "publicProfile" )
         userObject.setObject( public_show, forKey: "publicProfile" )
         self.objectIsChanged = true
     }
