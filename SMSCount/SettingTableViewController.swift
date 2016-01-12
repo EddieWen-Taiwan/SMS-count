@@ -49,9 +49,6 @@ class SettingTableViewController: UITableViewController {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
         prepareSwitch(self.publicSwitch)
-        if self.userPreference.boolForKey("publicProfile") {
-            self.publicSwitch.setOn(true, animated: false)
-        }
 
         // Add footer of TableView
         let footerBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))

@@ -59,7 +59,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
-        self.containerVC = self.childViewControllers.first as? SettingTableViewController
+        containerVC = self.childViewControllers.first as? SettingTableViewController
 
         // About FB login button
         if FBSDKAccessToken.currentAccessToken() == nil {
@@ -76,6 +76,11 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
             // Disable publicSwitch
             containerVC?.publicSwitch.enabled = false
+        } else {
+            // If there is FBtoken, then set UISwitch value depends on value in UserDefault
+            if self.userPreference.boolForKey("autoWeekendFixed") {
+                containerVC?.publicSwitch.setOn(true, animated: false)
+            }
         }
 
     }
