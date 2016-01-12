@@ -555,22 +555,22 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIz-Jg-dZi">
-                                                    <rect key="frame" x="553" y="15" width="37" height="16"/>
+                                                    <rect key="frame" x="575" y="15" width="15" height="16"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩餘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUR-XZ-hNa">
-                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUR-XZ-hNa">
+                                                            <rect key="frame" x="0.0" y="16" width="0.0" height="0.0"/>
                                                             <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="11"/>
                                                             <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1z-Uz-D6b">
-                                                            <rect key="frame" x="24" y="8" width="0.0" height="0.0"/>
+                                                            <rect key="frame" x="2" y="8" width="0.0" height="0.0"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1w-HV-lSD">
-                                                            <rect key="frame" x="26" y="0.0" width="11" height="16"/>
+                                                            <rect key="frame" x="4" y="0.0" width="11" height="16"/>
                                                             <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="11"/>
                                                             <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -614,6 +614,7 @@
                                         <connections>
                                             <outlet property="dayNumber" destination="m1z-Uz-D6b" id="9Qj-NZ-SHS"/>
                                             <outlet property="name" destination="H8u-Fq-ycD" id="fow-aY-c0z"/>
+                                            <outlet property="preTextLabel" destination="oUR-XZ-hNa" id="T1n-7h-HFh"/>
                                             <outlet property="status" destination="MFL-RD-FZL" id="p7p-y4-up0"/>
                                             <outlet property="sticker" destination="z5d-ns-vsB" id="LRy-zv-VqP"/>
                                             <outlet property="textBeforeDays" destination="oUR-XZ-hNa" id="wxJ-eQ-OTr"/>
