@@ -154,6 +154,7 @@ class UserInfo { // Save userInfomation to Parse
             userObject.setObject( self.userPreference.integerForKey("discountDays"), forKey: "discountDays" )
         }
         userObject.setObject( self.userPreference.boolForKey("autoWeekendFixed"), forKey: "weekendDischarge" )
+        userObject.setObject( self.userPreference.boolForKey("publicProfile"), forKey: "publicProfile" )
 
         self.objectIsChanged = true
         // Save to Parse
