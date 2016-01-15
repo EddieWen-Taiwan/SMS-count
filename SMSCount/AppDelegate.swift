@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Remove bottom border of navigation bar ( all ViewController )
         UINavigationBar.appearance().setBackgroundImage( UIImage(named: "standard-color"), forBarMetrics: .Default )
         UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().translucent = false
 
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
         // If there is no publicProfile, set it true as default
