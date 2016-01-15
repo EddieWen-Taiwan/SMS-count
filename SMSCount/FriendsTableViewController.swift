@@ -10,9 +10,8 @@ import UIKit
 import Parse
 import FBSDKLoginKit
 
-class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FBSDKLoginButtonDelegate {
+class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
 
-    @IBOutlet var tableView: UITableView!
     var friendsObject: [PFObject] = []
     var getData: Bool = false
 
@@ -23,8 +22,8 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.allowsSelection = false
 
         if Reachability().isConnectedToNetwork() {
@@ -70,17 +69,17 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // MARK: - Table view data source
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.getData ? self.friendsObject.count : Int( self.tableView.bounds.height / 74 )
+        return self.getData ? self.friendsObject.count : 3
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendsTableViewCell
 
         if getData {
