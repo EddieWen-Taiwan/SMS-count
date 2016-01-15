@@ -22,8 +22,6 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-//        tableView.delegate = self
-//        tableView.dataSource = self
         tableView.allowsSelection = false
 
         if Reachability().isConnectedToNetwork() {
@@ -76,7 +74,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.getData ? self.friendsObject.count : 3
+        return self.getData ? self.friendsObject.count : Int( (UIScreen.mainScreen().bounds.height-44-49) / 74 )
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
