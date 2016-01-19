@@ -142,7 +142,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             coverView.backgroundColor = UIColor.whiteColor()
 
         let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-70, 48, 48))
-            iconView.image = UIImage(named: situation == "facebook" ? "person-pin" : "no-internet")
+            iconView.image = UIImage(named: situation == "facebook" ? "person-pin" : "internet-pin")
         coverView.addSubview(iconView)
 
         let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2-20, self.view.frame.width, 30))
