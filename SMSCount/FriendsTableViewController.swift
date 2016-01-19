@@ -148,6 +148,17 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             coverView.backgroundColor = UIColor.whiteColor()
 
         let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-70, 48, 48))
+        var imageFile: String = {
+            switch situation {
+                case "facebook":
+                    return "person-pin"
+                case "public":
+                    return "public-pin"
+                default:
+                    return "internet-pin"
+            }
+        }()
+print(imageFile)
             iconView.image = UIImage(named: situation == "facebook" ? "person-pin" : "internet-pin")
         coverView.addSubview(iconView)
 
