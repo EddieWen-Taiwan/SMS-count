@@ -173,7 +173,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             }
         }()
             titleLabel.text = warningText
-            titleLabel.font = UIFont(name: "PingFangTC", size: 15.0)
+            titleLabel.font = UIFont.systemFontOfSize(15)
             titleLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.38)
             titleLabel.textAlignment = NSTextAlignment.Center
         coverView.addSubview(titleLabel)
