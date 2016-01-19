@@ -29,7 +29,13 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if FBSDKAccessToken.currentAccessToken() == nil {
                 self.coverTableView("facebook")
             } else {
-                self.requestFriendsList()
+                let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+
+                if userDefault.boolForKey("publicProfile") {
+                    self.requestFriendsList()
+                } else {
+                    self.coverTableView("public")
+                }
             }
         } else {
             // without Internet
