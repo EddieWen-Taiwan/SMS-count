@@ -80,7 +80,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.getData ? self.friendsObject.count : Int( (UIScreen.mainScreen().bounds.height-44-49) / 74 )
+        return self.getData ? self.friendsObject.count : Int( (UIScreen.mainScreen().bounds.height-44-49)/2/74+1 )
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
