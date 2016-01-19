@@ -10,9 +10,9 @@
 
 ----
 
-![SMSLife](sms-board.png)
+![SMSlife](sms-board.png)
 
-[PTT 介紹文@SMSLift](https://www.ptt.cc/bbs/SMSlife/M.1444877992.A.C23.html)
+[PTT 介紹文@SMSlife](https://www.ptt.cc/bbs/SMSlife/M.1444877992.A.C23.html)
 
 ###感謝「重灌狂人」介紹
 
