@@ -80,7 +80,14 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.getData ? self.friendsObject.count : Int( (UIScreen.mainScreen().bounds.height-44-49)/2/74+1 )
+        if self.getData {
+            if self.friendsObject.count == 0 {
+                self.coverTableView("no-friends")
+            }
+            return self.friendsObject.count
+        } else {
+            return Int( (UIScreen.mainScreen().bounds.height-44-49)/2/74+1 )
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -142,7 +149,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
 
     // Add a UIView to cover TableView with something wrong
-    func coverTableView(situation: String = "") {
+    func coverTableView( situation: String ) {
 
         let coverView = UIView(frame: self.view.frame)
             coverView.backgroundColor = UIColor.whiteColor()
@@ -154,6 +161,8 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     return "person-pin"
                 case "public":
                     return "setting-pin"
+                case "no-friends":
+                    return ""
                 default:
                     return "internet-pin"
             }
@@ -168,6 +177,8 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     return "請先登入Facebook"
                 case "public":
                     return "查看好友列表需公開使用者"
+                case "no-friends":
+                    return "沒有其他好友使用"
                 default:
                     return "目前沒有網路連線"
             }
