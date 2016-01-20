@@ -151,10 +151,14 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     // Add a UIView to cover TableView with something wrong
     func coverTableView( situation: String ) {
 
-        let coverView = UIView(frame: self.view.frame)
+        let viewWidth = self.view.frame.width
+        // self.view.frame.height doesn't include TabBar(49)
+        let viewHeight = self.view.frame.height-44
+
+        let coverView = UIView(frame: CGRectMake(0, 0, viewWidth, viewHeight))
             coverView.backgroundColor = UIColor.whiteColor()
 
-        let iconView = UIImageView(frame: CGRectMake(self.view.frame.width/2-24, self.view.frame.height/2-70, 48, 48))
+        let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-70, 48, 48))
         let imageFile: String = {
             switch situation {
                 case "facebook":
@@ -170,11 +174,12 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             iconView.image = UIImage(named: imageFile)
         coverView.addSubview(iconView)
 
-        let titleLabel = UILabel(frame: CGRectMake(0, self.view.frame.height/2-20, self.view.frame.width, 30))
+        let positionY = situation == "no-friends" ? viewHeight/2 : viewHeight/2-20
+        let titleLabel = UILabel(frame: CGRectMake(0, positionY, viewWidth, 30))
             titleLabel.text = {
                 switch situation {
                     case "facebook":
-                        return "尚未登入"
+                        return "尚未登入臉書帳號"
                     case "public":
                         return "查看好友列表需公開使用者"
                     case "no-friends":
@@ -190,7 +195,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if situation == "facebook" {
             let loginView = FBSDKLoginButton()
-                loginView.frame = CGRectMake( 30, self.view.frame.height/2+30, self.view.frame.width-60, 50 )
+                loginView.frame = CGRectMake( 30, viewHeight/2+30, viewWidth-60, 50 )
                 loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
                 loginView.delegate = self
             coverView.addSubview(loginView)
