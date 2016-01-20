@@ -174,7 +174,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             titleLabel.text = {
                 switch situation {
                     case "facebook":
-                        return "請先登入Facebook"
+                        return "尚未登入"
                     case "public":
                         return "查看好友列表需公開使用者"
                     case "no-friends":
