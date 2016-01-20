@@ -222,16 +222,6 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
                 if error == nil {
-                    // Remove coverView and reload tableView\
-                    self.view.subviews.forEach({
-                        if $0.tag == 7 {
-                            $0.removeFromSuperview()
-                        }
-                    })
-
-                    // And reload tableView
-                    self.requestFriendsList()
-
                     UserInfo().storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
 
                         // Ask user whether to download data from Parse or not
@@ -257,11 +247,23 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                             userPreference.setBool( newWeekendFixed, forKey: "autoWeekendFixed" )
                             userPreference.setBool( newPublicProfile, forKey: "publicProfile" )
 
+                            if newPublicProfile {
+                                // Remove coverView and Reload TableView
+                                self.removeCoverView()
+                                self.requestFriendsList()
+                            } else {
+                                self.coverTableView("public")
+                            }
+
                             let NC = self.parentViewController as! NavigationController
                             NC.markDownload()
                         })
                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
                             UserInfo().uploadAllData()
+
+                            // Remove coverView and Reload TableView
+                            self.removeCoverView()
+                            self.requestFriendsList()
                         })
                         syncAlertController.addAction(yesAction)
                         syncAlertController.addAction(noAction)
@@ -281,6 +283,13 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         print("User Logged Out")
     }
 
+    func removeCoverView() {
+        self.view.subviews.forEach({
+            if $0.tag == 7 {
+                $0.removeFromSuperview()
+            }
+        })
+    }
     /*
     // MARK: - Navigation
 
