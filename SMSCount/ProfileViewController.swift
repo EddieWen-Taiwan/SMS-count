@@ -23,11 +23,13 @@ class ProfileViewController: UIViewController {
     var stickerIsDownloaded: Bool = false
     @IBOutlet var usernameLabel: UILabel!
 
-    let calculateHelper = CalculateHelper()
+    var calculateHelper = CalculateHelper()
     let reachability = Reachability()
 
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
     let screenHeight = UIScreen.mainScreen().bounds.height
+
+    var downloadFromParse: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +85,17 @@ class ProfileViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+
+        if self.downloadFromParse {
+            self.downloadFromParse = false
+
+            calculateHelper = CalculateHelper()
+            if calculateHelper.isSettingAllDone() {
+                self.refreshData()
+            }
+
+            self.showUserInfo()
+        }
     }
 
     func downloadImage( url: NSURL ) {
