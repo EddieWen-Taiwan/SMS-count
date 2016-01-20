@@ -34,19 +34,19 @@ class UserInfo { // Save userInfomation to Parse
         self.checkObjectId()
 
         userObject.setObject( fbid, forKey: "fb_id" )
-        self.userPreference.setObject( fbid, forKey: "fb_id" )
+        self.userPreference.setValue( fbid, forKey: "fb_id" )
         self.objectIsChanged = true
     }
 
     func addUserName( name: String ) {
         userObject.setObject( name, forKey: "username" )
-        self.userPreference.setObject( name, forKey: "username" )
+        self.userPreference.setValue( name, forKey: "username" )
         self.objectIsChanged = true
     }
 
     func addUserMail( mail: String ) {
         userObject.setObject( mail, forKey: "email" )
-        self.userPreference.setObject( mail, forKey: "email" )
+        self.userPreference.setValue( mail, forKey: "email" )
         self.objectIsChanged = true
     }
 
@@ -56,7 +56,7 @@ class UserInfo { // Save userInfomation to Parse
 
         userObject.deleteInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
 
-            self.userPreference.setObject( objectId, forKey: "UserID" )
+            self.userPreference.setValue( objectId, forKey: "UserID" )
             self.userObject.objectId = objectId
             self.objectIdStatus = true
             self.objectIsChanged = true
@@ -67,21 +67,21 @@ class UserInfo { // Save userInfomation to Parse
 
     func updateUserStatus( status: String ) {
         userObject.setObject( status, forKey: "status" )
-        self.userPreference.setObject( status, forKey: "status" )
+        self.userPreference.setValue( status, forKey: "status" )
         self.objectIsChanged = true
     }
 
     // Update the username in app
     func updateLocalUsername( name: String ) {
-        self.userPreference.setObject( name, forKey: "username" )
+        self.userPreference.setValue( name, forKey: "username" )
     }
 
     func updateLocalMail( mail: String ) {
-        self.userPreference.setObject( mail, forKey: "email" )
+        self.userPreference.setValue( mail, forKey: "email" )
     }
 
     func updateEnterDate( date: String ) {
-        self.userPreference.setObject( date, forKey: "enterDate" )
+        self.userPreference.setValue( date, forKey: "enterDate" )
         let userEnterArray = self.split2Int( date )
         userObject.setObject( userEnterArray[0], forKey: "yearOfEnterDate" )
         userObject.setObject( userEnterArray[1], forKey: "monthOfEnterDate" )
@@ -275,7 +275,7 @@ class UserInfo { // Save userInfomation to Parse
 
             userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
                 if success {
-                    self.userPreference.setObject( self.userObject.objectId, forKey: "UserID" )
+                    self.userPreference.setValue( self.userObject.objectId, forKey: "UserID" )
                     self.objectIdStatus = true
                 }
             }
