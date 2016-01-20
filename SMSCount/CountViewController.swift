@@ -46,6 +46,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var screenWidth = UIScreen.mainScreen().bounds.width
 
     var settingStatus: Bool = false
+    var downloadFromParse: Bool = false
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -159,11 +160,11 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-        if userPreference.boolForKey("downloadFromParse") {
+        if self.downloadFromParse {
             self.isCircleDrawn = false
+
+            let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
             userPreference.setBool( false, forKey: "dayAnimated" )
-            userPreference.removeObjectForKey("downloadFromParse")
 
             calculateHelper = CalculateHelper()
             self.checkSetting()
