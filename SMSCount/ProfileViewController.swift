@@ -59,6 +59,10 @@ class ProfileViewController: UIViewController {
             // switch to settingViewController ?
         }
 
+        self.showUserInfo()
+    }
+
+    func showUserInfo() {
         if let fbid = self.userPreference.stringForKey("fb_id") {
             if !self.stickerIsDownloaded && reachability.isConnectedToNetwork() {
                 // Download Facebook profile
@@ -68,7 +72,6 @@ class ProfileViewController: UIViewController {
             }
         }
 
-        // If user can't log out ....
         if let username = self.userPreference.stringForKey("username") {
             self.usernameLabel.text = username
         }
