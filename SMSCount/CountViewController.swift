@@ -161,6 +161,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         super.viewDidAppear(animated)
 
         if self.downloadFromParse {
+            self.downloadFromParse = false
+
             self.isCircleDrawn = false
 
             let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
