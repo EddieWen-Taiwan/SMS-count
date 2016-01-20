@@ -64,7 +64,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         // About FB login button
         if FBSDKAccessToken.currentAccessToken() == nil {
             self.FBLoginView.hidden = false
-            self.topConstraint.constant = 30
+            self.topConstraint.constant = 20
             // FB Login
             self.view.layoutIfNeeded()
 
