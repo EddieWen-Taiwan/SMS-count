@@ -86,14 +86,17 @@ class ProfileViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        // Check whether user logged in with FB in FriendsTVC
         if self.downloadFromParse {
             self.downloadFromParse = false
 
+            // Reinit
             calculateHelper = CalculateHelper()
             if calculateHelper.isSettingAllDone() {
                 self.refreshData()
             }
 
+            // Check sticker, name and status
             self.showUserInfo()
         }
     }

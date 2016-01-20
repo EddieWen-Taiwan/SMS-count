@@ -160,14 +160,15 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        // Check whether user logged in with FB in FriendsTVC
         if self.downloadFromParse {
             self.downloadFromParse = false
 
             self.isCircleDrawn = false
-
             let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
             userPreference.setBool( false, forKey: "dayAnimated" )
 
+            // Reinit
             calculateHelper = CalculateHelper()
             self.checkSetting()
         }
