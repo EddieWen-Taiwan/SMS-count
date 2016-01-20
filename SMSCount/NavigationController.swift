@@ -29,11 +29,19 @@ class NavigationController: UINavigationController {
         let drawerItem = UIBarButtonItem(image: UIImage(named: "DrawerList"), style: UIBarButtonItemStyle.Done, target: self, action: "toggleDrawer")
         let childVC = self.childViewControllers.first!
         childVC.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
+
     }
 
     // Switch drawer Open / Close
     func toggleDrawer() {
         self.appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
+    }
+
+    func markDownload() {
+        let countVC = self.tabBarController?.viewControllers![0].childViewControllers.first! as! CountViewController
+        countVC.downloadFromParse = true
+//        let profileVC = self.tabBarController?.viewControllers![1].childViewControllers.first! as! ProfileViewController
+//        profileVC.downloadFromParse = true
     }
 
     /*
