@@ -101,13 +101,13 @@ class ProfileViewController: UIViewController {
     func downloadImage( url: NSURL ) {
         reachability.getImageFromUrl(url) { (data, response, error) in
 
-            if data == nil {
-                // Have to do nothing
-            } else {
+            if data != nil {
+
                 dispatch_async( dispatch_get_main_queue() ) { () -> Void in
                     self.userSticker.image = UIImage(data: data!)
                 }
                 self.stickerIsDownloaded = true
+
             }
 
         }
