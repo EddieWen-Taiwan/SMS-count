@@ -40,8 +40,8 @@ class NavigationController: UINavigationController {
     func markDownload() {
         let countVC = self.tabBarController?.viewControllers![0].childViewControllers.first! as! CountViewController
         countVC.downloadFromParse = true
-//        let profileVC = self.tabBarController?.viewControllers![1].childViewControllers.first! as! ProfileViewController
-//        profileVC.downloadFromParse = true
+        let profileVC = self.tabBarController?.viewControllers![1].childViewControllers.first! as! ProfileViewController
+        profileVC.downloadFromParse = true
     }
 
     /*
