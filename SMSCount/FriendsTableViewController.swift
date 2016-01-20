@@ -256,7 +256,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                             }
                             userPreference.setBool( newWeekendFixed, forKey: "autoWeekendFixed" )
                             userPreference.setBool( newPublicProfile, forKey: "publicProfile" )
-                            userPreference.setBool( true, forKey: "downloadFromParse" )
+
+                            let NC = self.parentViewController as! NavigationController
+                            NC.markDownload()
                         })
                         let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
                             UserInfo().uploadAllData()
