@@ -34,32 +34,32 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "repeat-image")!)
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
 
         if calculateHelper.isSettingAllDone() {
-            // OK
-            calculateHelper.updateDate()
-            self.passedDaysLabel.text = String( calculateHelper.getPassedDays() )
 
-            if calculateHelper.isRetireDateFixed() {
-                self.finalRetireDateLabel.text = calculateHelper.getFixedRetireDate()
-                self.retireDateBottomConstraint.constant = 60
-                self.retireDateView.hidden = false
-                self.retireDateLabel.text = calculateHelper.getRetireDate()
-            } else {
-                self.finalRetireDateLabel.text = calculateHelper.getRetireDate()
-                self.retireDateBottomConstraint.constant = 0
-                self.retireDateView.hidden = true
-            }
+            self.refreshData()
 
         } else {
             // switch to settingViewController ?
         }
 
         self.showUserInfo()
+    }
+
+    func refreshData() {
+        calculateHelper.updateDate()
+        self.passedDaysLabel.text = String( calculateHelper.getPassedDays() )
+
+        if calculateHelper.isRetireDateFixed() {
+            self.finalRetireDateLabel.text = calculateHelper.getFixedRetireDate()
+            self.retireDateBottomConstraint.constant = 60
+            self.retireDateView.hidden = false
+            self.retireDateLabel.text = calculateHelper.getRetireDate()
+        } else {
+            self.finalRetireDateLabel.text = calculateHelper.getRetireDate()
+            self.retireDateBottomConstraint.constant = 0
+            self.retireDateView.hidden = true
+        }
     }
 
     func showUserInfo() {
@@ -79,6 +79,10 @@ class ProfileViewController: UIViewController {
         if let userStatus = self.userPreference.stringForKey("status") {
             self.statusLabel.text = userStatus
         }
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     func downloadImage( url: NSURL ) {
