@@ -93,7 +93,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendsTableViewCell
 
-        if getData {
+        if self.getData {
 
             let thisUser = self.friendsObject[indexPath.row]
             // Configure the cell...
