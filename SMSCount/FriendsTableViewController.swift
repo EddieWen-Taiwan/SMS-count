@@ -193,6 +193,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             titleLabel.textAlignment = NSTextAlignment.Center
         coverView.addSubview(titleLabel)
 
+        // Button under title
         if situation == "facebook" {
             let loginView = FBSDKLoginButton()
                 loginView.frame = CGRectMake( 30, viewHeight/2+55, viewWidth-60, 50 )
@@ -206,12 +207,14 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         self.view.addSubview(coverView)
 
         if situation == "internet" {
+            // Loading
             let loadingView = UIView(frame: CGRectMake(self.view.frame.width/2-40, (self.view.frame.height-44-49)/2-40, 80, 80 ))
                 loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
                 loadingView.layer.cornerRadius = 20
             self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
             self.activityIndicator.center = CGPointMake( 40, 40 )
                 loadingView.addSubview(self.activityIndicator)
+                loadingView.hidden = true
             self.view.addSubview(loadingView)
         }
     }
