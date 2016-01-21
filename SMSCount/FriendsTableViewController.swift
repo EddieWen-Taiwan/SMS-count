@@ -15,6 +15,8 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     var friendsObject: [PFObject] = []
     var getData: Bool = false
 
+    var activityIndicator = UIActivityIndicatorView()
+
     let friendHelper = FriendsCalculate()
     let reachability = Reachability()
 
@@ -207,9 +209,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             let loadingView = UIView(frame: CGRectMake(self.view.frame.width/2-40, (self.view.frame.height-44-49)/2-40, 80, 80 ))
                 loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
                 loadingView.layer.cornerRadius = 20
-            let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-                indicator.center = CGPointMake( 40, 40 )
-                loadingView.addSubview(indicator)
+            self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+            self.activityIndicator.center = CGPointMake( 40, 40 )
+                loadingView.addSubview(self.activityIndicator)
             self.view.addSubview(loadingView)
         }
     }
