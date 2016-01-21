@@ -27,25 +27,29 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         let loadingView = UIView(frame: CGRectMake(self.view.frame.width/2-40, (self.view.frame.height-44-49)/2-40, 80, 80 ))
             loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
             loadingView.layer.cornerRadius = 20
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+            indicator.frame = CGRectMake( 21.5, 21.5, 37.0, 37.0 )
+            loadingView.addSubview(indicator)
+            indicator.startAnimating()
         self.view.addSubview(loadingView)
 
-//        if Reachability().isConnectedToNetwork() {
-//            // Request for friendList
-//            if FBSDKAccessToken.currentAccessToken() == nil {
-//                self.coverTableView("facebook")
-//            } else {
-//                let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-//
-//                if userDefault.boolForKey("publicProfile") {
-//                    self.requestFriendsList()
-//                } else {
-//                    self.coverTableView("public")
-//                }
-//            }
-//        } else {
-//            // without Internet
-//            self.coverTableView("internet")
-//        }
+        if Reachability().isConnectedToNetwork() {
+            // Request for friendList
+            if FBSDKAccessToken.currentAccessToken() == nil {
+                self.coverTableView("facebook")
+            } else {
+                let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+
+                if userDefault.boolForKey("publicProfile") {
+                    self.requestFriendsList()
+                } else {
+                    self.coverTableView("public")
+                }
+            }
+        } else {
+            // without Internet
+            self.coverTableView("internet")
+        }
     }
 
     // Request user friends list from Facebook and reload TableView
