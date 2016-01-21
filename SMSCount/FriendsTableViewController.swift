@@ -152,13 +152,12 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     func coverTableView( situation: String ) {
 
         let viewWidth = self.view.frame.width
-        // self.view.frame.height doesn't include TabBar(49)
-        let viewHeight = self.view.frame.height-44
+        let viewHeight = self.view.frame.height-44-49
 
         let coverView = UIView(frame: CGRectMake(0, 0, viewWidth, viewHeight))
             coverView.backgroundColor = UIColor.whiteColor()
 
-        let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-65, 48, 48))
+        let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-50, 48, 48))
             iconView.image = {
                 switch situation {
                     case "facebook":
@@ -173,7 +172,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             }()
         coverView.addSubview(iconView)
 
-        let positionY = situation == "no-friends" ? viewHeight/2 : viewHeight/2-15
+        let positionY = situation == "no-friends" ? viewHeight/2+15 : viewHeight/2
         let titleLabel = UILabel(frame: CGRectMake(0, positionY, viewWidth, 30))
             titleLabel.text = {
                 switch situation {
@@ -194,7 +193,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if situation == "facebook" {
             let loginView = FBSDKLoginButton()
-                loginView.frame = CGRectMake( 30, viewHeight/2+40, viewWidth-60, 50 )
+                loginView.frame = CGRectMake( 30, viewHeight/2+55, viewWidth-60, 50 )
                 loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
                 loginView.delegate = self
             coverView.addSubview(loginView)
