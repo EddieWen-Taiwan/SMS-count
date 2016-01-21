@@ -24,23 +24,28 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         tableView.allowsSelection = false
 
-        if Reachability().isConnectedToNetwork() {
-            // Request for friendList
-            if FBSDKAccessToken.currentAccessToken() == nil {
-                self.coverTableView("facebook")
-            } else {
-                let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+        let loadingView = UIView(frame: CGRectMake(self.view.frame.width/2-40, (self.view.frame.height-44-49)/2-40, 80, 80 ))
+            loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
+            loadingView.layer.cornerRadius = 20
+        self.view.addSubview(loadingView)
 
-                if userDefault.boolForKey("publicProfile") {
-                    self.requestFriendsList()
-                } else {
-                    self.coverTableView("public")
-                }
-            }
-        } else {
-            // without Internet
-            self.coverTableView("internet")
-        }
+//        if Reachability().isConnectedToNetwork() {
+//            // Request for friendList
+//            if FBSDKAccessToken.currentAccessToken() == nil {
+//                self.coverTableView("facebook")
+//            } else {
+//                let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+//
+//                if userDefault.boolForKey("publicProfile") {
+//                    self.requestFriendsList()
+//                } else {
+//                    self.coverTableView("public")
+//                }
+//            }
+//        } else {
+//            // without Internet
+//            self.coverTableView("internet")
+//        }
     }
 
     // Request user friends list from Facebook and reload TableView
