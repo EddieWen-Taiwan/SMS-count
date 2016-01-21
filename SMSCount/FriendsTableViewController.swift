@@ -206,6 +206,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 retryButton.titleLabel?.font = UIFont(name: "PingFangTC-Regular", size: 13)
                 retryButton.layer.cornerRadius = 3
                 retryButton.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+                retryButton.addTarget(self, action: "retryInternet:", forControlEvents: .TouchUpInside)
             coverView.addSubview(retryButton)
         }
 
@@ -224,6 +225,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 loadingView.hidden = true
             self.view.addSubview(loadingView)
         }
+    }
+
+    func retryInternet(sender: UIButton) {
+        print("OK ?")
     }
 
     // *************** \\
