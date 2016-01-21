@@ -208,7 +208,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
                 loadingView.layer.cornerRadius = 20
             let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-                indicator.frame = CGRectMake(21.5, 21.5, 37.0, 37.0)
+                indicator.center = CGPointMake( 40, 40 )
                 loadingView.addSubview(indicator)
             self.view.addSubview(loadingView)
         }
