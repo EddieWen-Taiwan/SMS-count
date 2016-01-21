@@ -200,6 +200,13 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
                 loginView.delegate = self
             coverView.addSubview(loginView)
+        } else if situation == "internet" {
+            let retryButton = UIButton(frame: CGRectMake( viewWidth/2-45, viewHeight/2+55, 90, 40 ))
+                retryButton.setTitle("重試", forState: .Normal)
+                retryButton.titleLabel?.font = UIFont(name: "PingFangTC-Regular", size: 13)
+                retryButton.layer.cornerRadius = 10
+                retryButton.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            coverView.addSubview(retryButton)
         }
 
         coverView.tag = 7
