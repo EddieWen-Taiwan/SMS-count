@@ -32,10 +32,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     // Make sure all everything required is okay, or add coverView
     func checkEnvironment() {
 
-        if Reachability().isConnectedToNetwork() {
-            // If there is coverView
-            self.removeCoverView()
+        // If there is coverView
+        self.removeCoverView()
 
+        if Reachability().isConnectedToNetwork() {
             // Request for friendList
             if FBSDKAccessToken.currentAccessToken() == nil {
                 self.coverTableView("facebook")
