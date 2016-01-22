@@ -295,7 +295,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     func removeOldViews() {
         self.view.subviews.forEach({
-            if $0.tag == 7 || $0 is LoadingView {
+            if $0 is CoverView || $0 is LoadingView {
                 $0.removeFromSuperview()
             }
         })
