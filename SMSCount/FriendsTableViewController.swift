@@ -163,10 +163,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     // Add a UIView to cover TableView with something wrong
     func coverTableView( situation: String ) {
 
-        let viewWidth = self.view.frame.width
-        let viewHeight = self.view.frame.height-44-49
+        let viewWidth = UIScreen.mainScreen().bounds.width
+        let viewHeight = UIScreen.mainScreen().bounds.height-44-49
 
-        let coverView = UIView(frame: CGRectMake(0, 0, viewWidth, viewHeight))
+		let coverView = UIView(frame: CGRectMake(0, 0, viewWidth, viewHeight))
             coverView.backgroundColor = UIColor.whiteColor()
 
         let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-50, 48, 48))
