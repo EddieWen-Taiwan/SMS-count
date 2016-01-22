@@ -15,7 +15,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     var friendsObject: [PFObject] = []
     var getData: Bool = false
 
-    var activityIndicator = UIActivityIndicatorView()
+    var loadingView = LoadingView()
 
     let friendHelper = FriendsCalculate()
     let reachability = Reachability()
@@ -216,9 +216,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if situation == "internet" {
             // Loading
-            let loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
-                loadingView.hidden = true
-            self.view.addSubview(loadingView)
+            self.loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
+            self.loadingView.hidden = true
+            self.view.addSubview(self.loadingView)
         }
     }
 
