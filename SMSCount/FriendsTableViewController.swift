@@ -95,8 +95,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         if self.getData {
             if self.friendsObject.count == 0 {
                 self.coverTableView("no-friends")
+                return 0
+            } else {
+                return self.friendsObject.count
             }
-            return self.friendsObject.count
         } else {
             return Int( (UIScreen.mainScreen().bounds.height-44-49)/2/74+1 )
         }
