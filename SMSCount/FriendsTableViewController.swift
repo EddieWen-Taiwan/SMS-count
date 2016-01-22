@@ -27,6 +27,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         tableView.allowsSelection = false
 
         if Reachability().isConnectedToNetwork() {
+            // If there is coverView
+            self.removeCoverView()
+
             // Request for friendList
             if FBSDKAccessToken.currentAccessToken() == nil {
                 self.coverTableView("facebook")
