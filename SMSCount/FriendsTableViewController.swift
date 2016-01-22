@@ -209,8 +209,6 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             sleep(1)
             dispatch_async( dispatch_get_main_queue() ) {
                 self.checkEnvironment()
-
-                indicator.stopAnimating()
             }
         }
     }
