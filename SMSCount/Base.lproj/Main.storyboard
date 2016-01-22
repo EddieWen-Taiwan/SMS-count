@@ -176,34 +176,12 @@
                                     <constraint firstAttribute="trailing" secondItem="6DD-jS-bAd" secondAttribute="trailing" id="wUp-Md-AZL"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" alpha="0.69999999999999973" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddf-HG-K3c" userLabel="LoadingView">
-                                <rect key="frame" x="260" y="260" width="80" height="80"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gRk-2u-jxd">
-                                        <rect key="frame" x="22" y="22" width="37" height="37"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="gRk-2u-jxd" secondAttribute="centerY" id="1vV-rT-Ynk"/>
-                                    <constraint firstAttribute="height" constant="80" id="Jid-wq-1AM"/>
-                                    <constraint firstAttribute="width" constant="80" id="TsH-Ka-AHM"/>
-                                    <constraint firstAttribute="centerX" secondItem="gRk-2u-jxd" secondAttribute="centerX" id="fr5-c5-SiS"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="sY1-RK-Tl8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="2YI-tE-a3t"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="bottom" id="JYE-wh-NGP"/>
-                            <constraint firstAttribute="centerX" secondItem="Ddf-HG-K3c" secondAttribute="centerX" id="T0U-9S-bjt"/>
-                            <constraint firstAttribute="centerY" secondItem="Ddf-HG-K3c" secondAttribute="centerY" id="WuZ-pp-MOu"/>
                             <constraint firstItem="sY1-RK-Tl8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="fWJ-4a-xOS"/>
                             <constraint firstItem="OJc-wj-ATG" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="svU-R6-f2l"/>
                             <constraint firstItem="OJc-wj-ATG" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="wQC-IA-Fwp"/>
@@ -224,8 +202,6 @@
                         <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
                         <outlet property="frontRemainedDaysWord" destination="SMP-hf-NE4" id="RuV-Lq-zfy"/>
                         <outlet property="imageOnSwitchBtn" destination="M0i-Su-8TO" id="HWC-BX-H7o"/>
-                        <outlet property="loadingActivity" destination="gRk-2u-jxd" id="Hdx-fO-o54"/>
-                        <outlet property="loadingView" destination="Ddf-HG-K3c" id="CrS-4o-TqZ"/>
                         <outlet property="percentageLabel" destination="p6H-dK-4Zf" id="ulZ-WP-dIG"/>
                         <outlet property="pieChartView" destination="TXW-cI-vr1" id="LpM-Fo-DUS"/>
                         <outlet property="remainedView" destination="53F-TZ-OfW" id="YFs-sp-ph0"/>
