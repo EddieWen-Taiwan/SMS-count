@@ -185,8 +185,6 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             coverView.addSubview(retryButton)
         }
 
-        coverView.tag = 7
-
         self.view.addSubview(coverView)
 
         if situation == "internet" {
