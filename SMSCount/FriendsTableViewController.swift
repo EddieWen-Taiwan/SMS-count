@@ -29,6 +29,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         self.checkEnvironment()
     }
 
+    // Make sure all everything required is okay, or add coverView
     func checkEnvironment() {
 
         if Reachability().isConnectedToNetwork() {
