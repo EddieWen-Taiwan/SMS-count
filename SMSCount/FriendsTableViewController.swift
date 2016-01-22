@@ -33,7 +33,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     func checkEnvironment() {
 
         // If there is coverView
-        self.removeCoverView()
+        self.removeOldViews()
 
         if Reachability().isConnectedToNetwork() {
             // Request for friendList
@@ -293,7 +293,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
                             if newPublicProfile {
                                 // Remove coverView and Reload TableView
-                                self.removeCoverView()
+                                self.removeOldViews()
                                 self.requestFriendsList()
                             } else {
                                 self.coverTableView("public")
@@ -306,7 +306,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                             UserInfo().uploadAllData()
 
                             // Remove coverView and Reload TableView
-                            self.removeCoverView()
+                            self.removeOldViews()
                             self.requestFriendsList()
                         })
                         syncAlertController.addAction(yesAction)
@@ -327,9 +327,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         print("User Logged Out")
     }
 
-    func removeCoverView() {
+    func removeOldViews() {
         self.view.subviews.forEach({
-            if $0.tag == 7 {
+            if $0.tag == 7 || $0 is LoadingView {
                 $0.removeFromSuperview()
             }
         })
