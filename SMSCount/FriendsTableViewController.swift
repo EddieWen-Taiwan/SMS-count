@@ -15,6 +15,8 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     var friendsObject: [PFObject] = []
     var getData: Bool = false
 
+    var loadingView = LoadingView()
+
     let friendHelper = FriendsCalculate()
     let reachability = Reachability()
 
@@ -152,13 +154,12 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     func coverTableView( situation: String ) {
 
         let viewWidth = self.view.frame.width
-        // self.view.frame.height doesn't include TabBar(49)
-        let viewHeight = self.view.frame.height-44
+        let viewHeight = self.view.frame.height-44-49
 
         let coverView = UIView(frame: CGRectMake(0, 0, viewWidth, viewHeight))
             coverView.backgroundColor = UIColor.whiteColor()
 
-        let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-65, 48, 48))
+        let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-50, 48, 48))
             iconView.image = {
                 switch situation {
                     case "facebook":
@@ -173,7 +174,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             }()
         coverView.addSubview(iconView)
 
-        let positionY = situation == "no-friends" ? viewHeight/2 : viewHeight/2-15
+        let positionY = situation == "no-friends" ? viewHeight/2+15 : viewHeight/2
         let titleLabel = UILabel(frame: CGRectMake(0, positionY, viewWidth, 30))
             titleLabel.text = {
                 switch situation {
@@ -187,23 +188,55 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                         return "目前沒有網路連線"
                 }
             }()
-            titleLabel.font = UIFont.systemFontOfSize(15)
+            titleLabel.font = UIFont(name: "PingFangTC-Regular", size: 15)
             titleLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.38)
             titleLabel.textAlignment = NSTextAlignment.Center
         coverView.addSubview(titleLabel)
 
+        // Button under title
         if situation == "facebook" {
             let loginView = FBSDKLoginButton()
-                loginView.frame = CGRectMake( 30, viewHeight/2+40, viewWidth-60, 50 )
+                loginView.frame = CGRectMake( 30, viewHeight/2+55, viewWidth-60, 50 )
                 loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
                 loginView.delegate = self
             coverView.addSubview(loginView)
+        } else if situation == "internet" {
+            let retryButton = UIButton(frame: CGRectMake( viewWidth/2-35, viewHeight/2+70, 70, 35 ))
+                retryButton.setTitle("重試", forState: .Normal)
+                retryButton.titleLabel?.font = UIFont(name: "PingFangTC-Regular", size: 13)
+                retryButton.layer.cornerRadius = 3
+                retryButton.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+                retryButton.addTarget(self, action: "retryInternet:", forControlEvents: .TouchUpInside)
+            coverView.addSubview(retryButton)
         }
 
         coverView.tag = 7
 
         self.view.addSubview(coverView)
 
+        if situation == "internet" {
+            // Loading
+            self.loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
+            self.loadingView.hidden = true
+
+            self.view.addSubview( self.loadingView )
+        }
+    }
+
+    func retryInternet(sender: UIButton) {
+
+        self.loadingView.hidden = false
+        let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView
+            indicator.startAnimating()
+
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async( dispatch_get_global_queue(priority, 0) ) {
+            sleep(1)
+            dispatch_async( dispatch_get_main_queue() ) {
+                self.loadingView.hidden = true
+                indicator.stopAnimating()
+            }
+        }
     }
 
     // *************** \\
