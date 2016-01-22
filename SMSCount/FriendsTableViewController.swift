@@ -166,41 +166,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         let viewWidth = UIScreen.mainScreen().bounds.width
         let viewHeight = UIScreen.mainScreen().bounds.height-44-49
 
-		let coverView = UIView(frame: CGRectMake(0, 0, viewWidth, viewHeight))
-            coverView.backgroundColor = UIColor.whiteColor()
-
-        let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-50, 48, 48))
-            iconView.image = {
-                switch situation {
-                    case "facebook":
-                        return UIImage(named: "person-pin")!
-                    case "public":
-                        return UIImage(named: "setting-pin")!
-                    case "no-friends":
-                        return UIImage()
-                    default:
-                        return UIImage(named: "internet-pin")!
-                }
-            }()
-        coverView.addSubview(iconView)
-
-        let titleLabel = UILabel(frame: CGRectMake(0, viewHeight/2, viewWidth, 30))
-            titleLabel.text = {
-                switch situation {
-                    case "facebook":
-                        return "尚未登入臉書帳號"
-                    case "public":
-                        return "查看好友列表需公開使用者"
-                    case "no-friends":
-                        return "沒有其他好友使用"
-                    default:
-                        return "目前沒有網路連線"
-                }
-            }()
-            titleLabel.font = UIFont(name: "PingFangTC-Regular", size: 15)
-            titleLabel.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.38)
-            titleLabel.textAlignment = NSTextAlignment.Center
-        coverView.addSubview(titleLabel)
+        let coverView = CoverView( status: situation )
 
         // Button under title
         if situation == "facebook" {
