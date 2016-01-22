@@ -12,9 +12,12 @@
 
 ![SMSlife](sms-board.png)
 
-[PTT 介紹文@SMSlife](https://www.ptt.cc/bbs/SMSlife/M.1444877992.A.C23.html)
+###PTT @ SMSlife
+[\[閒聊\] 替代役役期倒數 APP](https://www.ptt.cc/bbs/SMSlife/M.1444877992.A.C23.html)
 
-###感謝「重灌狂人」介紹
+----
 
-[文章連結](https://briian.com/32802/smscount.html)
+###感謝
+
+[「重灌狂人」](https://briian.com/32802/smscount.html)介紹
 
