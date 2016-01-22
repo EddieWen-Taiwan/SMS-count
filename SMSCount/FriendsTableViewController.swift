@@ -26,6 +26,11 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         tableView.allowsSelection = false
 
+        self.checkEnvironment()
+    }
+
+    func checkEnvironment() {
+
         if Reachability().isConnectedToNetwork() {
             // If there is coverView
             self.removeCoverView()
@@ -46,6 +51,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             // without Internet
             self.coverTableView("internet")
         }
+
     }
 
     // Request user friends list from Facebook and reload TableView
