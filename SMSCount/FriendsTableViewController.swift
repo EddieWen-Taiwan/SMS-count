@@ -218,12 +218,25 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             // Loading
             self.loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
             self.loadingView.hidden = true
-            self.view.addSubview(self.loadingView)
+
+            self.view.addSubview( self.loadingView )
         }
     }
 
     func retryInternet(sender: UIButton) {
-        print("OK ?")
+
+        self.loadingView.hidden = false
+        let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView
+            indicator.startAnimating()
+
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async( dispatch_get_global_queue(priority, 0) ) {
+            sleep(1)
+            dispatch_async( dispatch_get_main_queue() ) {
+                self.loadingView.hidden = true
+                indicator.stopAnimating()
+            }
+        }
     }
 
     // *************** \\
