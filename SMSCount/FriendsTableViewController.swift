@@ -184,8 +184,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             }()
         coverView.addSubview(iconView)
 
-        let positionY = situation == "no-friends" ? viewHeight/2+15 : viewHeight/2
-        let titleLabel = UILabel(frame: CGRectMake(0, positionY, viewWidth, 30))
+        let titleLabel = UILabel(frame: CGRectMake(0, viewHeight/2, viewWidth, 30))
             titleLabel.text = {
                 switch situation {
                     case "facebook":
