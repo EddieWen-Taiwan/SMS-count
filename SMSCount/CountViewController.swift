@@ -325,7 +325,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
             imagePicker.allowsEditing = false
 
-            // Stop loading animation
+            // Remove loading animation
             self.view.subviews.forEach() {
                 if $0 is LoadingView {
                     $0.removeFromSuperview()
