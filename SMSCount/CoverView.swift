@@ -26,6 +26,8 @@ class CoverView: UIView {
 
         self.status = status
 
+        self.addIconView()
+        self.addTitleLabel()
     }
 
     func addIconView() {
@@ -45,6 +47,29 @@ class CoverView: UIView {
             }()
 
         self.addSubview(iconView)
+
+    }
+
+    func addTitleLabel() {
+
+        let titleLabel = UILabel(frame: CGRectMake(0, self.viewHeight/2, self.viewWidth, 30))
+            titleLabel.text = {
+                switch self.status {
+                    case "facebook":
+                        return "尚未登入臉書帳號"
+                    case "public":
+                        return "查看好友列表需公開使用者"
+                    case "no-friends":
+                        return "沒有其他好友使用"
+                    default:
+                        return "目前沒有網路連線"
+                }
+            }()
+            titleLabel.font = UIFont(name: "PingFangTC-Regular", size: 15)
+            titleLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.38)
+            titleLabel.textAlignment = .Center
+
+        self.addSubview(titleLabel)
 
     }
 
