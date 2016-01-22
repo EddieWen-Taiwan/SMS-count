@@ -277,8 +277,10 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         let yesAction = UIAlertAction( title: "確定", style: .Default, handler: {(action) -> Void in
 
             // START
-            self.loadingView.hidden = false
-            self.loadingActivity.startAnimating()
+            self.loadingView = LoadingView(center: CGPointMake(self.view.frame.width/2, (self.view.frame.height-44)/2))
+            self.view.addSubview(self.loadingView)
+            let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView
+                indicator.startAnimating()
 
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async( dispatch_get_global_queue( priority, 0 ) ) {
@@ -325,7 +327,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
             // Stop loading animation
             self.loadingView.hidden = true
-            self.loadingActivity.stopAnimating()
 
             self.presentViewController( imagePicker, animated: true, completion: nil )
         }
