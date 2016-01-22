@@ -326,6 +326,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             imagePicker.allowsEditing = false
 
             // Stop loading animation
+            // have to delete this view
             self.loadingView.hidden = true
 
             self.presentViewController( imagePicker, animated: true, completion: nil )
