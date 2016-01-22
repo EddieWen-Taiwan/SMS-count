@@ -36,8 +36,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var isCircleDrawn: Bool = false
 
     // LoaingView after screenshot
-    @IBOutlet var loadingView: UIView!
-    @IBOutlet var loadingActivity: UIActivityIndicatorView!
+    var loadingView = LoadingView()
 
     var calculateHelper = CalculateHelper()
     var circleView: PercentageCircleView!
