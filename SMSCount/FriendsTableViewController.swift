@@ -166,7 +166,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         let viewWidth = UIScreen.mainScreen().bounds.width
         let viewHeight = UIScreen.mainScreen().bounds.height-44-49
 
-        let coverView = CoverView( status: situation )
+        let coverView = CoverView(width: viewWidth, height: viewHeight, status: situation)
 
         // Button under title
         if situation == "facebook" {

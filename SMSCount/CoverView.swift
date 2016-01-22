@@ -15,12 +15,12 @@ class CoverView: UIView {
 
     var status: String = ""
 
-    convenience init( status: String ) {
+    convenience init( width: CGFloat, height: CGFloat, status: String ) {
 
-        self.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.width-44-49))
+        self.init(frame: CGRectMake(0, 0, width, height))
 
-        self.viewWidth = UIScreen.mainScreen().bounds.width
-        self.viewHeight = UIScreen.mainScreen().bounds.height-44-49
+        self.viewWidth = width
+        self.viewHeight = height
 
         self.backgroundColor = UIColor.whiteColor()
 
@@ -28,6 +28,7 @@ class CoverView: UIView {
 
         self.addIconView()
         self.addTitleLabel()
+
     }
 
     func addIconView() {
