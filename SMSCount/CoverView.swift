@@ -59,9 +59,9 @@ class CoverView: UIView {
                     case "facebook":
                         return "尚未登入臉書帳號"
                     case "public":
-                        return "查看好友列表需公開使用者"
+                        return "社群設定為不公開"
                     case "no-friends":
-                        return "沒有其他好友使用"
+                        return "目前沒有好友使用"
                     default:
                         return "目前沒有網路連線"
                 }
