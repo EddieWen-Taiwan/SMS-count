@@ -18,7 +18,6 @@ class LeftDrawerViewController: UIViewController {
 
     @IBOutlet var countRow: UIView!
     @IBOutlet var settingRow: UIView!
-    @IBOutlet var teamRow: UIView!
 
     init() {
         super.init(nibName: "LeftDrawer", bundle: nil)
@@ -47,11 +46,6 @@ class LeftDrawerViewController: UIViewController {
         self.switchRootViewController(rootViewController)
     }
 
-    @IBAction func goTeamViewController(sender: AnyObject) {
-
-        self.switchRowBackground(2)
-    }
-
     func switchRootViewController( rootViewController: UIViewController ) {
 
         self.appDelegate.drawerController.centerViewController = rootViewController
@@ -63,15 +57,12 @@ class LeftDrawerViewController: UIViewController {
 
         self.countRow.backgroundColor = UIColor.clearColor()
         self.settingRow.backgroundColor = UIColor.clearColor()
-        self.teamRow.backgroundColor = UIColor.clearColor()
 
         switch row {
             case 0:
                 self.countRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             case 1:
                 self.settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-            case 2:
-                self.teamRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             default:
                 break
         }
