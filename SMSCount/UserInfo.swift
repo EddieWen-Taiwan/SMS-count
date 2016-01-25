@@ -165,7 +165,7 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     // Call this after app gets the login result from facebook
-    func storeFacebookInfo( info: AnyObject, completion: ((messageContent: String, newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int, newWeekendFixed: Bool, newPublicProfile: Bool) -> Void) ) {
+    func storeFacebookInfo( info: AnyObject, completion: ((messageContent: String, newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int, newWeekendFixed: Bool, newPublicProfile: Bool) -> Void), completion2: () -> Void ) {
 
         if let FBID = info.valueForKey("id") {
             // Search parse data by FBID, check whether there is matched data.
@@ -241,6 +241,9 @@ class UserInfo { // Save userInfomation to Parse
                             self.addUserMail( userMail as! String )
                         }
                         self.save()
+
+                        // Remove old view or nothing
+                        completion2()
                     }
 
                 }
