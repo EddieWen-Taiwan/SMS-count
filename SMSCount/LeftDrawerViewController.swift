@@ -55,17 +55,14 @@ class LeftDrawerViewController: UIViewController {
 
     func switchRowBackground( row: Int ) {
 
-        self.countRow.backgroundColor = UIColor.clearColor()
-        self.settingRow.backgroundColor = UIColor.clearColor()
-
-        switch row {
-            case 0:
-                self.countRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-            case 1:
-                self.settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-            default:
-                break
+        if row == 0 {
+            self.countRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            self.settingRow.backgroundColor = UIColor.clearColor()
+        } else {
+            self.countRow.backgroundColor = UIColor.clearColor()
+            self.settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
         }
+
     }
 
     /*
