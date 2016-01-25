@@ -75,9 +75,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     func getFriendsInfomation( friends: [String] ) {
         let friendsDetail = PFQuery(className: "User")
-        friendsDetail.whereKey( "fb_id", containedIn: friends )
-        friendsDetail.whereKey( "publicProfile", notEqualTo: false )
-        friendsDetail.orderByDescending("updatedAt")
+            friendsDetail.whereKey( "fb_id", containedIn: friends )
+            friendsDetail.whereKey( "publicProfile", notEqualTo: false )
+            friendsDetail.orderByDescending("updatedAt")
         friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self.friendsObject = objects!
