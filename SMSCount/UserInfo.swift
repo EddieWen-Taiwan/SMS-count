@@ -149,10 +149,10 @@ class UserInfo { // Save userInfomation to Parse
             userObject.setObject( userEnterArray[2], forKey: "dateOfEnterDate" )
         }
         // stringForKey could be nil and integerForKey couldn't
-        if self.userPreference.stringForKey("serviceDays") != nil {
+        if self.userPreference.valueForKey("serviceDays") != nil {
             userObject.setObject( self.userPreference.integerForKey("serviceDays"), forKey: "serviceDays" )
         }
-        if self.userPreference.stringForKey("discountDays") != nil {
+        if self.userPreference.valueForKey("discountDays") != nil {
             userObject.setObject( self.userPreference.integerForKey("discountDays"), forKey: "discountDays" )
         }
         userObject.setObject( self.userPreference.boolForKey("autoWeekendFixed"), forKey: "weekendDischarge" )
