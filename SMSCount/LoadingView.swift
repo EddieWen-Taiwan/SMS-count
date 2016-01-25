@@ -22,7 +22,7 @@ class LoadingView: UIView {
     }
 
     // Add UIActivityIndicator in UIView center
-    func addActivityIndicator() -> UIActivityIndicatorView {
+    private func addActivityIndicator() -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
             activityIndicator.center = CGPointMake(40, 40)
 
