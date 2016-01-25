@@ -197,7 +197,7 @@ class UserInfo { // Save userInfomation to Parse
                             var newDiscountDays: Int = -1
                             var newStatus = ""
                             var newWeekendFixed: Bool = false
-                            var newPublicProfile: Bool = false
+                            var newPublicProfile: Bool = true
 
                             if user.valueForKey("status") != nil {
                                 newStatus = user.valueForKey("status") as! String
