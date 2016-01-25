@@ -190,7 +190,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         }
     }
 
-    func makeFBLoginButton( vw: CGFloat, vh: CGFloat ) -> FBSDKLoginButton {
+    private func makeFBLoginButton( vw: CGFloat, vh: CGFloat ) -> FBSDKLoginButton {
         let btn = FBSDKLoginButton()
             btn.frame = CGRectMake( 30, vh/2+55, vw-60, 50 )
             btn.readPermissions = [ "public_profile", "email", "user_friends" ]
@@ -198,7 +198,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         return btn
     }
 
-    func makeRetryButton( vw: CGFloat, vh: CGFloat ) -> UIButton {
+    private func makeRetryButton( vw: CGFloat, vh: CGFloat ) -> UIButton {
         let btn = UIButton(frame: CGRectMake( vw/2-35, vh/2+70, 70, 35 ))
             btn.setTitle("重試", forState: .Normal)
             btn.titleLabel?.font = UIFont(name: "PingFangTC-Regular", size: 13)
@@ -208,7 +208,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         return btn
     }
 
-    func retryInternet(sender: UIButton) {
+    private func retryInternet(sender: UIButton) {
 
         self.loadingView.hidden = false
         let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView
