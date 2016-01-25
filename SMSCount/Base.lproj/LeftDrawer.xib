@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="countRow" destination="O0X-fL-zul" id="wpw-tj-IyZ"/>
                 <outlet property="settingRow" destination="VUx-0S-2uz" id="9Cr-dX-vzL"/>
-                <outlet property="teamRow" destination="5va-Fv-ucO" id="u5z-bR-Vts"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iUD-Md-XKh"/>
             </connections>
         </placeholder>
@@ -83,38 +82,6 @@
                         <constraint firstItem="UgW-Vv-2Ih" firstAttribute="centerY" secondItem="VUx-0S-2uz" secondAttribute="centerY" id="vxg-hW-Ua5"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5va-Fv-ucO">
-                    <rect key="frame" x="0.0" y="330" width="600" height="60"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team" translatesAutoresizingMaskIntoConstraints="NO" id="qZs-ff-xOS">
-                            <rect key="frame" x="20" y="18" width="24" height="24"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="24" id="I8C-67-Hua"/>
-                                <constraint firstAttribute="width" constant="24" id="t9e-ny-M1W"/>
-                            </constraints>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuy-M8-IVa">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
-                            <inset key="contentEdgeInsets" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="開發團隊">
-                                <color key="titleColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="goTeamViewController:" destination="-1" eventType="touchUpInside" id="uRW-uM-xoZ"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Yuy-M8-IVa" secondAttribute="bottom" id="JuZ-ag-OgP"/>
-                        <constraint firstItem="Yuy-M8-IVa" firstAttribute="leading" secondItem="5va-Fv-ucO" secondAttribute="leading" id="OaE-r9-GUY"/>
-                        <constraint firstItem="qZs-ff-xOS" firstAttribute="leading" secondItem="5va-Fv-ucO" secondAttribute="leading" constant="20" id="SXV-Ag-j6i"/>
-                        <constraint firstItem="Yuy-M8-IVa" firstAttribute="top" secondItem="5va-Fv-ucO" secondAttribute="top" id="f3F-2C-h4d"/>
-                        <constraint firstAttribute="trailing" secondItem="Yuy-M8-IVa" secondAttribute="trailing" id="fnX-1J-bl3"/>
-                        <constraint firstAttribute="height" constant="60" id="jzn-7e-4uo"/>
-                        <constraint firstItem="qZs-ff-xOS" firstAttribute="centerY" secondItem="5va-Fv-ucO" secondAttribute="centerY" id="uQi-kM-xBj"/>
-                    </constraints>
-                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="Oub-lU-a8j">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                     <constraints>
@@ -128,12 +95,9 @@
                 <constraint firstItem="Oub-lU-a8j" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3VK-T8-uar"/>
                 <constraint firstAttribute="trailing" secondItem="Oub-lU-a8j" secondAttribute="trailing" id="6YE-GD-F7b"/>
                 <constraint firstItem="VUx-0S-2uz" firstAttribute="top" secondItem="O0X-fL-zul" secondAttribute="bottom" id="A8h-mO-7z5"/>
-                <constraint firstItem="5va-Fv-ucO" firstAttribute="top" secondItem="VUx-0S-2uz" secondAttribute="bottom" id="MaD-9C-4MO"/>
                 <constraint firstAttribute="trailing" secondItem="VUx-0S-2uz" secondAttribute="trailing" id="Szt-Vc-3ce"/>
                 <constraint firstItem="O0X-fL-zul" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uut-Ps-nxG"/>
                 <constraint firstItem="VUx-0S-2uz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c7t-UJ-Fc1"/>
-                <constraint firstAttribute="trailing" secondItem="5va-Fv-ucO" secondAttribute="trailing" id="faD-8Q-7AD"/>
-                <constraint firstItem="5va-Fv-ucO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gEI-zg-QJn"/>
                 <constraint firstItem="Oub-lU-a8j" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nFP-xF-EuS"/>
                 <constraint firstItem="O0X-fL-zul" firstAttribute="top" secondItem="Oub-lU-a8j" secondAttribute="bottom" constant="10" id="nZd-fB-ssL"/>
             </constraints>
@@ -143,6 +107,5 @@
         <image name="banner" width="260" height="200"/>
         <image name="home" width="24" height="24"/>
         <image name="setting" width="24" height="24"/>
-        <image name="team" width="24" height="24"/>
     </resources>
 </document>
