@@ -212,7 +212,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         return btn
     }
 
-    private func retryInternet(sender: UIButton) {
+    func retryInternet(sender: UIButton) {
 
         self.loadingView.hidden = false
         let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView

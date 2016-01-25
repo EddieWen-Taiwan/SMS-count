@@ -657,7 +657,7 @@
         <scene sceneID="CBL-MQ-Y1M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tmR-tJ-IEn" customClass="NavigationController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person" id="XQs-Oz-TWn">
+                    <tabBarItem key="tabBarItem" title="" image="description" id="XQs-Oz-TWn">
                         <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
@@ -710,10 +710,10 @@
         <image name="background" width="400" height="400"/>
         <image name="chart" width="30" height="30"/>
         <image name="data" width="30" height="30"/>
+        <image name="description" width="30" height="30"/>
         <image name="friends" width="30" height="30"/>
         <image name="logout" width="30" height="30"/>
         <image name="passedDays" width="30" height="30"/>
-        <image name="person" width="30" height="30"/>
         <image name="retireDate" width="30" height="30"/>
         <image name="sticker" width="80" height="80"/>
     </resources>
