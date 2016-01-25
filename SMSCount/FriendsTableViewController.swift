@@ -67,24 +67,24 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                         friendArray.append( user.valueForKey("id") as! String )
                     }
                 }
-                let friendsDetail = PFQuery(className: "User")
-                friendsDetail.whereKey( "fb_id", containedIn: friendArray )
-                friendsDetail.whereKey( "publicProfile", notEqualTo: false )
-                friendsDetail.orderByDescending("updatedAt")
-                friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
-                    if error == nil {
-                        self.friendsObject = objects!
-                        self.getData = true
-                        self.tableView.reloadData()
-                    }
-                })
+                self.getFriendsInfomation( friendArray )
             }
 
         }
     }
 
-    func getFriendsInfomation() {
-        
+    func getFriendsInfomation( friends: [String] ) {
+        let friendsDetail = PFQuery(className: "User")
+        friendsDetail.whereKey( "fb_id", containedIn: friends )
+        friendsDetail.whereKey( "publicProfile", notEqualTo: false )
+        friendsDetail.orderByDescending("updatedAt")
+        friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                self.friendsObject = objects!
+                self.getData = true
+                self.tableView.reloadData()
+            }
+        })
     }
 
     // MARK: - Table view data source
@@ -271,7 +271,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                             if newPublicProfile {
                                 // Remove coverView and Reload TableView
                                 self.removeOldViews()
-                                self.requestFriendsList()
+                                self.requestFriendsListFromFacebook()
                             } else {
                                 self.coverTableView("public")
                             }
@@ -284,7 +284,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
                             // Remove coverView and Reload TableView
                             self.removeOldViews()
-                            self.requestFriendsList()
+                            self.requestFriendsListFromFacebook()
                         })
                         syncAlertController.addAction(yesAction)
                         syncAlertController.addAction(noAction)
