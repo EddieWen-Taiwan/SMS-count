@@ -31,7 +31,7 @@ class CoverView: UIView {
 
     }
 
-    func addIconView() {
+    private func addIconView() {
 
         let iconView = UIImageView(frame: CGRectMake(self.viewWidth/2-24, self.viewHeight/2-50, 48, 48))
             iconView.image = {
@@ -51,7 +51,7 @@ class CoverView: UIView {
 
     }
 
-    func addTitleLabel() {
+    private func addTitleLabel() {
 
         let titleLabel = UILabel(frame: CGRectMake(0, self.viewHeight/2, self.viewWidth, 30))
             titleLabel.text = {
