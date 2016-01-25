@@ -43,7 +43,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
                 if userDefault.boolForKey("publicProfile") {
-                    self.requestFriendsList()
+                    self.requestFriendsListFromFacebook()
                 } else {
                     self.coverTableView("public")
                 }
@@ -56,7 +56,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
 
     // Request user friends list from Facebook and reload TableView
-    func requestFriendsList() {
+    func requestFriendsListFromFacebook() {
         let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
         friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
 
@@ -81,6 +81,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             }
 
         }
+    }
+
+    func getFriendsInfomation() {
+        
     }
 
     // MARK: - Table view data source
