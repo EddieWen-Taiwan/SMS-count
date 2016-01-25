@@ -178,12 +178,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 loginView.delegate = self
             coverView.addSubview(loginView)
         } else if situation == "internet" {
-            let retryButton = UIButton(frame: CGRectMake( viewWidth/2-35, viewHeight/2+70, 70, 35 ))
-                retryButton.setTitle("重試", forState: .Normal)
-                retryButton.titleLabel?.font = UIFont(name: "PingFangTC-Regular", size: 13)
-                retryButton.layer.cornerRadius = 3
-                retryButton.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-                retryButton.addTarget(self, action: "retryInternet:", forControlEvents: .TouchUpInside)
+            let retryButton = self.makeRetryButton( viewWidth, vh: viewHeight )
             coverView.addSubview(retryButton)
         }
 
@@ -196,6 +191,16 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
             self.view.addSubview( self.loadingView )
         }
+    }
+
+    func makeRetryButton( vw: CGFloat, vh: CGFloat ) -> UIButton {
+        let btn = UIButton(frame: CGRectMake( vw/2-35, vh/2+70, 70, 35 ))
+            btn.setTitle("重試", forState: .Normal)
+            btn.titleLabel?.font = UIFont(name: "PingFangTC-Regular", size: 13)
+            btn.layer.cornerRadius = 3
+            btn.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            btn.addTarget(self, action: "retryInternet:", forControlEvents: .TouchUpInside)
+        return btn
     }
 
     func retryInternet(sender: UIButton) {
