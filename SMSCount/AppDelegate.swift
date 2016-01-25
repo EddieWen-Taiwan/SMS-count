@@ -42,11 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // For uploading to v2.0
             if userPreference.boolForKey("uploadNewValueIn2.0") != true {
-                let userInfo = UserInfo()
-                userInfo.updateWeekendFixed( userPreference.boolForKey("autoWeekendFixed") )
-                userInfo.updatePublicProfile( userPreference.boolForKey("publicProfile") )
-                userInfo.save()
-
+                UserInfo().uploadAllData()
                 userPreference.setBool( true, forKey: "uploadNewValueIn2.0" )
             }
         }
