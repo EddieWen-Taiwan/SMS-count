@@ -172,10 +172,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         // Button under title
         if situation == "facebook" {
-            let loginView = FBSDKLoginButton()
-                loginView.frame = CGRectMake( 30, viewHeight/2+55, viewWidth-60, 50 )
-                loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
-                loginView.delegate = self
+            let loginView = self.makeFBLoginButton( viewWidth, vh: viewHeight )
             coverView.addSubview(loginView)
         } else if situation == "internet" {
             let retryButton = self.makeRetryButton( viewWidth, vh: viewHeight )
@@ -191,6 +188,14 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
             self.view.addSubview( self.loadingView )
         }
+    }
+
+    func makeFBLoginButton( vw: CGFloat, vh: CGFloat ) -> FBSDKLoginButton {
+        let btn = FBSDKLoginButton()
+            btn.frame = CGRectMake( 30, vh/2+55, vw-60, 50 )
+            btn.readPermissions = [ "public_profile", "email", "user_friends" ]
+            btn.delegate = self
+        return btn
     }
 
     func makeRetryButton( vw: CGFloat, vh: CGFloat ) -> UIButton {
