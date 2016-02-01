@@ -165,7 +165,7 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     // Call this after app gets the login result from facebook
-    func storeFacebookInfo( info: AnyObject, completion: ((messageContent: String, newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int, newWeekendFixed: Bool, newPublicProfile: Bool) -> Void), completion2: () -> Void ) {
+    func storeFacebookInfo( info: AnyObject, syncCompletion: ((messageContent: String, newStatus: String, newEnterDate: String, newServiceDays: Int, newDiscountDays: Int, newWeekendFixed: Bool, newPublicProfile: Bool) -> Void), completion2: () -> Void ) {
 
         if let FBID = info.valueForKey("id") {
             // Search parse data by FBID, check whether there is matched data.
@@ -227,7 +227,7 @@ class UserInfo { // Save userInfomation to Parse
                                 newPublicProfile = publicProfile as! Bool
                             }
 
-                            completion( messageContent: messageContent, newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays, newWeekendFixed: newWeekendFixed, newPublicProfile: newPublicProfile)
+                            syncCompletion( messageContent: messageContent, newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays, newWeekendFixed: newWeekendFixed, newPublicProfile: newPublicProfile)
 
                         }
                     } else {
