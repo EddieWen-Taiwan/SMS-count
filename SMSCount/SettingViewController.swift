@@ -181,8 +181,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "embed" {
-            let settingTable = segue.destinationViewController as? SettingTableViewController
-            settingTable?.parentVC = self
+            if let settingTable = segue.destinationViewController as? SettingTableViewController {
+                settingTable.parentVC = self
+            }
         }
     }
 
