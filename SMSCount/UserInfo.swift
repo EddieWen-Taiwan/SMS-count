@@ -32,21 +32,21 @@ class UserInfo { // Save userInfomation to Parse
     func addUserFBID( fbid: String ) {
 
         self.checkObjectId()
-
-        userObject.setValue( fbid, forKey: "fb_id" )
+        
         self.userPreference.setValue( fbid, forKey: "fb_id" )
+        userObject.setValue( fbid, forKey: "fb_id" )
         self.objectIsChanged = true
     }
 
     func addUserName( name: String ) {
-        userObject.setValue( name, forKey: "username" )
         self.userPreference.setValue( name, forKey: "username" )
+        userObject.setValue( name, forKey: "username" )
         self.objectIsChanged = true
     }
 
     func addUserMail( mail: String ) {
-        userObject.setValue( mail, forKey: "email" )
         self.userPreference.setValue( mail, forKey: "email" )
+        userObject.setValue( mail, forKey: "email" )
         self.objectIsChanged = true
     }
 
@@ -58,16 +58,16 @@ class UserInfo { // Save userInfomation to Parse
 
             self.userPreference.setValue( objectId, forKey: "UserID" )
             self.userObject.objectId = objectId
-            self.objectIdStatus = true
             self.objectIsChanged = true
+            self.objectIdStatus = true
 
         }
 
     }
 
     func updateUserStatus( status: String ) {
-        userObject.setValue( status, forKey: "status" )
         self.userPreference.setValue( status, forKey: "status" )
+        userObject.setValue( status, forKey: "status" )
         self.objectIsChanged = true
     }
 
