@@ -124,8 +124,8 @@ class SettingTableViewController: UITableViewController {
                 case 0:
                     parentVC.userInfo.updateWeekendFixed( newValue )
                 case 1:
-                    break;
-                default:
+                    parentVC.userInfo.updateAnimationSetting( newValue )
+                default: // 2
                     parentVC.userInfo.updatePublicProfile( newValue )
             }
         }
