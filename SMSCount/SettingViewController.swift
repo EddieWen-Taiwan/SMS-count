@@ -144,7 +144,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     }
 
-    private func dismissScreenMask() {
+    func dismissScreenMask() {
         self.dismissRelativeViews()
 
         if self.screenMask.tag == 2 {
