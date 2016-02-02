@@ -49,7 +49,12 @@ class SettingTableViewController: UITableViewController {
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
+        prepareSwitch(self.animationSwitch)
+        if self.userPreference.boolForKey("countdownAnimation") {
+            self.animationSwitch.setOn(true, animated: false)
+        }
         prepareSwitch(self.publicSwitch)
+        // Its value was set in SettingVC
 
         // Add footer of TableView
         let footerBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
