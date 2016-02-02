@@ -50,18 +50,8 @@ class PercentageCircleView: UIView {
     }
 
     func animateCircle( var percent: Double ) {
-        // We want to animate the strokeEnd property of the circleLayer
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-
-        // Set the animation duration appropriately
-        animation.duration = 0.5
-
-        // Animate from 0 (no circle) to 1 (full circle)
-        animation.fromValue = 0
-        animation.toValue = 1
-
-        // Do a linear animation (i.e. the speed of the animation stays the same)
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        
+        let animation = self.makeAnimation()
 
         // get currentPercentage
         let startAngle = CGFloat( M_PI*(0.5)*(-1) )
@@ -81,6 +71,20 @@ class PercentageCircleView: UIView {
 
         // Do the actual animation
         circleLayer.addAnimation(animation, forKey: "animateCircle")
+    }
+
+    private func makeAnimation() -> CABasicAnimation {
+        // We want to animate the strokeEnd property of the circleLayer
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+            // Set the animation duration appropriately
+            animation.duration = 0.5
+            // Animate from 0 (no circle) to 1 (full circle)
+            animation.fromValue = 0
+            animation.toValue = 1
+            // Do a linear animation (i.e. the speed of the animation stays the same)
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+
+        return animation
     }
 
 }
