@@ -130,6 +130,10 @@ class SettingTableViewController: UITableViewController {
         }
     }
 
+    func updateNewStatusFromStatusVC( newStatus: String ) {
+        print(newStatus)
+    }
+
     // MARK: table view
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3

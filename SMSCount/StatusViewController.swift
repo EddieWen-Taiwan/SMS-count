@@ -30,7 +30,12 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func saveNewStatus(sender: AnyObject) {
-        
+        var newStatus = (self.statusTextField.text ?? "") as NSString
+        if newStatus.length > 30 {
+            newStatus = newStatus.substringToIndex(30)
+        }
+        self.parentVC?.updateNewStatusFromStatusVC( newStatus as String )
+        self.dismissViewControllerAnimated( true, completion: nil )
     }
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
