@@ -27,6 +27,9 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
         self.dismissViewControllerAnimated( true, completion: nil )
     }
 
+    @IBAction func saveNewStatus(sender: AnyObject) {
+    }
+
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let newLength = text.characters.count + string.characters.count - range.length
