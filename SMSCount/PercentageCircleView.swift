@@ -15,15 +15,14 @@ class PercentageCircleView: UIView {
     var circleRadius: CGFloat!
     var circleCenter: CGPoint!
 
-    required init(view: UIView) {
-        super.init(frame: view.frame)
+    convenience init(view: UIView) {
+        self.init(frame: view.frame)
         let layer = view.layer
 
         circleRadius = frame.size.width/2
         circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
 
         let fullCircleLayer = self.drawFullCircle()
-
         let circleBackPath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: 0.0, endAngle: CGFloat(M_PI*2), clockwise: true)
         fullCircleLayer.path = circleBackPath.CGPath
         layer.addSublayer(fullCircleLayer)
@@ -31,7 +30,6 @@ class PercentageCircleView: UIView {
         // Setup the CAShapeLayer with the path, colors, and line width
         circleLayer.fillColor = UIColor.clearColor().CGColor
         circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).CGColor
-
         circleLayer.lineWidth = 5
 
         // Don't draw the circle initially
@@ -83,10 +81,6 @@ class PercentageCircleView: UIView {
 
         // Do the actual animation
         circleLayer.addAnimation(animation, forKey: "animateCircle")
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
 }
