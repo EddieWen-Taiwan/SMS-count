@@ -46,12 +46,17 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     var settingStatus: Bool = false
     var downloadFromParse: Bool = false
+    var animation: Bool = true
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
         currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
+
+        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+            self.animation = userPreference.boolForKey("countdownAnimation")
+        }
     }
 
     override func viewDidLoad() {
