@@ -337,7 +337,7 @@
                                                         <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="DUU-JR-dQ9" kind="presentation" id="9sy-Lc-DEj"/>
+                                                        <segue destination="DUU-JR-dQ9" kind="presentation" identifier="StatusVC" id="9sy-Lc-DEj"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
