@@ -110,14 +110,17 @@ class SettingTableViewController: UITableViewController {
 
     }
 
-    private func switchClick( mySwitch: UISwitch ) {
+    func switchClick( mySwitch: UISwitch ) {
         let newValue: Bool = mySwitch.on ? true : false
 
         if let parentVC = self.parentVC {
-            if mySwitch.tag == 0 {
-                parentVC.userInfo.updateWeekendFixed( newValue )
-            } else {
-                parentVC.userInfo.updatePublicProfile( newValue )
+            switch mySwitch.tag {
+                case 0:
+                    parentVC.userInfo.updateWeekendFixed( newValue )
+                case 1:
+                    break;
+                default:
+                    parentVC.userInfo.updatePublicProfile( newValue )
             }
         }
     }
@@ -149,7 +152,7 @@ class SettingTableViewController: UITableViewController {
             case 1:
                 return 3
             default:
-                return 2
+                return 3
         }
     }
 
