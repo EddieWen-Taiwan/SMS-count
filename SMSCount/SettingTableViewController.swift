@@ -156,30 +156,34 @@ class SettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let label = UILabel(frame: CGRectMake(20, 24, 48, 17))
-        label.textColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
-        label.font = UIFont(name: "PingFangTC-Light", size: 12.0)
-        switch section {
-            case 0:
-                label.text = "個人設定"
-            case 1:
-                label.text = "一般設定"
-            default:
-                label.text = "偏好設定"
-        }
+            label.textColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
+            label.font = UIFont(name: "PingFangTC-Light", size: 12.0)
+            label.text = {
+                switch section {
+                    case 0:
+                        return "個人設定"
+                    case 1:
+                        return "一般設定"
+                    default:
+                        return "偏好設定"
+                }
+            }()
 
         let topBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
-        topBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            topBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+
         let bottomBorder = UIView(frame: CGRectMake(0, 50, tableView.frame.width, 0.5))
-        bottomBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            bottomBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
 
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 50))
-        headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-        if section != 0 {
-            headerView.addSubview(topBorder)
-        }
-        headerView.addSubview(bottomBorder)
-        headerView.addSubview(label)
+            headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            headerView.addSubview(label)
+            if section != 0 {
+                headerView.addSubview(topBorder)
+            }
+            headerView.addSubview(bottomBorder)
 
         return headerView
     }
+
 }
