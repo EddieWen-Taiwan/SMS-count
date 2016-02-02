@@ -105,6 +105,12 @@ class UserInfo { // Save userInfomation to Parse
         self.objectIsChanged = true
     }
 
+    func updateAnimationSetting( animation: Bool ) {
+        self.userPreference.setBool( animation, forKey: "countdownAnimation" )
+//        userObject.setValue( animation, forKey: "countdownAnimation" )
+//        self.objectIsChanged = true
+    }
+
     func updatePublicProfile( public_show: Bool ) {
         self.userPreference.setBool( public_show, forKey: "publicProfile" )
         userObject.setObject( public_show, forKey: "publicProfile" )
