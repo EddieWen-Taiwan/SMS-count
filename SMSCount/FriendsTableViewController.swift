@@ -192,6 +192,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
             self.view.addSubview( self.loadingView )
         }
+
     }
 
     private func makeFBLoginButton( vw: CGFloat, vh: CGFloat ) -> FBSDKLoginButton {
@@ -199,6 +200,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             btn.frame = CGRectMake( 30, vh/2+55, vw-60, 50 )
             btn.readPermissions = [ "public_profile", "email", "user_friends" ]
             btn.delegate = self
+
         return btn
     }
 
@@ -209,6 +211,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             btn.layer.cornerRadius = 3
             btn.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             btn.addTarget(self, action: "retryInternet:", forControlEvents: .TouchUpInside)
+
         return btn
     }
 
@@ -225,6 +228,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 self.checkEnvironment()
             }
         }
+
     }
 
     // *************** \\
