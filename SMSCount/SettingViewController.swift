@@ -250,7 +250,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                         syncAlertController.addAction(noAction)
 
                         self.presentViewController(syncAlertController, animated: true, completion: nil)
-                    }, requestCompletion: {})
+                    }, newUserTask: {})
 
                 }
 

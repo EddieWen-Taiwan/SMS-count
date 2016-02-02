@@ -291,7 +291,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
                         self.presentViewController(syncAlertController, animated: true, completion: nil)
 
-                    }, requestCompletion: {
+                    }, newUserTask: {
                         self.removeOldViews()
                         self.requestFriendsListFromFacebook()
                     })
