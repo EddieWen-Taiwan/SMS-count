@@ -131,7 +131,10 @@ class SettingTableViewController: UITableViewController {
     }
 
     func updateNewStatusFromStatusVC( newStatus: String ) {
-        print(newStatus)
+        self.statusLabel.text = newStatus
+        if let parentVC = self.parentVC {
+            parentVC.userInfo.updateUserStatus( newStatus as String )
+        }
     }
 
     // MARK: table view
