@@ -110,7 +110,7 @@ class SettingTableViewController: UITableViewController {
 
     }
 
-    func switchClick( mySwitch: UISwitch ) {
+    private func switchClick( mySwitch: UISwitch ) {
         let newValue: Bool = mySwitch.on ? true : false
 
         if let parentVC = self.parentVC {
