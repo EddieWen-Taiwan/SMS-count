@@ -13,6 +13,8 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var statusTextField: UITextField!
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
+    var parentVC: SettingTableViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -24,6 +26,15 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func dismissViewController(sender: AnyObject) {
+        self.dismissViewControllerAnimated( true, completion: nil )
+    }
+
+    @IBAction func saveNewStatus(sender: AnyObject) {
+        var newStatus = (self.statusTextField.text ?? "") as NSString
+        if newStatus.length > 30 {
+            newStatus = newStatus.substringToIndex(30)
+        }
+        self.parentVC?.updateNewStatusFromStatusVC( newStatus as String )
         self.dismissViewControllerAnimated( true, completion: nil )
     }
 

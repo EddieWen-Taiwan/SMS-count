@@ -122,19 +122,19 @@ class SettingTableViewController: UITableViewController {
         }
     }
 
-    @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-
-        if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
-            var userStatus = (statusVC.statusTextField.text ?? "") as NSString
-            if userStatus.length > 30 {
-                userStatus = userStatus.substringToIndex(30)
-            }
-            self.statusLabel.text = userStatus as String
-            if let parentVC = self.parentVC {
-                parentVC.userInfo.updateUserStatus( userStatus as String )
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "StatusVC" {
+            if let statusVC = segue.destinationViewController as? StatusViewController {
+                statusVC.parentVC = self
             }
         }
+    }
 
+    func updateNewStatusFromStatusVC( newStatus: String ) {
+        self.statusLabel.text = newStatus
+        if let parentVC = self.parentVC {
+            parentVC.userInfo.updateUserStatus( newStatus as String )
+        }
     }
 
     // MARK: table view
