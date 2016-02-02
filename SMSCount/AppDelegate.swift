@@ -31,7 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().translucent = false
 
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-        // If there is no publicProfile, set it true as default
+        // If there is no countdownAnimation, set it true as default
+        if userPreference.valueForKey("countdownAnimation") == nil {
+            userPreference.setBool( true, forKey: "countdownAnimation")
+        }
+        // If there is no publicProfile....
         if userPreference.valueForKey("publicProfile") == nil {
             userPreference.setBool( true, forKey: "publicProfile")
         }
