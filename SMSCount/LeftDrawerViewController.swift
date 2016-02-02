@@ -19,12 +19,8 @@ class LeftDrawerViewController: UIViewController {
     @IBOutlet var countRow: UIView!
     @IBOutlet var settingRow: UIView!
 
-    init() {
-        super.init(nibName: "LeftDrawer", bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    convenience init() {
+        self.init(nibName: "LeftDrawer", bundle: nil)
     }
 
     override func viewDidLoad() {
@@ -64,15 +60,5 @@ class LeftDrawerViewController: UIViewController {
         }
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
