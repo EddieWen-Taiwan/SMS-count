@@ -144,7 +144,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     }
 
-    func dismissScreenMask() {
+    private func dismissScreenMask() {
         self.dismissRelativeViews()
 
         if self.screenMask.tag == 2 {
@@ -164,7 +164,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
     }
 
-    func dismissRelativeViews() {
+    private func dismissRelativeViews() {
         self.datepickerViewBottomConstraint.constant = -200
         self.serviceDaysPickerViewBottomConstraint.constant = -200
         self.discountDaysPickerViewBottomConstraint.constant = -200
