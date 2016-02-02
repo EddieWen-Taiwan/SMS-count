@@ -122,6 +122,14 @@ class SettingTableViewController: UITableViewController {
         }
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "StatusVC" {
+            if let statusVC = segue.destinationViewController as? StatusViewController {
+                statusVC.parentVC = self
+            }
+        }
+    }
+
     // MARK: table view
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3

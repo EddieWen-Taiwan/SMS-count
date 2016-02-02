@@ -13,6 +13,8 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var statusTextField: UITextField!
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
+    var parentVC: SettingTableViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,6 +30,7 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func saveNewStatus(sender: AnyObject) {
+        
     }
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
