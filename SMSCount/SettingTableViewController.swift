@@ -147,14 +147,7 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                return 1
-            case 1:
-                return 3
-            default:
-                return 3
-        }
+        return section == 0 ? 1 : 3
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
