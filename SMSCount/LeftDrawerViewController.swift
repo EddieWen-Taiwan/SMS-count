@@ -14,7 +14,7 @@ class LeftDrawerViewController: UIViewController {
     let mainStoryborad = UIStoryboard(name: "Main", bundle: nil)
     let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
 
-    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     @IBOutlet var countRow: UIView!
     @IBOutlet var settingRow: UIView!
