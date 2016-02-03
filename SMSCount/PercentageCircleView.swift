@@ -15,7 +15,7 @@ class PercentageCircleView: UIView {
     var circleRadius: CGFloat = 0.0
     var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
 
-    convenience init(view: UIView) {
+    convenience init(view: UIView, percent: Double = 0.0) {
         self.init(frame: view.frame)
 
         self.mainLayer = view.layer
