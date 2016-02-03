@@ -27,7 +27,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     @IBOutlet var frontRemainedDaysWord: UILabel!
     var animationIndex: Int
     var animationArray = [String]() // [ 1, 2, ... 99, 100 ]
-    var stageIndexArray = [Int]() //[ 55, 75, 88, 94, 97, 99 ]
+    var stageIndexArray = [Int]()
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
@@ -44,6 +44,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     required init?(coder aDecoder: NSCoder) {
         self.currentDisplay = "day"
         self.animationIndex = 0
+        self.stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
         self.isCircleDrawn = false
         self.settingStatus = false
         self.downloadFromParse = false
