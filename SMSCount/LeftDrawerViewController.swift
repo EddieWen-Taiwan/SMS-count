@@ -22,11 +22,6 @@ class LeftDrawerViewController: UIViewController {
     convenience init() {
         self.init(nibName: "LeftDrawer", bundle: nil)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
     
     @IBAction func goMainTabBarController(sender: AnyObject) {
         let rootViewController = self.mainStoryborad.instantiateViewControllerWithIdentifier("TabBarController")
