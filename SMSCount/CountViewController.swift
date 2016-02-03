@@ -109,11 +109,12 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
         // Set remainedDays
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-        if userPreference.boolForKey("dayAnimated") {
+        if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
+            // Run animation
+            self.beReadyAndRunCountingAnimation(newRemainedDays)
+        } else {
             // Animation was completed
             self.frontRemainedDaysLabel.text = String( newRemainedDays )
-        } else {
-            self.beReadyAndRunCountingAnimation(newRemainedDays)
         }
 
         self.setTextOfProcess()
