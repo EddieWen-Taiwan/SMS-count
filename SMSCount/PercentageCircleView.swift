@@ -80,10 +80,6 @@ class PercentageCircleView: UIView {
 
     }
 
-    func simpleCircle( percent: Double ) {
-        self.drawBasicCircle()
-    }
-
     func animateCircle( percent: Double ) {
         let circleLayer = self.drawBasicCircle()
         let animation = self.makeAnimation()
