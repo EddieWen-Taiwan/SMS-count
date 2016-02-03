@@ -12,20 +12,22 @@ import UIKit
 class PercentageCircleView: UIView {
 
     var mainLayer: CALayer!
-    var circleRadius: CGFloat = 0.0
+
     var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
+    var circleRadius: CGFloat = 0.0
 
     convenience init(view: UIView) {
         self.init(frame: view.frame)
 
         self.mainLayer = view.layer
-        self.circleRadius = frame.size.width/2
         self.circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
+        self.circleRadius = frame.size.width/2
 
         let fullCircleLayer = self.drawFullCircle()
         self.mainLayer.addSublayer(fullCircleLayer)
     }
 
+    // The full basic circle
     private func drawFullCircle() -> CAShapeLayer {
         let circleLayer = CAShapeLayer()
             circleLayer.fillColor = UIColor.clearColor().CGColor
@@ -67,8 +69,8 @@ class PercentageCircleView: UIView {
         self.mainLayer.addSublayer(circleLayer)
     }
 
+    // The process circle
     private func drawBasicCircle() -> CAShapeLayer {
-
         let circleLayer = CAShapeLayer()
             circleLayer.fillColor = UIColor.clearColor().CGColor
             circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).CGColor
@@ -76,10 +78,10 @@ class PercentageCircleView: UIView {
             circleLayer.strokeEnd = 1.0
 
         return circleLayer
-
     }
 
-    func animateCircle( circleLayer: CAShapeLayer, percent: Double ) {
+    // Show animation
+    private func animateCircle( circleLayer: CAShapeLayer, percent: Double ) {
         // Set the circleLayer's strokeEnd property to 1.0 now so that it's the right value when the animation ends.
         circleLayer.strokeEnd = 1.0
 
@@ -88,6 +90,7 @@ class PercentageCircleView: UIView {
         circleLayer.addAnimation(animation, forKey: "animateCircle")
     }
 
+    // Make animation effect
     private func makeAnimation() -> CABasicAnimation {
         // We want to animate the strokeEnd property of the circleLayer
         let animation = CABasicAnimation(keyPath: "strokeEnd")
