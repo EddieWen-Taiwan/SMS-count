@@ -67,7 +67,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
 
             if error == nil {
-                var friendArray: [String] = []
+                var friendArray = [String]()
                 if let users = result.valueForKey("data") {
                     for user in users as! [AnyObject] {
                         friendArray.append( user.valueForKey("id") as! String )
@@ -145,7 +145,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 if (thisUser.valueForKey("monthOfEnterDate")! as! Int) < 10 {
                     entireDate += "0"
                 }
-                entireDate += String(thisUser.valueForKey("monthOfEnterDate")!) + " / "
+                entireDate += "\(thisUser.valueForKey("monthOfEnterDate")!) / "
                 if (thisUser.valueForKey("dateOfEnterDate")! as! Int) < 10 {
                     entireDate += "0"
                 }
