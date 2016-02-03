@@ -41,9 +41,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var calculateHelper = CalculateHelper()
     var circleView: PercentageCircleView!
 
-    var screenHeight = UIScreen.mainScreen().bounds.height
-    var screenWidth = UIScreen.mainScreen().bounds.width
-
     var settingStatus: Bool = false
     var downloadFromParse: Bool = false
 
