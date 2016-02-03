@@ -13,12 +13,18 @@ import FBSDKLoginKit
 class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
 
     var friendsObject = [PFObject]()
-    var getData: Bool = false
+    var getData: Bool
 
     var loadingView = LoadingView()
 
     let friendHelper = FriendsCalculate()
     let reachability = Reachability()
+
+    required init?(coder aDecoder: NSCoder) {
+        self.getData = false
+
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
