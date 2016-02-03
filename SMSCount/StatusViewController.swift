@@ -11,7 +11,6 @@ import UIKit
 class StatusViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var statusTextField: UITextField!
-    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
     var parentVC: SettingTableViewController?
 
@@ -20,8 +19,10 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         self.statusTextField.delegate = self
 
-        if let userStatus = self.userPreference.stringForKey("status") {
-            self.statusTextField.text = userStatus
+        if let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" ) {
+            if let userStatus = userPreference.stringForKey("status") {
+                self.statusTextField.text = userStatus
+            }
         }
     }
 
