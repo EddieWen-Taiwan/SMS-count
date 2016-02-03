@@ -12,12 +12,15 @@ class UserInfo { // Save userInfomation to Parse
 
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
-    var objectIsChanged: Bool = false
-    var objectIdStatus: Bool = false
+    var objectIsChanged: Bool
+    var objectIdStatus: Bool
     let userObject = PFObject(className: "UserT")
 
     init() {
         // Initialize
+        self.objectIsChanged = false
+        self.objectIdStatus = false
+
         if self.userPreference.stringForKey("UserID") != nil {
             userObject.objectId = self.userPreference.stringForKey("UserID")
             self.objectIdStatus = true
