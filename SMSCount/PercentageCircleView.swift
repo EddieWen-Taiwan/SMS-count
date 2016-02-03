@@ -11,34 +11,23 @@ import UIKit
 
 class PercentageCircleView: UIView {
 
-    let circleLayer = CAShapeLayer()
-    var circleRadius: CGFloat!
-    var circleCenter: CGPoint!
+    var mainLayer: CALayer!
+
+    var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
+    var circleRadius: CGFloat = 0.0
 
     convenience init(view: UIView) {
         self.init(frame: view.frame)
-        let layer = view.layer
 
-        circleRadius = frame.size.width/2
-        circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
+        self.mainLayer = view.layer
+        self.circleRadius = frame.size.width/2
+        self.circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
 
         let fullCircleLayer = self.drawFullCircle()
-        let circleBackPath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: 0.0, endAngle: CGFloat(M_PI*2), clockwise: true)
-        fullCircleLayer.path = circleBackPath.CGPath
-        layer.addSublayer(fullCircleLayer)
-
-        // Setup the CAShapeLayer with the path, colors, and line width
-        circleLayer.fillColor = UIColor.clearColor().CGColor
-        circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).CGColor
-        circleLayer.lineWidth = 5
-
-        // Don't draw the circle initially
-        circleLayer.strokeEnd = 0.0
-
-        // Add the circleLayer to the view's layer's sublayers
-        layer.addSublayer(circleLayer)
+        self.mainLayer.addSublayer(fullCircleLayer)
     }
 
+    // The full basic circle
     private func drawFullCircle() -> CAShapeLayer {
         let circleLayer = CAShapeLayer()
             circleLayer.fillColor = UIColor.clearColor().CGColor
@@ -46,33 +35,68 @@ class PercentageCircleView: UIView {
             circleLayer.lineWidth = 1.0
             circleLayer.strokeEnd = 1.0
 
+        let circleBackPath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: 0.0, endAngle: CGFloat(M_PI*2), clockwise: true)
+            circleLayer.path = circleBackPath.CGPath
+
         return circleLayer
     }
 
-    func animateCircle( var percent: Double ) {
-        
-        let animation = self.makeAnimation()
+    // Layer2 : Percentage
+    func addPercentageCircle( percent: Double ) {
 
-        // get currentPercentage
-        let startAngle = CGFloat( M_PI*(0.5)*(-1) )
+        let angleArray: [CGFloat] = self.calculateAngle( percent )
+        // Use UIBezierPath as an easy way to create the CGPath for the layer.
+        // The path should be the entire circle.
+        let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: angleArray[0], endAngle: angleArray[1], clockwise: true)
+        let circleLayer = self.drawBasicCircle()
+            circleLayer.path = circlePath.CGPath
+
+        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+        if userPreference.boolForKey("countdownAnimation") {
+            circleLayer.strokeEnd = 0.0
+            self.animateCircle( circleLayer, percent: percent )
+        }
+
+        // Add the circleLayer to the view's layer's sublayers
+        self.mainLayer.addSublayer(circleLayer)
+    }
+
+    private func calculateAngle( var percent: Double ) -> [CGFloat] {
         if percent > 1 {
             percent = 1
         } else if percent < 0 {
             percent = 0
         }
-        let endAngle = CGFloat( M_PI*2*( percent ) - M_PI*(0.5) )
+        // get currentPercentage
+        var angleArray = [CGFloat]()
+        angleArray.append( CGFloat( M_PI*(0.5)*(-1) ) ) // START
+        angleArray.append( CGFloat( M_PI*2*( percent ) - M_PI*(0.5) ) ) // END
 
-        // Use UIBezierPath as an easy way to create the CGPath for the layer.
-        // The path should be the entire circle.
-        let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        circleLayer.path = circlePath.CGPath
+        return angleArray
+    }
+
+    // The process circle
+    private func drawBasicCircle() -> CAShapeLayer {
+        let circleLayer = CAShapeLayer()
+            circleLayer.fillColor = UIColor.clearColor().CGColor
+            circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).CGColor
+            circleLayer.lineWidth = 5
+            circleLayer.strokeEnd = 1.0
+
+        return circleLayer
+    }
+
+    // Show animation
+    private func animateCircle( circleLayer: CAShapeLayer, percent: Double ) {
         // Set the circleLayer's strokeEnd property to 1.0 now so that it's the right value when the animation ends.
         circleLayer.strokeEnd = 1.0
 
         // Do the actual animation
+        let animation = self.makeAnimation()
         circleLayer.addAnimation(animation, forKey: "animateCircle")
     }
 
+    // Make animation effect
     private func makeAnimation() -> CABasicAnimation {
         // We want to animate the strokeEnd property of the circleLayer
         let animation = CABasicAnimation(keyPath: "strokeEnd")

@@ -15,6 +15,7 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet var discountDaysLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var autoWeekendSwitch: UISwitch!
+    @IBOutlet var animationSwitch: UISwitch!
     @IBOutlet var publicSwitch: UISwitch!
 
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
@@ -48,7 +49,12 @@ class SettingTableViewController: UITableViewController {
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
+        prepareSwitch(self.animationSwitch)
+        if self.userPreference.boolForKey("countdownAnimation") {
+            self.animationSwitch.setOn(true, animated: false)
+        }
         prepareSwitch(self.publicSwitch)
+        // Its value was set in SettingVC
 
         // Add footer of TableView
         let footerBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
@@ -110,14 +116,17 @@ class SettingTableViewController: UITableViewController {
 
     }
 
-    private func switchClick( mySwitch: UISwitch ) {
+    func switchClick( mySwitch: UISwitch ) {
         let newValue: Bool = mySwitch.on ? true : false
 
         if let parentVC = self.parentVC {
-            if mySwitch.tag == 0 {
-                parentVC.userInfo.updateWeekendFixed( newValue )
-            } else {
-                parentVC.userInfo.updatePublicProfile( newValue )
+            switch mySwitch.tag {
+                case 0:
+                    parentVC.userInfo.updateWeekendFixed( newValue )
+                case 1:
+                    parentVC.userInfo.updateAnimationSetting( newValue )
+                default: // 2
+                    parentVC.userInfo.updatePublicProfile( newValue )
             }
         }
     }
@@ -143,14 +152,7 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                return 1
-            case 1:
-                return 3
-            default:
-                return 2
-        }
+        return section == 0 ? 1 : 3
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
