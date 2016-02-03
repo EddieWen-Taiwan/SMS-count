@@ -60,7 +60,7 @@ class PercentageCircleView: UIView {
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
         if userPreference.boolForKey("countdownAnimation") {
             circleLayer.strokeEnd = 0.0
-            self.animateCircle(percent)
+            self.animateCircle( circleLayer, percent: percent )
         }
 
         // Add the circleLayer to the view's layer's sublayers
@@ -79,12 +79,12 @@ class PercentageCircleView: UIView {
 
     }
 
-    func animateCircle( percent: Double ) {
-        let circleLayer = self.drawBasicCircle()
-        let animation = self.makeAnimation()
+    func animateCircle( circleLayer: CAShapeLayer, percent: Double ) {
         // Set the circleLayer's strokeEnd property to 1.0 now so that it's the right value when the animation ends.
         circleLayer.strokeEnd = 1.0
+
         // Do the actual animation
+        let animation = self.makeAnimation()
         circleLayer.addAnimation(animation, forKey: "animateCircle")
     }
 
