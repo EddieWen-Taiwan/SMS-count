@@ -45,7 +45,6 @@ class PercentageCircleView: UIView {
     func addPercentageCircle( percent: Double ) {
 
         let angleArray: [CGFloat] = self.calculateAngle( percent )
-
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
         // The path should be the entire circle.
         let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: angleArray[0], endAngle: angleArray[1], clockwise: true)
@@ -69,9 +68,9 @@ class PercentageCircleView: UIView {
             percent = 0
         }
         // get currentPercentage
-        var angleArray: [CGFloat] = []
-        angleArray[0] = CGFloat( M_PI*(0.5)*(-1) ) // START
-        angleArray[1] = CGFloat( M_PI*2*( percent ) - M_PI*(0.5) ) // ENG
+        var angleArray = [CGFloat]()
+        angleArray.append( CGFloat( M_PI*(0.5)*(-1) ) ) // START
+        angleArray.append( CGFloat( M_PI*2*( percent ) - M_PI*(0.5) ) ) // END
 
         return angleArray
     }
