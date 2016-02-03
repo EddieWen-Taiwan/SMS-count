@@ -12,7 +12,7 @@ import FBSDKLoginKit
 
 class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
 
-    var friendsObject: [PFObject] = []
+    var friendsObject = [PFObject]()
     var getData: Bool = false
 
     var loadingView = LoadingView()
