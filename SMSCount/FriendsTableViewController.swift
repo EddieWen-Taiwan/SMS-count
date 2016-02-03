@@ -46,9 +46,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if FBSDKAccessToken.currentAccessToken() == nil {
                 self.coverTableView("facebook")
             } else {
-                let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+                let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
-                if userDefault.boolForKey("publicProfile") {
+                if userPreference.boolForKey("publicProfile") {
                     self.requestFriendsListFromFacebook()
                 } else {
                     self.coverTableView("public")
