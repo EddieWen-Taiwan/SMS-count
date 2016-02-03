@@ -19,7 +19,7 @@ class MonthlyImages {
 
         // update and svae image
         let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
-        path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
+        self.path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
 
         if self.isMonthMatch() {
             background.image = UIImage(contentsOfFile: path)
@@ -31,6 +31,10 @@ class MonthlyImages {
                 self.downloadImage( NSURL(string: urlString)!, backgroundImage: background )
             }
         }
+    }
+
+    func setBackground( background: UIImageView ) {
+        
     }
 
     private func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
@@ -66,7 +70,7 @@ class MonthlyImages {
 
     private func isMonthMatch() -> Bool {
         let imageMonth = userPreference.stringForKey("backgroundMonth")
-        return imageMonth == currentMonth ? true : false
+        return imageMonth == self.currentMonth ? true : false
     }
 
 }
