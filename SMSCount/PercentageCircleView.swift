@@ -11,14 +11,14 @@ import UIKit
 
 class PercentageCircleView: UIView {
 
-    let circleLayer = CAShapeLayer()
+    var mainLayer: CALayer!
     var circleRadius: CGFloat!
     var circleCenter: CGPoint!
 
     convenience init(view: UIView) {
         self.init(frame: view.frame)
-        let layer = view.layer
 
+        self.mainLayer = view.layer
         circleRadius = frame.size.width/2
         circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
 
