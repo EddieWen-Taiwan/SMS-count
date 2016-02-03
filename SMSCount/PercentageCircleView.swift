@@ -21,10 +21,10 @@ class PercentageCircleView: UIView {
 
         circleRadius = frame.size.width/2
         circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
-
-        let fullCircleLayer = self.drawFullCircle()
+        
         let circleBackPath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: 0.0, endAngle: CGFloat(M_PI*2), clockwise: true)
-        fullCircleLayer.path = circleBackPath.CGPath
+        let fullCircleLayer = self.drawFullCircle()
+            fullCircleLayer.path = circleBackPath.CGPath
         layer.addSublayer(fullCircleLayer)
 
         // Setup the CAShapeLayer with the path, colors, and line width
