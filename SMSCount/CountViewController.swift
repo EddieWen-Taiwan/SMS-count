@@ -46,17 +46,12 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     var settingStatus: Bool = false
     var downloadFromParse: Bool = false
-    var animation: Bool = true
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
         currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
-
-        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
-            self.animation = userPreference.boolForKey("countdownAnimation")
-        }
     }
 
     override func viewDidLoad() {
@@ -108,13 +103,14 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.backRemainedDaysLabel.text = String( newRemainedDays )
 
         // Set remainedDays
-        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-        if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
-            // Run animation
-            self.beReadyAndRunCountingAnimation(newRemainedDays)
-        } else {
-            // Animation was completed
-            self.frontRemainedDaysLabel.text = String( newRemainedDays )
+        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+            if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
+                // Run animation
+                self.beReadyAndRunCountingAnimation(newRemainedDays)
+            } else {
+                // Animation was completed or User doesn't want animation
+                self.frontRemainedDaysLabel.text = String( newRemainedDays )
+            }
         }
 
         self.setTextOfProcess()
@@ -160,6 +156,11 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         let currentProcessString = String( format: "%.1f", currentProcess )
         self.percentageLabel.text = currentProcessString
 
+        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+            if userPreference.boolForKey("countdownAnimation") == false {
+                self.checkCircleAnimation(true)
+            }
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -263,16 +264,16 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             self.currentDisplay = switch2chart ? "chart" : "day"
             if self.settingStatus {
                 if switch2chart {
-                    self.checkCircleAnimation()
+                    self.checkCircleAnimation(false)
                 }
             }
         })
 
     }
 
-    func checkCircleAnimation() {
-        if self.currentDisplay == "chart" && self.isCircleDrawn == false {
-            self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
+    func checkCircleAnimation( ignore: Bool ) {
+        if ignore || (self.currentDisplay == "chart" && self.isCircleDrawn == false) {
+            self.circleView.addPercentageCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
             self.isCircleDrawn = true
         }
     }
