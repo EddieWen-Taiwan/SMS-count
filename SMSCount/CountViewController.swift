@@ -67,7 +67,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         // Prepare background image
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
         let currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
-        _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
+        MonthlyImages( month: currentMonthStr ).setBackground( self.backgroundImage )
 
         self.checkSetting()
 

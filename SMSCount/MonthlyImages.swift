@@ -17,7 +17,7 @@ class MonthlyImages {
     init(month: String) {
         self.currentMonth = month
 
-        // update and svae image
+        // update and save image
         let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
         self.path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
     }
