@@ -14,7 +14,7 @@ class UserInfo { // Save userInfomation to Parse
 
     var objectIsChanged: Bool = false
     var objectIdStatus: Bool = false
-    let userObject = PFObject(className: "User")
+    let userObject = PFObject(className: "UserT")
 
     init() {
         // Initialize
@@ -175,7 +175,7 @@ class UserInfo { // Save userInfomation to Parse
 
         if let FBID = info.valueForKey("id") {
             // Search parse data by FBID, check whether there is matched data.
-            let fbIdQuery = PFQuery(className: "User")
+            let fbIdQuery = PFQuery(className: "UserT")
             fbIdQuery.whereKey( "fb_id", equalTo: FBID )
             fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
