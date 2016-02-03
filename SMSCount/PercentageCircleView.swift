@@ -15,7 +15,7 @@ class PercentageCircleView: UIView {
     var circleRadius: CGFloat = 0.0
     var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
 
-    convenience init(view: UIView, percent: Double = 0.0) {
+    convenience init(view: UIView) {
         self.init(frame: view.frame)
 
         self.mainLayer = view.layer
@@ -24,10 +24,6 @@ class PercentageCircleView: UIView {
 
         let fullCircleLayer = self.drawFullCircle()
         self.mainLayer.addSublayer(fullCircleLayer)
-
-        if percent != 0.0 {
-            self.addPercentageCircle( percent )
-        }
     }
 
     private func drawFullCircle() -> CAShapeLayer {
