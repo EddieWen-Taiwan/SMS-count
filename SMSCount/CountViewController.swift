@@ -38,8 +38,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var calculateHelper = CalculateHelper()
     var loadingView = LoadingView() // LoaingView while taking screenshot
 
-    var settingStatus: Bool
-    var downloadFromParse: Bool
+    var settingStatus: Bool // Is setting all setup
+    var downloadFromParse: Bool // Download data from Parse in FriendsTableVC
 
     required init?(coder aDecoder: NSCoder) {
         self.currentDisplay = "day"

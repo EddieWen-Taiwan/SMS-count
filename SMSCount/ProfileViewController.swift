@@ -10,6 +10,9 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet var userSticker: UIImageView!
+    var stickerIsDownloaded: Bool
+    @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
 
     // Detail
@@ -19,16 +22,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet var retireDateView: UIView!
     @IBOutlet var retireDateLabel: UILabel!
 
-    @IBOutlet var userSticker: UIImageView!
-    var stickerIsDownloaded: Bool
-    @IBOutlet var usernameLabel: UILabel!
-
     var calculateHelper = CalculateHelper()
     let reachability = Reachability()
 
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-    let screenHeight = UIScreen.mainScreen().bounds.height
 
+    // Download data from Parse in FriendsTableVC
     var downloadFromParse: Bool
 
     required init?(coder aDecoder: NSCoder) {
