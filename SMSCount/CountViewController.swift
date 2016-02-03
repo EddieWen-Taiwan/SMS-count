@@ -272,8 +272,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     }
 
-    func checkCircleAnimation( ignore: Bool ) {
-        if ignore || (self.currentDisplay == "chart" && self.isCircleDrawn == false) {
+    func checkCircleAnimation( force: Bool ) {
+        if force || (self.currentDisplay == "chart" && self.isCircleDrawn == false) {
             self.circleView.addPercentageCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
             self.isCircleDrawn = true
         }
