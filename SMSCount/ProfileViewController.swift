@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var retireDateLabel: UILabel!
 
     @IBOutlet var userSticker: UIImageView!
-    var stickerIsDownloaded: Bool = false
+    var stickerIsDownloaded: Bool
     @IBOutlet var usernameLabel: UILabel!
 
     var calculateHelper = CalculateHelper()
@@ -29,7 +29,14 @@ class ProfileViewController: UIViewController {
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
     let screenHeight = UIScreen.mainScreen().bounds.height
 
-    var downloadFromParse: Bool = false
+    var downloadFromParse: Bool
+
+    required init?(coder aDecoder: NSCoder) {
+        self.stickerIsDownloaded = false
+        self.downloadFromParse = false
+
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
