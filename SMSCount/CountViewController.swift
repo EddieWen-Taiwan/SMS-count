@@ -10,40 +10,45 @@ import UIKit
 
 class CountViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    // <<Back>> - about ScreenShot
+    // BACK - for ScreenShot
     @IBOutlet var backRemainedDaysLabel: UILabel!
     @IBOutlet var backRemainedDaysWord: UILabel!
     @IBOutlet var screenShotScale: UIView!
 
-    // <<Front>>
+    // FRONT
     @IBOutlet var backgroundImage: UIImageView!
-    var currentDisplay = "day"
     @IBOutlet var switchViewButton: UIView!
     @IBOutlet var imageOnSwitchBtn: UIImageView!
+    var currentDisplay: String
 
     // RemainedDays
     @IBOutlet var remainedView: UIView!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
-    var animationIndex: Int = 0
-    var animationArray = [ "" ]
-    var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
+    var animationIndex: Int
+    var animationArray = [String]()
+    var stageIndexArray = [Int]()
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
     @IBOutlet var percentageLabel: UILabel!
-    var isCircleDrawn: Bool = false
-
-    // LoaingView after screenshot
-    var loadingView = LoadingView()
+    var circleView: PercentageCircleView!
+    var isCircleDrawn: Bool
 
     var calculateHelper = CalculateHelper()
-    var circleView: PercentageCircleView!
+    var loadingView = LoadingView() // LoaingView while taking screenshot
 
-    var settingStatus: Bool = false
-    var downloadFromParse: Bool = false
+    var settingStatus: Bool
+    var downloadFromParse: Bool
 
     required init?(coder aDecoder: NSCoder) {
+        self.currentDisplay = "day"
+        self.animationIndex = 0
+        self.stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
+        self.isCircleDrawn = false
+        self.settingStatus = false
+        self.downloadFromParse = false
+
         super.init(coder: aDecoder)
     }
 
@@ -59,6 +64,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         circleView = PercentageCircleView( view: self.pieChartView )
         self.pieChartView.addSubview( circleView )
 
+        // Prepare background image
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
         let currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
