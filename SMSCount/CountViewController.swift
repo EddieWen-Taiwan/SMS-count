@@ -17,7 +17,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     // <<Front>>
     @IBOutlet var backgroundImage: UIImageView!
-    var currentMonthStr = "00"
     var currentDisplay = "day"
     @IBOutlet var switchViewButton: UIView!
     @IBOutlet var imageOnSwitchBtn: UIImageView!
@@ -46,9 +45,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
-        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
-        currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
     }
 
     override func viewDidLoad() {
@@ -63,6 +59,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         circleView = PercentageCircleView( view: self.pieChartView )
         self.pieChartView.addSubview( circleView )
 
+        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
+        let currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
         _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
 
         self.checkSetting()
