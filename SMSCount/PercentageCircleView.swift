@@ -20,8 +20,8 @@ class PercentageCircleView: UIView {
         self.init(frame: view.frame)
 
         self.mainLayer = view.layer
-        self.circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
         self.circleRadius = frame.size.width/2
+        self.circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
 
         let fullCircleLayer = self.drawFullCircle()
         self.mainLayer.addSublayer(fullCircleLayer)
