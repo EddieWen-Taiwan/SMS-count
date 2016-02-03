@@ -26,8 +26,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
     var animationIndex: Int
-    var animationArray = [String]()
-    var stageIndexArray = [Int]()
+    var animationArray = [String]() // [ 1, 2, ... 99, 100 ]
+    var stageIndexArray = [Int]() //[ 55, 75, 88, 94, 97, 99 ]
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
@@ -44,7 +44,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     required init?(coder aDecoder: NSCoder) {
         self.currentDisplay = "day"
         self.animationIndex = 0
-        self.stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
         self.isCircleDrawn = false
         self.settingStatus = false
         self.downloadFromParse = false
@@ -157,6 +156,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         let currentProcessString = String( format: "%.1f", currentProcess )
         self.percentageLabel.text = currentProcessString
 
+        // If user doesn't want animation, do it at this moment
         if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
             if userPreference.boolForKey("countdownAnimation") == false {
                 self.checkCircleAnimation(true)
