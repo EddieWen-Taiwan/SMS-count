@@ -24,6 +24,10 @@ class PercentageCircleView: UIView {
 
         let fullCircleLayer = self.drawFullCircle()
         self.mainLayer.addSublayer(fullCircleLayer)
+
+        if percent != 0.0 {
+            self.addPercentageCircle( percent )
+        }
     }
 
     private func drawFullCircle() -> CAShapeLayer {
@@ -70,7 +74,6 @@ class PercentageCircleView: UIView {
     private func drawBasicCircle() -> CAShapeLayer {
 
         let circleLayer = CAShapeLayer()
-            // Setup the CAShapeLayer with the path, colors, and line width
             circleLayer.fillColor = UIColor.clearColor().CGColor
             circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).CGColor
             circleLayer.lineWidth = 5
