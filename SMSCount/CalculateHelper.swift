@@ -50,13 +50,11 @@ class CalculateHelper {
 
     func isSettingAllDone() -> Bool {
 
-        if self.valueEnterDate == "" {
+        if self.valueEnterDate == "" || self.valueServiceDays == -1 {
             return false
+        } else {
+            return true
         }
-        if self.valueServiceDays == -1 {
-            return false
-        }
-        return true
 
     }
 
