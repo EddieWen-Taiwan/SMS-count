@@ -8,9 +8,9 @@
 
 import SystemConfiguration
 
-public class Reachability {
+class Reachability {
 
-    public func isConnectedToNetwork() -> Bool {
+    func isConnectedToNetwork() -> Bool {
 
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
