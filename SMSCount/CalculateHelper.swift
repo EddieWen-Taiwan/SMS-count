@@ -179,8 +179,6 @@ class CalculateHelper {
 
     private func switchWeekday( weekday: Int ) -> String {
         switch weekday {
-            case -1:
-                return " Fri."
             case 1:
                 return " Sun."
             case 2:
@@ -191,12 +189,12 @@ class CalculateHelper {
                 return " Wed."
             case 5:
                 return " Thu."
-            case 6:
+            case -1, 6:
                 return " Fri."
             case 7:
                 return " Sat."
             default:
-                return " ."
+                return " "
         }
     }
 
