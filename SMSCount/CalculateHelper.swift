@@ -63,7 +63,7 @@ class CalculateHelper {
         self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
         // 入伍日 - enterDate
 
-        switch( valueServiceDays ) {
+        switch valueServiceDays {
             case 0:
                 dayComponent.year = 0
                 dayComponent.month = 4
@@ -80,8 +80,7 @@ class CalculateHelper {
                 dayComponent.year = 1
                 dayComponent.month = 0
                 dayComponent.day = 15-1
-            default:
-                // as value = 4
+            default: // as value = 4
                 dayComponent.year = 3
                 dayComponent.month = 0
                 dayComponent.day = -1
@@ -151,7 +150,7 @@ class CalculateHelper {
 
     func switchPeriod( period: String ) -> String {
         var output: String = ""
-        switch(period) {
+        switch period {
             case "0":
                 output = "四個月"
             case "1":
@@ -179,7 +178,7 @@ class CalculateHelper {
     }
 
     private func switchWeekday( weekday: Int ) -> String {
-        switch( weekday ) {
+        switch weekday {
             case -1:
                 return " Fri."
             case 1:
