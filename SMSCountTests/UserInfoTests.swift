@@ -115,4 +115,13 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testUpdateLocalUsername() {
+
+        let name = "Robot II"
+        self.info.updateLocalUsername( name )
+
+        XCTAssertEqual( self.userDefault.stringForKey("username"), name )
+
+    }
+
 }
