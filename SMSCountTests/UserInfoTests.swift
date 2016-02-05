@@ -146,4 +146,14 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testUpdateServiceDays() {
+
+        let service = 3
+        self.info.updateServiceDays( service )
+
+        XCTAssertEqual( self.info.userObject.valueForKey("serviceDays") as? Int, service )
+        XCTAssertTrue( self.info.objectIsChanged )
+
+    }
+
 }
