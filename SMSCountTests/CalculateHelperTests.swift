@@ -68,8 +68,10 @@ class CalculateHelperTests: XCTestCase {
     }
 
     func testIsSettingAllDone() {
-
-        self.removeDefaultValue()
+        
+        self.userDefault.removeObjectForKey("enterDate")
+        self.userDefault.removeObjectForKey("serviceDays")
+        self.userDefault.removeObjectForKey("discountDays")
 
         self.userDefault.setValue("2015 / 10 / 04", forKey: "enterDate")
         var helper = CalculateHelper()
@@ -88,12 +90,6 @@ class CalculateHelperTests: XCTestCase {
         self.userDefault.setInteger(15, forKey: "discountDays")
         XCTAssertTrue( CalculateHelper().settingStatus, "Both are set, it should be true.")
 
-    }
-
-    private func removeDefaultValue() {
-        self.userDefault.removeObjectForKey("enterDate")
-        self.userDefault.removeObjectForKey("serviceDays")
-        self.userDefault.removeObjectForKey("discountDays")
     }
 
 }
