@@ -124,4 +124,13 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testUpdateLocalMail() {
+
+        let mail = "no-reply@smscount.lol"
+        self.info.updateLocalMail( mail )
+
+        XCTAssertEqual( self.userDefault.stringForKey("email"), mail )
+
+    }
+
 }
