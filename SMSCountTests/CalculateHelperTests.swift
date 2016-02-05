@@ -14,6 +14,13 @@ class CalculateHelperTests: XCTestCase {
     var originEnterDate: String = ""
     var originServiceDays: Int = 0
     var originDiscountDays: Int = 0
+    
+    var dataSample = [AnyObject]( arrayLiteral:
+        [ "2015 / 06 / 25", 2, 27, true, "2015 / 05 / 27 Fri.", true ],
+        [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ],
+        [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ],
+        [ "2016 / 01 / 13", 0, 18, true, "2016 / 04 / 22 Fri.", true ]
+    )
 
     let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
@@ -46,22 +53,15 @@ class CalculateHelperTests: XCTestCase {
 
     func testIsRetireDateFixed() {
 
-        var dataSample = [AnyObject]( arrayLiteral:
-            [ "2015 / 06 / 25", 2, 27, true, "2015 / 05 / 27 Fri.", true ],
-            [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ],
-            [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ],
-            [ "2016 / 01 / 13", 0, 18, true, "2016 / 04 / 22 Fri.", true ]
-        )
-
         for var i = 0; i < 4; i++ {
-            self.userDefault.setValue( dataSample[i][0], forKey: "enterDate" )
-            self.userDefault.setValue( dataSample[i][1], forKey: "serviceDays" )
-            self.userDefault.setValue( dataSample[i][2], forKey: "discountDays" )
-            self.userDefault.setValue( dataSample[i][3], forKey: "autoWeekendFixed" )
+            self.userDefault.setValue( self.dataSample[i][0], forKey: "enterDate" )
+            self.userDefault.setValue( self.dataSample[i][1], forKey: "serviceDays" )
+            self.userDefault.setValue( self.dataSample[i][2], forKey: "discountDays" )
+            self.userDefault.setValue( self.dataSample[i][3], forKey: "autoWeekendFixed" )
 
             let helper = CalculateHelper()
 
-            XCTAssertEqual( helper.isRetireDateFixed(), dataSample[i][5] as? Bool )
+            XCTAssertEqual( helper.isRetireDateFixed(), self.dataSample[i][5] as? Bool )
         }
 
     }
