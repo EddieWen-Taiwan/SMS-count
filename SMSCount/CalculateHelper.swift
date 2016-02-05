@@ -55,10 +55,9 @@ class CalculateHelper {
         }
     }
 
-    func isSettingAllDone() -> Bool {
+    private func isSettingAllDone() -> Bool {
 
         self.settingStatus = self.valueEnterDate == "" || self.valueServiceDays == -1 ? false : true
-
         return self.settingStatus
 
     }
