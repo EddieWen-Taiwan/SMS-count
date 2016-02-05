@@ -56,7 +56,7 @@ class CalculateHelper {
         }
     }
 
-    private func isSettingAllDone() -> Bool {
+    func isSettingAllDone() -> Bool {
 
         if self.valueEnterDate == "" || self.valueServiceDays == -1 {
             return false
@@ -66,7 +66,7 @@ class CalculateHelper {
 
     }
 
-    private func calculateData() {
+    func calculateData() {
 
         self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
         // 入伍日 - enterDate
