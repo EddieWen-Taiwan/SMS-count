@@ -62,7 +62,7 @@ class CalculateHelper {
 
     }
 
-    internal func calculateData() {
+    private func calculateData() {
 
         self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
         // 入伍日 - enterDate
