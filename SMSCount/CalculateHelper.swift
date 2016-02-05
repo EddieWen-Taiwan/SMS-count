@@ -10,11 +10,11 @@ import UIKit
 
 class CalculateHelper {
 
-    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-    let dateFormatter = NSDateFormatter()
-    let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-    var dayComponent = NSDateComponents()
-    var weekendComponent = NSDateComponents()
+    private let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+    private let dateFormatter = NSDateFormatter()
+    private let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+    private var dayComponent = NSDateComponents()
+    private var weekendComponent = NSDateComponents()
 
     // Original data
     var valueEnterDate: String
@@ -23,14 +23,14 @@ class CalculateHelper {
     var valueAutoFixed: Bool
 
     // Outcome
-    var enterDate: NSDate!
-    var currentDate: NSDate!
-    var defaultRetireDate: NSDate!
-    var realRetireDate: NSDate!
-    var remainedDays: NSDateComponents!
-    var passedDays: NSDateComponents!
-    var wholeServiceDays: NSDateComponents!
-    var days2beFixed: Int = 0
+    private var enterDate: NSDate!
+    private var currentDate: NSDate!
+    private var defaultRetireDate: NSDate!
+    private var realRetireDate: NSDate!
+    private var remainedDays: NSDateComponents!
+    private var passedDays: NSDateComponents!
+    private var wholeServiceDays: NSDateComponents!
+    private var days2beFixed: Int = 0
 
     init() {
 
