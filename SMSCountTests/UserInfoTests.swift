@@ -133,4 +133,17 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testUpdateEnterDate() {
+
+        let date = "2015 / 12 / 17"
+        self.info.updateEnterDate( date )
+
+        XCTAssertEqual( self.userDefault.stringForKey("enterDate"), date )
+        XCTAssertEqual( self.info.userObject.valueForKey("yearOfEnterDate") as? Int, 2015 )
+        XCTAssertEqual( self.info.userObject.valueForKey("monthOfEnterDate") as? Int, 12 )
+        XCTAssertEqual( self.info.userObject.valueForKey("dateOfEnterDate") as? Int, 17 )
+        XCTAssertTrue( self.info.objectIsChanged )
+
+    }
+
 }
