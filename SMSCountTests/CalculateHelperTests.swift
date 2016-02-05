@@ -46,12 +46,12 @@ class CalculateHelperTests: XCTestCase {
 
     func testIsRetireDateFixed() {
 
-        //        let array =
-        var dataSample = [AnyObject]()
-        dataSample.append( [ "2015 / 06 / 25", 2, 27, true, "2015 / 05 / 27 Fri.", true ] )
-        dataSample.append( [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ] )
-        dataSample.append( [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ] )
-        dataSample.append( [ "2016 / 01 / 13", 0, 18, true, "2016 / 04 / 22 Fri.", true ] )
+        var dataSample = [AnyObject]( arrayLiteral:
+            [ "2015 / 06 / 25", 2, 27, true, "2015 / 05 / 27 Fri.", true ],
+            [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ],
+            [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ],
+            [ "2016 / 01 / 13", 0, 18, true, "2016 / 04 / 22 Fri.", true ]
+        )
 
         for var i = 0; i < 4; i++ {
             self.userDefault.setValue( dataSample[i][0], forKey: "enterDate" )
@@ -92,18 +92,21 @@ class CalculateHelperTests: XCTestCase {
         self.userDefault.removeObjectForKey("serviceDays")
         self.userDefault.removeObjectForKey("discountDays")
 
+        // ONLY enterDate
         self.userDefault.setValue("2015 / 10 / 04", forKey: "enterDate")
         var helper = CalculateHelper()
         XCTAssertFalse( helper.settingStatus, "Only 'enterDate', it should be false." )
 
         self.userDefault.removeObjectForKey("enterDate")
 
+        // ONLY serviceDays
         self.userDefault.setInteger(3, forKey: "serviceDays")
         helper = CalculateHelper()
         XCTAssertFalse( helper.settingStatus, "Only 'serviceDays', it should be false." )
 
         self.userDefault.removeObjectForKey("serviceDays")
 
+        // ALL
         self.userDefault.setValue("2016 / 02 / 18", forKey: "enterDate")
         self.userDefault.setInteger(1, forKey: "serviceDays")
         self.userDefault.setInteger(15, forKey: "discountDays")
