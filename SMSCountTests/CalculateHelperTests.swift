@@ -24,7 +24,6 @@ class CalculateHelperTests: XCTestCase {
         self.originServiceDays = self.userDefault.integerForKey("serviceDays")
         self.originDiscountDays = self.userDefault.integerForKey("discountDays")
 
-        self.removeDefaultValue()
     }
 
     override func tearDown() {
@@ -70,21 +69,24 @@ class CalculateHelperTests: XCTestCase {
 
     func testIsSettingAllDone() {
 
-        self.userDefault.setValue("2015/10/04", forKey: "enterDate")
-        XCTAssertFalse( CalculateHelper().isSettingAllDone(), "Only 'enterDate', it should be false." )
-
         self.removeDefaultValue()
+
+        self.userDefault.setValue("2015 / 10 / 04", forKey: "enterDate")
+        var helper = CalculateHelper()
+        XCTAssertFalse( helper.settingStatus, "Only 'enterDate', it should be false." )
+
+        self.userDefault.removeObjectForKey("enterDate")
 
         self.userDefault.setInteger(3, forKey: "serviceDays")
-        XCTAssertFalse( CalculateHelper().isSettingAllDone(), "Only 'serviceDays', it should be false." )
+        helper = CalculateHelper()
+        XCTAssertFalse( helper.settingStatus, "Only 'serviceDays', it should be false." )
 
-        self.removeDefaultValue()
+        self.userDefault.removeObjectForKey("serviceDays")
 
-        self.userDefault.setValue("2015/05/11", forKey: "enterDate")
+        self.userDefault.setValue("2016 / 02 / 18", forKey: "enterDate")
         self.userDefault.setInteger(1, forKey: "serviceDays")
-        XCTAssertTrue( CalculateHelper().isSettingAllDone(), "Both are set, it should be true.")
-
-        self.removeDefaultValue()
+        self.userDefault.setInteger(15, forKey: "discountDays")
+        XCTAssertTrue( CalculateHelper().settingStatus, "Both are set, it should be true.")
 
     }
 
