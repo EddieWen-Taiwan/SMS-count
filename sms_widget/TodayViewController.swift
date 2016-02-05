@@ -42,30 +42,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.correctDataShow( true )
 
             // Check whether should run countdown animation
-            var shouldBeUpdated: Bool = false
             let newRemainedDays = calculateHelper.getRemainedDays()
 
-            if newRemainedDays >= 0 {
-                if self.isUserRetired {
-                    shouldBeUpdated = true
-                    self.isUserRetired = false
-                } else {
-                    if self.remainedDaysLabel.text != String( newRemainedDays ) {
-                        shouldBeUpdated = true
-                    }
-                }
-            } else {
-                if self.isUserRetired {
-                    if self.remainedDaysLabel.text != String( newRemainedDays*(-1) ) {
-                        shouldBeUpdated = true
-                    }
-                } else {
-                    shouldBeUpdated = true
-                    self.isUserRetired = true
-                }
-            }
-
-            if shouldBeUpdated {
+            if self.isDataChanged( newRemainedDays ) {
                 if newRemainedDays >= 0 {
                     self.firstWord.text = "還有"
                     self.remainedDaysLabel.text = String( newRemainedDays )
@@ -80,6 +59,32 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         } else {
             self.correctDataShow( false )
         }
+
+    }
+
+    private func isDataChanged( day: Int ) -> Bool {
+
+        if day >= 0 {
+            if self.isUserRetired {
+                self.isUserRetired = false
+                return true
+            } else {
+                if self.remainedDaysLabel.text != String( day ) {
+                    return true
+                }
+            }
+        } else {
+            if self.isUserRetired {
+                if self.remainedDaysLabel.text != String( day*(-1) ) {
+                    return true
+                }
+            } else {
+                self.isUserRetired = true
+                return true
+            }
+        }
+
+        return false
 
     }
 
