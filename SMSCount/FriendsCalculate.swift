@@ -18,7 +18,7 @@ class FriendsCalculate: CalculateHelper {
         self.valueAutoFixed = autoFixed
 
         if super.isSettingAllDone() {
-            super.updateDate()
+            super.calculateData()
             return true
         } else {
             return false
