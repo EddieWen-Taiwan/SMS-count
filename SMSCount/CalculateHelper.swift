@@ -51,18 +51,15 @@ class CalculateHelper {
 
         // calculate data automaticlly
         if self.isSettingAllDone() {
-            self.settingStatus = true
             self.calculateData()
         }
     }
 
     func isSettingAllDone() -> Bool {
 
-        if self.valueEnterDate == "" || self.valueServiceDays == -1 {
-            return false
-        } else {
-            return true
-        }
+        self.settingStatus = self.valueEnterDate == "" || self.valueServiceDays == -1 ? false : true
+
+        return self.settingStatus
 
     }
 
