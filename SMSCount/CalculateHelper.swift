@@ -68,7 +68,7 @@ class CalculateHelper {
         self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
         // 入伍日 - enterDate
 
-        switch valueServiceDays {
+        switch self.valueServiceDays {
             case 0:
                 dayComponent.year = 0
                 dayComponent.month = 4
