@@ -48,6 +48,26 @@ class CalculateHelperTests: XCTestCase {
         }
     }
 
+    func testSwitchPeriod() {
+
+        let helper = CalculateHelper()
+        XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
+        XCTAssertEqual( helper.switchPeriod("1"), "四個月五天" )
+        XCTAssertEqual( helper.switchPeriod("2"), "一年" )
+        XCTAssertEqual( helper.switchPeriod("3"), "一年十五天" )
+        XCTAssertEqual( helper.switchPeriod("4"), "三年" )
+        XCTAssertEqual( helper.switchPeriod("四個月"), "0" )
+        XCTAssertEqual( helper.switchPeriod("四個月五天"), "1" )
+        XCTAssertEqual( helper.switchPeriod("一年"), "2" )
+        XCTAssertEqual( helper.switchPeriod("一年十五天"), "3" )
+        XCTAssertEqual( helper.switchPeriod("三年"), "4" )
+
+        XCTAssertNotEqual( helper.switchPeriod("2"), "三年" )
+        XCTAssertNotEqual( helper.switchPeriod("一年十五天"), "0" )
+        XCTAssertNotEqual( helper.switchPeriod("abc"), "三年" )
+
+    }
+
     func testIsSettingAllDone() {
 
         self.userDefault.setValue("2015/10/04", forKey: "enterDate")
