@@ -197,4 +197,11 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testInit() {
+
+        XCTAssertEqual( self.info.userObject.valueForKey("platform") as? String, "iOS" )
+        XCTAssertFalse( self.info.objectIsChanged )
+
+    }
+
 }
