@@ -12,7 +12,7 @@ import XCTest
 class CalculateHelperTests: XCTestCase {
     
     var dataSample = [AnyObject]( arrayLiteral:
-        [ "2015 / 06 / 25", 2, 27, true, "2015 / 05 / 27 Fri.", true ],
+        [ "2015 / 06 / 25", 2, 27, true, "2016 / 05 / 27 Fri.", true ],
         [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ],
         [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ],
         [ "2016 / 01 / 13", 0, 18, true, "2016 / 04 / 22 Fri.", true ]
@@ -60,7 +60,16 @@ class CalculateHelperTests: XCTestCase {
 
     func testGetRetireDate() {
 
+        for var i = 0; i < self.dataSample.count; i++ {
+            self.setDataSample( self.dataSample[i] )
+            let helper = CalculateHelper()
 
+            if helper.isRetireDateFixed() {
+                XCTAssertEqual( helper.getFixedRetireDate(), self.dataSample[i][4] as? String )
+            } else {
+                XCTAssertEqual( helper.getRetireDate(), self.dataSample[i][4] as? String )
+            }
+        }
 
     }
 
