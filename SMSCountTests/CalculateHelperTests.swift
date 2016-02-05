@@ -15,27 +15,19 @@ class CalculateHelperTests: XCTestCase {
     var originServiceDays: Int = 0
     var originDiscountDays: Int = 0
 
-    let dataSample_1 = [ "2015 / 06 / 25", 2, 27, true ]
-    let dataSample_2 = [ "2014 / 09 / 15", 3, 10, false ]
-    let dataSample_3 = [ "2015 / 03 / 17", 4, 15, true ]
-    let dataSample_4 = [ "2016 / 01 / 13", 0, 18, true ]
-
     let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.originEnterDate = self.userDefault.stringForKey("enterDate")!
-        self.originServiceDays = self.userDefault.integerForKey("serviceDays")
-        self.originDiscountDays = self.userDefault.integerForKey("discountDays")
 
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        self.userDefault.setValue(self.originEnterDate, forKey: "enterDate")
-        self.userDefault.setInteger(self.originServiceDays, forKey: "serviceDays")
-        self.userDefault.setInteger(self.originDiscountDays, forKey: "discountDays")
+        self.userDefault.setValue("2015 / 06 / 25", forKey: "enterDate")
+        self.userDefault.setInteger(2, forKey: "serviceDays")
+        self.userDefault.setInteger(27, forKey: "discountDays")
 
         super.tearDown()
     }
@@ -50,6 +42,28 @@ class CalculateHelperTests: XCTestCase {
         self.measureBlock {
             // Put the code you want to measure the time of here.
         }
+    }
+
+    func testIsRetireDateFixed() {
+
+        //        let array =
+        var dataSample = [AnyObject]()
+        dataSample.append( [ "2015 / 06 / 25", 2, 27, true, "2015 / 05 / 27 Fri.", true ] )
+        dataSample.append( [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ] )
+        dataSample.append( [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ] )
+        dataSample.append( [ "2016 / 01 / 13", 0, 18, true, "2016 / 04 / 22 Fri.", true ] )
+
+        for var i = 0; i < 4; i++ {
+            self.userDefault.setValue( dataSample[i][0], forKey: "enterDate" )
+            self.userDefault.setValue( dataSample[i][1], forKey: "serviceDays" )
+            self.userDefault.setValue( dataSample[i][2], forKey: "discountDays" )
+            self.userDefault.setValue( dataSample[i][3], forKey: "autoWeekendFixed" )
+
+            let helper = CalculateHelper()
+
+            XCTAssertEqual( helper.isRetireDateFixed(), dataSample[i][5] as? Bool )
+        }
+
     }
 
     func testSwitchPeriod() {
