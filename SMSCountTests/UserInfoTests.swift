@@ -13,7 +13,7 @@ class UserInfoTests: XCTestCase {
 
     let userDefault = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     var info: UserInfo!
-    
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -43,9 +43,9 @@ class UserInfoTests: XCTestCase {
         let fbid_1 = "12345678"
         self.info.addUserFBID( fbid_1 )
 
-        XCTAssertEqual(self.userDefault.stringForKey("fb_id"), fbid_1)
-        XCTAssertEqual(self.info.userObject.valueForKey("fb_id") as? String, fbid_1)
-        XCTAssertTrue(self.info.objectIsChanged)
+        XCTAssertEqual( self.userDefault.stringForKey("fb_id"), fbid_1 )
+        XCTAssertEqual( self.info.userObject.valueForKey("fb_id") as? String, fbid_1 )
+        XCTAssertTrue( self.info.objectIsChanged )
 
     }
 
@@ -56,7 +56,7 @@ class UserInfoTests: XCTestCase {
 
         XCTAssertEqual( self.userDefault.stringForKey("username"), name )
         XCTAssertEqual( self.info.userObject.valueForKey("username") as? String, name )
-        XCTAssertTrue(self.info.objectIsChanged)
+        XCTAssertTrue( self.info.objectIsChanged )
 
     }
 
@@ -67,7 +67,18 @@ class UserInfoTests: XCTestCase {
 
         XCTAssertEqual( self.userDefault.stringForKey("email"), mail )
         XCTAssertEqual( self.info.userObject.valueForKey("email") as? String, mail )
-        XCTAssertTrue(self.info.objectIsChanged)
+        XCTAssertTrue( self.info.objectIsChanged )
+
+    }
+
+    func testUpdateUserStatus() {
+
+        let status = "Hello, SMSCount"
+        self.info.updateUserStatus( status )
+
+        XCTAssertEqual( self.userDefault.stringForKey("status"), status )
+        XCTAssertEqual( self.info.userObject.valueForKey("status") as? String, status )
+        XCTAssertTrue( self.info.objectIsChanged )
 
     }
 
