@@ -35,7 +35,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.checkCurrentData()
     }
 
-    func checkCurrentData() {
+    private func checkCurrentData() {
 
         if calculateHelper.settingStatus {
 
@@ -83,7 +83,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     }
 
-    func correctDataShow( status: Bool ) {
+    private func correctDataShow( status: Bool ) {
 
         if status {
 
