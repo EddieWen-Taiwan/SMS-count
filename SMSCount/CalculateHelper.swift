@@ -165,28 +165,20 @@ class CalculateHelper {
             case "一年": return "2"
             case "一年十五天": return "3"
             case "三年": return "4"
-            default: return "."
+            default: return ""
         }
     }
 
     private func switchWeekday( weekday: Int ) -> String {
         switch weekday {
-            case 1:
-                return " Sun."
-            case 2:
-                return " Mon."
-            case 3:
-                return " Tue."
-            case 4:
-                return " Wed."
-            case 5:
-                return " Thu."
-            case -1, 6:
-                return " Fri."
-            case 7:
-                return " Sat."
-            default:
-                return " "
+            case 1: return " Sun."
+            case 2: return " Mon."
+            case 3: return " Tue."
+            case 4: return " Wed."
+            case 5: return " Thu."
+            case -1, 6: return " Fri."
+            case 7: return " Sat."
+            default: return ""
         }
     }
 
