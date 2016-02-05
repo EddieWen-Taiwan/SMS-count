@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "repeat-image")!)
 
-        if calculateHelper.isSettingAllDone() {
+        if calculateHelper.settingStatus {
 
             self.refreshData()
 
@@ -55,7 +55,6 @@ class ProfileViewController: UIViewController {
     }
 
     func refreshData() {
-        calculateHelper.updateDate()
         self.passedDaysLabel.text = String( calculateHelper.getPassedDays() )
 
         if calculateHelper.isRetireDateFixed() {
@@ -98,7 +97,7 @@ class ProfileViewController: UIViewController {
 
             // Reinit
             calculateHelper = CalculateHelper()
-            if calculateHelper.isSettingAllDone() {
+            if calculateHelper.settingStatus {
                 self.refreshData()
             }
 
