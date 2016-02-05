@@ -32,6 +32,9 @@ class CalculateHelper {
     private var wholeServiceDays: NSDateComponents!
     private var days2beFixed: Int = 0
 
+    // For other ViewControllers
+    var settingStatus: Bool = false
+
     init() {
 
         self.valueEnterDate = userPreference.stringForKey("enterDate") ?? ""
@@ -48,11 +51,12 @@ class CalculateHelper {
 
         // calculate data automaticlly
         if self.isSettingAllDone() {
+            self.settingStatus = true
             self.calculateData()
         }
     }
 
-    func isSettingAllDone() -> Bool {
+    private func isSettingAllDone() -> Bool {
 
         if self.valueEnterDate == "" || self.valueServiceDays == -1 {
             return false
