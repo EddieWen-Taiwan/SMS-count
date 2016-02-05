@@ -49,4 +49,15 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testAddUserName() {
+
+        let name = "Robot"
+        self.info.addUserName( name )
+
+        XCTAssertEqual( self.userDefault.stringForKey("username"), name )
+        XCTAssertEqual( self.info.userObject.valueForKey("username") as? String, name )
+        XCTAssertTrue(self.info.objectIsChanged)
+
+    }
+
 }
