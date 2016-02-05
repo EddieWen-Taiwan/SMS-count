@@ -10,10 +10,6 @@ import XCTest
 @testable import SMSCount
 
 class CalculateHelperTests: XCTestCase {
-
-    var originEnterDate: String = ""
-    var originServiceDays: Int = 0
-    var originDiscountDays: Int = 0
     
     var dataSample = [AnyObject]( arrayLiteral:
         [ "2015 / 06 / 25", 2, 27, true, "2015 / 05 / 27 Fri.", true ],
