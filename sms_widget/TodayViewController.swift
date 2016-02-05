@@ -35,10 +35,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     func checkCurrentData() {
 
-        if calculateHelper.isSettingAllDone() {
+        if calculateHelper.settingStatus {
 
             self.correctDataShow( true )
-            calculateHelper.updateDate()
 
             // Check whether should run countdown animation
             var shouldBeUpdated: Bool = false
