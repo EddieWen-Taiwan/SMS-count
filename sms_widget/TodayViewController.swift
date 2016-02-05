@@ -22,11 +22,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     var isUserRetired: Bool = false
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
-    }
-
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
