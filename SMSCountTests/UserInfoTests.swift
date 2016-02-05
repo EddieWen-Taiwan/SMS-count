@@ -177,4 +177,13 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testUpdateAnimationSetting() {
+
+        let animate = false
+        self.info.updateAnimationSetting( animate )
+
+        XCTAssertFalse( self.userDefault.boolForKey("countdownAnimation") )
+
+    }
+
 }
