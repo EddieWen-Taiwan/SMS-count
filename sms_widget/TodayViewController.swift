@@ -18,9 +18,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet var secondWord: UILabel!
 
     let calculateHelper = CalculateHelper()
-    var updateResult: NCUpdateResult = NCUpdateResult.NoData
+    var updateResult: NCUpdateResult
 
-    var isUserRetired: Bool = false
+    var isUserRetired: Bool
+
+    required init?(coder aDecoder: NSCoder) {
+        self.updateResult = NCUpdateResult.NoData
+        self.isUserRetired = false
+
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
