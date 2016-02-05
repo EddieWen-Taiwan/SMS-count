@@ -85,23 +85,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     private func correctDataShow( status: Bool ) {
 
-        if status {
+        remainedDaysLabel.hidden = status ? false : true
+        firstWord.hidden = status ? false : true
+        secondWord.hidden = status ? false : true
 
-            remainedDaysLabel.hidden = false
-            firstWord.hidden = false
-            secondWord.hidden = false
-
-            warningLabel.hidden = true
-
-        } else {
-
-            remainedDaysLabel.hidden = true
-            firstWord.hidden = true
-            secondWord.hidden = true
-
-            warningLabel.hidden = false
-
-        }
+        warningLabel.hidden = status ? true : false
 
     }
 
