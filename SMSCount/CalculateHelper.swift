@@ -154,32 +154,19 @@ class CalculateHelper {
     }
 
     func switchPeriod( period: String ) -> String {
-        var output: String = ""
         switch period {
-            case "0":
-                output = "四個月"
-            case "1":
-                output = "四個月五天"
-            case "2":
-                output = "一年"
-            case "3":
-                output = "一年十五天"
-            case "4":
-                output = "三年"
-            case "四個月":
-                output = "0"
-            case "四個月五天":
-                output = "1"
-            case "一年":
-                output = "2"
-            case "一年十五天":
-                output = "3"
-            case "三年":
-                output = "4"
-            default:
-                output = "."
+            case "0": return "四個月"
+            case "1": return "四個月五天"
+            case "2": return "一年"
+            case "3": return "一年十五天"
+            case "4": return "三年"
+            case "四個月": return "0"
+            case "四個月五天": return "1"
+            case "一年": return "2"
+            case "一年十五天": return "3"
+            case "三年": return "4"
+            default: return "."
         }
-        return output
     }
 
     private func switchWeekday( weekday: Int ) -> String {
