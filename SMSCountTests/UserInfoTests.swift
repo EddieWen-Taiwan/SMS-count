@@ -166,4 +166,15 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testUpdateWeekendFixed() {
+
+        let fix = true
+        self.info.updateWeekendFixed( fix )
+
+        XCTAssertTrue( self.userDefault.boolForKey("autoWeekendFixed") )
+        XCTAssertTrue( self.info.userObject.valueForKey("weekendDischarge") as? Bool == true )
+        XCTAssertTrue( self.info.objectIsChanged )
+
+    }
+
 }
