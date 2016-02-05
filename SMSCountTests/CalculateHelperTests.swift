@@ -49,17 +49,26 @@ class CalculateHelperTests: XCTestCase {
 
     func testIsRetireDateFixed() {
 
-        for var i = 0; i < 4; i++ {
-            self.userDefault.setValue( self.dataSample[i][0], forKey: "enterDate" )
-            self.userDefault.setValue( self.dataSample[i][1], forKey: "serviceDays" )
-            self.userDefault.setValue( self.dataSample[i][2], forKey: "discountDays" )
-            self.userDefault.setValue( self.dataSample[i][3], forKey: "autoWeekendFixed" )
-
+        for var i = 0; i < self.dataSample.count; i++ {
+            self.setDataSample( self.dataSample[i] )
             let helper = CalculateHelper()
 
             XCTAssertEqual( helper.isRetireDateFixed(), self.dataSample[i][5] as? Bool )
         }
 
+    }
+
+    func testGetRetireDate() {
+
+
+
+    }
+
+    private func setDataSample( sample: AnyObject ) {
+        self.userDefault.setValue( sample[0], forKey: "enterDate" )
+        self.userDefault.setValue( sample[1], forKey: "serviceDays" )
+        self.userDefault.setValue( sample[2], forKey: "discountDays" )
+        self.userDefault.setValue( sample[3], forKey: "autoWeekendFixed" )
     }
 
     func testSwitchPeriod() {
