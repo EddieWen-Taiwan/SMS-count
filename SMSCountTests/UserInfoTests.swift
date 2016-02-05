@@ -60,4 +60,15 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testAddUserMail() {
+
+        let mail = "service@smscount.lol"
+        self.info.addUserMail( mail )
+
+        XCTAssertEqual( self.userDefault.stringForKey("email"), mail )
+        XCTAssertEqual( self.info.userObject.valueForKey("email") as? String, mail )
+        XCTAssertTrue(self.info.objectIsChanged)
+
+    }
+
 }
