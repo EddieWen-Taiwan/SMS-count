@@ -11,7 +11,7 @@ import XCTest
 
 class UserInfoTests: XCTestCase {
 
-    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+    let userDefault = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     var info: UserInfo!
     
     override func setUp() {
@@ -35,6 +35,17 @@ class UserInfoTests: XCTestCase {
         self.measureBlock {
             // Put the code you want to measure the time of here.
         }
+    }
+
+    func testAddUserFBID() {
+
+        let fbid_1 = "12345678"
+        self.info.addUserFBID( fbid_1 )
+
+        XCTAssertEqual(self.userDefault.stringForKey("fb_id"), fbid_1)
+        XCTAssertEqual(self.info.userObject.valueForKey("fb_id") as? String, fbid_1)
+        XCTAssertTrue(self.info.objectIsChanged)
+
     }
 
 }
