@@ -11,6 +11,17 @@ import XCTest
 
 class UserInfoTests: XCTestCase {
 
+    var fb_id: String!
+    var username: String!
+    var email: String!
+    var status: String!
+    var enterDate: String!
+    var serviceDays: Int!
+    var discountDays: Int!
+    var autoWeekendFixed: Bool!
+    var countdownAnimation: Bool!
+    var publicProfile: Bool!
+
     let userDefault = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     var info: UserInfo!
 
@@ -19,10 +30,32 @@ class UserInfoTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         self.info = UserInfo()
         self.info.objectIsChanged = false
+
+        self.fb_id = self.userDefault.stringForKey("fb_id")
+        self.username = self.userDefault.stringForKey("username")
+        self.email = self.userDefault.stringForKey("email")
+        self.status = self.userDefault.stringForKey("status")
+        self.enterDate = self.userDefault.stringForKey("enterDate")
+        self.serviceDays = self.userDefault.integerForKey("serviceDays")
+        self.discountDays = self.userDefault.integerForKey("discountDays")
+        self.autoWeekendFixed = self.userDefault.boolForKey("autoWeekendFixed")
+        self.countdownAnimation = self.userDefault.boolForKey("countdownAnimation")
+        self.publicProfile = self.userDefault.boolForKey("publicProfile")
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.userDefault.setValue( self.fb_id, forKey: "fb_id" )
+        self.userDefault.setValue( self.username, forKey: "username" )
+        self.userDefault.setValue( self.email, forKey: "email" )
+        self.userDefault.setValue( self.status, forKey: "status" )
+        self.userDefault.setValue( self.enterDate, forKey: "enterDate" )
+        self.userDefault.setInteger( self.serviceDays, forKey: "serviceDays" )
+        self.userDefault.setInteger( self.discountDays, forKey: "discountDays" )
+        self.userDefault.setBool( self.autoWeekendFixed, forKey: "autoWeekendFixed" )
+        self.userDefault.setBool( self.countdownAnimation, forKey: "countdownAnimation" )
+        self.userDefault.setBool( self.publicProfile, forKey: "publicProfile" )
+
         super.tearDown()
     }
 
