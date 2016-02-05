@@ -32,18 +32,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.checkCurrentData()
-    }
-
-    private func checkCurrentData() {
-
+        // checkCurrentData
         if calculateHelper.settingStatus {
 
             self.correctDataShow( true )
 
-            // Check whether should run countdown animation
             let newRemainedDays = calculateHelper.getRemainedDays()
-
             if self.isDataChanged( newRemainedDays ) {
                 if newRemainedDays >= 0 {
                     self.firstWord.text = "還有"
@@ -59,9 +53,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         } else {
             self.correctDataShow( false )
         }
-
     }
 
+    // Check whether should run countdown animation
     private func isDataChanged( day: Int ) -> Bool {
 
         if day >= 0 {
