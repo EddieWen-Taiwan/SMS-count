@@ -38,7 +38,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var calculateHelper = CalculateHelper()
     var loadingView = LoadingView() // LoaingView while taking screenshot
 
-    var settingStatus: Bool // Is setting all setup
     var downloadFromParse: Bool // Download data from Parse in FriendsTableVC
 
     required init?(coder aDecoder: NSCoder) {
@@ -46,7 +45,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.animationIndex = 0
         self.stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
         self.isCircleDrawn = false
-        self.settingStatus = false
         self.downloadFromParse = false
 
         super.init(coder: aDecoder)
@@ -75,8 +73,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     func checkSetting() {
 
-        self.settingStatus = calculateHelper.isSettingAllDone()
-        if self.settingStatus {
+        if calculateHelper.settingStatus {
 
             self.prepareTextAndNumbers()
 
@@ -90,8 +87,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     }
 
     func prepareTextAndNumbers() {
-
-        calculateHelper.updateDate()
 
         var newRemainedDays = calculateHelper.getRemainedDays()
         var daysText = "剩餘天數"
@@ -264,7 +259,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
         }, completion: { finish in
             self.currentDisplay = switch2chart ? "chart" : "day"
-            if self.settingStatus {
+            if self.calculateHelper.settingStatus {
                 if switch2chart {
                     self.checkCircleAnimation(false)
                 }
