@@ -186,4 +186,15 @@ class UserInfoTests: XCTestCase {
 
     }
 
+    func testUpdatePublicProfile() {
+
+        let show = false
+        self.info.updatePublicProfile( show )
+
+        XCTAssertFalse( self.userDefault.boolForKey("publicProfile") )
+        XCTAssertFalse( self.info.userObject.valueForKey("publicProfile") as? Bool == true )
+        XCTAssertTrue( self.info.objectIsChanged )
+
+    }
+
 }
