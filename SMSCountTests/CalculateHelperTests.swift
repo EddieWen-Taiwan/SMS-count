@@ -15,6 +15,11 @@ class CalculateHelperTests: XCTestCase {
     var originServiceDays: Int = 0
     var originDiscountDays: Int = 0
 
+    let dataSample_1 = [ "2015 / 06 / 25", 2, 27, true ]
+    let dataSample_2 = [ "2014 / 09 / 15", 3, 10, false ]
+    let dataSample_3 = [ "2015 / 03 / 17", 4, 15, true ]
+    let dataSample_4 = [ "2016 / 01 / 13", 0, 18, true ]
+
     let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
     override func setUp() {
