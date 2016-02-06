@@ -10,4 +10,8 @@ import UIKit
 
 class CountdownView: UIView {
 
+    convenience init(view: UIView) {
+        self.init(frame: CGRectMake(0, 0, view.frame.width, view.frame.height-44-49))
+    }
+
 }
