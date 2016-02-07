@@ -88,12 +88,9 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     func prepareTextAndNumbers() {
 
-        var newRemainedDays = calculateHelper.getRemainedDays()
-        if newRemainedDays < 0 {
-            newRemainedDays *= (-1)
-        }
+        let newRemainedDays = calculateHelper.getRemainedDays()
         self.backRemainedDaysWord.text = newRemainedDays < 0 ? "自由天數" : "剩餘天數"
-        self.backRemainedDaysLabel.text = String( newRemainedDays )
+        self.backRemainedDaysLabel.text = String( abs(newRemainedDays) )
 
         self.setTextOfProcess()
     }

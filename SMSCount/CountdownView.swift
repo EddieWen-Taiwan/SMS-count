@@ -53,10 +53,10 @@ class CountdownView: UIView {
         if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
             if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
                 // Run animation
-                self.beReadyAndRunCountingAnimation(days)
+                self.beReadyAndRunCountingAnimation( abs(days) )
             } else {
                 // Animation was completed or User doesn't want animation
-                self.dayLabel.text = String(days)
+                self.dayLabel.text = String( abs(days) )
             }
         }
     }
