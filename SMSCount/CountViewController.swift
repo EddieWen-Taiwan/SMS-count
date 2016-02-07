@@ -21,6 +21,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     @IBOutlet var imageOnSwitchBtn: UIImageView!
     var currentDisplay: String
 
+    @IBOutlet var contentView: UIView!
     // RemainedDays
     var countdownView = CountdownView()
 
@@ -53,10 +54,10 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.switchViewButton.layer.borderWidth = 2
 
         countdownView = CountdownView(view: self.view)
-        self.view.addSubview( countdownView )
+        self.contentView.addSubview( countdownView )
 
         circleView = PercentageCircleView( view: self.pieChartView )
-        self.pieChartView.addSubview( circleView )
+        self.contentView.addSubview( circleView )
 
         // Prepare background image
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
