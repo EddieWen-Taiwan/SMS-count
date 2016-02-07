@@ -36,7 +36,7 @@ class CountdownView: UIView {
     private func addTextLabel() {
 
         self.textLabel = UILabel(frame: CGRectMake(0, (UIScreen.mainScreen().bounds.height-44-49)/2+30+78, UIScreen.mainScreen().bounds.width, 23))
-        self.textLabel.text = "剩餘天數"
+//        self.textLabel.text = "剩餘天數"
         self.textLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
         self.textLabel.textColor = UIColor.whiteColor()
         self.textLabel.textAlignment = .Center
@@ -47,7 +47,7 @@ class CountdownView: UIView {
 
     func setRemainedDays( days: Int ) {
 
-        
+        self.textLabel.text = days < 0 ? "自由天數" : "剩餘天數"
 
     }
 
