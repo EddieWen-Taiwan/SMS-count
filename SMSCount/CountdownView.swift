@@ -16,6 +16,7 @@ class CountdownView: UIView {
         self.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-44-49))
 
         self.addDaysLabel()
+        self.addTextLabel()
     }
 
     func addDaysLabel() {
@@ -30,4 +31,17 @@ class CountdownView: UIView {
         self.addSubview( self.dayLabel )
 
     }
+
+    func addTextLabel() {
+
+        let textLabel = UILabel(frame: CGRectMake(0, (UIScreen.mainScreen().bounds.height-44-49)/2+30+78, UIScreen.mainScreen().bounds.width, 23))
+            textLabel.text = "剩餘天數"
+            textLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
+            textLabel.textColor = UIColor.whiteColor()
+            textLabel.textAlignment = .Center
+
+        self.addSubview( textLabel )
+
+    }
+
 }
