@@ -25,9 +25,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     @IBOutlet var remainedView: UIView!
     @IBOutlet var frontRemainedDaysLabel: UILabel!
     @IBOutlet var frontRemainedDaysWord: UILabel!
-    var animationIndex: Int
-    var animationArray = [String]() // [ 1, 2, ... 99, 100 ]
-    var stageIndexArray = [Int]()
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
@@ -42,8 +39,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     required init?(coder aDecoder: NSCoder) {
         self.currentDisplay = "day"
-        self.animationIndex = 0
-        self.stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
         self.isCircleDrawn = false
         self.downloadFromParse = false
 
@@ -93,39 +88,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.backRemainedDaysLabel.text = String( abs(newRemainedDays) )
 
         self.setTextOfProcess()
-    }
-
-    func beReadyAndRunCountingAnimation( remainedDays: Int ) {
-
-        // Animation setting
-        animationIndex = 0
-        animationArray.removeAll(keepCapacity: false) // Maybe it should be true
-        if remainedDays < 100 {
-            for var i = 0; i <= remainedDays; i++ {
-                animationArray.append( String(i) )
-            }
-        } else {
-            for var i = 1; i <= 95; i++ {
-                animationArray.append( String( format: "%.f", Double( (remainedDays-3)*i )*0.01 ) )
-            }
-            for var i = 96; i <= 100; i++ {
-                animationArray.append( String( remainedDays-(100-i) ) )
-            }
-        }
-
-        let arrayLength = animationArray.count
-        stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
-        stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
-        stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
-        stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
-        stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
-        stageIndexArray[5] = arrayLength-1
-
-        self.frontRemainedDaysLabel.text = "0"
-
-        // Run animation
-        NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
-
     }
 
     func setTextOfProcess() {

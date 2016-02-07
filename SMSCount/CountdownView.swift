@@ -13,6 +13,10 @@ class CountdownView: UIView {
     var dayLabel = UILabel()
     var textLabel = UILabel()
 
+    var animationIndex: Int = 0
+    var animationArray = [String]() // [ 1, 2, ... 99, 100 ]
+    var stageIndexArray = [Int]()
+
     convenience init(view: UIView) {
         self.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-44-49))
 
@@ -59,10 +63,40 @@ class CountdownView: UIView {
                 self.dayLabel.text = String( abs(days) )
             }
         }
+
     }
 
     func beReadyAndRunCountingAnimation( days: Int ) {
-        
+
+        // Animation setting
+        self.animationIndex = 0
+        self.animationArray.removeAll(keepCapacity: false) // Maybe it should be true
+        if days < 100 {
+            for var i = 0; i <= days; i++ {
+                self.animationArray.append( String(i) )
+            }
+        } else {
+            for var i = 1; i <= 95; i++ {
+                self.animationArray.append( String( format: "%.f", Double( (days-3)*i )*0.01 ) )
+            }
+            for var i = 96; i <= 100; i++ {
+                self.animationArray.append( String( days-(100-i) ) )
+            }
+        }
+
+        let arrayLength = self.animationArray.count
+        self.stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
+        self.stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
+        self.stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
+        self.stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
+        self.stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
+        self.stageIndexArray[5] = arrayLength-1
+
+        self.dayLabel.text = "0"
+
+        // Run animation
+        NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
+
     }
 
 }
