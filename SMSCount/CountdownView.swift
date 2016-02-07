@@ -71,14 +71,14 @@ class CountdownView: UIView {
         self.animationArray.removeAll(keepCapacity: false) // Maybe it should be true
 
         if days < 100 {
-            for var i = 0; i <= days; i++ {
+            for i in 1 ... days {
                 self.animationArray.append( String(i) )
             }
         } else {
-            for var i = 1; i <= 95; i++ {
+            for i in 1 ... 95 {
                 self.animationArray.append( String( format: "%.f", Double( (days-3)*i )*0.01 ) )
             }
-            for var i = 96; i <= 100; i++ {
+            for i in 96 ... 100 {
                 self.animationArray.append( String( days-(100-i) ) )
             }
         }
