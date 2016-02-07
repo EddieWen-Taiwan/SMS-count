@@ -17,7 +17,7 @@ class PercentageCircleView: UIView {
     var circleRadius: CGFloat = 0.0
 
     convenience init(view: UIView) {
-        self.init(frame: view.frame)
+        self.init(frame: CGRectMake(0, 0, 180, 180))
 
         self.mainLayer = view.layer
         self.circleRadius = frame.size.width/2
