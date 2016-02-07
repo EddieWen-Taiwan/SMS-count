@@ -19,7 +19,7 @@ class CountdownView: UIView {
         self.addTextLabel()
     }
 
-    func addDaysLabel() {
+    private func addDaysLabel() {
 
         self.dayLabel = UILabel(frame: CGRectMake(0, 0, self.frame.width, 60))
         self.dayLabel.center = self.center
@@ -32,7 +32,7 @@ class CountdownView: UIView {
 
     }
 
-    func addTextLabel() {
+    private func addTextLabel() {
 
         let textLabel = UILabel(frame: CGRectMake(0, (UIScreen.mainScreen().bounds.height-44-49)/2+30+78, UIScreen.mainScreen().bounds.width, 23))
             textLabel.text = "剩餘天數"
