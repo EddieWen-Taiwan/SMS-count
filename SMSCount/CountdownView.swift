@@ -154,8 +154,9 @@ class CountdownView: UIView {
             } else {
                 timer.invalidate()
 
-                let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-                userPreference.setBool( true, forKey: "dayAnimated" )
+                if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+                    userPreference.setBool( true, forKey: "dayAnimated" )
+                }
             }
 
         default:
