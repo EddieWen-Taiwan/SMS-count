@@ -89,25 +89,11 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     func prepareTextAndNumbers() {
 
         var newRemainedDays = calculateHelper.getRemainedDays()
-        var daysText = "剩餘天數"
         if newRemainedDays < 0 {
             newRemainedDays *= (-1)
-            daysText = "自由天數"
         }
-        self.backRemainedDaysWord.text = daysText
-        self.frontRemainedDaysWord.text = daysText
+        self.backRemainedDaysWord.text = newRemainedDays < 0 ? "自由天數" : "剩餘天數"
         self.backRemainedDaysLabel.text = String( newRemainedDays )
-
-        // Set remainedDays
-        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
-            if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
-                // Run animation
-                self.beReadyAndRunCountingAnimation(newRemainedDays)
-            } else {
-                // Animation was completed or User doesn't want animation
-                self.frontRemainedDaysLabel.text = String( newRemainedDays )
-            }
-        }
 
         self.setTextOfProcess()
     }
