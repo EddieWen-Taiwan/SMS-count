@@ -64,7 +64,7 @@ class CountdownView: UIView {
 
     }
 
-    func beReadyAndRunCountingAnimation( days: Int ) {
+    private func beReadyAndRunCountingAnimation( days: Int ) {
 
         // Animation setting
         self.animationIndex = 0
@@ -97,16 +97,12 @@ class CountdownView: UIView {
 
     }
 
-    func daysAddingEffect( timer: NSTimer ) {
-
-        func updateLabel() {
-            self.textLabel.text = self.animationArray[ self.animationIndex++ ]
-        }
+    private func daysAddingEffect( timer: NSTimer ) {
 
         switch( timer.userInfo! as! String ) {
         case "stage1":
             if self.animationIndex < self.stageIndexArray[0] {
-                updateLabel()
+                self.updateLabel()
             } else {
                 timer.invalidate()
                 NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
@@ -114,7 +110,7 @@ class CountdownView: UIView {
 
         case "stage2":
             if self.animationIndex < self.stageIndexArray[1] {
-                updateLabel()
+                self.updateLabel()
             } else {
                 timer.invalidate()
                 NSTimer.scheduledTimerWithTimeInterval( 0.04, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
@@ -122,7 +118,7 @@ class CountdownView: UIView {
 
         case "stage3":
             if self.animationIndex < self.stageIndexArray[2] {
-                updateLabel()
+                self.updateLabel()
             } else {
                 timer.invalidate()
                 NSTimer.scheduledTimerWithTimeInterval( 0.08, target: self, selector: "daysAddingEffect:", userInfo: "stage4", repeats: true )
@@ -130,7 +126,7 @@ class CountdownView: UIView {
 
         case "stage4":
             if self.animationIndex < self.stageIndexArray[3] {
-                updateLabel()
+                self.updateLabel()
             } else {
                 timer.invalidate()
                 NSTimer.scheduledTimerWithTimeInterval( 0.16, target: self, selector: "daysAddingEffect:", userInfo: "stage5", repeats: true )
@@ -138,7 +134,7 @@ class CountdownView: UIView {
 
         case "stage5":
             if self.animationIndex < self.stageIndexArray[4] {
-                updateLabel()
+                self.updateLabel()
             } else {
                 timer.invalidate()
                 NSTimer.scheduledTimerWithTimeInterval( 0.24, target: self, selector: "daysAddingEffect:", userInfo: "stage6", repeats: true )
@@ -146,7 +142,7 @@ class CountdownView: UIView {
 
         case "stage6":
             if self.animationIndex < self.stageIndexArray[5] {
-                updateLabel()
+                self.updateLabel()
             } else {
                 timer.invalidate()
                 NSTimer.scheduledTimerWithTimeInterval( 0.32, target: self, selector: "daysAddingEffect:", userInfo: "stage7", repeats: true )
@@ -154,7 +150,7 @@ class CountdownView: UIView {
 
         case "stage7":
             if self.animationIndex == self.stageIndexArray[5] {
-                updateLabel()
+                self.updateLabel()
             } else {
                 timer.invalidate()
 
@@ -167,5 +163,8 @@ class CountdownView: UIView {
         }
     }
 
+    private func updateLabel() {
+        self.textLabel.text = self.animationArray[ self.animationIndex++ ]
+    }
 
 }
