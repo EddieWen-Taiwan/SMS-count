@@ -49,6 +49,20 @@ class CountdownView: UIView {
 
         self.textLabel.text = days < 0 ? "自由天數" : "剩餘天數"
 
+        // Set remainedDays
+        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+            if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
+                // Run animation
+                self.beReadyAndRunCountingAnimation(days)
+            } else {
+                // Animation was completed or User doesn't want animation
+                self.dayLabel.text = String(days)
+            }
+        }
+    }
+
+    func beReadyAndRunCountingAnimation( days: Int ) {
+        
     }
 
 }
