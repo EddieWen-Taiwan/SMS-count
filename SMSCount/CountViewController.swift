@@ -21,13 +21,9 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     @IBOutlet var imageOnSwitchBtn: UIImageView!
     var currentDisplay: String
 
+    @IBOutlet var contentView: UIView!
     // RemainedDays
-    @IBOutlet var remainedView: UIView!
-    @IBOutlet var frontRemainedDaysLabel: UILabel!
-    @IBOutlet var frontRemainedDaysWord: UILabel!
-    var animationIndex: Int
-    var animationArray = [String]() // [ 1, 2, ... 99, 100 ]
-    var stageIndexArray = [Int]()
+    var countdownView = CountdownView()
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
@@ -42,8 +38,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     required init?(coder aDecoder: NSCoder) {
         self.currentDisplay = "day"
-        self.animationIndex = 0
-        self.stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
         self.isCircleDrawn = false
         self.downloadFromParse = false
 
@@ -59,8 +53,11 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.switchViewButton.layer.borderWidth = 2
 
+        countdownView = CountdownView(view: self.view)
+        self.contentView.addSubview( countdownView )
+
         circleView = PercentageCircleView( view: self.pieChartView )
-        self.pieChartView.addSubview( circleView )
+        self.contentView.addSubview( circleView )
 
         // Prepare background image
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
@@ -88,60 +85,16 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     func prepareTextAndNumbers() {
 
-        var newRemainedDays = calculateHelper.getRemainedDays()
-        var daysText = "剩餘天數"
-        if newRemainedDays < 0 {
-            newRemainedDays *= (-1)
-            daysText = "自由天數"
-        }
-        self.backRemainedDaysWord.text = daysText
-        self.frontRemainedDaysWord.text = daysText
-        self.backRemainedDaysLabel.text = String( newRemainedDays )
+        let newRemainedDays = calculateHelper.getRemainedDays()
 
-        // Set remainedDays
-        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
-            if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
-                // Run animation
-                self.beReadyAndRunCountingAnimation(newRemainedDays)
-            } else {
-                // Animation was completed or User doesn't want animation
-                self.frontRemainedDaysLabel.text = String( newRemainedDays )
-            }
-        }
+        // For screenshot
+        self.backRemainedDaysWord.text = newRemainedDays < 0 ? "自由天數" : "剩餘天數"
+        self.backRemainedDaysLabel.text = String( abs(newRemainedDays) )
+
+        // Start animation
+        countdownView.setRemainedDays( newRemainedDays )
 
         self.setTextOfProcess()
-    }
-
-    func beReadyAndRunCountingAnimation( remainedDays: Int ) {
-
-        // Animation setting
-        animationIndex = 0
-        animationArray.removeAll(keepCapacity: false) // Maybe it should be true
-        if remainedDays < 100 {
-            for var i = 0; i <= remainedDays; i++ {
-                animationArray.append( String(i) )
-            }
-        } else {
-            for var i = 1; i <= 95; i++ {
-                animationArray.append( String( format: "%.f", Double( (remainedDays-3)*i )*0.01 ) )
-            }
-            for var i = 96; i <= 100; i++ {
-                animationArray.append( String( remainedDays-(100-i) ) )
-            }
-        }
-
-        let arrayLength = animationArray.count
-        stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
-        stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
-        stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
-        stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
-        stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
-        stageIndexArray[5] = arrayLength-1
-
-        self.frontRemainedDaysLabel.text = "0"
-
-        // Run animation
-        NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
 
     }
 
@@ -177,76 +130,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         }
     }
 
-    func daysAddingEffect( timer: NSTimer ) {
-
-        func updateLabel() {
-            self.frontRemainedDaysLabel.text = self.animationArray[ self.animationIndex++ ]
-        }
-
-        switch( timer.userInfo! as! String ) {
-            case "stage1":
-                if animationIndex < stageIndexArray[0] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
-                }
-
-            case "stage2":
-                if animationIndex < stageIndexArray[1] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.04, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
-                }
-            
-            case "stage3":
-                if animationIndex < stageIndexArray[2] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.08, target: self, selector: "daysAddingEffect:", userInfo: "stage4", repeats: true )
-                }
-
-            case "stage4":
-                if animationIndex < stageIndexArray[3] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.16, target: self, selector: "daysAddingEffect:", userInfo: "stage5", repeats: true )
-                }
-
-            case "stage5":
-                if animationIndex < stageIndexArray[4] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.24, target: self, selector: "daysAddingEffect:", userInfo: "stage6", repeats: true )
-                }
-
-            case "stage6":
-                if animationIndex < stageIndexArray[5] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.32, target: self, selector: "daysAddingEffect:", userInfo: "stage7", repeats: true )
-                }
-
-            case "stage7":
-                if animationIndex == stageIndexArray[5] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-
-                    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-                    userPreference.setBool( true, forKey: "dayAnimated" )
-                }
-
-            default:
-                break;
-        }
-    }
-
     func switchView() {
 
         let switch2chart: Bool = self.currentDisplay == "day" ? true : false
@@ -254,7 +137,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.imageOnSwitchBtn.image = UIImage(named: switch2chart ? "date" : "chart" )
 
         UIView.animateWithDuration( 0.3, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.remainedView.alpha = switch2chart ? 0 : 1
+            self.countdownView.alpha = switch2chart ? 0 : 1
             self.pieChartView.alpha = switch2chart ? 1 : 0
             self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
         }, completion: { finish in

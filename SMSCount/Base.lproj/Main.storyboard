@@ -64,34 +64,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53F-TZ-OfW" userLabel="RemainedDaysView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWp-22-4JG">
-                                                <rect key="frame" x="300" y="214" width="0.0" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="6AJ-xx-RAc"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="74"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩餘天數" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMP-hf-NE4">
-                                                <rect key="frame" x="268" y="352" width="64" height="23"/>
-                                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="hWp-22-4JG" firstAttribute="centerX" secondItem="53F-TZ-OfW" secondAttribute="centerX" id="2co-kg-wch"/>
-                                            <constraint firstItem="SMP-hf-NE4" firstAttribute="centerX" secondItem="53F-TZ-OfW" secondAttribute="centerX" id="CbT-h4-LZb"/>
-                                            <constraint firstItem="hWp-22-4JG" firstAttribute="centerY" secondItem="53F-TZ-OfW" secondAttribute="centerY" id="dPJ-Qv-6ES"/>
-                                            <constraint firstItem="SMP-hf-NE4" firstAttribute="top" secondItem="hWp-22-4JG" secondAttribute="bottom" constant="78" id="zan-He-KBO"/>
-                                        </constraints>
-                                    </view>
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXW-cI-vr1">
                                         <rect key="frame" x="210" y="154" width="180" height="180"/>
                                         <subviews>
@@ -124,6 +96,9 @@
                                             <constraint firstItem="Yx9-2q-40P" firstAttribute="centerX" secondItem="TXW-cI-vr1" secondAttribute="centerX" id="mjJ-Ay-DpC"/>
                                             <constraint firstAttribute="centerX" secondItem="p6H-dK-4Zf" secondAttribute="centerX" constant="10" id="wpe-CS-UxG"/>
                                         </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8C-fq-2Ea" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yO5-wV-F64">
                                         <rect key="frame" x="530" y="417" width="50" height="50"/>
@@ -161,18 +136,18 @@
                                     <constraint firstAttribute="bottom" secondItem="vxp-Hu-SuH" secondAttribute="bottom" id="1Ih-K1-D1C"/>
                                     <constraint firstItem="TXW-cI-vr1" firstAttribute="centerX" secondItem="sY1-RK-Tl8" secondAttribute="centerX" id="4d1-Ma-7Kb"/>
                                     <constraint firstItem="TXW-cI-vr1" firstAttribute="centerY" secondItem="sY1-RK-Tl8" secondAttribute="centerY" id="5pL-yI-Hka"/>
-                                    <constraint firstItem="53F-TZ-OfW" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="6Qq-Cp-qek"/>
                                     <constraint firstItem="vxp-Hu-SuH" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="top" id="GtL-ZB-eqp"/>
                                     <constraint firstAttribute="bottom" secondItem="yO5-wV-F64" secondAttribute="bottom" constant="20" id="HPY-rt-vZN"/>
-                                    <constraint firstItem="53F-TZ-OfW" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="top" id="L3Y-ej-bN7"/>
+                                    <constraint firstAttribute="trailing" secondItem="G8C-fq-2Ea" secondAttribute="trailing" id="LTq-uI-k7g"/>
                                     <constraint firstAttribute="trailing" secondItem="vxp-Hu-SuH" secondAttribute="trailing" id="NbK-2h-eZh"/>
                                     <constraint firstAttribute="bottom" secondItem="6DD-jS-bAd" secondAttribute="bottom" id="QbW-Ia-PvL"/>
-                                    <constraint firstItem="53F-TZ-OfW" firstAttribute="width" secondItem="sY1-RK-Tl8" secondAttribute="width" id="e0d-G3-pUo"/>
+                                    <constraint firstItem="G8C-fq-2Ea" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="cPu-Tb-MHn"/>
                                     <constraint firstItem="6DD-jS-bAd" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="top" id="gVf-FX-L7P"/>
                                     <constraint firstItem="6DD-jS-bAd" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="hIr-H8-sE5"/>
+                                    <constraint firstItem="G8C-fq-2Ea" firstAttribute="top" secondItem="sY1-RK-Tl8" secondAttribute="top" id="hv8-rx-2fh"/>
                                     <constraint firstItem="vxp-Hu-SuH" firstAttribute="leading" secondItem="sY1-RK-Tl8" secondAttribute="leading" id="ojJ-cc-sbI"/>
-                                    <constraint firstAttribute="bottom" secondItem="53F-TZ-OfW" secondAttribute="bottom" id="tzN-9d-7rM"/>
                                     <constraint firstAttribute="trailing" secondItem="yO5-wV-F64" secondAttribute="trailing" constant="20" id="wHu-a0-FHK"/>
+                                    <constraint firstAttribute="bottom" secondItem="G8C-fq-2Ea" secondAttribute="bottom" id="wT9-ym-dcy"/>
                                     <constraint firstAttribute="trailing" secondItem="6DD-jS-bAd" secondAttribute="trailing" id="wUp-Md-AZL"/>
                                 </constraints>
                             </view>
@@ -199,12 +174,10 @@
                         <outlet property="backRemainedDaysLabel" destination="NyZ-Jo-ImC" id="Bgo-yL-duS"/>
                         <outlet property="backRemainedDaysWord" destination="0oN-8k-ZGV" id="rnI-uH-6mF"/>
                         <outlet property="backgroundImage" destination="vxp-Hu-SuH" id="h3H-gP-BkT"/>
-                        <outlet property="frontRemainedDaysLabel" destination="hWp-22-4JG" id="KW1-SJ-v34"/>
-                        <outlet property="frontRemainedDaysWord" destination="SMP-hf-NE4" id="RuV-Lq-zfy"/>
+                        <outlet property="contentView" destination="G8C-fq-2Ea" id="ZJy-u0-37l"/>
                         <outlet property="imageOnSwitchBtn" destination="M0i-Su-8TO" id="HWC-BX-H7o"/>
                         <outlet property="percentageLabel" destination="p6H-dK-4Zf" id="ulZ-WP-dIG"/>
                         <outlet property="pieChartView" destination="TXW-cI-vr1" id="LpM-Fo-DUS"/>
-                        <outlet property="remainedView" destination="53F-TZ-OfW" id="YFs-sp-ph0"/>
                         <outlet property="screenShotScale" destination="OJc-wj-ATG" id="YSt-LB-kak"/>
                         <outlet property="switchViewButton" destination="yO5-wV-F64" id="41N-w8-TII"/>
                     </connections>
