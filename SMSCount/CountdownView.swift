@@ -15,7 +15,7 @@ class CountdownView: UIView {
 
     var animationIndex: Int = 0
     var animationArray = [String]() // [ 1, 2, ... 99, 100 ]
-    var stageIndexArray = [Int]()
+    var stageIndexArray = Array(count: 6, repeatedValue: 0)
 
     convenience init(view: UIView) {
         self.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-44-49))
@@ -69,6 +69,7 @@ class CountdownView: UIView {
         // Animation setting
         self.animationIndex = 0
         self.animationArray.removeAll(keepCapacity: false) // Maybe it should be true
+
         if days < 100 {
             for var i = 0; i <= days; i++ {
                 self.animationArray.append( String(i) )
@@ -83,12 +84,13 @@ class CountdownView: UIView {
         }
 
         let arrayLength = self.animationArray.count
-        self.stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
-        self.stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
-        self.stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
-        self.stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
-        self.stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
-        self.stageIndexArray[5] = arrayLength-1
+        self.stageIndexArray.removeAll(keepCapacity: true)
+        self.stageIndexArray.append( Int( Double(arrayLength)*0.55 ) )
+        self.stageIndexArray.append( Int( Double(arrayLength)*0.75 ) )
+        self.stageIndexArray.append( Int( Double(arrayLength)*0.88 ) )
+        self.stageIndexArray.append( Int( Double(arrayLength)*0.94 ) )
+        self.stageIndexArray.append( Int( Double(arrayLength)*0.97 ) )
+        self.stageIndexArray.append( arrayLength-1 )
 
         self.dayLabel.text = "0"
 
@@ -97,7 +99,7 @@ class CountdownView: UIView {
 
     }
 
-    private func daysAddingEffect( timer: NSTimer ) {
+    func daysAddingEffect( timer: NSTimer ) {
 
         switch( timer.userInfo! as! String ) {
         case "stage1":
@@ -165,7 +167,7 @@ class CountdownView: UIView {
     }
 
     private func updateLabel() {
-        self.textLabel.text = self.animationArray[ self.animationIndex++ ]
+        self.dayLabel.text = self.animationArray[ self.animationIndex++ ]
     }
 
 }

@@ -22,9 +22,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var currentDisplay: String
 
     // RemainedDays
-    @IBOutlet var remainedView: UIView!
-    @IBOutlet var frontRemainedDaysLabel: UILabel!
-    @IBOutlet var frontRemainedDaysWord: UILabel!
+    var countdownView = CountdownView()
 
     // currentProcess %
     @IBOutlet var pieChartView: UIView!
@@ -53,6 +51,9 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.switchViewButton.addGestureRecognizer( switchGesture )
         self.switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.switchViewButton.layer.borderWidth = 2
+
+        countdownView = CountdownView(view: self.view)
+        self.view.addSubview( countdownView )
 
         circleView = PercentageCircleView( view: self.pieChartView )
         self.pieChartView.addSubview( circleView )
@@ -84,10 +85,16 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     func prepareTextAndNumbers() {
 
         let newRemainedDays = calculateHelper.getRemainedDays()
+
+        // For screenshot
         self.backRemainedDaysWord.text = newRemainedDays < 0 ? "自由天數" : "剩餘天數"
         self.backRemainedDaysLabel.text = String( abs(newRemainedDays) )
 
+        // Start animation
+        countdownView.setRemainedDays( newRemainedDays )
+
         self.setTextOfProcess()
+
     }
 
     func setTextOfProcess() {
@@ -129,7 +136,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.imageOnSwitchBtn.image = UIImage(named: switch2chart ? "date" : "chart" )
 
         UIView.animateWithDuration( 0.3, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.remainedView.alpha = switch2chart ? 0 : 1
+            self.countdownView.alpha = switch2chart ? 0 : 1
             self.pieChartView.alpha = switch2chart ? 1 : 0
             self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
         }, completion: { finish in
