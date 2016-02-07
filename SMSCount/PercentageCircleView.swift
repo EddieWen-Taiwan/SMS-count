@@ -11,20 +11,17 @@ import UIKit
 
 class PercentageCircleView: UIView {
 
-    var mainLayer: CALayer!
-
     var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
     var circleRadius: CGFloat = 0.0
 
-    convenience init(view: UIView) {
+    convenience init() {
         self.init(frame: CGRectMake(0, 0, 180, 180))
 
-        self.mainLayer = view.layer
         self.circleRadius = frame.size.width/2
         self.circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
 
         let fullCircleLayer = self.drawFullCircle()
-        self.mainLayer.addSublayer(fullCircleLayer)
+        self.layer.addSublayer(fullCircleLayer)
     }
 
     // The full basic circle
@@ -58,7 +55,7 @@ class PercentageCircleView: UIView {
         }
 
         // Add the circleLayer to the view's layer's sublayers
-        self.mainLayer.addSublayer(circleLayer)
+        self.layer.addSublayer(circleLayer)
     }
 
     private func calculateAngle( var percent: Double ) -> [CGFloat] {

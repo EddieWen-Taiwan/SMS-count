@@ -56,7 +56,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         countdownView = CountdownView(view: self.view)
         self.contentView.addSubview( countdownView )
 
-        circleView = PercentageCircleView( view: self.pieChartView )
+        circleView = PercentageCircleView()
         self.contentView.addSubview( circleView )
 
         // Prepare background image
