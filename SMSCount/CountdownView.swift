@@ -44,4 +44,10 @@ class CountdownView: UIView {
 
     }
 
+    func setRemainedDays( days: Int ) {
+
+        
+
+    }
+
 }
