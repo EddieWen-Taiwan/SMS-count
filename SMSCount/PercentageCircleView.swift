@@ -95,9 +95,9 @@ class PercentageCircleView: UIView {
     }
 
     // Layer2 : Percentage
-    func addPercentageCircle( percent: Double ) {
+    func addPercentageCircle() {
 
-        let angleArray: [CGFloat] = self.calculateAngle( percent )
+        let angleArray: [CGFloat] = self.calculateAngle( self.valueOfPercentage*(0.01) )
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
         // The path should be the entire circle.
         let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: angleArray[0], endAngle: angleArray[1], clockwise: true)
@@ -107,7 +107,7 @@ class PercentageCircleView: UIView {
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
         if userPreference.boolForKey("countdownAnimation") {
             circleLayer.strokeEnd = 0.0
-            self.animateCircle( circleLayer, percent: percent )
+            self.animateCircle( circleLayer, percent: self.valueOfPercentage*(0.01) )
         }
 
         // Add the circleLayer to the view's layer's sublayers
