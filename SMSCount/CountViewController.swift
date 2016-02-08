@@ -101,9 +101,8 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     func setTextOfProcess() {
 
         // Set currentProcess
-        let currentProcess = calculateHelper.getCurrentProgress()
-        let currentProcessString = String( format: "%.1f", currentProcess )
-        self.circleView.setPercentage( currentProcessString )
+        let currentProcess = String( format: "%.1f", calculateHelper.getCurrentProgress() )
+        self.circleView.setPercentage( currentProcess )
 
         // If user doesn't want animation, do it at this moment
         if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
@@ -111,6 +110,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                 self.checkCircleAnimation(true)
             }
         }
+
     }
 
     override func viewDidAppear(animated: Bool) {
