@@ -24,6 +24,12 @@ class PercentageCircleView: UIView {
         self.layer.addSublayer(fullCircleLayer)
     }
 
+    private func setPercentageLabel() {
+
+        
+
+    }
+
     // The full basic circle
     private func drawFullCircle() -> CAShapeLayer {
         let circleLayer = CAShapeLayer()
