@@ -43,6 +43,21 @@ class PercentageCircleView: UIView {
         self.percentageLabel.sizeToFit()
         self.percentageLabel.center = CGPoint(x: UIScreen.mainScreen().bounds.width/2-10, y: (UIScreen.mainScreen().bounds.height-44-49)/2+4)
 
+        self.addSymbolLabel()
+    }
+
+    private func addSymbolLabel() {
+
+        let x = UIScreen.mainScreen().bounds.width/2-10+self.percentageLabel.frame.width/2
+        let y = (UIScreen.mainScreen().bounds.height-44-49)/2-2
+        let symbol = UILabel(frame: CGRectMake(x,y,0,0))
+            symbol.textColor = UIColor.redColor()
+            symbol.font = UIFont(name: "Verdana", size: 24)
+            symbol.text = "%"
+            symbol.sizeToFit()
+
+        self.addSubview( symbol )
+
     }
 
     // The full basic circle
