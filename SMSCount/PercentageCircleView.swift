@@ -49,6 +49,7 @@ class PercentageCircleView: UIView {
         self.percentageLabel.center = CGPoint(x: mainWidth/2-10, y: mainHeight/2+4)
 
         self.addSymbolLabel()
+        self.addTextLabel()
     }
 
     private func addSymbolLabel() {
@@ -56,12 +57,23 @@ class PercentageCircleView: UIView {
         let x = mainWidth/2-10+self.percentageLabel.frame.width/2
         let y = mainHeight/2-2
         let symbol = UILabel(frame: CGRectMake(x,y,0,0))
-            symbol.textColor = UIColor.redColor()
+            symbol.textColor = UIColor.whiteColor()
             symbol.font = UIFont(name: "Verdana", size: 24)
             symbol.text = "%"
             symbol.sizeToFit()
 
         self.addSubview( symbol )
+
+    }
+
+    private func addTextLabel() {
+
+        let text = UILabel(frame: CGRectMake( mainWidth/2-32, mainHeight/2+105, 64, 23 ))
+            text.text = "退伍進度"
+            text.textColor = UIColor.whiteColor()
+            text.font = UIFont(name: "PingFangTC-Regular", size: 16)
+
+        self.addSubview( text )
 
     }
 
