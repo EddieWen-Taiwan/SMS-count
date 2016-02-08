@@ -26,8 +26,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     var countdownView = CountdownView()
 
     // currentProcess %
-    @IBOutlet var pieChartView: UIView!
-    @IBOutlet var percentageLabel: UILabel!
     var circleView: PercentageCircleView!
     var isCircleDrawn: Bool
 
@@ -77,8 +75,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         } else {
             // switch to settingViewController ?
             // tabBarController?.selectedIndex = 2
-
-            self.percentageLabel.text = "0"
         }
 
     }
@@ -137,7 +133,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
         UIView.animateWithDuration( 0.3, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.countdownView.alpha = switch2chart ? 0 : 1
-            self.pieChartView.alpha = switch2chart ? 1 : 0
+            self.circleView.alpha = switch2chart ? 1 : 0
             self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
         }, completion: { finish in
             self.currentDisplay = switch2chart ? "chart" : "day"
