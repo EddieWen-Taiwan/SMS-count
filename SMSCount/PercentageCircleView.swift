@@ -29,6 +29,7 @@ class PercentageCircleView: UIView {
         self.circleRadius = frame.size.width/2
         self.circleCenter = CGPoint(x: mainWidth/2, y: mainHeight/2)
 
+        // Hide this view at first
         self.alpha = 0
 
         let fullCircleLayer = self.drawFullCircle()
@@ -47,6 +48,7 @@ class PercentageCircleView: UIView {
     }
 
     func setPercentage( value: Double ) {
+        // Store it here, it will be easy later
         self.valueOfPercentage = value
 
         self.percentageLabel.text = String( format: "%.1f", value )
@@ -57,6 +59,7 @@ class PercentageCircleView: UIView {
         self.addTextLabel()
     }
 
+    // %
     private func addSymbolLabel() {
 
         let x = mainWidth/2-10+self.percentageLabel.frame.width/2
@@ -71,6 +74,7 @@ class PercentageCircleView: UIView {
 
     }
 
+    // 退伍進度
     private func addTextLabel() {
 
         let text = UILabel(frame: CGRectMake( mainWidth/2-32, mainHeight/2+105, 64, 23 ))
