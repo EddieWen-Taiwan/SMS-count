@@ -15,10 +15,9 @@ class PercentageCircleView: UIView {
     var circleRadius: CGFloat = 0.0
     var mainWidth: CGFloat = 0.0
     var mainHeight: CGFloat = 0.0
+    var valueOfPercentage: Double = 0
 
     var percentageLabel = UILabel()
-
-    var valueOfPercentage: Double = 0
 
     convenience init() {
         self.init(frame: CGRectMake(0, 0, 180, 180))
