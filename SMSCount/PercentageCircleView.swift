@@ -18,6 +18,8 @@ class PercentageCircleView: UIView {
 
     var percentageLabel = UILabel()
 
+    var valueOfPercentage: Double = 0
+
     convenience init() {
         self.init(frame: CGRectMake(0, 0, 180, 180))
 
@@ -26,6 +28,8 @@ class PercentageCircleView: UIView {
 
         self.circleRadius = frame.size.width/2
         self.circleCenter = CGPoint(x: mainWidth/2, y: mainHeight/2)
+
+        self.alpha = 0
 
         let fullCircleLayer = self.drawFullCircle()
         self.layer.addSublayer(fullCircleLayer)
@@ -42,9 +46,10 @@ class PercentageCircleView: UIView {
 
     }
 
-    func setPercentage( value: String ) {
+    func setPercentage( value: Double ) {
+        self.valueOfPercentage = value
 
-        self.percentageLabel.text = value
+        self.percentageLabel.text = String( format: "%.1f", value )
         self.percentageLabel.sizeToFit()
         self.percentageLabel.center = CGPoint(x: mainWidth/2-10, y: mainHeight/2+4)
 
@@ -92,9 +97,9 @@ class PercentageCircleView: UIView {
     }
 
     // Layer2 : Percentage
-    func addPercentageCircle( percent: Double ) {
+    func addPercentageCircle() {
 
-        let angleArray: [CGFloat] = self.calculateAngle( percent )
+        let angleArray: [CGFloat] = self.calculateAngle( self.valueOfPercentage*(0.01) )
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
         // The path should be the entire circle.
         let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: angleArray[0], endAngle: angleArray[1], clockwise: true)
@@ -104,7 +109,7 @@ class PercentageCircleView: UIView {
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
         if userPreference.boolForKey("countdownAnimation") {
             circleLayer.strokeEnd = 0.0
-            self.animateCircle( circleLayer, percent: percent )
+            self.animateCircle( circleLayer, percent: self.valueOfPercentage*(0.01) )
         }
 
         // Add the circleLayer to the view's layer's sublayers
