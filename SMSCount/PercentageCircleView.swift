@@ -18,6 +18,8 @@ class PercentageCircleView: UIView {
 
     var percentageLabel = UILabel()
 
+    var valueOfPercentage: Double = 0
+
     convenience init() {
         self.init(frame: CGRectMake(0, 0, 180, 180))
 
@@ -42,9 +44,10 @@ class PercentageCircleView: UIView {
 
     }
 
-    func setPercentage( value: String ) {
+    func setPercentage( value: Double ) {
+        self.valueOfPercentage = value
 
-        self.percentageLabel.text = value
+        self.percentageLabel.text = String( format: "%.1f", value )
         self.percentageLabel.sizeToFit()
         self.percentageLabel.center = CGPoint(x: mainWidth/2-10, y: mainHeight/2+4)
 
