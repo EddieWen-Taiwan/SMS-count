@@ -77,7 +77,7 @@ class PercentageCircleView: UIView {
     // 退伍進度
     private func addTextLabel() {
 
-        let text = UILabel(frame: CGRectMake( mainWidth/2-32, mainHeight/2+105, 64, 23 ))
+        let text = UILabel(frame: CGRectMake( mainWidth/2-32, mainHeight/2+110, 64, 23 ))
             text.text = "退伍進度"
             text.textColor = UIColor.whiteColor()
             text.font = UIFont(name: "PingFangTC-Regular", size: 16)
