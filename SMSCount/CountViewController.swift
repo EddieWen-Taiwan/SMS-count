@@ -103,7 +103,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         // Set currentProcess
         let currentProcess = calculateHelper.getCurrentProgress()
         let currentProcessString = String( format: "%.1f", currentProcess )
-        self.percentageLabel.text = currentProcessString
+        self.circleView.setPercentage( currentProcessString )
 
         // If user doesn't want animation, do it at this moment
         if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
