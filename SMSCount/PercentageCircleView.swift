@@ -14,6 +14,8 @@ class PercentageCircleView: UIView {
     var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
     var circleRadius: CGFloat = 0.0
 
+    var percentageLabel = UILabel()
+
     convenience init() {
         self.init(frame: CGRectMake(0, 0, 180, 180))
 
@@ -22,11 +24,19 @@ class PercentageCircleView: UIView {
 
         let fullCircleLayer = self.drawFullCircle()
         self.layer.addSublayer(fullCircleLayer)
+
+        self.addPercentageLabel()
     }
 
-    private func setPercentageLabel() {
+    private func addPercentageLabel() {
 
-        
+//        self.percentageLabel.text = "323.2"
+        self.percentageLabel.textColor = UIColor.whiteColor()
+        self.percentageLabel.font = UIFont(name: "Verdana", size: 44)
+//        self.percentageLabel.sizeToFit()
+//        self.percentageLabel.center = CGPoint(x: UIScreen.mainScreen().bounds.width/2-10, y: (UIScreen.mainScreen().bounds.height-44-49)/2+4)
+
+        self.addSubview( self.percentageLabel )
 
     }
 
