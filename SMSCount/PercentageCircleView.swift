@@ -11,20 +11,78 @@ import UIKit
 
 class PercentageCircleView: UIView {
 
-    var mainLayer: CALayer!
-
     var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
     var circleRadius: CGFloat = 0.0
+    var mainWidth: CGFloat = 0.0
+    var mainHeight: CGFloat = 0.0
+    var valueOfPercentage: Double = 0
 
-    convenience init(view: UIView) {
-        self.init(frame: view.frame)
+    var percentageLabel = UILabel()
 
-        self.mainLayer = view.layer
+    convenience init() {
+        self.init(frame: CGRectMake(0, 0, 180, 180))
+
+        self.mainWidth = UIScreen.mainScreen().bounds.width
+        self.mainHeight = (UIScreen.mainScreen().bounds.height-44-49)
+
         self.circleRadius = frame.size.width/2
-        self.circleCenter = CGPoint(x: Int(circleRadius), y: Int(circleRadius))
+        self.circleCenter = CGPoint(x: mainWidth/2, y: mainHeight/2)
+
+        // Hide this view at first
+        self.alpha = 0
 
         let fullCircleLayer = self.drawFullCircle()
-        self.mainLayer.addSublayer(fullCircleLayer)
+        self.layer.addSublayer(fullCircleLayer)
+
+        self.addPercentageLabel()
+    }
+
+    private func addPercentageLabel() {
+
+        self.percentageLabel.textColor = UIColor.whiteColor()
+        self.percentageLabel.font = UIFont(name: "Verdana", size: 44)
+
+        self.addSubview( self.percentageLabel )
+
+    }
+
+    func setPercentage( value: Double ) {
+        // Store it here, it will be easy later
+        self.valueOfPercentage = value
+
+        self.percentageLabel.text = String( format: "%.1f", value )
+        self.percentageLabel.sizeToFit()
+        self.percentageLabel.center = CGPoint(x: mainWidth/2-10, y: mainHeight/2+4)
+
+        self.addSymbolLabel()
+        self.addTextLabel()
+    }
+
+    // %
+    private func addSymbolLabel() {
+
+        let x = mainWidth/2-10+self.percentageLabel.frame.width/2
+        let y = mainHeight/2-2
+        let symbol = UILabel(frame: CGRectMake(x,y,0,0))
+            symbol.textColor = UIColor.whiteColor()
+            symbol.font = UIFont(name: "Verdana", size: 24)
+            symbol.text = "%"
+            symbol.sizeToFit()
+
+        self.addSubview( symbol )
+
+    }
+
+    // 退伍進度
+    private func addTextLabel() {
+
+        let text = UILabel(frame: CGRectMake( mainWidth/2-32, mainHeight/2+110, 64, 23 ))
+            text.text = "退伍進度"
+            text.textColor = UIColor.whiteColor()
+            text.font = UIFont(name: "PingFangTC-Regular", size: 16)
+
+        self.addSubview( text )
+
     }
 
     // The full basic circle
@@ -42,9 +100,9 @@ class PercentageCircleView: UIView {
     }
 
     // Layer2 : Percentage
-    func addPercentageCircle( percent: Double ) {
+    func addPercentageCircle() {
 
-        let angleArray: [CGFloat] = self.calculateAngle( percent )
+        let angleArray: [CGFloat] = self.calculateAngle( self.valueOfPercentage*(0.01) )
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
         // The path should be the entire circle.
         let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: angleArray[0], endAngle: angleArray[1], clockwise: true)
@@ -54,11 +112,11 @@ class PercentageCircleView: UIView {
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
         if userPreference.boolForKey("countdownAnimation") {
             circleLayer.strokeEnd = 0.0
-            self.animateCircle( circleLayer, percent: percent )
+            self.animateCircle( circleLayer, percent: self.valueOfPercentage*(0.01) )
         }
 
         // Add the circleLayer to the view's layer's sublayers
-        self.mainLayer.addSublayer(circleLayer)
+        self.layer.addSublayer(circleLayer)
     }
 
     private func calculateAngle( var percent: Double ) -> [CGFloat] {
