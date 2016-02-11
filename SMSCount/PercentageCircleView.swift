@@ -16,7 +16,7 @@ class PercentageCircleView: UIView {
     var valueOfPercentage: Double = 0
 
     let mainWidth: CGFloat = UIScreen.mainScreen().bounds.width
-    let mainHeight: CGFloat = (UIScreen.mainScreen().bounds.height-44-49)
+    let mainHeight: CGFloat = UIScreen.mainScreen().bounds.height-44-49
 
     var percentageLabel = UILabel()
 
