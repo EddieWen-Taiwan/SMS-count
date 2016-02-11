@@ -280,8 +280,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let forKeyString = pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays"
-        self.userPreference.setInteger( row, forKey: forKeyString )
+        self.userPreference.setInteger( row, forKey: pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays" )
     }
 
 }
