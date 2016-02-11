@@ -125,9 +125,8 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if let userName: String = thisUser.valueForKey("username") as? String {
                 cell.name.text = userName
             }
-            if let userStatus: String = thisUser.valueForKey("status") as? String {
-                cell.status.text = userStatus
-            }
+            cell.status.text = thisUser.valueForKey("status") as? String ?? ""
+
             // Sticker
             let fbid = thisUser.valueForKey("fb_id") as! String
             let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
@@ -139,6 +138,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 }
             }
 
+            // Calculate this friend's data
             if thisUser.valueForKey("yearOfEnterDate") != nil && thisUser.valueForKey("monthOfEnterDate") != nil && thisUser.valueForKey("dateOfEnterDate") != nil && thisUser.valueForKey("serviceDays") != nil {
 
                 var entireDate = "\(thisUser.valueForKey("yearOfEnterDate")!) / "
