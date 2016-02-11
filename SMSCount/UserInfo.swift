@@ -179,7 +179,7 @@ class UserInfo { // Save userInfomation to Parse
         if let FBID = info.valueForKey("id") {
             // Search parse data by FBID, check whether there is matched data.
             let fbIdQuery = PFQuery(className: "UserT")
-            fbIdQuery.whereKey( "fb_id", equalTo: FBID )
+                fbIdQuery.whereKey( "fb_id", equalTo: FBID )
             fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
 
@@ -297,15 +297,17 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     private func split2Int( string: NSString ) -> NSArray {
-        var splitArray: [Int] = []
+        var splitArray = [Int]()
 
-        let year = string.substringToIndex(4)
-        let month = string.substringWithRange(NSMakeRange(7, 2))
-        let date = string.substringFromIndex(12)
-
-        splitArray.append( Int(year)! )
-        splitArray.append( Int(month)! )
-        splitArray.append( Int(date)! )
+        if let year = Int( string.substringToIndex(4) ) {
+            splitArray.append( year )
+        }
+        if let month = Int( string.substringWithRange(NSMakeRange(7, 2)) ) {
+            splitArray.append( month )
+        }
+        if let date = Int( string.substringFromIndex(12) ) {
+            splitArray.append( date )
+        }
 
         return splitArray
     }
