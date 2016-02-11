@@ -13,17 +13,15 @@ class PercentageCircleView: UIView {
 
     var circleCenter: CGPoint = CGPoint(x: 0, y: 0)
     var circleRadius: CGFloat = 0.0
-    var mainWidth: CGFloat = 0.0
-    var mainHeight: CGFloat = 0.0
     var valueOfPercentage: Double = 0
+
+    let mainWidth: CGFloat = UIScreen.mainScreen().bounds.width
+    let mainHeight: CGFloat = (UIScreen.mainScreen().bounds.height-44-49)
 
     var percentageLabel = UILabel()
 
     convenience init() {
         self.init(frame: CGRectMake(0, 0, 180, 180))
-
-        self.mainWidth = UIScreen.mainScreen().bounds.width
-        self.mainHeight = (UIScreen.mainScreen().bounds.height-44-49)
 
         self.circleRadius = frame.size.width/2
         self.circleCenter = CGPoint(x: mainWidth/2, y: mainHeight/2)
