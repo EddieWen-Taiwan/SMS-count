@@ -73,7 +73,7 @@ class ProfileViewController: UIViewController {
                     // Download Facebook profile
                     // API url : http://graph.facebook.com/100001967509786/picture?type=large
 
-                    self.downloadImage( NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")! )
+                    self.downloadImageWithID(fbid)
                 }
             }
 
@@ -106,14 +106,16 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    func downloadImage( url: NSURL ) {
-        reachability.getImageFromUrl(url) { (data, response, error) in
-            if let data = data {
+    func downloadImageWithID( fbid: String ) {
+        if let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large") {
+            reachability.getImageFromUrl(url) { (data, response, error) in
+                if let data = data {
 
-                dispatch_async( dispatch_get_main_queue() ) { () -> Void in
-                    self.userSticker.image = UIImage(data: data)
+                    dispatch_async( dispatch_get_main_queue() ) { () -> Void in
+                        self.userSticker.image = UIImage(data: data)
+                    }
+
                 }
-
             }
         }
     }
