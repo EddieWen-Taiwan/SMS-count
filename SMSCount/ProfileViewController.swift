@@ -25,8 +25,6 @@ class ProfileViewController: UIViewController {
     var calculateHelper = CalculateHelper()
     let reachability = Reachability()
 
-    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-
     // Download data from Parse in FriendsTableVC
     var downloadFromParse: Bool
 
@@ -70,21 +68,25 @@ class ProfileViewController: UIViewController {
     }
 
     func showUserInfo() {
-        if let fbid = self.userPreference.stringForKey("fb_id") {
-            if !self.stickerIsDownloaded && reachability.isConnectedToNetwork() {
-                // Download Facebook profile
-                // API url : http://graph.facebook.com/100001967509786/picture?type=large
+        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
 
-                self.downloadImage( NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")! )
+            if let fbid = userPreference.stringForKey("fb_id") {
+                if !self.stickerIsDownloaded && reachability.isConnectedToNetwork() {
+                    // Download Facebook profile
+                    // API url : http://graph.facebook.com/100001967509786/picture?type=large
+
+                    self.downloadImage( NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")! )
+                }
             }
-        }
 
-        if let username = self.userPreference.stringForKey("username") {
-            self.usernameLabel.text = username
-        }
+            if let username = userPreference.stringForKey("username") {
+                self.usernameLabel.text = username
+            }
 
-        if let userStatus = self.userPreference.stringForKey("status") {
-            self.statusLabel.text = userStatus
+            if let userStatus = userPreference.stringForKey("status") {
+                self.statusLabel.text = userStatus
+            }
+
         }
     }
 
