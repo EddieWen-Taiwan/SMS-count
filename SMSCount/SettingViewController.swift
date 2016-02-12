@@ -22,12 +22,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet var serviceDaysPickerView: UIView!
     @IBOutlet var serviceDaysPickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var serviceDaysPickerElement: UIPickerView!
-    var serviceDaysPickerDataSource = [String]()
+    let serviceDaysPickerDataSource: [String]
 
     @IBOutlet var discountDaysPickerView: UIView!
     @IBOutlet var discountDaysPickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var discountDaysPickerElement: UIPickerView!
-    var discountDaysPickerDataSource = [String]()
+    let discountDaysPickerDataSource: [String]
 
     @IBOutlet var autoWeekendSwitch: UISwitch!
     
