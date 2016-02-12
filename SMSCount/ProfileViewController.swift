@@ -11,7 +11,6 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet var userSticker: UIImageView!
-    var stickerIsDownloaded: Bool
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
 
@@ -29,7 +28,6 @@ class ProfileViewController: UIViewController {
     var downloadFromParse: Bool
 
     required init?(coder aDecoder: NSCoder) {
-        self.stickerIsDownloaded = false
         self.downloadFromParse = false
 
         super.init(coder: aDecoder)
@@ -71,7 +69,7 @@ class ProfileViewController: UIViewController {
         if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
 
             if let fbid = userPreference.stringForKey("fb_id") {
-                if !self.stickerIsDownloaded && reachability.isConnectedToNetwork() {
+                if reachability.isConnectedToNetwork() {
                     // Download Facebook profile
                     // API url : http://graph.facebook.com/100001967509786/picture?type=large
 
@@ -116,7 +114,6 @@ class ProfileViewController: UIViewController {
                 dispatch_async( dispatch_get_main_queue() ) { () -> Void in
                     self.userSticker.image = UIImage(data: data!)
                 }
-                self.stickerIsDownloaded = true
 
             }
 
