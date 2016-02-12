@@ -108,7 +108,6 @@ class ProfileViewController: UIViewController {
 
     func downloadImage( url: NSURL ) {
         reachability.getImageFromUrl(url) { (data, response, error) in
-
             if let data = data {
 
                 dispatch_async( dispatch_get_main_queue() ) { () -> Void in
@@ -116,7 +115,6 @@ class ProfileViewController: UIViewController {
                 }
 
             }
-
         }
     }
 
