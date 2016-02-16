@@ -95,30 +95,44 @@ class CountdownView: UIView {
         self.dayLabel.text = "0"
 
         // Run animation
-        NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: ["index": 0], repeats: true )
+        NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: ["index": 1], repeats: true )
 
-    }
-
-    private func startNextTimer( stage: Int ) {
-        let interval: Double = 0.01*pow( Double(2), Double(stage) )
-        let info: Dictionary<String,Int> = [ "index": stage ]
-
-        NSTimer.scheduledTimerWithTimeInterval( interval, target: self, selector: Selector("daysAddingEffect:"), userInfo: info, repeats: true )
     }
 
     func daysAddingEffect( timer: NSTimer ) {
 
         if let info = timer.userInfo as? Dictionary<String,Int> {
-            if let currentIndex = info["index"] {
-                if self.animationIndex < self.stageIndexArray[currentIndex] {
-                    self.updateLabel()
+            if let currentStage = info["index"] {
+                // Final stage(special)
+                if currentStage == 7 {
+                    if self.animationIndex == self.stageIndexArray[5] {
+                        self.updateLabel()
+                    } else {
+                        timer.invalidate()
+
+                        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+                            userPreference.setBool( true, forKey: "dayAnimated" )
+                        }
+                    }
                 } else {
-                    timer.invalidate()
-                    self.startNextTimer( currentIndex+1 )
+                // Normal stage
+                    if self.animationIndex < self.stageIndexArray[currentStage-1] {
+                        self.updateLabel()
+                    } else {
+                        timer.invalidate()
+                        self.startNextTimer( currentStage+1 )
+                    }
                 }
             }
         }
 
+    }
+
+    private func startNextTimer( stage: Int ) {
+        let intervalArray = [ 0.02, 0.04, 0.08, 0.16, 0.24, 0.32 ]
+        let info: Dictionary<String,Int> = [ "index": stage ]
+
+        NSTimer.scheduledTimerWithTimeInterval( intervalArray[stage-2], target: self, selector: Selector("daysAddingEffect:"), userInfo: info, repeats: true )
     }
 
     private func updateLabel() {
