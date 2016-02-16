@@ -99,76 +99,26 @@ class CountdownView: UIView {
 
     }
 
+    private func startNextTimer( stage: Int ) {
+        let interval: Double = 0.01*pow( Double(2), Double(stage) )
+        let info: Dictionary<String,Int> = [ "index": stage ]
+
+        NSTimer.scheduledTimerWithTimeInterval( interval, target: self, selector: Selector("daysAddingEffect:"), userInfo: info, repeats: true )
+    }
+
     func daysAddingEffect( timer: NSTimer ) {
 
         if let info = timer.userInfo as? Dictionary<String,Int> {
             if let currentIndex = info["index"] {
-                print(currentIndex)
+                if self.animationIndex < self.stageIndexArray[currentIndex] {
+                    self.updateLabel()
+                } else {
+                    timer.invalidate()
+                    self.startNextTimer( currentIndex+1 )
+                }
             }
         }
-//        switch( timer.userInfo! as! String ) {
-//        case "stage1":
-//            if self.animationIndex < self.stageIndexArray[0] {
-//                self.updateLabel()
-//            } else {
-//                timer.invalidate()
-//                NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
-//            }
-//
-//        case "stage2":
-//            if self.animationIndex < self.stageIndexArray[1] {
-//                self.updateLabel()
-//            } else {
-//                timer.invalidate()
-//                NSTimer.scheduledTimerWithTimeInterval( 0.04, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
-//            }
-//
-//        case "stage3":
-//            if self.animationIndex < self.stageIndexArray[2] {
-//                self.updateLabel()
-//            } else {
-//                timer.invalidate()
-//                NSTimer.scheduledTimerWithTimeInterval( 0.08, target: self, selector: "daysAddingEffect:", userInfo: "stage4", repeats: true )
-//            }
-//
-//        case "stage4":
-//            if self.animationIndex < self.stageIndexArray[3] {
-//                self.updateLabel()
-//            } else {
-//                timer.invalidate()
-//                NSTimer.scheduledTimerWithTimeInterval( 0.16, target: self, selector: "daysAddingEffect:", userInfo: "stage5", repeats: true )
-//            }
-//
-//        case "stage5":
-//            if self.animationIndex < self.stageIndexArray[4] {
-//                self.updateLabel()
-//            } else {
-//                timer.invalidate()
-//                NSTimer.scheduledTimerWithTimeInterval( 0.24, target: self, selector: "daysAddingEffect:", userInfo: "stage6", repeats: true )
-//            }
-//
-//        case "stage6":
-//            if self.animationIndex < self.stageIndexArray[5] {
-//                self.updateLabel()
-//            } else {
-//                timer.invalidate()
-//                NSTimer.scheduledTimerWithTimeInterval( 0.32, target: self, selector: "daysAddingEffect:", userInfo: "stage7", repeats: true )
-//            }
-//
-//        case "stage7":
-//            if self.animationIndex == self.stageIndexArray[5] {
-//                self.updateLabel()
-//            } else {
-//                timer.invalidate()
-//
-//                if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
-//                    userPreference.setBool( true, forKey: "dayAnimated" )
-//                }
-//            }
-//
-//        default:
-//            break;
-//        }
+
     }
 
     private func updateLabel() {
