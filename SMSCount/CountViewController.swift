@@ -195,7 +195,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         askAlertController.addAction( yesAction )
         askAlertController.addAction( noAction )
 
-        self.presentViewController( askAlertController, animated: true, completion: nil )
+        presentViewController( askAlertController, animated: true, completion: nil )
 
     }
 
@@ -214,7 +214,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                 }
             }
 
-            self.presentViewController( imagePicker, animated: true, completion: nil )
+            presentViewController( imagePicker, animated: true, completion: nil )
         }
     }
 
@@ -227,7 +227,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         let postImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let activityViewController = UIActivityViewController(activityItems: [postImage], applicationActivities: nil)
 
-        self.presentViewController(activityViewController, animated: true, completion: nil)
+        presentViewController(activityViewController, animated: true, completion: nil)
 
     }
 

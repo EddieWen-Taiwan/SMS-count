@@ -27,7 +27,7 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func dismissViewController(sender: AnyObject) {
-        self.dismissViewControllerAnimated( true, completion: nil )
+        dismissViewControllerAnimated( true, completion: nil )
     }
 
     @IBAction func saveNewStatus(sender: AnyObject) {
@@ -36,7 +36,7 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
             newStatus = newStatus.substringToIndex(30)
         }
         parentVC?.updateNewStatusFromStatusVC( newStatus as String )
-        self.dismissViewControllerAnimated( true, completion: nil )
+        dismissViewControllerAnimated( true, completion: nil )
     }
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

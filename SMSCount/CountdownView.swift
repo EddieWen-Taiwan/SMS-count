@@ -83,7 +83,7 @@ class CountdownView: UIView {
             }
         }
 
-        let arrayLength = self.animationArray.count
+        let arrayLength = animationArray.count
         stageIndexArray.removeAll(keepCapacity: true)
         stageIndexArray.append( Int( Double(arrayLength)*0.55 ) )
         stageIndexArray.append( Int( Double(arrayLength)*0.75 ) )

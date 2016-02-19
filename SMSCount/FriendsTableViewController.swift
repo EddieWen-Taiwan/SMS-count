@@ -224,7 +224,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     func retryInternet(sender: UIButton) {
 
         loadingView.hidden = false
-        let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView
+        let indicator = loadingView.subviews.first as! UIActivityIndicatorView
             indicator.startAnimating()
 
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
