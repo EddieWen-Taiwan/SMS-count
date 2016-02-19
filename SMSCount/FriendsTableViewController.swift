@@ -32,31 +32,31 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         tableView.allowsSelection = false
 
-        self.checkEnvironment()
+        checkEnvironment()
     }
 
     // Make sure all everything required is okay, or add coverView
     func checkEnvironment() {
 
         // If there is coverView
-        self.removeOldViews()
+        removeOldViews()
 
         if Reachability().isConnectedToNetwork() {
             // Request for friendList
             if FBSDKAccessToken.currentAccessToken() == nil {
-                self.coverTableView("facebook")
+                coverTableView("facebook")
             } else {
                 let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
                 if userPreference.boolForKey("publicProfile") {
-                    self.requestFriendsListFromFacebook()
+                    requestFriendsListFromFacebook()
                 } else {
-                    self.coverTableView("public")
+                    coverTableView("public")
                 }
             }
         } else {
             // without Internet
-            self.coverTableView("internet")
+            coverTableView("internet")
         }
 
     }
@@ -102,12 +102,12 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if self.getData {
-            if self.friendsObject.count == 0 {
-                self.coverTableView("no-friends")
+        if getData {
+            if friendsObject.count == 0 {
+                coverTableView("no-friends")
                 return 0
             } else {
-                return self.friendsObject.count
+                return friendsObject.count
             }
         } else {
             return Int( (UIScreen.mainScreen().bounds.height-44-49)/2/74+1 )
@@ -117,9 +117,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendsTableViewCell
 
-        if self.getData {
+        if getData {
 
-            let thisUser = self.friendsObject[indexPath.row]
+            let thisUser = friendsObject[indexPath.row]
             // Configure the cell...
 
             if let userName: String = thisUser.valueForKey("username") as? String {
@@ -130,7 +130,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             // Sticker
             let fbid = thisUser.valueForKey("fb_id") as! String
             let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
-            self.reachability.getImageFromUrl(url) { (data, response, error) in
+            reachability.getImageFromUrl(url) { (data, response, error) in
                 if data != nil {
                     dispatch_async( dispatch_get_main_queue(), {
                         cell.sticker.image = UIImage(data: data!)
@@ -182,10 +182,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         // Button under title
         if situation == "facebook" {
-            let loginView = self.makeFBLoginButton( viewWidth, vh: viewHeight )
+            let loginView = makeFBLoginButton( viewWidth, vh: viewHeight )
             coverView.addSubview(loginView)
         } else if situation == "internet" {
-            let retryButton = self.makeRetryButton( viewWidth, vh: viewHeight )
+            let retryButton = makeRetryButton( viewWidth, vh: viewHeight )
             coverView.addSubview(retryButton)
         }
 
@@ -193,10 +193,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if situation == "internet" {
             // Loading
-            self.loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
-            self.loadingView.hidden = true
+            loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
+            loadingView.hidden = true
 
-            self.view.addSubview( self.loadingView )
+            self.view.addSubview( loadingView )
         }
 
     }
@@ -223,7 +223,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     func retryInternet(sender: UIButton) {
 
-        self.loadingView.hidden = false
+        loadingView.hidden = false
         let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView
             indicator.startAnimating()
 

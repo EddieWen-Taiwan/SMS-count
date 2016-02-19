@@ -23,14 +23,14 @@ class MonthlyImages {
     }
 
     func setBackground( background: UIImageView ) {
-        if self.isMonthMatch() {
+        if isMonthMatch() {
             background.image = UIImage(contentsOfFile: path)
         } else {
             background.alpha = 0
 
             if reachability.isConnectedToNetwork() {
-                let urlString = "http://smscount.lol/app/backgroundImg/" + self.currentMonth
-                self.downloadImage( NSURL(string: urlString)!, backgroundImage: background )
+                let urlString = "http://smscount.lol/app/backgroundImg/" + currentMonth
+                downloadImage( NSURL(string: urlString)!, backgroundImage: background )
             }
         }
     }
@@ -58,17 +58,17 @@ class MonthlyImages {
 
     private func saveImage( image: UIImage ) {
         let pngImageData = UIImagePNGRepresentation(image)!
-        if NSFileManager.defaultManager().fileExistsAtPath( self.path ) {
+        if NSFileManager.defaultManager().fileExistsAtPath( path ) {
             do {
-                try NSFileManager.defaultManager().removeItemAtPath( self.path )
+                try NSFileManager.defaultManager().removeItemAtPath( path )
             } catch {}
         }
-        pngImageData.writeToFile( self.path, atomically: true )
+        pngImageData.writeToFile( path, atomically: true )
     }
 
     private func isMonthMatch() -> Bool {
-        let imageMonth = self.userPreference.stringForKey("backgroundMonth")
-        return imageMonth == self.currentMonth ? true : false
+        let imageMonth = userPreference.stringForKey("backgroundMonth")
+        return imageMonth == currentMonth ? true : false
     }
 
 }

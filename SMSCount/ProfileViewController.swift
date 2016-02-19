@@ -41,27 +41,27 @@ class ProfileViewController: UIViewController {
 
         if calculateHelper.settingStatus {
 
-            self.refreshData()
+            refreshData()
 
         } else {
             // switch to settingViewController ?
         }
 
-        self.showUserInfo()
+        showUserInfo()
     }
 
     func refreshData() {
-        self.passedDaysLabel.text = String( calculateHelper.getPassedDays() )
+        passedDaysLabel.text = String( calculateHelper.getPassedDays() )
 
         if calculateHelper.isRetireDateFixed() {
-            self.finalRetireDateLabel.text = calculateHelper.getFixedRetireDate()
-            self.retireDateBottomConstraint.constant = 60
-            self.retireDateView.hidden = false
-            self.retireDateLabel.text = calculateHelper.getRetireDate()
+            finalRetireDateLabel.text = calculateHelper.getFixedRetireDate()
+            retireDateBottomConstraint.constant = 60
+            retireDateView.hidden = false
+            retireDateLabel.text = calculateHelper.getRetireDate()
         } else {
-            self.finalRetireDateLabel.text = calculateHelper.getRetireDate()
-            self.retireDateBottomConstraint.constant = 0
-            self.retireDateView.hidden = true
+            finalRetireDateLabel.text = calculateHelper.getRetireDate()
+            retireDateBottomConstraint.constant = 0
+            retireDateView.hidden = true
         }
     }
 
@@ -73,16 +73,16 @@ class ProfileViewController: UIViewController {
                     // Download Facebook profile
                     // API url : http://graph.facebook.com/100001967509786/picture?type=large
 
-                    self.downloadImageWithID(fbid)
+                    downloadImageWithID(fbid)
                 }
             }
 
             if let username = userPreference.stringForKey("username") {
-                self.usernameLabel.text = username
+                usernameLabel.text = username
             }
 
             if let userStatus = userPreference.stringForKey("status") {
-                self.statusLabel.text = userStatus
+                statusLabel.text = userStatus
             }
 
         }
@@ -92,17 +92,17 @@ class ProfileViewController: UIViewController {
         super.viewDidAppear(animated)
 
         // Check whether user logged in with FB in FriendsTVC
-        if self.downloadFromParse {
-            self.downloadFromParse = false
+        if downloadFromParse {
+            downloadFromParse = false
 
             // Reinit
             calculateHelper = CalculateHelper()
             if calculateHelper.settingStatus {
-                self.refreshData()
+                refreshData()
             }
 
             // Check sticker, name and status
-            self.showUserInfo()
+            showUserInfo()
         }
     }
 
