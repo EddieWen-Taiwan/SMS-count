@@ -17,11 +17,11 @@ class FriendsCalculate: CalculateHelper {
         self.valueDiscountDays = discountDays
         self.valueAutoFixed = autoFixed
 
-        if super.isSettingAllDone() {
-            super.updateDate()
-            return true
-        } else {
+        if self.valueEnterDate == "" || self.valueServiceDays == -1 {
             return false
+        } else {
+            super.calculateData()
+            return true
         }
 
     }

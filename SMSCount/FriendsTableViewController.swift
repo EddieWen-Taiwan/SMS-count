@@ -12,13 +12,19 @@ import FBSDKLoginKit
 
 class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
 
-    var friendsObject: [PFObject] = []
-    var getData: Bool = false
+    var friendsObject = [PFObject]()
+    var getData: Bool
 
     var loadingView = LoadingView()
 
     let friendHelper = FriendsCalculate()
     let reachability = Reachability()
+
+    required init?(coder aDecoder: NSCoder) {
+        self.getData = false
+
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +46,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if FBSDKAccessToken.currentAccessToken() == nil {
                 self.coverTableView("facebook")
             } else {
-                let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+                let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
-                if userDefault.boolForKey("publicProfile") {
+                if userPreference.boolForKey("publicProfile") {
                     self.requestFriendsListFromFacebook()
                 } else {
                     self.coverTableView("public")
@@ -61,7 +67,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
 
             if error == nil {
-                var friendArray: [String] = []
+                var friendArray = [String]()
                 if let users = result.valueForKey("data") {
                     for user in users as! [AnyObject] {
                         friendArray.append( user.valueForKey("id") as! String )
@@ -119,9 +125,8 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if let userName: String = thisUser.valueForKey("username") as? String {
                 cell.name.text = userName
             }
-            if let userStatus: String = thisUser.valueForKey("status") as? String {
-                cell.status.text = userStatus
-            }
+            cell.status.text = thisUser.valueForKey("status") as? String ?? ""
+
             // Sticker
             let fbid = thisUser.valueForKey("fb_id") as! String
             let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
@@ -133,13 +138,14 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 }
             }
 
+            // Calculate this friend's data
             if thisUser.valueForKey("yearOfEnterDate") != nil && thisUser.valueForKey("monthOfEnterDate") != nil && thisUser.valueForKey("dateOfEnterDate") != nil && thisUser.valueForKey("serviceDays") != nil {
 
                 var entireDate = "\(thisUser.valueForKey("yearOfEnterDate")!) / "
                 if (thisUser.valueForKey("monthOfEnterDate")! as! Int) < 10 {
                     entireDate += "0"
                 }
-                entireDate += String(thisUser.valueForKey("monthOfEnterDate")!) + " / "
+                entireDate += "\(thisUser.valueForKey("monthOfEnterDate")!) / "
                 if (thisUser.valueForKey("dateOfEnterDate")! as! Int) < 10 {
                     entireDate += "0"
                 }
@@ -192,6 +198,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
             self.view.addSubview( self.loadingView )
         }
+
     }
 
     private func makeFBLoginButton( vw: CGFloat, vh: CGFloat ) -> FBSDKLoginButton {
@@ -199,6 +206,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             btn.frame = CGRectMake( 30, vh/2+55, vw-60, 50 )
             btn.readPermissions = [ "public_profile", "email", "user_friends" ]
             btn.delegate = self
+
         return btn
     }
 
@@ -209,6 +217,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             btn.layer.cornerRadius = 3
             btn.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
             btn.addTarget(self, action: "retryInternet:", forControlEvents: .TouchUpInside)
+
         return btn
     }
 
@@ -225,6 +234,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 self.checkEnvironment()
             }
         }
+
     }
 
     // *************** \\
@@ -243,7 +253,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
                 if error == nil {
-                    UserInfo().storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
+                    UserInfo().storeFacebookInfo( result, syncCompletion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
 
                         // Ask user whether to download data from Parse or not
                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
@@ -291,7 +301,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
                         self.presentViewController(syncAlertController, animated: true, completion: nil)
 
-                    }, completion2: {
+                    }, newUserTask: {
                         self.removeOldViews()
                         self.requestFriendsListFromFacebook()
                     })
@@ -314,14 +324,5 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             }
         })
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

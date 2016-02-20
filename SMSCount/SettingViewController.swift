@@ -22,12 +22,12 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet var serviceDaysPickerView: UIView!
     @IBOutlet var serviceDaysPickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var serviceDaysPickerElement: UIPickerView!
-    var serviceDaysPickerDataSource = [ "四個月", "四個月五天", "一年", "一年十五天", "三年" ]
+    let serviceDaysPickerDataSource: [String]
 
     @IBOutlet var discountDaysPickerView: UIView!
     @IBOutlet var discountDaysPickerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var discountDaysPickerElement: UIPickerView!
-    var discountDaysPickerDataSource = [ "0 天", "1 天", "2 天", "3 天", "4 天", "5 天", "6 天", "7 天", "8 天", "9 天", "10 天",  "11 天", "12 天", "13 天", "14 天", "15 天", "16 天", "17 天", "18 天", "19 天", "20 天", "21 天", "22 天", "23 天", "24 天", "25 天", "26 天", "27 天", "28 天", "29 天", "30 天" ]
+    let discountDaysPickerDataSource: [String]
 
     @IBOutlet var autoWeekendSwitch: UISwitch!
     
@@ -40,10 +40,13 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     var containerVC: SettingTableViewController?
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
+        self.serviceDaysPickerDataSource = ["四個月","四個月五天","一年","一年十五天","三年"]
+        self.discountDaysPickerDataSource = ["0 天","1 天","2 天","3 天","4 天","5 天","6 天","7 天","8 天","9 天","10 天", "11 天",
+            "12 天","13 天","14 天","15 天","16 天","17 天","18 天","19 天","20 天","21 天","22 天","23 天","24 天","25 天","26 天","27 天","28 天","29 天","30 天"]
         dateFormatter.dateFormat = "yyyy / MM / dd"
         dateFormatter.timeZone = NSTimeZone.localTimeZone()
+
+        super.init(coder: aDecoder)
     }
 
     override func viewDidLoad() {
@@ -164,7 +167,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
     }
 
-    func dismissRelativeViews() {
+    private func dismissRelativeViews() {
         self.datepickerViewBottomConstraint.constant = -200
         self.serviceDaysPickerViewBottomConstraint.constant = -200
         self.discountDaysPickerViewBottomConstraint.constant = -200
@@ -181,8 +184,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "embed" {
-            let settingTable = segue.destinationViewController as? SettingTableViewController
-            settingTable?.parentVC = self
+            if let settingTable = segue.destinationViewController as? SettingTableViewController {
+                settingTable.parentVC = self
+            }
         }
     }
 
@@ -213,7 +217,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     self.FBLoginView.hidden = true
                     self.topConstraint.constant = -70
 
-                    self.userInfo.storeFacebookInfo( result, completion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
+                    self.userInfo.storeFacebookInfo( result, syncCompletion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
 
                         // Ask user whether to download data from Parse or not
                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
@@ -250,7 +254,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                         syncAlertController.addAction(noAction)
 
                         self.presentViewController(syncAlertController, animated: true, completion: nil)
-                    }, completion2: {})
+                    }, newUserTask: {})
 
                 }
 
@@ -276,8 +280,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let forKeyString = pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays"
-        self.userPreference.setInteger( row, forKey: forKeyString )
+        self.userPreference.setInteger( row, forKey: pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays" )
     }
 
 }

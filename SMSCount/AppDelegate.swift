@@ -15,7 +15,7 @@ import DrawerController
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var drawerController: DrawerController!
+    var drawerController = DrawerController()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -31,7 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().translucent = false
 
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-        // If there is no publicProfile, set it true as default
+        // If there is no countdownAnimation, set it true as default
+        if userPreference.valueForKey("countdownAnimation") == nil {
+            userPreference.setBool( true, forKey: "countdownAnimation")
+        }
+        // If there is no publicProfile....
         if userPreference.valueForKey("publicProfile") == nil {
             userPreference.setBool( true, forKey: "publicProfile")
         }

@@ -39,19 +39,10 @@ class NavigationController: UINavigationController {
 
     func markDownload() {
         let countVC = self.tabBarController?.viewControllers![0].childViewControllers.first! as! CountViewController
-        countVC.downloadFromParse = true
+            countVC.downloadFromParse = true
+
         let profileVC = self.tabBarController?.viewControllers![1].childViewControllers.first! as! ProfileViewController
-        profileVC.downloadFromParse = true
+            profileVC.downloadFromParse = true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

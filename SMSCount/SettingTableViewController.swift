@@ -15,6 +15,7 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet var discountDaysLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var autoWeekendSwitch: UISwitch!
+    @IBOutlet var animationSwitch: UISwitch!
     @IBOutlet var publicSwitch: UISwitch!
 
     let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
@@ -48,7 +49,12 @@ class SettingTableViewController: UITableViewController {
         if self.userPreference.boolForKey("autoWeekendFixed") {
             self.autoWeekendSwitch.setOn(true, animated: false)
         }
+        prepareSwitch(self.animationSwitch)
+        if self.userPreference.boolForKey("countdownAnimation") {
+            self.animationSwitch.setOn(true, animated: false)
+        }
         prepareSwitch(self.publicSwitch)
+        // Its value was set in SettingVC
 
         // Add footer of TableView
         let footerBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
@@ -114,27 +120,30 @@ class SettingTableViewController: UITableViewController {
         let newValue: Bool = mySwitch.on ? true : false
 
         if let parentVC = self.parentVC {
-            if mySwitch.tag == 0 {
-                parentVC.userInfo.updateWeekendFixed( newValue )
-            } else {
-                parentVC.userInfo.updatePublicProfile( newValue )
+            switch mySwitch.tag {
+                case 0:
+                    parentVC.userInfo.updateWeekendFixed( newValue )
+                case 1:
+                    parentVC.userInfo.updateAnimationSetting( newValue )
+                default: // 2
+                    parentVC.userInfo.updatePublicProfile( newValue )
             }
         }
     }
 
-    @IBAction override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-
-        if let statusVC = unwindSegue.sourceViewController as? StatusViewController {
-            var userStatus = (statusVC.statusTextField.text ?? "") as NSString
-            if userStatus.length > 30 {
-                userStatus = userStatus.substringToIndex(30)
-            }
-            self.statusLabel.text = userStatus as String
-            if let parentVC = self.parentVC {
-                parentVC.userInfo.updateUserStatus( userStatus as String )
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "StatusVC" {
+            if let statusVC = segue.destinationViewController as? StatusViewController {
+                statusVC.parentVC = self
             }
         }
+    }
 
+    func updateNewStatusFromStatusVC( newStatus: String ) {
+        self.statusLabel.text = newStatus
+        if let parentVC = self.parentVC {
+            parentVC.userInfo.updateUserStatus( newStatus as String )
+        }
     }
 
     // MARK: table view
@@ -143,43 +152,40 @@ class SettingTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                return 1
-            case 1:
-                return 3
-            default:
-                return 2
-        }
+        return section == 0 ? 1 : 3
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let label = UILabel(frame: CGRectMake(20, 24, 48, 17))
-        label.textColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
-        label.font = UIFont(name: "PingFangTC-Light", size: 12.0)
-        switch section {
-            case 0:
-                label.text = "個人設定"
-            case 1:
-                label.text = "一般設定"
-            default:
-                label.text = "偏好設定"
-        }
+            label.textColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
+            label.font = UIFont(name: "PingFangTC-Light", size: 12.0)
+            label.text = {
+                switch section {
+                    case 0:
+                        return "個人設定"
+                    case 1:
+                        return "一般設定"
+                    default:
+                        return "偏好設定"
+                }
+            }()
 
         let topBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
-        topBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            topBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+
         let bottomBorder = UIView(frame: CGRectMake(0, 50, tableView.frame.width, 0.5))
-        bottomBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            bottomBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
 
         let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 50))
-        headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-        if section != 0 {
-            headerView.addSubview(topBorder)
-        }
-        headerView.addSubview(bottomBorder)
-        headerView.addSubview(label)
+            headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            headerView.addSubview(label)
+            if section != 0 {
+                headerView.addSubview(topBorder)
+            }
+            headerView.addSubview(bottomBorder)
 
         return headerView
     }
+
 }

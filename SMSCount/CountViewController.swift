@@ -10,48 +10,36 @@ import UIKit
 
 class CountViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    // <<Back>> - about ScreenShot
+    // BACK - for ScreenShot
     @IBOutlet var backRemainedDaysLabel: UILabel!
     @IBOutlet var backRemainedDaysWord: UILabel!
     @IBOutlet var screenShotScale: UIView!
 
-    // <<Front>>
+    // FRONT
     @IBOutlet var backgroundImage: UIImageView!
-    var currentMonthStr = "00"
-    var currentDisplay = "day"
     @IBOutlet var switchViewButton: UIView!
     @IBOutlet var imageOnSwitchBtn: UIImageView!
+    var currentDisplay: String
 
+    @IBOutlet var contentView: UIView!
     // RemainedDays
-    @IBOutlet var remainedView: UIView!
-    @IBOutlet var frontRemainedDaysLabel: UILabel!
-    @IBOutlet var frontRemainedDaysWord: UILabel!
-    var animationIndex: Int = 0
-    var animationArray = [ "" ]
-    var stageIndexArray = [ 55, 75, 88, 94, 97, 99 ]
+    var countdownView = CountdownView()
 
     // currentProcess %
-    @IBOutlet var pieChartView: UIView!
-    @IBOutlet var percentageLabel: UILabel!
-    var isCircleDrawn: Bool = false
-
-    // LoaingView after screenshot
-    var loadingView = LoadingView()
+    var circleView: PercentageCircleView!
+    var isCircleDrawn: Bool
 
     var calculateHelper = CalculateHelper()
-    var circleView: PercentageCircleView!
+    var loadingView = LoadingView() // LoaingView while taking screenshot
 
-    var screenHeight = UIScreen.mainScreen().bounds.height
-    var screenWidth = UIScreen.mainScreen().bounds.width
-
-    var settingStatus: Bool = false
-    var downloadFromParse: Bool = false
+    var downloadFromParse: Bool // Download data from Parse in FriendsTableVC
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        self.currentDisplay = "day"
+        self.isCircleDrawn = false
+        self.downloadFromParse = false
 
-        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
-        currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
+        super.init(coder: aDecoder)
     }
 
     override func viewDidLoad() {
@@ -63,10 +51,16 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.switchViewButton.layer.borderWidth = 2
 
-        circleView = PercentageCircleView( view: self.pieChartView )
-        self.pieChartView.addSubview( circleView )
+        countdownView = CountdownView(view: self.view)
+        self.contentView.addSubview( countdownView )
 
-        _ = MonthlyImages( month: currentMonthStr, background: self.backgroundImage )
+        circleView = PercentageCircleView()
+        self.contentView.addSubview( circleView )
+
+        // Prepare background image
+        let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
+        let currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
+        MonthlyImages( month: currentMonthStr ).setBackground( self.backgroundImage )
 
         self.checkSetting()
 
@@ -74,85 +68,43 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
     func checkSetting() {
 
-        self.settingStatus = calculateHelper.isSettingAllDone()
-        if self.settingStatus {
+        if calculateHelper.settingStatus {
 
             self.prepareTextAndNumbers()
 
         } else {
             // switch to settingViewController ?
             // tabBarController?.selectedIndex = 2
-
-            self.percentageLabel.text = "0"
         }
 
     }
 
     func prepareTextAndNumbers() {
 
-        calculateHelper.updateDate()
+        let newRemainedDays = calculateHelper.getRemainedDays()
 
-        var newRemainedDays = calculateHelper.getRemainedDays()
-        var daysText = "剩餘天數"
-        if newRemainedDays < 0 {
-            newRemainedDays *= (-1)
-            daysText = "自由天數"
-        }
-        self.backRemainedDaysWord.text = daysText
-        self.frontRemainedDaysWord.text = daysText
-        self.backRemainedDaysLabel.text = String( newRemainedDays )
+        // For screenshot
+        self.backRemainedDaysWord.text = newRemainedDays < 0 ? "自由天數" : "剩餘天數"
+        self.backRemainedDaysLabel.text = String( abs(newRemainedDays) )
 
-        // Set remainedDays
-        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-        if userPreference.boolForKey("dayAnimated") {
-            // Animation was completed
-            self.frontRemainedDaysLabel.text = String( newRemainedDays )
-        } else {
-            self.beReadyAndRunCountingAnimation(newRemainedDays)
-        }
+        // Start animation
+        countdownView.setRemainedDays( newRemainedDays )
 
         self.setTextOfProcess()
-    }
-
-    func beReadyAndRunCountingAnimation( remainedDays: Int ) {
-
-        // Animation setting
-        animationIndex = 0
-        animationArray.removeAll(keepCapacity: false) // Maybe it should be true
-        if remainedDays < 100 {
-            for var i = 0; i <= remainedDays; i++ {
-                animationArray.append( String(i) )
-            }
-        } else {
-            for var i = 1; i <= 95; i++ {
-                animationArray.append( String( format: "%.f", Double( (remainedDays-3)*i )*0.01 ) )
-            }
-            for var i = 96; i <= 100; i++ {
-                animationArray.append( String( remainedDays-(100-i) ) )
-            }
-        }
-
-        let arrayLength = animationArray.count
-        stageIndexArray[0] = Int( Double(arrayLength)*0.55 )
-        stageIndexArray[1] = Int( Double(arrayLength)*0.75 )
-        stageIndexArray[2] = Int( Double(arrayLength)*0.88 )
-        stageIndexArray[3] = Int( Double(arrayLength)*0.94 )
-        stageIndexArray[4] = Int( Double(arrayLength)*0.97 )
-        stageIndexArray[5] = arrayLength-1
-
-        self.frontRemainedDaysLabel.text = "0"
-
-        // Run animation
-        NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("daysAddingEffect:"), userInfo: "stage1", repeats: true )
 
     }
 
     func setTextOfProcess() {
 
         // Set currentProcess
-        let currentProcess = calculateHelper.getCurrentProgress()
-        let currentProcessString = String( format: "%.1f", currentProcess )
-        self.percentageLabel.text = currentProcessString
+        self.circleView.setPercentage( calculateHelper.getCurrentProgress() )
+
+        // If user doesn't want animation, do it at this moment
+        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+            if userPreference.boolForKey("countdownAnimation") == false {
+                self.checkCircleAnimation(true)
+            }
+        }
 
     }
 
@@ -173,76 +125,6 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         }
     }
 
-    func daysAddingEffect( timer: NSTimer ) {
-
-        func updateLabel() {
-            self.frontRemainedDaysLabel.text = self.animationArray[ self.animationIndex++ ]
-        }
-
-        switch( timer.userInfo! as! String ) {
-            case "stage1":
-                if animationIndex < stageIndexArray[0] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.02, target: self, selector: "daysAddingEffect:", userInfo: "stage2", repeats: true )
-                }
-
-            case "stage2":
-                if animationIndex < stageIndexArray[1] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.04, target: self, selector: "daysAddingEffect:", userInfo: "stage3", repeats: true )
-                }
-            
-            case "stage3":
-                if animationIndex < stageIndexArray[2] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.08, target: self, selector: "daysAddingEffect:", userInfo: "stage4", repeats: true )
-                }
-
-            case "stage4":
-                if animationIndex < stageIndexArray[3] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.16, target: self, selector: "daysAddingEffect:", userInfo: "stage5", repeats: true )
-                }
-
-            case "stage5":
-                if animationIndex < stageIndexArray[4] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.24, target: self, selector: "daysAddingEffect:", userInfo: "stage6", repeats: true )
-                }
-
-            case "stage6":
-                if animationIndex < stageIndexArray[5] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-                    NSTimer.scheduledTimerWithTimeInterval( 0.32, target: self, selector: "daysAddingEffect:", userInfo: "stage7", repeats: true )
-                }
-
-            case "stage7":
-                if animationIndex == stageIndexArray[5] {
-                    updateLabel()
-                } else {
-                    timer.invalidate()
-
-                    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-                    userPreference.setBool( true, forKey: "dayAnimated" )
-                }
-
-            default:
-                break;
-        }
-    }
-
     func switchView() {
 
         let switch2chart: Bool = self.currentDisplay == "day" ? true : false
@@ -250,23 +132,23 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         self.imageOnSwitchBtn.image = UIImage(named: switch2chart ? "date" : "chart" )
 
         UIView.animateWithDuration( 0.3, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.remainedView.alpha = switch2chart ? 0 : 1
-            self.pieChartView.alpha = switch2chart ? 1 : 0
+            self.countdownView.alpha = switch2chart ? 0 : 1
+            self.circleView.alpha = switch2chart ? 1 : 0
             self.switchViewButton.backgroundColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
         }, completion: { finish in
             self.currentDisplay = switch2chart ? "chart" : "day"
-            if self.settingStatus {
+            if self.calculateHelper.settingStatus {
                 if switch2chart {
-                    self.checkCircleAnimation()
+                    self.checkCircleAnimation(false)
                 }
             }
         })
 
     }
 
-    func checkCircleAnimation() {
-        if self.currentDisplay == "chart" && self.isCircleDrawn == false {
-            self.circleView.animateCircle( (self.percentageLabel.text! as NSString).doubleValue*(0.01) )
+    func checkCircleAnimation( force: Bool ) {
+        if force || (self.currentDisplay == "chart" && self.isCircleDrawn == false) {
+            self.circleView.addPercentageCircle()
             self.isCircleDrawn = true
         }
     }

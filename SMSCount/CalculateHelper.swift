@@ -10,11 +10,11 @@ import UIKit
 
 class CalculateHelper {
 
-    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-    let dateFormatter = NSDateFormatter()
-    let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-    var dayComponent = NSDateComponents()
-    var weekendComponent = NSDateComponents()
+    private let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+    private let dateFormatter = NSDateFormatter()
+    private let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+    private var dayComponent = NSDateComponents()
+    private var weekendComponent = NSDateComponents()
 
     // Original data
     var valueEnterDate: String
@@ -23,14 +23,17 @@ class CalculateHelper {
     var valueAutoFixed: Bool
 
     // Outcome
-    var enterDate: NSDate!
-    var currentDate: NSDate!
-    var defaultRetireDate: NSDate!
-    var realRetireDate: NSDate!
-    var remainedDays: NSDateComponents!
-    var passedDays: NSDateComponents!
-    var wholeServiceDays: NSDateComponents!
-    var days2beFixed: Int = 0
+    private var enterDate: NSDate!
+    private var currentDate: NSDate!
+    private var defaultRetireDate: NSDate!
+    private var realRetireDate: NSDate!
+    private var remainedDays: NSDateComponents!
+    private var passedDays: NSDateComponents!
+    private var wholeServiceDays: NSDateComponents!
+    private var days2beFixed: Int = 0
+
+    // For other ViewControllers
+    var settingStatus: Bool = false
 
     init() {
 
@@ -46,26 +49,25 @@ class CalculateHelper {
         let tempTimeString = dateFormatter.stringFromDate( NSDate() )
         self.currentDate = dateFormatter.dateFromString( tempTimeString )
 
+        // calculate data automaticlly
+        if self.isSettingAllDone() {
+            self.calculateData()
+        }
     }
 
-    func isSettingAllDone() -> Bool {
+    private func isSettingAllDone() -> Bool {
 
-        if self.valueEnterDate == "" {
-            return false
-        }
-        if self.valueServiceDays == -1 {
-            return false
-        }
-        return true
+        self.settingStatus = self.valueEnterDate == "" || self.valueServiceDays == -1 ? false : true
+        return self.settingStatus
 
     }
 
-    func updateDate() {
+    func calculateData() {
 
         self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
         // 入伍日 - enterDate
 
-        switch( valueServiceDays ) {
+        switch self.valueServiceDays {
             case 0:
                 dayComponent.year = 0
                 dayComponent.month = 4
@@ -82,8 +84,7 @@ class CalculateHelper {
                 dayComponent.year = 1
                 dayComponent.month = 0
                 dayComponent.day = 15-1
-            default:
-                // as value = 4
+            default: // as value = 4
                 dayComponent.year = 3
                 dayComponent.month = 0
                 dayComponent.day = -1
@@ -152,54 +153,31 @@ class CalculateHelper {
     }
 
     func switchPeriod( period: String ) -> String {
-        var output: String = ""
-        switch(period) {
-            case "0":
-                output = "四個月"
-            case "1":
-                output = "四個月五天"
-            case "2":
-                output = "一年"
-            case "3":
-                output = "一年十五天"
-            case "4":
-                output = "三年"
-            case "四個月":
-                output = "0"
-            case "四個月五天":
-                output = "1"
-            case "一年":
-                output = "2"
-            case "一年十五天":
-                output = "3"
-            case "三年":
-                output = "4"
-            default:
-                output = "."
+        switch period {
+            case "0": return "四個月"
+            case "1": return "四個月五天"
+            case "2": return "一年"
+            case "3": return "一年十五天"
+            case "4": return "三年"
+            case "四個月": return "0"
+            case "四個月五天": return "1"
+            case "一年": return "2"
+            case "一年十五天": return "3"
+            case "三年": return "4"
+            default: return ""
         }
-        return output
     }
 
     private func switchWeekday( weekday: Int ) -> String {
-        switch( weekday ) {
-            case -1:
-                return " Fri."
-            case 1:
-                return " Sun."
-            case 2:
-                return " Mon."
-            case 3:
-                return " Tue."
-            case 4:
-                return " Wed."
-            case 5:
-                return " Thu."
-            case 6:
-                return " Fri."
-            case 7:
-                return " Sat."
-            default:
-                return " ."
+        switch weekday {
+            case 1: return " Sun."
+            case 2: return " Mon."
+            case 3: return " Tue."
+            case 4: return " Wed."
+            case 5: return " Thu."
+            case -1, 6: return " Fri."
+            case 7: return " Sat."
+            default: return ""
         }
     }
 

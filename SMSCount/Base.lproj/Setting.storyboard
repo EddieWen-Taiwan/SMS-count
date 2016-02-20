@@ -63,7 +63,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="06I-dP-Gw5" kind="unwind" unwindAction="unwindForSegue:towardsViewController:" id="v8d-7c-Hie"/>
+                                    <action selector="saveNewStatus:" destination="DUU-JR-dQ9" eventType="touchUpInside" id="vZX-Nd-9J1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -85,7 +85,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1A-8y-I2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="06I-dP-Gw5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1290" y="1973"/>
         </scene>
@@ -337,7 +336,7 @@
                                                         <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="DUU-JR-dQ9" kind="presentation" id="9sy-Lc-DEj"/>
+                                                        <segue destination="DUU-JR-dQ9" kind="presentation" identifier="StatusVC" id="9sy-Lc-DEj"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -529,14 +528,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公開社群" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwZ-nW-viJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倒數動畫" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwZ-nW-viJ">
                                                     <rect key="frame" x="20" y="15" width="64" height="23"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
                                                     <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="關閉後好友無法在好友名單中看到你" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyf-84-Cka">
-                                                    <rect key="frame" x="20" y="33" width="192" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="關閉可取消倒數頁面動畫" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyf-84-Cka">
+                                                    <rect key="frame" x="20" y="33" width="132" height="17"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
                                                     <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -555,6 +554,39 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xN6-7Q-eQC">
+                                        <rect key="frame" x="0.0" y="546" width="600" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xN6-7Q-eQC" id="a1B-nb-nGw">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公開社群" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXD-pk-OYI">
+                                                    <rect key="frame" x="20" y="15" width="64" height="23"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="關閉後好友無法在好友名單中看到你" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULU-Rk-jyu">
+                                                    <rect key="frame" x="20" y="33" width="192" height="17"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F5j-MO-OXh">
+                                                    <rect key="frame" x="531" y="17" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EXD-pk-OYI" firstAttribute="top" secondItem="a1B-nb-nGw" secondAttribute="top" constant="15" id="BBS-vg-aJE"/>
+                                                <constraint firstItem="F5j-MO-OXh" firstAttribute="centerY" secondItem="a1B-nb-nGw" secondAttribute="centerY" id="HDU-4X-c42"/>
+                                                <constraint firstAttribute="bottom" secondItem="ULU-Rk-jyu" secondAttribute="bottom" constant="15" id="T8w-Aj-GKa"/>
+                                                <constraint firstAttribute="trailing" secondItem="F5j-MO-OXh" secondAttribute="trailing" constant="20" id="dEp-An-Q8s"/>
+                                                <constraint firstItem="EXD-pk-OYI" firstAttribute="leading" secondItem="a1B-nb-nGw" secondAttribute="leading" constant="20" id="lFv-My-YX9"/>
+                                                <constraint firstItem="ULU-Rk-jyu" firstAttribute="leading" secondItem="a1B-nb-nGw" secondAttribute="leading" constant="20" id="nnH-Pa-d47"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -564,10 +596,11 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="animationSwitch" destination="yhe-CC-rUr" id="6lN-zE-c0u"/>
                         <outlet property="autoWeekendSwitch" destination="d8a-QV-DCL" id="Xig-Q4-PhK"/>
                         <outlet property="discountDaysLabel" destination="Kz1-80-G22" id="1J1-Ep-gMv"/>
                         <outlet property="enterDateLabel" destination="FgD-3f-36t" id="PRx-99-LOf"/>
-                        <outlet property="publicSwitch" destination="yhe-CC-rUr" id="3hd-UM-4nv"/>
+                        <outlet property="publicSwitch" destination="F5j-MO-OXh" id="CtK-k5-zKL"/>
                         <outlet property="serviceDaysLabel" destination="M8V-Av-V17" id="Pwt-cp-KHn"/>
                         <outlet property="statusLabel" destination="fIb-Qb-GGU" id="wy2-jJ-kkZ"/>
                     </connections>

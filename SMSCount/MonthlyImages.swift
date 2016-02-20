@@ -10,17 +10,19 @@ class MonthlyImages {
 
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     let path: String
-    var currentMonth = "0"
+    var currentMonth: String
 
     let reachability = Reachability()
 
-    init(month: String, background: UIImageView) {
+    init(month: String) {
         self.currentMonth = month
 
-        // update and svae image
+        // update and save image
         let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
-        path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
+        self.path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
+    }
 
+    func setBackground( background: UIImageView ) {
         if self.isMonthMatch() {
             background.image = UIImage(contentsOfFile: path)
         } else {
@@ -65,8 +67,8 @@ class MonthlyImages {
     }
 
     private func isMonthMatch() -> Bool {
-        let imageMonth = userPreference.stringForKey("backgroundMonth")
-        return imageMonth == currentMonth ? true : false
+        let imageMonth = self.userPreference.stringForKey("backgroundMonth")
+        return imageMonth == self.currentMonth ? true : false
     }
 
 }

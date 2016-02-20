@@ -14,22 +14,13 @@ class LeftDrawerViewController: UIViewController {
     let mainStoryborad = UIStoryboard(name: "Main", bundle: nil)
     let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
 
-    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     @IBOutlet var countRow: UIView!
     @IBOutlet var settingRow: UIView!
 
-    init() {
-        super.init(nibName: "LeftDrawer", bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    convenience init() {
+        self.init(nibName: "LeftDrawer", bundle: nil)
     }
     
     @IBAction func goMainTabBarController(sender: AnyObject) {
@@ -64,15 +55,5 @@ class LeftDrawerViewController: UIViewController {
         }
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -2,71 +2,37 @@
 //  CalculateHelperTests.swift
 //  SMSCount
 //
-//  Created by Eddie on 10/29/15.
-//  Copyright © 2015 Wen. All rights reserved.
+//  Created by Eddie on 2/4/16.
+//  Copyright © 2016 Wen. All rights reserved.
 //
 
 import XCTest
 @testable import SMSCount
 
 class CalculateHelperTests: XCTestCase {
+    
+    var dataSample = [AnyObject]( arrayLiteral:
+        [ "2015 / 06 / 25", 2, 27, true, "2016 / 05 / 27 Fri.", true ],
+        [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ],
+        [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ],
+        [ "2016 / 01 / 13", 0, 18, true, "2016 / 04 / 22 Fri.", true ]
+    )
 
-    var helper: CalculateHelper!
-    var userPreference: NSUserDefaults!
-
-    let dataObject1 = [ "2015 / 06 / 25", 2, 27, "2016 / 05 / 28 Sat.", "2016 / 05 / 27 Fri." ]
-    let dataObject2 = [ "2014 / 10 / 30", 3, 27, "2015 / 10 / 17 Sat.", "2015 / 10 / 16 Fri." ]
-    let dataObject3 = [ "2015 / 08 / 06", 3,  9, "2016 / 08 / 11 Thu.", "2016 / 08 / 11 Thu." ]
-    var dataOriginal: [AnyObject] = []
+    let userDefault = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        helper = CalculateHelper()
-        self.userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )
-
-        if self.userPreference.stringForKey("enterDate") != nil {
-            self.dataOriginal.append( self.userPreference.stringForKey("enterDate")! )
-        } else {
-            self.dataOriginal.append( "X" )
-        }
-
-        if self.userPreference.stringForKey("serviceDays") != nil {
-            self.dataOriginal.append( self.userPreference.integerForKey("serviceDays") )
-        } else {
-            self.dataOriginal.append( -1 )
-        }
-
-        if self.userPreference.stringForKey("discountDays") != nil {
-            self.dataOriginal.append( self.userPreference.integerForKey("discountDays") )
-        } else {
-            self.dataOriginal.append( -1 )
-        }
 
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.userDefault.setValue("2015 / 06 / 25", forKey: "enterDate")
+        self.userDefault.setInteger(2, forKey: "serviceDays")
+        self.userDefault.setInteger(27, forKey: "discountDays")
+
         super.tearDown()
-
-        if dataOriginal[0] as! String != "X" {
-            self.userPreference.setObject( dataOriginal[0] as! String, forKey: "enterDate" )
-        } else {
-            self.userPreference.setObject( nil, forKey: "enterDate" )
-        }
-
-        if dataOriginal[1] as! Int != -1 {
-            self.userPreference.setInteger( dataOriginal[1] as! Int, forKey: "serviceDays" )
-        } else {
-            self.userPreference.setObject( nil, forKey: "serviceDays" )
-        }
-
-        if dataOriginal[2] as! Int != -1 {
-            self.userPreference.setInteger( dataOriginal[2] as! Int, forKey: "discountDays" )
-        } else {
-            self.userPreference.setObject( nil, forKey: "discountDays" )
-        }
-
     }
 
     func testExample() {
@@ -74,77 +40,49 @@ class CalculateHelperTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testRetire() {
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measureBlock {
+            // Put the code you want to measure the time of here.
+        }
+    }
 
-        // test Group #1
-        self.userPreference.setObject( dataObject1[0], forKey: "enterDate" )
-        self.userPreference.setObject( dataObject1[1], forKey: "serviceDays" )
-        self.userPreference.setObject( dataObject1[2], forKey: "discountDays" )
+    func testIsRetireDateFixed() {
 
-        helper.updateDate()
+        for var i = 0; i < self.dataSample.count; i++ {
+            self.setDataSample( self.dataSample[i] )
+            let helper = CalculateHelper()
 
-        XCTAssertEqual( helper.getRetireDate(), dataObject1[3], "RetireDate is wrong. #1" )
-        XCTAssertEqual( helper.getFixedRetireDate(), dataObject1[4], "FixedRetireDate is wrong. #1" )
-
-        // test Group #2
-        self.userPreference.setObject( dataObject2[0], forKey: "enterDate" )
-        self.userPreference.setObject( dataObject2[1], forKey: "serviceDays" )
-        self.userPreference.setObject( dataObject2[2], forKey: "discountDays" )
-
-        helper.updateDate()
-
-        XCTAssertEqual( helper.getRetireDate(), dataObject2[3], "RetireDate is wrong. #2" )
-        XCTAssertEqual( helper.getFixedRetireDate(), dataObject2[4], "FixedRetireDate is wrong. #2" )
-
-        // test Group #3
-        self.userPreference.setObject( dataObject3[0], forKey: "enterDate" )
-        self.userPreference.setObject( dataObject3[1], forKey: "serviceDays" )
-        self.userPreference.setObject( dataObject3[2], forKey: "discountDays" )
-
-        helper.updateDate()
-
-        XCTAssertEqual( helper.getRetireDate(), dataObject3[3], "RetireDate is wrong. #3" )
-        XCTAssertEqual( helper.getFixedRetireDate(), dataObject3[4], "FixedRetireDate is wrong. #3" )
+            XCTAssertEqual( helper.isRetireDateFixed(), self.dataSample[i][5] as? Bool )
+        }
 
     }
 
-    func testIsSettingAllDone() {
+    func testGetRetireDate() {
 
-        var enterDate: String = "XX"
-        var serviceDays: Int = -1
+        for var i = 0; i < self.dataSample.count; i++ {
+            self.setDataSample( self.dataSample[i] )
+            let helper = CalculateHelper()
 
-        if self.userPreference.stringForKey("enterDate") != nil {
-            enterDate = self.userPreference.stringForKey("enterDate")!
+            if helper.isRetireDateFixed() {
+                XCTAssertEqual( helper.getFixedRetireDate(), self.dataSample[i][4] as? String )
+            } else {
+                XCTAssertEqual( helper.getRetireDate(), self.dataSample[i][4] as? String )
+            }
         }
-        if self.userPreference.stringForKey("serviceDays") != nil {
-            serviceDays = self.userPreference.integerForKey("serviceDays")
-        }
 
-        self.userPreference.setObject( nil, forKey: "enterDate" )
-        self.userPreference.setObject( nil, forKey: "serviceDays" )
-        XCTAssertFalse( helper.isSettingAllDone(), "It should be False" )
+    }
 
-        self.userPreference.setObject( "2015 / 06 / 25", forKey: "enterDate" )
-        XCTAssertFalse( helper.isSettingAllDone(), "It should be False" )
-
-        self.userPreference.setObject( nil, forKey: "enterDate" )
-        self.userPreference.setObject( 3, forKey: "serviceDays" )
-        XCTAssertFalse( helper.isSettingAllDone(), "It should be False" )
-
-        self.userPreference.setObject( "2015 / 06 / 25", forKey: "enterDate" )
-        self.userPreference.setObject( 1, forKey: "serviceDays" )
-        XCTAssertTrue( helper.isSettingAllDone(), "It should be True" )
-
-        if enterDate != "XX" {
-            self.userPreference.setObject( enterDate, forKey: "enterDate" )
-        }
-        if serviceDays != -1 {
-            self.userPreference.setObject( serviceDays, forKey: "serviceDays" )
-        }
+    private func setDataSample( sample: AnyObject ) {
+        self.userDefault.setValue( sample[0], forKey: "enterDate" )
+        self.userDefault.setValue( sample[1], forKey: "serviceDays" )
+        self.userDefault.setValue( sample[2], forKey: "discountDays" )
+        self.userDefault.setValue( sample[3], forKey: "autoWeekendFixed" )
     }
 
     func testSwitchPeriod() {
 
+        let helper = CalculateHelper()
         XCTAssertEqual( helper.switchPeriod("0"), "四個月" )
         XCTAssertEqual( helper.switchPeriod("1"), "四個月五天" )
         XCTAssertEqual( helper.switchPeriod("2"), "一年" )
@@ -156,13 +94,38 @@ class CalculateHelperTests: XCTestCase {
         XCTAssertEqual( helper.switchPeriod("一年十五天"), "3" )
         XCTAssertEqual( helper.switchPeriod("三年"), "4" )
 
+        XCTAssertNotEqual( helper.switchPeriod("2"), "三年" )
+        XCTAssertNotEqual( helper.switchPeriod("一年十五天"), "0" )
+        XCTAssertNotEqual( helper.switchPeriod("abc"), "三年" )
+
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testIsSettingAllDone() {
+        
+        self.userDefault.removeObjectForKey("enterDate")
+        self.userDefault.removeObjectForKey("serviceDays")
+        self.userDefault.removeObjectForKey("discountDays")
+
+        // ONLY enterDate
+        self.userDefault.setValue("2015 / 10 / 04", forKey: "enterDate")
+        var helper = CalculateHelper()
+        XCTAssertFalse( helper.settingStatus, "Only 'enterDate', it should be false." )
+
+        self.userDefault.removeObjectForKey("enterDate")
+
+        // ONLY serviceDays
+        self.userDefault.setInteger(3, forKey: "serviceDays")
+        helper = CalculateHelper()
+        XCTAssertFalse( helper.settingStatus, "Only 'serviceDays', it should be false." )
+
+        self.userDefault.removeObjectForKey("serviceDays")
+
+        // ALL
+        self.userDefault.setValue("2016 / 02 / 18", forKey: "enterDate")
+        self.userDefault.setInteger(1, forKey: "serviceDays")
+        self.userDefault.setInteger(15, forKey: "discountDays")
+        XCTAssertTrue( CalculateHelper().settingStatus, "Both are set, it should be true.")
+
     }
 
 }

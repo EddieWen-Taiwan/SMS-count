@@ -18,53 +18,27 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet var secondWord: UILabel!
 
     let calculateHelper = CalculateHelper()
-    var updateResult: NCUpdateResult = NCUpdateResult.NoData
+    var updateResult: NCUpdateResult
 
-    var isUserRetired: Bool = false
+    var isUserRetired: Bool
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
+    required init?(coder aDecoder: NSCoder) {
+        self.updateResult = NCUpdateResult.NoData
+        self.isUserRetired = false
+
+        super.init(coder: aDecoder)
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.checkCurrentData()
-    }
-
-    func checkCurrentData() {
-
-        if calculateHelper.isSettingAllDone() {
+        // checkCurrentData
+        if calculateHelper.settingStatus {
 
             self.correctDataShow( true )
-            calculateHelper.updateDate()
 
-            // Check whether should run countdown animation
-            var shouldBeUpdated: Bool = false
             let newRemainedDays = calculateHelper.getRemainedDays()
-
-            if newRemainedDays >= 0 {
-                if self.isUserRetired {
-                    shouldBeUpdated = true
-                    self.isUserRetired = false
-                } else {
-                    if self.remainedDaysLabel.text != String( newRemainedDays ) {
-                        shouldBeUpdated = true
-                    }
-                }
-            } else {
-                if self.isUserRetired {
-                    if self.remainedDaysLabel.text != String( newRemainedDays*(-1) ) {
-                        shouldBeUpdated = true
-                    }
-                } else {
-                    shouldBeUpdated = true
-                    self.isUserRetired = true
-                }
-            }
-
-            if shouldBeUpdated {
+            if self.isDataChanged( newRemainedDays ) {
                 if newRemainedDays >= 0 {
                     self.firstWord.text = "還有"
                     self.remainedDaysLabel.text = String( newRemainedDays )
@@ -79,34 +53,51 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         } else {
             self.correctDataShow( false )
         }
+    }
+
+    // Check whether should run countdown animation
+    private func isDataChanged( day: Int ) -> Bool {
+
+        if day >= 0 {
+            if self.isUserRetired {
+                self.isUserRetired = false
+                return true
+            } else {
+                if self.remainedDaysLabel.text != String( day ) {
+                    return true
+                }
+            }
+        } else {
+            if self.isUserRetired {
+                if self.remainedDaysLabel.text != String( day*(-1) ) {
+                    return true
+                }
+            } else {
+                self.isUserRetired = true
+                return true
+            }
+        }
+
+        return false
 
     }
 
-    func correctDataShow( status: Bool ) {
+    private func correctDataShow( status: Bool ) {
 
-        if status {
+        remainedDaysLabel.hidden = status ? false : true
+        firstWord.hidden = status ? false : true
+        secondWord.hidden = status ? false : true
 
-            remainedDaysLabel.hidden = false
-            firstWord.hidden = false
-            secondWord.hidden = false
-
-            warningLabel.hidden = true
-
-        } else {
-
-            remainedDaysLabel.hidden = true
-            firstWord.hidden = true
-            secondWord.hidden = true
-
-            warningLabel.hidden = false
-
-        }
+        warningLabel.hidden = status ? true : false
 
     }
 
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        let newWidgetMargin = UIEdgeInsets(top: defaultMarginInsets.top, left: defaultMarginInsets.left, bottom: 5.0, right: defaultMarginInsets.right)
-        return newWidgetMargin
+        return UIEdgeInsets(
+            top: defaultMarginInsets.top,
+            left: defaultMarginInsets.left,
+            bottom: 5.0,
+            right: defaultMarginInsets.right )
     }
 
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
@@ -117,11 +108,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
 
         completionHandler( self.updateResult )
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
