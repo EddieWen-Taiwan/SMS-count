@@ -203,9 +203,9 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     func showImagesPickerView() {
         if UIImagePickerController.isSourceTypeAvailable( UIImagePickerControllerSourceType.SavedPhotosAlbum ) {
             let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
-            imagePicker.allowsEditing = false
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+                imagePicker.allowsEditing = false
 
             // Remove loading animation
             self.view.subviews.forEach() {
