@@ -10,7 +10,7 @@ class MonthlyImages {
 
     let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     let path: String
-    var currentMonth: String
+    let currentMonth: String
 
     let reachability = Reachability()
 
