@@ -23,7 +23,7 @@ class MonthlyImages {
     }
 
     func setBackground( background: UIImageView ) {
-        if isMonthMatch() {
+        if currentMonth == userPreference.stringForKey("backgroundMonth") {
             background.image = UIImage(contentsOfFile: path)
         } else {
             background.alpha = 0
@@ -64,11 +64,6 @@ class MonthlyImages {
             } catch {}
         }
         pngImageData.writeToFile( path, atomically: true )
-    }
-
-    private func isMonthMatch() -> Bool {
-        let imageMonth = userPreference.stringForKey("backgroundMonth")
-        return imageMonth == currentMonth ? true : false
     }
 
 }
