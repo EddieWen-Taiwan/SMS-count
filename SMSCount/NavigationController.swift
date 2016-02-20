@@ -38,11 +38,13 @@ class NavigationController: UINavigationController {
     }
 
     func markDownload() {
-        let countVC = tabBarController?.viewControllers![0].childViewControllers.first! as! CountViewController
+        if let countVC = tabBarController?.viewControllers![0].childViewControllers.first! as? CountViewController {
             countVC.downloadFromParse = true
+        }
 
-        let profileVC = tabBarController?.viewControllers![1].childViewControllers.first! as! ProfileViewController
+        if let profileVC = tabBarController?.viewControllers![1].childViewControllers.first! as? ProfileViewController {
             profileVC.downloadFromParse = true
+        }
     }
 
 }
