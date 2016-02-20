@@ -132,9 +132,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
             reachability.getImageFromUrl(url) { data, response, error in
                 if data != nil {
-                    dispatch_async( dispatch_get_main_queue(), {
+                    dispatch_async( dispatch_get_main_queue() ) {
                         cell.sticker.image = UIImage(data: data!)
-                    })
+                    }
                 }
             }
 
