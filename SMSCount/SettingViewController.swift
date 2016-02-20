@@ -210,14 +210,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             }
 
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
-            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            graphRequest.startWithCompletionHandler({ connection, result, error in
 
                 if error == nil {
                     // Hide FB login button
                     self.FBLoginView.hidden = true
                     self.topConstraint.constant = -70
 
-                    self.userInfo.storeFacebookInfo( result, syncCompletion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
+                    self.userInfo.storeFacebookInfo( result, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
 
                         // Ask user whether to download data from Parse or not
                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)

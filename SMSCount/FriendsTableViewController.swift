@@ -64,7 +64,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     // Request user friends list from Facebook and reload TableView
     func requestFriendsListFromFacebook() {
         let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
-        friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+        friendsRequest.startWithCompletionHandler { connection, result, error in
 
             if error == nil {
                 var friendArray = [String]()
@@ -84,7 +84,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             friendsDetail.whereKey( "fb_id", containedIn: friends )
             friendsDetail.whereKey( "publicProfile", notEqualTo: false )
             friendsDetail.orderByDescending("updatedAt")
-        friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+        friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) in
             if error == nil {
                 self.friendsObject = objects!
                 self.getData = true
@@ -130,7 +130,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             // Sticker
             let fbid = thisUser.valueForKey("fb_id") as! String
             let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
-            reachability.getImageFromUrl(url) { (data, response, error) in
+            reachability.getImageFromUrl(url) { data, response, error in
                 if data != nil {
                     dispatch_async( dispatch_get_main_queue(), {
                         cell.sticker.image = UIImage(data: data!)
@@ -253,7 +253,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
                 if error == nil {
-                    UserInfo().storeFacebookInfo( result, syncCompletion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
+                    UserInfo().storeFacebookInfo( result, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
 
                         // Ask user whether to download data from Parse or not
                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)

@@ -108,10 +108,10 @@ class ProfileViewController: UIViewController {
 
     func downloadImageWithID( fbid: String ) {
         if let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large") {
-            reachability.getImageFromUrl(url) { (data, response, error) in
+            reachability.getImageFromUrl(url) { data, response, error in
                 if let data = data {
 
-                    dispatch_async( dispatch_get_main_queue() ) { () -> Void in
+                    dispatch_async( dispatch_get_main_queue() ) {
                         self.userSticker.image = UIImage(data: data)
                     }
 

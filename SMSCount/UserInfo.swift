@@ -57,7 +57,7 @@ class UserInfo { // Save userInfomation to Parse
     // Update the objectId in app
     func updateLocalObjectId( objectId: String ) {
 
-        userObject.deleteInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+        userObject.deleteInBackgroundWithBlock{ (success: Bool, error: NSError?) in
 
             self.userPreference.setValue( objectId, forKey: "UserID" )
             self.userObject.objectId = objectId
@@ -285,7 +285,7 @@ class UserInfo { // Save userInfomation to Parse
                 userObject.setValue( Int(userDiscount)!, forKey: "discountDays" )
             }
 
-            userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) -> Void in
+            userObject.saveInBackgroundWithBlock{ (success: Bool, error: NSError?) in
                 if success {
                     self.userPreference.setValue( self.userObject.objectId, forKey: "UserID" )
                     self.objectIdStatus = true
