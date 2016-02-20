@@ -15,9 +15,10 @@ Download link: [iOS](https://itunes.apple.com/us/app/a-ti-dao-shu-zhong/id103293
 
 ![SMSlife](sms-board.png)
 
-###PTT / SMSlife
-\#1M7nQemZ  
-[\[閒聊\] 替代役役期倒數 APP](https://www.ptt.cc/bbs/SMSlife/M.1444877992.A.C23.html)
+###自薦文章
+
+[\[閒聊\] 替代役役期倒數 APP](https://www.ptt.cc/bbs/SMSlife/M.1444877992.A.C23.html)  
+\#1M7nQemZ (SMSlife) [ptt.cc]
 
 ----
 
