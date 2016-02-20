@@ -38,19 +38,19 @@ class MonthlyImages {
     private func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
         reachability.getImageFromUrl(url) { data, response, error in
 
-            if data == nil {
-                backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
-                backgroundImage.alpha = 1
-            } else {
-                dispatch_async( dispatch_get_main_queue() ) { 
-                    self.saveImage( UIImage(data: data!)! )
+            if let data = data {
+                dispatch_async( dispatch_get_main_queue() ) {
+                    self.saveImage( UIImage(data: data)! )
                     self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
-                    backgroundImage.image = UIImage(data: data!)
+                    backgroundImage.image = UIImage(data: data)
 
                     UIView.animateWithDuration( 1, animations: {
                         backgroundImage.alpha = 1
                     })
                 }
+            } else {
+                backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
+                backgroundImage.alpha = 1
             }
 
         }
