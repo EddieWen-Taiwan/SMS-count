@@ -17,7 +17,7 @@ class LoadingView: UIView {
         self.layer.cornerRadius = 20
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
 
-        let indicator = self.addActivityIndicator()
+        let indicator = addActivityIndicator()
         self.addSubview( indicator )
     }
 

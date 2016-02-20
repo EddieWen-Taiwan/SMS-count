@@ -43,8 +43,8 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         self.serviceDaysPickerDataSource = ["四個月","四個月五天","一年","一年十五天","三年"]
         self.discountDaysPickerDataSource = ["0 天","1 天","2 天","3 天","4 天","5 天","6 天","7 天","8 天","9 天","10 天", "11 天",
             "12 天","13 天","14 天","15 天","16 天","17 天","18 天","19 天","20 天","21 天","22 天","23 天","24 天","25 天","26 天","27 天","28 天","29 天","30 天"]
-        dateFormatter.dateFormat = "yyyy / MM / dd"
-        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        self.dateFormatter.dateFormat = "yyyy / MM / dd"
+        self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
 
         super.init(coder: aDecoder)
     }
@@ -66,14 +66,14 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         // About FB login button
         if FBSDKAccessToken.currentAccessToken() == nil {
-            self.FBLoginView.hidden = false
-            self.topConstraint.constant = 20
+            FBLoginView.hidden = false
+            topConstraint.constant = 20
             // FB Login
             self.view.layoutIfNeeded()
 
             let loginView = FBSDKLoginButton()
-            self.FBLoginView.addSubview( loginView )
-            loginView.frame = CGRectMake( 0, 0, self.FBLoginView.frame.width, self.FBLoginView.frame.height )
+            FBLoginView.addSubview( loginView )
+            loginView.frame = CGRectMake( 0, 0, FBLoginView.frame.width, FBLoginView.frame.height )
             loginView.readPermissions = [ "public_profile", "email", "user_friends" ]
             loginView.delegate = self
 
@@ -81,7 +81,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             containerVC?.publicSwitch.enabled = false
         } else {
             // If there is FBtoken, then set UISwitch value depends on value in UserDefault
-            if self.userPreference.boolForKey("publicProfile") {
+            if userPreference.boolForKey("publicProfile") {
                 containerVC?.publicSwitch.setOn(true, animated: false)
             }
         }
@@ -96,7 +96,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     func showPickerView() {
 
-        self.screenMask.hidden = false
+        screenMask.hidden = false
         UIView.animateWithDuration( 0.4, animations: {
             self.screenMask.alpha = 0.6
             // show PickerView
@@ -115,51 +115,51 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
         userInfo.updateEnterDate( newSelectDate )
 
-        self.dismissRelativeViews()
+        dismissRelativeViews()
 
     }
 
     @IBAction func serviceDaysDoneIsPressed(sender: AnyObject) {
 
-        if self.userPreference.valueForKey("serviceDays") == nil {
-            self.userPreference.setInteger( 0, forKey: "serviceDays" )
+        if userPreference.valueForKey("serviceDays") == nil {
+            userPreference.setInteger( 0, forKey: "serviceDays" )
         }
 
-        containerVC?.serviceDaysLabel.text = calculateHelper.switchPeriod( self.userPreference.stringForKey("serviceDays")! )
+        containerVC?.serviceDaysLabel.text = calculateHelper.switchPeriod( userPreference.stringForKey("serviceDays")! )
 
-        userInfo.updateServiceDays( self.userPreference.integerForKey("serviceDays") )
+        userInfo.updateServiceDays( userPreference.integerForKey("serviceDays") )
 
-        self.dismissRelativeViews()
+        dismissRelativeViews()
 
     }
 
     @IBAction func discountDaysDoneIsPressed(sender: AnyObject) {
 
-        if self.userPreference.valueForKey("discountDays") == nil {
-            self.userPreference.setInteger( 0, forKey: "discountDays" )
+        if userPreference.valueForKey("discountDays") == nil {
+            userPreference.setInteger( 0, forKey: "discountDays" )
         }
 
-        containerVC?.discountDaysLabel.text = self.userPreference.stringForKey("discountDays")
+        containerVC?.discountDaysLabel.text = userPreference.stringForKey("discountDays")
 
-        userInfo.updateDiscountDays( self.userPreference.integerForKey("discountDays") )
+        userInfo.updateDiscountDays( userPreference.integerForKey("discountDays") )
 
-        self.dismissRelativeViews()
+        dismissRelativeViews()
 
     }
 
     func dismissScreenMask() {
-        self.dismissRelativeViews()
+        dismissRelativeViews()
 
-        if self.screenMask.tag == 2 {
-            if let oldService = self.containerVC?.serviceDaysLabel.text where self.containerVC?.serviceDaysLabel.text != "" {
+        if screenMask.tag == 2 {
+            if let oldService = containerVC?.serviceDaysLabel.text where containerVC?.serviceDaysLabel.text != "" {
                 let oldService = calculateHelper.switchPeriod( oldService )
                 userPreference.setInteger( Int(oldService)!, forKey: "serviceDays" )
             } else {
                 userPreference.removeObjectForKey( "serviceDays" )
             }
         }
-        if self.screenMask.tag == 3 {
-            if let oldDiscount = self.containerVC?.discountDaysLabel.text where self.containerVC?.discountDaysLabel.text != "" {
+        if screenMask.tag == 3 {
+            if let oldDiscount = containerVC?.discountDaysLabel.text where containerVC?.discountDaysLabel.text != "" {
                 userPreference.setInteger( Int(oldDiscount)!, forKey: "discountDays" )
             } else {
                 userPreference.removeObjectForKey( "discountDays" )
@@ -168,9 +168,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     private func dismissRelativeViews() {
-        self.datepickerViewBottomConstraint.constant = -200
-        self.serviceDaysPickerViewBottomConstraint.constant = -200
-        self.discountDaysPickerViewBottomConstraint.constant = -200
+        datepickerViewBottomConstraint.constant = -200
+        serviceDaysPickerViewBottomConstraint.constant = -200
+        discountDaysPickerViewBottomConstraint.constant = -200
 
         UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.view.layoutIfNeeded()
@@ -205,7 +205,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
             // Enable UISwitch
             containerVC?.publicSwitch.enabled = true
-            if self.userPreference.boolForKey("publicProfile") {
+            if userPreference.boolForKey("publicProfile") {
                 containerVC?.publicSwitch.setOn(true, animated: false)
             }
 
@@ -280,7 +280,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.userPreference.setInteger( row, forKey: pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays" )
+        userPreference.setInteger( row, forKey: pickerView == serviceDaysPickerElement ? "serviceDays" : "discountDays" )
     }
 
 }

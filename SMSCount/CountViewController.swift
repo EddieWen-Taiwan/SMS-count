@@ -47,22 +47,22 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
         // Do any additional setup after loading the view, typically from a nib.
         let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
-        self.switchViewButton.addGestureRecognizer( switchGesture )
-        self.switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
-        self.switchViewButton.layer.borderWidth = 2
+        switchViewButton.addGestureRecognizer( switchGesture )
+        switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
+        switchViewButton.layer.borderWidth = 2
 
-        countdownView = CountdownView(view: self.view)
-        self.contentView.addSubview( countdownView )
+        countdownView = CountdownView(view: view)
+        contentView.addSubview( countdownView )
 
         circleView = PercentageCircleView()
-        self.contentView.addSubview( circleView )
+        contentView.addSubview( circleView )
 
         // Prepare background image
         let currentMonth = NSCalendar.currentCalendar().components( .Month, fromDate: NSDate() ).month
         let currentMonthStr = currentMonth < 10 ? "0" + String(currentMonth) : String(currentMonth)
-        MonthlyImages( month: currentMonthStr ).setBackground( self.backgroundImage )
+        MonthlyImages( month: currentMonthStr ).setBackground( backgroundImage )
 
-        self.checkSetting()
+        checkSetting()
 
     }
 
@@ -70,7 +70,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
 
         if calculateHelper.settingStatus {
 
-            self.prepareTextAndNumbers()
+            prepareTextAndNumbers()
 
         } else {
             // switch to settingViewController ?
@@ -84,25 +84,25 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         let newRemainedDays = calculateHelper.getRemainedDays()
 
         // For screenshot
-        self.backRemainedDaysWord.text = newRemainedDays < 0 ? "自由天數" : "剩餘天數"
-        self.backRemainedDaysLabel.text = String( abs(newRemainedDays) )
+        backRemainedDaysWord.text = newRemainedDays < 0 ? "自由天數" : "剩餘天數"
+        backRemainedDaysLabel.text = String( abs(newRemainedDays) )
 
         // Start animation
         countdownView.setRemainedDays( newRemainedDays )
 
-        self.setTextOfProcess()
+        setTextOfProcess()
 
     }
 
     func setTextOfProcess() {
 
         // Set currentProcess
-        self.circleView.setPercentage( calculateHelper.getCurrentProgress() )
+        circleView.setPercentage( calculateHelper.getCurrentProgress() )
 
         // If user doesn't want animation, do it at this moment
         if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
             if userPreference.boolForKey("countdownAnimation") == false {
-                self.checkCircleAnimation(true)
+                checkCircleAnimation(true)
             }
         }
 
@@ -112,24 +112,24 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         super.viewDidAppear(animated)
 
         // Check whether user logged in with FB in FriendsTVC
-        if self.downloadFromParse {
-            self.downloadFromParse = false
+        if downloadFromParse {
+            downloadFromParse = false
 
-            self.isCircleDrawn = false
+            isCircleDrawn = false
             let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
             userPreference.setBool( false, forKey: "dayAnimated" )
 
             // Reinit
             calculateHelper = CalculateHelper()
-            self.checkSetting()
+            checkSetting()
         }
     }
 
     func switchView() {
 
-        let switch2chart: Bool = self.currentDisplay == "day" ? true : false
-        self.switchViewButton.backgroundColor = UIColor.whiteColor()
-        self.imageOnSwitchBtn.image = UIImage(named: switch2chart ? "date" : "chart" )
+        let switch2chart: Bool = currentDisplay == "day" ? true : false
+        switchViewButton.backgroundColor = UIColor.whiteColor()
+        imageOnSwitchBtn.image = UIImage(named: switch2chart ? "date" : "chart" )
 
         UIView.animateWithDuration( 0.3, delay: 0.1, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.countdownView.alpha = switch2chart ? 0 : 1
@@ -147,9 +147,9 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
     }
 
     func checkCircleAnimation( force: Bool ) {
-        if force || (self.currentDisplay == "chart" && self.isCircleDrawn == false) {
-            self.circleView.addPercentageCircle()
-            self.isCircleDrawn = true
+        if force || (currentDisplay == "chart" && isCircleDrawn == false) {
+            circleView.addPercentageCircle()
+            isCircleDrawn = true
         }
     }
 
@@ -195,7 +195,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         askAlertController.addAction( yesAction )
         askAlertController.addAction( noAction )
 
-        self.presentViewController( askAlertController, animated: true, completion: nil )
+        presentViewController( askAlertController, animated: true, completion: nil )
 
     }
 
@@ -214,7 +214,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
                 }
             }
 
-            self.presentViewController( imagePicker, animated: true, completion: nil )
+            presentViewController( imagePicker, animated: true, completion: nil )
         }
     }
 
@@ -227,7 +227,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         let postImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let activityViewController = UIActivityViewController(activityItems: [postImage], applicationActivities: nil)
 
-        self.presentViewController(activityViewController, animated: true, completion: nil)
+        presentViewController(activityViewController, animated: true, completion: nil)
 
     }
 

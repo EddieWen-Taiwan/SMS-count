@@ -27,17 +27,17 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let userEnterDate = self.userPreference.stringForKey("enterDate") {
-            self.enterDateLabel.text = userEnterDate
+        if let userEnterDate = userPreference.stringForKey("enterDate") {
+            enterDateLabel.text = userEnterDate
         }
-        if let userServiceDays = self.userPreference.stringForKey("serviceDays") {
-            self.serviceDaysLabel.text = calculateHelper.switchPeriod( userServiceDays )
+        if let userServiceDays = userPreference.stringForKey("serviceDays") {
+            serviceDaysLabel.text = calculateHelper.switchPeriod( userServiceDays )
         }
-        if let userDiscountDays = self.userPreference.stringForKey("discountDays") {
-            self.discountDaysLabel.text = userDiscountDays
+        if let userDiscountDays = userPreference.stringForKey("discountDays") {
+            discountDaysLabel.text = userDiscountDays
         }
-        if let status = self.userPreference.stringForKey("status") {
-            self.statusLabel.text = status
+        if let status = userPreference.stringForKey("status") {
+            statusLabel.text = status
         }
 
         // Resize UISwitch and add function
@@ -45,15 +45,15 @@ class SettingTableViewController: UITableViewController {
             mySwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
             mySwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
         }
-        prepareSwitch(self.autoWeekendSwitch)
-        if self.userPreference.boolForKey("autoWeekendFixed") {
-            self.autoWeekendSwitch.setOn(true, animated: false)
+        prepareSwitch( autoWeekendSwitch )
+        if userPreference.boolForKey("autoWeekendFixed") {
+            autoWeekendSwitch.setOn(true, animated: false)
         }
-        prepareSwitch(self.animationSwitch)
-        if self.userPreference.boolForKey("countdownAnimation") {
-            self.animationSwitch.setOn(true, animated: false)
+        prepareSwitch( animationSwitch )
+        if userPreference.boolForKey("countdownAnimation") {
+            animationSwitch.setOn(true, animated: false)
         }
-        prepareSwitch(self.publicSwitch)
+        prepareSwitch( publicSwitch )
         // Its value was set in SettingVC
 
         // Add footer of TableView
@@ -62,12 +62,12 @@ class SettingTableViewController: UITableViewController {
         let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 40))
             footerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
             footerView.addSubview(footerBorder)
-        self.tableView.tableFooterView = footerView
+        tableView.tableFooterView = footerView
     }
 
     @IBAction func editEnterDate(sender: AnyObject) {
 
-        if let parentVC = self.parentVC {
+        if let parentVC = parentVC {
             parentVC.serviceDaysPickerViewBottomConstraint.constant = -200
             parentVC.discountDaysPickerViewBottomConstraint.constant = -200
             parentVC.datepickerViewBottomConstraint.constant = 0
@@ -84,7 +84,7 @@ class SettingTableViewController: UITableViewController {
 
     @IBAction func editServiceDays(sender: AnyObject) {
 
-        if let parentVC = self.parentVC {
+        if let parentVC = parentVC {
             parentVC.datepickerViewBottomConstraint.constant = -200
             parentVC.discountDaysPickerViewBottomConstraint.constant = -200
             parentVC.serviceDaysPickerViewBottomConstraint.constant = 0
@@ -101,7 +101,7 @@ class SettingTableViewController: UITableViewController {
 
     @IBAction func editDiscountDays(sender: AnyObject) {
 
-        if let parentVC = self.parentVC {
+        if let parentVC = parentVC {
             parentVC.datepickerViewBottomConstraint.constant = -200
             parentVC.serviceDaysPickerViewBottomConstraint.constant = -200
             parentVC.discountDaysPickerViewBottomConstraint.constant = 0
@@ -119,7 +119,7 @@ class SettingTableViewController: UITableViewController {
     func switchClick( mySwitch: UISwitch ) {
         let newValue: Bool = mySwitch.on ? true : false
 
-        if let parentVC = self.parentVC {
+        if let parentVC = parentVC {
             switch mySwitch.tag {
                 case 0:
                     parentVC.userInfo.updateWeekendFixed( newValue )
@@ -140,8 +140,8 @@ class SettingTableViewController: UITableViewController {
     }
 
     func updateNewStatusFromStatusVC( newStatus: String ) {
-        self.statusLabel.text = newStatus
-        if let parentVC = self.parentVC {
+        statusLabel.text = newStatus
+        if let parentVC = parentVC {
             parentVC.userInfo.updateUserStatus( newStatus as String )
         }
     }

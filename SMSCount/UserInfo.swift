@@ -14,43 +14,43 @@ class UserInfo { // Save userInfomation to Parse
 
     var objectIsChanged: Bool
     var objectIdStatus: Bool
-    let userObject = PFObject(className: "User")
+    let userObject = PFObject(className: SecretCode.classNameInParse)
 
     init() {
         // Initialize
         self.objectIsChanged = false
         self.objectIdStatus = false
 
-        if self.userPreference.stringForKey("UserID") != nil {
-            userObject.objectId = self.userPreference.stringForKey("UserID")
+        if userPreference.stringForKey("UserID") != nil {
+            self.userObject.objectId = userPreference.stringForKey("UserID")
             self.objectIdStatus = true
         }
 
         // Note to parse this is iOS
-        userObject.setValue( "iOS", forKey: "platform" )
+        self.userObject.setValue( "iOS", forKey: "platform" )
     }
 
     // From Facebook API
     // Add user infomation: ID, name, email
     func addUserFBID( fbid: String ) {
 
-        self.checkObjectId()
+        checkObjectId()
         
-        self.userPreference.setValue( fbid, forKey: "fb_id" )
+        userPreference.setValue( fbid, forKey: "fb_id" )
         userObject.setValue( fbid, forKey: "fb_id" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     func addUserName( name: String ) {
-        self.userPreference.setValue( name, forKey: "username" )
+        userPreference.setValue( name, forKey: "username" )
         userObject.setValue( name, forKey: "username" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     func addUserMail( mail: String ) {
-        self.userPreference.setValue( mail, forKey: "email" )
+        userPreference.setValue( mail, forKey: "email" )
         userObject.setValue( mail, forKey: "email" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     // This user has registered on Parse
@@ -69,66 +69,66 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     func updateUserStatus( status: String ) {
-        self.userPreference.setValue( status, forKey: "status" )
+        userPreference.setValue( status, forKey: "status" )
         userObject.setValue( status, forKey: "status" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     // Update the username in app
     func updateLocalUsername( name: String ) {
-        self.userPreference.setValue( name, forKey: "username" )
+        userPreference.setValue( name, forKey: "username" )
     }
 
     func updateLocalMail( mail: String ) {
-        self.userPreference.setValue( mail, forKey: "email" )
+        userPreference.setValue( mail, forKey: "email" )
     }
 
     func updateEnterDate( date: String ) {
-        self.userPreference.setValue( date, forKey: "enterDate" )
-        let userEnterArray = self.split2Int( date )
+        userPreference.setValue( date, forKey: "enterDate" )
+        let userEnterArray = split2Int( date )
         userObject.setValue( userEnterArray[0], forKey: "yearOfEnterDate" )
         userObject.setValue( userEnterArray[1], forKey: "monthOfEnterDate" )
         userObject.setValue( userEnterArray[2], forKey: "dateOfEnterDate" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     func updateServiceDays( days: Int ) {
         userObject.setValue( days, forKey: "serviceDays" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     func updateDiscountDays( days: Int ) {
         userObject.setValue( days, forKey: "discountDays" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     func updateWeekendFixed( fixed: Bool ) {
-        self.userPreference.setBool( fixed, forKey: "autoWeekendFixed" )
+        userPreference.setBool( fixed, forKey: "autoWeekendFixed" )
         userObject.setValue( fixed, forKey: "weekendDischarge" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     func updateAnimationSetting( animation: Bool ) {
-        self.userPreference.setBool( animation, forKey: "countdownAnimation" )
+        userPreference.setBool( animation, forKey: "countdownAnimation" )
 //        userObject.setValue( animation, forKey: "countdownAnimation" )
-//        self.objectIsChanged = true
+//        objectIsChanged = true
     }
 
     func updatePublicProfile( public_show: Bool ) {
-        self.userPreference.setBool( public_show, forKey: "publicProfile" )
+        userPreference.setBool( public_show, forKey: "publicProfile" )
         userObject.setValue( public_show, forKey: "publicProfile" )
-        self.objectIsChanged = true
+        objectIsChanged = true
     }
 
     // Save local data to Parse
     func save() {
 
-        if self.objectIsChanged {
+        if objectIsChanged {
 
-            self.userPreference.setBool( false, forKey: "dayAnimated" )
-            self.objectIsChanged = false
+            userPreference.setBool( false, forKey: "dayAnimated" )
+            objectIsChanged = false
 
-            if self.objectIdStatus {
+            if objectIdStatus {
                 userObject.saveEventually()
             }
 
@@ -139,37 +139,37 @@ class UserInfo { // Save userInfomation to Parse
     // There is not completed task at last time, continue to do it
     func uploadAllData() {
 
-        if let fbid = self.userPreference.stringForKey("fb_id") {
+        if let fbid = userPreference.stringForKey("fb_id") {
             userObject.setValue( fbid, forKey: "fb_id" )
         }
-        if let name = self.userPreference.stringForKey("username") {
+        if let name = userPreference.stringForKey("username") {
             userObject.setValue( name, forKey: "username" )
         }
-        if let mail = self.userPreference.stringForKey("email") {
+        if let mail = userPreference.stringForKey("email") {
             userObject.setValue( mail, forKey: "email" )
         }
-        if let userStatus = self.userPreference.stringForKey("status") {
+        if let userStatus = userPreference.stringForKey("status") {
             userObject.setValue( userStatus, forKey: "status" )
         }
-        if let userEnterDate: NSString = self.userPreference.stringForKey("enterDate") {
-            let userEnterArray = self.split2Int(userEnterDate)
+        if let userEnterDate: NSString = userPreference.stringForKey("enterDate") {
+            let userEnterArray = split2Int(userEnterDate)
             userObject.setValue( userEnterArray[0], forKey: "yearOfEnterDate" )
             userObject.setValue( userEnterArray[1], forKey: "monthOfEnterDate" )
             userObject.setValue( userEnterArray[2], forKey: "dateOfEnterDate" )
         }
         // stringForKey could be nil and integerForKey couldn't
-        if self.userPreference.valueForKey("serviceDays") != nil {
-            userObject.setValue( self.userPreference.integerForKey("serviceDays"), forKey: "serviceDays" )
+        if userPreference.valueForKey("serviceDays") != nil {
+            userObject.setValue( userPreference.integerForKey("serviceDays"), forKey: "serviceDays" )
         }
-        if self.userPreference.valueForKey("discountDays") != nil {
-            userObject.setValue( self.userPreference.integerForKey("discountDays"), forKey: "discountDays" )
+        if userPreference.valueForKey("discountDays") != nil {
+            userObject.setValue( userPreference.integerForKey("discountDays"), forKey: "discountDays" )
         }
-        userObject.setValue( self.userPreference.boolForKey("autoWeekendFixed"), forKey: "weekendDischarge" )
-        userObject.setValue( self.userPreference.boolForKey("publicProfile"), forKey: "publicProfile" )
+        userObject.setValue( userPreference.boolForKey("autoWeekendFixed"), forKey: "weekendDischarge" )
+        userObject.setValue( userPreference.boolForKey("publicProfile"), forKey: "publicProfile" )
 
-        self.objectIsChanged = true
+        objectIsChanged = true
         // Save to Parse
-        self.save()
+        save()
 
     }
 
@@ -178,7 +178,7 @@ class UserInfo { // Save userInfomation to Parse
 
         if let FBID = info.valueForKey("id") {
             // Search parse data by FBID, check whether there is matched data.
-            let fbIdQuery = PFQuery(className: "User")
+            let fbIdQuery = PFQuery(className: SecretCode.classNameInParse)
                 fbIdQuery.whereKey( "fb_id", equalTo: FBID )
             fbIdQuery.findObjectsInBackgroundWithBlock{ (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
@@ -262,7 +262,7 @@ class UserInfo { // Save userInfomation to Parse
     }
 
     private func checkObjectId() {
-        if !self.objectIdStatus { self.registerNewUser() }
+        if !objectIdStatus { registerNewUser() }
     }
 
     // Register a new user data in Parse
@@ -272,7 +272,7 @@ class UserInfo { // Save userInfomation to Parse
         if Reachability().isConnectedToNetwork() {
 
             if let userEnter: NSString = userPreference.stringForKey("enterDate") {
-                let userEnterArray = self.split2Int(userEnter)
+                let userEnterArray = split2Int(userEnter)
 
                 userObject.setValue( userEnterArray[0], forKey: "yearOfEnterDate" )
                 userObject.setValue( userEnterArray[1], forKey: "monthOfEnterDate" )

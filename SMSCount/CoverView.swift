@@ -33,9 +33,9 @@ class CoverView: UIView {
 
     private func addIconView() {
 
-        let iconView = UIImageView(frame: CGRectMake(self.viewWidth/2-24, self.viewHeight/2-50, 48, 48))
+        let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-50, 48, 48))
             iconView.image = {
-                switch self.status {
+                switch status {
                     case "facebook":
                         return UIImage(named: "person-pin")!
                     case "public":
@@ -53,9 +53,9 @@ class CoverView: UIView {
 
     private func addTitleLabel() {
 
-        let titleLabel = UILabel(frame: CGRectMake(0, self.viewHeight/2, self.viewWidth, 30))
+        let titleLabel = UILabel(frame: CGRectMake(0, viewHeight/2, viewWidth, 30))
             titleLabel.text = {
-                switch self.status {
+                switch status {
                     case "facebook":
                         return "尚未登入臉書帳號"
                     case "public":

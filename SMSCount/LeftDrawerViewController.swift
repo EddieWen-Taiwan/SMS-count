@@ -24,34 +24,34 @@ class LeftDrawerViewController: UIViewController {
     }
     
     @IBAction func goMainTabBarController(sender: AnyObject) {
-        let rootViewController = self.mainStoryborad.instantiateViewControllerWithIdentifier("TabBarController")
+        let rootViewController = mainStoryborad.instantiateViewControllerWithIdentifier("TabBarController")
 
-        self.switchRowBackground(0)
-        self.switchRootViewController(rootViewController)
+        switchRowBackground(0)
+        switchRootViewController(rootViewController)
     }
 
     @IBAction func goSettingViewController(sender: AnyObject) {
-        let rootViewController = self.settingStoryboard.instantiateViewControllerWithIdentifier("NavigationOfSettingVC")
+        let rootViewController = settingStoryboard.instantiateViewControllerWithIdentifier("NavigationOfSettingVC")
 
-        self.switchRowBackground(1)
-        self.switchRootViewController(rootViewController)
+        switchRowBackground(1)
+        switchRootViewController(rootViewController)
     }
 
     func switchRootViewController( rootViewController: UIViewController ) {
 
-        self.appDelegate.drawerController.centerViewController = rootViewController
-        self.appDelegate.drawerController.toggleDrawerSide( DrawerSide.Left, animated: true, completion: nil)
+        appDelegate.drawerController.centerViewController = rootViewController
+        appDelegate.drawerController.toggleDrawerSide( DrawerSide.Left, animated: true, completion: nil)
 
     }
 
     func switchRowBackground( row: Int ) {
 
         if row == 0 {
-            self.countRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-            self.settingRow.backgroundColor = UIColor.clearColor()
+            countRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            settingRow.backgroundColor = UIColor.clearColor()
         } else {
-            self.countRow.backgroundColor = UIColor.clearColor()
-            self.settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+            countRow.backgroundColor = UIColor.clearColor()
+            settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
         }
 
     }

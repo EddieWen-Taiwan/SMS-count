@@ -29,37 +29,37 @@ class PercentageCircleView: UIView {
         // Hide this view at first
         self.alpha = 0
 
-        let fullCircleLayer = self.drawFullCircle()
+        let fullCircleLayer = drawFullCircle()
         self.layer.addSublayer(fullCircleLayer)
 
-        self.addPercentageLabel()
+        addPercentageLabel()
     }
 
     private func addPercentageLabel() {
 
-        self.percentageLabel.textColor = UIColor.whiteColor()
-        self.percentageLabel.font = UIFont(name: "Verdana", size: 44)
+        percentageLabel.textColor = UIColor.whiteColor()
+        percentageLabel.font = UIFont(name: "Verdana", size: 44)
 
-        self.addSubview( self.percentageLabel )
+        self.addSubview( percentageLabel )
 
     }
 
     func setPercentage( value: Double ) {
         // Store it here, it will be easy later
-        self.valueOfPercentage = value
+        valueOfPercentage = value
 
-        self.percentageLabel.text = String( format: "%.1f", value )
-        self.percentageLabel.sizeToFit()
-        self.percentageLabel.center = CGPoint(x: mainWidth/2-10, y: mainHeight/2+4)
+        percentageLabel.text = String( format: "%.1f", value )
+        percentageLabel.sizeToFit()
+        percentageLabel.center = CGPoint(x: mainWidth/2-10, y: mainHeight/2+4)
 
-        self.addSymbolLabel()
-        self.addTextLabel()
+        addSymbolLabel()
+        addTextLabel()
     }
 
     // %
     private func addSymbolLabel() {
 
-        let x = mainWidth/2-10+self.percentageLabel.frame.width/2
+        let x = mainWidth/2-10+percentageLabel.frame.width/2
         let y = mainHeight/2-2
         let symbol = UILabel(frame: CGRectMake(x,y,0,0))
             symbol.textColor = UIColor.whiteColor()
@@ -100,17 +100,17 @@ class PercentageCircleView: UIView {
     // Layer2 : Percentage
     func addPercentageCircle() {
 
-        let angleArray: [CGFloat] = self.calculateAngle( self.valueOfPercentage*(0.01) )
+        let angleArray: [CGFloat] = calculateAngle( valueOfPercentage*(0.01) )
         // Use UIBezierPath as an easy way to create the CGPath for the layer.
         // The path should be the entire circle.
         let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: angleArray[0], endAngle: angleArray[1], clockwise: true)
-        let circleLayer = self.drawBasicCircle()
+        let circleLayer = drawBasicCircle()
             circleLayer.path = circlePath.CGPath
 
         let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
         if userPreference.boolForKey("countdownAnimation") {
             circleLayer.strokeEnd = 0.0
-            self.animateCircle( circleLayer, percent: self.valueOfPercentage*(0.01) )
+            animateCircle( circleLayer, percent: valueOfPercentage*(0.01) )
         }
 
         // Add the circleLayer to the view's layer's sublayers
@@ -148,7 +148,7 @@ class PercentageCircleView: UIView {
         circleLayer.strokeEnd = 1.0
 
         // Do the actual animation
-        let animation = self.makeAnimation()
+        let animation = makeAnimation()
         circleLayer.addAnimation(animation, forKey: "animateCircle")
     }
 

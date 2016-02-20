@@ -12,12 +12,12 @@ class FriendsCalculate: CalculateHelper {
 
     func inputFriendData( enterDate: String, serviceDays: Int, discountDays: Int, autoFixed: Bool ) -> Bool {
 
-        self.valueEnterDate = enterDate
-        self.valueServiceDays = serviceDays
-        self.valueDiscountDays = discountDays
-        self.valueAutoFixed = autoFixed
+        valueEnterDate = enterDate
+        valueServiceDays = serviceDays
+        valueDiscountDays = discountDays
+        valueAutoFixed = autoFixed
 
-        if self.valueEnterDate == "" || self.valueServiceDays == -1 {
+        if valueEnterDate == "" || valueServiceDays == -1 {
             return false
         } else {
             super.calculateData()
