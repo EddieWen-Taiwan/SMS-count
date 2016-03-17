@@ -71,7 +71,7 @@ class CountdownView: UIView {
         animationArray.removeAll(keepCapacity: false) // Maybe it should be true
 
         if days < 100 {
-            for i in 1 ... days {
+            for i in 0 ... days {
                 animationArray.append( String(i) )
             }
         } else {
