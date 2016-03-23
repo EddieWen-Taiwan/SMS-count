@@ -136,7 +136,8 @@ class CountdownView: UIView {
     }
 
     private func updateLabel() {
-        dayLabel.text = animationArray[ animationIndex++ ]
+        dayLabel.text = animationArray[ animationIndex ]
+        animationIndex += 1
     }
 
 }
