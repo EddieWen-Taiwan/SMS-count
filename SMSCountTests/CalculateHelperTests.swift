@@ -10,8 +10,8 @@ import XCTest
 @testable import SMSCount
 
 class CalculateHelperTests: XCTestCase {
-    
-    var dataSample = [AnyObject]( arrayLiteral:
+
+    var dataSample = [NSArray]( arrayLiteral:
         [ "2015 / 06 / 25", 2, 27, true, "2016 / 05 / 27 Fri.", true ],
         [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ],
         [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ],
