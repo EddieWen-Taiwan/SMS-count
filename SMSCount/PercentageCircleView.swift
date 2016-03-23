@@ -117,16 +117,18 @@ class PercentageCircleView: UIView {
         self.layer.addSublayer(circleLayer)
     }
 
-    private func calculateAngle( var percent: Double ) -> [CGFloat] {
-        if percent > 1 {
-            percent = 1
-        } else if percent < 0 {
-            percent = 0
+    private func calculateAngle( percent: Double ) -> [CGFloat] {
+        var cleanPercent = percent
+        if cleanPercent > 1 {
+            cleanPercent = 1
+        } else if cleanPercent < 0 {
+            cleanPercent = 0
         }
+
         // get currentPercentage
         var angleArray = [CGFloat]()
         angleArray.append( CGFloat( M_PI*(0.5)*(-1) ) ) // START
-        angleArray.append( CGFloat( M_PI*2*( percent ) - M_PI*(0.5) ) ) // END
+        angleArray.append( CGFloat( M_PI*2*( cleanPercent ) - M_PI*(0.5) ) ) // END
 
         return angleArray
     }
