@@ -49,7 +49,7 @@ class CalculateHelperTests: XCTestCase {
 
     func testIsRetireDateFixed() {
 
-        for var i = 0; i < self.dataSample.count; i+=1 {
+        for i in 0 ..< self.dataSample.count {
             self.setDataSample( self.dataSample[i] )
             let helper = CalculateHelper()
 
@@ -60,7 +60,7 @@ class CalculateHelperTests: XCTestCase {
 
     func testGetRetireDate() {
 
-        for var i = 0; i < self.dataSample.count; i+=1 {
+        for i in 0 ..< self.dataSample.count {
             self.setDataSample( self.dataSample[i] )
             let helper = CalculateHelper()
 
