@@ -132,7 +132,7 @@ class CountdownView: UIView {
         let intervalArray = [ 0.01, 0.02, 0.04, 0.08, 0.16, 0.24, 0.32 ]
         let info: Dictionary<String,Int> = [ "index": stage ]
 
-        NSTimer.scheduledTimerWithTimeInterval( intervalArray[stage-1], target: self, selector: Selector("daysAddingEffect:"), userInfo: info, repeats: true )
+        NSTimer.scheduledTimerWithTimeInterval( intervalArray[stage-1], target: self, selector: #selector(daysAddingEffect), userInfo: info, repeats: true )
     }
 
     private func updateLabel() {

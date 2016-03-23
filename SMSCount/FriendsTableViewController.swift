@@ -216,7 +216,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             btn.titleLabel?.font = UIFont(name: "PingFangTC-Regular", size: 13)
             btn.layer.cornerRadius = 3
             btn.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-            btn.addTarget(self, action: "retryInternet:", forControlEvents: .TouchUpInside)
+            btn.addTarget(self, action: #selector(retryInternet), forControlEvents: .TouchUpInside)
 
         return btn
     }

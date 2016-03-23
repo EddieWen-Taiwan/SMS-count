@@ -59,7 +59,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         discountDaysPickerElement.dataSource = self
         discountDaysPickerElement.delegate = self
 
-        let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
+        let pressOnScreenMask = UITapGestureRecognizer( target: self, action: #selector(dismissScreenMask) )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
         containerVC = self.childViewControllers.first as? SettingTableViewController
