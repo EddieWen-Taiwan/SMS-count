@@ -26,7 +26,7 @@ class NavigationController: UINavigationController {
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
         // Add LeftBarItem and title
-        let drawerItem = UIBarButtonItem(image: UIImage(named: "DrawerList"), style: UIBarButtonItemStyle.Done, target: self, action: "toggleDrawer")
+        let drawerItem = UIBarButtonItem(image: UIImage(named: "DrawerList"), style: UIBarButtonItemStyle.Done, target: self, action: #selector(toggleDrawer))
         let childVC = self.childViewControllers.first!
         childVC.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
 

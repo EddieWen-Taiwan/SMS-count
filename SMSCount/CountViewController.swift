@@ -46,7 +46,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
         super.viewDidLoad()
 
         // Do any additional setup after loading the view, typically from a nib.
-        let switchGesture = UITapGestureRecognizer(target: self, action: "switchView")
+        let switchGesture = UITapGestureRecognizer(target: self, action: #selector(switchView))
         switchViewButton.addGestureRecognizer( switchGesture )
         switchViewButton.layer.borderColor = UIColor.whiteColor().CGColor
         switchViewButton.layer.borderWidth = 2
