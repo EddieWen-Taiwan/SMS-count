@@ -18,12 +18,12 @@ class NavigationController: UINavigationController {
         // Do any additional setup after loading the view.
 
         // Add shadow to navigation bar
-        self.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.navigationBar.layer.shadowOpacity = 0.4
+        navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2)
+        navigationBar.layer.shadowOpacity = 0.4
 
         // Set style of NavigationBar
-        self.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationBar.tintColor = UIColor.whiteColor()
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
         // Add LeftBarItem and title
         let drawerItem = UIBarButtonItem(image: UIImage(named: "DrawerList"), style: UIBarButtonItemStyle.Done, target: self, action: "toggleDrawer")
@@ -34,15 +34,17 @@ class NavigationController: UINavigationController {
 
     // Switch drawer Open / Close
     func toggleDrawer() {
-        self.appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
+        appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
     }
 
     func markDownload() {
-        let countVC = self.tabBarController?.viewControllers![0].childViewControllers.first! as! CountViewController
+        if let countVC = tabBarController?.viewControllers![0].childViewControllers.first! as? CountViewController {
             countVC.downloadFromParse = true
+        }
 
-        let profileVC = self.tabBarController?.viewControllers![1].childViewControllers.first! as! ProfileViewController
+        if let profileVC = tabBarController?.viewControllers![1].childViewControllers.first! as? ProfileViewController {
             profileVC.downloadFromParse = true
+        }
     }
 
 }

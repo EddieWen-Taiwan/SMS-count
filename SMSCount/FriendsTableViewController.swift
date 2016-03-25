@@ -32,31 +32,31 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         tableView.allowsSelection = false
 
-        self.checkEnvironment()
+        checkEnvironment()
     }
 
     // Make sure all everything required is okay, or add coverView
     func checkEnvironment() {
 
         // If there is coverView
-        self.removeOldViews()
+        removeOldViews()
 
         if Reachability().isConnectedToNetwork() {
             // Request for friendList
             if FBSDKAccessToken.currentAccessToken() == nil {
-                self.coverTableView("facebook")
+                coverTableView("facebook")
             } else {
                 let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
                 if userPreference.boolForKey("publicProfile") {
-                    self.requestFriendsListFromFacebook()
+                    requestFriendsListFromFacebook()
                 } else {
-                    self.coverTableView("public")
+                    coverTableView("public")
                 }
             }
         } else {
             // without Internet
-            self.coverTableView("internet")
+            coverTableView("internet")
         }
 
     }
@@ -64,7 +64,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     // Request user friends list from Facebook and reload TableView
     func requestFriendsListFromFacebook() {
         let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
-        friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+        friendsRequest.startWithCompletionHandler { connection, result, error in
 
             if error == nil {
                 var friendArray = [String]()
@@ -84,7 +84,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             friendsDetail.whereKey( "fb_id", containedIn: friends )
             friendsDetail.whereKey( "publicProfile", notEqualTo: false )
             friendsDetail.orderByDescending("updatedAt")
-        friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+        friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) in
             if error == nil {
                 self.friendsObject = objects!
                 self.getData = true
@@ -102,12 +102,12 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if self.getData {
-            if self.friendsObject.count == 0 {
-                self.coverTableView("no-friends")
+        if getData {
+            if friendsObject.count == 0 {
+                coverTableView("no-friends")
                 return 0
             } else {
-                return self.friendsObject.count
+                return friendsObject.count
             }
         } else {
             return Int( (UIScreen.mainScreen().bounds.height-44-49)/2/74+1 )
@@ -117,9 +117,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendsTableViewCell
 
-        if self.getData {
+        if getData {
 
-            let thisUser = self.friendsObject[indexPath.row]
+            let thisUser = friendsObject[indexPath.row]
             // Configure the cell...
 
             if let userName: String = thisUser.valueForKey("username") as? String {
@@ -130,11 +130,11 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             // Sticker
             let fbid = thisUser.valueForKey("fb_id") as! String
             let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
-            self.reachability.getImageFromUrl(url) { (data, response, error) in
+            reachability.getImageFromUrl(url) { data, response, error in
                 if data != nil {
-                    dispatch_async( dispatch_get_main_queue(), {
+                    dispatch_async( dispatch_get_main_queue() ) {
                         cell.sticker.image = UIImage(data: data!)
-                    })
+                    }
                 }
             }
 
@@ -182,10 +182,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         // Button under title
         if situation == "facebook" {
-            let loginView = self.makeFBLoginButton( viewWidth, vh: viewHeight )
+            let loginView = makeFBLoginButton( viewWidth, vh: viewHeight )
             coverView.addSubview(loginView)
         } else if situation == "internet" {
-            let retryButton = self.makeRetryButton( viewWidth, vh: viewHeight )
+            let retryButton = makeRetryButton( viewWidth, vh: viewHeight )
             coverView.addSubview(retryButton)
         }
 
@@ -193,10 +193,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if situation == "internet" {
             // Loading
-            self.loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
-            self.loadingView.hidden = true
+            loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
+            loadingView.hidden = true
 
-            self.view.addSubview( self.loadingView )
+            self.view.addSubview( loadingView )
         }
 
     }
@@ -223,8 +223,8 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     func retryInternet(sender: UIButton) {
 
-        self.loadingView.hidden = false
-        let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView
+        loadingView.hidden = false
+        let indicator = loadingView.subviews.first as! UIActivityIndicatorView
             indicator.startAnimating()
 
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
@@ -253,7 +253,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
 
                 if error == nil {
-                    UserInfo().storeFacebookInfo( result, syncCompletion: { (messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile) -> Void in
+                    UserInfo().storeFacebookInfo( result, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
 
                         // Ask user whether to download data from Parse or not
                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)

@@ -26,39 +26,39 @@ class CountdownView: UIView {
 
     private func addDaysLabel() {
 
-        self.dayLabel = UILabel(frame: CGRectMake(0, 0, self.frame.width, 60))
-        self.dayLabel.center = self.center
-        self.dayLabel.font = UIFont(name: "Verdana", size: 74)
-        self.dayLabel.textColor = UIColor.whiteColor()
-        self.dayLabel.textAlignment = .Center
+        dayLabel = UILabel(frame: CGRectMake(0, 0, self.frame.width, 60))
+        dayLabel.center = self.center
+        dayLabel.font = UIFont(name: "Verdana", size: 74)
+        dayLabel.textColor = UIColor.whiteColor()
+        dayLabel.textAlignment = .Center
 
-        self.addSubview( self.dayLabel )
+        self.addSubview( dayLabel )
 
     }
 
     private func addTextLabel() {
 
-        self.textLabel = UILabel(frame: CGRectMake(0, (UIScreen.mainScreen().bounds.height-44-49)/2+110, UIScreen.mainScreen().bounds.width, 23))
-        self.textLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
-        self.textLabel.textColor = UIColor.whiteColor()
-        self.textLabel.textAlignment = .Center
+        textLabel = UILabel(frame: CGRectMake(0, (UIScreen.mainScreen().bounds.height-44-49)/2+110, UIScreen.mainScreen().bounds.width, 23))
+        textLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
+        textLabel.textColor = UIColor.whiteColor()
+        textLabel.textAlignment = .Center
 
-        self.addSubview( self.textLabel )
+        self.addSubview( textLabel )
 
     }
 
     func setRemainedDays( days: Int ) {
 
-        self.textLabel.text = days < 0 ? "自由天數" : "剩餘天數"
+        textLabel.text = days < 0 ? "自由天數" : "剩餘天數"
 
         // Set remainedDays
         if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
             if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
                 // Run animation
-                self.beReadyAndRunCountingAnimation( abs(days) )
+                beReadyAndRunCountingAnimation( abs(days) )
             } else {
                 // Animation was completed or User doesn't want animation
-                self.dayLabel.text = String( abs(days) )
+                dayLabel.text = String( abs(days) )
             }
         }
 
@@ -67,35 +67,35 @@ class CountdownView: UIView {
     private func beReadyAndRunCountingAnimation( days: Int ) {
 
         // Animation setting
-        self.animationIndex = 0
-        self.animationArray.removeAll(keepCapacity: false) // Maybe it should be true
+        animationIndex = 0
+        animationArray.removeAll(keepCapacity: false) // Maybe it should be true
 
         if days < 100 {
-            for i in 1 ... days {
-                self.animationArray.append( String(i) )
+            for i in 0 ... days {
+                animationArray.append( String(i) )
             }
         } else {
             for i in 1 ... 95 {
-                self.animationArray.append( String( format: "%.f", Double( (days-3)*i )*0.01 ) )
+                animationArray.append( String( format: "%.f", Double( (days-3)*i )*0.01 ) )
             }
             for i in 96 ... 100 {
-                self.animationArray.append( String( days-(100-i) ) )
+                animationArray.append( String( days-(100-i) ) )
             }
         }
 
-        let arrayLength = self.animationArray.count
-        self.stageIndexArray.removeAll(keepCapacity: true)
-        self.stageIndexArray.append( Int( Double(arrayLength)*0.55 ) )
-        self.stageIndexArray.append( Int( Double(arrayLength)*0.75 ) )
-        self.stageIndexArray.append( Int( Double(arrayLength)*0.88 ) )
-        self.stageIndexArray.append( Int( Double(arrayLength)*0.94 ) )
-        self.stageIndexArray.append( Int( Double(arrayLength)*0.97 ) )
-        self.stageIndexArray.append( arrayLength-1 )
+        let arrayLength = animationArray.count
+        stageIndexArray.removeAll(keepCapacity: true)
+        stageIndexArray.append( Int( Double(arrayLength)*0.55 ) )
+        stageIndexArray.append( Int( Double(arrayLength)*0.75 ) )
+        stageIndexArray.append( Int( Double(arrayLength)*0.88 ) )
+        stageIndexArray.append( Int( Double(arrayLength)*0.94 ) )
+        stageIndexArray.append( Int( Double(arrayLength)*0.97 ) )
+        stageIndexArray.append( arrayLength-1 )
 
-        self.dayLabel.text = "0"
+        dayLabel.text = "0"
 
         // Run animation
-        self.startNextTimer(1)
+        startNextTimer(1)
 
     }
 
@@ -105,8 +105,8 @@ class CountdownView: UIView {
             if let currentStage = info["index"] {
                 // Final stage(special)
                 if currentStage == 7 {
-                    if self.animationIndex == self.stageIndexArray[5] {
-                        self.updateLabel()
+                    if animationIndex == stageIndexArray[5] {
+                        updateLabel()
                     } else {
                         timer.invalidate()
 
@@ -116,11 +116,11 @@ class CountdownView: UIView {
                     }
                 } else {
                 // Normal stage
-                    if self.animationIndex < self.stageIndexArray[currentStage-1] {
-                        self.updateLabel()
+                    if animationIndex < stageIndexArray[currentStage-1] {
+                        updateLabel()
                     } else {
                         timer.invalidate()
-                        self.startNextTimer( currentStage+1 )
+                        startNextTimer( currentStage+1 )
                     }
                 }
             }
@@ -136,7 +136,7 @@ class CountdownView: UIView {
     }
 
     private func updateLabel() {
-        self.dayLabel.text = self.animationArray[ self.animationIndex++ ]
+        dayLabel.text = animationArray[ animationIndex++ ]
     }
 
 }

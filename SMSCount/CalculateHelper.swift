@@ -44,30 +44,30 @@ class CalculateHelper {
 
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
-        calendar!.timeZone = NSTimeZone.localTimeZone()
+        self.calendar!.timeZone = NSTimeZone.localTimeZone()
         
-        let tempTimeString = dateFormatter.stringFromDate( NSDate() )
-        self.currentDate = dateFormatter.dateFromString( tempTimeString )
+        let tempTimeString = self.dateFormatter.stringFromDate( NSDate() )
+        self.currentDate = self.dateFormatter.dateFromString( tempTimeString )
 
         // calculate data automaticlly
-        if self.isSettingAllDone() {
-            self.calculateData()
+        if isSettingAllDone() {
+            calculateData()
         }
     }
 
     private func isSettingAllDone() -> Bool {
 
-        self.settingStatus = self.valueEnterDate == "" || self.valueServiceDays == -1 ? false : true
-        return self.settingStatus
+        settingStatus = valueEnterDate == "" || valueServiceDays == -1 ? false : true
+        return settingStatus
 
     }
 
     func calculateData() {
 
-        self.enterDate = dateFormatter.dateFromString( self.valueEnterDate )!
+        enterDate = dateFormatter.dateFromString( valueEnterDate )!
         // 入伍日 - enterDate
 
-        switch self.valueServiceDays {
+        switch valueServiceDays {
             case 0:
                 dayComponent.year = 0
                 dayComponent.month = 4
@@ -90,34 +90,34 @@ class CalculateHelper {
                 dayComponent.day = -1
         }
 
-        self.defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
+        defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
 
-        if self.valueDiscountDays == -1 {
+        if valueDiscountDays == -1 {
             userPreference.setInteger( 0, forKey: "discountDays" )
-            self.valueDiscountDays = 0
+            valueDiscountDays = 0
         }
         dayComponent.year = 0
         dayComponent.month = 0
-        dayComponent.day = self.valueDiscountDays*(-1)
-        self.realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: [])!
+        dayComponent.day = valueDiscountDays*(-1)
+        realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: [])!
         // 折抵後退伍日 - realRetireDate
 
         let cal = NSCalendar.currentCalendar()
         let unit: NSCalendarUnit = .Day
-        self.remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: [])
+        remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: [])
         // 剩餘幾天 - remainedDays
-        self.passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: [])
+        passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: [])
         // 已過天數 - passedDays
-        self.wholeServiceDays = cal.components(unit, fromDate: enterDate!, toDate: realRetireDate!, options: [])
+        wholeServiceDays = cal.components(unit, fromDate: enterDate!, toDate: realRetireDate!, options: [])
 
-        self.weekendComponent = calendar!.components( .Weekday, fromDate: realRetireDate! )
-        self.fixWeekend()
+        weekendComponent = calendar!.components( .Weekday, fromDate: realRetireDate! )
+        fixWeekend()
     }
 
     func isRetireDateFixed() -> Bool {
-        if self.valueAutoFixed {
-            if self.getRetireDate() != self.getFixedRetireDate() {
+        if valueAutoFixed {
+            if getRetireDate() != getFixedRetireDate() {
                 return true
             }
         }
@@ -125,31 +125,31 @@ class CalculateHelper {
     }
 
     func getFixedRetireDate() -> String {
-        var fixedRetireDate = self.realRetireDate
-        if self.days2beFixed > 0 {
+        var fixedRetireDate = realRetireDate
+        if days2beFixed > 0 {
             dayComponent.year = 0
             dayComponent.month = 0
-            dayComponent.day = self.days2beFixed*(-1)
+            dayComponent.day = days2beFixed*(-1)
             fixedRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: fixedRetireDate, options: [])!
         }
-        return dateFormatter.stringFromDate( fixedRetireDate ) + switchWeekday( weekendComponent.weekday - self.days2beFixed )
+        return dateFormatter.stringFromDate( fixedRetireDate ) + switchWeekday( weekendComponent.weekday - days2beFixed )
     }
 
     func getRetireDate() -> String {
-        return dateFormatter.stringFromDate( self.realRetireDate ) + switchWeekday( weekendComponent.weekday )
+        return dateFormatter.stringFromDate( realRetireDate ) + switchWeekday( weekendComponent.weekday )
     }
 
     func getPassedDays() -> Int {
-        return self.passedDays.day
+        return passedDays.day
     }
 
     func getRemainedDays() -> Int {
-        return remainedDays.day - self.days2beFixed
+        return remainedDays.day - days2beFixed
     }
 
     func getCurrentProgress() -> Double {
-        let total_days = wholeServiceDays.day - self.days2beFixed
-        return Double( self.passedDays.day ) / Double( total_days )*100
+        let total_days = wholeServiceDays.day - days2beFixed
+        return Double( passedDays.day ) / Double( total_days )*100
     }
 
     func switchPeriod( period: String ) -> String {
@@ -183,13 +183,13 @@ class CalculateHelper {
 
     private func fixWeekend() {
 
-        self.days2beFixed = 0
+        days2beFixed = 0
 
-        if self.valueAutoFixed {
-            if self.weekendComponent.weekday == 1 {
-                self.days2beFixed = 2
-            } else if self.weekendComponent.weekday == 7 {
-                self.days2beFixed = 1
+        if valueAutoFixed {
+            if weekendComponent.weekday == 1 {
+                days2beFixed = 2
+            } else if weekendComponent.weekday == 7 {
+                days2beFixed = 1
             }
         }
 

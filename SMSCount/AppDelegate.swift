@@ -59,13 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
         let drawerViewController = LeftDrawerViewController()
 
-        self.drawerController = DrawerController(centerViewController: rootViewController, leftDrawerViewController: drawerViewController)
-        self.drawerController.restorationIdentifier = "Drawer"
-        self.drawerController.maximumLeftDrawerWidth = 260
-        self.drawerController.drawerVisualStateBlock = DrawerVisualState.parallaxVisualStateBlock(5.5)
-        self.drawerController.openDrawerGestureModeMask = .All
-        self.drawerController.closeDrawerGestureModeMask = .All
-        self.window?.rootViewController = self.drawerController
+        drawerController = DrawerController(centerViewController: rootViewController, leftDrawerViewController: drawerViewController)
+        drawerController.restorationIdentifier = "Drawer"
+        drawerController.maximumLeftDrawerWidth = 260
+        drawerController.drawerVisualStateBlock = DrawerVisualState.parallaxVisualStateBlock(5.5)
+        drawerController.openDrawerGestureModeMask = .All
+        drawerController.closeDrawerGestureModeMask = .All
+        window?.rootViewController = drawerController
 
         return FBSDKApplicationDelegate.sharedInstance().application( application, didFinishLaunchingWithOptions: launchOptions )
     }
