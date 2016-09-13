@@ -6,11 +6,6 @@
 //  Copyright (c) 2015年 Wen. All rights reserved.
 //
 
-#ifndef SMSCount_Bridging_Header_h
-#define SMSCount_Bridging_Header_h
-
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
-
-#endif
