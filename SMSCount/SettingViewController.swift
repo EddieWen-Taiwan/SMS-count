@@ -41,7 +41,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
 
     required init?(coder aDecoder: NSCoder) {
         self.serviceDaysPickerDataSource = ["四個月","四個月五天","一年","一年十五天","三年"]
-        self.discountDaysPickerDataSource = ["0 天","1 天","2 天","3 天","4 天","5 天","6 天","7 天","8 天","9 天","10 天", "11 天",
+        self.discountDaysPickerDataSource = ["0 天","1 天","2 天","3 天","4 天","5 天","6 天","7 天","8 天","9 天","10 天","11 天",
             "12 天","13 天","14 天","15 天","16 天","17 天","18 天","19 天","20 天","21 天","22 天","23 天","24 天","25 天","26 天","27 天","28 天","29 天","30 天"]
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
         self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
@@ -59,7 +59,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         discountDaysPickerElement.dataSource = self
         discountDaysPickerElement.delegate = self
 
-        let pressOnScreenMask = UITapGestureRecognizer( target: self, action: "dismissScreenMask" )
+        let pressOnScreenMask = UITapGestureRecognizer( target: self, action: #selector(dismissScreenMask) )
         screenMask.addGestureRecognizer( pressOnScreenMask )
 
         containerVC = self.childViewControllers.first as? SettingTableViewController

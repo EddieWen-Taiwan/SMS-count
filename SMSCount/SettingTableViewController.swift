@@ -43,7 +43,7 @@ class SettingTableViewController: UITableViewController {
         // Resize UISwitch and add function
         func prepareSwitch( mySwitch: UISwitch ) {
             mySwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
-            mySwitch.addTarget(self, action: "switchClick:", forControlEvents: .ValueChanged)
+            mySwitch.addTarget(self, action: #selector(switchClick), forControlEvents: .ValueChanged)
         }
         prepareSwitch( autoWeekendSwitch )
         if userPreference.boolForKey("autoWeekendFixed") {

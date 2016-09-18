@@ -10,8 +10,8 @@ import XCTest
 @testable import SMSCount
 
 class CalculateHelperTests: XCTestCase {
-    
-    var dataSample = [AnyObject]( arrayLiteral:
+
+    var dataSample = [NSArray]( arrayLiteral:
         [ "2015 / 06 / 25", 2, 27, true, "2016 / 05 / 27 Fri.", true ],
         [ "2014 / 09 / 15", 3, 10, false, "2015 / 09 / 19 Sat.", false ],
         [ "2015 / 03 / 17", 4, 15, true, "2018 / 03 / 01 Thu.", false ],
@@ -49,7 +49,7 @@ class CalculateHelperTests: XCTestCase {
 
     func testIsRetireDateFixed() {
 
-        for var i = 0; i < self.dataSample.count; i++ {
+        for i in 0 ..< self.dataSample.count {
             self.setDataSample( self.dataSample[i] )
             let helper = CalculateHelper()
 
@@ -60,7 +60,7 @@ class CalculateHelperTests: XCTestCase {
 
     func testGetRetireDate() {
 
-        for var i = 0; i < self.dataSample.count; i++ {
+        for i in 0 ..< self.dataSample.count {
             self.setDataSample( self.dataSample[i] )
             let helper = CalculateHelper()
 
