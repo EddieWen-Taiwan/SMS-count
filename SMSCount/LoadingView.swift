@@ -11,7 +11,7 @@ import UIKit
 class LoadingView: UIView {
 
     convenience init(center: CGPoint) {
-        self.init(frame: CGRectMake(0,0,80,80))
+        self.init(frame: CGRect(x: 0,y: 0,width: 80,height: 80))
 
         self.center = center
         self.layer.cornerRadius = 20
@@ -22,9 +22,9 @@ class LoadingView: UIView {
     }
 
     // Add UIActivityIndicator in UIView center
-    private func addActivityIndicator() -> UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-            activityIndicator.center = CGPointMake(40, 40)
+    fileprivate func addActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+            activityIndicator.center = CGPoint(x: 40, y: 40)
 
         return activityIndicator
     }

@@ -18,7 +18,7 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet var animationSwitch: UISwitch!
     @IBOutlet var publicSwitch: UISwitch!
 
-    let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+    let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
     var parentVC: SettingViewController?
 
@@ -27,45 +27,45 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let userEnterDate = userPreference.stringForKey("enterDate") {
+        if let userEnterDate = userPreference.string(forKey: "enterDate") {
             enterDateLabel.text = userEnterDate
         }
-        if let userServiceDays = userPreference.stringForKey("serviceDays") {
+        if let userServiceDays = userPreference.string(forKey: "serviceDays") {
             serviceDaysLabel.text = calculateHelper.switchPeriod( userServiceDays )
         }
-        if let userDiscountDays = userPreference.stringForKey("discountDays") {
+        if let userDiscountDays = userPreference.string(forKey: "discountDays") {
             discountDaysLabel.text = userDiscountDays
         }
-        if let status = userPreference.stringForKey("status") {
+        if let status = userPreference.string(forKey: "status") {
             statusLabel.text = status
         }
 
         // Resize UISwitch and add function
-        func prepareSwitch( mySwitch: UISwitch ) {
-            mySwitch.transform = CGAffineTransformMakeScale(0.8, 0.8)
-            mySwitch.addTarget(self, action: #selector(switchClick), forControlEvents: .ValueChanged)
+        func prepareSwitch( _ mySwitch: UISwitch ) {
+            mySwitch.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            mySwitch.addTarget(self, action: #selector(switchClick), for: .valueChanged)
         }
         prepareSwitch( autoWeekendSwitch )
-        if userPreference.boolForKey("autoWeekendFixed") {
+        if userPreference.bool(forKey: "autoWeekendFixed") {
             autoWeekendSwitch.setOn(true, animated: false)
         }
         prepareSwitch( animationSwitch )
-        if userPreference.boolForKey("countdownAnimation") {
+        if userPreference.bool(forKey: "countdownAnimation") {
             animationSwitch.setOn(true, animated: false)
         }
         prepareSwitch( publicSwitch )
         // Its value was set in SettingVC
 
         // Add footer of TableView
-        let footerBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
+        let footerBorder = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0.5))
             footerBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-        let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 40))
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
             footerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
             footerView.addSubview(footerBorder)
         tableView.tableFooterView = footerView
     }
 
-    @IBAction func editEnterDate(sender: AnyObject) {
+    @IBAction func editEnterDate(_ sender: AnyObject) {
 
         if let parentVC = parentVC {
             parentVC.serviceDaysPickerViewBottomConstraint.constant = -200
@@ -75,14 +75,14 @@ class SettingTableViewController: UITableViewController {
 
             parentVC.showPickerView()
 
-            if let userEnterDate = userPreference.stringForKey("enterDate") {
-                parentVC.datepickerElement.setDate( parentVC.dateFormatter.dateFromString(userEnterDate)!, animated: false )
+            if let userEnterDate = userPreference.string(forKey: "enterDate") {
+                parentVC.datepickerElement.setDate( parentVC.dateFormatter.date(from: userEnterDate)!, animated: false )
             }
         }
 
     }
 
-    @IBAction func editServiceDays(sender: AnyObject) {
+    @IBAction func editServiceDays(_ sender: AnyObject) {
 
         if let parentVC = parentVC {
             parentVC.datepickerViewBottomConstraint.constant = -200
@@ -92,14 +92,14 @@ class SettingTableViewController: UITableViewController {
 
             parentVC.showPickerView()
 
-            if let userServiceDays: Int = userPreference.integerForKey("serviceDays") {
+            if let userServiceDays: Int = userPreference.integer(forKey: "serviceDays") {
                 parentVC.serviceDaysPickerElement.selectRow( userServiceDays, inComponent: 0, animated: false )
             }
         }
 
     }
 
-    @IBAction func editDiscountDays(sender: AnyObject) {
+    @IBAction func editDiscountDays(_ sender: AnyObject) {
 
         if let parentVC = parentVC {
             parentVC.datepickerViewBottomConstraint.constant = -200
@@ -109,15 +109,15 @@ class SettingTableViewController: UITableViewController {
 
             parentVC.showPickerView()
 
-            if let selectedRow: Int = userPreference.integerForKey("discountDays") {
+            if let selectedRow: Int = userPreference.integer(forKey: "discountDays") {
                 parentVC.discountDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
             }
         }
 
     }
 
-    func switchClick( mySwitch: UISwitch ) {
-        let newValue: Bool = mySwitch.on ? true : false
+    func switchClick( _ mySwitch: UISwitch ) {
+        let newValue: Bool = mySwitch.isOn ? true : false
 
         if let parentVC = parentVC {
             switch mySwitch.tag {
@@ -131,15 +131,15 @@ class SettingTableViewController: UITableViewController {
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StatusVC" {
-            if let statusVC = segue.destinationViewController as? StatusViewController {
+            if let statusVC = segue.destination as? StatusViewController {
                 statusVC.parentVC = self
             }
         }
     }
 
-    func updateNewStatusFromStatusVC( newStatus: String ) {
+    func updateNewStatusFromStatusVC( _ newStatus: String ) {
         statusLabel.text = newStatus
         if let parentVC = parentVC {
             parentVC.userInfo.updateUserStatus( newStatus as String )
@@ -147,17 +147,17 @@ class SettingTableViewController: UITableViewController {
     }
 
     // MARK: table view
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 1 : 3
     }
 
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
-        let label = UILabel(frame: CGRectMake(20, 24, 48, 17))
+        let label = UILabel(frame: CGRect(x: 20, y: 24, width: 48, height: 17))
             label.textColor = UIColor(red: 103/255, green: 211/255, blue: 173/255, alpha: 1)
             label.font = UIFont(name: "PingFangTC-Light", size: 12.0)
             label.text = {
@@ -171,13 +171,13 @@ class SettingTableViewController: UITableViewController {
                 }
             }()
 
-        let topBorder = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 0.5))
+        let topBorder = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0.5))
             topBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
 
-        let bottomBorder = UIView(frame: CGRectMake(0, 50, tableView.frame.width, 0.5))
+        let bottomBorder = UIView(frame: CGRect(x: 0, y: 50, width: tableView.frame.width, height: 0.5))
             bottomBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
 
-        let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 50))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
             headerView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
             headerView.addSubview(label)
             if section != 0 {

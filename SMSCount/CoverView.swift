@@ -17,12 +17,12 @@ class CoverView: UIView {
 
     convenience init( width: CGFloat, height: CGFloat, status: String ) {
 
-        self.init(frame: CGRectMake(0, 0, width, height))
+        self.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
 
         self.viewWidth = width
         self.viewHeight = height
 
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
 
         self.status = status
 
@@ -31,9 +31,9 @@ class CoverView: UIView {
 
     }
 
-    private func addIconView() {
+    fileprivate func addIconView() {
 
-        let iconView = UIImageView(frame: CGRectMake(viewWidth/2-24, viewHeight/2-50, 48, 48))
+        let iconView = UIImageView(frame: CGRect(x: viewWidth/2-24, y: viewHeight/2-50, width: 48, height: 48))
             iconView.image = {
                 switch status {
                     case "facebook":
@@ -51,9 +51,9 @@ class CoverView: UIView {
 
     }
 
-    private func addTitleLabel() {
+    fileprivate func addTitleLabel() {
 
-        let titleLabel = UILabel(frame: CGRectMake(0, viewHeight/2, viewWidth, 30))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: viewHeight/2, width: viewWidth, height: 30))
             titleLabel.text = {
                 switch status {
                     case "facebook":
@@ -68,7 +68,7 @@ class CoverView: UIView {
             }()
             titleLabel.font = UIFont(name: "PingFangTC-Regular", size: 15)
             titleLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.38)
-            titleLabel.textAlignment = .Center
+            titleLabel.textAlignment = .center
 
         self.addSubview(titleLabel)
 

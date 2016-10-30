@@ -10,11 +10,11 @@ import UIKit
 
 class CalculateHelper {
 
-    private let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-    private let dateFormatter = NSDateFormatter()
-    private let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-    private var dayComponent = NSDateComponents()
-    private var weekendComponent = NSDateComponents()
+    fileprivate let userPreference = UserDefaults( suiteName: "group.EddieWen.SMSCount" )!
+    fileprivate let dateFormatter = DateFormatter()
+    fileprivate let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    fileprivate var dayComponent = DateComponents()
+    fileprivate var weekendComponent = DateComponents()
 
     // Original data
     var valueEnterDate: String
@@ -23,31 +23,31 @@ class CalculateHelper {
     var valueAutoFixed: Bool
 
     // Outcome
-    private var enterDate: NSDate!
-    private var currentDate: NSDate!
-    private var defaultRetireDate: NSDate!
-    private var realRetireDate: NSDate!
-    private var remainedDays: NSDateComponents!
-    private var passedDays: NSDateComponents!
-    private var wholeServiceDays: NSDateComponents!
-    private var days2beFixed: Int = 0
+    fileprivate var enterDate: Date!
+    fileprivate var currentDate: Date!
+    fileprivate var defaultRetireDate: Date!
+    fileprivate var realRetireDate: Date!
+    fileprivate var remainedDays: DateComponents!
+    fileprivate var passedDays: DateComponents!
+    fileprivate var wholeServiceDays: DateComponents!
+    fileprivate var days2beFixed: Int = 0
 
     // For other ViewControllers
     var settingStatus: Bool = false
 
     init() {
 
-        self.valueEnterDate = userPreference.stringForKey("enterDate") ?? ""
-        self.valueServiceDays = userPreference.stringForKey("serviceDays") != nil ? userPreference.integerForKey("serviceDays") : -1
-        self.valueDiscountDays = userPreference.stringForKey("discountDays") != nil ? userPreference.integerForKey("discountDays") : -1
-        self.valueAutoFixed = userPreference.boolForKey("autoWeekendFixed")
+        self.valueEnterDate = userPreference.string(forKey: "enterDate") ?? ""
+        self.valueServiceDays = userPreference.string(forKey: "serviceDays") != nil ? userPreference.integer(forKey: "serviceDays") : -1
+        self.valueDiscountDays = userPreference.string(forKey: "discountDays") != nil ? userPreference.integer(forKey: "discountDays") : -1
+        self.valueAutoFixed = userPreference.bool(forKey: "autoWeekendFixed")
 
         self.dateFormatter.dateFormat = "yyyy / MM / dd"
-        self.dateFormatter.timeZone = NSTimeZone.localTimeZone()
-        self.calendar!.timeZone = NSTimeZone.localTimeZone()
+        self.dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        self.calendar.timeZone = TimeZone.autoupdatingCurrent
         
-        let tempTimeString = self.dateFormatter.stringFromDate( NSDate() )
-        self.currentDate = self.dateFormatter.dateFromString( tempTimeString )
+        let tempTimeString = self.dateFormatter.string( from: Date() )
+        self.currentDate = self.dateFormatter.date( from: tempTimeString )
 
         // calculate data automaticlly
         if isSettingAllDone() {
@@ -55,7 +55,7 @@ class CalculateHelper {
         }
     }
 
-    private func isSettingAllDone() -> Bool {
+    fileprivate func isSettingAllDone() -> Bool {
 
         settingStatus = valueEnterDate == "" || valueServiceDays == -1 ? false : true
         return settingStatus
@@ -64,7 +64,7 @@ class CalculateHelper {
 
     func calculateData() {
 
-        enterDate = dateFormatter.dateFromString( valueEnterDate )!
+        enterDate = dateFormatter.date( from: valueEnterDate )!
         // 入伍日 - enterDate
 
         switch valueServiceDays {
@@ -90,28 +90,28 @@ class CalculateHelper {
                 dayComponent.day = -1
         }
 
-        defaultRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: enterDate, options: [])!
+        defaultRetireDate = (calendar as NSCalendar).date(byAdding: dayComponent, to: enterDate, options: [])!
         // 預定退伍日 - defaultRetireDate
 
         if valueDiscountDays == -1 {
-            userPreference.setInteger( 0, forKey: "discountDays" )
+            userPreference.set( 0, forKey: "discountDays" )
             valueDiscountDays = 0
         }
         dayComponent.year = 0
         dayComponent.month = 0
         dayComponent.day = valueDiscountDays*(-1)
-        realRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: defaultRetireDate, options: [])!
+        realRetireDate = (calendar as NSCalendar).date(byAdding: dayComponent, to: defaultRetireDate, options: [])!
         // 折抵後退伍日 - realRetireDate
 
-        let cal = NSCalendar.currentCalendar()
-        let unit: NSCalendarUnit = .Day
-        remainedDays = cal.components(unit, fromDate: currentDate!, toDate: realRetireDate!, options: [])
+        let cal = Calendar.current
+        let unit: NSCalendar.Unit = .day
+        remainedDays = (cal as NSCalendar).components(unit, from: currentDate!, to: realRetireDate!, options: [])
         // 剩餘幾天 - remainedDays
-        passedDays = cal.components(unit, fromDate: enterDate!, toDate: currentDate!, options: [])
+        passedDays = (cal as NSCalendar).components(unit, from: enterDate!, to: currentDate!, options: [])
         // 已過天數 - passedDays
-        wholeServiceDays = cal.components(unit, fromDate: enterDate!, toDate: realRetireDate!, options: [])
+        wholeServiceDays = (cal as NSCalendar).components(unit, from: enterDate!, to: realRetireDate!, options: [])
 
-        weekendComponent = calendar!.components( .Weekday, fromDate: realRetireDate! )
+        weekendComponent = (calendar as NSCalendar).components( .weekday, from: realRetireDate! )
         fixWeekend()
     }
 
@@ -130,29 +130,29 @@ class CalculateHelper {
             dayComponent.year = 0
             dayComponent.month = 0
             dayComponent.day = days2beFixed*(-1)
-            fixedRetireDate = calendar!.dateByAddingComponents(dayComponent, toDate: fixedRetireDate, options: [])!
+            fixedRetireDate = (calendar as NSCalendar).date(byAdding: dayComponent, to: fixedRetireDate!, options: [])!
         }
-        return dateFormatter.stringFromDate( fixedRetireDate ) + switchWeekday( weekendComponent.weekday - days2beFixed )
+        return dateFormatter.string( from: fixedRetireDate! ) + switchWeekday( weekendComponent.weekday! - days2beFixed )
     }
 
     func getRetireDate() -> String {
-        return dateFormatter.stringFromDate( realRetireDate ) + switchWeekday( weekendComponent.weekday )
+        return dateFormatter.string( from: realRetireDate ) + switchWeekday( weekendComponent.weekday! )
     }
 
     func getPassedDays() -> Int {
-        return passedDays.day
+        return passedDays.day!
     }
 
     func getRemainedDays() -> Int {
-        return remainedDays.day - days2beFixed
+        return remainedDays.day! - days2beFixed
     }
 
     func getCurrentProgress() -> Double {
-        let total_days = wholeServiceDays.day - days2beFixed
-        return Double( passedDays.day ) / Double( total_days )*100
+        let total_days = wholeServiceDays.day! - days2beFixed
+        return Double( passedDays.day! ) / Double( total_days )*100
     }
 
-    func switchPeriod( period: String ) -> String {
+    func switchPeriod( _ period: String ) -> String {
         switch period {
             case "0": return "四個月"
             case "1": return "四個月五天"
@@ -168,7 +168,7 @@ class CalculateHelper {
         }
     }
 
-    private func switchWeekday( weekday: Int ) -> String {
+    fileprivate func switchWeekday( _ weekday: Int ) -> String {
         switch weekday {
             case 1: return " Sun."
             case 2: return " Mon."
@@ -181,7 +181,7 @@ class CalculateHelper {
         }
     }
 
-    private func fixWeekend() {
+    fileprivate func fixWeekend() {
 
         days2beFixed = 0
 

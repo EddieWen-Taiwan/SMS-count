@@ -19,27 +19,27 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         statusTextField.delegate = self
 
-        if let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" ) {
-            if let userStatus = userPreference.stringForKey("status") {
+        if let userPreference = UserDefaults( suiteName: "group.EddieWen.SMSCount" ) {
+            if let userStatus = userPreference.string(forKey: "status") {
                 statusTextField.text = userStatus
             }
         }
     }
 
-    @IBAction func dismissViewController(sender: AnyObject) {
-        dismissViewControllerAnimated( true, completion: nil )
+    @IBAction func dismissViewController(_ sender: AnyObject) {
+        dismiss( animated: true, completion: nil )
     }
 
-    @IBAction func saveNewStatus(sender: AnyObject) {
+    @IBAction func saveNewStatus(_ sender: AnyObject) {
         var newStatus = (statusTextField.text ?? "") as NSString
         if newStatus.length > 30 {
-            newStatus = newStatus.substringToIndex(30)
+            newStatus = newStatus.substring(to: 30) as NSString
         }
         parentVC?.updateNewStatusFromStatusVC( newStatus as String )
-        dismissViewControllerAnimated( true, completion: nil )
+        dismiss( animated: true, completion: nil )
     }
 
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else {
             return true
         }
