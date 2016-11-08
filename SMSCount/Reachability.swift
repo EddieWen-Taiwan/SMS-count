@@ -17,7 +17,9 @@ class Reachability {
         zeroAddress.sin_family = sa_family_t(AF_INET)
 
         let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
-            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
         }
 
         var flags = SCNetworkReachabilityFlags()
@@ -31,10 +33,10 @@ class Reachability {
         return (isReachable && !needsConnection)
     }
 
-    func getImageFromUrl( _ url:URL, completion: @escaping ((_ data: Data?, _ response: URLResponse?, _ error: NSError? ) -> Void) ) {
+    func getImageFromUrl(_ url: URL, completion: @escaping ((_ data: Data?, _ response: URLResponse?, _ error: NSError? ) -> Void) ) {
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            completion(data, response, error)
-        }) .resume()
+            completion(data, response, error as NSError?)
+        }).resume()
     }
 
 }

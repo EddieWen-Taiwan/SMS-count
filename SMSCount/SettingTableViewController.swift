@@ -92,8 +92,8 @@ class SettingTableViewController: UITableViewController {
 
             parentVC.showPickerView()
 
-            if let userServiceDays: Int = userPreference.integer(forKey: "serviceDays") {
-                parentVC.serviceDaysPickerElement.selectRow( userServiceDays, inComponent: 0, animated: false )
+            if let userServiceDays = userPreference.string(forKey: "serviceDays") {
+                parentVC.serviceDaysPickerElement.selectRow( Int(userServiceDays)!, inComponent: 0, animated: false )
             }
         }
 
@@ -109,8 +109,8 @@ class SettingTableViewController: UITableViewController {
 
             parentVC.showPickerView()
 
-            if let selectedRow: Int = userPreference.integer(forKey: "discountDays") {
-                parentVC.discountDaysPickerElement.selectRow( selectedRow, inComponent: 0, animated: false )
+            if let selectedRow = userPreference.string(forKey: "discountDays") {
+                parentVC.discountDaysPickerElement.selectRow( Int(selectedRow)!, inComponent: 0, animated: false )
             }
         }
 

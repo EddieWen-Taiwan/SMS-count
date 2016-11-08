@@ -164,8 +164,7 @@ class CountViewController: UIViewController, UINavigationControllerDelegate, UII
             let indicator = self.loadingView.subviews.first as! UIActivityIndicatorView
                 indicator.startAnimating()
 
-            let priority = DispatchQueue.GlobalQueuePriority.default
-            DispatchQueue.global( priority: priority).async {
+            DispatchQueue.global().async {
                 // do some task
 
                 // Create the UIImage

@@ -57,7 +57,7 @@ class UserInfo { // Save userInfomation to Parse
     // Update the objectId in app
     func updateLocalObjectId( _ objectId: String ) {
 
-        userObject.deleteInBackground{ (success: Bool, error: NSError?) in
+        userObject.deleteInBackground{ (success: Bool, error: Error?) in
 
             self.userPreference.setValue( objectId, forKey: "UserID" )
             self.userObject.objectId = objectId
@@ -180,7 +180,7 @@ class UserInfo { // Save userInfomation to Parse
             // Search parse data by FBID, check whether there is matched data.
             let fbIdQuery = PFQuery(className: SecretCode.classNameInParse)
                 fbIdQuery.whereKey( "fb_id", equalTo: FBID )
-            fbIdQuery.findObjectsInBackground{ (objects: [PFObject]?, error: NSError?) -> Void in
+            fbIdQuery.findObjectsInBackground{ (objects: [PFObject]?, error: Error?) -> Void in
                 if error == nil {
 
                     self.addUserFBID( FBID as! String )
@@ -212,8 +212,8 @@ class UserInfo { // Save userInfomation to Parse
                                 newStatus = user.value(forKey: "status") as! String
                             }
                             if let year = user.value(forKey: "yearOfEnterDate") {
-                                let month = ( (user.value(forKey: "monthOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.value(forKey: "monthOfEnterDate")!)
-                                let date = ( (user.value(forKey: "dateOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(user.value(forKey: "dateOfEnterDate")!)
+                                let month = ( (user.value(forKey: "monthOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(describing: user.value(forKey: "monthOfEnterDate")!)
+                                let date = ( (user.value(forKey: "dateOfEnterDate") as! Int) < 10 ? "0" : "" ) + String(describing: user.value(forKey: "dateOfEnterDate")!)
                                 // Store data
                                 newEnterDate = "\(year) / \(month) / \(date)"
                                 messageContent += "入伍日期：\(newEnterDate)\n"
@@ -221,7 +221,7 @@ class UserInfo { // Save userInfomation to Parse
                             if let service = user.value(forKey: "serviceDays") {
                                 // Store data
                                 newServiceDays = service as! Int
-                                let serviceStr: String = CalculateHelper().switchPeriod( String(service) )
+                                let serviceStr: String = CalculateHelper().switchPeriod( String(describing: service) )
                                 messageContent += "役期天數：\(serviceStr)\n"
                             }
                             if let discount = user.value(forKey: "discountDays") {
@@ -236,7 +236,7 @@ class UserInfo { // Save userInfomation to Parse
                                 newPublicProfile = publicProfile as! Bool
                             }
 
-                            syncCompletion( messageContent: messageContent, newStatus: newStatus, newEnterDate: newEnterDate, newServiceDays: newServiceDays, newDiscountDays: newDiscountDays, newWeekendFixed: newWeekendFixed, newPublicProfile: newPublicProfile)
+                            syncCompletion( messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile)
 
                         }
                     } else {
@@ -285,12 +285,12 @@ class UserInfo { // Save userInfomation to Parse
                 userObject.setValue( Int(userDiscount)!, forKey: "discountDays" )
             }
 
-            userObject.saveInBackground{ (success: Bool, error: NSError?) in
+            userObject.saveInBackground(block: { (success: Bool, error: Error?) in
                 if success {
                     self.userPreference.setValue( self.userObject.objectId, forKey: "UserID" )
                     self.objectIdStatus = true
                 }
-            }
+            })
 
         }
 

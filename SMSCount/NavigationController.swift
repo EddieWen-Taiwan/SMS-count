@@ -34,7 +34,7 @@ class NavigationController: UINavigationController {
 
     // Switch drawer Open / Close
     func toggleDrawer() {
-        appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
+        appDelegate.drawerController.toggleLeftDrawerSide(animated: true, completion: nil)
     }
 
     func markDownload() {

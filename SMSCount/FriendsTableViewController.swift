@@ -64,19 +64,31 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     // Request user friends list from Facebook and reload TableView
     func requestFriendsListFromFacebook() {
         let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
-        friendsRequest?.start { connection, result, error in
+        let connection = FBSDKGraphRequestConnection()
+        connection.add(friendsRequest, completionHandler: { (connection, result, error) in
 
             if error == nil {
-                var friendArray = [String]()
-                if let users = result.value(forKey: "data") {
-                    for user in users as! [AnyObject] {
-                        friendArray.append( user.value(forKey: "id") as! String )
+
+                do {
+
+                    var friendArray = [String]()
+                    let fbResult = try JSONSerialization.jsonObject(with: result as! Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                    if let users = fbResult.value(forKey: "data") {
+                        for user in users as! [AnyObject] {
+                            friendArray.append( user.value(forKey: "id") as! String )
+                        }
                     }
+
+                    self.getFriendsInfomation( friendArray )
+
+                } catch {
+                    print(error)
                 }
-                self.getFriendsInfomation( friendArray )
             }
 
-        }
+        })
+
+        connection.start()
     }
 
     func getFriendsInfomation( _ friends: [String] ) {
@@ -84,7 +96,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             friendsDetail.whereKey( "fb_id", containedIn: friends )
             friendsDetail.whereKey( "publicProfile", notEqualTo: false )
             friendsDetail.order(byDescending: "updatedAt")
-        friendsDetail.findObjectsInBackground(block: { (objects: [PFObject]?, error: NSError?) in
+        friendsDetail.findObjectsInBackground(block: { (objects: [PFObject]?, error: Error?) in
             if error == nil {
                 self.friendsObject = objects!
                 self.getData = true
@@ -227,8 +239,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         let indicator = loadingView.subviews.first as! UIActivityIndicatorView
             indicator.startAnimating()
 
-        let priority = DispatchQueue.GlobalQueuePriority.default
-        DispatchQueue.global(priority: priority).async {
+        DispatchQueue.global().async {
             sleep(1)
             DispatchQueue.main.async {
                 self.checkEnvironment()
@@ -241,7 +252,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     //      FBSDK      \\
     // *************** \\
 
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
 
         if error != nil {
             // Process error
@@ -250,10 +261,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         } else {
 
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
-            graphRequest?.start(completionHandler: { (connection, result, error) -> Void in
+            _ = graphRequest?.start(completionHandler: { (connection, result, error) -> Void in
 
                 if error == nil {
-                    UserInfo().storeFacebookInfo( result, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
+                    UserInfo().storeFacebookInfo( result as AnyObject, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
 
                         // Ask user whether to download data from Parse or not
                         let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .alert)

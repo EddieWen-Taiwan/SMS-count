@@ -12,7 +12,7 @@ class CalculateHelper {
 
     fileprivate let userPreference = UserDefaults( suiteName: "group.EddieWen.SMSCount" )!
     fileprivate let dateFormatter = DateFormatter()
-    fileprivate let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    fileprivate var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
     fileprivate var dayComponent = DateComponents()
     fileprivate var weekendComponent = DateComponents()
 

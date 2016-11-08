@@ -15,7 +15,7 @@ import DrawerController
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var drawerController = DrawerController
+    var drawerController = DrawerController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -62,9 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         drawerController = DrawerController(centerViewController: rootViewController, leftDrawerViewController: drawerViewController)
         drawerController.restorationIdentifier = "Drawer"
         drawerController.maximumLeftDrawerWidth = 260
-        drawerController.drawerVisualStateBlock = DrawerVisualState.parallaxVisualStateBlock(5.5)
-        drawerController.openDrawerGestureModeMask = .All
-        drawerController.closeDrawerGestureModeMask = .All
+        drawerController.drawerVisualStateBlock = DrawerVisualState.parallaxVisualStateBlock(parallaxFactor: 5.5)
+        drawerController.openDrawerGestureModeMask = .all
+        drawerController.closeDrawerGestureModeMask = .all
         window?.rootViewController = drawerController
 
         return FBSDKApplicationDelegate.sharedInstance().application( application, didFinishLaunchingWithOptions: launchOptions )
