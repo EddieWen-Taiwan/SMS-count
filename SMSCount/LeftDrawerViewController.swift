@@ -14,7 +14,7 @@ class LeftDrawerViewController: UIViewController {
     let mainStoryborad = UIStoryboard(name: "Main", bundle: nil)
     let settingStoryboard = UIStoryboard(name: "Setting", bundle: nil)
 
-    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBOutlet var countRow: UIView!
     @IBOutlet var settingRow: UIView!
@@ -23,34 +23,34 @@ class LeftDrawerViewController: UIViewController {
         self.init(nibName: "LeftDrawer", bundle: nil)
     }
     
-    @IBAction func goMainTabBarController(sender: AnyObject) {
-        let rootViewController = mainStoryborad.instantiateViewControllerWithIdentifier("TabBarController")
+    @IBAction func goMainTabBarController(_ sender: AnyObject) {
+        let rootViewController = mainStoryborad.instantiateViewController(withIdentifier: "TabBarController")
 
         switchRowBackground(0)
         switchRootViewController(rootViewController)
     }
 
-    @IBAction func goSettingViewController(sender: AnyObject) {
-        let rootViewController = settingStoryboard.instantiateViewControllerWithIdentifier("NavigationOfSettingVC")
+    @IBAction func goSettingViewController(_ sender: AnyObject) {
+        let rootViewController = settingStoryboard.instantiateViewController(withIdentifier: "NavigationOfSettingVC")
 
         switchRowBackground(1)
         switchRootViewController(rootViewController)
     }
 
-    func switchRootViewController( rootViewController: UIViewController ) {
+    func switchRootViewController( _ rootViewController: UIViewController ) {
 
         appDelegate.drawerController.centerViewController = rootViewController
-        appDelegate.drawerController.toggleDrawerSide( DrawerSide.Left, animated: true, completion: nil)
+        appDelegate.drawerController.toggleDrawerSide( DrawerSide.left, animated: true, completion: nil)
 
     }
 
-    func switchRowBackground( row: Int ) {
+    func switchRowBackground( _ row: Int ) {
 
         if row == 0 {
             countRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-            settingRow.backgroundColor = UIColor.clearColor()
+            settingRow.backgroundColor = UIColor.clear
         } else {
-            countRow.backgroundColor = UIColor.clearColor()
+            countRow.backgroundColor = UIColor.clear
             settingRow.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
         }
 

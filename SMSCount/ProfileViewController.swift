@@ -56,19 +56,19 @@ class ProfileViewController: UIViewController {
         if calculateHelper.isRetireDateFixed() {
             finalRetireDateLabel.text = calculateHelper.getFixedRetireDate()
             retireDateBottomConstraint.constant = 60
-            retireDateView.hidden = false
+            retireDateView.isHidden = false
             retireDateLabel.text = calculateHelper.getRetireDate()
         } else {
             finalRetireDateLabel.text = calculateHelper.getRetireDate()
             retireDateBottomConstraint.constant = 0
-            retireDateView.hidden = true
+            retireDateView.isHidden = true
         }
     }
 
     func showUserInfo() {
-        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
+        if let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount") {
 
-            if let fbid = userPreference.stringForKey("fb_id") {
+            if let fbid = userPreference.string(forKey: "fb_id") {
                 if reachability.isConnectedToNetwork() {
                     // Download Facebook profile
                     // API url : http://graph.facebook.com/100001967509786/picture?type=large
@@ -77,18 +77,18 @@ class ProfileViewController: UIViewController {
                 }
             }
 
-            if let username = userPreference.stringForKey("username") {
+            if let username = userPreference.string(forKey: "username") {
                 usernameLabel.text = username
             }
 
-            if let userStatus = userPreference.stringForKey("status") {
+            if let userStatus = userPreference.string(forKey: "status") {
                 statusLabel.text = userStatus
             }
 
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         // Check whether user logged in with FB in FriendsTVC
@@ -106,12 +106,12 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    func downloadImageWithID( fbid: String ) {
-        if let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large") {
+    func downloadImageWithID( _ fbid: String ) {
+        if let url = URL(string: "http://graph.facebook.com/\(fbid)/picture?type=large") {
             reachability.getImageFromUrl(url) { data, response, error in
                 if let data = data {
 
-                    dispatch_async( dispatch_get_main_queue() ) {
+                    DispatchQueue.main.async {
                         self.userSticker.image = UIImage(data: data)
                     }
 

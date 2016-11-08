@@ -22,7 +22,7 @@ class MonthlyImages {
 //        self.path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
     }
 
-    func setBackground( background: UIImageView ) {
+    func setBackground( _ background: UIImageView ) {
 //        if currentMonth == userPreference.stringForKey("backgroundMonth") {
             background.image = UIImage(named: self.currentMonth)
 //        } else {

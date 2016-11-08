@@ -23,13 +23,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     var isUserRetired: Bool
 
     required init?(coder aDecoder: NSCoder) {
-        self.updateResult = NCUpdateResult.NoData
+        self.updateResult = NCUpdateResult.noData
         self.isUserRetired = false
 
         super.init(coder: aDecoder)
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         // checkCurrentData
@@ -47,7 +47,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     self.remainedDaysLabel.text = String( newRemainedDays*(-1) )
                 }
 
-                self.updateResult = NCUpdateResult.NewData
+                self.updateResult = NCUpdateResult.newData
             }
 
         } else {
@@ -56,7 +56,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
 
     // Check whether should run countdown animation
-    private func isDataChanged( day: Int ) -> Bool {
+    fileprivate func isDataChanged( _ day: Int ) -> Bool {
 
         if day >= 0 {
             if self.isUserRetired {
@@ -82,17 +82,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     }
 
-    private func correctDataShow( status: Bool ) {
+    fileprivate func correctDataShow( _ status: Bool ) {
 
-        remainedDaysLabel.hidden = status ? false : true
-        firstWord.hidden = status ? false : true
-        secondWord.hidden = status ? false : true
+        remainedDaysLabel.isHidden = status ? false : true
+        firstWord.isHidden = status ? false : true
+        secondWord.isHidden = status ? false : true
 
-        warningLabel.hidden = status ? true : false
+        warningLabel.isHidden = status ? true : false
 
     }
 
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsets(
             top: defaultMarginInsets.top,
             left: defaultMarginInsets.left,
@@ -100,7 +100,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             right: defaultMarginInsets.right )
     }
 
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed

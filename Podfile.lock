@@ -1,36 +1,36 @@
 PODS:
-  - Bolts (1.6.0):
-    - Bolts/AppLinks (= 1.6.0)
-    - Bolts/Tasks (= 1.6.0)
-  - Bolts/AppLinks (1.6.0):
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
-  - Bolts/Tasks (1.6.0)
-  - DrawerController (1.1.0):
-    - DrawerController/Core (= 1.1.0)
-    - DrawerController/DrawerVisualStates (= 1.1.0)
-  - DrawerController/Core (1.1.0)
-  - DrawerController/DrawerVisualStates (1.1.0):
+  - Bolts/Tasks (1.8.4)
+  - DrawerController (3.0.0):
+    - DrawerController/Core (= 3.0.0)
+    - DrawerController/DrawerVisualStates (= 3.0.0)
+  - DrawerController/Core (3.0.0)
+  - DrawerController/DrawerVisualStates (3.0.0):
     - DrawerController/Core
-  - FBSDKCoreKit (4.9.0):
-    - Bolts (~> 1.5)
-  - FBSDKLoginKit (4.9.0):
+  - FBSDKCoreKit (4.17.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.17.0):
     - FBSDKCoreKit
-  - Parse (1.12.0):
-    - Bolts/Tasks (~> 1.5)
+  - Parse (1.14.2):
+    - Bolts/Tasks (~> 1.8)
 
 DEPENDENCIES:
-  - DrawerController (~> 1.0)
+  - DrawerController
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Parse
 
 SPEC CHECKSUMS:
-  Bolts: f52a250053bb517ca874523c3913776359ab3def
-  DrawerController: 8fd56e6238399a08c4af054fbea0ef8669cd81f3
-  FBSDKCoreKit: c4f25d27949a6ac80206063804d12ad1c7879612
-  FBSDKLoginKit: d46210c3955d69337c61325327f486ca50a8661f
-  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  DrawerController: 5e859c5dbeae3cea20981eb5ff2aa16eb946dff9
+  FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
+  FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
+  Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
 
-PODFILE CHECKSUM: 928715d83c860b764c70f3ef25db2bfa326360ea
+PODFILE CHECKSUM: 9d1f82a2f525468a665f1abe6dd122b98708995c
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

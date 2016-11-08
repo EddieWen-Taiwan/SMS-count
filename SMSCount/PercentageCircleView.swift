@@ -15,13 +15,13 @@ class PercentageCircleView: UIView {
     var circleRadius: CGFloat = 0.0
     var valueOfPercentage: Double = 0
 
-    let mainWidth: CGFloat = UIScreen.mainScreen().bounds.width
-    let mainHeight: CGFloat = UIScreen.mainScreen().bounds.height-44-49
+    let mainWidth: CGFloat = UIScreen.main.bounds.width
+    let mainHeight: CGFloat = UIScreen.main.bounds.height-44-49
 
     var percentageLabel = UILabel()
 
     convenience init() {
-        self.init(frame: CGRectMake(0, 0, 180, 180))
+        self.init(frame: CGRect(x: 0, y: 0, width: 180, height: 180))
 
         self.circleRadius = frame.size.width/2
         self.circleCenter = CGPoint(x: mainWidth/2, y: mainHeight/2)
@@ -35,16 +35,16 @@ class PercentageCircleView: UIView {
         addPercentageLabel()
     }
 
-    private func addPercentageLabel() {
+    fileprivate func addPercentageLabel() {
 
-        percentageLabel.textColor = UIColor.whiteColor()
+        percentageLabel.textColor = UIColor.white
         percentageLabel.font = UIFont(name: "Verdana", size: 44)
 
         self.addSubview( percentageLabel )
 
     }
 
-    func setPercentage( value: Double ) {
+    func setPercentage( _ value: Double ) {
         // Store it here, it will be easy later
         valueOfPercentage = value
 
@@ -57,12 +57,12 @@ class PercentageCircleView: UIView {
     }
 
     // %
-    private func addSymbolLabel() {
+    fileprivate func addSymbolLabel() {
 
         let x = mainWidth/2-10+percentageLabel.frame.width/2
         let y = mainHeight/2-2
-        let symbol = UILabel(frame: CGRectMake(x,y,0,0))
-            symbol.textColor = UIColor.whiteColor()
+        let symbol = UILabel(frame: CGRect(x: x,y: y,width: 0,height: 0))
+            symbol.textColor = UIColor.white
             symbol.font = UIFont(name: "Verdana", size: 24)
             symbol.text = "%"
             symbol.sizeToFit()
@@ -72,11 +72,11 @@ class PercentageCircleView: UIView {
     }
 
     // 退伍進度
-    private func addTextLabel() {
+    fileprivate func addTextLabel() {
 
-        let text = UILabel(frame: CGRectMake( mainWidth/2-32, mainHeight/2+110, 64, 23 ))
+        let text = UILabel(frame: CGRect( x: mainWidth/2-32, y: mainHeight/2+110, width: 64, height: 23 ))
             text.text = "退伍進度"
-            text.textColor = UIColor.whiteColor()
+            text.textColor = UIColor.white
             text.font = UIFont(name: "PingFangTC-Regular", size: 16)
 
         self.addSubview( text )
@@ -84,15 +84,15 @@ class PercentageCircleView: UIView {
     }
 
     // The full basic circle
-    private func drawFullCircle() -> CAShapeLayer {
+    fileprivate func drawFullCircle() -> CAShapeLayer {
         let circleLayer = CAShapeLayer()
-            circleLayer.fillColor = UIColor.clearColor().CGColor
-            circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3).CGColor
+            circleLayer.fillColor = UIColor.clear.cgColor
+            circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3).cgColor
             circleLayer.lineWidth = 1.0
             circleLayer.strokeEnd = 1.0
 
         let circleBackPath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: 0.0, endAngle: CGFloat(M_PI*2), clockwise: true)
-            circleLayer.path = circleBackPath.CGPath
+            circleLayer.path = circleBackPath.cgPath
 
         return circleLayer
     }
@@ -105,10 +105,10 @@ class PercentageCircleView: UIView {
         // The path should be the entire circle.
         let circlePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius, startAngle: angleArray[0], endAngle: angleArray[1], clockwise: true)
         let circleLayer = drawBasicCircle()
-            circleLayer.path = circlePath.CGPath
+            circleLayer.path = circlePath.cgPath
 
-        let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-        if userPreference.boolForKey("countdownAnimation") {
+        let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount")!
+        if userPreference.bool(forKey: "countdownAnimation") {
             circleLayer.strokeEnd = 0.0
             animateCircle( circleLayer, percent: valueOfPercentage*(0.01) )
         }
@@ -117,7 +117,7 @@ class PercentageCircleView: UIView {
         self.layer.addSublayer(circleLayer)
     }
 
-    private func calculateAngle( percent: Double ) -> [CGFloat] {
+    fileprivate func calculateAngle( _ percent: Double ) -> [CGFloat] {
         var cleanPercent = percent
         if cleanPercent > 1 {
             cleanPercent = 1
@@ -134,10 +134,10 @@ class PercentageCircleView: UIView {
     }
 
     // The process circle
-    private func drawBasicCircle() -> CAShapeLayer {
+    fileprivate func drawBasicCircle() -> CAShapeLayer {
         let circleLayer = CAShapeLayer()
-            circleLayer.fillColor = UIColor.clearColor().CGColor
-            circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).CGColor
+            circleLayer.fillColor = UIColor.clear.cgColor
+            circleLayer.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
             circleLayer.lineWidth = 5
             circleLayer.strokeEnd = 1.0
 
@@ -145,17 +145,17 @@ class PercentageCircleView: UIView {
     }
 
     // Show animation
-    private func animateCircle( circleLayer: CAShapeLayer, percent: Double ) {
+    fileprivate func animateCircle( _ circleLayer: CAShapeLayer, percent: Double ) {
         // Set the circleLayer's strokeEnd property to 1.0 now so that it's the right value when the animation ends.
         circleLayer.strokeEnd = 1.0
 
         // Do the actual animation
         let animation = makeAnimation()
-        circleLayer.addAnimation(animation, forKey: "animateCircle")
+        circleLayer.add(animation, forKey: "animateCircle")
     }
 
     // Make animation effect
-    private func makeAnimation() -> CABasicAnimation {
+    fileprivate func makeAnimation() -> CABasicAnimation {
         // We want to animate the strokeEnd property of the circleLayer
         let animation = CABasicAnimation(keyPath: "strokeEnd")
             // Set the animation duration appropriately
