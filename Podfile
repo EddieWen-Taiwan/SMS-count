@@ -12,6 +12,9 @@ target 'SMSCount' do
 
 	pod 'Parse'
 
+	pod 'Firebase/Core'
+	pod 'Firebase/Database'
+
 	pod 'DrawerController'
 
 end

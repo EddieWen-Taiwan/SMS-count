@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Parse
+import FirebaseCore
 import DrawerController
 
 @UIApplicationMain
@@ -19,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // Initialize Firebase
+        FIRApp.configure()
 
         // Initialize Parse.
         Parse.setApplicationId( SecretCode.parseAppId, clientKey: SecretCode.parseClientKey )
@@ -50,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 userPreference.set( true, forKey: "uploadNewValueIn2.0" )
             }
         }
+
+        // Sync data to Firebase
 
         // For countdown animation
         userPreference.set( false, forKey: "dayAnimated" )
