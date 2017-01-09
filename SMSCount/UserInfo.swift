@@ -16,33 +16,31 @@ class UserInfo { // Save userInfomation to Parse
 
     let userPreference = UserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
-    var objectIsChanged: Bool
     var objectIdStatus: Bool
+    var fbLogin: Bool
 
+    // Initialize
     init() {
-        // Initialize
-        self.objectIsChanged = false
         self.objectIdStatus = false
+        self.fbLogin = false
+
+        if userPreference.string(forKey: "fb_id") != nil {
+            self.fbLogin = true
+        }
     }
 
     // From Facebook API
     // Add user infomation: ID, name, email
     func addUserFBID( _ fbid: String ) {
-
-        checkObjectId()
-        
         userPreference.setValue( fbid, forKey: "fb_id" )
-        objectIsChanged = true
     }
 
     func addUserName( _ name: String ) {
         userPreference.setValue( name, forKey: "username" )
-        objectIsChanged = true
     }
 
     func addUserMail( _ mail: String ) {
         userPreference.setValue( mail, forKey: "email" )
-        objectIsChanged = true
     }
 
     // This user has registered on Parse
@@ -55,7 +53,6 @@ class UserInfo { // Save userInfomation to Parse
 
     func updateUserStatus( _ status: String ) {
         userPreference.setValue( status, forKey: "status" )
-        objectIsChanged = true
     }
 
     // Update the username in app
@@ -70,20 +67,16 @@ class UserInfo { // Save userInfomation to Parse
     func updateEnterDate( _ date: String ) {
         userPreference.setValue( date, forKey: "enterDate" )
         let userEnterArray = split2Int( date as NSString )
-        objectIsChanged = true
     }
 
     func updateServiceDays( _ days: Int ) {
-        objectIsChanged = true
     }
 
     func updateDiscountDays( _ days: Int ) {
-        objectIsChanged = true
     }
 
     func updateWeekendFixed( _ fixed: Bool ) {
         userPreference.set( fixed, forKey: "autoWeekendFixed" )
-        objectIsChanged = true
     }
 
     func updateAnimationSetting( _ animation: Bool ) {
@@ -94,13 +87,14 @@ class UserInfo { // Save userInfomation to Parse
 
     func updatePublicProfile( _ public_show: Bool ) {
         userPreference.set( public_show, forKey: "publicProfile" )
-        objectIsChanged = true
     }
 
     // There is not completed task at last time, continue to do it
     func uploadAllData() {
 
-        if let fbid = userPreference.string(forKey: "fb_id") {
+        if userPreference.string(forKey: "fb_id") != nil {
+
+            let fbid = userPreference.string(forKey: "fb_id")
 
             if let name = userPreference.string(forKey: "username") {
                 self.ref.child("User/\(fbid)/name").setValue(name)
@@ -216,10 +210,6 @@ class UserInfo { // Save userInfomation to Parse
             }
         }
 
-    }
-
-    fileprivate func checkObjectId() {
-        if !objectIdStatus { registerNewUser() }
     }
 
     // Register a new user data in Parse
