@@ -301,7 +301,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                             NC.markDownload()
                         })
                         let noAction = UIAlertAction(title: "否", style: .cancel, handler: { (action) in
-                            UserInfo().uploadAllData()
+                            // UserInfo().uploadAllData()
 
                             // Remove coverView and Reload TableView
                             self.removeOldViews()

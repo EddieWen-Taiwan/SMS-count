@@ -43,19 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userPreference.value(forKey: "publicProfile") == nil {
             userPreference.set( true, forKey: "publicProfile")
         }
-        // If app is without ObjectId, create a new data row.
-        if userPreference.string(forKey: "UserID") == nil {
-            UserInfo().registerNewUser()
-            userPreference.set( true, forKey: "uploadNewValueIn2.0" )
-        } else {
-            // For uploading to v2.0
-            if userPreference.bool(forKey: "uploadNewValueIn2.0") != true {
-                UserInfo().uploadAllData()
-                userPreference.set( true, forKey: "uploadNewValueIn2.0" )
-            }
-        }
 
-        // Sync data to Firebase
+        /**
+         * Sync data to Firebase
+         */
+        if userPreference.string(forKey: "fb_id") != nil {
+            UserInfo().uploadAllData( userPreference.string(forKey: "fb_id")! )
+        }
 
         // For countdown animation
         userPreference.set( false, forKey: "dayAnimated" )

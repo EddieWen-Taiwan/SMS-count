@@ -10,7 +10,10 @@ import Parse
 import FirebaseCore
 import FirebaseDatabase
 
-class UserInfo { // Save userInfomation to Parse
+/**
+ * Save userInfomation to Firebase
+ */
+class UserInfo {
 
     let ref = FIRDatabase.database().reference()
 
@@ -81,47 +84,43 @@ class UserInfo { // Save userInfomation to Parse
 
     func updateAnimationSetting( _ animation: Bool ) {
         userPreference.set( animation, forKey: "countdownAnimation" )
-//        userObject.setValue( animation, forKey: "countdownAnimation" )
-//        objectIsChanged = true
     }
 
     func updatePublicProfile( _ public_show: Bool ) {
         userPreference.set( public_show, forKey: "publicProfile" )
     }
 
-    // There is not completed task at last time, continue to do it
-    func uploadAllData() {
+    /**
+     * upload all data to Firebase, fbId as key
+     * don't call this function without fbId
+     */
+    func uploadAllData(_ fbid: String) {
 
-        if userPreference.string(forKey: "fb_id") != nil {
-
-            let fbid = userPreference.string(forKey: "fb_id")
-
-            if let name = userPreference.string(forKey: "username") {
-                self.ref.child("User/\(fbid)/name").setValue(name)
-            }
-            if let mail = userPreference.string(forKey: "email") {
-                self.ref.child("User/\(fbid)/email").setValue(mail)
-            }
-            if let userStatus = userPreference.string(forKey: "status") {
-                self.ref.child("User/\(fbid)/status").setValue(userStatus)
-            }
-            if let userEnterDate: NSString = userPreference.string(forKey: "enterDate") as NSString? {
-                let userEnterArray = split2Int(userEnterDate)
-                self.ref.child("User/\(fbid)/year").setValue(userEnterArray[0])
-                self.ref.child("User/\(fbid)/month").setValue(userEnterArray[1])
-                self.ref.child("User/\(fbid)/date").setValue(userEnterArray[2])
-            }
-            // stringForKey could be nil and integerForKey couldn't
-            if userPreference.value(forKey: "serviceDays") != nil {
-                self.ref.child("User/\(fbid)/serviceDaysIndex").setValue( userPreference.integer(forKey: "serviceDays") )
-            }
-            if userPreference.value(forKey: "discountDays") != nil {
-                self.ref.child("User/\(fbid)/discountDays").setValue( userPreference.integer(forKey: "discountDays") )
-            }
-            self.ref.child("User/\(fbid)/isWeekendDischarge").setValue( userPreference.bool(forKey: "autoWeekendFixed") )
-            self.ref.child("User/\(fbid)/isPublicProfile").setValue( userPreference.bool(forKey: "publicProfile") )
-
+        if let name = userPreference.string(forKey: "username") {
+            self.ref.child("User/\(fbid)/name").setValue(name)
         }
+        if let mail = userPreference.string(forKey: "email") {
+            self.ref.child("User/\(fbid)/email").setValue(mail)
+        }
+        if let userStatus = userPreference.string(forKey: "status") {
+            self.ref.child("User/\(fbid)/status").setValue(userStatus)
+        }
+        if let userEnterDate: NSString = userPreference.string(forKey: "enterDate") as NSString? {
+            let userEnterArray = split2Int(userEnterDate)
+            self.ref.child("User/\(fbid)/year").setValue(userEnterArray[0])
+            self.ref.child("User/\(fbid)/month").setValue(userEnterArray[1])
+            self.ref.child("User/\(fbid)/date").setValue(userEnterArray[2])
+        }
+        // stringForKey could be nil and integerForKey couldn't
+        if userPreference.value(forKey: "serviceDays") != nil {
+            self.ref.child("User/\(fbid)/serviceDaysIndex").setValue( userPreference.integer(forKey: "serviceDays") )
+        }
+        if userPreference.value(forKey: "discountDays") != nil {
+            self.ref.child("User/\(fbid)/discountDays").setValue( userPreference.integer(forKey: "discountDays") )
+        }
+        self.ref.child("User/\(fbid)/isWeekendDischarge").setValue( userPreference.bool(forKey: "autoWeekendFixed") )
+        self.ref.child("User/\(fbid)/isPublicProfile").setValue( userPreference.bool(forKey: "publicProfile") )
+        self.ref.child("User/\(fbid)/platform").setValue( "iOS" )
 
     }
 
@@ -208,16 +207,6 @@ class UserInfo { // Save userInfomation to Parse
 
                 }
             }
-        }
-
-    }
-
-    // Register a new user data in Parse
-    // And save objectId in local userPreference
-    func registerNewUser() {
-
-        if Reachability().isConnectedToNetwork() {
-
         }
 
     }

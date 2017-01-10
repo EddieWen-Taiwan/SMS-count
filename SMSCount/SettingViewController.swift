@@ -91,7 +91,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        userInfo.save()
+        // userInfo.save()
     }
 
     func showPickerView() {
@@ -248,7 +248,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                             self.containerVC?.publicSwitch.setOn( newPublicProfile, animated: true )
                         })
                         let noAction = UIAlertAction(title: "否", style: .cancel, handler: { (action) in
-                            self.userInfo.uploadAllData()
+                            // self.userInfo.uploadAllData()
                         })
                         syncAlertController.addAction(yesAction)
                         syncAlertController.addAction(noAction)
