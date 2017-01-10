@@ -37,18 +37,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount")!
         // If there is no countdownAnimation, set it true as default
         if userPreference.value(forKey: "countdownAnimation") == nil {
-            userPreference.set( true, forKey: "countdownAnimation")
+            userPreference.set( true, forKey: "countdownAnimation" )
         }
         // If there is no publicProfile....
         if userPreference.value(forKey: "publicProfile") == nil {
-            userPreference.set( true, forKey: "publicProfile")
+            userPreference.set( true, forKey: "publicProfile" )
         }
 
         /**
          * Sync data to Firebase
          */
         if userPreference.string(forKey: "fb_id") != nil {
-            UserInfo().uploadAllData( userPreference.string(forKey: "fb_id")! )
+            if !userPreference.bool(forKey: "sync2firebase") {
+                UserInfo().uploadAllData( userPreference.string(forKey: "fb_id")! )
+                userPreference.set( true, forKey: "sync2firebase" )
+            }
         }
 
         // For countdown animation
