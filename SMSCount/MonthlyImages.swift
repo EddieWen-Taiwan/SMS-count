@@ -8,64 +8,14 @@
 
 class MonthlyImages {
 
-//    let userPreference = NSUserDefaults( suiteName: "group.EddieWen.SMSCount" )!
-//    let path: String
     let currentMonth: String
-//
-//    let reachability = Reachability()
 
     init(month: String) {
         self.currentMonth = month
-
-        // update and save image
-//        let documentURL = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )[0]
-//        self.path = documentURL.URLByAppendingPathComponent("backgroundImage").path!
     }
 
     func setBackground( _ background: UIImageView ) {
-//        if currentMonth == userPreference.stringForKey("backgroundMonth") {
-            background.image = UIImage(named: self.currentMonth)
-//        } else {
-//            background.alpha = 0
-//
-//            if reachability.isConnectedToNetwork() {
-//                let urlString = "http://smscount.lol/app/backgroundImg/" + currentMonth
-//                downloadImage( NSURL(string: urlString)!, backgroundImage: background )
-//            }
-//        }
+        background.image = UIImage(named: self.currentMonth)
     }
-
-// Don't download image from Internet in this version
-
-//    private func downloadImage( url: NSURL, backgroundImage: UIImageView ) {
-//        reachability.getImageFromUrl(url) { data, response, error in
-//
-//            if let data = data {
-//                dispatch_async( dispatch_get_main_queue() ) {
-//                    self.saveImage( UIImage(data: data)! )
-//                    self.userPreference.setObject( self.currentMonth, forKey: "backgroundMonth" )
-//                    backgroundImage.image = UIImage(data: data)
-//
-//                    UIView.animateWithDuration( 1, animations: {
-//                        backgroundImage.alpha = 1
-//                    })
-//                }
-//            } else {
-//                backgroundImage.backgroundColor = UIColor(patternImage: UIImage(named: "default-background")!)
-//                backgroundImage.alpha = 1
-//            }
-//
-//        }
-//    }
-//
-//    private func saveImage( image: UIImage ) {
-//        let pngImageData = UIImagePNGRepresentation(image)!
-//        if NSFileManager.defaultManager().fileExistsAtPath( path ) {
-//            do {
-//                try NSFileManager.defaultManager().removeItemAtPath( path )
-//            } catch {}
-//        }
-//        pngImageData.writeToFile( path, atomically: true )
-//    }
 
 }
