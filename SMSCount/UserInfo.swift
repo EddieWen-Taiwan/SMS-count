@@ -19,15 +19,13 @@ class UserInfo {
 
     let userPreference = UserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
-    var objectIdStatus: Bool
     var fbLogin: Bool
 
     // Initialize
     init() {
-        self.objectIdStatus = false
         self.fbLogin = false
 
-        if userPreference.string(forKey: "fb_id") != nil {
+        if userPreference.value(forKey: "fb_id") != nil {
             self.fbLogin = true
         }
     }
@@ -38,38 +36,40 @@ class UserInfo {
         userPreference.setValue( fbid, forKey: "fb_id" )
     }
 
-    func addUserName( _ name: String ) {
-        userPreference.setValue( name, forKey: "username" )
-    }
-
-    func addUserMail( _ mail: String ) {
-        userPreference.setValue( mail, forKey: "email" )
-    }
-
-    // This user has registered on Parse
-    // Update the objectId in app
-    func updateLocalObjectId( _ objectId: String ) {
-
-        
-
-    }
-
     func updateUserStatus( _ status: String ) {
         userPreference.setValue( status, forKey: "status" )
+        if self.fbLogin {
+            let fbid = userPreference.string(forKey: "fb_id")
+            self.ref.child("User/\(fbid)/status").setValue(status)
+        }
     }
 
     // Update the username in app
-    func updateLocalUsername( _ name: String ) {
+    func updateUsername( _ name: String ) {
         userPreference.setValue( name, forKey: "username" )
+        if self.fbLogin {
+            let fbid = userPreference.string(forKey: "fb_id")
+            self.ref.child("User/\(fbid)/name").setValue(name)
+        }
     }
 
-    func updateLocalMail( _ mail: String ) {
+    func updateMail( _ mail: String ) {
         userPreference.setValue( mail, forKey: "email" )
+        if self.fbLogin {
+            let fbid = userPreference.string(forKey: "fb_id")
+            self.ref.child("User/\(fbid)/email").setValue(mail)
+        }
     }
 
     func updateEnterDate( _ date: String ) {
         userPreference.setValue( date, forKey: "enterDate" )
         let userEnterArray = split2Int( date as NSString )
+        if self.fbLogin {
+            let fbid = userPreference.string(forKey: "fb_id")
+            self.ref.child("User/\(fbid)/year").setValue(userEnterArray[0])
+            self.ref.child("User/\(fbid)/month").setValue(userEnterArray[1])
+            self.ref.child("User/\(fbid)/date").setValue(userEnterArray[2])
+        }
     }
 
     func updateServiceDays( _ days: Int ) {
@@ -80,14 +80,22 @@ class UserInfo {
 
     func updateWeekendFixed( _ fixed: Bool ) {
         userPreference.set( fixed, forKey: "autoWeekendFixed" )
-    }
-
-    func updateAnimationSetting( _ animation: Bool ) {
-        userPreference.set( animation, forKey: "countdownAnimation" )
+        if self.fbLogin {
+            let fbid = userPreference.string(forKey: "fb_id")
+            self.ref.child("User/\(fbid)/isWeekendDischarge").setValue( userPreference.bool(forKey: "autoWeekendFixed") )
+        }
     }
 
     func updatePublicProfile( _ public_show: Bool ) {
         userPreference.set( public_show, forKey: "publicProfile" )
+        if self.fbLogin {
+            let fbid = userPreference.string(forKey: "fb_id")
+            self.ref.child("User/\(fbid)/isPublicProfile").setValue( userPreference.bool(forKey: "publicProfile") )
+        }
+    }
+
+    func updateAnimationSetting( _ animation: Bool ) {
+        userPreference.set( animation, forKey: "countdownAnimation" )
     }
 
     /**
@@ -141,13 +149,13 @@ class UserInfo {
                         if let user = objects!.first {
 
                             if let userID = user.objectId {
-                                self.updateLocalObjectId( userID )
+                                self.addUserFBID( userID )
                             }
                             if let username = user.value(forKey: "username") {
-                                self.updateLocalUsername(username as! String)
+                                self.updateUsername(username as! String)
                             }
                             if let userMail = user.value(forKey: "email") {
-                                self.updateLocalMail( userMail as! String )
+                                self.updateMail( userMail as! String )
                             }
 
                             // Make message of detail data
@@ -195,10 +203,10 @@ class UserInfo {
                         // Update user email, name .... by objectId
 
                         if let userName = info.value(forKey: "name") {
-                            self.addUserName( userName as! String )
+                            self.updateUsername( userName as! String )
                         }
                         if let userMail = info.value(forKey: "email") {
-                            self.addUserMail( userMail as! String )
+                            self.updateMail( userMail as! String )
                         }
 
                         // Remove old view or nothing
