@@ -7,27 +7,18 @@
 //
 
 import Parse
-import FirebaseCore
-import FirebaseDatabase
 
 /**
  * Save userInfomation to Firebase
  */
 class UserInfo {
 
-    let ref = FIRDatabase.database().reference()
+    let firebaseHelper = FirebaseHelper()
 
     let userPreference = UserDefaults( suiteName: "group.EddieWen.SMSCount" )!
 
-    var fbLogin: Bool
-
     // Initialize
     init() {
-        self.fbLogin = false
-
-        if userPreference.value(forKey: "fb_id") != nil {
-            self.fbLogin = true
-        }
     }
 
     // From Facebook API
@@ -38,60 +29,44 @@ class UserInfo {
 
     func updateUserStatus( _ status: String ) {
         userPreference.setValue( status, forKey: "status" )
-        if self.fbLogin {
-            let fbid = userPreference.string(forKey: "fb_id")
-            self.ref.child("User/\(fbid)/status").setValue(status)
-        }
+        firebaseHelper.update(key: "status", status)
     }
 
     // Update the username in app
     func updateUsername( _ name: String ) {
         userPreference.setValue( name, forKey: "username" )
-        if self.fbLogin {
-            let fbid = userPreference.string(forKey: "fb_id")
-            self.ref.child("User/\(fbid)/name").setValue(name)
-        }
+        firebaseHelper.update(key: "name", name)
     }
 
     func updateMail( _ mail: String ) {
         userPreference.setValue( mail, forKey: "email" )
-        if self.fbLogin {
-            let fbid = userPreference.string(forKey: "fb_id")
-            self.ref.child("User/\(fbid)/email").setValue(mail)
-        }
+        firebaseHelper.update(key: "email", mail)
     }
 
     func updateEnterDate( _ date: String ) {
         userPreference.setValue( date, forKey: "enterDate" )
         let userEnterArray = split2Int( date as NSString )
-        if self.fbLogin {
-            let fbid = userPreference.string(forKey: "fb_id")
-            self.ref.child("User/\(fbid)/year").setValue(userEnterArray[0])
-            self.ref.child("User/\(fbid)/month").setValue(userEnterArray[1])
-            self.ref.child("User/\(fbid)/date").setValue(userEnterArray[2])
-        }
+        firebaseHelper.update(key: "year", userEnterArray[0])
+        firebaseHelper.update(key: "month", userEnterArray[1])
+        firebaseHelper.update(key: "date", userEnterArray[2])
     }
 
     func updateServiceDays( _ days: Int ) {
+        firebaseHelper.update(key: "serviceDaysIndex", days)
     }
 
     func updateDiscountDays( _ days: Int ) {
+        firebaseHelper.update(key: "discountDays", days)
     }
 
     func updateWeekendFixed( _ fixed: Bool ) {
         userPreference.set( fixed, forKey: "autoWeekendFixed" )
-        if self.fbLogin {
-            let fbid = userPreference.string(forKey: "fb_id")
-            self.ref.child("User/\(fbid)/isWeekendDischarge").setValue( userPreference.bool(forKey: "autoWeekendFixed") )
-        }
+        firebaseHelper.update(key: "isWeekendDischarge", userPreference.bool(forKey: "autoWeekendFixed"))
     }
 
     func updatePublicProfile( _ public_show: Bool ) {
         userPreference.set( public_show, forKey: "publicProfile" )
-        if self.fbLogin {
-            let fbid = userPreference.string(forKey: "fb_id")
-            self.ref.child("User/\(fbid)/isPublicProfile").setValue( userPreference.bool(forKey: "publicProfile") )
-        }
+        firebaseHelper.update(key: "isPublicProfile", userPreference.bool(forKey: "publicProfile"))
     }
 
     func updateAnimationSetting( _ animation: Bool ) {
@@ -105,30 +80,30 @@ class UserInfo {
     func uploadAllData(_ fbid: String) {
 
         if let name = userPreference.string(forKey: "username") {
-            self.ref.child("User/\(fbid)/name").setValue(name)
+            firebaseHelper.update(key: "name", name)
         }
         if let mail = userPreference.string(forKey: "email") {
-            self.ref.child("User/\(fbid)/email").setValue(mail)
+            firebaseHelper.update(key: "email", mail)
         }
         if let userStatus = userPreference.string(forKey: "status") {
-            self.ref.child("User/\(fbid)/status").setValue(userStatus)
+            firebaseHelper.update(key: "status", userStatus)
         }
         if let userEnterDate: NSString = userPreference.string(forKey: "enterDate") as NSString? {
             let userEnterArray = split2Int(userEnterDate)
-            self.ref.child("User/\(fbid)/year").setValue(userEnterArray[0])
-            self.ref.child("User/\(fbid)/month").setValue(userEnterArray[1])
-            self.ref.child("User/\(fbid)/date").setValue(userEnterArray[2])
+            firebaseHelper.update(key: "year", userEnterArray[0])
+            firebaseHelper.update(key: "month", userEnterArray[1])
+            firebaseHelper.update(key: "date", userEnterArray[2])
         }
         // stringForKey could be nil and integerForKey couldn't
         if userPreference.value(forKey: "serviceDays") != nil {
-            self.ref.child("User/\(fbid)/serviceDaysIndex").setValue( userPreference.integer(forKey: "serviceDays") )
+            firebaseHelper.update(key: "serviceDaysIndex", userPreference.integer(forKey: "serviceDays"))
         }
         if userPreference.value(forKey: "discountDays") != nil {
-            self.ref.child("User/\(fbid)/discountDays").setValue( userPreference.integer(forKey: "discountDays") )
+            firebaseHelper.update(key: "discountDays", userPreference.integer(forKey: "discountDays"))
         }
-        self.ref.child("User/\(fbid)/isWeekendDischarge").setValue( userPreference.bool(forKey: "autoWeekendFixed") )
-        self.ref.child("User/\(fbid)/isPublicProfile").setValue( userPreference.bool(forKey: "publicProfile") )
-        self.ref.child("User/\(fbid)/platform").setValue( "iOS" )
+        firebaseHelper.update(key: "isWeekendDischarge", userPreference.bool(forKey: "autoWeekendFixed"))
+        firebaseHelper.update(key: "isPublicProfile", userPreference.bool(forKey: "publicProfile"))
+        firebaseHelper.update(key: "platform", "iOS")
 
     }
 

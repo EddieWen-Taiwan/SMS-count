@@ -47,11 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /**
          * Sync data to Firebase
          */
-        if userPreference.string(forKey: "fb_id") != nil {
-            if !userPreference.bool(forKey: "sync2firebase") {
-                UserInfo().uploadAllData( userPreference.string(forKey: "fb_id")! )
-                userPreference.set( true, forKey: "sync2firebase" )
-            }
+        if !userPreference.bool(forKey: "sync2firebase") {
+            UserInfo().uploadAllData( userPreference.string(forKey: "fb_id")! )
+            userPreference.set( true, forKey: "sync2firebase" )
         }
 
         // For countdown animation
