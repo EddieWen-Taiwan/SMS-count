@@ -216,46 +216,6 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                     // Hide FB login button
                     self.FBLoginView.isHidden = true
                     self.topConstraint.constant = -70
-
-                    self.userInfo.storeFacebookInfo( result as AnyObject, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
-
-                        // Ask user whether to download data from Parse or not
-                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .alert)
-                        let yesAction = UIAlertAction(title: "是", style: .default, handler: { (action) in
-                            // Status
-                            if newStatus != "" {
-                                self.userPreference.set( newStatus, forKey: "status")
-                                self.containerVC?.statusLabel.text = newStatus
-                            }
-                            // EnterDate
-                            if newEnterDate != "" {
-                                self.userPreference.set( newEnterDate, forKey: "enterDate")
-                                self.containerVC?.enterDateLabel.text = newEnterDate
-                            }
-                            // ServiceDays
-                            if newServiceDays != -1 {
-                                self.userPreference.set( newServiceDays, forKey: "serviceDays")
-                                self.containerVC?.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
-                            }
-                            // DiscountDays
-                            if newDiscountDays != -1 {
-                                self.userPreference.set( newDiscountDays, forKey: "discountDays")
-                                self.containerVC?.discountDaysLabel.text = String(newDiscountDays)
-                            }
-                            self.userPreference.set( newWeekendFixed, forKey: "autoWeekendFixed" )
-                            self.containerVC?.autoWeekendSwitch.setOn( newWeekendFixed, animated: true )
-                            self.userPreference.set( newPublicProfile, forKey: "publicProfile" )
-                            self.containerVC?.publicSwitch.setOn( newPublicProfile, animated: true )
-                        })
-                        let noAction = UIAlertAction(title: "否", style: .cancel, handler: { (action) in
-                            // self.userInfo.uploadAllData()
-                        })
-                        syncAlertController.addAction(yesAction)
-                        syncAlertController.addAction(noAction)
-
-                        self.present(syncAlertController, animated: true, completion: nil)
-                    }, newUserTask: {})
-
                 }
 
             }) // --- graphRequest

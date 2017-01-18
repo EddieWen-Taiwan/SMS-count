@@ -264,58 +264,6 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             _ = graphRequest?.start(completionHandler: { (connection, result, error) -> Void in
 
                 if error == nil {
-                    UserInfo().storeFacebookInfo( result as AnyObject, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
-
-                        // Ask user whether to download data from Parse or not
-                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .alert)
-                        let yesAction = UIAlertAction(title: "是", style: .default, handler: { (action) in
-                            let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount")!
-                            // Status
-                            if newStatus != "" {
-                                userPreference.set( newStatus, forKey: "status")
-                            }
-                            // EnterDate
-                            if newEnterDate != "" {
-                                userPreference.set( newEnterDate, forKey: "enterDate")
-                            }
-                            // ServiceDays
-                            if newServiceDays != -1 {
-                                userPreference.set( newServiceDays, forKey: "serviceDays")
-                            }
-                            // DiscountDays
-                            if newDiscountDays != -1 {
-                                userPreference.set( newDiscountDays, forKey: "discountDays")
-                            }
-                            userPreference.set( newWeekendFixed, forKey: "autoWeekendFixed" )
-                            userPreference.set( newPublicProfile, forKey: "publicProfile" )
-
-                            if newPublicProfile {
-                                // Remove coverView and Reload TableView
-                                self.removeOldViews()
-                                self.requestFriendsListFromFacebook()
-                            } else {
-                                self.coverTableView("public")
-                            }
-
-                            let NC = self.parent as! NavigationController
-                            NC.markDownload()
-                        })
-                        let noAction = UIAlertAction(title: "否", style: .cancel, handler: { (action) in
-                            // UserInfo().uploadAllData()
-
-                            // Remove coverView and Reload TableView
-                            self.removeOldViews()
-                            self.requestFriendsListFromFacebook()
-                        })
-                        syncAlertController.addAction(yesAction)
-                        syncAlertController.addAction(noAction)
-
-                        self.present(syncAlertController, animated: true, completion: nil)
-
-                    }, newUserTask: {
-                        self.removeOldViews()
-                        self.requestFriendsListFromFacebook()
-                    })
                 }
 
             })
