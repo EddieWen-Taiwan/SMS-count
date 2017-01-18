@@ -69,21 +69,19 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
             if error == nil {
 
-                do {
+                var friendIdArray = [String]()
 
-                    var friendArray = [String]()
-                    let fbResult = try JSONSerialization.jsonObject(with: result as! Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    if let users = fbResult.value(forKey: "data") {
-                        for user in users as! [AnyObject] {
-                            friendArray.append( user.value(forKey: "id") as! String )
+                if let json = result as? [String: Any] {
+                    if let friendArray = json["data"] as? Array<Any> {
+                        for case let friend as [String: String] in friendArray {
+                            if let fId = friend["id"] {
+                                friendIdArray.append(fId)
+                            }
                         }
                     }
-
-                    self.getFriendsInfomation( friendArray )
-
-                } catch {
-                    print(error)
                 }
+                
+                print(friendIdArray)
             }
 
         })
