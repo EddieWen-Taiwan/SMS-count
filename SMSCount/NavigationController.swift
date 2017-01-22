@@ -11,7 +11,7 @@ import DrawerController
 
 class NavigationController: UINavigationController {
 
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +22,19 @@ class NavigationController: UINavigationController {
         navigationBar.layer.shadowOpacity = 0.4
 
         // Set style of NavigationBar
-        navigationBar.tintColor = UIColor.whiteColor()
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationBar.tintColor = UIColor.white
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
 
         // Add LeftBarItem and title
-        let drawerItem = UIBarButtonItem(image: UIImage(named: "DrawerList"), style: UIBarButtonItemStyle.Done, target: self, action: #selector(toggleDrawer))
+        let drawerItem = UIBarButtonItem(image: UIImage(named: "DrawerList"), style: UIBarButtonItemStyle.done, target: self, action: #selector(toggleDrawer))
         let childVC = self.childViewControllers.first!
-        childVC.navigationItem.setLeftBarButtonItem( drawerItem, animated: true )
+        childVC.navigationItem.setLeftBarButton( drawerItem, animated: true )
 
     }
 
     // Switch drawer Open / Close
     func toggleDrawer() {
-        appDelegate.drawerController.toggleLeftDrawerSideAnimated( true, completion: nil )
+        appDelegate.drawerController.toggleLeftDrawerSide(animated: true, completion: nil)
     }
 
     func markDownload() {

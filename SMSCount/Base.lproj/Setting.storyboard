@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Status View Controller-->
@@ -14,11 +17,11 @@
                         <viewControllerLayoutGuide type="bottom" id="B4w-s0-jgF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Dq-FZ-TmI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="26B-h1-SHm">
-                                <rect key="frame" x="30" y="94" width="540" height="40"/>
+                                <rect key="frame" x="30" y="94" width="260" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="r5X-tC-REW"/>
                                 </constraints>
@@ -26,17 +29,17 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D30-rP-oAZ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="fZJ-G8-oQT"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="目前狀態" id="efU-0r-Q6O">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4Jw-e3-UNw">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="dismissViewController:" destination="DUU-JR-dQ9" id="sfl-qU-0ze"/>
                                             </connections>
@@ -53,21 +56,21 @@
                                 </userDefinedRuntimeAttributes>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao8-de-6be">
-                                <rect key="frame" x="30" y="154" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.4039215686" green="0.82745098039999998" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="30" y="154" width="260" height="40"/>
+                                <color key="backgroundColor" red="0.4039215686" green="0.82745098039999998" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="suL-t3-Tle"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <state key="normal" title="Save">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="saveNewStatus:" destination="DUU-JR-dQ9" eventType="touchUpInside" id="vZX-Nd-9J1"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ao8-de-6be" secondAttribute="trailing" constant="30" id="2D8-E5-2p4"/>
                             <constraint firstItem="ao8-de-6be" firstAttribute="leading" secondItem="8Dq-FZ-TmI" secondAttribute="leading" constant="30" id="Bl6-Z7-xEh"/>
@@ -97,34 +100,34 @@
                         <viewControllerLayoutGuide type="bottom" id="XGt-dK-Gtb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CfT-Fs-YTf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scP-n5-heI">
-                                <rect key="frame" x="20" y="-6" width="560" height="50"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="20" y="-6" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="d3X-HX-zIO"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ws4-zf-uB1">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <connections>
                                     <segue destination="9TE-h7-xoi" kind="embed" identifier="embed" id="gOV-fO-Cc6"/>
                                 </connections>
                             </containerView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAq-Bw-9Og" userLabel="ScreenMask">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hidden" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhw-t1-66k" userLabel="EnterDateView">
-                                <rect key="frame" x="0.0" y="600" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="200"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZWY-Yc-ugY">
-                                        <rect key="frame" x="0.0" y="30" width="600" height="170"/>
+                                        <rect key="frame" x="0.0" y="30" width="320" height="170"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="170" id="eQI-vF-Wup"/>
                                         </constraints>
@@ -133,23 +136,23 @@
                                         </date>
                                     </datePicker>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-PQ-gOf">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="i4A-Jg-8Xi"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAY-TM-GaY">
-                                        <rect key="frame" x="553" y="5" width="37" height="30"/>
+                                        <rect key="frame" x="273" y="5" width="37" height="30"/>
                                         <state key="normal" title="Done">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="dateDoneIsPressed:" destination="TXv-9S-kLZ" eventType="touchUpInside" id="Oig-Jb-A9z"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FAb-PQ-gOf" secondAttribute="trailing" id="Be7-CR-Q13"/>
                                     <constraint firstAttribute="trailing" secondItem="iAY-TM-GaY" secondAttribute="trailing" constant="10" id="HRq-a6-QRn"/>
@@ -163,11 +166,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWo-da-eoi" userLabel="ServiceDaysView" colorLabel="IBBuiltInLabel-Red">
-                                <rect key="frame" x="0.0" y="600" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="200"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pp-HL-0mh">
-                                        <rect key="frame" x="0.0" y="30" width="600" height="170"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="30" width="320" height="170"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="170" id="ANm-A2-aFO"/>
                                         </constraints>
@@ -177,23 +180,23 @@
                                         </connections>
                                     </pickerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9B-s3-3Fy">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="g28-sl-WJX"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfn-WV-LXP">
-                                        <rect key="frame" x="553" y="5" width="37" height="30"/>
+                                        <rect key="frame" x="273" y="5" width="37" height="30"/>
                                         <state key="normal" title="Done">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="serviceDaysDoneIsPressed:" destination="TXv-9S-kLZ" eventType="touchUpInside" id="ysJ-ss-1ah"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="0pp-HL-0mh" secondAttribute="bottom" id="7EK-GN-Mwa"/>
                                     <constraint firstItem="qfn-WV-LXP" firstAttribute="top" secondItem="FWo-da-eoi" secondAttribute="top" constant="5" id="H9X-L6-5Ej"/>
@@ -207,10 +210,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0G-Tr-QFk" userLabel="DiscountDaysView">
-                                <rect key="frame" x="0.0" y="600" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="200"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkE-OX-Osd">
-                                        <rect key="frame" x="0.0" y="30" width="600" height="170"/>
+                                        <rect key="frame" x="0.0" y="30" width="320" height="170"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="170" id="uW0-Ed-b6L"/>
                                         </constraints>
@@ -220,23 +223,23 @@
                                         </connections>
                                     </pickerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaF-ww-cxx">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
-                                        <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="qHt-bB-29D"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF4-HF-832">
-                                        <rect key="frame" x="553" y="5" width="37" height="30"/>
+                                        <rect key="frame" x="273" y="5" width="37" height="30"/>
                                         <state key="normal" title="Done">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="discountDaysDoneIsPressed:" destination="TXv-9S-kLZ" eventType="touchUpInside" id="ZGN-Cn-s1f"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="OF4-HF-832" secondAttribute="trailing" constant="10" id="3Lz-1g-xG7"/>
                                     <constraint firstAttribute="height" constant="200" id="40W-Nz-5pD"/>
@@ -250,7 +253,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="scP-n5-heI" firstAttribute="leading" secondItem="CfT-Fs-YTf" secondAttribute="leading" constant="20" id="2e4-lC-Lbi"/>
                             <constraint firstAttribute="trailing" secondItem="s0G-Tr-QFk" secondAttribute="trailing" id="7zz-Zb-pzu"/>
@@ -299,30 +302,30 @@
             <objects>
                 <tableViewController id="9TE-h7-xoi" customClass="SettingTableViewController" customModule="SMSCount" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="66" sectionHeaderHeight="50" sectionFooterHeight="1" id="lkJ-GM-zWx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                         <sections>
                             <tableViewSection headerTitle="個人設定" id="wNf-zI-r8U">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1gK-p3-dIg">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="66"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1gK-p3-dIg" id="BuN-2b-7Vi">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前狀態" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWA-LQ-Bgt">
                                                     <rect key="frame" x="20" y="15" width="48" height="17"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
-                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIb-Qb-GGU">
                                                     <rect key="frame" x="20" y="50" width="510" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
-                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNC-Rc-84D">
@@ -333,7 +336,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <state key="normal" title="EDIT">
-                                                        <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <segue destination="DUU-JR-dQ9" kind="presentation" identifier="StatusVC" id="9sy-Lc-DEj"/>
@@ -356,22 +359,22 @@
                             <tableViewSection headerTitle="一般設定" id="mg0-J3-1Ic">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="H0B-rF-olQ">
-                                        <rect key="frame" x="0.0" y="166" width="600" height="66"/>
+                                        <rect key="frame" x="0.0" y="166" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H0B-rF-olQ" id="fzD-R3-HWV">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入伍日期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D1-n2-no9">
                                                     <rect key="frame" x="20" y="15" width="48" height="17"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
-                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgD-3f-36t">
                                                     <rect key="frame" x="20" y="50" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sky-YY-fPG">
@@ -381,7 +384,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <state key="normal" title="EDIT">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="editEnterDate:" destination="9TE-h7-xoi" eventType="touchUpInside" id="qcX-wF-W9s"/>
@@ -399,22 +402,22 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="34m-lv-x8P">
-                                        <rect key="frame" x="0.0" y="232" width="600" height="66"/>
+                                        <rect key="frame" x="0.0" y="232" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="34m-lv-x8P" id="Gwp-rJ-LvQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="役期天數" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbl-pO-PsS">
                                                     <rect key="frame" x="20" y="15" width="48" height="17"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
-                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8V-Av-V17">
                                                     <rect key="frame" x="20" y="50" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
-                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1A-MT-Q1k">
@@ -424,7 +427,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <state key="normal" title="EDIT">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="editServiceDays:" destination="9TE-h7-xoi" eventType="touchUpInside" id="qm6-9t-Lmd"/>
@@ -442,22 +445,22 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jWt-1D-2N7">
-                                        <rect key="frame" x="0.0" y="298" width="600" height="66"/>
+                                        <rect key="frame" x="0.0" y="298" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jWt-1D-2N7" id="biX-eM-ge4">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="折抵天數" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6E-9n-ynj">
                                                     <rect key="frame" x="20" y="15" width="48" height="17"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
-                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kz1-80-G22">
                                                     <rect key="frame" x="20" y="50" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd4-ir-zCt">
@@ -467,7 +470,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <state key="normal" title="EDIT">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="editDiscountDays:" destination="9TE-h7-xoi" eventType="touchUpInside" id="4YX-j3-mpn"/>
@@ -489,22 +492,22 @@
                             <tableViewSection headerTitle="偏好設定" id="M7q-pM-Jaa">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="DRy-zT-XPJ">
-                                        <rect key="frame" x="0.0" y="414" width="600" height="66"/>
+                                        <rect key="frame" x="0.0" y="414" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DRy-zT-XPJ" id="4GJ-It-RBT">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="週末退伍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8Y-6M-BaK">
                                                     <rect key="frame" x="20" y="15" width="64" height="23"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
-                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退伍日遇週休六日可提前退伍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7i-nA-W5A">
                                                     <rect key="frame" x="20" y="33" width="156" height="17"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
-                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="d8a-QV-DCL">
@@ -522,22 +525,22 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2TM-kT-DvJ">
-                                        <rect key="frame" x="0.0" y="480" width="600" height="66"/>
+                                        <rect key="frame" x="0.0" y="480" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2TM-kT-DvJ" id="AWY-9n-t6N">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倒數動畫" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwZ-nW-viJ">
                                                     <rect key="frame" x="20" y="15" width="64" height="23"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
-                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="關閉可取消倒數頁面動畫" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyf-84-Cka">
                                                     <rect key="frame" x="20" y="33" width="132" height="17"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
-                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yhe-CC-rUr">
@@ -555,22 +558,22 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xN6-7Q-eQC">
-                                        <rect key="frame" x="0.0" y="546" width="600" height="66"/>
+                                        <rect key="frame" x="0.0" y="546" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xN6-7Q-eQC" id="a1B-nb-nGw">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公開社群" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXD-pk-OYI">
                                                     <rect key="frame" x="20" y="15" width="64" height="23"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="16"/>
-                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="關閉後好友無法在好友名單中看到你" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULU-Rk-jyu">
                                                     <rect key="frame" x="20" y="33" width="192" height="17"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Light" family="PingFang TC" pointSize="12"/>
-                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F5j-MO-OXh">
@@ -607,7 +610,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eR-gc-p8E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2085" y="1175"/>
+            <point key="canvasLocation" x="2134" y="1143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GBs-hG-tdN">
@@ -617,7 +620,7 @@
                         <inset key="imageInsets" minX="1" minY="7" maxX="1" maxY="-5"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="1" green="0.80392156859999997" blue="0.3294117647" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <color key="value" red="1" green="0.80392156859999997" blue="0.3294117647" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>

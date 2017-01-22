@@ -9,10 +9,12 @@
 import UIKit
 import Parse
 import FBSDKLoginKit
+import FirebaseCore
+import FirebaseDatabase
 
 class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
 
-    var friendsObject = [PFObject]()
+    var friendsObject = [FIRDataSnapshot]()
     var getData: Bool
 
     var loadingView = LoadingView()
@@ -43,12 +45,12 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if Reachability().isConnectedToNetwork() {
             // Request for friendList
-            if FBSDKAccessToken.currentAccessToken() == nil {
+            if FBSDKAccessToken.current() == nil {
                 coverTableView("facebook")
             } else {
-                let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
+                let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount")!
 
-                if userPreference.boolForKey("publicProfile") {
+                if userPreference.bool(forKey: "publicProfile") {
                     requestFriendsListFromFacebook()
                 } else {
                     coverTableView("public")
@@ -64,108 +66,137 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     // Request user friends list from Facebook and reload TableView
     func requestFriendsListFromFacebook() {
         let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields": "id"])
-        friendsRequest.startWithCompletionHandler { connection, result, error in
+        let connection = FBSDKGraphRequestConnection()
+        connection.add(friendsRequest, completionHandler: { (connection, result, error) in
 
             if error == nil {
-                var friendArray = [String]()
-                if let users = result.valueForKey("data") {
-                    for user in users as! [AnyObject] {
-                        friendArray.append( user.valueForKey("id") as! String )
+
+                var friendIdArray = [String]()
+
+                if let json = result as? [String: Any] {
+                    if let friendArray = json["data"] as? Array<Any> {
+                        for case let friend as [String: String] in friendArray {
+                            if let fId = friend["id"] {
+                                friendIdArray.append(fId)
+                            }
+                        }
                     }
                 }
-                self.getFriendsInfomation( friendArray )
+                
+                self.getFriendsInfomation(friendIdArray)
             }
 
-        }
+        })
+
+        connection.start()
     }
 
-    func getFriendsInfomation( friends: [String] ) {
-        let friendsDetail = PFQuery(className: "User")
-            friendsDetail.whereKey( "fb_id", containedIn: friends )
-            friendsDetail.whereKey( "publicProfile", notEqualTo: false )
-            friendsDetail.orderByDescending("updatedAt")
-        friendsDetail.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) in
-            if error == nil {
-                self.friendsObject = objects!
+    func getFriendsInfomation( _ idArray: [String] ) {
+
+        let ref = FIRDatabase.database().reference()
+
+        for id in idArray {
+            ref.child("User/\(id)").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                /**
+                 * this user id is not existed in Firebase
+                 */
+                guard snapshot.exists() else {
+                    return
+                }
+
+                self.friendsObject.append(snapshot)
                 self.getData = true
                 self.tableView.reloadData()
-            }
-        })
+
+            })
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if getData {
             if friendsObject.count == 0 {
                 coverTableView("no-friends")
                 return 0
-            } else {
-                return friendsObject.count
             }
-        } else {
-            return Int( (UIScreen.mainScreen().bounds.height-44-49)/2/74+1 )
+
+            return friendsObject.count
         }
+
+        return Int( (UIScreen.main.bounds.height-44-49)/2/74+1 )
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendsTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath) as! FriendsTableViewCell
 
         if getData {
 
-            let thisUser = friendsObject[indexPath.row]
+            let userSnapshot = friendsObject[(indexPath as NSIndexPath).row].value as! Dictionary<String, AnyObject>
             // Configure the cell...
 
-            if let userName: String = thisUser.valueForKey("username") as? String {
-                cell.name.text = userName
-            }
-            cell.status.text = thisUser.valueForKey("status") as? String ?? ""
+            cell.name.text = userSnapshot["name"] as? String
+            cell.name.backgroundColor = UIColor.clear
 
-            // Sticker
-            let fbid = thisUser.valueForKey("fb_id") as! String
-            let url = NSURL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
-            reachability.getImageFromUrl(url) { data, response, error in
-                if data != nil {
-                    dispatch_async( dispatch_get_main_queue() ) {
-                        cell.sticker.image = UIImage(data: data!)
+            cell.status.text = userSnapshot["status"] as? String
+            cell.status.backgroundColor = UIColor.clear
+
+            // User Facebook Sticker
+            if let fbid = userSnapshot["fbId"] {
+                let url = URL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
+                reachability.getImageFromUrl(url) { data, response, error in
+                    if data != nil {
+                        DispatchQueue.main.async {
+                            cell.sticker.image = UIImage(data: data!)
+                        }
                     }
                 }
             }
 
-            // Calculate this friend's data
-            if thisUser.valueForKey("yearOfEnterDate") != nil && thisUser.valueForKey("monthOfEnterDate") != nil && thisUser.valueForKey("dateOfEnterDate") != nil && thisUser.valueForKey("serviceDays") != nil {
-
-                var entireDate = "\(thisUser.valueForKey("yearOfEnterDate")!) / "
-                if (thisUser.valueForKey("monthOfEnterDate")! as! Int) < 10 {
-                    entireDate += "0"
-                }
-                entireDate += "\(thisUser.valueForKey("monthOfEnterDate")!) / "
-                if (thisUser.valueForKey("dateOfEnterDate")! as! Int) < 10 {
-                    entireDate += "0"
-                }
-                entireDate += String(thisUser.valueForKey("dateOfEnterDate")!)
-
-                if friendHelper.inputFriendData( entireDate, serviceDays: thisUser.valueForKey("serviceDays") as! Int, discountDays: thisUser.valueForKey("discountDays") as? Int ?? 0, autoFixed: thisUser.valueForKey("weekendDischarge") as? Bool ?? false ) {
-                    if friendHelper.getRemainedDays() >= 0 {
-                        cell.preTextLabel.text = "剩餘"
-                        cell.dayNumber.text = String( friendHelper.getRemainedDays() )
-                    } else {
-                        cell.preTextLabel.text = "自由"
-                        cell.dayNumber.text = String( friendHelper.getRemainedDays()*(-1) )
-                    }
-                }
-
+            /**
+             * Calculate this friend's data
+             */
+            guard let year = userSnapshot["year"] else {
+                return cell
+            }
+            guard let month = userSnapshot["month"] else {
+                return cell
+            }
+            guard let date = userSnapshot["date"] else {
+                return cell
+            }
+            guard let serviceIndex = userSnapshot["serviceDaysIndex"] as? Int else {
+                return cell
             }
 
-            // Clean default background-color
-            cell.name.backgroundColor = UIColor.clearColor()
-            cell.status.backgroundColor = UIColor.clearColor()
+            var entireDate = "\(year) / "
+
+            if (month as! Int) < 10 {
+                entireDate += "0"
+            }
+            entireDate += "\(month) / "
+
+            if (date as! Int) < 10 {
+                entireDate += "0"
+            }
+            entireDate += "\(date)"
+
+            if friendHelper.inputFriendData( entireDate, serviceDays: serviceIndex, discountDays: userSnapshot["discountDays"] as? Int ?? 0, autoFixed: userSnapshot["isWeekendDischarge"] as? Bool ?? false ) {
+                if friendHelper.getRemainedDays() >= 0 {
+                    cell.preTextLabel.text = "剩餘"
+                    cell.dayNumber.text = String( friendHelper.getRemainedDays() )
+                } else {
+                    cell.preTextLabel.text = "自由"
+                    cell.dayNumber.text = String( friendHelper.getRemainedDays()*(-1) )
+                }
+            }
 
         }
 
@@ -173,10 +204,10 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
 
     // Add a UIView to cover TableView with something wrong
-    func coverTableView( situation: String ) {
+    func coverTableView( _ situation: String ) {
 
-        let viewWidth = UIScreen.mainScreen().bounds.width
-        let viewHeight = UIScreen.mainScreen().bounds.height-44-49
+        let viewWidth = UIScreen.main.bounds.width
+        let viewHeight = UIScreen.main.bounds.height-44-49
 
         let coverView = CoverView(width: viewWidth, height: viewHeight, status: situation)
 
@@ -193,44 +224,43 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if situation == "internet" {
             // Loading
-            loadingView = LoadingView( center: CGPointMake( viewWidth/2, viewHeight/2 ) )
-            loadingView.hidden = true
+            loadingView = LoadingView( center: CGPoint( x: viewWidth/2, y: viewHeight/2 ) )
+            loadingView.isHidden = true
 
             self.view.addSubview( loadingView )
         }
 
     }
 
-    private func makeFBLoginButton( vw: CGFloat, vh: CGFloat ) -> FBSDKLoginButton {
+    fileprivate func makeFBLoginButton( _ vw: CGFloat, vh: CGFloat ) -> FBSDKLoginButton {
         let btn = FBSDKLoginButton()
-            btn.frame = CGRectMake( 30, vh/2+55, vw-60, 50 )
+            btn.frame = CGRect( x: 30, y: vh/2+55, width: vw-60, height: 50 )
             btn.readPermissions = [ "public_profile", "email", "user_friends" ]
             btn.delegate = self
 
         return btn
     }
 
-    private func makeRetryButton( vw: CGFloat, vh: CGFloat ) -> UIButton {
-        let btn = UIButton(frame: CGRectMake( vw/2-35, vh/2+70, 70, 35 ))
-            btn.setTitle("重試", forState: .Normal)
+    fileprivate func makeRetryButton( _ vw: CGFloat, vh: CGFloat ) -> UIButton {
+        let btn = UIButton(frame: CGRect( x: vw/2-35, y: vh/2+70, width: 70, height: 35 ))
+            btn.setTitle("重試", for: UIControlState())
             btn.titleLabel?.font = UIFont(name: "PingFangTC-Regular", size: 13)
             btn.layer.cornerRadius = 3
             btn.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-            btn.addTarget(self, action: #selector(retryInternet), forControlEvents: .TouchUpInside)
+            btn.addTarget(self, action: #selector(retryInternet), for: .touchUpInside)
 
         return btn
     }
 
-    func retryInternet(sender: UIButton) {
+    func retryInternet(_ sender: UIButton) {
 
-        loadingView.hidden = false
+        loadingView.isHidden = false
         let indicator = loadingView.subviews.first as! UIActivityIndicatorView
             indicator.startAnimating()
 
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async( dispatch_get_global_queue(priority, 0) ) {
+        DispatchQueue.global().async {
             sleep(1)
-            dispatch_async( dispatch_get_main_queue() ) {
+            DispatchQueue.main.async {
                 self.checkEnvironment()
             }
         }
@@ -241,7 +271,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     //      FBSDK      \\
     // *************** \\
 
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
 
         if error != nil {
             // Process error
@@ -250,61 +280,9 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         } else {
 
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
-            graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            _ = graphRequest?.start(completionHandler: { (connection, result, error) -> Void in
 
                 if error == nil {
-                    UserInfo().storeFacebookInfo( result, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
-
-                        // Ask user whether to download data from Parse or not
-                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .Alert)
-                        let yesAction = UIAlertAction(title: "是", style: .Default, handler: { (action) in
-                            let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount")!
-                            // Status
-                            if newStatus != "" {
-                                userPreference.setObject( newStatus, forKey: "status")
-                            }
-                            // EnterDate
-                            if newEnterDate != "" {
-                                userPreference.setObject( newEnterDate, forKey: "enterDate")
-                            }
-                            // ServiceDays
-                            if newServiceDays != -1 {
-                                userPreference.setInteger( newServiceDays, forKey: "serviceDays")
-                            }
-                            // DiscountDays
-                            if newDiscountDays != -1 {
-                                userPreference.setInteger( newDiscountDays, forKey: "discountDays")
-                            }
-                            userPreference.setBool( newWeekendFixed, forKey: "autoWeekendFixed" )
-                            userPreference.setBool( newPublicProfile, forKey: "publicProfile" )
-
-                            if newPublicProfile {
-                                // Remove coverView and Reload TableView
-                                self.removeOldViews()
-                                self.requestFriendsListFromFacebook()
-                            } else {
-                                self.coverTableView("public")
-                            }
-
-                            let NC = self.parentViewController as! NavigationController
-                            NC.markDownload()
-                        })
-                        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: { (action) in
-                            UserInfo().uploadAllData()
-
-                            // Remove coverView and Reload TableView
-                            self.removeOldViews()
-                            self.requestFriendsListFromFacebook()
-                        })
-                        syncAlertController.addAction(yesAction)
-                        syncAlertController.addAction(noAction)
-
-                        self.presentViewController(syncAlertController, animated: true, completion: nil)
-
-                    }, newUserTask: {
-                        self.removeOldViews()
-                        self.requestFriendsListFromFacebook()
-                    })
                 }
 
             })
@@ -313,7 +291,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
     }
 
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
     }
 

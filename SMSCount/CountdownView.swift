@@ -15,45 +15,45 @@ class CountdownView: UIView {
 
     var animationIndex: Int = 0
     var animationArray = [String]() // [ 1, 2, ... 99, 100 ]
-    var stageIndexArray = Array(count: 6, repeatedValue: 0)
+    var stageIndexArray = Array(repeating: 0, count: 6)
 
     convenience init(view: UIView) {
-        self.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-44-49))
+        self.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-44-49))
 
         self.addDaysLabel()
         self.addTextLabel()
     }
 
-    private func addDaysLabel() {
+    fileprivate func addDaysLabel() {
 
-        dayLabel = UILabel(frame: CGRectMake(0, 0, self.frame.width, 60))
+        dayLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 60))
         dayLabel.center = self.center
         dayLabel.font = UIFont(name: "Verdana", size: 74)
-        dayLabel.textColor = UIColor.whiteColor()
-        dayLabel.textAlignment = .Center
+        dayLabel.textColor = UIColor.white
+        dayLabel.textAlignment = .center
 
         self.addSubview( dayLabel )
 
     }
 
-    private func addTextLabel() {
+    fileprivate func addTextLabel() {
 
-        textLabel = UILabel(frame: CGRectMake(0, (UIScreen.mainScreen().bounds.height-44-49)/2+110, UIScreen.mainScreen().bounds.width, 23))
+        textLabel = UILabel(frame: CGRect(x: 0, y: (UIScreen.main.bounds.height-44-49)/2+110, width: UIScreen.main.bounds.width, height: 23))
         textLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
-        textLabel.textColor = UIColor.whiteColor()
-        textLabel.textAlignment = .Center
+        textLabel.textColor = UIColor.white
+        textLabel.textAlignment = .center
 
         self.addSubview( textLabel )
 
     }
 
-    func setRemainedDays( days: Int ) {
+    func setRemainedDays( _ days: Int ) {
 
         textLabel.text = days < 0 ? "自由天數" : "剩餘天數"
 
         // Set remainedDays
-        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
-            if userPreference.boolForKey("countdownAnimation") == true && userPreference.boolForKey("dayAnimated") == false {
+        if let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount") {
+            if userPreference.bool(forKey: "countdownAnimation") == true && userPreference.bool(forKey: "dayAnimated") == false {
                 // Run animation
                 beReadyAndRunCountingAnimation( abs(days) )
             } else {
@@ -64,11 +64,11 @@ class CountdownView: UIView {
 
     }
 
-    private func beReadyAndRunCountingAnimation( days: Int ) {
+    fileprivate func beReadyAndRunCountingAnimation( _ days: Int ) {
 
         // Animation setting
         animationIndex = 0
-        animationArray.removeAll(keepCapacity: false) // Maybe it should be true
+        animationArray.removeAll(keepingCapacity: false) // Maybe it should be true
 
         if days < 100 {
             for i in 0 ... days {
@@ -84,7 +84,7 @@ class CountdownView: UIView {
         }
 
         let arrayLength = animationArray.count
-        stageIndexArray.removeAll(keepCapacity: true)
+        stageIndexArray.removeAll(keepingCapacity: true)
         stageIndexArray.append( Int( Double(arrayLength)*0.55 ) )
         stageIndexArray.append( Int( Double(arrayLength)*0.75 ) )
         stageIndexArray.append( Int( Double(arrayLength)*0.88 ) )
@@ -99,7 +99,7 @@ class CountdownView: UIView {
 
     }
 
-    func daysAddingEffect( timer: NSTimer ) {
+    func daysAddingEffect( _ timer: Timer ) {
 
         if let info = timer.userInfo as? Dictionary<String,Int> {
             if let currentStage = info["index"] {
@@ -110,8 +110,8 @@ class CountdownView: UIView {
                     } else {
                         timer.invalidate()
 
-                        if let userPreference = NSUserDefaults(suiteName: "group.EddieWen.SMSCount") {
-                            userPreference.setBool( true, forKey: "dayAnimated" )
+                        if let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount") {
+                            userPreference.set( true, forKey: "dayAnimated" )
                         }
                     }
                 } else {
@@ -128,14 +128,14 @@ class CountdownView: UIView {
 
     }
 
-    private func startNextTimer( stage: Int ) {
+    fileprivate func startNextTimer( _ stage: Int ) {
         let intervalArray = [ 0.01, 0.02, 0.04, 0.08, 0.16, 0.24, 0.32 ]
         let info: Dictionary<String,Int> = [ "index": stage ]
 
-        NSTimer.scheduledTimerWithTimeInterval( intervalArray[stage-1], target: self, selector: #selector(daysAddingEffect), userInfo: info, repeats: true )
+        Timer.scheduledTimer( timeInterval: intervalArray[stage-1], target: self, selector: #selector(daysAddingEffect), userInfo: info, repeats: true )
     }
 
-    private func updateLabel() {
+    fileprivate func updateLabel() {
         dayLabel.text = animationArray[ animationIndex ]
         animationIndex += 1
     }
