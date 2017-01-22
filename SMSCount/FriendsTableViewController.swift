@@ -282,7 +282,25 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             _ = graphRequest?.start(completionHandler: { (connection, result, error) -> Void in
 
-                if error == nil {
+                if error != nil {
+                    print("Error : \(error)")
+                    return
+                }
+
+                guard let result = result as? Dictionary<String, String> else {
+                    return
+                }
+
+                if let newFbId = result["id"] {
+                    let userInfo = UserInfo()
+                    userInfo.addUserFBID(newFbId)
+
+                    if let mail = result["email"] {
+                        userInfo.updateMail(mail)
+                    }
+                    if let name = result["name"] {
+                        userInfo.updateUsername(name)
+                    }
                 }
 
             })
