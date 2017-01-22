@@ -9,10 +9,12 @@
 import UIKit
 import Parse
 import FBSDKLoginKit
+import FirebaseCore
+import FirebaseDatabase
 
 class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
 
-    var friendsObject = [PFObject]()
+    var friendsObject = [FIRDataSnapshot]()
     var getData: Bool
 
     var loadingView = LoadingView()
@@ -81,7 +83,7 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     }
                 }
                 
-                print(friendIdArray)
+                self.getFriendsInfomation(friendIdArray)
             }
 
         })
@@ -89,18 +91,24 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         connection.start()
     }
 
-    func getFriendsInfomation( _ friends: [String] ) {
-        let friendsDetail = PFQuery(className: "User")
-            friendsDetail.whereKey( "fb_id", containedIn: friends )
-            friendsDetail.whereKey( "publicProfile", notEqualTo: false )
-            friendsDetail.order(byDescending: "updatedAt")
-        friendsDetail.findObjectsInBackground(block: { (objects: [PFObject]?, error: Error?) in
-            if error == nil {
-                self.friendsObject = objects!
-                self.getData = true
-                self.tableView.reloadData()
-            }
-        })
+    func getFriendsInfomation( _ idArray: [String] ) {
+
+        let ref = FIRDatabase.database().reference()
+
+        for id in idArray {
+            ref.child("User/\(id)").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                /**
+                 * this user id is not existed in Firebase
+                 */
+                guard snapshot.exists() else {
+                    return
+                }
+
+                self.friendsObject.append(snapshot)
+
+            })
+        }
     }
 
     // MARK: - Table view data source
