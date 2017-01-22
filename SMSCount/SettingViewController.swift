@@ -212,10 +212,25 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             _ = graphRequest?.start(completionHandler: { connection, result, error in
 
-                if error == nil {
-                    // Hide FB login button
-                    self.FBLoginView.isHidden = true
-                    self.topConstraint.constant = -70
+                if error != nil {
+                    print("Error : \(error)")
+                    return
+                }
+
+                guard let result = result as? Dictionary<String, String> else {
+                    return
+                }
+
+                if let newFbId = result["id"] {
+                    let userInfo = UserInfo()
+                    userInfo.addUserFBID(newFbId)
+
+                    if let mail = result["email"] {
+                        userInfo.updateMail(mail)
+                    }
+                    if let name = result["name"] {
+                        userInfo.updateUsername(name)
+                    }
                 }
 
             }) // --- graphRequest
