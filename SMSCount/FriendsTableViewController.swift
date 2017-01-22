@@ -106,6 +106,8 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 }
 
                 self.friendsObject.append(snapshot)
+                self.getData = true
+                self.tableView.reloadData()
 
             })
         }
@@ -124,12 +126,12 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if friendsObject.count == 0 {
                 coverTableView("no-friends")
                 return 0
-            } else {
-                return friendsObject.count
             }
-        } else {
-            return Int( (UIScreen.main.bounds.height-44-49)/2/74+1 )
+
+            return friendsObject.count
         }
+
+        return Int( (UIScreen.main.bounds.height-44-49)/2/74+1 )
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,53 +139,64 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if getData {
 
-            let thisUser = friendsObject[(indexPath as NSIndexPath).row]
+            let userSnapshot = friendsObject[(indexPath as NSIndexPath).row].value as! Dictionary<String, AnyObject>
             // Configure the cell...
 
-            if let userName: String = thisUser.value(forKey: "username") as? String {
-                cell.name.text = userName
-            }
-            cell.status.text = thisUser.value(forKey: "status") as? String ?? ""
-
-            // Sticker
-            let fbid = thisUser.value(forKey: "fb_id") as! String
-            let url = URL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
-            reachability.getImageFromUrl(url) { data, response, error in
-                if data != nil {
-                    DispatchQueue.main.async {
-                        cell.sticker.image = UIImage(data: data!)
-                    }
-                }
-            }
-
-            // Calculate this friend's data
-            if thisUser.value(forKey: "yearOfEnterDate") != nil && thisUser.value(forKey: "monthOfEnterDate") != nil && thisUser.value(forKey: "dateOfEnterDate") != nil && thisUser.value(forKey: "serviceDays") != nil {
-
-                var entireDate = "\(thisUser.value(forKey: "yearOfEnterDate")!) / "
-                if (thisUser.value(forKey: "monthOfEnterDate")! as! Int) < 10 {
-                    entireDate += "0"
-                }
-                entireDate += "\(thisUser.value(forKey: "monthOfEnterDate")!) / "
-                if (thisUser.value(forKey: "dateOfEnterDate")! as! Int) < 10 {
-                    entireDate += "0"
-                }
-                entireDate += String(describing: thisUser.value(forKey: "dateOfEnterDate")!)
-
-                if friendHelper.inputFriendData( entireDate, serviceDays: thisUser.value(forKey: "serviceDays") as! Int, discountDays: thisUser.value(forKey: "discountDays") as? Int ?? 0, autoFixed: thisUser.value(forKey: "weekendDischarge") as? Bool ?? false ) {
-                    if friendHelper.getRemainedDays() >= 0 {
-                        cell.preTextLabel.text = "剩餘"
-                        cell.dayNumber.text = String( friendHelper.getRemainedDays() )
-                    } else {
-                        cell.preTextLabel.text = "自由"
-                        cell.dayNumber.text = String( friendHelper.getRemainedDays()*(-1) )
-                    }
-                }
-
-            }
-
-            // Clean default background-color
+            cell.name.text = userSnapshot["name"] as? String
             cell.name.backgroundColor = UIColor.clear
+
+            cell.status.text = userSnapshot["status"] as? String
             cell.status.backgroundColor = UIColor.clear
+
+            // User Facebook Sticker
+            if let fbid = userSnapshot["fbId"] {
+                let url = URL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
+                reachability.getImageFromUrl(url) { data, response, error in
+                    if data != nil {
+                        DispatchQueue.main.async {
+                            cell.sticker.image = UIImage(data: data!)
+                        }
+                    }
+                }
+            }
+
+            /**
+             * Calculate this friend's data
+             */
+            guard let year = userSnapshot["year"] else {
+                return cell
+            }
+            guard let month = userSnapshot["month"] else {
+                return cell
+            }
+            guard let date = userSnapshot["date"] else {
+                return cell
+            }
+            guard let serviceIndex = userSnapshot["serviceDaysIndex"] as? Int else {
+                return cell
+            }
+
+            var entireDate = "\(year) / "
+
+            if (month as! Int) < 10 {
+                entireDate += "0"
+            }
+            entireDate += "\(month) / "
+
+            if (date as! Int) < 10 {
+                entireDate += "0"
+            }
+            entireDate += "\(date)"
+
+            if friendHelper.inputFriendData( entireDate, serviceDays: serviceIndex, discountDays: userSnapshot["discountDays"] as? Int ?? 0, autoFixed: userSnapshot["isWeekendDischarge"] as? Bool ?? false ) {
+                if friendHelper.getRemainedDays() >= 0 {
+                    cell.preTextLabel.text = "剩餘"
+                    cell.dayNumber.text = String( friendHelper.getRemainedDays() )
+                } else {
+                    cell.preTextLabel.text = "自由"
+                    cell.dayNumber.text = String( friendHelper.getRemainedDays()*(-1) )
+                }
+            }
 
         }
 
