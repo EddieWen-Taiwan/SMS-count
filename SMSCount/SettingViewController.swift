@@ -91,7 +91,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        userInfo.save()
+        // userInfo.save()
     }
 
     func showPickerView() {
@@ -212,50 +212,25 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             _ = graphRequest?.start(completionHandler: { connection, result, error in
 
-                if error == nil {
-                    // Hide FB login button
-                    self.FBLoginView.isHidden = true
-                    self.topConstraint.constant = -70
+                if error != nil {
+                    print("Error : \(error)")
+                    return
+                }
 
-                    self.userInfo.storeFacebookInfo( result as AnyObject, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
+                guard let result = result as? Dictionary<String, String> else {
+                    return
+                }
 
-                        // Ask user whether to download data from Parse or not
-                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .alert)
-                        let yesAction = UIAlertAction(title: "是", style: .default, handler: { (action) in
-                            // Status
-                            if newStatus != "" {
-                                self.userPreference.set( newStatus, forKey: "status")
-                                self.containerVC?.statusLabel.text = newStatus
-                            }
-                            // EnterDate
-                            if newEnterDate != "" {
-                                self.userPreference.set( newEnterDate, forKey: "enterDate")
-                                self.containerVC?.enterDateLabel.text = newEnterDate
-                            }
-                            // ServiceDays
-                            if newServiceDays != -1 {
-                                self.userPreference.set( newServiceDays, forKey: "serviceDays")
-                                self.containerVC?.serviceDaysLabel.text = self.calculateHelper.switchPeriod( String(newServiceDays) )
-                            }
-                            // DiscountDays
-                            if newDiscountDays != -1 {
-                                self.userPreference.set( newDiscountDays, forKey: "discountDays")
-                                self.containerVC?.discountDaysLabel.text = String(newDiscountDays)
-                            }
-                            self.userPreference.set( newWeekendFixed, forKey: "autoWeekendFixed" )
-                            self.containerVC?.autoWeekendSwitch.setOn( newWeekendFixed, animated: true )
-                            self.userPreference.set( newPublicProfile, forKey: "publicProfile" )
-                            self.containerVC?.publicSwitch.setOn( newPublicProfile, animated: true )
-                        })
-                        let noAction = UIAlertAction(title: "否", style: .cancel, handler: { (action) in
-                            self.userInfo.uploadAllData()
-                        })
-                        syncAlertController.addAction(yesAction)
-                        syncAlertController.addAction(noAction)
+                if let newFbId = result["id"] {
+                    let userInfo = UserInfo()
+                    userInfo.addUserFBID(newFbId)
 
-                        self.present(syncAlertController, animated: true, completion: nil)
-                    }, newUserTask: {})
-
+                    if let mail = result["email"] {
+                        userInfo.updateMail(mail)
+                    }
+                    if let name = result["name"] {
+                        userInfo.updateUsername(name)
+                    }
                 }
 
             }) // --- graphRequest

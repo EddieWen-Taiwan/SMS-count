@@ -9,10 +9,12 @@
 import UIKit
 import Parse
 import FBSDKLoginKit
+import FirebaseCore
+import FirebaseDatabase
 
 class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
 
-    var friendsObject = [PFObject]()
+    var friendsObject = [FIRDataSnapshot]()
     var getData: Bool
 
     var loadingView = LoadingView()
@@ -69,21 +71,19 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
             if error == nil {
 
-                do {
+                var friendIdArray = [String]()
 
-                    var friendArray = [String]()
-                    let fbResult = try JSONSerialization.jsonObject(with: result as! Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    if let users = fbResult.value(forKey: "data") {
-                        for user in users as! [AnyObject] {
-                            friendArray.append( user.value(forKey: "id") as! String )
+                if let json = result as? [String: Any] {
+                    if let friendArray = json["data"] as? Array<Any> {
+                        for case let friend as [String: String] in friendArray {
+                            if let fId = friend["id"] {
+                                friendIdArray.append(fId)
+                            }
                         }
                     }
-
-                    self.getFriendsInfomation( friendArray )
-
-                } catch {
-                    print(error)
                 }
+                
+                self.getFriendsInfomation(friendIdArray)
             }
 
         })
@@ -91,18 +91,26 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         connection.start()
     }
 
-    func getFriendsInfomation( _ friends: [String] ) {
-        let friendsDetail = PFQuery(className: "User")
-            friendsDetail.whereKey( "fb_id", containedIn: friends )
-            friendsDetail.whereKey( "publicProfile", notEqualTo: false )
-            friendsDetail.order(byDescending: "updatedAt")
-        friendsDetail.findObjectsInBackground(block: { (objects: [PFObject]?, error: Error?) in
-            if error == nil {
-                self.friendsObject = objects!
+    func getFriendsInfomation( _ idArray: [String] ) {
+
+        let ref = FIRDatabase.database().reference()
+
+        for id in idArray {
+            ref.child("User/\(id)").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                /**
+                 * this user id is not existed in Firebase
+                 */
+                guard snapshot.exists() else {
+                    return
+                }
+
+                self.friendsObject.append(snapshot)
                 self.getData = true
                 self.tableView.reloadData()
-            }
-        })
+
+            })
+        }
     }
 
     // MARK: - Table view data source
@@ -118,12 +126,12 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if friendsObject.count == 0 {
                 coverTableView("no-friends")
                 return 0
-            } else {
-                return friendsObject.count
             }
-        } else {
-            return Int( (UIScreen.main.bounds.height-44-49)/2/74+1 )
+
+            return friendsObject.count
         }
+
+        return Int( (UIScreen.main.bounds.height-44-49)/2/74+1 )
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,53 +139,64 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if getData {
 
-            let thisUser = friendsObject[(indexPath as NSIndexPath).row]
+            let userSnapshot = friendsObject[(indexPath as NSIndexPath).row].value as! Dictionary<String, AnyObject>
             // Configure the cell...
 
-            if let userName: String = thisUser.value(forKey: "username") as? String {
-                cell.name.text = userName
-            }
-            cell.status.text = thisUser.value(forKey: "status") as? String ?? ""
-
-            // Sticker
-            let fbid = thisUser.value(forKey: "fb_id") as! String
-            let url = URL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
-            reachability.getImageFromUrl(url) { data, response, error in
-                if data != nil {
-                    DispatchQueue.main.async {
-                        cell.sticker.image = UIImage(data: data!)
-                    }
-                }
-            }
-
-            // Calculate this friend's data
-            if thisUser.value(forKey: "yearOfEnterDate") != nil && thisUser.value(forKey: "monthOfEnterDate") != nil && thisUser.value(forKey: "dateOfEnterDate") != nil && thisUser.value(forKey: "serviceDays") != nil {
-
-                var entireDate = "\(thisUser.value(forKey: "yearOfEnterDate")!) / "
-                if (thisUser.value(forKey: "monthOfEnterDate")! as! Int) < 10 {
-                    entireDate += "0"
-                }
-                entireDate += "\(thisUser.value(forKey: "monthOfEnterDate")!) / "
-                if (thisUser.value(forKey: "dateOfEnterDate")! as! Int) < 10 {
-                    entireDate += "0"
-                }
-                entireDate += String(describing: thisUser.value(forKey: "dateOfEnterDate")!)
-
-                if friendHelper.inputFriendData( entireDate, serviceDays: thisUser.value(forKey: "serviceDays") as! Int, discountDays: thisUser.value(forKey: "discountDays") as? Int ?? 0, autoFixed: thisUser.value(forKey: "weekendDischarge") as? Bool ?? false ) {
-                    if friendHelper.getRemainedDays() >= 0 {
-                        cell.preTextLabel.text = "剩餘"
-                        cell.dayNumber.text = String( friendHelper.getRemainedDays() )
-                    } else {
-                        cell.preTextLabel.text = "自由"
-                        cell.dayNumber.text = String( friendHelper.getRemainedDays()*(-1) )
-                    }
-                }
-
-            }
-
-            // Clean default background-color
+            cell.name.text = userSnapshot["name"] as? String
             cell.name.backgroundColor = UIColor.clear
+
+            cell.status.text = userSnapshot["status"] as? String
             cell.status.backgroundColor = UIColor.clear
+
+            // User Facebook Sticker
+            if let fbid = userSnapshot["fbId"] {
+                let url = URL(string: "http://graph.facebook.com/\(fbid)/picture?type=large")!
+                reachability.getImageFromUrl(url) { data, response, error in
+                    if data != nil {
+                        DispatchQueue.main.async {
+                            cell.sticker.image = UIImage(data: data!)
+                        }
+                    }
+                }
+            }
+
+            /**
+             * Calculate this friend's data
+             */
+            guard let year = userSnapshot["year"] else {
+                return cell
+            }
+            guard let month = userSnapshot["month"] else {
+                return cell
+            }
+            guard let date = userSnapshot["date"] else {
+                return cell
+            }
+            guard let serviceIndex = userSnapshot["serviceDaysIndex"] as? Int else {
+                return cell
+            }
+
+            var entireDate = "\(year) / "
+
+            if (month as! Int) < 10 {
+                entireDate += "0"
+            }
+            entireDate += "\(month) / "
+
+            if (date as! Int) < 10 {
+                entireDate += "0"
+            }
+            entireDate += "\(date)"
+
+            if friendHelper.inputFriendData( entireDate, serviceDays: serviceIndex, discountDays: userSnapshot["discountDays"] as? Int ?? 0, autoFixed: userSnapshot["isWeekendDischarge"] as? Bool ?? false ) {
+                if friendHelper.getRemainedDays() >= 0 {
+                    cell.preTextLabel.text = "剩餘"
+                    cell.dayNumber.text = String( friendHelper.getRemainedDays() )
+                } else {
+                    cell.preTextLabel.text = "自由"
+                    cell.dayNumber.text = String( friendHelper.getRemainedDays()*(-1) )
+                }
+            }
 
         }
 
@@ -263,59 +282,25 @@ class FriendsTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
             _ = graphRequest?.start(completionHandler: { (connection, result, error) -> Void in
 
-                if error == nil {
-                    UserInfo().storeFacebookInfo( result as AnyObject, syncCompletion: { messageContent, newStatus, newEnterDate, newServiceDays, newDiscountDays, newWeekendFixed, newPublicProfile in
+                if error != nil {
+                    print("Error : \(error)")
+                    return
+                }
 
-                        // Ask user whether to download data from Parse or not
-                        let syncAlertController = UIAlertController(title: "是否將資料同步至APP？", message: messageContent, preferredStyle: .alert)
-                        let yesAction = UIAlertAction(title: "是", style: .default, handler: { (action) in
-                            let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount")!
-                            // Status
-                            if newStatus != "" {
-                                userPreference.set( newStatus, forKey: "status")
-                            }
-                            // EnterDate
-                            if newEnterDate != "" {
-                                userPreference.set( newEnterDate, forKey: "enterDate")
-                            }
-                            // ServiceDays
-                            if newServiceDays != -1 {
-                                userPreference.set( newServiceDays, forKey: "serviceDays")
-                            }
-                            // DiscountDays
-                            if newDiscountDays != -1 {
-                                userPreference.set( newDiscountDays, forKey: "discountDays")
-                            }
-                            userPreference.set( newWeekendFixed, forKey: "autoWeekendFixed" )
-                            userPreference.set( newPublicProfile, forKey: "publicProfile" )
+                guard let result = result as? Dictionary<String, String> else {
+                    return
+                }
 
-                            if newPublicProfile {
-                                // Remove coverView and Reload TableView
-                                self.removeOldViews()
-                                self.requestFriendsListFromFacebook()
-                            } else {
-                                self.coverTableView("public")
-                            }
+                if let newFbId = result["id"] {
+                    let userInfo = UserInfo()
+                    userInfo.addUserFBID(newFbId)
 
-                            let NC = self.parent as! NavigationController
-                            NC.markDownload()
-                        })
-                        let noAction = UIAlertAction(title: "否", style: .cancel, handler: { (action) in
-                            UserInfo().uploadAllData()
-
-                            // Remove coverView and Reload TableView
-                            self.removeOldViews()
-                            self.requestFriendsListFromFacebook()
-                        })
-                        syncAlertController.addAction(yesAction)
-                        syncAlertController.addAction(noAction)
-
-                        self.present(syncAlertController, animated: true, completion: nil)
-
-                    }, newUserTask: {
-                        self.removeOldViews()
-                        self.requestFriendsListFromFacebook()
-                    })
+                    if let mail = result["email"] {
+                        userInfo.updateMail(mail)
+                    }
+                    if let name = result["name"] {
+                        userInfo.updateUsername(name)
+                    }
                 }
 
             })

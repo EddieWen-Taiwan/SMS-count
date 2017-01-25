@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Parse
+import FirebaseCore
 import DrawerController
 
 @UIApplicationMain
@@ -19,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // Initialize Firebase
+        FIRApp.configure()
 
         // Initialize Parse.
         Parse.setApplicationId( SecretCode.parseAppId, clientKey: SecretCode.parseClientKey )
@@ -33,21 +37,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userPreference = UserDefaults(suiteName: "group.EddieWen.SMSCount")!
         // If there is no countdownAnimation, set it true as default
         if userPreference.value(forKey: "countdownAnimation") == nil {
-            userPreference.set( true, forKey: "countdownAnimation")
+            userPreference.set( true, forKey: "countdownAnimation" )
         }
         // If there is no publicProfile....
         if userPreference.value(forKey: "publicProfile") == nil {
-            userPreference.set( true, forKey: "publicProfile")
+            userPreference.set( true, forKey: "publicProfile" )
         }
-        // If app is without ObjectId, create a new data row.
-        if userPreference.string(forKey: "UserID") == nil {
-            UserInfo().registerNewUser()
-            userPreference.set( true, forKey: "uploadNewValueIn2.0" )
-        } else {
-            // For uploading to v2.0
-            if userPreference.bool(forKey: "uploadNewValueIn2.0") != true {
-                UserInfo().uploadAllData()
-                userPreference.set( true, forKey: "uploadNewValueIn2.0" )
+
+        /**
+         * Sync data to Firebase
+         */
+        if let fbid = userPreference.string(forKey: "fb_id") {
+            if !userPreference.bool(forKey: "sync2firebase") {
+                UserInfo().uploadAllData( fbid )
+                userPreference.set( true, forKey: "sync2firebase" )
             }
         }
 
