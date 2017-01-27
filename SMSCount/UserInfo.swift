@@ -6,8 +6,6 @@
 //  Copyright © 2015 Wen. All rights reserved.
 //
 
-import Parse
-
 /**
  * Save userInfomation to Firebase
  */

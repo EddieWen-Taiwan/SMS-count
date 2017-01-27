@@ -39,8 +39,6 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
-  - Parse (1.14.2):
-    - Bolts/Tasks (~> 1.8)
 
 DEPENDENCIES:
   - DrawerController
@@ -48,7 +46,6 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - Firebase/Core
   - Firebase/Database
-  - Parse
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -63,8 +60,7 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
-  Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
 
-PODFILE CHECKSUM: 7b6bb14ba68ea1ed199c694287d092c03f5793d8
+PODFILE CHECKSUM: 4ba17a12ca09073678ef101c53bff6da0ad3b16d
 
 COCOAPODS: 1.1.1

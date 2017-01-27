@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Parse
 import FirebaseCore
 import DrawerController
 
@@ -23,11 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Initialize Firebase
         FIRApp.configure()
-
-        // Initialize Parse.
-        Parse.setApplicationId( SecretCode.parseAppId, clientKey: SecretCode.parseClientKey )
-        // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpened(launchOptions: launchOptions)
 
         // Remove bottom border of navigation bar ( all ViewController )
         UINavigationBar.appearance().setBackgroundImage( UIImage(named: "standard-color"), for: .default )

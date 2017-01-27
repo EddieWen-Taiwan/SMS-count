@@ -10,8 +10,6 @@ target 'SMSCount' do
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKLoginKit'
 
-	pod 'Parse'
-
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
 
