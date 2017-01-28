@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         /**
          * Sync data to Firebase
+         * make sure this user have logged in with Facebook(app has his fbId) and have never done this action
          */
         if let fbid = userPreference.string(forKey: "fb_id") {
             if !userPreference.bool(forKey: "sync2firebase") {
